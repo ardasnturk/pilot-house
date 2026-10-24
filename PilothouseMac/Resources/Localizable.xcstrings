@@ -113,6 +113,38 @@
         }
       }
     },
+    "Agent CLIs on this Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent-CLIs auf diesem Mac"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'teki ajan CLI'ları"
+          }
+        }
+      }
+    },
+    "Agents": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agenten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajanlar"
+          }
+        }
+      }
+    },
     "Allow": {
       "localizations": {
         "de": {
@@ -321,6 +353,22 @@
         }
       }
     },
+    "Claude Code gets a delegate_to_agent tool for these agents. Every delegation and every action of the sub-agent still needs your approval, and you can follow it live on your phone.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code erhält für diese Agenten ein Werkzeug delegate_to_agent. Jede Übergabe und jede Aktion des Sub-Agents braucht weiterhin deine Zustimmung, und du kannst sie live auf deinem Telefon verfolgen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code bu ajanlar için bir delegate_to_agent aracı alır. Her devir ve alt ajanın her işlemi yine onayınızı gerektirir; telefonunuzdan canlı izleyebilirsiniz."
+          }
+        }
+      }
+    },
     "Claude Code is not installed": {
       "localizations": {
         "de": {
@@ -397,6 +445,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Tailscale'i kuruyor"
+          }
+        }
+      }
+    },
+    "Claude may hand tasks to %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude darf Aufgaben an %@ übergeben"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude görevleri %@'e devredebilir"
           }
         }
       }
@@ -1101,6 +1165,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yeni Kod"
+          }
+        }
+      }
+    },
+    "New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Pilothouse never sees it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Chats auf deinem iPhone oder iPad können jeden installierten Agenten verwenden. Jeder nutzt seine eigene Anmeldung aus dem Terminal; Pilothouse sieht sie nie."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone veya iPad'inizdeki yeni sohbetler kurulu herhangi bir ajanı kullanabilir. Her biri Terminal'deki kendi oturumunu kullanır; Pilothouse bunu hiç görmez."
           }
         }
       }
@@ -2029,6 +2109,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anahtar Zinciri'nde saklanıyor"
+          }
+        }
+      }
+    },
+    "Sub-agents": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sub-Agenten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt ajanlar"
           }
         }
       }

@@ -58,7 +58,12 @@ public actor DemoHostService: HostService {
             port: PilothouseProtocol.defaultPort,
             activeSessionCount: sessions.values.filter { $0.state != .closed }.count,
             bypassPermissionsAllowed: false,
-            defaultModel: "sonnet"
+            defaultModel: "sonnet",
+            agents: [
+                AgentStatus(kind: .claude, installed: true, version: "2.1.310 (Claude Code)", loggedIn: true, models: ["opus", "sonnet", "haiku"]),
+                AgentStatus(kind: .codex, installed: true, version: "codex-cli 0.162.1", loggedIn: true, delegationEnabled: true),
+                AgentStatus(kind: .gemini, installed: true, version: "0.24.0", delegationEnabled: true),
+            ]
         )
     }
 
@@ -138,7 +143,7 @@ public actor DemoHostService: HostService {
         let summary = SessionSummary(
             id: id, cwd: cwd, title: title, createdAt: date, updatedAt: date,
             model: request.model ?? "sonnet", permissionMode: request.permissionMode ?? .default, state: .idle,
-            slashCommands: DemoContent.slashCommands
+            slashCommands: DemoContent.slashCommands, agent: request.agent
         )
         sessions[id] = summary
         events[id] = []
@@ -299,6 +304,22 @@ public actor DemoHostService: HostService {
                 if let edit {
                     append(.fileEdit(.init(toolUseId: toolUseId, path: edit.path, kind: edit.kind, diff: edit.diff)), to: sessionId)
                 }
+            case .delegate(let agent, let prompt, let command, let output, let answer):
+                let thread = "toolu_demo_\(turn)_delegate"
+                append(.toolUse(.init(toolUseId: thread, name: ToolSummary.delegationToolName, input: [
+                    "agent": .string(agent.rawValue), "prompt": .string(prompt),
+                ])), to: sessionId)
+                await pause(0.6)
+                append(.userMessage(.init(text: prompt)), to: sessionId, thread: thread)
+                await pause(0.6)
+                append(.toolUse(.init(toolUseId: "\(thread)_run", name: "Bash", input: ["command": .string(command)])), to: sessionId, thread: thread)
+                await pause(0.8)
+                append(.toolResult(.init(toolUseId: "\(thread)_run", output: output, isError: false)), to: sessionId, thread: thread)
+                await pause(0.6)
+                append(.assistantMessage(.init(blockId: "\(thread)_answer", text: answer)), to: sessionId, thread: thread)
+                append(.result(.init(isError: false, subtype: "success", durationMs: 2_600)), to: sessionId, thread: thread)
+                await pause(0.4)
+                append(.toolResult(.init(toolUseId: thread, output: answer, isError: false)), to: sessionId)
             }
         }
         finishTurn(sessionId: sessionId, started: started, isError: false)
@@ -343,10 +364,10 @@ public actor DemoHostService: HostService {
 
     // MARK: Bookkeeping
 
-    private func append(_ event: SessionEvent, to sessionId: String) {
+    private func append(_ event: SessionEvent, to sessionId: String, thread: String? = nil) {
         guard events[sessionId] != nil else { return }
         let seq = (events[sessionId]?.last?.seq ?? 0) + 1
-        let sequenced = SequencedEvent(seq: seq, timestamp: Date(), event: event)
+        let sequenced = SequencedEvent(seq: seq, timestamp: Date(), event: event, thread: thread)
         events[sessionId]?.append(sequenced)
         update(sessionId, broadcastChange: false) {
             $0.lastSeq = seq

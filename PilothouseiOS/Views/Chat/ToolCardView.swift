@@ -135,7 +135,20 @@ struct ToolCardView: View {
             }
         case .todo:
             TodoListView(items: TodoItem.items(from: call.input["todos"]))
-        case .read, .search, .web, .agent:
+        case .agent:
+            VStack(alignment: .leading, spacing: 8) {
+                if let prompt = call.input["prompt"]?.stringValue {
+                    Text(verbatim: prompt)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(4)
+                }
+                SubAgentOpenButton(call: call)
+                if let result = call.result {
+                    OutputBlock(text: result.output, isError: result.isError)
+                }
+            }
+        case .read, .search, .web:
             if let result = call.result {
                 OutputBlock(text: result.output, isError: result.isError)
             }

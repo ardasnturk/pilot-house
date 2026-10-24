@@ -181,6 +181,9 @@ struct SessionRow: View {
                 Text(session.folderName)
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(.secondary)
+                if session.agentKind != .claude {
+                    AgentBadge(agent: session.agentKind)
+                }
                 Spacer()
                 Text(session.updatedAt, format: .relative(presentation: .named))
                     .font(.caption)

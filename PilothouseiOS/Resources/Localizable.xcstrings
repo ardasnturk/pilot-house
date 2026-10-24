@@ -1,6 +1,38 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@ is not signed in on your Mac. Run it once in Terminal there.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın."
+          }
+        }
+      }
+    },
+    "%@ runs on your Mac. You'll see every step here.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Mac'inizde çalışır. Her adımı burada görürsünüz."
+          }
+        }
+      }
+    },
     "%lld image(s)": {
       "localizations": {
         "de": {
@@ -97,6 +129,54 @@
         }
       }
     },
+    "Agent": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajan"
+          }
+        }
+      }
+    },
+    "Agent default": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent-Standard"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajan varsayılanı"
+          }
+        }
+      }
+    },
+    "Agent: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agent: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajan: %@"
+          }
+        }
+      }
+    },
     "Allow": {
       "localizations": {
         "de": {
@@ -145,6 +225,22 @@
         }
       }
     },
+    "Answer to Claude": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Antwort an Claude"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude'a verilen cevap"
+          }
+        }
+      }
+    },
     "Appearance": {
       "localizations": {
         "de": {
@@ -173,6 +269,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dosya düzenlemelerini ve komutları tek dokunuşla onaylayın ya da reddedin."
+          }
+        }
+      }
+    },
+    "Ask %@ anything about this folder": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frag %@ alles zu diesem Ordner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu klasörle ilgili %@'e istediğini sor"
           }
         }
       }
@@ -1421,6 +1533,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Klasörler"
+          }
+        }
+      }
+    },
+    "Follow Live": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live verfolgen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Canlı İzle"
           }
         }
       }
@@ -2833,6 +2961,22 @@
         }
       }
     },
+    "Show Transcript": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verlauf anzeigen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dökümü Göster"
+          }
+        }
+      }
+    },
     "Show all %lld lines": {
       "localizations": {
         "de": {
@@ -2861,6 +3005,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ayrıntıları gösterir"
+          }
+        }
+      }
+    },
+    "Shows what the sub-agent is doing": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeigt, was der Sub-Agent gerade tut"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt ajanın ne yaptığını gösterir"
           }
         }
       }
@@ -3089,6 +3249,22 @@
         }
       }
     },
+    "Task": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görev"
+          }
+        }
+      }
+    },
     "Tasks": {
       "localizations": {
         "de": {
@@ -3265,6 +3441,22 @@
         }
       }
     },
+    "This sub-agent left no transcript.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Sub-Agent hat keinen Verlauf hinterlassen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu alt ajan bir döküm bırakmadı."
+          }
+        }
+      }
+    },
     "Thought": {
       "localizations": {
         "de": {
@@ -3373,6 +3565,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sürüm"
+          }
+        }
+      }
+    },
+    "Waiting for the sub-agent…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warte auf den Sub-Agent …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt ajan bekleniyor…"
           }
         }
       }

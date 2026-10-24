@@ -45,6 +45,7 @@
 		9228A036C4E22DFEECDE425F /* PairingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49CD6ACD764A42725AA5867 /* PairingFlowView.swift */; };
 		99F914510A4CF2CCAD96A251 /* ClaudeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */; };
 		A0861EE9D45583CEEADDEC6A /* TranscriptItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807EA0484D779BC62AB4671 /* TranscriptItemView.swift */; };
+		A1EAA7B037D264B1AF5DBBCF /* SubAgentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61469588C1781F84ADEA99F /* SubAgentViews.swift */; };
 		A262A2EBF9C827096BA2CD94 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9998F3E50BDEB67149978F5F /* Localizable.xcstrings */; };
 		AB76F723CC81D4E07EA126D5 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68F79BCEA115161556E53A /* QRCode.swift */; };
 		B3F80AA8857B57479EC4E55F /* MacConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B980E713BB2E181B1B2A7223 /* MacConnection.swift */; };
@@ -148,6 +149,7 @@
 		B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMonitorView.swift; sourceTree = "<group>"; };
 		B122B36322A27E4867495C75 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
 		B36EA024A0964CDD781085F6 /* PilothouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilothouseUITests.swift; sourceTree = "<group>"; };
+		B61469588C1781F84ADEA99F /* SubAgentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAgentViews.swift; sourceTree = "<group>"; };
 		B980E713BB2E181B1B2A7223 /* MacConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacConnection.swift; sourceTree = "<group>"; };
 		BA1A027C85AAA6E7B80E0809 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
 		BA9D37E5DCE53A80AEE27295 /* UITestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestSupport.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				FAD807D3927C85F43E911CEB /* ComposerView.swift */,
 				2C7F55BEAFE751C9186F2BA8 /* MarkdownView.swift */,
 				19B3F59F8916C5D862672595 /* PermissionRequestSheet.swift */,
+				B61469588C1781F84ADEA99F /* SubAgentViews.swift */,
 				8B574403D516DA1199C7656E /* ToolCardView.swift */,
 				2807EA0484D779BC62AB4671 /* TranscriptItemView.swift */,
 			);
@@ -608,6 +611,7 @@
 				9067C3B81584AA2ABEA76E3C /* PilothouseApp.swift in Sources */,
 				82D01479F43122747A8F189E /* SessionListView.swift in Sources */,
 				676041C92A679960F7F86B66 /* SettingsView.swift in Sources */,
+				A1EAA7B037D264B1AF5DBBCF /* SubAgentViews.swift in Sources */,
 				2ABDE65D63805277B9574EF1 /* TailscaleGuideView.swift in Sources */,
 				393FE675E3E9DA070ED762A9 /* ToolCardView.swift in Sources */,
 				D471A605B8228D59090F5CCC /* TranscriptCache.swift in Sources */,

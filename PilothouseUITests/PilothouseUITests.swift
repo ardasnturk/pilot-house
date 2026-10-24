@@ -152,6 +152,33 @@ final class PilothouseUITests: XCTestCase {
         XCTAssertTrue(app.element("composerField").waitForExistence(timeout: 15))
     }
 
+    @MainActor
+    func testDelegatedSubAgentOpensInItsOwnWindow() throws {
+        let app = XCUIApplication.pilothouse(demo: true)
+        app.launch()
+        let newChat = app.buttons["newChatButton"]
+        XCTAssertTrue(newChat.waitForExistence(timeout: 20))
+        newChat.tap()
+        XCTAssertTrue(app.element("agentPicker").waitForExistence(timeout: 10), "The demo Mac offers several agents")
+        app.buttons["Cancel"].tap()
+
+        try startSession(in: app, path: ["Developer", "weather-app"])
+        send("Ask Codex for a second opinion", in: app)
+
+        let card = app.element("tool-mcp__pilothouse__delegate_to_agent")
+        XCTAssertTrue(card.waitForExistence(timeout: 30))
+        XCTAssertTrue(app.buttons["stopButton"].waitForNonExistence(timeout: 60), "The turn should finish")
+        card.buttons.firstMatch.tap()
+        let open = app.buttons["openSubAgent"]
+        XCTAssertTrue(open.waitForExistence(timeout: 10))
+        open.tap()
+
+        // The sheet shows Codex's own steps and its answer.
+        XCTAssertTrue(app.element("tool-Bash").waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Inject a Clock'")).firstMatch.waitForExistence(timeout: 10))
+        app.buttons["Done"].tap()
+    }
+
     // MARK: Helpers
 
     @MainActor

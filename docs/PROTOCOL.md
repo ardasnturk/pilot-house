@@ -148,7 +148,7 @@ the documented result, `ok`, or `error`.
 | `listDirectory` | `{ path?: "~/Developer" \| "/Users/a/x", showHidden: false }` | `directoryListing` |
 | `createDirectory` | `{ parent, name }` — `name` is one visible path component; capability `createDirectory` | `directoryListing` of `parent` |
 | `listSessions` | `{}` | `sessionList` |
-| `startSession` | `{ cwd, model?, permissionMode?, firstMessage? }` | `sessionStarted` |
+| `startSession` | `{ cwd, model?, permissionMode?, firstMessage?, agent? }` — `agent` ∈ `claude` (default) · `codex` · `gemini`; capability `agents` | `sessionStarted` |
 | `resumeSession` | `{ sessionId }` | `sessionStarted` |
 | `sendMessage` | `{ sessionId, text, attachments?: [{ mediaType, data (base64), filename? }] }` | `ok` |
 | `interrupt` | `{ sessionId }` | `ok` |
@@ -164,7 +164,9 @@ Attachments are images (`image/jpeg|png|gif|webp`, ≤ 5 MB each).
 
 Messages added after 1.0 are announced in `helloAck.capabilities` (missing on
 older Macs). A client only sends them when the Mac lists the capability, so
-`version` stays 1. Capabilities so far: `createDirectory` (1.1).
+`version` stays 1. Capabilities so far (all 1.1): `createDirectory`,
+`agents` (`startSession.agent`, `Session.agent`, `macStatus.agents`) and
+`threads` (`event.thread`).
 
 ### 4.2 Host → client
 
@@ -172,13 +174,13 @@ older Macs). A client only sends them when the Mac lists the capability, so
 |---|---|
 | `helloAck` | `{ protocolVersion, macName, macId, serverVersion, pendingPermissions: [PermissionRequest], capabilities?: [String] }` |
 | `ok` | `{}` |
-| `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel? }` |
+| `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel?, agents?: [{ kind, installed, path?, version?, loggedIn?, models, delegationEnabled }] }` |
 | `directoryListing` | `{ path, homePath, parentPath?, isGitRepository, truncated, entries: [{ name, path, isDirectory, isHidden, isSymbolicLink, isGitRepository, size?, modifiedAt? }] }` |
 | `sessionList` | `{ sessions: [Session] }` |
 | `sessionStarted` / `sessionUpdated` | `{ session: Session }` |
 | `sessionDeleted` | `{ sessionId }` |
 | `sessionEnded` | `{ sessionId, reason: closedByUser \| deleted \| processFailed \| macShuttingDown, message? }` |
-| `event` | `{ sessionId, seq, ts, ephemeral?, payload: SessionEvent }` |
+| `event` | `{ sessionId, seq, ts, ephemeral?, thread?, payload: SessionEvent }` — `thread` is the tool-use ID of the sub-agent (`Task` or `delegate_to_agent`) the event belongs to |
 | `permissionRequest` | `{ requestId, sessionId, tool, input, cwd, createdAt, expiresAt, rememberKey }` |
 | `permissionResolved` | `{ requestId, sessionId, outcome: allowed \| allowedForSession \| denied \| timedOut \| cancelled }` |
 | `error` | `{ code, message }` |
@@ -189,7 +191,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 { "id": "1b6e…", "cwd": "/Users/a/Developer/app", "title": "Fix the flaky test",
   "lastMessagePreview": "…", "createdAt": "…", "updatedAt": "…", "model": "sonnet",
   "permissionMode": "default", "state": "starting|running|awaitingPermission|idle|closed",
-  "lastSeq": 42, "slashCommands": ["review", "compact"] }
+  "lastSeq": 42, "slashCommands": ["review", "compact"], "agent": "codex" }
 ```
 
 The session `id` is also the Claude Code session ID (`--session-id` /
@@ -204,7 +206,7 @@ broadcast to every connected client after its `hello`.
 `protocolMismatch`, `invalidRequest`, `unknownMessage`, `notFound`,
 `pathOutsideHome`, `privacyPermissionRequired` (macOS privacy settings block a
 folder; `message` says which switch to turn on), `notADirectory`,
-`alreadyExists`, `invalidName`,
+`alreadyExists`, `invalidName`, `agentNotInstalled`,
 `claudeNotInstalled`, `sessionClosed`, `modeNotAllowed`, `unauthorized`,
 `deviceRevoked`, `pairingTokenInvalid`, `clockSkew`, `timeout`, `internal`.
 Codes are open-ended strings; clients must handle unknown codes generically.

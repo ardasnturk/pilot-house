@@ -251,9 +251,12 @@ final class MacConnection {
         return listing
     }
 
-    func startSession(cwd: String, model: String?, permissionMode: PermissionMode, firstMessage: String?) async throws -> SessionSummary {
+    func startSession(
+        cwd: String, model: String?, permissionMode: PermissionMode, firstMessage: String?, agent: AgentKind? = nil
+    ) async throws -> SessionSummary {
         let response = try await client.request(.startSession(StartSession(
-            cwd: cwd, model: model, permissionMode: permissionMode, firstMessage: firstMessage
+            cwd: cwd, model: model, permissionMode: permissionMode, firstMessage: firstMessage,
+            agent: agent == .claude ? nil : agent
         )), timeout: 60)
         guard case .sessionStarted(let payload) = response else {
             throw MacClientError.unexpectedResponse(response.typeName)

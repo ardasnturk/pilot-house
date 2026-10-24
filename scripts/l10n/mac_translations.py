@@ -1,6 +1,12 @@
 # Source of scripts/l10n/mac.json — edit here, then run `python3 scripts/l10n/mac_translations.py`.
 import json, os
 T = {
+"Agent CLIs on this Mac": ("Bu Mac'teki ajan CLI'ları", "Agent-CLIs auf diesem Mac"),
+"Agents": ("Ajanlar", "Agenten"),
+"Claude Code gets a delegate_to_agent tool for these agents. Every delegation and every action of the sub-agent still needs your approval, and you can follow it live on your phone.": ("Claude Code bu ajanlar için bir delegate_to_agent aracı alır. Her devir ve alt ajanın her işlemi yine onayınızı gerektirir; telefonunuzdan canlı izleyebilirsiniz.", "Claude Code erhält für diese Agenten ein Werkzeug delegate_to_agent. Jede Übergabe und jede Aktion des Sub-Agents braucht weiterhin deine Zustimmung, und du kannst sie live auf deinem Telefon verfolgen."),
+"Claude may hand tasks to %@": ("Claude görevleri %@'e devredebilir", "Claude darf Aufgaben an %@ übergeben"),
+"New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Pilothouse never sees it.": ("iPhone veya iPad'inizdeki yeni sohbetler kurulu herhangi bir ajanı kullanabilir. Her biri Terminal'deki kendi oturumunu kullanır; Pilothouse bunu hiç görmez.", "Neue Chats auf deinem iPhone oder iPad können jeden installierten Agenten verwenden. Jeder nutzt seine eigene Anmeldung aus dem Terminal; Pilothouse sieht sie nie."),
+"Sub-agents": ("Alt ajanlar", "Sub-Agenten"),
 "%@ is not installed on this Mac. Install it, sign in once in Terminal, then try again.": ("%@ bu Mac'te kurulu değil. Kurun, Terminal'de bir kez giriş yapın ve tekrar deneyin.", "%@ ist auf diesem Mac nicht installiert. Installiere es, melde dich einmal im Terminal an und versuche es erneut."),
 "Allow": ("İzin Ver", "Erlauben"),
 "Deny": ("Reddet", "Ablehnen"),

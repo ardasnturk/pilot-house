@@ -547,3 +547,75 @@ runs the same script on a GitHub macOS runner and keeps the PNGs as an artifact
 App Store Connect needs a privacy policy URL. `PRIVACY.md` (EN/TR/DE) states
 that Pilothouse collects nothing, and is linked from the metadata. It matches
 the privacy manifests (D-057) and the "Data Not Collected" privacy label.
+
+## 1.1 — Agents, folders, sub-agents
+
+### D-090 — Optional features as capabilities, protocol version stays 1
+**Status:** accepted
+
+1.1 adds messages and fields. Bumping `version` would lock 1.0 phones out of
+1.1 Macs and the other way round. Instead the Mac lists optional features in
+`helloAck.capabilities` (`createDirectory`, `agents`, `threads`); new fields
+are optional and decoded with defaults; the phone only sends a new message or
+field when the Mac lists the capability. Error codes were already open-ended.
+
+### D-091 — Creating folders from the phone
+**Status:** accepted
+
+`createDirectory { parent, name }` reuses the home-folder sandbox (D-012 era
+`PathSandbox`) for the parent and accepts exactly one visible path component
+as the name (no `/`, `:`, leading dot or NUL, ≤ 255 bytes), so the new folder
+can only be a direct child of an already checked folder. It answers with the
+parent's listing so the phone can open the new folder immediately.
+
+### D-092 — Agent adapters behind the session manager
+**Status:** accepted
+
+Codex and Gemini are driven through their own long-running stdio protocols
+instead of one-shot `exec` runs, so sessions keep context, can be interrupted
+and resumed, and approvals reach the phone. `SessionManager` keeps owning the
+process (D-005, D-072); an `AgentAdapter` per process only turns output lines
+into `SessionEvent`s and input into lines. Claude Code keeps `stream-json`
+(`ClaudeAdapter` wraps the existing normaliser) and SIGINT interrupts; Codex and
+Gemini interrupt over their protocols and keep the process.
+
+* **Codex** — `codex app-server` (JSON-RPC, protocol v2), verified with Codex
+  CLI 0.162.1: `thread/start|resume`, `turn/start|interrupt`, approvals via
+  `item/commandExecution|fileChange/requestApproval`. Permission modes map to
+  approval policy + sandbox: default → `untrusted`/`read-only`, acceptEdits →
+  `on-request`/`workspace-write`, plan → `on-request`/`read-only` plus plan
+  instructions, bypass → `never`/`danger-full-access`. The thread ID is stored
+  as `SessionRecord.agentSessionId` for resume.
+* **Gemini** — `gemini --experimental-acp` (Agent Client Protocol v1), written
+  against the ACP schema; Gemini CLI 0.24.0 reports `loadSession: false`, so a
+  closed Gemini session continues as a fresh conversation. Accounts that need
+  `GOOGLE_CLOUD_PROJECT` fail `authenticate`; the error is shown as a sign-in
+  notice. The Mac offers no ACP file-system or terminal capabilities, so the
+  agent uses its own tools and asks before side effects.
+
+Both protocols are marked experimental by their vendors. Unknown notifications
+are ignored and unknown server requests get a JSON-RPC error, so newer CLIs
+degrade instead of hanging.
+
+### D-093 — Sub-agents via `delegate_to_agent`
+**Status:** accepted
+
+Claude Code delegates through a second tool on Pilothouse's existing loopback
+MCP server (D-004), listed only for Claude sessions and only for agents the
+Mac user enabled. The sub-agent runs in the session's folder and permission
+mode; its approvals go through the same broker (and "always allow" list) as
+the session's own, tagged with the agent's name. The call returns the
+sub-agent's last message. It is stopped with the parent (interrupt, close,
+delete) and after 60 minutes; the MCP request timeout was raised to 61 minutes
+so Claude waits for it (permission prompts still time out after 10, D-054).
+
+### D-094 — Sub-agent threads
+**Status:** accepted
+
+`SequencedEvent.thread` / `EventPayload.thread` carry the tool-use ID that
+started a sub-agent (Claude `Task`, previously dropped, or
+`delegate_to_agent`). Thread events share the session's sequence numbers and
+log, so catch-up and the phone cache need no changes, but never change the
+session's own state, title or preview. The phone folds them into a separate
+transcript per thread, shows running sub-agents above the composer and opens a
+thread in its own sheet from the tool card.

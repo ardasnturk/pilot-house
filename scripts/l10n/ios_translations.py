@@ -1,6 +1,19 @@
 # Source of scripts/l10n/ios.json — edit here, then run `python3 scripts/l10n/ios_translations.py`.
 import json, os
 T = {
+"%@ is not signed in on your Mac. Run it once in Terminal there.": ("%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın.", "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal."),
+"%@ runs on your Mac. You'll see every step here.": ("%@ Mac'inizde çalışır. Her adımı burada görürsünüz.", "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt."),
+"Agent": ("Ajan", "Agent"),
+"Agent default": ("Ajan varsayılanı", "Agent-Standard"),
+"Agent: %@": ("Ajan: %@", "Agent: %@"),
+"Ask %@ anything about this folder": ("Bu klasörle ilgili %@'e istediğini sor", "Frag %@ alles zu diesem Ordner"),
+"Answer to Claude": ("Claude'a verilen cevap", "Antwort an Claude"),
+"Follow Live": ("Canlı İzle", "Live verfolgen"),
+"Show Transcript": ("Dökümü Göster", "Verlauf anzeigen"),
+"Shows what the sub-agent is doing": ("Alt ajanın ne yaptığını gösterir", "Zeigt, was der Sub-Agent gerade tut"),
+"Task": ("Görev", "Aufgabe"),
+"This sub-agent left no transcript.": ("Bu alt ajan bir döküm bırakmadı.", "Dieser Sub-Agent hat keinen Verlauf hinterlassen."),
+"Waiting for the sub-agent…": ("Alt ajan bekleniyor…", "Warte auf den Sub-Agent …"),
 "(no output)": ("(çıktı yok)", "(keine Ausgabe)"),
 "%lld image(s)": ("%lld görsel", "%lld Bild(er)"),
 "About": ("Hakkında", "Über"),

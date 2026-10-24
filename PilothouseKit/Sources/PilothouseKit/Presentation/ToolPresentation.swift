@@ -129,10 +129,22 @@ public struct ToolSummary: Sendable, Hashable {
             self = ToolSummary(category: .todo, symbol: "checklist", title: "Tasks", detail: nil)
         case "Task", "Agent":
             self = ToolSummary(category: .agent, symbol: "person.2", title: "Sub-agent", detail: input["description"]?.stringValue)
+        case Self.delegationToolName:
+            let agent = AgentKind(input["agent"]?.stringValue ?? "agent")
+            let prompt = input["prompt"]?.stringValue.map { $0.split(whereSeparator: \.isNewline).first.map(String.init) ?? $0 }
+            self = ToolSummary(category: .agent, symbol: "arrow.triangle.branch", title: agent.displayName, detail: prompt)
         default:
             let display = name.hasPrefix("mcp__") ? name.split(separator: "_", omittingEmptySubsequences: true).dropFirst().joined(separator: " · ") : name
             self = ToolSummary(category: .other, symbol: "wrench.and.screwdriver", title: display, detail: nil)
         }
+    }
+
+    /// Full MCP name of Pilothouse's `delegate_to_agent` tool.
+    public static let delegationToolName = "mcp__pilothouse__delegate_to_agent"
+
+    /// Tools whose work streams into a sub-agent thread of the same ID.
+    public static func startsThread(_ name: String) -> Bool {
+        name == "Task" || name == "Agent" || name == delegationToolName
     }
 
     public init(category: Category, symbol: String, title: String, detail: String?) {

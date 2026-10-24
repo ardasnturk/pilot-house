@@ -19,6 +19,7 @@ struct NewChatView: View {
     @State private var isStarting = false
     @State private var startError: String?
     @State private var didApplyDefaults = false
+    @State private var agent: AgentKind = .claude
     @State private var isNamingFolder = false
     @State private var newFolderName = ""
     @State private var folderError: String?
@@ -176,9 +177,31 @@ struct NewChatView: View {
 
     private var optionsSection: some View {
         Section {
+            if availableAgents.count > 1 {
+                Picker(selection: $agent) {
+                    ForEach(availableAgents) { status in
+                        Text(verbatim: status.kind.displayName).tag(status.kind)
+                    }
+                } label: {
+                    Label("Agent", systemImage: "person.crop.square")
+                }
+                .accessibilityIdentifier("agentPicker")
+                .onChange(of: agent) { _, _ in
+                    selectedModel = agent == .claude ? model.preferences.defaultModel : ""
+                }
+                if let status = availableAgents.first(where: { $0.kind == agent }), status.loggedIn == false {
+                    Label("\(agent.displayName) is not signed in on your Mac. Run it once in Terminal there.", systemImage: "exclamationmark.triangle")
+                        .font(.footnote)
+                        .foregroundStyle(.orange)
+                }
+            }
             Picker(selection: $selectedModel) {
-                Text("Mac default").tag("")
-                ForEach(UserPreferences.modelSuggestions.filter { !$0.isEmpty }, id: \.self) { name in
+                if agent == .claude {
+                    Text("Mac default").tag("")
+                } else {
+                    Text("Agent default").tag("")
+                }
+                ForEach(modelSuggestions, id: \.self) { name in
                     Text(name.capitalized).tag(name)
                 }
                 Text("Custom…").tag(Self.customModelTag)
@@ -205,6 +228,17 @@ struct NewChatView: View {
         } header: {
             Text("Session")
         }
+    }
+
+    /// Installed agents the Mac reported (Claude Code alone on older Macs).
+    private var availableAgents: [AgentStatus] {
+        guard let connection = model.connection, connection.capabilities.contains(HostCapability.agents) else { return [] }
+        return connection.status?.availableAgents ?? []
+    }
+
+    private var modelSuggestions: [String] {
+        if agent == .claude { return UserPreferences.modelSuggestions.filter { !$0.isEmpty } }
+        return availableAgents.first { $0.kind == agent }?.models ?? []
     }
 
     private var canCreateFolders: Bool {
@@ -321,7 +355,8 @@ struct NewChatView: View {
                 cwd: listing.path,
                 model: modelName.isEmpty ? nil : modelName,
                 permissionMode: permissionMode,
-                firstMessage: message.isEmpty ? nil : message
+                firstMessage: message.isEmpty ? nil : message,
+                agent: agent
             )
             model.preferences.noteRecent(listing.path)
             model.selectedSessionId = session.id

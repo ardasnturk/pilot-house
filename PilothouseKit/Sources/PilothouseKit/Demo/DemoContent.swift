@@ -224,10 +224,25 @@ enum DemoContent {
         case think(String)
         case say(String, index: Int)
         case tool(name: String, input: JSONValue, output: String, isError: Bool, edit: SessionEvent.FileEdit?)
+        /// Claude hands a task to another agent; its steps stream into a thread.
+        case delegate(agent: AgentKind, prompt: String, command: String, output: String, answer: String)
     }
 
     static func script(for prompt: String, cwd: String, turn: Int) -> [Step] {
         let retryPath = "\(cwd)/Sources/Networking/RetryPolicy.swift"
+        if prompt.localizedCaseInsensitiveContains("codex") {
+            return [
+                .say("I'll ask Codex for a second opinion on the retry logic.", index: 0),
+                .delegate(
+                    agent: .codex,
+                    prompt: "Review Sources/Networking/RetryPolicy.swift for timing bugs and suggest a fix.",
+                    command: "rg -n \"sleep\" Sources/Networking",
+                    output: "Sources/Networking/RetryPolicy.swift:18:            try await Task.sleep(for: delay)",
+                    answer: "RetryPolicy sleeps on the real clock, so tests race the timer. Inject a Clock and use it in retry(after:)."
+                ),
+                .say("Codex agrees: inject a clock into RetryPolicy so the tests control time. Want me to make that change?", index: 1),
+            ]
+        }
         return [
             .think(text("script.think")),
             .say(text("script.intro"), index: 0),

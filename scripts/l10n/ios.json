@@ -1,4 +1,12 @@
 {
+ "%@ is not signed in on your Mac. Run it once in Terminal there.": {
+  "de": "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal.",
+  "tr": "%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın."
+ },
+ "%@ runs on your Mac. You'll see every step here.": {
+  "de": "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt.",
+  "tr": "%@ Mac'inizde çalışır. Her adımı burada görürsünüz."
+ },
  "%lld image(s)": {
   "de": "%lld Bild(er)",
   "tr": "%lld görsel"
@@ -23,6 +31,18 @@
   "de": "Zu Favoriten hinzufügen",
   "tr": "Favorilere Ekle"
  },
+ "Agent": {
+  "de": "Agent",
+  "tr": "Ajan"
+ },
+ "Agent default": {
+  "de": "Agent-Standard",
+  "tr": "Ajan varsayılanı"
+ },
+ "Agent: %@": {
+  "de": "Agent: %@",
+  "tr": "Ajan: %@"
+ },
  "Allow": {
   "de": "Erlauben",
   "tr": "İzin Ver"
@@ -35,6 +55,10 @@
   "de": "Ein Bild war zu groß zum Senden.",
   "tr": "Bir görsel gönderilemeyecek kadar büyük."
  },
+ "Answer to Claude": {
+  "de": "Antwort an Claude",
+  "tr": "Claude'a verilen cevap"
+ },
  "Appearance": {
   "de": "Darstellung",
   "tr": "Görünüm"
@@ -42,6 +66,10 @@
  "Approve or deny file edits and commands with one tap.": {
   "de": "Dateiänderungen und Befehle mit einem Tippen erlauben oder ablehnen.",
   "tr": "Dosya düzenlemelerini ve komutları tek dokunuşla onaylayın ya da reddedin."
+ },
+ "Ask %@ anything about this folder": {
+  "de": "Frag %@ alles zu diesem Ordner",
+  "tr": "Bu klasörle ilgili %@'e istediğini sor"
  },
  "Ask Claude anything about this folder": {
   "de": "Frag Claude alles zu diesem Ordner",
@@ -354,6 +382,10 @@
  "Folders": {
   "de": "Ordner",
   "tr": "Klasörler"
+ },
+ "Follow Live": {
+  "de": "Live verfolgen",
+  "tr": "Canlı İzle"
  },
  "Follow along live": {
   "de": "Live mitverfolgen",
@@ -707,6 +739,10 @@
   "de": "Versteckte Dateien anzeigen",
   "tr": "Gizli Dosyaları Göster"
  },
+ "Show Transcript": {
+  "de": "Verlauf anzeigen",
+  "tr": "Dökümü Göster"
+ },
  "Show all %lld lines": {
   "de": "Alle %lld Zeilen anzeigen",
   "tr": "%lld satırın tümünü göster"
@@ -714,6 +750,10 @@
  "Shows the details": {
   "de": "Zeigt die Details",
   "tr": "Ayrıntıları gösterir"
+ },
+ "Shows what the sub-agent is doing": {
+  "de": "Zeigt, was der Sub-Agent gerade tut",
+  "tr": "Alt ajanın ne yaptığını gösterir"
  },
  "Slash command suggestions": {
   "de": "Vorschläge für Slash-Befehle",
@@ -771,6 +811,10 @@
   "de": "Tippe auf die Schreiben-Taste, um einen Ordner auf deinem Mac zu wählen und dort Claude Code zu starten.",
   "tr": "Mac'inizde bir klasör seçmek ve orada Claude Code'u başlatmak için oluştur düğmesine dokunun."
  },
+ "Task": {
+  "de": "Aufgabe",
+  "tr": "Görev"
+ },
  "Tasks": {
   "de": "Aufgaben",
   "tr": "Görevler"
@@ -815,6 +859,10 @@
   "de": "Das ist kein gültiger Pilothouse-Kopplungscode.",
   "tr": "Bu geçerli bir Pilothouse eşleştirme kodu değil."
  },
+ "This sub-agent left no transcript.": {
+  "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
+  "tr": "Bu alt ajan bir döküm bırakmadı."
+ },
  "Thought": {
   "de": "Nachgedacht",
   "tr": "Düşündü"
@@ -842,6 +890,10 @@
  "Version": {
   "de": "Version",
   "tr": "Sürüm"
+ },
+ "Waiting for the sub-agent…": {
+  "de": "Warte auf den Sub-Agent …",
+  "tr": "Alt ajan bekleniyor…"
  },
  "Waiting for your approval…": {
   "de": "Wartet auf deine Freigabe …",

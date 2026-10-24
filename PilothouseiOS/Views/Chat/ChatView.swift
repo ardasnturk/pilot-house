@@ -12,6 +12,7 @@ struct ChatView: View {
     @State private var isSending = false
     @State private var errorMessage: String?
     @State private var confirmDelete = false
+    @State private var subAgent: SubAgentSelection?
 
     private var chat: ChatState { connection.chat(for: sessionId) }
     private var session: SessionSummary? { connection.session(sessionId) }
@@ -42,6 +43,12 @@ struct ChatView: View {
         }
         .toolbar { toolbar }
         .navigationBarTitleDisplayMode(.inline)
+        .environment(\.openSubAgent, OpenSubAgentAction { subAgent = SubAgentSelection(call: $0) })
+        .sheet(item: $subAgent) { selection in
+            SubAgentTranscriptView(
+                connection: connection, sessionId: sessionId, call: selection.call, workingDirectory: session?.cwd
+            )
+        }
         .task(id: sessionId) {
             await connection.open(sessionId)
         }
@@ -68,12 +75,21 @@ struct ChatView: View {
                 .font(.largeTitle)
                 .foregroundStyle(Color.accentColor)
                 .accessibilityHidden(true)
-            Text("Ask Claude anything about this folder")
-                .font(.headline)
-            Text("Claude runs on your Mac with Claude Code. You'll see every step here.")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+            if let agent = session?.agentKind, agent != .claude {
+                Text("Ask \(agent.displayName) anything about this folder")
+                    .font(.headline)
+                Text("\(agent.displayName) runs on your Mac. You'll see every step here.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            } else {
+                Text("Ask Claude anything about this folder")
+                    .font(.headline)
+                Text("Claude runs on your Mac with Claude Code. You'll see every step here.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 60)
@@ -84,6 +100,9 @@ struct ChatView: View {
     private var bottomBar: some View {
         VStack(spacing: 8) {
             banners
+            if !chat.runningSubAgents.isEmpty {
+                RunningSubAgentsBar(calls: chat.runningSubAgents, workingDirectory: session?.cwd)
+            }
             if isBusy {
                 WorkingIndicator(
                     state: session?.state ?? .running,

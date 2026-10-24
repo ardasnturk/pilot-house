@@ -44,6 +44,9 @@ final class ChatState {
     private(set) var items: [TranscriptItem] = []
     private(set) var lastSeq = 0
     private(set) var info: SessionEvent.SessionInfo?
+    /// Transcripts of sub-agents (Claude `Task`, `delegate_to_agent`), by the
+    /// tool-use ID that started them.
+    private(set) var threads: [String: ChatState] = [:]
     @ObservationIgnored private var indexById: [String: Int] = [:]
 
     init(sessionId: String) {
@@ -59,6 +62,14 @@ final class ChatState {
         if !event.ephemeral {
             guard event.seq > lastSeq else { return }
             lastSeq = event.seq
+        }
+        if let thread = event.thread {
+            let child = threads[thread] ?? ChatState(sessionId: "\(sessionId)#\(thread)")
+            if threads[thread] == nil { threads[thread] = child }
+            var plain = event
+            plain.thread = nil
+            child.apply(plain)
+            return
         }
         let date = event.timestamp
         switch event.event {
@@ -116,6 +127,24 @@ final class ChatState {
         case .sessionInfo(let sessionInfo):
             info = sessionInfo
         }
+    }
+
+    /// The sub-agent transcript started by `toolUseId`, if it produced anything.
+    func thread(_ toolUseId: String) -> ChatState? {
+        threads[toolUseId]
+    }
+
+    /// Sub-agent tool calls of this transcript that are still running.
+    var runningSubAgents: [ToolCall] {
+        items.compactMap { item in
+            guard case .tool(let call) = item.kind, ToolSummary.startsThread(call.name), !call.isFinished else { return nil }
+            return call
+        }
+    }
+
+    /// The thread finished its own turn (delegated agents report a result).
+    var hasFinishedTurn: Bool {
+        items.contains { if case .turnEnd = $0.kind { true } else { false } }
     }
 
     /// Marks streaming blocks as finished (e.g. after an interrupt).

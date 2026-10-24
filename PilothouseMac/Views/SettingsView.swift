@@ -9,6 +9,8 @@ struct SettingsView: View {
                 .tabItem { Label("General", systemImage: "gearshape") }
             ClaudeSettings()
                 .tabItem { Label("Claude Code", systemImage: "terminal") }
+            AgentSettings()
+                .tabItem { Label("Agents", systemImage: "person.2") }
             PrivacySettings()
                 .tabItem { Label("Security", systemImage: "lock.shield") }
         }
@@ -117,6 +119,87 @@ private struct ClaudeSettings: View {
         .formStyle(.grouped)
         .onChange(of: settings.defaultModel) { _, _ in Task { await controller.applySettings() } }
         .onChange(of: settings.defaultPermissionMode) { _, _ in Task { await controller.applySettings() } }
+    }
+}
+
+/// Other agent CLIs: what was found, and which ones Claude may delegate to.
+private struct AgentSettings: View {
+    @Environment(AppController.self) private var controller
+
+    var body: some View {
+        Form {
+            Section {
+                ForEach(controller.agents) { agent in
+                    AgentRow(agent: agent)
+                }
+                Button("Check Again") { Task { await controller.refreshClaude() } }
+                    .disabled(controller.isCheckingClaude)
+            } header: {
+                Text("Agent CLIs on this Mac")
+            } footer: {
+                Text("New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Pilothouse never sees it.")
+            }
+            Section {
+                ForEach(controller.agents.filter { $0.kind != .claude && $0.installed }) { agent in
+                    Toggle(isOn: delegationBinding(agent.kind)) {
+                        Text("Claude may hand tasks to \(agent.kind.displayName)")
+                    }
+                    .disabled(agent.loggedIn == false)
+                }
+            } header: {
+                Text("Sub-agents")
+            } footer: {
+                Text("Claude Code gets a delegate_to_agent tool for these agents. Every delegation and every action of the sub-agent still needs your approval, and you can follow it live on your phone.")
+            }
+        }
+        .formStyle(.grouped)
+    }
+
+    private func delegationBinding(_ kind: AgentKind) -> Binding<Bool> {
+        Binding {
+            controller.settings.delegationAgents.contains(kind)
+        } set: { enabled in
+            if enabled {
+                controller.settings.delegationAgents.insert(kind)
+            } else {
+                controller.settings.delegationAgents.remove(kind)
+            }
+            Task { await controller.applyDelegationSettings() }
+        }
+    }
+}
+
+private struct AgentRow: View {
+    let agent: AgentStatus
+
+    var body: some View {
+        LabeledContent {
+            HStack(spacing: 6) {
+                if agent.installed {
+                    Text(verbatim: agent.version ?? "")
+                        .foregroundStyle(.secondary)
+                    if agent.loggedIn == false {
+                        Text("Not signed in").foregroundStyle(.orange)
+                    }
+                } else {
+                    Text("Not found").foregroundStyle(.secondary)
+                }
+            }
+        } label: {
+            Label {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(verbatim: agent.kind.displayName)
+                    if let path = agent.path {
+                        Text(verbatim: path.abbreviatingHome)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            } icon: {
+                Image(systemName: agent.installed ? "checkmark.circle.fill" : "circle.dashed")
+                    .foregroundStyle(agent.installed ? (agent.loggedIn == false ? Color.orange : Color.green) : Color.secondary)
+            }
+        }
     }
 }
 
