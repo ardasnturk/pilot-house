@@ -1,0 +1,15 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Pilothouse",
+    "NSCameraUsageDescription": "Pilothouse usa la fotocamera per scansionare il codice di abbinamento mostrato sul tuo Mac e, se lo desideri, per scattare foto da inviare al tuo agente.",
+    "NSLocalNetworkUsageDescription": "Pilothouse si connette al tuo Mac sulla rete locale per controllare le tue sessioni di Claude Code."
+  },
+  "mac": {
+    "CFBundleDisplayName": "Pilothouse",
+    "NSDesktopFolderUsageDescription": "Le sessioni di Claude Code che avvii dal telefono possono leggere e modificare i file sulla tua Scrivania.",
+    "NSDocumentsFolderUsageDescription": "Le sessioni di Claude Code che avvii dal telefono possono leggere e modificare i file nella tua cartella Documenti.",
+    "NSDownloadsFolderUsageDescription": "Le sessioni di Claude Code che avvii dal telefono possono leggere e modificare i file nella tua cartella Download.",
+    "NSLocalNetworkUsageDescription": "Pilothouse consente al tuo iPhone o iPad abbinato di connettersi a questo Mac tramite la rete locale.",
+    "NSNetworkVolumesUsageDescription": "Le sessioni di Claude Code che avvii dal telefono possono accedere ai file sui volumi di rete."
+  }
+}

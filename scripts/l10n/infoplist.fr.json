@@ -1,0 +1,15 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Pilothouse",
+    "NSCameraUsageDescription": "Pilothouse utilise l’appareil photo pour scanner le code de jumelage affiché sur votre Mac et, si vous le souhaitez, pour prendre des photos à envoyer à votre agent.",
+    "NSLocalNetworkUsageDescription": "Pilothouse se connecte à votre Mac sur le réseau local pour contrôler vos sessions Claude Code."
+  },
+  "mac": {
+    "CFBundleDisplayName": "Pilothouse",
+    "NSDesktopFolderUsageDescription": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent lire et modifier des fichiers sur votre Bureau.",
+    "NSDocumentsFolderUsageDescription": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent lire et modifier des fichiers dans votre dossier Documents.",
+    "NSDownloadsFolderUsageDescription": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent lire et modifier des fichiers dans votre dossier Téléchargements.",
+    "NSLocalNetworkUsageDescription": "Pilothouse permet à votre iPhone ou iPad jumelé de se connecter à ce Mac via votre réseau local.",
+    "NSNetworkVolumesUsageDescription": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent accéder à des fichiers sur des volumes réseau."
+  }
+}

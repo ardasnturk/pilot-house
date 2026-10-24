@@ -16,7 +16,49 @@
             "value": "Pilothouse"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
         "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse"
@@ -39,10 +81,52 @@
             "value": "Claude Code sessions you start from your phone may read and edit files on your Desktop."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las sesiones de Claude Code que inicies desde tu teléfono pueden leer y editar archivos de tu Escritorio."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent lire et modifier des fichiers sur votre Bureau."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le sessioni di Claude Code che avvii dal telefono possono leggere e modificare i file sulla tua Scrivania."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhoneから開始したClaude Codeのセッションが、デスクトップ上のファイルを読み取ったり編集したりする場合があります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰에서 시작한 Claude Code 세션이 데스크탑의 파일을 읽고 편집할 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As sessões do Claude Code que você inicia pelo celular podem ler e editar arquivos na sua Mesa."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Telefonunuzdan başlattığınız Claude Code oturumları Masaüstünüzdeki dosyaları okuyup düzenleyebilir."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你从手机启动的 Claude Code 会话可能会读取和编辑你“桌面”上的文件。"
           }
         }
       }
@@ -62,10 +146,52 @@
             "value": "Claude Code sessions you start from your phone may read and edit files in your Documents folder."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las sesiones de Claude Code que inicies desde tu teléfono pueden leer y editar archivos de tu carpeta Documentos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent lire et modifier des fichiers dans votre dossier Documents."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le sessioni di Claude Code che avvii dal telefono possono leggere e modificare i file nella tua cartella Documenti."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhoneから開始したClaude Codeのセッションが、「書類」フォルダ内のファイルを読み取ったり編集したりする場合があります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰에서 시작한 Claude Code 세션이 도큐멘트 폴더의 파일을 읽고 편집할 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As sessões do Claude Code que você inicia pelo celular podem ler e editar arquivos na sua pasta Documentos."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Telefonunuzdan başlattığınız Claude Code oturumları Belgeler klasörünüzdeki dosyaları okuyup düzenleyebilir."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你从手机启动的 Claude Code 会话可能会读取和编辑你“文稿”文件夹中的文件。"
           }
         }
       }
@@ -85,10 +211,52 @@
             "value": "Claude Code sessions you start from your phone may read and edit files in your Downloads folder."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las sesiones de Claude Code que inicies desde tu teléfono pueden leer y editar archivos de tu carpeta Descargas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent lire et modifier des fichiers dans votre dossier Téléchargements."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le sessioni di Claude Code che avvii dal telefono possono leggere e modificare i file nella tua cartella Download."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhoneから開始したClaude Codeのセッションが、「ダウンロード」フォルダ内のファイルを読み取ったり編集したりする場合があります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰에서 시작한 Claude Code 세션이 다운로드 폴더의 파일을 읽고 편집할 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As sessões do Claude Code que você inicia pelo celular podem ler e editar arquivos na sua pasta Downloads."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Telefonunuzdan başlattığınız Claude Code oturumları İndirilenler klasörünüzdeki dosyaları okuyup düzenleyebilir."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你从手机启动的 Claude Code 会话可能会读取和编辑你“下载”文件夹中的文件。"
           }
         }
       }
@@ -108,10 +276,52 @@
             "value": "Pilothouse lets your paired iPhone or iPad connect to this Mac over your local network."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse permite que tu iPhone o iPad vinculado se conecte a este Mac a través de tu red local."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse permet à votre iPhone ou iPad jumelé de se connecter à ce Mac via votre réseau local."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse consente al tuo iPhone o iPad abbinato di connettersi a questo Mac tramite la rete locale."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouseは、ペアリングしたiPhoneまたはiPadがローカルネットワーク経由でこのMacに接続できるようにします。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse를 사용하면 페어링된 iPhone 또는 iPad가 로컬 네트워크를 통해 이 Mac에 연결할 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pilothouse permite que o iPhone ou iPad emparelhado se conecte a este Mac pela rede local."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse, eşleşmiş iPhone veya iPad'inizin yerel ağ üzerinden bu Mac'e bağlanmasını sağlar."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse 让已配对的 iPhone 或 iPad 通过本地网络连接这台 Mac。"
           }
         }
       }
@@ -131,10 +341,52 @@
             "value": "Claude Code sessions you start from your phone may access files on network volumes."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las sesiones de Claude Code que inicies desde tu teléfono pueden acceder a archivos de volúmenes de red."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les sessions Claude Code que vous lancez depuis votre téléphone peuvent accéder à des fichiers sur des volumes réseau."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le sessioni di Claude Code che avvii dal telefono possono accedere ai file sui volumi di rete."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhoneから開始したClaude Codeのセッションが、ネットワークボリューム上のファイルにアクセスする場合があります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰에서 시작한 Claude Code 세션이 네트워크 볼륨의 파일에 접근할 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As sessões do Claude Code que você inicia pelo celular podem acessar arquivos em volumes de rede."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Telefonunuzdan başlattığınız Claude Code oturumları ağ birimlerindeki dosyalara erişebilir."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你从手机启动的 Claude Code 会话可能会访问网络宗卷上的文件。"
           }
         }
       }

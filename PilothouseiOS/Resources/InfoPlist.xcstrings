@@ -16,7 +16,49 @@
             "value": "Pilothouse"
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
         "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse"
+          }
+        },
+        "zh-Hans": {
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse"
@@ -39,10 +81,52 @@
             "value": "Pilothouse uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse usa la cámara para escanear el código de vinculación que aparece en tu Mac y, si quieres, para hacer fotos y enviarlas a tu agente."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse utilise l’appareil photo pour scanner le code de jumelage affiché sur votre Mac et, si vous le souhaitez, pour prendre des photos à envoyer à votre agent."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse usa la fotocamera per scansionare il codice di abbinamento mostrato sul tuo Mac e, se lo desideri, per scattare foto da inviare al tuo agente."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PilothouseはMacに表示されたペアリングコードをスキャンするため、また必要に応じてエージェントに送信する写真を撮影するためにカメラを使用します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse는 카메라를 사용하여 Mac에 표시된 페어링 코드를 스캔하고, 사용자가 원하는 경우 에이전트에게 보낼 사진을 찍습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pilothouse usa a câmera para escanear o código de emparelhamento exibido no seu Mac e, se você quiser, para tirar fotos e enviá-las ao seu agente."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse, kamerayı Mac'inizde gösterilen eşleştirme kodunu taramak ve isterseniz ajanınıza göndermek üzere fotoğraf çekmek için kullanır."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse 使用相机扫描你 Mac 上显示的配对代码，并在你选择时拍摄照片发送给你的代理。"
           }
         }
       }
@@ -62,10 +146,52 @@
             "value": "Pilothouse connects to your Mac on the local network to control your Claude Code sessions."
           }
         },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse se conecta a tu Mac en la red local para controlar tus sesiones de Claude Code."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse se connecte à votre Mac sur le réseau local pour contrôler vos sessions Claude Code."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse si connette al tuo Mac sulla rete locale per controllare le tue sessioni di Claude Code."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PilothouseはClaude Codeのセッションを操作するため、ローカルネットワーク上のMacに接続します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse는 로컬 네트워크에서 Mac에 연결하여 Claude Code 세션을 제어합니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pilothouse se conecta ao seu Mac na rede local para controlar suas sessões do Claude Code."
+          }
+        },
         "tr": {
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse, Claude Code oturumlarınızı yönetmek için yerel ağdaki Mac'inize bağlanır."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse 通过本地网络连接你的 Mac，以控制你的 Claude Code 会话。"
           }
         }
       }

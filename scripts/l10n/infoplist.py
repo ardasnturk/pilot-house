@@ -8,9 +8,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 IOS = {
     "CFBundleDisplayName": ("Pilothouse", "Pilothouse", "Pilothouse"),
     "NSCameraUsageDescription": (
-        "Pilothouse uses the camera only to scan the pairing QR code shown by Pilothouse on your Mac.",
-        "Pilothouse, kamerayı yalnızca Mac'inizdeki Pilothouse'un gösterdiği eşleştirme QR kodunu taramak için kullanır.",
-        "Pilothouse verwendet die Kamera nur, um den Kopplungs-QR-Code von Pilothouse auf deinem Mac zu scannen.",
+        "Pilothouse uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.",
+        "Pilothouse, kamerayı Mac'inizde gösterilen eşleştirme kodunu taramak ve isterseniz ajanınıza göndermek üzere fotoğraf çekmek için kullanır.",
+        "Pilothouse verwendet die Kamera, um den auf deinem Mac angezeigten Kopplungscode zu scannen und, wenn du möchtest, Fotos aufzunehmen, die du an deinen Agenten sendest.",
     ),
     "NSLocalNetworkUsageDescription": (
         "Pilothouse connects to your Mac on the local network to control your Claude Code sessions.",
@@ -49,14 +49,29 @@ MAC = {
 }
 
 
-def write(entries, path):
+# Further languages: scripts/l10n/infoplist.<language>.json = {"ios": {key: value}, "mac": {key: value}}.
+EXTRA_LANGUAGES = ["es", "fr", "it", "pt-BR", "ja", "ko", "zh-Hans"]
+
+
+def extra(app):
+    result = {}
+    for language in EXTRA_LANGUAGES:
+        path = os.path.join(ROOT, "scripts/l10n", f"infoplist.{language}.json")
+        if os.path.exists(path):
+            result[language] = json.load(open(path, encoding="utf-8")).get(app, {})
+    return result
+
+
+def write(entries, path, app):
     strings = {}
+    others = extra(app)
     for key, (en, tr, de) in entries.items():
+        values = [("en", en), ("tr", tr), ("de", de)] + [(language, table[key]) for language, table in others.items() if key in table]
         strings[key] = {
             "extractionState": "manual",
             "localizations": {
                 language: {"stringUnit": {"state": "translated", "value": value}}
-                for language, value in (("en", en), ("tr", tr), ("de", de))
+                for language, value in values
             },
         }
     with open(path, "w", encoding="utf-8") as handle:
@@ -65,6 +80,6 @@ def write(entries, path):
 
 
 if __name__ == "__main__":
-    write(IOS, os.path.join(ROOT, "PilothouseiOS/Resources/InfoPlist.xcstrings"))
-    write(MAC, os.path.join(ROOT, "PilothouseMac/Resources/InfoPlist.xcstrings"))
+    write(IOS, os.path.join(ROOT, "PilothouseiOS/Resources/InfoPlist.xcstrings"), "ios")
+    write(MAC, os.path.join(ROOT, "PilothouseMac/Resources/InfoPlist.xcstrings"), "mac")
     print("InfoPlist catalogs written.")

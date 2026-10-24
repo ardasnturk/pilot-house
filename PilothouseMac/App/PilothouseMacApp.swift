@@ -54,6 +54,15 @@ struct PilothouseMacApp: App {
             SettingsView()
                 .environment(appDelegate.controller)
         }
+
+        #if DEBUG
+        // The menu panel as a normal window, for screenshots in preview mode.
+        Window(Text(verbatim: "Menu Preview"), id: "menu-preview") {
+            MenuContentView()
+                .environment(appDelegate.controller)
+        }
+        .windowResizability(.contentSize)
+        #endif
     }
 }
 
@@ -61,10 +70,19 @@ struct PilothouseMacApp: App {
 struct MenuBarLabel: View {
     let controller: AppController
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.openSettings) private var openSettings
 
     var body: some View {
         icon
             .task {
+                #if DEBUG
+                if ProcessInfo.processInfo.environment["PILOTHOUSE_PREVIEW_WINDOWS"] == "1" {
+                    openWindow(id: "menu-preview")
+                    openSettings()
+                    NSApp.activate()
+                    return
+                }
+                #endif
                 // First launch: show how to get the phone app before anything else
                 // (once the TestFlight link takes testers; until then, on a later launch).
                 guard !controller.settings.didShowWelcome, await TestFlightAvailability.isOpen() else { return }
