@@ -861,3 +861,25 @@ the other languages are `scripts/l10n/<app>.<language>.json` files read by
 `build_catalogs.py`. iOS Settings explains how to pick another language just
 for Pilothouse.
 
+### D-108 — The phone speaks WebSocket over plain TCP itself
+**Status:** accepted
+
+On the same Wi-Fi the phone could not pair or connect, while Tailscale worked.
+Measured on an iPhone with iOS 26 (Local Network allowed, Bonjour finding the
+Mac, Safari and `URLSession` reaching it): every `NWConnection` with
+Network.framework's WebSocket protocol to the Mac's LAN address went to
+`.waiting(ECONNABORTED, "Software caused connection abort")` right after the
+TCP handshake — the Mac saw SYN, SYN-ACK and a FIN without a byte of data —
+whatever the TCP options, message size or proxy settings. A plain TCP
+`NWConnection` with the same parameters became `.ready`. Over Tailscale's VPN
+interface the WebSocket client was not affected.
+
+The phone therefore no longer uses Network.framework's WebSocket client:
+`TCPWebSocketTransport` opens a plain TCP connection and speaks RFC 6455
+itself (`WebSocketCodec`: the opening handshake with `Sec-WebSocket-Accept`
+check, masked binary frames, ping/pong, close, fragmented messages). The Mac
+keeps its Network.framework WebSocket server, so old and new phones both
+connect. Connections also set `preferNoProxies`; the pairing error shows the
+connection states per address, so a failure like this one can be told apart
+from a network that keeps devices apart.
+

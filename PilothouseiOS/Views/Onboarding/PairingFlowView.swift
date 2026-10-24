@@ -136,6 +136,7 @@ struct PairingFlowView: View {
                 Text(message)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
+                    .textSelection(.enabled)
                 Button("Try Again") { step = scannerAvailable ? .scan : .paste }
                     .buttonStyle(.borderedProminent)
                 if showsSettings {
@@ -171,8 +172,10 @@ struct PairingFlowView: View {
             return String(localized: "This is not a valid Pilothouse pairing code.")
         case MacClientError.localNetworkDenied:
             return String(localized: "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.")
-        case MacClientError.unreachable:
-            return String(localized: "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.")
+        case MacClientError.unreachable(let attempts):
+            let advice = String(localized: "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.")
+            // The technical reason per address, for support and bug reports.
+            return ([advice] + attempts).joined(separator: "\n\n")
         case let error as HandshakeError:
             return error.description
         default:

@@ -6,6 +6,16 @@ All notable changes to Pilothouse are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.1.1] — 2026-10-24
+
+### Fixed
+- iPhone and iPad connect to the Mac over Wi-Fi again: iOS aborted the system
+  WebSocket connections to local addresses right after connecting, so only
+  Tailscale worked. The app now speaks WebSocket over a plain TCP connection.
+- The pairing screen shows the technical reason per address when the Mac
+  cannot be reached.
+- The DMG opens with its designed window again.
+
 ## [1.1.0] — 2026-10-24
 
 ### Mac
@@ -94,7 +104,8 @@ coding-agent CLIs on your Mac.
 - The Mac menu panel collapsed to its header on macOS 27.
 - Diff statistics counted `---`/`+++` file headers as changed lines.
 
-[Unreleased]: https://github.com/ardasnturk/pilot-house/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/ardasnturk/pilot-house/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/ardasnturk/pilot-house/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/ardasnturk/pilot-house/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/ardasnturk/pilot-house/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/ardasnturk/pilot-house/releases/tag/v1.0.0

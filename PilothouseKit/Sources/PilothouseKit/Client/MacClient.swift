@@ -436,7 +436,7 @@ extension MacClient {
                 transport = try await connector.connect(to: candidate.endpoint, timeout: candidate.timeout)
             } catch {
                 if error as? TransportError == .localNetworkDenied { localNetworkDenied = true }
-                attempts.append(candidate.endpoint.description)
+                attempts.append("\(candidate.endpoint): \(error)")
                 continue
             }
             let channel: SecureChannel
@@ -456,7 +456,7 @@ extension MacClient {
             } catch HandshakeError.rejected(let reason) {
                 throw reason
             } catch {
-                attempts.append(candidate.endpoint.description)
+                attempts.append("\(candidate.endpoint): handshake \(error)")
                 continue
             }
             let ack = try await sayHello(over: channel, device: device)
