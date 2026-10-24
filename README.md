@@ -94,11 +94,12 @@ not signed in, the app shows a short setup guide
 (`curl -fsSL https://claude.ai/install.sh | bash`, then `claude` once in
 Terminal to sign in).
 
-**iPhone / iPad app** — not on the App Store yet; a public TestFlight link
-follows on the [website](https://pilot.ardasnturk.com). Until then, build it
-onto your device with Xcode (see [Building from source](#building-from-source);
-a free Apple ID is enough, the app then needs a rebuild every 7 days). Inside
-the app, **Try the Demo** shows everything with a simulated Mac.
+**iPhone / iPad app** — through TestFlight, Apple's free app for beta apps:
+open **[testflight.apple.com/join/6CE4VRRE](https://testflight.apple.com/join/6CE4VRRE)**
+on your iPhone or iPad (or scan the QR code on the
+[website](https://pilot.ardasnturk.com)), install TestFlight if asked, then
+**Install** Pilothouse. Inside the app, **Try the Demo** shows everything with a
+simulated Mac.
 
 ## Pair your phone
 
