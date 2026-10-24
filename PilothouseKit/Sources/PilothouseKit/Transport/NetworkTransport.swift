@@ -313,8 +313,7 @@ public final class BonjourBrowser: @unchecked Sendable {
         guard !alreadyRunning else { return }
         let descriptor = NWBrowser.Descriptor.bonjourWithTXTRecord(type: PilothouseProtocol.bonjourServiceType, domain: nil)
         let newBrowser = NWBrowser(for: descriptor, using: .tcp)
-        let results = self.results
-        newBrowser.browseResultsChangedHandler = { found, _ in
+        newBrowser.browseResultsChangedHandler = { [weak self] found, _ in
             let mapped: [(endpoint: Endpoint, macId: String?)] = found.compactMap { result in
                 guard case .service(let name, let type, let domain, _) = result.endpoint else { return nil }
                 var macId: String?
@@ -323,7 +322,7 @@ public final class BonjourBrowser: @unchecked Sendable {
                 }
                 return (Endpoint.bonjour(name: name, type: type, domain: domain), macId)
             }
-            results.withLock { $0 = mapped }
+            self?.results.withLock { $0 = mapped }
         }
         newBrowser.start(queue: queue)
         browser.withLock { $0 = newBrowser }
