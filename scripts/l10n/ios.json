@@ -75,10 +75,6 @@
   "de": "%@ in dieser Sitzung immer erlauben",
   "tr": "Bu oturumda %@ için hep izin ver"
  },
- "An image was too large to send.": {
-  "de": "Ein Bild war zu groß zum Senden.",
-  "tr": "Bir görsel gönderilemeyecek kadar büyük."
- },
  "Answer to Claude": {
   "de": "Antwort an Claude",
   "tr": "Claude'a verilen cevap"
@@ -107,29 +103,13 @@
   "de": "Zu Hause spricht Pilothouse über WLAN mit deinem Mac. Um ihn überall zu erreichen, treten beide Geräte deinem privaten Tailscale-Netzwerk bei.",
   "tr": "Evde Pilothouse, Mac'inizle Wi-Fi üzerinden konuşur. Her yerden erişmek için iki cihaz da özel Tailscale ağınıza katılır."
  },
- "Attach images": {
-  "de": "Bilder anhängen",
-  "tr": "Görsel ekle"
+ "Attach photos or videos": {
+  "de": "Fotos oder Videos anhängen",
+  "tr": "Fotoğraf veya video ekle"
  },
- "Automatic": {
-  "de": "Automatisch",
-  "tr": "Otomatik"
- },
- "Automatic tries the last working address, then your local network, then Tailscale.": {
-  "de": "Automatisch versucht zuerst die zuletzt funktionierende Adresse, dann das lokale Netzwerk, dann Tailscale.",
-  "tr": "Otomatik mod önce son çalışan adresi, sonra yerel ağı, ardından Tailscale'i dener."
- },
- "Away from home? Set up Tailscale": {
-  "de": "Unterwegs? Tailscale einrichten",
-  "tr": "Evden uzakta mısınız? Tailscale'i kurun"
- },
- "Before you start": {
-  "de": "Bevor du startest",
-  "tr": "Başlamadan önce"
- },
- "Browse your Mac and start a Claude Code session where your project lives.": {
-  "de": "Durchsuche deinen Mac und starte eine Claude-Code-Sitzung dort, wo dein Projekt liegt.",
-  "tr": "Mac'inize göz atın ve projenizin bulunduğu yerde bir Claude Code oturumu başlatın."
+ "Browse your Mac and start a chat where your project lives.": {
+  "de": "Durchsuche deinen Mac und starte einen Chat dort, wo dein Projekt liegt.",
+  "tr": "Mac'inizde gezinin ve projenizin bulunduğu yerde bir sohbet başlatın."
  },
  "Built-in": {
   "de": "Integriert",
@@ -151,6 +131,10 @@
   "de": "Abgebrochen",
   "tr": "İptal edildi"
  },
+ "Chats": {
+  "de": "Chats",
+  "tr": "Sohbetler"
+ },
  "Claude Code": {
   "de": "Claude Code",
   "tr": "Claude Code"
@@ -166,6 +150,10 @@
  "Claude Code is not signed in on this Mac. Open Terminal, run `claude` and sign in, then try again.": {
   "de": "Claude Code ist auf diesem Mac nicht angemeldet. Öffne das Terminal, führe `claude` aus, melde dich an und versuche es erneut.",
   "tr": "Bu Mac'te Claude Code'a giriş yapılmamış. Terminal'i açın, `claude` komutunu çalıştırıp giriş yapın ve tekrar deneyin."
+ },
+ "Claude Code, Codex or Gemini CLI, installed and signed in once in Terminal. The Mac app tells you if something is missing.": {
+  "de": "Claude Code, Codex oder Gemini CLI, installiert und einmal im Terminal angemeldet. Die Mac-App sagt dir, wenn etwas fehlt.",
+  "tr": "Claude Code, Codex veya Gemini CLI; kurulu ve Terminal'de bir kez oturum açılmış olmalı. Bir şey eksikse Mac uygulaması size söyler."
  },
  "Claude asks before editing files or running commands.": {
   "de": "Claude fragt, bevor Dateien geändert oder Befehle ausgeführt werden.",
@@ -219,10 +207,6 @@
   "de": "Geschlossen",
   "tr": "Kapalı"
  },
- "Collapses the details": {
-  "de": "Blendet die Details aus",
-  "tr": "Ayrıntıları gizler"
- },
  "Commands": {
   "de": "Befehle",
   "tr": "Komutlar"
@@ -234,10 +218,6 @@
  "Completed": {
   "de": "Erledigt",
   "tr": "Tamamlandı"
- },
- "Connect via": {
-  "de": "Verbinden über",
-  "tr": "Bağlantı yolu"
  },
  "Connected via": {
   "de": "Verbunden über",
@@ -363,13 +343,17 @@
   "de": "Fertig in %@",
   "tr": "%@ içinde tamamlandı"
  },
- "Drive Claude Code on your Mac from your iPhone or iPad.": {
-  "de": "Steuere Claude Code auf deinem Mac von deinem iPhone oder iPad aus.",
-  "tr": "Mac'inizdeki Claude Code'u iPhone veya iPad'inizden yönetin."
+ "Download it from the website and open it. A helm icon appears in the menu bar at the top of the screen.": {
+  "de": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein Steuerrad-Symbol.",
+  "tr": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir dümen simgesi belirir."
  },
  "Earlier": {
   "de": "Früher",
   "tr": "Daha önce"
+ },
+ "Earlier models": {
+  "de": "Ältere Modelle",
+  "tr": "Önceki modeller"
  },
  "Edit": {
   "de": "Bearbeiten",
@@ -451,6 +435,10 @@
   "de": "Tailscale im App Store laden",
   "tr": "App Store'dan Tailscale'i edinin"
  },
+ "Get started in three steps": {
+  "de": "In drei Schritten loslegen",
+  "tr": "Üç adımda başlayın"
+ },
  "Git repository": {
   "de": "Git-Repository",
   "tr": "Git deposu"
@@ -459,6 +447,10 @@
   "de": "Haptisches Feedback",
   "tr": "Dokunsal geri bildirim"
  },
+ "Have an agent ready on the Mac": {
+  "de": "Einen Agenten auf dem Mac bereithalten",
+  "tr": "Mac'te bir ajan hazır olsun"
+ },
  "High": {
   "de": "Hoch",
   "tr": "Yüksek"
@@ -466,6 +458,10 @@
  "How": {
   "de": "Wie",
   "tr": "Nasıl"
+ },
+ "How to Set Up Tailscale": {
+  "de": "So richtest du Tailscale ein",
+  "tr": "Tailscale Nasıl Kurulur"
  },
  "If iOS asks for Local Network access, allow it so Pilothouse can find your Mac.": {
   "de": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Pilothouse deinen Mac findet.",
@@ -479,13 +475,13 @@
   "de": "Überblick",
   "tr": "Özet"
  },
+ "Install Pilothouse on your Mac": {
+  "de": "Pilothouse auf deinem Mac installieren",
+  "tr": "Pilothouse'u Mac'inize kurun"
+ },
  "Install Tailscale from the App Store and sign in with the same account.": {
   "de": "Installiere Tailscale aus dem App Store und melde dich mit demselben Konto an.",
   "tr": "App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın."
- },
- "Install the free Pilothouse app on your Mac and make sure Claude Code is installed and signed in there. Then choose “Pair New Device” in its menu bar icon.": {
-  "de": "Installiere die kostenlose Pilothouse-App auf deinem Mac und stelle sicher, dass Claude Code dort installiert und angemeldet ist. Wähle dann im Menüleistensymbol „Neues Gerät koppeln“.",
-  "tr": "Mac'inize ücretsiz Pilothouse uygulamasını kurun; Claude Code'un orada kurulu ve oturum açılmış olduğundan emin olun. Ardından menü çubuğu simgesinden “Yeni Cihaz Eşleştir”i seçin."
  },
  "Interrupted by user.": {
   "de": "Vom Benutzer unterbrochen.",
@@ -506,6 +502,10 @@
  "Keychain unavailable": {
   "de": "Schlüsselbund nicht verfügbar",
   "tr": "Anahtar Zinciri kullanılamıyor"
+ },
+ "Language": {
+  "de": "Sprache",
+  "tr": "Dil"
  },
  "Later": {
   "de": "Später",
@@ -535,10 +535,6 @@
   "de": "Lokales Netzwerk",
   "tr": "Yerel ağ"
  },
- "Local network only": {
-  "de": "Nur lokales Netzwerk",
-  "tr": "Yalnızca yerel ağ"
- },
  "Low": {
   "de": "Niedrig",
   "tr": "Düşük"
@@ -550,6 +546,14 @@
  "Macs": {
   "de": "Macs",
   "tr": "Mac'ler"
+ },
+ "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.": {
+  "de": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind.",
+  "tr": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun."
+ },
+ "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
+  "de": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale.",
+  "tr": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
  },
  "Max": {
   "de": "Maximum",
@@ -566,6 +570,10 @@
  "Message Claude…": {
   "de": "Nachricht an Claude …",
   "tr": "Claude'a mesaj yaz…"
+ },
+ "Minimal": {
+  "de": "Minimal",
+  "tr": "Minimal"
  },
  "Model": {
   "de": "Modell",
@@ -643,6 +651,10 @@
   "de": "Diese Woche keine Arbeit",
   "tr": "Bu hafta çalışma yok"
  },
+ "None": {
+  "de": "Keiner",
+  "tr": "Yok"
+ },
  "Not installed": {
   "de": "Nicht installiert",
   "tr": "Kurulu değil"
@@ -670,6 +682,10 @@
  "Offline — showing the saved transcript. Claude keeps working on your Mac.": {
   "de": "Offline – der gespeicherte Verlauf wird angezeigt. Claude arbeitet auf deinem Mac weiter.",
   "tr": "Çevrimdışı — kayıtlı döküm gösteriliyor. Claude Mac'inizde çalışmaya devam ediyor."
+ },
+ "On the Mac, click the helm icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
+  "de": "Klicke auf dem Mac auf das Steuerrad-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code.",
+  "tr": "Mac'te dümen simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
  },
  "On this device": {
   "de": "Auf diesem Gerät",
@@ -711,6 +727,10 @@
   "de": "Weiteren Mac koppeln",
   "tr": "Başka Bir Mac Eşleştir"
  },
+ "Pair on the same Wi-Fi": {
+  "de": "Im selben WLAN koppeln",
+  "tr": "Aynı Wi-Fi'de eşleştirin"
+ },
  "Pair with Your Mac": {
   "de": "Mit deinem Mac koppeln",
   "tr": "Mac'inizle Eşleştirin"
@@ -743,6 +763,14 @@
   "de": "Persönlich",
   "tr": "Kişisel"
  },
+ "Photos and Videos": {
+  "de": "Fotos und Videos",
+  "tr": "Fotoğraflar ve Videolar"
+ },
+ "Pick a folder on your Mac and tell Claude, Codex or Gemini what to do. It works on your Mac; you follow and approve every step here.": {
+  "de": "Wähle einen Ordner auf deinem Mac und sag Claude, Codex oder Gemini, was zu tun ist. Die Arbeit läuft auf deinem Mac; du verfolgst und bestätigst hier jeden Schritt.",
+  "tr": "Mac'inizde bir klasör seçin ve Claude, Codex veya Gemini'ye ne yapacağını söyleyin. İş Mac'inizde yapılır; her adımı buradan izler ve onaylarsınız."
+ },
  "Pick a session from the list or start a new chat.": {
   "de": "Wähle eine Sitzung aus der Liste oder starte einen neuen Chat.",
   "tr": "Listeden bir oturum seçin veya yeni bir sohbet başlatın."
@@ -755,9 +783,17 @@
   "de": "Pilothouse",
   "tr": "Pilothouse"
  },
+ "Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": {
+  "de": "Pilothouse verbindet sich immer zuerst über dein WLAN. Aktiviere das nur, wenn du auch Tailscale nutzt, um deinen Mac außerhalb dieses WLANs zu erreichen.",
+  "tr": "Pilothouse her zaman önce Wi-Fi'niz üzerinden bağlanır. Bunu yalnızca Tailscale da kullanıyorsanız, o Wi-Fi'den uzaktayken Mac'inize ulaşmak için açın."
+ },
  "Pilothouse could not access the Keychain: %@": {
   "de": "Pilothouse konnte nicht auf den Schlüsselbund zugreifen: %@",
   "tr": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
+ },
+ "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": {
+  "de": "Pilothouse folgt der Sprache deines iPhone. Um nur für Pilothouse eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Pilothouse → Sprache.",
+  "tr": "Pilothouse, iPhone'unuzun dilini kullanır. Yalnızca Pilothouse için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Pilothouse → Dil bölümünden seçin."
  },
  "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.": {
   "de": "Pilothouse darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen und versuche es erneut.",
@@ -766,6 +802,10 @@
  "Pilothouse learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": {
   "de": "Pilothouse lernt die Tailscale-Adresse deines Macs automatisch und nutzt sie, wenn das lokale Netzwerk nicht verfügbar ist.",
   "tr": "Pilothouse, Mac'inizin Tailscale adresini otomatik öğrenir ve yerel ağ kullanılamadığında bu adresi kullanır."
+ },
+ "Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.": {
+  "de": "Pilothouse darf das lokale Netzwerk nicht verwenden. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen.",
+  "tr": "Pilothouse'un yerel ağı kullanma izni yok. Ayarlar'da Pilothouse için Yerel Ağ'ı açın."
  },
  "Pilothouse uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.": {
   "de": "Pilothouse verwendet keine Bibliotheken von Drittanbietern. Die Verschlüsselung stammt aus Apple CryptoKit und folgt der gemeinfreien Spezifikation des Noise Protocol Framework.",
@@ -819,13 +859,13 @@
   "de": "%@ entfernen",
   "tr": "%@ kaldır"
  },
+ "Remove attachment": {
+  "de": "Anhang entfernen",
+  "tr": "Eki kaldır"
+ },
  "Remove from Favorites": {
   "de": "Aus Favoriten entfernen",
   "tr": "Favorilerden Kaldır"
- },
- "Remove image": {
-  "de": "Bild entfernen",
-  "tr": "Görseli kaldır"
  },
  "Remove this Mac?": {
   "de": "Diesen Mac entfernen?",
@@ -846,6 +886,10 @@
  "Running": {
   "de": "Läuft",
   "tr": "Çalışıyor"
+ },
+ "Scan the Pairing Code": {
+  "de": "Kopplungscode scannen",
+  "tr": "Eşleştirme Kodunu Tara"
  },
  "Scan the QR Code Instead": {
   "de": "Stattdessen QR-Code scannen",
@@ -886,10 +930,6 @@
  "Sessions you run from this phone or the Mac show up here.": {
   "de": "Sitzungen, die du von diesem Telefon oder dem Mac startest, erscheinen hier.",
   "tr": "Bu telefondan veya Mac'ten çalıştırdığınız oturumlar burada görünür."
- },
- "Set Up Remote Access (Tailscale)": {
-  "de": "Fernzugriff einrichten (Tailscale)",
-  "tr": "Uzaktan Erişimi Kur (Tailscale)"
  },
  "Settings": {
   "de": "Einstellungen",
@@ -935,6 +975,10 @@
   "de": "Vorschläge für Slash-Befehle",
   "tr": "Eğik çizgi komutu önerileri"
  },
+ "Some photos or videos could not be loaded.": {
+  "de": "Einige Fotos oder Videos konnten nicht geladen werden.",
+  "tr": "Bazı fotoğraflar veya videolar yüklenemedi."
+ },
  "Something went wrong": {
   "de": "Etwas ist schiefgelaufen",
   "tr": "Bir şeyler ters gitti"
@@ -950,6 +994,10 @@
  "Start in %@": {
   "de": "In %@ starten",
   "tr": "%@ içinde başlat"
+ },
+ "Start your first chat": {
+  "de": "Starte deinen ersten Chat",
+  "tr": "İlk sohbetinizi başlatın"
  },
  "Starting": {
   "de": "Startet",
@@ -983,13 +1031,9 @@
   "de": "Tailscale",
   "tr": "Tailscale"
  },
- "Tailscale only": {
-  "de": "Nur Tailscale",
-  "tr": "Yalnızca Tailscale"
- },
- "Tap the compose button to pick a folder on your Mac and start Claude Code there.": {
-  "de": "Tippe auf die Schreiben-Taste, um einen Ordner auf deinem Mac zu wählen und dort Claude Code zu starten.",
-  "tr": "Mac'inizde bir klasör seçmek ve orada Claude Code'u başlatmak için oluştur düğmesine dokunun."
+ "Take Photo": {
+  "de": "Foto aufnehmen",
+  "tr": "Fotoğraf Çek"
  },
  "Task": {
   "de": "Aufgabe",
@@ -998,6 +1042,10 @@
  "Tasks": {
   "de": "Aufgaben",
   "tr": "Görevler"
+ },
+ "That's the most images one message can carry.": {
+  "de": "Mehr Bilder passen nicht in eine Nachricht.",
+  "tr": "Bir mesaj en fazla bu kadar görsel taşıyabilir."
  },
  "The camera is only used to read the pairing code.": {
   "de": "Die Kamera wird nur zum Lesen des Kopplungscodes verwendet.",
@@ -1014,6 +1062,10 @@
  "The transcript is removed from your Mac and this device. Files Claude changed are not affected.": {
   "de": "Der Verlauf wird von deinem Mac und diesem Gerät entfernt. Von Claude geänderte Dateien bleiben unberührt.",
   "tr": "Döküm Mac'inizden ve bu cihazdan silinir. Claude'un değiştirdiği dosyalar etkilenmez."
+ },
+ "Thinking": {
+  "de": "Denkprozess",
+  "tr": "Düşünme süreci"
  },
  "Thinking…": {
   "de": "Denkt nach …",
@@ -1071,9 +1123,21 @@
   "de": "Erneut versuchen",
   "tr": "Tekrar Dene"
  },
- "Try the Demo": {
-  "de": "Demo ausprobieren",
-  "tr": "Demoyu Dene"
+ "Try the Demo First": {
+  "de": "Erst die Demo ausprobieren",
+  "tr": "Önce Demoyu Deneyin"
+ },
+ "Ultra": {
+  "de": "Ultra",
+  "tr": "Ultra"
+ },
+ "Use Tailscale": {
+  "de": "Tailscale verwenden",
+  "tr": "Tailscale Kullan"
+ },
+ "Use Tailscale when away": {
+  "de": "Unterwegs Tailscale verwenden",
+  "tr": "Uzaktayken Tailscale kullan"
  },
  "Verification code": {
   "de": "Bestätigungscode",
@@ -1090,10 +1154,6 @@
  "Waiting for your approval": {
   "de": "Wartet auf deine Freigabe",
   "tr": "Onayınızı bekliyor"
- },
- "Waiting for your approval…": {
-  "de": "Wartet auf deine Freigabe …",
-  "tr": "Onayınız bekleniyor…"
  },
  "Watch replies, tool calls, file diffs and command output as they happen.": {
   "de": "Verfolge Antworten, Werkzeugaufrufe, Datei-Diffs und Befehlsausgaben in Echtzeit.",
@@ -1119,10 +1179,6 @@
   "de": "Arbeitet",
   "tr": "Çalışıyor"
  },
- "Working…": {
-  "de": "Arbeitet …",
-  "tr": "Çalışıyor…"
- },
  "Write": {
   "de": "Schreiben",
   "tr": "Yaz"
@@ -1143,9 +1199,17 @@
   "de": "Dein Mac fasst die Woche zusammen …",
   "tr": "Mac'iniz haftayı özetliyor…"
  },
+ "Your coding agents run on your Mac. Pilothouse lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
+  "de": "Deine Coding-Agenten laufen auf deinem Mac. Mit Pilothouse sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen.",
+  "tr": "Kodlama ajanlarınız Mac'inizde çalışır. Pilothouse, iPhone veya iPad'inizden onlarla konuşmanızı, her adımı izlemenizi ve değişiklikleri onaylamanızı sağlar."
+ },
  "Your traffic stays end-to-end encrypted by Pilothouse in addition to Tailscale's own encryption.": {
   "de": "Dein Datenverkehr bleibt zusätzlich zur Verschlüsselung von Tailscale durch Pilothouse Ende-zu-Ende verschlüsselt.",
   "tr": "Trafiğiniz, Tailscale'in kendi şifrelemesine ek olarak Pilothouse tarafından uçtan uca şifreli kalır."
+ },
+ "[Video, %@: the %lld images attached are frames from it, evenly spaced from start to end.]": {
+  "de": "[Video, %@: Die %lld angehängten Bilder sind Einzelbilder daraus, gleichmäßig vom Anfang bis zum Ende verteilt.]",
+  "tr": "[Video, %@: ekteki %lld görsel, bu videodan baştan sona eşit aralıklarla alınmış karelerdir.]"
  },
  "iOS does not let apps install or configure a VPN for you, so step 2 has to be done by hand.": {
   "de": "iOS erlaubt Apps nicht, ein VPN für dich zu installieren oder zu konfigurieren, daher musst du Schritt 2 selbst ausführen.",

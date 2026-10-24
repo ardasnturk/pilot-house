@@ -16,7 +16,7 @@ struct SessionListView: View {
                 ProgressView()
             }
         }
-        .navigationTitle(Text(model.activeMac?.name ?? "Pilothouse"))
+        .navigationTitle(Text("Chats"))
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button {

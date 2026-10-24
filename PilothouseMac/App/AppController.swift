@@ -107,7 +107,7 @@ final class AppController: MacStatusProviding {
         await refreshNetwork(broadcast: false)
 
         do {
-            let identity = try KeychainIdentityStore(service: "com.ardasenturk.Pilothouse.Mac.identity").loadOrCreateIdentity()
+            let identity = try KeychainIdentityStore(service: "com.ardasenturk.Pilothouse.Mac.identity" + Self.previewSuffix).loadOrCreateIdentity()
             macFingerprint = identity.fingerprint
             let nameBox = macNameBox
             let runtime = try HostRuntime(
@@ -126,7 +126,7 @@ final class AppController: MacStatusProviding {
             await configureInsights()
             let boundPort = try await listener.start(
                 configuration: WebSocketListener.Configuration(
-                    preferredPort: settings.preferredPort,
+                    preferredPort: Self.isPreview ? settings.preferredPort + 1_000 : settings.preferredPort,
                     bonjourName: macName,
                     txtRecord: ["id": identity.fingerprint, "v": String(PilothouseProtocol.version)]
                 )
@@ -546,12 +546,24 @@ final class AppController: MacStatusProviding {
         launchAtLogin = LaunchAtLogin.isEnabled
     }
 
+    /// Debug builds started with `PILOTHOUSE_PREVIEW=1` run beside the installed
+    /// app for UI work: their own data folder, Keychain identity and port.
+    static let isPreview: Bool = {
+        #if DEBUG
+        ProcessInfo.processInfo.environment["PILOTHOUSE_PREVIEW"] == "1"
+        #else
+        false
+        #endif
+    }()
+
+    static var previewSuffix: String { isPreview ? ".preview" : "" }
+
     private func hostConfiguration() -> HostConfiguration {
         let support = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
             ?? URL(fileURLWithPath: NSHomeDirectory()).appendingPathComponent("Library/Application Support")
         return HostConfiguration(
             homeDirectory: NSHomeDirectory(),
-            dataDirectory: support.appendingPathComponent("Pilothouse", isDirectory: true),
+            dataDirectory: support.appendingPathComponent("Pilothouse" + Self.previewSuffix, isDirectory: true),
             retentionDays: settings.retentionDays,
             allowBypassPermissions: settings.allowBypassPermissions,
             defaultModel: settings.defaultModel.isEmpty ? nil : settings.defaultModel,

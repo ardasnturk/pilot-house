@@ -55,17 +55,42 @@ end-to-end encrypted.
 
 ## Contents
 
+* [Quick start](#quick-start)
 * [Requirements](#requirements)
 * [Install](#install)
 * [Pair your phone](#pair-your-phone)
 * [Using Pilothouse](#using-pilothouse)
-* [Away from home: Tailscale](#away-from-home-tailscale)
+* [Updates](#updates)
+* [Away from home: Tailscale (optional)](#away-from-home-tailscale-optional)
+* [Troubleshooting](#troubleshooting)
 * [Keeping the Mac awake](#keeping-the-mac-awake)
 * [Security model](#security-model)
 * [FAQ](#faq)
 * [Building from source](#building-from-source)
 * [Contributing](#contributing)
 * [License](#license)
+
+## Quick start
+
+You need a Mac, an iPhone or iPad, and both on **the same Wi-Fi**.
+
+1. **Install Pilothouse on the Mac** — download the DMG from
+   [Releases](https://github.com/ardasnturk/pilot-house/releases/latest), drag
+   Pilothouse into Applications and open it. A **helm icon** appears in the menu
+   bar at the top of the screen; everything on the Mac starts there.
+2. **Have an agent ready** — Claude Code (or Codex, Gemini CLI) installed and
+   signed in once in Terminal. If it is missing, the helm menu shows an orange
+   card with the exact commands.
+3. **Install Pilothouse on the iPhone** — see [Install](#install).
+4. **Pair** — on the Mac, click the helm icon → **Pair iPhone or iPad…**; on the
+   phone, tap **Scan the Pairing Code** and point the camera at the QR code.
+   Allow **Local Network** when iOS asks. Both screens show the same code.
+5. **Start a chat** — on the phone, tap **New Chat**, pick a project folder on
+   the Mac and type what you want. The agent works on the Mac; you watch every
+   step and approve changes on the phone.
+
+That's all. Tailscale is not needed at home; turn it on only if you want to use
+Pilothouse away from your Wi-Fi ([below](#away-from-home-tailscale-optional)).
 
 ## Requirements
 
@@ -76,7 +101,7 @@ end-to-end encrypted.
 | Claude Code | The official CLI installed on the Mac ([setup guide](https://docs.claude.com/en/docs/claude-code/setup)) and signed in with **your own Claude account** — or your own Anthropic API key |
 | Codex, Gemini CLI | Optional. Installed and signed in on the Mac (`codex login`, `gemini`) |
 | Weekly summary | Optional. macOS 26 with Apple Intelligence on the Mac for the written part; the numbers work everywhere |
-| Network | Both devices on the same network, or both on your [Tailscale](https://tailscale.com) tailnet |
+| Network | Both devices on the same Wi-Fi; optionally [Tailscale](https://tailscale.com) for access from elsewhere |
 
 ## Install
 
@@ -89,8 +114,8 @@ brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house
 brew install --cask pilothouse
 ```
 
-Open Pilothouse; its icon appears in the menu bar. If Claude Code is missing or
-not signed in, the app shows a short setup guide
+Open Pilothouse; its helm icon appears in the menu bar. If Claude Code is
+missing or not signed in, the app shows a short setup guide
 (`curl -fsSL https://claude.ai/install.sh | bash`, then `claude` once in
 Terminal to sign in).
 
@@ -102,61 +127,96 @@ the app, **Try the Demo** shows everything with a simulated Mac.
 
 ## Pair your phone
 
-1. On the Mac: menu bar icon → **Pair New Device…**. A QR code appears; it is
+1. On the Mac: helm icon → **Pair iPhone or iPad…**. A QR code appears; it is
    valid for 5 minutes and can be used once.
-2. On the phone: **Pair with Your Mac** → scan the code. Allow *Local Network*
-   when iOS asks.
+2. On the phone: **Scan the Pairing Code** → point the camera at it. Allow
+   *Local Network* when iOS asks — without it the phone cannot reach the Mac on
+   your Wi-Fi.
 3. Both screens show the same **verification code**. Done — the Mac and the
    phone now trust each other's keys.
 
-Lost a device? Mac menu → **Paired devices** → **Revoke**. Its connections are
-dropped immediately.
+Lost a device? Mac **Settings → iPhone & iPad** → **Revoke**. Its connections
+are dropped immediately.
 
 ## Using Pilothouse
 
 * **New Chat** → **Where:** browse the folders in your Mac's home folder
   (favorites, recent folders, Git repositories are marked, **New Folder**
-  creates one) → **Who:** Claude Code, Codex or Gemini → **How:** model and
-  permission mode → **Start in …**. Permission modes:
+  creates one) → **Who:** Claude Code, Codex or Gemini → **How:** model,
+  effort and permission mode → **Start in …**. The model and effort lists come
+  from the agent itself, so they always match what your CLI offers. Permission
+  modes:
   * *Ask every time* (default) — every action that needs approval is sent to
     your phone,
   * *Accept edits* — file edits are applied, commands still ask,
-  * *Plan* — Claude only plans,
+  * *Plan* — the agent only plans,
   * *Bypass permissions* — only after you allow it in the Mac settings; shown
     in red.
-* **Permission requests** appear as a sheet with what Claude wants to do: the
-  diff of an edit, the command it wants to run. *Allow*, *Deny*, or *Always
-  allow … in this session*. Requests that nobody answers are **denied after
-  10 minutes**.
-* **Stop** ends the running turn immediately (like Ctrl-C). Your next message
-  continues the same conversation.
-* **Sessions** lists every session Pilothouse ran on the Mac (kept for 30 days).
+* **In a chat** the message field has everything: **+** attaches photos,
+  videos (sent as a few frames) or a camera shot, **/** lists the skills and
+  slash commands, and the **model chip** changes the model and effort of this
+  chat. While the agent works, its current step and a timer show inside the
+  field and the send button turns into **Stop**.
+* **Tool calls** (reads, edits, commands, searches) are compact rows; tap one
+  to see the diff, the command output or the file in a sheet.
+* **Permission requests** appear as a sheet with what the agent wants to do.
+  *Allow*, *Deny*, or *Always allow … in this session*. Requests that nobody
+  answers are **denied after 10 minutes**.
+* **Sessions** lists every chat Pilothouse ran on the Mac (kept for 30 days).
   Open one to read it — offline too — or continue it with full context.
-* **`/`** in an empty message field opens all skills and slash commands of the
-  session, searchable, skills and commands listed separately.
-* **Sub-agents** appear as cards with a coloured rail and as chips above the
-  message field while they run; **Follow Live** opens their transcript.
-* **This week** above the session list shows the time you worked and your
-  usage limits; tap it for the weekly summary and the **Limits** tab.
-* On the Mac, the menu bar shows running sessions, pending approvals and usage
-  limits; you can answer approvals there as well. **Settings → Agents** lists
-  the CLIs found and which ones Claude may delegate to.
+* **Sub-agents** appear with a coloured rail and as chips above the message
+  field while they run; **Follow Live** opens their transcript.
+* **This week** above the chats shows the time you worked and your usage
+  limits; tap it for the weekly summary and the **Limits** tab.
+* **Language** — the apps follow the device language: English, Türkçe,
+  Deutsch, Español, Français, Italiano, Português (Brasil), 日本語, 한국어 and
+  简体中文. Choose another one per app in iOS Settings → Apps → Pilothouse.
+* On the Mac, the helm menu shows running chats, pending approvals and usage
+  limits; you can answer approvals there as well. **Settings** has panes for
+  devices, agents, notifications, remote access, updates and security.
 
-## Away from home: Tailscale
+## Updates
 
-At home or in the office the phone finds the Mac with Bonjour
-(`_pilothouse._tcp`, port 47823 or the next free one). Elsewhere, Pilothouse
-uses [Tailscale](https://tailscale.com), a free private network between your
+The Mac app checks GitHub for a new release once a day (Settings → Updates).
+When one is available, the helm menu shows it; **Install and Relaunch**
+downloads it, checks its checksum, Apple notarization and developer signature,
+replaces the app and opens the new version. Homebrew users can also run
+`brew upgrade --cask pilothouse`. The iPhone app updates through TestFlight.
+
+## Away from home: Tailscale (optional)
+
+Pilothouse always connects over your local network first; the phone finds the
+Mac by itself (Bonjour, `_pilothouse._tcp`, port 47823 or the next free one).
+To use it **away from that Wi-Fi** — on mobile data, at a café — add
+[Tailscale](https://tailscale.com), a free private network between your own
 devices:
 
-* Mac menu → **Tailscale** → **Set Up with Claude**: Pilothouse opens a Claude
-  Code session that installs and configures Tailscale step by step and stops
-  whenever your password or a browser sign-in is needed — every command needs
-  your approval, on the Mac or on the phone. Prefer to do it yourself?
-  **Set Up Manually** shows the steps.
-* On the phone: install the Tailscale app from the App Store and sign in with
-  the same account. Pilothouse then tries the last working route, Bonjour, the
-  local IP addresses and finally the Tailscale address automatically.
+1. **Mac:** Settings → **Remote Access** → **Set Up Tailscale…**. Either let
+   Claude set it up step by step (every command needs your approval) or follow
+   the manual steps.
+2. **iPhone:** install the Tailscale app from the App Store and sign in with
+   the same account.
+3. **Pilothouse on the iPhone:** Settings → turn on **Use Tailscale when
+   away**.
+
+With it on, Pilothouse still tries the local network first and uses Tailscale
+only when the Mac is not reachable there. Off (the default), it never uses
+Tailscale.
+
+## Troubleshooting
+
+**The phone says "Offline" at home.** Check, in this order: Pilothouse is
+running on the Mac (helm icon in the menu bar); both devices are on the same
+Wi-Fi (not a guest network — those often block devices from seeing each
+other); iOS Settings → Privacy & Security → **Local Network** → Pilothouse is
+on. The phone shows a button for the last one when it is off.
+
+**Claude Code / Codex is "not signed in".** Open Terminal on the Mac, run
+`claude` (or `codex login`) once and sign in, then choose **Check Again** in
+Settings → Agents.
+
+**Pairing code expired.** Codes last 5 minutes; choose **Pair iPhone or
+iPad…** again.
 
 ## Keeping the Mac awake
 
@@ -207,8 +267,8 @@ any of your folders, which the App Store sandbox does not allow (D-080). It is
 signed with Developer ID and notarized by Apple.
 
 **Can I use my phone over mobile data?**
-Yes, with Tailscale (see above). Without it, the phone must be on the same
-network as the Mac.
+Yes, with Tailscale (see [above](#away-from-home-tailscale-optional)). Without
+it, the phone must be on the same Wi-Fi as the Mac.
 
 **What happens when the phone disconnects mid-turn?**
 Nothing is lost. Claude keeps working on the Mac; when the phone reconnects it
@@ -216,7 +276,7 @@ catches up from the session log. Permission requests wait for you (up to
 10 minutes).
 
 **Notifications?**
-Under Settings → Notifications on the Mac (off by default): native
+In the Mac app's Settings → Notifications (off by default): native
 macOS notifications and, through [ntfy](https://ntfy.sh), notifications on your
 iPhone when a task you started from the phone finishes, Claude waits for
 approval or a session fails. Subscribe to the generated topic in the free ntfy

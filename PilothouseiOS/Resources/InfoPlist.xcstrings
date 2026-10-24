@@ -30,19 +30,19 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse verwendet die Kamera nur, um den Kopplungs-QR-Code von Pilothouse auf deinem Mac zu scannen."
+            "value": "Pilothouse verwendet die Kamera, um den auf deinem Mac angezeigten Kopplungscode zu scannen und, wenn du möchtest, Fotos aufzunehmen, die du an deinen Agenten sendest."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse uses the camera only to scan the pairing QR code shown by Pilothouse on your Mac."
+            "value": "Pilothouse uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse, kamerayı yalnızca Mac'inizdeki Pilothouse'un gösterdiği eşleştirme QR kodunu taramak için kullanır."
+            "value": "Pilothouse, kamerayı Mac'inizde gösterilen eşleştirme kodunu taramak ve isterseniz ajanınıza göndermek üzere fotoğraf çekmek için kullanır."
           }
         }
       }

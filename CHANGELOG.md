@@ -6,6 +6,37 @@ All notable changes to Pilothouse are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.1.0] — 2026-10-24
+
+### Mac
+- New look: a gradient header with the status, cards for what needs you now,
+  and a simpler menu; addresses, devices, agents and Tailscale moved to
+  Settings.
+- Settings redesigned as a sidebar of panes (General, iPhone & iPad, Agents,
+  Notifications, Remote Access, Updates, Security).
+- Updates from inside the app: a daily check on GitHub and **Install and
+  Relaunch**, with checksum, notarization and signature checks.
+- A redesigned DMG window.
+- Model lists and effort levels are read from Claude Code and Codex
+  themselves.
+
+### iPhone and iPad
+- New look with the brand gradient, glass cards and a connection card that
+  says what to do when the Mac is not reachable.
+- Tool calls and thinking open in sheets; the chat reads like the Claude and
+  Codex apps.
+- While the agent works, its status, current step and a timer show inside the
+  message field; Send turns into Stop.
+- Attach photos, videos (sent as frames) and camera shots.
+- Models and effort levels as the CLIs report them, with their real names.
+- Ten languages: English, Turkish, German, Spanish, French, Italian,
+  Brazilian Portuguese, Japanese, Korean and Simplified Chinese.
+- Clearer welcome screen and settings.
+
+### Connection
+- The local network always comes first; Tailscale is only used when you turn
+  on "Use Tailscale when away".
+
 ## [1.0.1] — 2026-10-24
 
 ### Fixed
@@ -63,6 +94,7 @@ coding-agent CLIs on your Mac.
 - The Mac menu panel collapsed to its header on macOS 27.
 - Diff statistics counted `---`/`+++` file headers as changed lines.
 
-[Unreleased]: https://github.com/ardasnturk/pilot-house/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/ardasnturk/pilot-house/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/ardasnturk/pilot-house/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/ardasnturk/pilot-house/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/ardasnturk/pilot-house/releases/tag/v1.0.0

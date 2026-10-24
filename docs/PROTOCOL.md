@@ -172,7 +172,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 `agents` (`startSession.agent`, `Session.agent`, `macStatus.agents`) and
 `threads` (`event.thread`), `insights` (`getWeeklySummary`,
 `getUsageLimits`), `commandCatalog` (`listCommands`) and `sessionSettings`
-(`startSession.effort`, `updateSessionSettings`, `Session.effort`).
+(`startSession.effort`, `updateSessionSettings`, `Session.effort`) and
+`modelCatalog` (`macStatus.agents[].modelOptions`).
 
 ### 4.2 Host → client
 
@@ -180,7 +181,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 |---|---|
 | `helloAck` | `{ protocolVersion, macName, macId, serverVersion, pendingPermissions: [PermissionRequest], capabilities?: [String] }` |
 | `ok` | `{}` |
-| `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel?, agents?: [{ kind, installed, path?, version?, loggedIn?, models, delegationEnabled }] }` |
+| `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel?, agents?: [{ kind, installed, path?, version?, loggedIn?, models, delegationEnabled, modelOptions?: [{ id, displayName, description?, resolvedModel?, effortLevels, defaultEffort?, isDefault }] }] }` — `modelOptions` with capability `modelCatalog` |
 | `directoryListing` | `{ path, homePath, parentPath?, isGitRepository, truncated, entries: [{ name, path, isDirectory, isHidden, isSymbolicLink, isGitRepository, size?, modifiedAt? }] }` |
 | `sessionList` | `{ sessions: [Session] }` |
 | `sessionStarted` / `sessionUpdated` | `{ session: Session }` |

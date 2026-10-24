@@ -55,17 +55,43 @@ uca şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
 
 ## İçindekiler
 
+* [Hızlı başlangıç](#hızlı-başlangıç)
 * [Gereksinimler](#gereksinimler)
 * [Kurulum](#kurulum)
 * [Telefonu eşleştirme](#telefonu-eşleştirme)
 * [Kullanım](#kullanım)
-* [Evden uzakta: Tailscale](#evden-uzakta-tailscale)
+* [Güncellemeler](#güncellemeler)
+* [Evden uzakta: Tailscale (isteğe bağlı)](#evden-uzakta-tailscale-isteğe-bağlı)
+* [Sorun giderme](#sorun-giderme)
 * [Mac'i uyanık tutma](#maci-uyanık-tutma)
 * [Güvenlik modeli](#güvenlik-modeli)
 * [SSS](#sss)
 * [Kaynaktan derleme](#kaynaktan-derleme)
 * [Katkıda bulunma](#katkıda-bulunma)
 * [Lisans](#lisans)
+
+## Hızlı başlangıç
+
+Bir Mac, bir iPhone ya da iPad gerekir; ikisi de **aynı Wi-Fi ağında** olmalıdır.
+
+1. **Pilothouse'u Mac'e kurun** — DMG dosyasını
+   [Releases](https://github.com/ardasnturk/pilot-house/releases/latest)
+   sayfasından indirin, Pilothouse'u Uygulamalar klasörüne sürükleyip açın.
+   Ekranın üstündeki menü çubuğunda bir **dümen simgesi** belirir; Mac'teki her
+   şey oradan başlar.
+2. **Bir ajan hazır olsun** — Claude Code (ya da Codex, Gemini CLI) kurulu ve
+   Terminal'de bir kez giriş yapılmış olmalı. Eksikse dümen menüsü, gereken
+   komutların tam hâlini içeren turuncu bir kart gösterir.
+3. **Pilothouse'u iPhone'a kurun** — bkz. [Kurulum](#kurulum).
+4. **Eşleştirin** — Mac'te dümen simgesi → **iPhone veya iPad Eşleştir…**;
+   telefonda **Eşleştirme Kodunu Tara**'ya dokunun ve kamerayı QR koda tutun.
+   iOS sorduğunda **Yerel Ağ** iznini verin. İki ekranda da aynı kod görünür.
+5. **Bir sohbet başlatın** — telefonda **Yeni Sohbet**'e dokunun, Mac'te bir
+   proje klasörü seçin ve ne istediğinizi yazın. Ajan Mac'te çalışır; siz her
+   adımı izler, değişiklikleri telefondan onaylarsınız.
+
+Hepsi bu. Evde Tailscale gerekmez; yalnızca Pilothouse'u Wi-Fi ağınızın
+dışında kullanmak istiyorsanız açın ([aşağıda](#evden-uzakta-tailscale-isteğe-bağlı)).
 
 ## Gereksinimler
 
@@ -76,7 +102,7 @@ uca şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
 | Claude Code | Mac'te kurulu resmi CLI ([kurulum rehberi](https://docs.claude.com/en/docs/claude-code/setup)), **kendi Claude hesabınızla** giriş yapılmış — ya da kendi Anthropic API anahtarınız |
 | Codex, Gemini CLI | İsteğe bağlı. Mac'te kurulu ve giriş yapılmış (`codex login`, `gemini`) |
 | Haftalık özet | İsteğe bağlı. Yazılı kısım için Mac'te macOS 26 ve Apple Intelligence; sayılar her yerde çalışır |
-| Ağ | İki cihaz aynı ağda ya da ikisi de [Tailscale](https://tailscale.com) ağınızda |
+| Ağ | İki cihaz aynı Wi-Fi ağında; başka yerlerden erişim için isteğe bağlı olarak [Tailscale](https://tailscale.com) |
 
 ## Kurulum
 
@@ -89,8 +115,8 @@ brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house
 brew install --cask pilothouse
 ```
 
-Pilothouse'u açın; simgesi menü çubuğunda görünür. Claude Code kurulu değilse ya
-da giriş yapılmamışsa uygulama kısa bir kurulum rehberi gösterir
+Pilothouse'u açın; dümen simgesi menü çubuğunda görünür. Claude Code kurulu
+değilse ya da giriş yapılmamışsa uygulama kısa bir kurulum rehberi gösterir
 (`curl -fsSL https://claude.ai/install.sh | bash`, ardından giriş yapmak için
 Terminal'de bir kez `claude`).
 
@@ -102,14 +128,15 @@ Uygulamanın içindeki **Demoyu Dene**, simüle edilmiş bir Mac ile her şeyi g
 
 ## Telefonu eşleştirme
 
-1. Mac'te: menü çubuğu simgesi → **Yeni Cihaz Eşleştir…**. Bir QR kod belirir;
+1. Mac'te: dümen simgesi → **iPhone veya iPad Eşleştir…**. Bir QR kod belirir;
    5 dakika geçerlidir ve yalnızca bir kez kullanılabilir.
-2. Telefonda: **Mac'inizle Eşleştirin** → kodu okutun. iOS sorduğunda *Yerel Ağ*
-   iznini verin.
+2. Telefonda: **Eşleştirme Kodunu Tara** → kamerayı koda tutun. iOS sorduğunda
+   *Yerel Ağ* iznini verin — bu izin olmadan telefon, Wi-Fi ağınızdaki Mac'e
+   ulaşamaz.
 3. İki ekranda da aynı **doğrulama kodu** görünür. Bu kadar — Mac ve telefon
    artık birbirinin anahtarına güvenir.
 
-Bir cihazı mı kaybettiniz? Mac menüsü → **Eşleşmiş cihazlar** → **İptal Et**.
+Bir cihazı mı kaybettiniz? Mac'te **Ayarlar → iPhone ve iPad** → **İptal Et**.
 O cihazın bağlantıları anında kesilir.
 
 ## Kullanım
@@ -117,48 +144,86 @@ O cihazın bağlantıları anında kesilir.
 * **Yeni Sohbet** → **Nerede:** Mac'inizin ev klasöründeki klasörlere göz atın
   (favoriler, son kullanılanlar; Git depoları işaretlidir, **Yeni Klasör** yeni
   bir tane oluşturur) → **Kim:** Claude Code, Codex ya da Gemini → **Nasıl:**
-  model ve izin modu → **… içinde başlat**. İzin modları:
+  model, efor ve izin modu → **… içinde başlat**. Model ve efor listeleri
+  doğrudan ajandan gelir; bu yüzden her zaman CLI'ınızın sunduklarıyla
+  eşleşir. İzin modları:
   * *Her seferinde sor* (varsayılan) — onay gerektiren her işlem telefonunuza
     gelir,
   * *Düzenlemeleri kabul et* — dosya düzenlemeleri uygulanır, komutlar yine
     sorulur,
-  * *Plan* — Claude yalnızca plan yapar,
+  * *Plan* — ajan yalnızca plan yapar,
   * *İzinleri atla* — yalnızca Mac ayarlarında izin verdiyseniz; kırmızıyla
     gösterilir.
-* **İzin istekleri**, Claude'un ne yapmak istediğini gösteren bir sayfa olarak
-  açılır: bir düzenlemenin farkı, çalıştırmak istediği komut. *İzin Ver*,
-  *Reddet* ya da *Bu oturumda … için hep izin ver*. Kimsenin yanıtlamadığı
-  istekler **10 dakika sonra reddedilir**.
-* **Durdur**, çalışan turu anında bitirir (Ctrl-C gibi). Bir sonraki mesajınız
-  aynı sohbeti sürdürür.
-* **Oturumlar**, Pilothouse'un Mac'te çalıştırdığı tüm oturumları listeler
+* **Sohbette** her şey mesaj kutusundadır: **+** fotoğraf, video (birkaç kare
+  olarak gönderilir) ya da kamera çekimi ekler, **/** skill'leri ve slash
+  komutlarını listeler, **model çipi** bu sohbetin modelini ve eforunu
+  değiştirir. Ajan çalışırken o anki adımı ve bir sayaç kutunun içinde görünür,
+  gönder düğmesi **Durdur**'a dönüşür.
+* **Araç çağrıları** (okumalar, düzenlemeler, komutlar, aramalar) kompakt
+  satırlar olarak görünür; farkı, komut çıktısını ya da dosyayı bir sayfada
+  görmek için birine dokunun.
+* **İzin istekleri**, ajanın ne yapmak istediğini gösteren bir sayfa olarak
+  açılır. *İzin Ver*, *Reddet* ya da *Bu oturumda … için hep izin ver*.
+  Kimsenin yanıtlamadığı istekler **10 dakika sonra reddedilir**.
+* **Oturumlar**, Pilothouse'un Mac'te çalıştırdığı tüm sohbetleri listeler
   (30 gün saklanır). Birini açıp okuyabilir — çevrimdışı da — ya da tüm
   bağlamıyla sürdürebilirsiniz.
-* Boş mesaj kutusuna **`/`** yazınca oturumun tüm skill ve slash komutları
-  açılır; aranabilir, skill'ler ve komutlar ayrı listelenir.
-* **Alt ajanlar** çalışırken renkli şeritli kartlar ve mesaj kutusunun üstünde
+* **Alt ajanlar** çalışırken renkli bir şeritle ve mesaj kutusunun üstünde
   çipler olarak görünür; **Canlı İzle** dökümlerini açar.
-* Oturum listesinin üstündeki **Bu hafta** kartı çalıştığınız süreyi ve kullanım
+* Sohbetlerin üstündeki **Bu hafta** kartı çalıştığınız süreyi ve kullanım
   limitlerinizi gösterir; dokununca haftalık özet ve **Limitler** sekmesi açılır.
-* Mac'te menü çubuğu çalışan oturumları, bekleyen onayları ve kullanım
-  limitlerini gösterir; onayları orada da yanıtlayabilirsiniz. **Ayarlar →
-  Ajanlar** bulunan CLI'ları ve Claude'un hangilerine iş devredebileceğini
-  listeler.
+* **Dil** — uygulamalar cihazın dilini izler: English, Türkçe, Deutsch,
+  Español, Français, Italiano, Português (Brasil), 日本語, 한국어 ve 简体中文.
+  Her uygulama için başka bir dili iOS Ayarlar → Uygulamalar → Pilothouse
+  altından seçebilirsiniz.
+* Mac'te dümen menüsü çalışan sohbetleri, bekleyen onayları ve kullanım
+  limitlerini gösterir; onayları orada da yanıtlayabilirsiniz. **Ayarlar**'da
+  cihazlar, ajanlar, bildirimler, uzaktan erişim, güncellemeler ve güvenlik
+  için bölmeler vardır.
 
-## Evden uzakta: Tailscale
+## Güncellemeler
 
-Evde ya da ofiste telefon Mac'i Bonjour ile bulur (`_pilothouse._tcp`, port
-47823 ya da bir sonraki boş port). Başka yerlerde Pilothouse, cihazlarınız
-arasında ücretsiz bir özel ağ olan [Tailscale](https://tailscale.com)'i kullanır:
+Mac uygulaması günde bir kez GitHub'da yeni sürüm olup olmadığını denetler
+(Ayarlar → Güncellemeler). Yeni sürüm varsa dümen menüsü bunu gösterir;
+**Kur ve Yeniden Başlat** sürümü indirir, sağlama toplamını, Apple noter
+onayını ve geliştirici imzasını kontrol eder, uygulamayı değiştirir ve yeni
+sürümü açar. Homebrew kullanıcıları `brew upgrade --cask pilothouse` de
+çalıştırabilir. iPhone uygulaması TestFlight üzerinden güncellenir.
 
-* Mac menüsü → **Tailscale** → **Claude ile otomatik kur**: Pilothouse, Tailscale'i adım
-  adım kuran ve yapılandıran bir Claude Code oturumu açar; parolanız ya da
-  tarayıcıda giriş gerektiğinde durur — her komut, Mac'te ya da telefonda
-  onayınızı bekler. Kendiniz yapmayı mı tercih edersiniz? **Elle Kur** adımları
-  gösterir.
-* Telefonda: App Store'dan Tailscale uygulamasını kurun ve aynı hesapla giriş
-  yapın. Pilothouse ardından sırasıyla son çalışan yolu, Bonjour'u, yerel IP
-  adreslerini ve en son Tailscale adresini otomatik olarak dener.
+## Evden uzakta: Tailscale (isteğe bağlı)
+
+Pilothouse her zaman önce yerel ağınız üzerinden bağlanır; telefon Mac'i
+kendiliğinden bulur (Bonjour, `_pilothouse._tcp`, port 47823 ya da bir sonraki
+boş port). Pilothouse'u **o Wi-Fi ağının dışında** — mobil veriyle, bir kafede —
+kullanmak için kendi cihazlarınız arasında ücretsiz bir özel ağ olan
+[Tailscale](https://tailscale.com)'i ekleyin:
+
+1. **Mac:** Ayarlar → **Uzaktan Erişim** → **Tailscale'i Kur…**. Kurulumu adım
+   adım Claude'a yaptırın (her komut onayınızı bekler) ya da elle kurulum
+   adımlarını izleyin.
+2. **iPhone:** App Store'dan Tailscale uygulamasını kurun ve aynı hesapla giriş
+   yapın.
+3. **iPhone'daki Pilothouse:** Ayarlar → **Uzaktayken Tailscale kullan**'ı
+   açın.
+
+Bu ayar açıkken Pilothouse yine önce yerel ağı dener ve Tailscale'i yalnızca
+Mac'e orada ulaşılamadığında kullanır. Kapalıyken (varsayılan) Tailscale'i hiç
+kullanmaz.
+
+## Sorun giderme
+
+**Telefon evde "Çevrimdışı" diyor.** Sırasıyla kontrol edin: Pilothouse Mac'te
+çalışıyor mu (menü çubuğunda dümen simgesi); iki cihaz da aynı Wi-Fi ağında mı
+(misafir ağında değil — bu ağlar çoğu zaman cihazların birbirini görmesini
+engeller); iOS Ayarlar → Gizlilik ve Güvenlik → **Yerel Ağ** → Pilothouse açık
+mı. Sonuncusu kapalıysa telefon bunun için bir düğme gösterir.
+
+**Claude Code / Codex "giriş yapılmamış" görünüyor.** Mac'te Terminal'i açın,
+bir kez `claude` (ya da `codex login`) çalıştırıp giriş yapın, ardından Ayarlar
+→ Ajanlar'da **Tekrar Kontrol Et**'i seçin.
+
+**Eşleştirme kodunun süresi doldu.** Kodlar 5 dakika geçerlidir; yeniden
+**iPhone veya iPad Eşleştir…**'i seçin.
 
 ## Mac'i uyanık tutma
 
@@ -214,8 +279,8 @@ vermez (D-080). Uygulama Developer ID ile imzalı ve Apple tarafından noter
 onaylıdır.
 
 **Telefonu mobil veriyle kullanabilir miyim?**
-Evet, Tailscale ile (yukarıya bakın). Tailscale olmadan telefon Mac ile aynı
-ağda olmalıdır.
+Evet, Tailscale ile ([yukarıya](#evden-uzakta-tailscale-isteğe-bağlı) bakın).
+Tailscale olmadan telefon Mac ile aynı Wi-Fi ağında olmalıdır.
 
 **Tur sürerken telefonun bağlantısı koparsa ne olur?**
 Hiçbir şey kaybolmaz. Claude Mac'te çalışmaya devam eder; telefon yeniden
@@ -223,7 +288,7 @@ bağlandığında oturum kaydından eksikleri tamamlar. İzin istekleri sizi bek
 (10 dakikaya kadar).
 
 **Bildirimler?**
-Mac'te Ayarlar → Bildirimler altında (varsayılan olarak kapalı):
+Mac uygulamasının Ayarlar → Bildirimler bölümünde (varsayılan olarak kapalı):
 telefondan başlattığınız bir görev bittiğinde, Claude onay beklediğinde ya da
 bir oturum hata verdiğinde yerel macOS bildirimleri ve [ntfy](https://ntfy.sh)
 üzerinden iPhone bildirimleri. Oluşturulan konuya ücretsiz ntfy uygulamasında

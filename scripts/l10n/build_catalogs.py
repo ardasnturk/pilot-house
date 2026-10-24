@@ -15,7 +15,10 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-LANGUAGES = ["tr", "de"]
+LANGUAGES = ["tr", "de", "es", "fr", "it", "pt-BR", "ja", "ko", "zh-Hans"]
+# tr and de live in scripts/l10n/<app>.json (generated from <app>_translations.py);
+# the other languages in scripts/l10n/<app>.<language>.json ({key: value}).
+EXTRA_LANGUAGE_FILES = ["es", "fr", "it", "pt-BR", "ja", "ko", "zh-Hans"]
 STRING = r'"'
 PATTERNS = [
     r'(?<![A-Za-z])Text\(\s*' + STRING,
@@ -38,7 +41,7 @@ FORMATTING_PATTERN = r'case \.\w+:\s*' + STRING
 # Interpolated expressions that are integers (→ %lld) or doubles (→ %lf).
 INTEGER_EXPRESSIONS = {
     "remaining / 60", "remaining", "minutes / 1_440", "minutes / 60", "skills.count", "plainCommands.count", "Int((window?.usedPercent ?? 0).rounded())", "number", "devices", "sessions", "settings.retentionDays",
-    "lines.count", "attachments", "item.number ?? index + 1", "DiffBuilder.stats(of: diff).added", "status",
+    "lines.count", "attachments", "payloads.count", "item.number ?? index + 1", "DiffBuilder.stats(of: diff).added", "status",
     "DiffBuilder.stats(of: diff).removed", "count",
 }
 DOUBLE_EXPRESSIONS = set()
@@ -175,6 +178,12 @@ def extract(app_dir):
 def build(app, app_dir, check):
     translations_path = os.path.join(ROOT, "scripts/l10n", f"{app}.json")
     translations = json.load(open(translations_path, encoding="utf-8")) if os.path.exists(translations_path) else {}
+    for language in EXTRA_LANGUAGE_FILES:
+        path = os.path.join(ROOT, "scripts/l10n", f"{app}.{language}.json")
+        if not os.path.exists(path):
+            continue
+        for key, value in json.load(open(path, encoding="utf-8")).items():
+            translations.setdefault(key, {})[language] = value
     keys = sorted(extract(app_dir) | set(EXTRA_KEYS[app]))
     missing = []
     strings = {}

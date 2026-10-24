@@ -97,6 +97,22 @@
         }
       }
     },
+    "A revoked device is disconnected at once and has to pair again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein widerrufenes Gerät wird sofort getrennt und muss erneut gekoppelt werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal edilen bir cihazın bağlantısı hemen kesilir ve yeniden eşleştirilmesi gerekir."
+          }
+        }
+      }
+    },
     "API key": {
       "localizations": {
         "de": {
@@ -161,18 +177,18 @@
         }
       }
     },
-    "Active sessions": {
+    "Addresses": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aktive Sitzungen"
+            "value": "Adressen"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Etkin oturumlar"
+            "value": "Adresler"
           }
         }
       }
@@ -353,6 +369,22 @@
         }
       }
     },
+    "At home or in the office you need nothing else: your iPhone talks to this Mac directly over the Wi-Fi.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu Hause oder im Büro brauchst du nichts weiter: Dein iPhone spricht direkt über das WLAN mit diesem Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evde veya ofiste başka bir şeye gerek yok: iPhone'unuz bu Mac'le doğrudan Wi-Fi üzerinden konuşur."
+          }
+        }
+      }
+    },
     "Authentication": {
       "localizations": {
         "de": {
@@ -401,6 +433,22 @@
         }
       }
     },
+    "Chats": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chats"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sohbetler"
+          }
+        }
+      }
+    },
     "Check Again": {
       "localizations": {
         "de": {
@@ -413,6 +461,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tekrar Kontrol Et"
+          }
+        }
+      }
+    },
+    "Check Now": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt prüfen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi Kontrol Et"
           }
         }
       }
@@ -433,6 +497,22 @@
         }
       }
     },
+    "Check for updates automatically": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatisch nach Updates suchen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemeleri otomatik kontrol et"
+          }
+        }
+      }
+    },
     "Check the connection": {
       "localizations": {
         "de": {
@@ -449,6 +529,38 @@
         }
       }
     },
+    "Checking for updates failed. Try again later.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Suche nach Updates ist fehlgeschlagen. Versuche es später erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemeler kontrol edilemedi. Daha sonra tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Checking…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird geprüft …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontrol ediliyor…"
+          }
+        }
+      }
+    },
     "Claude Code": {
       "localizations": {
         "de": {
@@ -461,22 +573,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Code"
-          }
-        }
-      }
-    },
-    "Claude Code CLI": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code CLI"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude Code CLI"
           }
         }
       }
@@ -557,6 +653,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Code'a giriş yapılmamış"
+          }
+        }
+      }
+    },
+    "Claude Code · new chats": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code · neue Chats"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code · yeni sohbetler"
+          }
+        }
+      }
+    },
+    "Claude Code, Codex and Gemini on this Mac, defaults and sub-agents.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code, Codex und Gemini auf diesem Mac, Standards und Sub-Agenten."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'teki Claude Code, Codex ve Gemini; varsayılanlar ve alt ajanlar."
           }
         }
       }
@@ -689,6 +817,22 @@
         }
       }
     },
+    "Connect your iPhone": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbinde dein iPhone"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'unuzu bağlayın"
+          }
+        }
+      }
+    },
     "Connected": {
       "localizations": {
         "de": {
@@ -733,22 +877,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bağlı."
-          }
-        }
-      }
-    },
-    "Connection addresses": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbindungsadressen"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bağlantı adresleri"
           }
         }
       }
@@ -865,6 +993,22 @@
         }
       }
     },
+    "Couldn't reach GitHub to check for updates. Check your internet connection and try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub war für die Update-Suche nicht erreichbar. Prüfe deine Internetverbindung und versuche es erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemeleri kontrol etmek için GitHub'a ulaşılamadı. İnternet bağlantınızı kontrol edip tekrar deneyin."
+          }
+        }
+      }
+    },
     "Create a new random topic. Phones subscribed to the old one stop receiving notifications.": {
       "localizations": {
         "de": {
@@ -973,6 +1117,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "macOS için Tailscale'i tailscale.com'dan indirin veya Homebrew ile kurun."
+          }
+        }
+      }
+    },
+    "Downloading…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird geladen …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndiriliyor…"
+          }
+        }
+      }
+    },
+    "Encryption, identity and risky modes.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verschlüsselung, Identität und riskante Modi."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şifreleme, kimlik ve riskli modlar."
           }
         }
       }
@@ -1137,6 +1313,54 @@
         }
       }
     },
+    "Get the iPhone app": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone-App laden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone uygulamasını edinin"
+          }
+        }
+      }
+    },
+    "GitHub is limiting update checks right now. Try again in an hour.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub begrenzt Update-Prüfungen gerade. Versuche es in einer Stunde erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub şu anda güncelleme kontrollerini sınırlıyor. Bir saat sonra tekrar deneyin."
+          }
+        }
+      }
+    },
+    "GitHub returned an error while downloading the update. Try again later.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub hat beim Laden des Updates einen Fehler gemeldet. Versuche es später erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncelleme indirilirken GitHub bir hata döndürdü. Daha sonra tekrar deneyin."
+          }
+        }
+      }
+    },
     "Hide Manual Steps": {
       "localizations": {
         "de": {
@@ -1149,6 +1373,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Manuel Adımları Gizle"
+          }
+        }
+      }
+    },
+    "How do I get the iPhone app?": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie bekomme ich die iPhone-App?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone uygulamasını nasıl edinirim?"
+          }
+        }
+      }
+    },
+    "How it works": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So funktioniert's"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nasıl çalışır"
           }
         }
       }
@@ -1249,6 +1505,22 @@
         }
       }
     },
+    "Install Pilothouse on your iPhone or iPad, then scan a pairing code from this Mac. Both need to be on the same Wi-Fi.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installiere Pilothouse auf deinem iPhone oder iPad und scanne dann einen Kopplungscode von diesem Mac. Beide müssen im selben WLAN sein."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'u iPhone veya iPad'inize kurun, ardından bu Mac'ten bir eşleştirme kodu tarayın. İkisinin de aynı Wi-Fi'de olması gerekir."
+          }
+        }
+      }
+    },
     "Install Tailscale": {
       "localizations": {
         "de": {
@@ -1297,6 +1569,38 @@
         }
       }
     },
+    "Install and Relaunch": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installieren und neu starten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kur ve Yeniden Başlat"
+          }
+        }
+      }
+    },
+    "Install new versions of Pilothouse from GitHub.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Versionen von Pilothouse von GitHub installieren."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un yeni sürümlerini GitHub'dan kurun."
+          }
+        }
+      }
+    },
     "Install the free ntfy app, tap +, and enter the topic. For a self-hosted server, also turn on “Use another server” and enter its address.": {
       "localizations": {
         "de": {
@@ -1309,6 +1613,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ücretsiz ntfy uygulamasını kurun, + simgesine dokunun ve konuyu girin. Kendi sunucunuzu kullanıyorsanız “Use another server” seçeneğini de açıp adresini girin."
+          }
+        }
+      }
+    },
+    "Installed version": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installierte Version"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurulu sürüm"
           }
         }
       }
@@ -1329,34 +1649,34 @@
         }
       }
     },
-    "Integrations": {
+    "Installing the update failed. Try again, or download it from GitHub.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Integrationen"
+            "value": "Die Installation des Updates ist fehlgeschlagen. Versuche es erneut oder lade es von GitHub herunter."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Entegrasyonlar"
+            "value": "Güncelleme kurulamadı. Tekrar deneyin veya GitHub'dan indirin."
           }
         }
       }
     },
-    "Keep awake": {
+    "Installing…": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wach halten"
+            "value": "Wird installiert …"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uyanık tut"
+            "value": "Kuruluyor…"
           }
         }
       }
@@ -1389,6 +1709,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Son görülme: %@ önce"
+          }
+        }
+      }
+    },
+    "Lid closed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deckel zu"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapak kapalı"
           }
         }
       }
@@ -1441,22 +1777,6 @@
         }
       }
     },
-    "Location": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ort"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konum"
-          }
-        }
-      }
-    },
     "Mac ID": {
       "localizations": {
         "de": {
@@ -1469,6 +1789,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac kimliği"
+          }
+        }
+      }
+    },
+    "Mac stays awake": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac bleibt wach"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac uyanık kalıyor"
           }
         }
       }
@@ -1617,22 +1953,6 @@
         }
       }
     },
-    "New sessions": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neue Sitzungen"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yeni oturumlar"
-          }
-        }
-      }
-    },
     "No Pilothouse on your iPhone yet? Get the app": {
       "localizations": {
         "de": {
@@ -1677,6 +1997,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ağ bağlantısı yok."
+          }
+        }
+      }
+    },
+    "Not checked yet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht geprüft"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz kontrol edilmedi"
           }
         }
       }
@@ -1825,6 +2161,22 @@
         }
       }
     },
+    "On this Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf diesem Mac"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'te"
+          }
+        }
+      }
+    },
     "On-device summaries need macOS 26 or later on your Mac.": {
       "localizations": {
         "de": {
@@ -1937,6 +2289,22 @@
         }
       }
     },
+    "Optional: reach this Mac when you are away from its Wi-Fi.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional: Erreiche diesen Mac, wenn du nicht in seinem WLAN bist."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsteğe bağlı: Wi-Fi ağından uzaktayken bu Mac'e ulaşın."
+          }
+        }
+      }
+    },
     "Or scan the code with the Camera to open the topic in Safari.": {
       "localizations": {
         "de": {
@@ -1949,6 +2317,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ya da konuyu Safari'de açmak için kodu Kamera ile tarayın."
+          }
+        }
+      }
+    },
+    "Pair Another Device…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiteres Gerät koppeln …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka Cihaz Eşleştir…"
           }
         }
       }
@@ -1985,6 +2369,22 @@
         }
       }
     },
+    "Pair iPhone or iPad…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone oder iPad koppeln …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone veya iPad Eşleştir…"
+          }
+        }
+      }
+    },
     "Paired devices": {
       "localizations": {
         "de": {
@@ -1997,6 +2397,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eşleşmiş cihazlar"
+          }
+        }
+      }
+    },
+    "Paired devices and how they reach this Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gekoppelte Geräte und wie sie diesen Mac erreichen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşleşmiş cihazlar ve bu Mac'e nasıl ulaştıkları."
           }
         }
       }
@@ -2081,6 +2497,22 @@
         }
       }
     },
+    "Pilothouse can't replace itself in its current location. The download page has been opened in your browser.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse kann sich an seinem aktuellen Ort nicht selbst ersetzen. Die Download-Seite wurde in deinem Browser geöffnet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse bulunduğu konumda kendini değiştiremiyor. İndirme sayfası tarayıcınızda açıldı."
+          }
+        }
+      }
+    },
     "Pilothouse could not start: %@": {
       "localizations": {
         "de": {
@@ -2141,6 +2573,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse çalışmıyor."
+          }
+        }
+      }
+    },
+    "Pilothouse is up to date": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse ist auf dem neuesten Stand"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse güncel"
+          }
+        }
+      }
+    },
+    "Pilothouse looks for a new release on GitHub once a day. Updates are only installed when you click Install; they are checked for Apple's notarization and the same developer signature first.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse sucht einmal am Tag auf GitHub nach einer neuen Version. Updates werden nur installiert, wenn du auf „Installieren“ klickst; vorher werden Apples Notarisierung und dieselbe Entwicklersignatur geprüft."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse günde bir kez GitHub'da yeni bir sürüm arar. Güncellemeler yalnızca Kur'a tıkladığınızda kurulur; önce Apple'ın notarizasyonu ve aynı geliştirici imzası kontrol edilir."
           }
         }
       }
@@ -2225,18 +2689,18 @@
         }
       }
     },
-    "Preventing system sleep (the display may still turn off)": {
+    "Problem": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ruhezustand wird verhindert (der Bildschirm kann sich trotzdem ausschalten)"
+            "value": "Problem"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sistem uykusu engelleniyor (ekran yine kapanabilir)"
+            "value": "Sorun"
           }
         }
       }
@@ -2301,6 +2765,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Güvenlik modelini okuyun"
+          }
+        }
+      }
+    },
+    "Ready": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hazır"
+          }
+        }
+      }
+    },
+    "Remote Access": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fernzugriff"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uzaktan Erişim"
           }
         }
       }
@@ -2413,22 +2909,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "`claude` komutunu çalıştırın ve Claude hesabınızla giriş yapmak (veya API anahtarı ayarlamak) için yönergeleri izleyin. Pilothouse kimlik bilgilerinizi asla görmez."
-          }
-        }
-      }
-    },
-    "Running · %lld paired devices · %lld active sessions": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Läuft · %1$lld gekoppelte Geräte · %2$lld aktive Sitzungen"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çalışıyor · %1$lld eşleşmiş cihaz · %2$lld etkin oturum"
           }
         }
       }
@@ -2657,6 +3137,22 @@
         }
       }
     },
+    "Set Up Tailscale…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale einrichten …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale'i Kur…"
+          }
+        }
+      }
+    },
     "Set Up with Claude": {
       "localizations": {
         "de": {
@@ -2669,22 +3165,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude ile otomatik kur"
-          }
-        }
-      }
-    },
-    "Set up remote access with Tailscale": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fernzugriff mit Tailscale einrichten"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tailscale ile uzaktan erişimi kur"
           }
         }
       }
@@ -2785,18 +3265,34 @@
         }
       }
     },
-    "Start a session from your iPhone or iPad.": {
+    "Start a chat from your iPhone or iPad. It runs here on your Mac.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Starte eine Sitzung von deinem iPhone oder iPad."
+            "value": "Starte einen Chat auf deinem iPhone oder iPad. Er läuft hier auf deinem Mac."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iPhone veya iPad'inizden bir oturum başlatın."
+            "value": "iPhone veya iPad'inizden bir sohbet başlatın. Burada, Mac'inizde çalışır."
+          }
+        }
+      }
+    },
+    "Start at login, keep your Mac awake, session history.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start bei der Anmeldung, Mac wach halten, Sitzungsverlauf."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Girişte başlatma, Mac'i uyanık tutma, oturum geçmişi."
           }
         }
       }
@@ -3137,6 +3633,38 @@
         }
       }
     },
+    "The display may still turn off.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Bildschirm kann sich trotzdem ausschalten."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran yine de kapanabilir."
+          }
+        }
+      }
+    },
+    "The downloaded update is damaged (checksum mismatch). Nothing was installed.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das geladene Update ist beschädigt (Prüfsumme stimmt nicht). Es wurde nichts installiert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndirilen güncelleme bozuk (sağlama toplamı uyuşmuyor). Hiçbir şey kurulmadı."
+          }
+        }
+      }
+    },
     "The helper could not change the sleep setting.": {
       "localizations": {
         "de": {
@@ -3185,6 +3713,38 @@
         }
       }
     },
+    "The installer couldn't be started. Nothing was changed.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Installationsprogramm konnte nicht gestartet werden. Es wurde nichts geändert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yükleyici başlatılamadı. Hiçbir şey değiştirilmedi."
+          }
+        }
+      }
+    },
+    "The latest release doesn't include a Mac download yet.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die neueste Version enthält noch keinen Mac-Download."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En son sürümde henüz Mac için bir indirme yok."
+          }
+        }
+      }
+    },
     "The same code appears on your phone after pairing.": {
       "localizations": {
         "de": {
@@ -3197,6 +3757,118 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eşleştirmeden sonra aynı kod telefonunuzda görünür."
+          }
+        }
+      }
+    },
+    "The update couldn't be copied from its disk image.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Update konnte nicht aus seinem Disk-Image kopiert werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncelleme disk görüntüsünden kopyalanamadı."
+          }
+        }
+      }
+    },
+    "The update couldn't be downloaded. Check your internet connection and try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Update konnte nicht geladen werden. Prüfe deine Internetverbindung und versuche es erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncelleme indirilemedi. İnternet bağlantınızı kontrol edip tekrar deneyin."
+          }
+        }
+      }
+    },
+    "The update isn't signed by the same developer as this copy of Pilothouse. Nothing was installed.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Update ist nicht vom selben Entwickler signiert wie diese Kopie von Pilothouse. Es wurde nichts installiert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncelleme, Pilothouse'un bu kopyasıyla aynı geliştirici tarafından imzalanmamış. Hiçbir şey kurulmadı."
+          }
+        }
+      }
+    },
+    "The update's checksum file couldn't be read.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Prüfsummendatei des Updates konnte nicht gelesen werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemenin sağlama toplamı dosyası okunamadı."
+          }
+        }
+      }
+    },
+    "The update's code signature is invalid. Nothing was installed.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Codesignatur des Updates ist ungültig. Es wurde nichts installiert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemenin kod imzası geçersiz. Hiçbir şey kurulmadı."
+          }
+        }
+      }
+    },
+    "The update's disk image couldn't be opened.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Disk-Image des Updates konnte nicht geöffnet werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemenin disk görüntüsü açılamadı."
+          }
+        }
+      }
+    },
+    "The update's disk image doesn't contain Pilothouse.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Disk-Image des Updates enthält Pilothouse nicht."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemenin disk görüntüsünde Pilothouse yok."
           }
         }
       }
@@ -3217,6 +3889,22 @@
         }
       }
     },
+    "This copy of Pilothouse isn't signed with a Developer ID, so it can't update itself.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Kopie von Pilothouse ist nicht mit einer Developer ID signiert und kann sich daher nicht selbst aktualisieren."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un bu kopyası bir Developer ID ile imzalanmamış, bu yüzden kendini güncelleyemez."
+          }
+        }
+      }
+    },
     "Tip: set up Tailscale to reach this Mac away from home.": {
       "localizations": {
         "de": {
@@ -3229,6 +3917,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "İpucu: Bu Mac'e evden uzakta erişmek için Tailscale'i kurun."
+          }
+        }
+      }
+    },
+    "To use Pilothouse away from that Wi-Fi, install Tailscale on this Mac and on your iPhone, sign in to the same account on both, then turn on “Use Tailscale when away” in the iPhone app's settings. Pilothouse still tries the local network first.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um Pilothouse außerhalb dieses WLANs zu nutzen, installiere Tailscale auf diesem Mac und auf deinem iPhone, melde dich auf beiden mit demselben Konto an und aktiviere dann „Unterwegs Tailscale verwenden“ in den Einstellungen der iPhone-App. Pilothouse versucht trotzdem zuerst das lokale Netzwerk."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'u o Wi-Fi'den uzakta kullanmak için bu Mac'e ve iPhone'unuza Tailscale'i kurun, ikisinde de aynı hesapla giriş yapın, ardından iPhone uygulamasının ayarlarında “Uzaktayken Tailscale kullan” seçeneğini açın. Pilothouse yine önce yerel ağı dener."
           }
         }
       }
@@ -3329,6 +4033,22 @@
         }
       }
     },
+    "Updates": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güncellemeler"
+          }
+        }
+      }
+    },
     "Usage limits": {
       "localizations": {
         "de": {
@@ -3409,18 +4129,18 @@
         }
       }
     },
-    "Version": {
+    "Version %@ is available": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Version"
+            "value": "Version %@ ist verfügbar"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sürüm"
+            "value": "%@ sürümü mevcut"
           }
         }
       }
@@ -3473,6 +4193,22 @@
         }
       }
     },
+    "What's new": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neuigkeiten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yenilikler"
+          }
+        }
+      }
+    },
     "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
       "localizations": {
         "de": {
@@ -3485,6 +4221,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı oturumlar başlatabilir. Yalnızca riski anlıyorsanız etkinleştirin."
+          }
+        }
+      }
+    },
+    "When and where Pilothouse tells you something happened.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wann und wo dir Pilothouse mitteilt, dass etwas passiert ist."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un bir şey olduğunda size ne zaman ve nerede haber vereceği."
           }
         }
       }
@@ -3585,6 +4337,38 @@
         }
       }
     },
+    "Your iPhone can choose another model and effort for each chat.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein iPhone kann für jeden Chat ein anderes Modell und einen anderen Aufwand wählen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'unuz her sohbet için başka bir model ve efor seçebilir."
+          }
+        }
+      }
+    },
+    "Your iPhone finds this Mac on the same Wi-Fi by itself; you never need to type these. Tailscale addresses are only used if you turn on Tailscale in the iPhone app.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein iPhone findet diesen Mac im selben WLAN von selbst; du musst diese Adressen nie eingeben. Tailscale-Adressen werden nur verwendet, wenn du Tailscale in der iPhone-App aktivierst."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'unuz bu Mac'i aynı Wi-Fi'de kendiliğinden bulur; bunları hiç yazmanız gerekmez. Tailscale adresleri yalnızca iPhone uygulamasında Tailscale'i açarsanız kullanılır."
+          }
+        }
+      }
+    },
     "Your phone shows what you worked on each week. The numbers come from the session logs on this Mac; the written part is generated on this Mac by Apple Intelligence and never leaves it.": {
       "localizations": {
         "de": {
@@ -3601,6 +4385,38 @@
         }
       }
     },
+    "connected": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "verbunden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bağlı"
+          }
+        }
+      }
+    },
+    "iPhone & iPad": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone & iPad"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone ve iPad"
+          }
+        }
+      }
+    },
     "iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.": {
       "localizations": {
         "de": {
@@ -3613,6 +4429,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "iPhone bildirimleri bir ntfy sunucusu üzerinden gider; çünkü iOS uygulamaları yalnızca Apple'ın push servisiyle uyandırır ve bu bir Pilothouse sunucusu gerektirirdi. Bildirime dokunmak oturumu Pilothouse'da açar."
+          }
+        }
+      }
+    },
+    "macOS Gatekeeper rejected the update. Nothing was installed.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS Gatekeeper hat das Update abgelehnt. Es wurde nichts installiert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS Gatekeeper güncellemeyi reddetti. Hiçbir şey kurulmadı."
           }
         }
       }
@@ -3693,6 +4525,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "ntfy: iletildi (HTTP %lld)"
+          }
+        }
+      }
+    },
+    "open chats": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "offene Chats"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "açık sohbet"
+          }
+        }
+      }
+    },
+    "working": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "aktiv"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "çalışıyor"
           }
         }
       }

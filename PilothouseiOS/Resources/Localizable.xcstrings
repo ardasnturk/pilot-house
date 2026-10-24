@@ -305,22 +305,6 @@
         }
       }
     },
-    "An image was too large to send.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ein Bild war zu groß zum Senden."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir görsel gönderilemeyecek kadar büyük."
-          }
-        }
-      }
-    },
     "Answer to Claude": {
       "localizations": {
         "de": {
@@ -433,98 +417,34 @@
         }
       }
     },
-    "Attach images": {
+    "Attach photos or videos": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bilder anhängen"
+            "value": "Fotos oder Videos anhängen"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Görsel ekle"
+            "value": "Fotoğraf veya video ekle"
           }
         }
       }
     },
-    "Automatic": {
+    "Browse your Mac and start a chat where your project lives.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Automatisch"
+            "value": "Durchsuche deinen Mac und starte einen Chat dort, wo dein Projekt liegt."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Otomatik"
-          }
-        }
-      }
-    },
-    "Automatic tries the last working address, then your local network, then Tailscale.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Automatisch versucht zuerst die zuletzt funktionierende Adresse, dann das lokale Netzwerk, dann Tailscale."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Otomatik mod önce son çalışan adresi, sonra yerel ağı, ardından Tailscale'i dener."
-          }
-        }
-      }
-    },
-    "Away from home? Set up Tailscale": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unterwegs? Tailscale einrichten"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Evden uzakta mısınız? Tailscale'i kurun"
-          }
-        }
-      }
-    },
-    "Before you start": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bevor du startest"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Başlamadan önce"
-          }
-        }
-      }
-    },
-    "Browse your Mac and start a Claude Code session where your project lives.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Durchsuche deinen Mac und starte eine Claude-Code-Sitzung dort, wo dein Projekt liegt."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mac'inize göz atın ve projenizin bulunduğu yerde bir Claude Code oturumu başlatın."
+            "value": "Mac'inizde gezinin ve projenizin bulunduğu yerde bir sohbet başlatın."
           }
         }
       }
@@ -609,6 +529,22 @@
         }
       }
     },
+    "Chats": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chats"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sohbetler"
+          }
+        }
+      }
+    },
     "Claude Code": {
       "localizations": {
         "de": {
@@ -669,6 +605,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu Mac'te Claude Code'a giriş yapılmamış. Terminal'i açın, `claude` komutunu çalıştırıp giriş yapın ve tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Claude Code, Codex or Gemini CLI, installed and signed in once in Terminal. The Mac app tells you if something is missing.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code, Codex oder Gemini CLI, installiert und einmal im Terminal angemeldet. Die Mac-App sagt dir, wenn etwas fehlt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Code, Codex veya Gemini CLI; kurulu ve Terminal'de bir kez oturum açılmış olmalı. Bir şey eksikse Mac uygulaması size söyler."
           }
         }
       }
@@ -881,22 +833,6 @@
         }
       }
     },
-    "Collapses the details": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Blendet die Details aus"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ayrıntıları gizler"
-          }
-        }
-      }
-    },
     "Commands": {
       "localizations": {
         "de": {
@@ -941,22 +877,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tamamlandı"
-          }
-        }
-      }
-    },
-    "Connect via": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbinden über"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bağlantı yolu"
           }
         }
       }
@@ -1457,18 +1377,18 @@
         }
       }
     },
-    "Drive Claude Code on your Mac from your iPhone or iPad.": {
+    "Download it from the website and open it. A helm icon appears in the menu bar at the top of the screen.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Steuere Claude Code auf deinem Mac von deinem iPhone oder iPad aus."
+            "value": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein Steuerrad-Symbol."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac'inizdeki Claude Code'u iPhone veya iPad'inizden yönetin."
+            "value": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir dümen simgesi belirir."
           }
         }
       }
@@ -1485,6 +1405,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Daha önce"
+          }
+        }
+      }
+    },
+    "Earlier models": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ältere Modelle"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önceki modeller"
           }
         }
       }
@@ -1809,6 +1745,22 @@
         }
       }
     },
+    "Get started in three steps": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In drei Schritten loslegen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üç adımda başlayın"
+          }
+        }
+      }
+    },
     "Git repository": {
       "localizations": {
         "de": {
@@ -1841,6 +1793,22 @@
         }
       }
     },
+    "Have an agent ready on the Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einen Agenten auf dem Mac bereithalten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'te bir ajan hazır olsun"
+          }
+        }
+      }
+    },
     "High": {
       "localizations": {
         "de": {
@@ -1869,6 +1837,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nasıl"
+          }
+        }
+      }
+    },
+    "How to Set Up Tailscale": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So richtest du Tailscale ein"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale Nasıl Kurulur"
           }
         }
       }
@@ -1921,6 +1905,22 @@
         }
       }
     },
+    "Install Pilothouse on your Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse auf deinem Mac installieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'u Mac'inize kurun"
+          }
+        }
+      }
+    },
     "Install Tailscale from the App Store and sign in with the same account.": {
       "localizations": {
         "de": {
@@ -1933,22 +1933,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın."
-          }
-        }
-      }
-    },
-    "Install the free Pilothouse app on your Mac and make sure Claude Code is installed and signed in there. Then choose “Pair New Device” in its menu bar icon.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Installiere die kostenlose Pilothouse-App auf deinem Mac und stelle sicher, dass Claude Code dort installiert und angemeldet ist. Wähle dann im Menüleistensymbol „Neues Gerät koppeln“."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mac'inize ücretsiz Pilothouse uygulamasını kurun; Claude Code'un orada kurulu ve oturum açılmış olduğundan emin olun. Ardından menü çubuğu simgesinden “Yeni Cihaz Eşleştir”i seçin."
           }
         }
       }
@@ -2029,6 +2013,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anahtar Zinciri kullanılamıyor"
+          }
+        }
+      }
+    },
+    "Language": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprache"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dil"
           }
         }
       }
@@ -2145,22 +2145,6 @@
         }
       }
     },
-    "Local network only": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nur lokales Netzwerk"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yalnızca yerel ağ"
-          }
-        }
-      }
-    },
     "Low": {
       "localizations": {
         "de": {
@@ -2205,6 +2189,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac'ler"
+          }
+        }
+      }
+    },
+    "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun."
+          }
+        }
+      }
+    },
+    "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
           }
         }
       }
@@ -2269,6 +2285,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude'a mesaj yaz…"
+          }
+        }
+      }
+    },
+    "Minimal": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minimal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minimal"
           }
         }
       }
@@ -2577,6 +2609,22 @@
         }
       }
     },
+    "None": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keiner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yok"
+          }
+        }
+      }
+    },
     "Not installed": {
       "localizations": {
         "de": {
@@ -2685,6 +2733,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çevrimdışı — kayıtlı döküm gösteriliyor. Claude Mac'inizde çalışmaya devam ediyor."
+          }
+        }
+      }
+    },
+    "On the Mac, click the helm icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klicke auf dem Mac auf das Steuerrad-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'te dümen simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
           }
         }
       }
@@ -2849,6 +2913,22 @@
         }
       }
     },
+    "Pair on the same Wi-Fi": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im selben WLAN koppeln"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aynı Wi-Fi'de eşleştirin"
+          }
+        }
+      }
+    },
     "Pair with Your Mac": {
       "localizations": {
         "de": {
@@ -2977,6 +3057,38 @@
         }
       }
     },
+    "Photos and Videos": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos und Videos"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraflar ve Videolar"
+          }
+        }
+      }
+    },
+    "Pick a folder on your Mac and tell Claude, Codex or Gemini what to do. It works on your Mac; you follow and approve every step here.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle einen Ordner auf deinem Mac und sag Claude, Codex oder Gemini, was zu tun ist. Die Arbeit läuft auf deinem Mac; du verfolgst und bestätigst hier jeden Schritt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'inizde bir klasör seçin ve Claude, Codex veya Gemini'ye ne yapacağını söyleyin. İş Mac'inizde yapılır; her adımı buradan izler ve onaylarsınız."
+          }
+        }
+      }
+    },
     "Pick a session from the list or start a new chat.": {
       "localizations": {
         "de": {
@@ -3025,6 +3137,22 @@
         }
       }
     },
+    "Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse verbindet sich immer zuerst über dein WLAN. Aktiviere das nur, wenn du auch Tailscale nutzt, um deinen Mac außerhalb dieses WLANs zu erreichen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse her zaman önce Wi-Fi'niz üzerinden bağlanır. Bunu yalnızca Tailscale da kullanıyorsanız, o Wi-Fi'den uzaktayken Mac'inize ulaşmak için açın."
+          }
+        }
+      }
+    },
     "Pilothouse could not access the Keychain: %@": {
       "localizations": {
         "de": {
@@ -3037,6 +3165,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
+          }
+        }
+      }
+    },
+    "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse folgt der Sprache deines iPhone. Um nur für Pilothouse eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Pilothouse → Sprache."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse, iPhone'unuzun dilini kullanır. Yalnızca Pilothouse için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Pilothouse → Dil bölümünden seçin."
           }
         }
       }
@@ -3069,6 +3213,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse, Mac'inizin Tailscale adresini otomatik öğrenir ve yerel ağ kullanılamadığında bu adresi kullanır."
+          }
+        }
+      }
+    },
+    "Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse darf das lokale Netzwerk nicht verwenden. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un yerel ağı kullanma izni yok. Ayarlar'da Pilothouse için Yerel Ağ'ı açın."
           }
         }
       }
@@ -3281,6 +3441,22 @@
         }
       }
     },
+    "Remove attachment": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anhang entfernen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eki kaldır"
+          }
+        }
+      }
+    },
     "Remove from Favorites": {
       "localizations": {
         "de": {
@@ -3293,22 +3469,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favorilerden Kaldır"
-          }
-        }
-      }
-    },
-    "Remove image": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bild entfernen"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Görseli kaldır"
           }
         }
       }
@@ -3389,6 +3549,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çalışıyor"
+          }
+        }
+      }
+    },
+    "Scan the Pairing Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopplungscode scannen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşleştirme Kodunu Tara"
           }
         }
       }
@@ -3549,22 +3725,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu telefondan veya Mac'ten çalıştırdığınız oturumlar burada görünür."
-          }
-        }
-      }
-    },
-    "Set Up Remote Access (Tailscale)": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fernzugriff einrichten (Tailscale)"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uzaktan Erişimi Kur (Tailscale)"
           }
         }
       }
@@ -3745,6 +3905,22 @@
         }
       }
     },
+    "Some photos or videos could not be loaded.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einige Fotos oder Videos konnten nicht geladen werden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bazı fotoğraflar veya videolar yüklenemedi."
+          }
+        }
+      }
+    },
     "Something went wrong": {
       "localizations": {
         "de": {
@@ -3805,6 +3981,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ içinde başlat"
+          }
+        }
+      }
+    },
+    "Start your first chat": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starte deinen ersten Chat"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İlk sohbetinizi başlatın"
           }
         }
       }
@@ -3937,34 +4129,18 @@
         }
       }
     },
-    "Tailscale only": {
+    "Take Photo": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur Tailscale"
+            "value": "Foto aufnehmen"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yalnızca Tailscale"
-          }
-        }
-      }
-    },
-    "Tap the compose button to pick a folder on your Mac and start Claude Code there.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tippe auf die Schreiben-Taste, um einen Ordner auf deinem Mac zu wählen und dort Claude Code zu starten."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mac'inizde bir klasör seçmek ve orada Claude Code'u başlatmak için oluştur düğmesine dokunun."
+            "value": "Fotoğraf Çek"
           }
         }
       }
@@ -3997,6 +4173,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Görevler"
+          }
+        }
+      }
+    },
+    "That's the most images one message can carry.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr Bilder passen nicht in eine Nachricht."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir mesaj en fazla bu kadar görsel taşıyabilir."
           }
         }
       }
@@ -4061,6 +4253,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Döküm Mac'inizden ve bu cihazdan silinir. Claude'un değiştirdiği dosyalar etkilenmez."
+          }
+        }
+      }
+    },
+    "Thinking": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Denkprozess"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşünme süreci"
           }
         }
       }
@@ -4289,18 +4497,66 @@
         }
       }
     },
-    "Try the Demo": {
+    "Try the Demo First": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Demo ausprobieren"
+            "value": "Erst die Demo ausprobieren"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Demoyu Dene"
+            "value": "Önce Demoyu Deneyin"
+          }
+        }
+      }
+    },
+    "Ultra": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultra"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultra"
+          }
+        }
+      }
+    },
+    "Use Tailscale": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale verwenden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale Kullan"
+          }
+        }
+      }
+    },
+    "Use Tailscale when away": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unterwegs Tailscale verwenden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uzaktayken Tailscale kullan"
           }
         }
       }
@@ -4365,22 +4621,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Onayınızı bekliyor"
-          }
-        }
-      }
-    },
-    "Waiting for your approval…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wartet auf deine Freigabe …"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Onayınız bekleniyor…"
           }
         }
       }
@@ -4481,22 +4721,6 @@
         }
       }
     },
-    "Working…": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arbeitet …"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çalışıyor…"
-          }
-        }
-      }
-    },
     "Write": {
       "localizations": {
         "de": {
@@ -4577,6 +4801,22 @@
         }
       }
     },
+    "Your coding agents run on your Mac. Pilothouse lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Coding-Agenten laufen auf deinem Mac. Mit Pilothouse sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kodlama ajanlarınız Mac'inizde çalışır. Pilothouse, iPhone veya iPad'inizden onlarla konuşmanızı, her adımı izlemenizi ve değişiklikleri onaylamanızı sağlar."
+          }
+        }
+      }
+    },
     "Your traffic stays end-to-end encrypted by Pilothouse in addition to Tailscale's own encryption.": {
       "localizations": {
         "de": {
@@ -4589,6 +4829,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Trafiğiniz, Tailscale'in kendi şifrelemesine ek olarak Pilothouse tarafından uçtan uca şifreli kalır."
+          }
+        }
+      }
+    },
+    "[Video, %@: the %lld images attached are frames from it, evenly spaced from start to end.]": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "[Video, %@: Die %lld angehängten Bilder sind Einzelbilder daraus, gleichmäßig vom Anfang bis zum Ende verteilt.]"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "[Video, %@: ekteki %lld görsel, bu videodan baştan sona eşit aralıklarla alınmış karelerdir.]"
           }
         }
       }

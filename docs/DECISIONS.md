@@ -772,3 +772,92 @@ now merges that report with what is on disk: skills
 `plugins/installed_plugins.json`, entries namespaced `plugin:name`), and the
 built-in commands. The composer also gets a visible `/` button for the list.
 
+### D-102 — Models and effort levels come from the CLIs
+**Status:** accepted
+
+Hard-coded model lists ("opus", "sonnet", "haiku") went stale and showed raw
+IDs such as `claude-sonnet-5-5`. The CLIs know better and say so without a
+model call: Claude Code answers the stream-json `initialize` control request
+with `models` (alias, resolved model, display name, description,
+`supportedEffortLevels`, which one is the default), and `codex app-server`
+answers `model/list` (display name, `supportedReasoningEfforts`,
+`defaultReasoningEffort`, `isDefault`, hidden models). The Mac asks both when
+it refreshes the agents (short-lived processes, like the Codex limit reader)
+and sends them as `AgentStatus.modelOptions` (capability `modelCatalog`).
+Claude's default effort is `effortLevel` from `~/.claude/settings.json`.
+
+The phone shows display names everywhere (also for the model a session
+reports), lists dated models under "Earlier models", and offers only the effort
+levels of the chosen model. The Mac accepts any lower-case level word for
+agents with an effort setting; the CLI rejects what its model does not take.
+
+### D-103 — Local network first, Tailscale only on request
+**Status:** accepted
+
+1.0 tried the last working address first, so after one Tailscale connection
+the phone kept preferring Tailscale even at home, and the Tailscale guidance
+read as a requirement. Now the planner always tries the LAN (Bonjour, LAN
+addresses, the last working LAN address) first; Tailscale addresses come
+after them and only when the user turned on "Use Tailscale when away" in the
+iPhone settings (`ConnectionPreference.automatic`; the default is
+`localOnly`). Someone who chose "Tailscale only" in 1.0 keeps Tailscale on.
+When the Mac is not reachable and it has Tailscale addresses, the connection
+card offers "Use Tailscale". On the Mac, Tailscale moved from the menu into
+Settings → Remote Access, explained as optional.
+
+### D-104 — 1.1 design: brand gradient, glass, sheets
+**Status:** accepted
+
+Both apps share a teal → indigo → violet brand gradient. iPhone: a mesh
+gradient behind every screen (lighter behind the chat), translucent cards, a
+gradient hero card for the Mac connection with plain next steps when offline,
+gradient message bubbles and buttons. Tool calls and thinking are compact rows
+that open a sheet with the details (diff, command output, file), as in the
+Claude and Codex apps; the task list stays inline. While a turn runs, the
+agent's status, current tool and a timer sit inside the message field, which
+gets a gradient outline, and Send becomes Stop.
+
+Mac: the menu has a gradient header with the status and three counters, then
+only what matters now (setup problems, approvals, an available update, pairing,
+chats, limits, keep awake). Addresses, devices, agents and Tailscale moved to
+Settings, which is now a sidebar of panes with coloured icons like System
+Settings. The DMG window uses the same gradient with glass tiles and the next
+steps.
+
+### D-105 — The Mac app updates itself from GitHub Releases
+**Status:** accepted
+
+No Sparkle (no third-party dependencies). `AppUpdater` reads
+`releases/latest` once a day (setting, on by default) and on demand, ignores
+drafts and prereleases and compares semantic versions. Installing downloads
+the DMG, checks it against the release's `.sha256` asset, mounts it read-only,
+copies the app out, and verifies `codesign --deep --strict`, the same Team ID
+as the running app and Gatekeeper (`spctl`). A detached script then waits for
+the app to quit, swaps the bundle (restoring the old one if the copy fails),
+removes the quarantine attribute and opens the new version. Where the bundle
+cannot be replaced (run from the DMG, translocated, not writable) the release
+page opens instead. Nothing is installed without a click.
+
+### D-106 — Photos and videos as attachments
+**Status:** accepted
+
+The agent CLIs take images, not video. The composer's + menu offers the photo
+library (photos and videos, up to six items) and the camera (photos only, so no
+microphone permission is needed). A video becomes six frames taken from the
+middle of six equal slices, plus a line in the message saying they are frames
+of a video of a given length. Images are JPEG, at most 2048 px, under the
+5 MB protocol limit; a message carries at most 20. Thumbnails of what this
+device sent are kept in memory and shown in the bubble; tapping one opens it.
+
+### D-107 — Guidance in plain steps, more languages
+**Status:** accepted
+
+The welcome screen, the README (new Quick start and Troubleshooting) and the
+Mac menu now say what to do in numbered steps and in the words the apps use.
+Both apps follow the device language and ship English, Turkish, German,
+Spanish, French, Italian, Brazilian Portuguese, Japanese, Korean and
+Simplified Chinese. Turkish and German stay in `scripts/l10n/<app>_translations.py`;
+the other languages are `scripts/l10n/<app>.<language>.json` files read by
+`build_catalogs.py`. iOS Settings explains how to pick another language just
+for Pilothouse.
+

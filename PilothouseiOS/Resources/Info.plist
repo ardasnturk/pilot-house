@@ -38,7 +38,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Pilothouse uses the camera only to scan the pairing QR code shown by Pilothouse on your Mac.</string>
+	<string>Pilothouse uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Pilothouse connects to your Mac on the local network to control your Claude Code sessions.</string>
 	<key>NSBonjourServices</key>
