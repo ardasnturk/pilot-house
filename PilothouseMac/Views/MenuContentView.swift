@@ -15,6 +15,9 @@ struct MenuContentView: View {
                     if !controller.claude.installed || controller.claude.loggedIn == false {
                         claudeWarning
                     }
+                    if !controller.pendingRequests.isEmpty {
+                        approvals
+                    }
                     addresses
                     pairButton
                     keepAwake
@@ -109,6 +112,15 @@ struct MenuContentView: View {
             .background(.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
         }
         .buttonStyle(.plain)
+    }
+
+    private var approvals: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            SectionTitle("Waiting for approval")
+            ForEach(controller.pendingRequests) { request in
+                PermissionApprovalRow(request: request)
+            }
+        }
     }
 
     private var addresses: some View {
@@ -253,12 +265,18 @@ struct MenuContentView: View {
                 }
             }
             .buttonStyle(.plain)
-            LabeledContent {
-                Text(tailscaleSummary)
-                    .foregroundStyle(controller.tailscale.running ? .secondary : Color.orange)
+            Button {
+                show(WindowID.tailscale)
             } label: {
-                Label("Tailscale", systemImage: "network")
+                LabeledContent {
+                    Text(tailscaleSummary)
+                        .foregroundStyle(controller.tailscale.running ? .secondary : Color.orange)
+                } label: {
+                    Label("Tailscale", systemImage: "network")
+                }
             }
+            .buttonStyle(.plain)
+            .help(Text("Set up remote access with Tailscale"))
         }
         .font(.callout)
     }

@@ -23,6 +23,10 @@
   "de": "Aktive Sitzungen",
   "tr": "Etkin oturumlar"
  },
+ "Allow": {
+  "de": "Erlauben",
+  "tr": "İzin Ver"
+ },
  "Allow the Pilothouse helper in Login Items…": {
   "de": "Pilothouse-Hilfsprogramm in den Anmeldeobjekten erlauben …",
   "tr": "Pilothouse yardımcısına Giriş Öğeleri'nde izin verin…"
@@ -55,6 +59,10 @@
   "de": "Erneut prüfen",
   "tr": "Tekrar kontrol et"
  },
+ "Check the connection": {
+  "de": "Verbindung prüfen",
+  "tr": "Bağlantıyı kontrol edin"
+ },
  "Claude Code": {
   "de": "Claude Code",
   "tr": "Claude Code"
@@ -79,6 +87,18 @@
   "de": "Claude Code ist nicht angemeldet",
   "tr": "Claude Code'a giriş yapılmamış"
  },
+ "Claude installs Tailscale from an official source and stops whenever your password or a browser sign-in is needed. Every command needs your approval.": {
+  "de": "Claude installiert Tailscale aus einer offiziellen Quelle und hält an, sobald dein Passwort oder eine Anmeldung im Browser nötig ist. Jeder Befehl braucht deine Freigabe.",
+  "tr": "Claude, Tailscale'i resmi bir kaynaktan kurar ve şifreniz ya da tarayıcıda giriş gerektiğinde durur. Her komut onayınızı gerektirir."
+ },
+ "Claude is setting up Tailscale": {
+  "de": "Claude richtet Tailscale ein",
+  "tr": "Claude Tailscale'i kuruyor"
+ },
+ "Claude wants to use %@": {
+  "de": "Claude möchte %@ verwenden",
+  "tr": "Claude %@ kullanmak istiyor"
+ },
  "Click for setup instructions.": {
   "de": "Für die Einrichtungsanleitung klicken.",
   "tr": "Kurulum talimatları için tıklayın."
@@ -98,6 +118,10 @@
  "Connected now": {
   "de": "Gerade verbunden",
   "tr": "Şu anda bağlı"
+ },
+ "Connected.": {
+  "de": "Verbunden.",
+  "tr": "Bağlı."
  },
  "Connection addresses": {
   "de": "Verbindungsadressen",
@@ -131,9 +155,17 @@
   "de": "Standard-Berechtigungsmodus",
   "tr": "Varsayılan izin modu"
  },
+ "Deny": {
+  "de": "Ablehnen",
+  "tr": "Reddet"
+ },
  "Done": {
   "de": "Fertig",
   "tr": "Bitti"
+ },
+ "Download Tailscale for macOS from tailscale.com, or install it with Homebrew.": {
+  "de": "Lade Tailscale für macOS von tailscale.com herunter oder installiere es mit Homebrew.",
+  "tr": "macOS için Tailscale'i tailscale.com'dan indirin veya Homebrew ile kurun."
  },
  "End session %@": {
   "de": "Sitzung %@ beenden",
@@ -147,6 +179,14 @@
   "de": "Allgemein",
   "tr": "Genel"
  },
+ "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.": {
+  "de": "Lade Tailscale aus dem App Store und melde dich mit demselben Konto an. iOS erlaubt Apps nicht, das für dich zu erledigen.",
+  "tr": "Tailscale'i App Store'dan edinin ve aynı hesapla giriş yapın. iOS, uygulamaların bunu sizin yerinize yapmasına izin vermez."
+ },
+ "Hide Manual Steps": {
+  "de": "Manuelle Schritte ausblenden",
+  "tr": "Manuel Adımları Gizle"
+ },
  "Identity": {
   "de": "Identität",
   "tr": "Kimlik"
@@ -155,9 +195,25 @@
   "de": "Bereit",
   "tr": "Boşta"
  },
+ "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.": {
+  "de": "Aktiviere in der Tailscale-Admin-Konsole unter DNS MagicDNS, damit dein Mac einen stabilen Namen erhält.",
+  "tr": "Mac'inizin kalıcı bir adı olması için Tailscale yönetim konsolunda DNS altında MagicDNS'i etkinleştirin."
+ },
  "Install Claude Code": {
   "de": "Claude Code installieren",
   "tr": "Claude Code'u kurun"
+ },
+ "Install Claude Code first to let Claude do the setup, or follow the manual steps.": {
+  "de": "Installiere zuerst Claude Code, damit Claude die Einrichtung übernimmt, oder folge den manuellen Schritten.",
+  "tr": "Kurulumu Claude'a yaptırmak için önce Claude Code'u kurun veya manuel adımları izleyin."
+ },
+ "Install Tailscale": {
+  "de": "Tailscale installieren",
+  "tr": "Tailscale'i kurun"
+ },
+ "Install Tailscale on your iPhone or iPad": {
+  "de": "Tailscale auf iPhone oder iPad installieren",
+  "tr": "iPhone veya iPad'inize Tailscale'i kurun"
  },
  "Installed: %@": {
   "de": "Installiert: %@",
@@ -198,6 +254,10 @@
  "Mac ID": {
   "de": "Mac-ID",
   "tr": "Mac kimliği"
+ },
+ "MagicDNS is off. Turn it on in the Tailscale admin console for a stable name (optional).": {
+  "de": "MagicDNS ist aus. Aktiviere es in der Tailscale-Admin-Konsole für einen stabilen Namen (optional).",
+  "tr": "MagicDNS kapalı. Kalıcı bir ad için Tailscale yönetim konsolundan açın (isteğe bağlı)."
  },
  "MagicDNS name": {
   "de": "MagicDNS-Name",
@@ -251,6 +311,10 @@
   "de": "Pilothouse bei der Anmeldung öffnen",
   "tr": "Oturum açınca Pilothouse'u başlat"
  },
+ "Open Tailscale and sign in": {
+  "de": "Tailscale öffnen und anmelden",
+  "tr": "Tailscale'i açın ve giriş yapın"
+ },
  "Open Terminal and run the official installer, or follow the setup guide.": {
   "de": "Öffne das Terminal und führe das offizielle Installationsprogramm aus oder folge der Anleitung.",
   "tr": "Terminal'i açıp resmi yükleyiciyi çalıştırın veya kurulum kılavuzunu izleyin."
@@ -271,6 +335,10 @@
   "de": "Gekoppelte Geräte",
   "tr": "Eşleşmiş cihazlar"
  },
+ "Paired devices learn this address automatically. On your iPhone or iPad, install Tailscale from the App Store and sign in with the same account — iOS does not let apps do this for you.": {
+  "de": "Gekoppelte Geräte lernen diese Adresse automatisch. Installiere auf deinem iPhone oder iPad Tailscale aus dem App Store und melde dich mit demselben Konto an – iOS erlaubt Apps nicht, das für dich zu erledigen.",
+  "tr": "Eşleşmiş cihazlar bu adresi otomatik öğrenir. iPhone veya iPad'inizde App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın — iOS uygulamaların bunu sizin yerinize yapmasına izin vermez."
+ },
  "Pairing QR code": {
   "de": "Kopplungs-QR-Code",
   "tr": "Eşleştirme QR kodu"
@@ -290,6 +358,10 @@
  "Pilothouse could not start: %@": {
   "de": "Pilothouse konnte nicht starten: %@",
   "tr": "Pilothouse başlatılamadı: %@"
+ },
+ "Pilothouse detects Tailscale automatically. You can also check it in Terminal.": {
+  "de": "Pilothouse erkennt Tailscale automatisch. Du kannst es auch im Terminal prüfen.",
+  "tr": "Pilothouse, Tailscale'i otomatik algılar. Terminal'den de kontrol edebilirsiniz."
  },
  "Pilothouse is not running.": {
   "de": "Pilothouse läuft nicht.",
@@ -323,9 +395,21 @@
   "de": "Pilothouse beenden",
   "tr": "Pilothouse'tan Çık"
  },
+ "Reach this Mac from anywhere over your private Tailscale network. Pilothouse keeps its own end-to-end encryption on top.": {
+  "de": "Erreiche diesen Mac überall über dein privates Tailscale-Netzwerk. Pilothouse behält zusätzlich seine eigene Ende-zu-Ende-Verschlüsselung.",
+  "tr": "Bu Mac'e özel Tailscale ağınız üzerinden her yerden ulaşın. Pilothouse bunun üzerine kendi uçtan uca şifrelemesini korur."
+ },
  "Read the security model": {
   "de": "Sicherheitsmodell lesen",
   "tr": "Güvenlik modelini okuyun"
+ },
+ "Remote access with Tailscale": {
+  "de": "Fernzugriff mit Tailscale",
+  "tr": "Tailscale ile uzaktan erişim"
+ },
+ "Reply to Claude (e.g. “I have signed in”)": {
+  "de": "Claude antworten (z. B. „Ich habe mich angemeldet“)",
+  "tr": "Claude'a yanıt ver (örn. “Giriş yaptım”)"
  },
  "Revoke": {
   "de": "Widerrufen",
@@ -355,9 +439,25 @@
   "de": "Sicherheit",
   "tr": "Güvenlik"
  },
+ "Send": {
+  "de": "Senden",
+  "tr": "Gönder"
+ },
  "Sessions": {
   "de": "Sitzungen",
   "tr": "Oturumlar"
+ },
+ "Set Up Manually": {
+  "de": "Manuell einrichten",
+  "tr": "Elle Kur"
+ },
+ "Set Up with Claude": {
+  "de": "Mit Claude einrichten",
+  "tr": "Claude ile Kur"
+ },
+ "Set up remote access with Tailscale": {
+  "de": "Fernzugriff mit Tailscale einrichten",
+  "tr": "Tailscale ile uzaktan erişimi kur"
  },
  "Settings…": {
   "de": "Einstellungen …",
@@ -375,6 +475,10 @@
   "de": "Ruhezustandsverhinderung ist aus",
   "tr": "Uyku engelleme kapalı"
  },
+ "Start Tailscale from Applications, allow its VPN configuration when macOS asks, then log in from its menu bar icon.": {
+  "de": "Starte Tailscale aus dem Programme-Ordner, erlaube die VPN-Konfiguration, wenn macOS fragt, und melde dich über das Menüleistensymbol an.",
+  "tr": "Tailscale'i Uygulamalar'dan başlatın, macOS sorduğunda VPN yapılandırmasına izin verin, ardından menü çubuğu simgesinden giriş yapın."
+ },
  "Start a session from your iPhone or iPad.": {
   "de": "Starte eine Sitzung von deinem iPhone oder iPad.",
   "tr": "iPhone veya iPad'inizden bir oturum başlatın."
@@ -391,6 +495,10 @@
   "de": "Bei geschlossenem Deckel wach bleiben",
   "tr": "Kapak kapalıyken de açık kal"
  },
+ "Stop": {
+  "de": "Stopp",
+  "tr": "Durdur"
+ },
  "Stored in Keychain": {
   "de": "Im Schlüsselbund gespeichert",
   "tr": "Anahtar Zinciri'nde saklanıyor"
@@ -402,6 +510,22 @@
  "Tailscale IP": {
   "de": "Tailscale-IP",
   "tr": "Tailscale IP"
+ },
+ "Tailscale is connected": {
+  "de": "Tailscale ist verbunden",
+  "tr": "Tailscale bağlı"
+ },
+ "Tailscale is installed but not connected (%@).": {
+  "de": "Tailscale ist installiert, aber nicht verbunden (%@).",
+  "tr": "Tailscale kurulu ama bağlı değil (%@)."
+ },
+ "Tailscale is installed, but its command-line tool was not found. Open Tailscale once, or enable its CLI in Tailscale's settings.": {
+  "de": "Tailscale ist installiert, aber das Befehlszeilenwerkzeug wurde nicht gefunden. Öffne Tailscale einmal oder aktiviere die CLI in den Tailscale-Einstellungen.",
+  "tr": "Tailscale kurulu ancak komut satırı aracı bulunamadı. Tailscale'i bir kez açın veya ayarlarından CLI'ını etkinleştirin."
+ },
+ "Tailscale is not installed on this Mac.": {
+  "de": "Tailscale ist auf diesem Mac nicht installiert.",
+  "tr": "Bu Mac'te Tailscale kurulu değil."
  },
  "Takes effect after restarting Pilothouse. The next free port is used if it is taken.": {
   "de": "Wird nach einem Neustart von Pilothouse wirksam. Ist der Port belegt, wird der nächste freie verwendet.",
@@ -434,6 +558,10 @@
  "Traffic between your devices is end-to-end encrypted. Pilothouse never connects to Anthropic and collects no telemetry.": {
   "de": "Der Datenverkehr zwischen deinen Geräten ist Ende-zu-Ende verschlüsselt. Pilothouse verbindet sich nie mit Anthropic und sammelt keine Telemetrie.",
   "tr": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Pilothouse asla Anthropic'e bağlanmaz ve telemetri toplamaz."
+ },
+ "Turn on MagicDNS (recommended)": {
+  "de": "MagicDNS aktivieren (empfohlen)",
+  "tr": "MagicDNS'i açın (önerilir)"
  },
  "Unknown helper status.": {
   "de": "Unbekannter Status des Hilfsprogramms.",
@@ -470,6 +598,10 @@
  "Working": {
   "de": "Arbeitet",
   "tr": "Çalışıyor"
+ },
+ "You can also follow and approve this session on your iPhone or iPad.": {
+  "de": "Du kannst diese Sitzung auch auf deinem iPhone oder iPad verfolgen und freigeben.",
+  "tr": "Bu oturumu iPhone veya iPad'inizden de izleyip onaylayabilirsiniz."
  },
  "You can now start Claude Code sessions on this Mac from your device.": {
   "de": "Du kannst jetzt von deinem Gerät aus Claude-Code-Sitzungen auf diesem Mac starten.",

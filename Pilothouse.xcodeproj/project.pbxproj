@@ -19,6 +19,7 @@
 		340372106A359118A8C8A128 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FFC63706831535D59C10E /* SettingsView.swift */; };
 		393FE675E3E9DA070ED762A9 /* ToolCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B574403D516DA1199C7656E /* ToolCardView.swift */; };
 		39852FE27C816847C3D3F4F3 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E3518AFFCC37758FF50FFA46 /* InfoPlist.xcstrings */; };
+		47D911BAF1254C3977113B8F /* TailscaleAssistantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077F44A302FCF38242D6806A /* TailscaleAssistantView.swift */; };
 		4A0C194D15AE2D9FBEA7B441 /* SleepAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E23C8C1CD4CE37C1A62BEF /* SleepAssertion.swift */; };
 		4AEB369BE2822AD6FC0208AF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 48F59A49EE5EE75075801894 /* PrivacyInfo.xcprivacy */; };
 		4DE709D714144E620F11F60B /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 59F32AB3888ABA29C5B892F9 /* InfoPlist.xcstrings */; };
@@ -53,6 +54,7 @@
 		E093B052CF0E512CEB4988C1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6FAD93F1F0737C5284DB2733 /* PrivacyInfo.xcprivacy */; };
 		E74E78C5C26B4DD7719C0723 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4CAF1EACC439006876949 /* ChatView.swift */; };
 		F134C661C71F1E05B702E2B0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68A90222485CB3205B3A32 /* main.swift */; };
+		F1EDC9AC8018778C06767AD2 /* SessionMonitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */; };
 		F2BE694E8B449737EF0A56D4 /* com.ardasenturk.Pilothouse.Helper.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D35A07BA8AFB159492C1296 /* com.ardasenturk.Pilothouse.Helper.plist */; };
 		F37D0B167963985E1F58EED0 /* NewChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA051DEB3B98577DB813A9B1 /* NewChatView.swift */; };
 		F7BA64E5EB1CE88946F59CD0 /* PilothouseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C65B6E4BDF4D82D09CA974C5 /* PilothouseKit */; };
@@ -97,6 +99,7 @@
 		007B14626B046A7AC2E95950 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		034BC3FEA5B6B50B118199EA /* PilothouseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PilothouseMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0371C67D3326C21AFC37AF23 /* LidClosedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LidClosedController.swift; sourceTree = "<group>"; };
+		077F44A302FCF38242D6806A /* TailscaleAssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailscaleAssistantView.swift; sourceTree = "<group>"; };
 		091C5F1C20A13A76470F728B /* PilothouseKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PilothouseKit; path = PilothouseKit; sourceTree = SOURCE_ROOT; };
 		1392B0F50A90AB3E70EF5729 /* TranscriptCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptCache.swift; sourceTree = "<group>"; };
 		180408FFCD457F1564BB002B /* PilothouseiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PilothouseiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +134,7 @@
 		9948CEDD1C4D75D6D5E2164E /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		9998F3E50BDEB67149978F5F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A5DFC0F8AEC409758AECBF45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMonitorView.swift; sourceTree = "<group>"; };
 		B122B36322A27E4867495C75 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
 		B980E713BB2E181B1B2A7223 /* MacConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacConnection.swift; sourceTree = "<group>"; };
 		BA1A027C85AAA6E7B80E0809 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
@@ -382,7 +386,9 @@
 				922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */,
 				B122B36322A27E4867495C75 /* MenuContentView.swift */,
 				BA1A027C85AAA6E7B80E0809 /* PairingView.swift */,
+				B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */,
 				2A0FFC63706831535D59C10E /* SettingsView.swift */,
+				077F44A302FCF38242D6806A /* TailscaleAssistantView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -585,8 +591,10 @@
 				6DB369B0210A75B498C35526 /* PairingView.swift in Sources */,
 				1365B4A4D77B2203074A6F6C /* PilothouseMacApp.swift in Sources */,
 				AB76F723CC81D4E07EA126D5 /* QRCode.swift in Sources */,
+				F1EDC9AC8018778C06767AD2 /* SessionMonitorView.swift in Sources */,
 				340372106A359118A8C8A128 /* SettingsView.swift in Sources */,
 				4A0C194D15AE2D9FBEA7B441 /* SleepAssertion.swift in Sources */,
+				47D911BAF1254C3977113B8F /* TailscaleAssistantView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -55,7 +55,19 @@ EXTRA_KEYS = {
         "Pilothouse was restarted while Claude was working; the last turn may be incomplete.",
         "Claude Code could not find the earlier conversation. Your next message starts a fresh one in this session.",
     ],
-    "mac": [],
+    "mac": [
+        # TailscaleSetup.manualSteps (PilothouseHost) shown via LocalizedStringKey.
+        "Install Tailscale",
+        "Download Tailscale for macOS from tailscale.com, or install it with Homebrew.",
+        "Open Tailscale and sign in",
+        "Start Tailscale from Applications, allow its VPN configuration when macOS asks, then log in from its menu bar icon.",
+        "Turn on MagicDNS (recommended)",
+        "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.",
+        "Check the connection",
+        "Pilothouse detects Tailscale automatically. You can also check it in Terminal.",
+        "Install Tailscale on your iPhone or iPad",
+        "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.",
+    ],
 }
 
 

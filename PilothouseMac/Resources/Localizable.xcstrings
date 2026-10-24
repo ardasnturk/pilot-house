@@ -97,6 +97,22 @@
         }
       }
     },
+    "Allow": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlauben"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzin Ver"
+          }
+        }
+      }
+    },
     "Allow the Pilothouse helper in Login Items…": {
       "localizations": {
         "de": {
@@ -225,6 +241,22 @@
         }
       }
     },
+    "Check the connection": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindung prüfen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlantıyı kontrol edin"
+          }
+        }
+      }
+    },
     "Claude Code": {
       "localizations": {
         "de": {
@@ -321,6 +353,54 @@
         }
       }
     },
+    "Claude installs Tailscale from an official source and stops whenever your password or a browser sign-in is needed. Every command needs your approval.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude installiert Tailscale aus einer offiziellen Quelle und hält an, sobald dein Passwort oder eine Anmeldung im Browser nötig ist. Jeder Befehl braucht deine Freigabe."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude, Tailscale'i resmi bir kaynaktan kurar ve şifreniz ya da tarayıcıda giriş gerektiğinde durur. Her komut onayınızı gerektirir."
+          }
+        }
+      }
+    },
+    "Claude is setting up Tailscale": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude richtet Tailscale ein"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude Tailscale'i kuruyor"
+          }
+        }
+      }
+    },
+    "Claude wants to use %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude möchte %@ verwenden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude %@ kullanmak istiyor"
+          }
+        }
+      }
+    },
     "Click for setup instructions.": {
       "localizations": {
         "de": {
@@ -397,6 +477,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Şu anda bağlı"
+          }
+        }
+      }
+    },
+    "Connected.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbunden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlı."
           }
         }
       }
@@ -529,6 +625,22 @@
         }
       }
     },
+    "Deny": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ablehnen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reddet"
+          }
+        }
+      }
+    },
     "Done": {
       "localizations": {
         "de": {
@@ -541,6 +653,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bitti"
+          }
+        }
+      }
+    },
+    "Download Tailscale for macOS from tailscale.com, or install it with Homebrew.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lade Tailscale für macOS von tailscale.com herunter oder installiere es mit Homebrew."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS için Tailscale'i tailscale.com'dan indirin veya Homebrew ile kurun."
           }
         }
       }
@@ -593,6 +721,38 @@
         }
       }
     },
+    "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lade Tailscale aus dem App Store und melde dich mit demselben Konto an. iOS erlaubt Apps nicht, das für dich zu erledigen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale'i App Store'dan edinin ve aynı hesapla giriş yapın. iOS, uygulamaların bunu sizin yerinize yapmasına izin vermez."
+          }
+        }
+      }
+    },
+    "Hide Manual Steps": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manuelle Schritte ausblenden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manuel Adımları Gizle"
+          }
+        }
+      }
+    },
     "Identity": {
       "localizations": {
         "de": {
@@ -625,6 +785,22 @@
         }
       }
     },
+    "In the Tailscale admin console under DNS, enable MagicDNS so your Mac gets a stable name.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktiviere in der Tailscale-Admin-Konsole unter DNS MagicDNS, damit dein Mac einen stabilen Namen erhält."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'inizin kalıcı bir adı olması için Tailscale yönetim konsolunda DNS altında MagicDNS'i etkinleştirin."
+          }
+        }
+      }
+    },
     "Install Claude Code": {
       "localizations": {
         "de": {
@@ -637,6 +813,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Code'u kurun"
+          }
+        }
+      }
+    },
+    "Install Claude Code first to let Claude do the setup, or follow the manual steps.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installiere zuerst Claude Code, damit Claude die Einrichtung übernimmt, oder folge den manuellen Schritten."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurulumu Claude'a yaptırmak için önce Claude Code'u kurun veya manuel adımları izleyin."
+          }
+        }
+      }
+    },
+    "Install Tailscale": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale installieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale'i kurun"
+          }
+        }
+      }
+    },
+    "Install Tailscale on your iPhone or iPad": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale auf iPhone oder iPad installieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone veya iPad'inize Tailscale'i kurun"
           }
         }
       }
@@ -797,6 +1021,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac kimliği"
+          }
+        }
+      }
+    },
+    "MagicDNS is off. Turn it on in the Tailscale admin console for a stable name (optional).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagicDNS ist aus. Aktiviere es in der Tailscale-Admin-Konsole für einen stabilen Namen (optional)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagicDNS kapalı. Kalıcı bir ad için Tailscale yönetim konsolundan açın (isteğe bağlı)."
           }
         }
       }
@@ -1009,6 +1249,22 @@
         }
       }
     },
+    "Open Tailscale and sign in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale öffnen und anmelden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale'i açın ve giriş yapın"
+          }
+        }
+      }
+    },
     "Open Terminal and run the official installer, or follow the setup guide.": {
       "localizations": {
         "de": {
@@ -1089,6 +1345,22 @@
         }
       }
     },
+    "Paired devices learn this address automatically. On your iPhone or iPad, install Tailscale from the App Store and sign in with the same account — iOS does not let apps do this for you.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gekoppelte Geräte lernen diese Adresse automatisch. Installiere auf deinem iPhone oder iPad Tailscale aus dem App Store und melde dich mit demselben Konto an – iOS erlaubt Apps nicht, das für dich zu erledigen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eşleşmiş cihazlar bu adresi otomatik öğrenir. iPhone veya iPad'inizde App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın — iOS uygulamaların bunu sizin yerinize yapmasına izin vermez."
+          }
+        }
+      }
+    },
     "Pairing QR code": {
       "localizations": {
         "de": {
@@ -1165,6 +1437,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse başlatılamadı: %@"
+          }
+        }
+      }
+    },
+    "Pilothouse detects Tailscale automatically. You can also check it in Terminal.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse erkennt Tailscale automatisch. Du kannst es auch im Terminal prüfen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse, Tailscale'i otomatik algılar. Terminal'den de kontrol edebilirsiniz."
           }
         }
       }
@@ -1297,6 +1585,22 @@
         }
       }
     },
+    "Reach this Mac from anywhere over your private Tailscale network. Pilothouse keeps its own end-to-end encryption on top.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erreiche diesen Mac überall über dein privates Tailscale-Netzwerk. Pilothouse behält zusätzlich seine eigene Ende-zu-Ende-Verschlüsselung."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'e özel Tailscale ağınız üzerinden her yerden ulaşın. Pilothouse bunun üzerine kendi uçtan uca şifrelemesini korur."
+          }
+        }
+      }
+    },
     "Read the security model": {
       "localizations": {
         "de": {
@@ -1309,6 +1613,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Güvenlik modelini okuyun"
+          }
+        }
+      }
+    },
+    "Remote access with Tailscale": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fernzugriff mit Tailscale"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale ile uzaktan erişim"
+          }
+        }
+      }
+    },
+    "Reply to Claude (e.g. “I have signed in”)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude antworten (z. B. „Ich habe mich angemeldet“)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude'a yanıt ver (örn. “Giriş yaptım”)"
           }
         }
       }
@@ -1425,6 +1761,22 @@
         }
       }
     },
+    "Send": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gönder"
+          }
+        }
+      }
+    },
     "Sessions": {
       "localizations": {
         "de": {
@@ -1437,6 +1789,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Oturumlar"
+          }
+        }
+      }
+    },
+    "Set Up Manually": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manuell einrichten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elle Kur"
+          }
+        }
+      }
+    },
+    "Set Up with Claude": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Claude einrichten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude ile Kur"
+          }
+        }
+      }
+    },
+    "Set up remote access with Tailscale": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fernzugriff mit Tailscale einrichten"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale ile uzaktan erişimi kur"
           }
         }
       }
@@ -1505,6 +1905,22 @@
         }
       }
     },
+    "Start Tailscale from Applications, allow its VPN configuration when macOS asks, then log in from its menu bar icon.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starte Tailscale aus dem Programme-Ordner, erlaube die VPN-Konfiguration, wenn macOS fragt, und melde dich über das Menüleistensymbol an."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale'i Uygulamalar'dan başlatın, macOS sorduğunda VPN yapılandırmasına izin verin, ardından menü çubuğu simgesinden giriş yapın."
+          }
+        }
+      }
+    },
     "Start a session from your iPhone or iPad.": {
       "localizations": {
         "de": {
@@ -1569,6 +1985,22 @@
         }
       }
     },
+    "Stop": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopp"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durdur"
+          }
+        }
+      }
+    },
     "Stored in Keychain": {
       "localizations": {
         "de": {
@@ -1613,6 +2045,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tailscale IP"
+          }
+        }
+      }
+    },
+    "Tailscale is connected": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale ist verbunden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale bağlı"
+          }
+        }
+      }
+    },
+    "Tailscale is installed but not connected (%@).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale ist installiert, aber nicht verbunden (%@)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale kurulu ama bağlı değil (%@)."
+          }
+        }
+      }
+    },
+    "Tailscale is installed, but its command-line tool was not found. Open Tailscale once, or enable its CLI in Tailscale's settings.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale ist installiert, aber das Befehlszeilenwerkzeug wurde nicht gefunden. Öffne Tailscale einmal oder aktiviere die CLI in den Tailscale-Einstellungen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale kurulu ancak komut satırı aracı bulunamadı. Tailscale'i bir kez açın veya ayarlarından CLI'ını etkinleştirin."
+          }
+        }
+      }
+    },
+    "Tailscale is not installed on this Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tailscale ist auf diesem Mac nicht installiert."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'te Tailscale kurulu değil."
           }
         }
       }
@@ -1741,6 +2237,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Pilothouse asla Anthropic'e bağlanmaz ve telemetri toplamaz."
+          }
+        }
+      }
+    },
+    "Turn on MagicDNS (recommended)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagicDNS aktivieren (empfohlen)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagicDNS'i açın (önerilir)"
           }
         }
       }
@@ -1885,6 +2397,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çalışıyor"
+          }
+        }
+      }
+    },
+    "You can also follow and approve this session on your iPhone or iPad.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du kannst diese Sitzung auch auf deinem iPhone oder iPad verfolgen und freigeben."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu oturumu iPhone veya iPad'inizden de izleyip onaylayabilirsiniz."
           }
         }
       }

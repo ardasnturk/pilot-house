@@ -397,3 +397,41 @@ Connect.
 `PrivacyInfo.xcprivacy`: no tracking, no collected data; `UserDefaults`
 (reason `CA92.1`) on both platforms and file timestamps (`3B52.1`, folders the
 user browses) on the Mac.
+
+---
+
+## Phase 4 — Tailscale setup assistant
+
+### D-060 — The assistant is an ordinary Pilothouse session
+**Status:** accepted
+
+"Set Up with Claude" starts a normal session in `~` (permission mode
+`default`) with the prompt from §7.2. It therefore appears on every paired
+phone, streams like any session and needs approval for each command. The
+prompt is sent in the Mac's preferred language (TR text verbatim from the
+specification; EN/DE equivalents).
+
+### D-061 — Approvals and replies on the Mac too
+**Status:** accepted
+
+Sessions started from the Mac must not depend on a phone being at hand, so the
+Mac menu shows pending permission requests with Allow/Deny, and the Tailscale
+window contains a compact transcript with a reply field (e.g. "I have signed
+in") and a Stop button. Any device may answer a request; the first answer wins.
+
+### D-062 — Detection and propagation
+**Status:** accepted
+
+Tailscale is detected via `/Applications/Tailscale.app/Contents/MacOS/Tailscale
+status --json` or `tailscale` on `PATH` (stable JSON fields only:
+`BackendState`, `Self.TailscaleIPs`, `Self.DNSName`, `CurrentTailnet`). The
+assistant polls every 4 s until connected; afterwards the regular 30 s refresh
+and network-change monitoring apply. A change is broadcast as `macStatus`;
+phones persist the new addresses, and new pairing QR codes include them.
+
+### D-063 — iOS remains a manual step
+**Status:** accepted
+
+iOS does not allow third-party apps to install or configure another VPN. The
+phone shows a single explicit step (install Tailscale from the App Store, sign
+in with the same account) and states why it cannot be automated (§7.4).

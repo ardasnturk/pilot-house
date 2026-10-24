@@ -35,6 +35,13 @@ struct PilothouseMacApp: App {
         .windowResizability(.contentSize)
         .defaultPosition(.center)
 
+        Window(Text("Tailscale"), id: WindowID.tailscale) {
+            TailscaleAssistantView()
+                .environment(appDelegate.controller)
+        }
+        .windowResizability(.contentSize)
+        .defaultPosition(.center)
+
         Settings {
             SettingsView()
                 .environment(appDelegate.controller)

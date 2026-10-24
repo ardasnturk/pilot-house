@@ -41,7 +41,9 @@ final class AppController: MacStatusProviding {
     private(set) var connectedDeviceIds: Set<String> = []
     private(set) var sessions: [SessionSummary] = []
     private(set) var activeSessionIds: Set<String> = []
-    private(set) var pendingPermissionCount = 0
+    private(set) var pendingRequests: [PermissionRequest] = []
+    /// The Claude session started by the Tailscale assistant, if any.
+    private(set) var tailscaleSetupSessionId: String?
     private(set) var pairing: PairingInvitation?
     private(set) var newlyPairedDevice: PairedDevice?
     private(set) var macFingerprint = ""
@@ -58,6 +60,8 @@ final class AppController: MacStatusProviding {
     @ObservationIgnored private var started = false
 
     static let apiKeyAccount = "anthropic-api-key"
+
+    var pendingPermissionCount: Int { pendingRequests.count }
 
     var openSessions: [SessionSummary] {
         sessions.filter { $0.state != .closed }
@@ -218,7 +222,7 @@ final class AppController: MacStatusProviding {
                 case .sessionStarted, .sessionUpdated, .sessionDeleted, .sessionEnded:
                     await self?.refreshSessions()
                 case .permissionRequest, .permissionResolved:
-                    self?.pendingPermissionCount = await runtime.broker.pendingRequests.count
+                    self?.pendingRequests = await runtime.broker.pendingRequests
                 default:
                     break
                 }
@@ -291,6 +295,62 @@ final class AppController: MacStatusProviding {
             throw ErrorPayload(code: .internalError, message: String(localized: "Pilothouse is not running."))
         }
         return try await runtime.sessions.start(StartSession(cwd: cwd, permissionMode: .default, firstMessage: prompt))
+    }
+
+    /// Sends a follow-up message from the Mac (e.g. "I have signed in").
+    func send(_ text: String, to sessionId: String) async {
+        do {
+            try await runtime?.sessions.send(SendMessage(sessionId: sessionId, text: text))
+        } catch {
+            alert = (error as? ErrorPayload)?.message ?? error.localizedDescription
+        }
+    }
+
+    func interrupt(_ sessionId: String) async {
+        try? await runtime?.sessions.interrupt(sessionId)
+    }
+
+    /// Live events of a session for the Mac-side monitor.
+    func events(of sessionId: String) async -> AsyncStream<SequencedEvent>? {
+        try? await runtime?.sessions.subscribe(sessionId, fromSeq: 1)
+    }
+
+    /// Answers a permission request from the Mac (any device may answer).
+    func respond(to request: PermissionRequest, allow: Bool, remember: Bool = false) async {
+        do {
+            try await runtime?.broker.respond(PermissionResponse(requestId: request.id, allow: allow, remember: remember))
+        } catch {
+            alert = (error as? ErrorPayload)?.message ?? error.localizedDescription
+        }
+    }
+
+    // MARK: Tailscale
+
+    var tailscaleStage: TailscaleSetup.Stage {
+        TailscaleSetup.stage(of: tailscale)
+    }
+
+    /// "Set up with Claude" (prompt §7.2): a Claude session in the home folder
+    /// with the setup instructions; it can be followed from the phone too.
+    func startTailscaleSetup() async {
+        if let existing = tailscaleSetupSessionId, sessions.contains(where: { $0.id == existing && $0.state != .closed }) {
+            return
+        }
+        do {
+            let prompt = TailscaleSetup.claudePrompt(languageCode: Locale.preferredLanguages.first)
+            let session = try await startLocalSession(cwd: "~", prompt: prompt)
+            tailscaleSetupSessionId = session.id
+        } catch {
+            alert = (error as? ErrorPayload)?.message ?? error.localizedDescription
+        }
+    }
+
+    /// Polls Tailscale while the assistant window is open.
+    func watchTailscale() async {
+        while !Task.isCancelled {
+            await refreshNetwork()
+            try? await Task.sleep(for: .seconds(tailscaleStage.isConnected ? 30 : 4))
+        }
     }
 
     // MARK: Settings
