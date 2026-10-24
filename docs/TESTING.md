@@ -45,6 +45,9 @@ Environment: `macos-15` runner, Xcode 16.4, iPhone 17 Pro simulator (iOS 26.2).
   passed** (onboarding + demo, seeded tool cards and diff, new session with
   approval and "always allow", denial, Stop, reconnection after a network drop,
   screenshot capture) plus the package tests on the simulator.
+* **Screenshots workflow** — 60 App Store screenshots (iPhone 17 Pro Max 6.9"
+  and iPad Pro 13-inch (M5), light + dark, EN/TR/DE, 5 screens each) in 11
+  minutes; kept as the `screenshots` artifact of the run for 90 days.
 * The first macOS run found two problems that Linux could not: a `Mutex` copied
   into a Network.framework callback (compile error) and a UI test that did not
   scroll the lazy Settings form. Both fixed.
