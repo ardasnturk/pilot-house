@@ -28,6 +28,7 @@ struct TailscaleGuideView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+            .gradientBackground(intensity: 0.6)
             .navigationTitle(Text("Remote Access"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

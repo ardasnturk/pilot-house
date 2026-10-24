@@ -5,11 +5,12 @@ import SwiftUI
 struct TranscriptItemView: View {
     let item: TranscriptItem
     let workingDirectory: String?
+    var thumbnails: [Data] = []
 
     var body: some View {
         switch item.kind {
         case .user(let text, let attachments):
-            UserBubble(text: text, attachments: attachments)
+            UserBubble(text: text, attachments: attachments, thumbnails: thumbnails)
         case .assistant(let text, let isStreaming):
             MarkdownView(text: text, isStreaming: isStreaming)
                 .accessibilityIdentifier("assistantMessage")
@@ -30,12 +31,31 @@ struct TranscriptItemView: View {
 struct UserBubble: View {
     let text: String
     let attachments: Int
+    var thumbnails: [Data] = []
+    @State private var preview: PreviewImage?
 
     var body: some View {
         HStack {
             Spacer(minLength: 48)
             VStack(alignment: .trailing, spacing: 6) {
-                if attachments > 0 {
+                if !thumbnails.isEmpty {
+                    HStack(spacing: 6) {
+                        ForEach(Array(thumbnails.enumerated()), id: \.offset) { _, data in
+                            if let image = UIImage(data: data) {
+                                Button {
+                                    preview = PreviewImage(image: image)
+                                } label: {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 72, height: 72)
+                                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+                } else if attachments > 0 {
                     Label("\(attachments) image(s)", systemImage: "photo")
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.85))
@@ -49,11 +69,15 @@ struct UserBubble: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
             .background(
-                Color.accentColor,
+                Brand.bubbleGradient,
                 in: UnevenRoundedRectangle(
                     topLeadingRadius: 20, bottomLeadingRadius: 20, bottomTrailingRadius: 6, topTrailingRadius: 20, style: .continuous
                 )
             )
+            .shadow(color: Brand.indigo.opacity(0.18), radius: 8, y: 3)
+        }
+        .sheet(item: $preview) { preview in
+            ImagePreviewSheet(image: preview.image)
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(Text("You: \(text)"))
@@ -64,40 +88,53 @@ struct UserBubble: View {
 struct ThinkingRow: View {
     let text: String
     let isComplete: Bool
-    @State private var isExpanded = false
+    @State private var showsText = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Button {
-                if !text.isEmpty { withAnimation(.snappy) { isExpanded.toggle() } }
-            } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: "brain")
-                        .symbolEffect(.pulse, isActive: !isComplete)
+        Button {
+            if !text.isEmpty { showsText = true }
+        } label: {
+            HStack(spacing: 6) {
+                Image(systemName: "brain")
+                    .symbolEffect(.pulse, isActive: !isComplete)
+                    .accessibilityHidden(true)
+                if isComplete {
+                    Text("Thought")
+                } else {
+                    Text("Thinking…")
+                }
+                if !text.isEmpty {
+                    Image(systemName: "chevron.right")
+                        .font(.caption2)
                         .accessibilityHidden(true)
-                    if isComplete {
-                        Text("Thought")
-                    } else {
-                        Text("Thinking…")
-                    }
-                    if !text.isEmpty {
-                        Image(systemName: "chevron.right")
-                            .font(.caption2)
-                            .rotationEffect(.degrees(isExpanded ? 90 : 0))
-                            .accessibilityHidden(true)
+                }
+            }
+            .font(.footnote.weight(.medium))
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 6)
+            .background(.regularMaterial, in: Capsule())
+        }
+        .buttonStyle(.plain)
+        .sheet(isPresented: $showsText) {
+            NavigationStack {
+                ScrollView {
+                    Text(verbatim: text)
+                        .font(.callout)
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                }
+                .gradientBackground(intensity: 0.4)
+                .navigationTitle(Text("Thinking"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") { showsText = false }
                     }
                 }
-                .font(.footnote.weight(.medium))
-                .foregroundStyle(.secondary)
             }
-            .buttonStyle(.plain)
-            if isExpanded {
-                Text(verbatim: text)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .padding(.leading, 22)
-                    .textSelection(.enabled)
-            }
+            .presentationDetents([.medium, .large])
         }
     }
 }
@@ -184,5 +221,34 @@ struct DecisionRow: View {
         }
         .font(.caption)
         .foregroundStyle(.secondary)
+    }
+}
+
+struct PreviewImage: Identifiable {
+    let id = UUID()
+    let image: UIImage
+}
+
+/// A sent photo, full screen with pinch to zoom.
+struct ImagePreviewSheet: View {
+    let image: UIImage
+    @Environment(\.dismiss) private var dismiss
+    @State private var scale: CGFloat = 1
+
+    var body: some View {
+        NavigationStack {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .scaleEffect(scale)
+                .gesture(MagnifyGesture().onChanged { scale = max(1, $0.magnification) }.onEnded { _ in withAnimation { scale = 1 } })
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.black)
+                .toolbar {
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") { dismiss() }
+                    }
+                }
+        }
     }
 }

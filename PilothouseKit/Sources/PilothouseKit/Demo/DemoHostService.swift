@@ -60,8 +60,14 @@ public actor DemoHostService: HostService {
             bypassPermissionsAllowed: false,
             defaultModel: "sonnet",
             agents: [
-                AgentStatus(kind: .claude, installed: true, version: "2.1.310 (Claude Code)", loggedIn: true, models: ["opus", "sonnet", "haiku"]),
-                AgentStatus(kind: .codex, installed: true, version: "codex-cli 0.162.1", loggedIn: true, delegationEnabled: true),
+                AgentStatus(
+                    kind: .claude, installed: true, version: "2.1.310 (Claude Code)", loggedIn: true,
+                    models: DemoContent.claudeModels.map(\.id), modelOptions: DemoContent.claudeModels
+                ),
+                AgentStatus(
+                    kind: .codex, installed: true, version: "codex-cli 0.162.1", loggedIn: true,
+                    models: DemoContent.codexModels.map(\.id), delegationEnabled: true, modelOptions: DemoContent.codexModels
+                ),
                 AgentStatus(kind: .gemini, installed: true, version: "0.24.0", delegationEnabled: true),
             ]
         )

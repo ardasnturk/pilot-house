@@ -29,6 +29,7 @@ struct PairingFlowView: View {
                 .padding(24)
                 .frame(maxWidth: 520)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(GradientBackground())
                 .navigationTitle(Text("Pair with Your Mac"))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

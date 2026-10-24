@@ -14,29 +14,65 @@ struct SessionSettingsMenuContent: View {
         connection.isConnected && !session.state.isBusy && session.state != .closed
     }
 
-    /// Suggestions for the agent, plus the current model when it is not among them.
-    private var models: [String] {
-        var names = agent == .claude
-            ? UserPreferences.modelSuggestions.filter { !$0.isEmpty }
-            : connection.status?.availableAgents.first { $0.kind == agent }?.models ?? []
-        if let current = session.model, !current.isEmpty, !names.contains(current) {
-            names.insert(current, at: 0)
+    private var status: AgentStatus? {
+        connection.status?.agents?.first { $0.kind == agent }
+    }
+
+    /// The agent's own model list (Mac 1.1), else the known names; the current
+    /// model is always included.
+    private var models: [ModelOption] {
+        var options = status?.modelOptions ?? (agent == .claude
+            ? UserPreferences.modelSuggestions.filter { !$0.isEmpty }.map { ModelOption(id: $0, displayName: $0.capitalized) }
+            : (status?.models ?? []).map { ModelOption(id: $0, displayName: $0) })
+        if let current = session.model, !current.isEmpty, status?.modelOption(for: current) == nil,
+           !options.contains(where: { $0.id == current }) {
+            options.insert(ModelOption(id: current, displayName: current), at: 0)
         }
-        return names
+        return options
+    }
+
+    /// The model as the CLI names it ("Opus 5.5"), not its ID.
+    private var currentModelName: String {
+        if let option = status?.modelOption(for: session.model), session.model?.isEmpty == false {
+            return option.displayName
+        }
+        return session.model ?? String(localized: "Agent default")
+    }
+
+    private var effortLevels: [String] {
+        status?.effortLevels(for: session.model) ?? agent.effortLevels
+    }
+
+    /// The picker's selection: the matching option's ID for a resolved name.
+    private var selectedModelID: String {
+        guard let model = session.model, !model.isEmpty else { return "" }
+        return models.first { $0.id == model }?.id ?? status?.modelOption(for: model)?.id ?? model
     }
 
     var body: some View {
-        Picker(selection: binding(\.model) { connection, value in
-            try await connection.updateSessionSettings(session.id, model: value)
+        Picker(selection: Binding {
+            selectedModelID
+        } set: { value in
+            apply { connection in try await connection.updateSessionSettings(session.id, model: value) }
         }) {
             Text("Agent default").tag("")
-            ForEach(models, id: \.self) { name in
-                Text(verbatim: name).tag(name)
+            ForEach(models.filter { !$0.isOlder }, id: \.id) { option in
+                Text(verbatim: option.displayName).tag(option.id)
+            }
+            let older = models.filter(\.isOlder)
+            if !older.isEmpty {
+                Section {
+                    ForEach(older, id: \.id) { option in
+                        Text(verbatim: option.displayName).tag(option.id)
+                    }
+                } header: {
+                    Text("Earlier models")
+                }
             }
         } label: {
             Label {
                 Text("Model")
-                Text(verbatim: session.model ?? String(localized: "Agent default"))
+                Text(verbatim: currentModelName)
             } icon: {
                 Image(systemName: "cpu")
             }
@@ -44,12 +80,14 @@ struct SessionSettingsMenuContent: View {
         .pickerStyle(.menu)
         .disabled(!isEditable)
         .accessibilityIdentifier("modelMenu")
-        if !agent.effortLevels.isEmpty {
-            Picker(selection: binding(\.effort) { connection, value in
-                try await connection.updateSessionSettings(session.id, effort: value)
+        if !effortLevels.isEmpty {
+            Picker(selection: Binding {
+                session.effort ?? ""
+            } set: { value in
+                apply { connection in try await connection.updateSessionSettings(session.id, effort: value) }
             }) {
                 Text("Agent default").tag("")
-                ForEach(agent.effortLevels, id: \.self) { level in
+                ForEach(effortLevels, id: \.self) { level in
                     Text(EffortLevel.localizedName(level)).tag(level)
                 }
             } label: {
@@ -73,21 +111,14 @@ struct SessionSettingsMenuContent: View {
         }
     }
 
-    private func binding(
-        _ keyPath: KeyPath<SessionSummary, String?>,
-        apply: @escaping @MainActor (MacConnection, String) async throws -> Void
-    ) -> Binding<String> {
-        Binding {
-            session[keyPath: keyPath] ?? ""
-        } set: { value in
-            let connection = connection
-            Task {
-                do {
-                    try await apply(connection, value)
-                    Haptics.success()
-                } catch {
-                    onError((error as? ErrorPayload)?.message ?? error.localizedDescription)
-                }
+    private func apply(_ change: @escaping @MainActor (MacConnection) async throws -> Void) {
+        let connection = connection
+        Task {
+            do {
+                try await change(connection)
+                Haptics.success()
+            } catch {
+                onError((error as? ErrorPayload)?.message ?? error.localizedDescription)
             }
         }
     }

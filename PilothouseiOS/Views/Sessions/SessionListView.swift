@@ -85,22 +85,39 @@ struct SessionListView: View {
         let grouped = Dictionary(grouping: connection.sessions) { group(of: $0, connection: connection) }
         return List(selection: $model.selectedSessionId) {
             Section {
-                ConnectionStatusRow(connection: connection)
+                ConnectionStatusRow(
+                    connection: connection,
+                    offersTailscale: !model.preferences.usesTailscale && connection.mac.addresses.contains { $0.kind != .local }
+                ) {
+                    model.preferences.usesTailscale = true
+                    connection.setPreference(model.preferences.connectionPreference)
+                }
+                .listRowInsets(EdgeInsets())
+                .listRowBackground(Color.clear)
             }
             if connection.capabilities.contains(HostCapability.insights) {
                 Section {
                     ThisWeekCard(connection: connection) { model.isPresentingInsights = true }
                 }
+                .listRowBackground(Rectangle().fill(.regularMaterial))
             }
             if connection.sessions.isEmpty {
                 Section {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("No sessions yet").font(.headline)
-                        Text("Tap the compose button to pick a folder on your Mac and start Claude Code there.")
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Start your first chat").font(.title3.bold())
+                        Text("Pick a folder on your Mac and tell Claude, Codex or Gemini what to do. It works on your Mac; you follow and approve every step here.")
                             .foregroundStyle(.secondary)
+                        Button {
+                            model.isPresentingNewChat = true
+                        } label: {
+                            Label("New Chat", systemImage: "plus")
+                        }
+                        .buttonStyle(GradientButtonStyle())
+                        .disabled(!connection.isConnected)
                     }
-                    .padding(.vertical, 6)
+                    .padding(.vertical, 8)
                 }
+                .listRowBackground(Rectangle().fill(.regularMaterial))
             }
             ForEach(SessionGroup.allCases, id: \.self) { group in
                 if let sessions = grouped[group], !sessions.isEmpty {
@@ -111,10 +128,12 @@ struct SessionListView: View {
                     } header: {
                         Text(group.title)
                     }
+                    .listRowBackground(Rectangle().fill(.regularMaterial))
                 }
             }
         }
         .listStyle(.insetGrouped)
+        .gradientBackground()
         .refreshable {
             await connection.refreshSessions()
         }
@@ -242,43 +261,69 @@ struct SessionRow: View {
     }
 }
 
-/// Mac name and how we are connected (local / Tailscale / offline).
+/// Mac name and how we are connected, as a hero card: gradient when
+/// connected, with plain next steps when not (D-103, D-104).
 struct ConnectionStatusRow: View {
     let connection: MacConnection
+    var offersTailscale = false
+    var useTailscale: () -> Void = {}
 
     var body: some View {
-        HStack(spacing: 12) {
-            Image(systemName: "laptopcomputer")
-                .font(.title2)
-                .foregroundStyle(Color.accentColor)
-                .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(connection.mac.name).font(.headline)
-                HStack(spacing: 6) {
-                    Circle().fill(color).frame(width: 8, height: 8)
-                    statusText
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            Spacer()
-            if case .waitingToRetry(_, let localNetworkDenied) = connection.state {
-                if localNetworkDenied {
-                    Button("Settings") {
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(url)
-                        }
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 12) {
+                Image(systemName: "laptopcomputer")
+                    .font(.title2.weight(.semibold))
+                    .frame(width: 44, height: 44)
+                    .background(.white.opacity(connection.isConnected ? 0.2 : 0), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(connection.mac.name).font(.headline)
+                    HStack(spacing: 6) {
+                        Circle().fill(color).frame(width: 8, height: 8)
+                        statusText
+                            .font(.subheadline)
+                            .opacity(0.85)
                     }
-                    .buttonStyle(.bordered)
-                    .controlSize(.small)
-                } else {
+                }
+                Spacer()
+                if case .waitingToRetry(_, let localNetworkDenied) = connection.state, !localNetworkDenied {
                     Button("Retry") { connection.appBecameActive() }
                         .buttonStyle(.bordered)
                         .controlSize(.small)
                 }
             }
+            if let help {
+                help
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                HStack {
+                    if case .waitingToRetry(_, true) = connection.state {
+                        Button("Open Settings") {
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                    if offersTailscale {
+                        Button("Use Tailscale", action: useTailscale)
+                            .buttonStyle(.bordered)
+                    }
+                }
+                .controlSize(.small)
+            }
         }
-        .accessibilityElement(children: .combine)
+        .foregroundStyle(connection.isConnected ? Color.white : Color.primary)
+        .padding(16)
+        .background {
+            if connection.isConnected {
+                RoundedRectangle(cornerRadius: 20, style: .continuous).fill(Brand.gradient)
+            } else {
+                RoundedRectangle(cornerRadius: 20, style: .continuous).fill(.regularMaterial)
+            }
+        }
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("connectionStatus")
     }
 
@@ -287,6 +332,22 @@ struct ConnectionStatusRow: View {
         case .connected: .green
         case .connecting, .waitingToRetry: .orange
         case .idle, .failed: .red
+        }
+    }
+
+    /// What to do while not connected, in plain words.
+    private var help: Text? {
+        switch connection.state {
+        case .waitingToRetry(_, true):
+            Text("Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.")
+        case .waitingToRetry, .idle:
+            if offersTailscale {
+                Text("Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.")
+            } else {
+                Text("Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.")
+            }
+        default:
+            nil
         }
     }
 

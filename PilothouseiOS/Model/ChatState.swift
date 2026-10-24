@@ -48,6 +48,16 @@ final class ChatState {
     /// tool-use ID that started them.
     private(set) var threads: [String: ChatState] = [:]
     @ObservationIgnored private var indexById: [String: Int] = [:]
+    /// Thumbnails of photos and videos this device sent, by user-message item
+    /// ID. Kept in memory only; the Mac's transcript has the count.
+    private(set) var thumbnails: [String: [Data]] = [:]
+    @ObservationIgnored private var outgoingThumbnails: [(text: String, images: [Data])] = []
+
+    /// Remembers thumbnails until the Mac echoes the message they belong to.
+    func noteOutgoing(text: String, thumbnails: [Data]) {
+        guard !thumbnails.isEmpty else { return }
+        outgoingThumbnails.append((text, thumbnails))
+    }
 
     init(sessionId: String) {
         self.sessionId = sessionId
@@ -74,7 +84,11 @@ final class ChatState {
         let date = event.timestamp
         switch event.event {
         case .userMessage(let message):
-            append(TranscriptItem(id: "seq-\(event.seq)", kind: .user(text: message.text, attachments: message.attachmentCount), timestamp: date))
+            let id = "seq-\(event.seq)"
+            if message.attachmentCount > 0, let index = outgoingThumbnails.firstIndex(where: { $0.text == message.text }) {
+                thumbnails[id] = outgoingThumbnails.remove(at: index).images
+            }
+            append(TranscriptItem(id: id, kind: .user(text: message.text, attachments: message.attachmentCount), timestamp: date))
 
         case .assistantTextDelta(let delta):
             if let index = indexById[delta.blockId] {

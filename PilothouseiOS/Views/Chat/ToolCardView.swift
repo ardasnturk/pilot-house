@@ -1,17 +1,23 @@
 import PilothouseKit
 import SwiftUI
 
-/// Collapsible card for one tool call (prompt §6.2.4): Read, Edit/Write (diff),
-/// Bash (command + output), Grep/Glob, Web, TodoWrite (task list), others.
+/// One tool call (prompt §6.2.4): Read, Edit/Write (diff), Bash (command +
+/// output), Grep/Glob, Web, TodoWrite (task list), others. In the transcript it
+/// is a compact row; tapping it opens the details in a sheet, like the Claude
+/// and Codex apps (D-104). The task list stays inline.
 struct ToolCardView: View {
     let call: ToolCall
     let workingDirectory: String?
+    /// Shown inside the detail sheet: always expanded, not tappable.
+    var isDetail = false
     @State private var isExpanded: Bool
+    @State private var showsDetail = false
 
-    init(call: ToolCall, workingDirectory: String?) {
+    init(call: ToolCall, workingDirectory: String?, isDetail: Bool = false) {
         self.call = call
         self.workingDirectory = workingDirectory
-        _isExpanded = State(initialValue: call.name == "TodoWrite")
+        self.isDetail = isDetail
+        _isExpanded = State(initialValue: isDetail || call.name == "TodoWrite")
     }
 
     private var summary: ToolSummary {
@@ -20,13 +26,21 @@ struct ToolCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Button {
-                withAnimation(.snappy) { isExpanded.toggle() }
-            } label: {
+            if isDetail {
                 header
+            } else {
+                Button {
+                    if call.name == "TodoWrite" {
+                        withAnimation(.snappy) { isExpanded.toggle() }
+                    } else {
+                        showsDetail = true
+                    }
+                } label: {
+                    header
+                }
+                .buttonStyle(.plain)
+                .accessibilityHint(Text("Shows the details"))
             }
-            .buttonStyle(.plain)
-            .accessibilityHint(isExpanded ? Text("Collapses the details") : Text("Shows the details"))
 
             if isExpanded {
                 Divider()
@@ -35,8 +49,11 @@ struct ToolCardView: View {
                     .transition(.opacity)
             }
         }
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
-        .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(borderColor, lineWidth: 1))
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(borderColor, lineWidth: 0.75))
+        .sheet(isPresented: $showsDetail) {
+            ToolDetailSheet(call: call, workingDirectory: workingDirectory)
+        }
         .overlay(alignment: .leading) {
             if summary.category == .agent {
                 // Sub-agents get a rail in the agent's colour, so they read as their own lane.
@@ -88,11 +105,13 @@ struct ToolCardView: View {
             }
             Spacer(minLength: 8)
             statusView
-            Image(systemName: "chevron.right")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.tertiary)
-                .rotationEffect(.degrees(isExpanded ? 90 : 0))
-                .accessibilityHidden(true)
+            if !isDetail {
+                Image(systemName: "chevron.right")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(.tertiary)
+                    .rotationEffect(.degrees(isExpanded && call.name == "TodoWrite" ? 90 : 0))
+                    .accessibilityHidden(true)
+            }
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
@@ -321,5 +340,32 @@ struct TodoListView: View {
         case .inProgress: Text("In progress")
         case .completed: Text("Completed")
         }
+    }
+}
+
+/// Full details of a tool call in a sheet: the command and its output, the
+/// whole diff, the file or the search results.
+struct ToolDetailSheet: View {
+    let call: ToolCall
+    let workingDirectory: String?
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                ToolCardView(call: call, workingDirectory: workingDirectory, isDetail: true)
+                    .padding()
+            }
+            .gradientBackground(intensity: 0.5)
+            .navigationTitle(Text(LocalizedStringKey(ToolSummary(name: call.name, input: call.input, workingDirectory: workingDirectory).title)))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") { dismiss() }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
     }
 }

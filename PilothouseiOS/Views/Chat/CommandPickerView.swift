@@ -50,6 +50,7 @@ struct CommandPickerView: View {
                 }
             }
             .listStyle(.insetGrouped)
+            .gradientBackground(intensity: 0.5)
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: Text("Search skills and commands"))
             .safeAreaInset(edge: .top, spacing: 0) {
                 Picker(selection: $filter) {

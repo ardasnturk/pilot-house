@@ -8,7 +8,9 @@ struct ChatView: View {
 
     @Environment(AppModel.self) private var model
     @State private var draft = ""
-    @State private var attachments: [MessageAttachment] = []
+    @State private var attachments: [ComposerAttachment] = []
+    /// When the running turn started, for the timer in the composer.
+    @State private var busySince: Date?
     @State private var isSending = false
     @State private var errorMessage: String?
     @State private var confirmDelete = false
@@ -24,7 +26,7 @@ struct ChatView: View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: 14) {
                 ForEach(chat.items) { item in
-                    TranscriptItemView(item: item, workingDirectory: session?.cwd)
+                    TranscriptItemView(item: item, workingDirectory: session?.cwd, thumbnails: chat.thumbnails[item.id] ?? [])
                         .id(item.id)
                 }
                 if chat.items.isEmpty {
@@ -38,6 +40,10 @@ struct ChatView: View {
         }
         .defaultScrollAnchor(.bottom)
         .defaultScrollAnchor(.bottom, for: .sizeChanges)
+        .background(GradientBackground(intensity: 0.35))
+        .onChange(of: isBusy, initial: true) { _, busy in
+            busySince = busy ? (busySince ?? Date()) : nil
+        }
         .scrollDismissesKeyboard(.interactively)
         .safeAreaInset(edge: .bottom, spacing: 0) {
             bottomBar
@@ -117,15 +123,6 @@ struct ChatView: View {
             if !chat.runningSubAgents.isEmpty {
                 RunningSubAgentsBar(calls: chat.runningSubAgents, workingDirectory: session?.cwd)
             }
-            if isBusy {
-                WorkingIndicator(
-                    state: session?.state ?? .running,
-                    runningTool: chat.runningTool,
-                    workingDirectory: session?.cwd
-                ) {
-                    run { try await connection.interrupt(sessionId) }
-                }
-            }
             if isClosed {
                 Button {
                     run { try await connection.resume(sessionId) }
@@ -141,11 +138,13 @@ struct ChatView: View {
                     attachments: $attachments,
                     slashCommands: session?.slashCommands ?? chat.info?.slashCommands ?? [],
                     isEnabled: connection.isConnected && !isSending,
-                    modelLabel: session.map { $0.model ?? String(localized: "Agent default") },
+                    modelLabel: modelLabel,
                     effort: session?.effort,
                     settingsMenu: settingsMenu,
                     onSlash: session?.agentKind == .claude ? { isPickingCommand = true } : nil,
                     placeholder: composerPlaceholder,
+                    activity: activity,
+                    onStop: { run { try await connection.interrupt(sessionId) } },
                     onSend: send
                 )
             }
@@ -245,6 +244,26 @@ struct ChatView: View {
         return AnyView(SessionSettingsMenuContent(connection: connection, session: session) { errorMessage = $0 })
     }
 
+    /// "Opus 5.5" rather than `claude-opus-5-5` when the Mac knows the model list.
+    private var modelLabel: String? {
+        guard let session else { return nil }
+        let status = connection.status?.agents?.first { $0.kind == session.agentKind }
+        if let model = session.model, !model.isEmpty {
+            return status?.modelOption(for: model)?.displayName ?? model
+        }
+        return status?.defaultModelOption?.displayName ?? String(localized: "Agent default")
+    }
+
+    /// The running turn, shown inside the composer.
+    private var activity: ComposerActivity? {
+        guard isBusy else { return nil }
+        let detail = chat.runningTool.map { tool in
+            let summary = ToolSummary(name: tool.name, input: tool.input, workingDirectory: session?.cwd)
+            return [String(localized: String.LocalizationValue(summary.title)), summary.detail].compactMap { $0 }.joined(separator: " · ")
+        }
+        return ComposerActivity(isWaitingForApproval: session?.state == .awaitingPermission, detail: detail, since: busySince ?? Date())
+    }
+
     private var composerPlaceholder: LocalizedStringKey {
         if let agent = session?.agentKind, agent != .claude {
             return LocalizedStringKey("Message \(agent.displayName)…")
@@ -268,18 +287,21 @@ struct ChatView: View {
     // MARK: Actions
 
     private func send() {
-        let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !text.isEmpty || !attachments.isEmpty else { return }
+        let typed = draft.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !typed.isEmpty || !attachments.isEmpty else { return }
         let outgoing = attachments
+        // Video frames come with a line that says what they are.
+        let text = ([typed] + outgoing.compactMap(\.note)).filter { !$0.isEmpty }.joined(separator: "\n\n")
         draft = ""
         attachments = []
         isSending = true
+        chat.noteOutgoing(text: text, thumbnails: outgoing.map(\.thumbnail))
         Task {
             defer { isSending = false }
             do {
-                try await connection.send(text, attachments: outgoing, to: sessionId)
+                try await connection.send(text, attachments: outgoing.flatMap(\.payloads), to: sessionId)
             } catch {
-                draft = text
+                draft = typed
                 attachments = outgoing
                 errorMessage = (error as? ErrorPayload)?.message ?? error.localizedDescription
             }
@@ -315,47 +337,5 @@ struct Banner<Content: View>: View {
         .padding(10)
         .background(tint.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
         .accessibilityElement(children: .combine)
-    }
-}
-
-/// "Working…" with the current tool and a Stop button.
-struct WorkingIndicator: View {
-    let state: SessionState
-    let runningTool: ToolCall?
-    let workingDirectory: String?
-    let onStop: () -> Void
-
-    var body: some View {
-        HStack(spacing: 10) {
-            ProgressView()
-                .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 1) {
-                if state == .awaitingPermission {
-                    Text("Waiting for your approval…")
-                        .font(.subheadline.weight(.medium))
-                } else {
-                    Text("Working…")
-                        .font(.subheadline.weight(.medium))
-                }
-                if let tool = runningTool {
-                    let summary = ToolSummary(name: tool.name, input: tool.input, workingDirectory: workingDirectory)
-                    Text(verbatim: [summary.title, summary.detail].compactMap { $0 }.joined(separator: " · "))
-                        .font(.caption.monospaced())
-                        .foregroundStyle(.secondary)
-                        .lineLimit(1)
-                        .truncationMode(.middle)
-                }
-            }
-            Spacer()
-            Button(role: .destructive, action: onStop) {
-                Label("Stop", systemImage: "stop.fill")
-            }
-            .buttonStyle(.bordered)
-            .tint(.red)
-            .accessibilityIdentifier("stopButton")
-        }
-        .padding(10)
-        .floatingSurface(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .accessibilityElement(children: .contain)
     }
 }

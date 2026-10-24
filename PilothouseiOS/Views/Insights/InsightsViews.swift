@@ -121,7 +121,7 @@ struct InsightsView: View {
                 .frame(maxWidth: 820)
                 .frame(maxWidth: .infinity)
             }
-            .background(Color(.systemGroupedBackground))
+            .background(GradientBackground(intensity: 0.8))
             .navigationTitle(Text("Insights"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

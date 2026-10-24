@@ -9,6 +9,20 @@ struct SettingsView: View {
     @State private var showTailscaleGuide = false
     @State private var confirmClearCache = false
 
+    /// Claude Code's own model list from the Mac, or the aliases on older Macs.
+    private var claudeModels: [ModelOption] {
+        if let options = model.connection?.status?.agents?.first(where: { $0.kind == .claude })?.modelOptions, !options.isEmpty {
+            return options
+        }
+        return UserPreferences.modelSuggestions.filter { !$0.isEmpty }.map { ModelOption(id: $0, displayName: $0.capitalized) }
+    }
+
+    private var claudeEffortLevels: [String] {
+        let claude = model.connection?.status?.agents?.first { $0.kind == .claude }
+        let model = model.preferences.defaultModel
+        return claude?.effortLevels(for: model.isEmpty ? nil : model) ?? AgentKind.claude.effortLevels
+    }
+
     var body: some View {
         @Bindable var preferences = model.preferences
         NavigationStack {
@@ -18,16 +32,13 @@ struct SettingsView: View {
                     statusSection(status)
                 }
                 Section {
-                    Picker("Connect via", selection: $preferences.connectionPreference) {
-                        Text("Automatic").tag(ConnectionPreference.automatic)
-                        Text("Local network only").tag(ConnectionPreference.localOnly)
-                        Text("Tailscale only").tag(ConnectionPreference.tailscaleOnly)
-                    }
-                    Button("Set Up Remote Access (Tailscale)") { showTailscaleGuide = true }
+                    Toggle("Use Tailscale when away", isOn: $preferences.usesTailscale)
+                        .accessibilityIdentifier("tailscaleToggle")
+                    Button("How to Set Up Tailscale") { showTailscaleGuide = true }
                 } header: {
                     Text("Connection")
                 } footer: {
-                    Text("Automatic tries the last working address, then your local network, then Tailscale.")
+                    Text("Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.")
                 }
                 .onChange(of: preferences.connectionPreference) { _, preference in
                     model.connection?.setPreference(preference)
@@ -36,13 +47,13 @@ struct SettingsView: View {
                 Section {
                     Picker("Model", selection: $preferences.defaultModel) {
                         Text("Mac default").tag("")
-                        ForEach(UserPreferences.modelSuggestions.filter { !$0.isEmpty }, id: \.self) { name in
-                            Text(name.capitalized).tag(name)
+                        ForEach(claudeModels, id: \.id) { option in
+                            Text(verbatim: option.displayName).tag(option.id)
                         }
                     }
                     Picker("Effort", selection: $preferences.defaultEffort) {
                         Text("Agent default").tag("")
-                        ForEach(AgentKind.claude.effortLevels, id: \.self) { level in
+                        ForEach(claudeEffortLevels, id: \.self) { level in
                             Text(EffortLevel.localizedName(level)).tag(level)
                         }
                     }
@@ -53,6 +64,23 @@ struct SettingsView: View {
                     }
                 } header: {
                     Text("New chats")
+                }
+
+                Section {
+                    Button {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    } label: {
+                        LabeledContent {
+                            Text(verbatim: Locale.current.localizedString(forIdentifier: Bundle.main.preferredLocalizations.first ?? "en") ?? "")
+                        } label: {
+                            Text("Language")
+                        }
+                    }
+                    .foregroundStyle(.primary)
+                } footer: {
+                    Text("Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.")
                 }
 
                 Section {
@@ -86,6 +114,7 @@ struct SettingsView: View {
 
                 aboutSection
             }
+            .gradientBackground(intensity: 0.6)
             .navigationTitle(Text("Settings"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

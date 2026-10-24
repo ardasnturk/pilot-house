@@ -3,6 +3,24 @@ import Foundation
 /// Static content of the demo Mac: a believable home folder, three seeded
 /// sessions and a scripted Claude turn. All names and data are fictional.
 enum DemoContent {
+    /// Models as Claude Code 2.1.308 reports them (initialize response).
+    static let claudeModels: [ModelOption] = {
+        let levels = ["low", "medium", "high", "xhigh", "max"]
+        return [
+            ModelOption(id: "opus", displayName: "Opus 5.5", description: "Best for everyday, complex tasks", resolvedModel: "claude-opus-5-5", effortLevels: levels, defaultEffort: "high", isDefault: true),
+            ModelOption(id: "fable", displayName: "Fable 5.1", description: "Most capable for your hardest and longest-running tasks", resolvedModel: "claude-fable-5-1", effortLevels: levels, defaultEffort: "high"),
+            ModelOption(id: "sonnet", displayName: "Sonnet 5.5", description: "Efficient for routine tasks", resolvedModel: "claude-sonnet-5-5", effortLevels: levels, defaultEffort: "high"),
+            ModelOption(id: "haiku", displayName: "Haiku 5.5", description: "Fastest for quick answers", resolvedModel: "claude-haiku-5-5", effortLevels: levels, defaultEffort: "high"),
+            ModelOption(id: "claude-opus-4-8", displayName: "Opus 4.8", resolvedModel: "claude-opus-4-8", effortLevels: levels),
+        ]
+    }()
+
+    /// Models as Codex 0.162.1 reports them (`model/list`).
+    static let codexModels: [ModelOption] = [
+        ModelOption(id: "gpt-6.1-sol", displayName: "GPT-6.1-Sol", resolvedModel: "gpt-6.1-sol", effortLevels: ["low", "medium", "high", "xhigh", "max", "ultra"], defaultEffort: "low", isDefault: true),
+        ModelOption(id: "gpt-6-astra", displayName: "GPT-6-Astra", resolvedModel: "gpt-6-astra", effortLevels: ["low", "medium", "high", "xhigh", "max", "ultra"], defaultEffort: "medium"),
+    ]
+
     static let macName = "Demo MacBook Pro"
     static let slashCommands = ["clear", "compact", "cost", "review", "init", "model", "pr-comments", "security-review"]
 

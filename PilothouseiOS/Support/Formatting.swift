@@ -93,7 +93,18 @@ enum EffortLevel {
         case "high": LocalizedStringKey("High")
         case "xhigh": LocalizedStringKey("Extra high")
         case "max": LocalizedStringKey("Max")
+        case "ultra": LocalizedStringKey("Ultra")
+        case "minimal": LocalizedStringKey("Minimal")
+        case "none": LocalizedStringKey("None")
         default: LocalizedStringKey(stringLiteral: raw)
         }
+    }
+}
+
+extension ModelOption {
+    /// A pinned, dated model (`claude-opus-4-8`) rather than an alias that
+    /// follows the newest one (`opus`); listed under "Earlier models".
+    var isOlder: Bool {
+        id.hasPrefix("claude-") && !isDefault
     }
 }

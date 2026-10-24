@@ -44,6 +44,7 @@ struct NewChatView: View {
                 optionsSection
             }
             .listStyle(.insetGrouped)
+            .gradientBackground(intensity: 0.7)
             .searchable(text: $search, prompt: Text("Filter this folder"))
             .navigationTitle(Text("New Chat"))
             .navigationBarTitleDisplayMode(.inline)
@@ -241,8 +242,18 @@ struct NewChatView: View {
                 } else {
                     Text("Agent default").tag("")
                 }
-                ForEach(modelSuggestions, id: \.self) { name in
-                    Text(name.capitalized).tag(name)
+                ForEach(modelOptions.filter { !$0.isOlder }, id: \.id) { option in
+                    Text(verbatim: option.displayName).tag(option.id)
+                }
+                let older = modelOptions.filter(\.isOlder)
+                if !older.isEmpty {
+                    Section {
+                        ForEach(older, id: \.id) { option in
+                            Text(verbatim: option.displayName).tag(option.id)
+                        }
+                    } header: {
+                        Text("Earlier models")
+                    }
                 }
                 Text("Custom…").tag(Self.customModelTag)
             } label: {
@@ -256,13 +267,16 @@ struct NewChatView: View {
             if supportsEffort {
                 Picker(selection: $selectedEffort) {
                     Text("Agent default").tag("")
-                    ForEach(agent.effortLevels, id: \.self) { level in
+                    ForEach(effortLevels, id: \.self) { level in
                         Text(EffortLevel.localizedName(level)).tag(level)
                     }
                 } label: {
                     Label("Effort", systemImage: "gauge.with.dots.needle.67percent")
                 }
                 .accessibilityIdentifier("effortPicker")
+                .onChange(of: selectedModel) { _, _ in
+                    if !effortLevels.contains(selectedEffort) { selectedEffort = "" }
+                }
             }
             TextField("First message (optional)", text: $firstMessage, axis: .vertical)
                 .lineLimit(1...4)
@@ -277,13 +291,14 @@ struct NewChatView: View {
     }
 
     private var supportsEffort: Bool {
-        !agent.effortLevels.isEmpty && model.connection?.capabilities.contains(HostCapability.sessionSettings) == true
+        !effortLevels.isEmpty && model.connection?.capabilities.contains(HostCapability.sessionSettings) == true
     }
 
     /// The default effort from Settings, if this agent accepts it.
     private func defaultEffort(for agent: AgentKind) -> String {
         let effort = model.preferences.defaultEffort
-        return agent.effortLevels.contains(effort) ? effort : ""
+        let levels = availableAgents.first { $0.kind == agent }?.effortLevels(for: nil) ?? agent.effortLevels
+        return levels.contains(effort) ? effort : ""
     }
 
     /// Installed agents the Mac reported (Claude Code alone on older Macs).
@@ -292,9 +307,22 @@ struct NewChatView: View {
         return connection.status?.availableAgents ?? []
     }
 
-    private var modelSuggestions: [String] {
-        if agent == .claude { return UserPreferences.modelSuggestions.filter { !$0.isEmpty } }
-        return availableAgents.first { $0.kind == agent }?.models ?? []
+    /// The agent's own model list (Mac 1.1), else the known aliases / model IDs.
+    private var modelOptions: [ModelOption] {
+        let status = availableAgents.first { $0.kind == agent }
+        if let options = status?.modelOptions, !options.isEmpty { return options }
+        let names = agent == .claude ? UserPreferences.modelSuggestions.filter { !$0.isEmpty } : status?.models ?? []
+        return names.map { ModelOption(id: $0, displayName: agent == .claude ? $0.capitalized : $0) }
+    }
+
+    private var selectedModelID: String? {
+        let id = selectedModel == Self.customModelTag ? customModel : selectedModel
+        return id.isEmpty ? nil : id
+    }
+
+    /// Levels the chosen model takes (the agent's own list on Mac 1.1).
+    private var effortLevels: [String] {
+        availableAgents.first { $0.kind == agent }?.effortLevels(for: selectedModelID) ?? agent.effortLevels
     }
 
     private var canCreateFolders: Bool {
