@@ -4,6 +4,7 @@
 #
 # Requirements (see docs/RELEASE.md):
 #   * Xcode with a "Developer ID Application" certificate of team 5JMD3VSD7N
+#   * dmgbuild for the designed DMG window: `pipx install dmgbuild`
 #   * notarytool credentials stored once with:
 #       xcrun notarytool store-credentials pilothouse-notary \
 #         --apple-id <apple-id> --team-id 5JMD3VSD7N --password <app-specific-password>
@@ -48,12 +49,19 @@ xcrun notarytool submit "$BUILD/Pilothouse.zip" --keychain-profile "$NOTARY_PROF
 xcrun stapler staple "$APP"
 
 echo "▸ Building the DMG"
-STAGING="$BUILD/dmg"
-mkdir -p "$STAGING"
-cp -R "$APP" "$STAGING/"
-ln -s /Applications "$STAGING/Applications"
 rm -f "$DMG"
-hdiutil create -volname "Pilothouse" -srcfolder "$STAGING" -fs HFS+ -format UDZO -ov "$DMG"
+DMGBUILD="${DMGBUILD:-$(command -v dmgbuild || true)}"
+if [[ -n "$DMGBUILD" ]]; then
+  # Designed window: background, icon positions (scripts/dmg/settings.py).
+  "$DMGBUILD" -s scripts/dmg/settings.py -D app="$APP" "Pilothouse" "$DMG"
+else
+  echo "  dmgbuild not found (pipx install dmgbuild) — building a plain DMG"
+  STAGING="$BUILD/dmg"
+  mkdir -p "$STAGING"
+  cp -R "$APP" "$STAGING/"
+  ln -s /Applications "$STAGING/Applications"
+  hdiutil create -volname "Pilothouse" -srcfolder "$STAGING" -fs HFS+ -format UDZO -ov "$DMG"
+fi
 codesign --sign "Developer ID Application" --timestamp "$DMG"
 
 echo "▸ Notarizing the DMG"
