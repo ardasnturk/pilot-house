@@ -107,8 +107,9 @@ final class PilothouseUITests: XCTestCase {
         XCTAssertTrue(app.element("session-Fix the flaky login test").waitForExistence(timeout: 15))
 
         app.buttons["settingsButton"].tap()
+        XCTAssertTrue(app.buttons["Done"].waitForExistence(timeout: 10))
         let drop = app.buttons["simulateNetworkDrop"]
-        XCTAssertTrue(drop.waitForExistence(timeout: 10))
+        XCTAssertTrue(app.scrollToElement(drop))
         drop.tap()
         app.buttons["Done"].tap()
 

@@ -28,6 +28,18 @@ extension XCUIApplication {
         descendants(matching: .any)[identifier].firstMatch
     }
 
+    /// Scrolls the frontmost list or form until `element` is on screen.
+    /// Lists are lazy: rows below the fold are not in the hierarchy yet.
+    @MainActor
+    func scrollToElement(_ element: XCUIElement, maxSwipes: Int = 8) -> Bool {
+        let list = collectionViews.firstMatch.exists ? collectionViews.firstMatch : tables.firstMatch
+        for _ in 0..<maxSwipes {
+            if element.exists && element.isHittable { return true }
+            list.swipeUp()
+        }
+        return element.exists && element.isHittable
+    }
+
     /// On iPhone the split view collapses; go back to the session list if needed.
     @MainActor
     func returnToSessionList() {
