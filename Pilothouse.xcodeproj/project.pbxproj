@@ -44,6 +44,7 @@
 		8572C169C3FD461DC2D16740 /* UITestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D37E5DCE53A80AEE27295 /* UITestSupport.swift */; };
 		89A8A70407E7F2D102BF1A4F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337DD811E53DF19C80FBBCF8 /* WelcomeView.swift */; };
 		8C9F912AB4D432AE8D39E9FC /* LidClosedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371C67D3326C21AFC37AF23 /* LidClosedController.swift */; };
+		8F2217A02D09F61CEF6D3553 /* GetIPhoneAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD4CC1DE0D0A5D4E5F04298 /* GetIPhoneAppView.swift */; };
 		9067C3B81584AA2ABEA76E3C /* PilothouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4531899DDF66EC0EA559DA /* PilothouseApp.swift */; };
 		9228A036C4E22DFEECDE425F /* PairingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49CD6ACD764A42725AA5867 /* PairingFlowView.swift */; };
 		99F914510A4CF2CCAD96A251 /* ClaudeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */; };
@@ -117,6 +118,7 @@
 		0371C67D3326C21AFC37AF23 /* LidClosedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LidClosedController.swift; sourceTree = "<group>"; };
 		077F44A302FCF38242D6806A /* TailscaleAssistantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailscaleAssistantView.swift; sourceTree = "<group>"; };
 		091C5F1C20A13A76470F728B /* PilothouseKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PilothouseKit; path = PilothouseKit; sourceTree = SOURCE_ROOT; };
+		0AD4CC1DE0D0A5D4E5F04298 /* GetIPhoneAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIPhoneAppView.swift; sourceTree = "<group>"; };
 		1392B0F50A90AB3E70EF5729 /* TranscriptCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptCache.swift; sourceTree = "<group>"; };
 		180408FFCD457F1564BB002B /* PilothouseiOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PilothouseiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19B3F59F8916C5D862672595 /* PermissionRequestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequestSheet.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */,
+				0AD4CC1DE0D0A5D4E5F04298 /* GetIPhoneAppView.swift */,
 				B122B36322A27E4867495C75 /* MenuContentView.swift */,
 				BA1A027C85AAA6E7B80E0809 /* PairingView.swift */,
 				B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */,
@@ -690,6 +693,7 @@
 				59080C3D85FDA53F9B810F42 /* AppSettings.swift in Sources */,
 				99F914510A4CF2CCAD96A251 /* ClaudeSetupView.swift in Sources */,
 				B725B54F25FF727911124CCC /* Formatting.swift in Sources */,
+				8F2217A02D09F61CEF6D3553 /* GetIPhoneAppView.swift in Sources */,
 				D259B18F5280D5416D491DC0 /* HelperProtocol.swift in Sources */,
 				3095D7C7C1DA6AC1D6792130 /* LaunchAtLogin.swift in Sources */,
 				8C9F912AB4D432AE8D39E9FC /* LidClosedController.swift in Sources */,

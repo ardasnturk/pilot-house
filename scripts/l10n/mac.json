@@ -167,6 +167,10 @@
   "de": "Code abgelaufen – neuen erstellen",
   "tr": "Kodun süresi doldu — yenisini oluşturun"
  },
+ "Come back here and choose Pair New Device…": {
+  "de": "Komm hierher zurück und wähle Neues Gerät koppeln …",
+  "tr": "Buraya dönün ve Yeni Cihaz Eşleştir…'i seçin."
+ },
  "Connected": {
   "de": "Verbunden",
   "tr": "Bağlı"
@@ -182,6 +186,10 @@
  "Connection addresses": {
   "de": "Verbindungsadressen",
   "tr": "Bağlantı adresleri"
+ },
+ "Copied": {
+  "de": "Kopiert",
+  "tr": "Kopyalandı"
  },
  "Copy %@": {
   "de": "%@ kopieren",
@@ -255,6 +263,10 @@
   "de": "Allgemein",
   "tr": "Genel"
  },
+ "Get Pilothouse for iPhone and iPad": {
+  "de": "Pilothouse für iPhone und iPad",
+  "tr": "iPhone ve iPad için Pilothouse'u edinin"
+ },
  "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.": {
   "de": "Lade Tailscale aus dem App Store und melde dich mit demselben Konto an. iOS erlaubt Apps nicht, das für dich zu erledigen.",
   "tr": "Tailscale'i App Store'dan edinin ve aynı hesapla giriş yapın. iOS, uygulamaların bunu sizin yerinize yapmasına izin vermez."
@@ -262,6 +274,14 @@
  "Get notified when a task you started from your phone finishes, when Claude waits for your approval, or when a session fails.": {
   "de": "Lass dich benachrichtigen, wenn eine vom Telefon gestartete Aufgabe fertig ist, Claude auf deine Freigabe wartet oder eine Sitzung fehlschlägt.",
   "tr": "Telefondan başlattığınız bir görev bittiğinde, Claude onayınızı beklediğinde ya da bir oturum hata verdiğinde bildirim alın."
+ },
+ "Get the iPhone App": {
+  "de": "iPhone-App laden",
+  "tr": "iPhone Uygulamasını Edinin"
+ },
+ "Get the iPhone App…": {
+  "de": "iPhone-App laden …",
+  "tr": "iPhone Uygulamasını Edinin…"
  },
  "Hide Manual Steps": {
   "de": "Manuelle Schritte ausblenden",
@@ -298,6 +318,10 @@
  "Install Tailscale on your iPhone or iPad": {
   "de": "Tailscale auf iPhone oder iPad installieren",
   "tr": "iPhone veya iPad'inize Tailscale'i kurun"
+ },
+ "Install TestFlight if asked, then tap Install for Pilothouse.": {
+  "de": "Installiere TestFlight, falls gefragt, und tippe dann bei Pilothouse auf Installieren.",
+  "tr": "İstenirse TestFlight'ı yükleyin, ardından Pilothouse için Yükle'ye dokunun."
  },
  "Install the free ntfy app, tap +, and enter the topic. For a self-hosted server, also turn on “Use another server” and enter its address.": {
   "de": "Installiere die kostenlose ntfy-App, tippe auf + und gib das Thema ein. Für einen eigenen Server aktiviere zusätzlich „Use another server“ und gib seine Adresse ein.",
@@ -382,6 +406,10 @@
  "New sessions": {
   "de": "Neue Sitzungen",
   "tr": "Yeni oturumlar"
+ },
+ "No Pilothouse on your iPhone yet? Get the app": {
+  "de": "Noch kein Pilothouse auf deinem iPhone? App laden",
+  "tr": "iPhone'unuzda henüz Pilothouse yok mu? Uygulamayı edinin"
  },
  "No devices paired yet.": {
   "de": "Noch keine Geräte gekoppelt.",
@@ -523,6 +551,10 @@
   "de": "Ruhezustand wird verhindert (der Bildschirm kann sich trotzdem ausschalten)",
   "tr": "Sistem uykusu engelleniyor (ekran yine kapanabilir)"
  },
+ "QR code for the TestFlight link": {
+  "de": "QR-Code für den TestFlight-Link",
+  "tr": "TestFlight bağlantısının QR kodu"
+ },
  "Quit Pilothouse": {
   "de": "Pilothouse beenden",
   "tr": "Pilothouse'tan Çık"
@@ -570,6 +602,14 @@
  "Save to Keychain": {
   "de": "Im Schlüsselbund sichern",
   "tr": "Anahtar Zinciri'ne Kaydet"
+ },
+ "Scan the code with your iPhone's camera to install the app with TestFlight, Apple's free app for beta apps.": {
+  "de": "Scanne den Code mit der Kamera deines iPhones, um die App mit TestFlight zu installieren, Apples kostenloser App für Beta-Apps.",
+  "tr": "Uygulamayı Apple'ın beta uygulamaları için ücretsiz uygulaması TestFlight ile kurmak için kodu iPhone kameranızla okutun."
+ },
+ "Scan the code, or open the link on your iPhone or iPad.": {
+  "de": "Scanne den Code oder öffne den Link auf deinem iPhone oder iPad.",
+  "tr": "Kodu okutun ya da bağlantıyı iPhone veya iPad'inizde açın."
  },
  "Scan with Pilothouse on your iPhone or iPad": {
   "de": "Mit Pilothouse auf deinem iPhone oder iPad scannen",

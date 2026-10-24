@@ -143,7 +143,7 @@ struct MenuContentView: View {
         }
     }
 
-    private var pairButton: some View {
+    @ViewBuilder private var pairButton: some View {
         Button {
             Task { await controller.createPairing() }
             show(WindowID.pairing)
@@ -154,6 +154,13 @@ struct MenuContentView: View {
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
         .disabled(controller.phase != .running)
+        Button {
+            show(WindowID.iPhoneApp)
+        } label: {
+            Label("Get the iPhone App…", systemImage: "iphone.and.arrow.forward")
+                .frame(maxWidth: .infinity)
+        }
+        .controlSize(.regular)
     }
 
     @ViewBuilder private var limitsSection: some View {

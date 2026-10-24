@@ -673,6 +673,22 @@
         }
       }
     },
+    "Come back here and choose Pair New Device…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komm hierher zurück und wähle Neues Gerät koppeln …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buraya dönün ve Yeni Cihaz Eşleştir…'i seçin."
+          }
+        }
+      }
+    },
     "Connected": {
       "localizations": {
         "de": {
@@ -733,6 +749,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bağlantı adresleri"
+          }
+        }
+      }
+    },
+    "Copied": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopiert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopyalandı"
           }
         }
       }
@@ -1025,6 +1057,22 @@
         }
       }
     },
+    "Get Pilothouse for iPhone and iPad": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse für iPhone und iPad"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone ve iPad için Pilothouse'u edinin"
+          }
+        }
+      }
+    },
     "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.": {
       "localizations": {
         "de": {
@@ -1053,6 +1101,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Telefondan başlattığınız bir görev bittiğinde, Claude onayınızı beklediğinde ya da bir oturum hata verdiğinde bildirim alın."
+          }
+        }
+      }
+    },
+    "Get the iPhone App": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone-App laden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone Uygulamasını Edinin"
+          }
+        }
+      }
+    },
+    "Get the iPhone App…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone-App laden …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone Uygulamasını Edinin…"
           }
         }
       }
@@ -1197,6 +1277,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "iPhone veya iPad'inize Tailscale'i kurun"
+          }
+        }
+      }
+    },
+    "Install TestFlight if asked, then tap Install for Pilothouse.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installiere TestFlight, falls gefragt, und tippe dann bei Pilothouse auf Installieren."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstenirse TestFlight'ı yükleyin, ardından Pilothouse için Yükle'ye dokunun."
           }
         }
       }
@@ -1533,6 +1629,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yeni oturumlar"
+          }
+        }
+      }
+    },
+    "No Pilothouse on your iPhone yet? Get the app": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch kein Pilothouse auf deinem iPhone? App laden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'unuzda henüz Pilothouse yok mu? Uygulamayı edinin"
           }
         }
       }
@@ -2097,6 +2209,22 @@
         }
       }
     },
+    "QR code for the TestFlight link": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR-Code für den TestFlight-Link"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "TestFlight bağlantısının QR kodu"
+          }
+        }
+      }
+    },
     "Quit Pilothouse": {
       "localizations": {
         "de": {
@@ -2285,6 +2413,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Anahtar Zinciri'ne Kaydet"
+          }
+        }
+      }
+    },
+    "Scan the code with your iPhone's camera to install the app with TestFlight, Apple's free app for beta apps.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanne den Code mit der Kamera deines iPhones, um die App mit TestFlight zu installieren, Apples kostenloser App für Beta-Apps."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı Apple'ın beta uygulamaları için ücretsiz uygulaması TestFlight ile kurmak için kodu iPhone kameranızla okutun."
+          }
+        }
+      }
+    },
+    "Scan the code, or open the link on your iPhone or iPad.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scanne den Code oder öffne den Link auf deinem iPhone oder iPad."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kodu okutun ya da bağlantıyı iPhone veya iPad'inizde açın."
           }
         }
       }

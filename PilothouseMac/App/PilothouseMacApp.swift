@@ -5,6 +5,7 @@ enum WindowID {
     static let pairing = "pairing"
     static let claudeSetup = "claude-setup"
     static let tailscale = "tailscale"
+    static let iPhoneApp = "iphone-app"
 }
 
 /// Menu-bar-only app (`LSUIElement`), distributed outside the Mac App Store.
@@ -23,6 +24,13 @@ struct PilothouseMacApp: App {
 
         Window(Text("Pair a Device"), id: WindowID.pairing) {
             PairingView()
+                .environment(appDelegate.controller)
+        }
+        .windowResizability(.contentSize)
+        .defaultPosition(.center)
+
+        Window(Text("Get the iPhone App"), id: WindowID.iPhoneApp) {
+            GetIPhoneAppView()
                 .environment(appDelegate.controller)
         }
         .windowResizability(.contentSize)
@@ -52,8 +60,20 @@ struct PilothouseMacApp: App {
 /// The status-bar icon: the helm glyph, with a dot while Claude waits for approval.
 struct MenuBarLabel: View {
     let controller: AppController
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
+        icon
+            .task {
+                // First launch: show how to get the phone app before anything else.
+                guard !controller.settings.didShowWelcome else { return }
+                controller.settings.didShowWelcome = true
+                openWindow(id: WindowID.iPhoneApp)
+                NSApp.activate()
+            }
+    }
+
+    @ViewBuilder private var icon: some View {
         switch controller.phase {
         case .failed:
             Image(systemName: "exclamationmark.triangle")

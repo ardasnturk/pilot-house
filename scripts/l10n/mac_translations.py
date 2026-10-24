@@ -1,6 +1,16 @@
 # Source of scripts/l10n/mac.json — edit here, then run `python3 scripts/l10n/mac_translations.py`.
 import json, os
 T = {
+"Get Pilothouse for iPhone and iPad": ("iPhone ve iPad için Pilothouse'u edinin", "Pilothouse für iPhone und iPad"),
+"Scan the code with your iPhone's camera to install the app with TestFlight, Apple's free app for beta apps.": ("Uygulamayı Apple'ın beta uygulamaları için ücretsiz uygulaması TestFlight ile kurmak için kodu iPhone kameranızla okutun.", "Scanne den Code mit der Kamera deines iPhones, um die App mit TestFlight zu installieren, Apples kostenloser App für Beta-Apps."),
+"QR code for the TestFlight link": ("TestFlight bağlantısının QR kodu", "QR-Code für den TestFlight-Link"),
+"Scan the code, or open the link on your iPhone or iPad.": ("Kodu okutun ya da bağlantıyı iPhone veya iPad'inizde açın.", "Scanne den Code oder öffne den Link auf deinem iPhone oder iPad."),
+"Install TestFlight if asked, then tap Install for Pilothouse.": ("İstenirse TestFlight'ı yükleyin, ardından Pilothouse için Yükle'ye dokunun.", "Installiere TestFlight, falls gefragt, und tippe dann bei Pilothouse auf Installieren."),
+"Come back here and choose Pair New Device…": ("Buraya dönün ve Yeni Cihaz Eşleştir…'i seçin.", "Komm hierher zurück und wähle Neues Gerät koppeln …"),
+"Copied": ("Kopyalandı", "Kopiert"),
+"Get the iPhone App": ("iPhone Uygulamasını Edinin", "iPhone-App laden"),
+"Get the iPhone App…": ("iPhone Uygulamasını Edinin…", "iPhone-App laden …"),
+"No Pilothouse on your iPhone yet? Get the app": ("iPhone'unuzda henüz Pilothouse yok mu? Uygulamayı edinin", "Noch kein Pilothouse auf deinem iPhone? App laden"),
 "%lld d": ("%lld g", "%lld T"),
 "%lld h": ("%lld sa", "%lld Std."),
 "5 h": ("5 sa", "5 Std."),

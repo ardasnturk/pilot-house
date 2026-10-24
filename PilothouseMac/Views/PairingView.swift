@@ -5,6 +5,7 @@ import SwiftUI
 struct PairingView: View {
     @Environment(AppController.self) private var controller
     @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         VStack(spacing: 18) {
@@ -44,6 +45,12 @@ struct PairingView: View {
             .padding(12)
             .background(.white, in: RoundedRectangle(cornerRadius: 16))
             .accessibilityLabel(Text("Pairing QR code"))
+
+            Button("No Pilothouse on your iPhone yet? Get the app") {
+                openWindow(id: WindowID.iPhoneApp)
+            }
+            .buttonStyle(.link)
+            .font(.callout)
 
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 let remaining = max(0, Int(pairing.payload.expiresAt.timeIntervalSince(context.date)))
