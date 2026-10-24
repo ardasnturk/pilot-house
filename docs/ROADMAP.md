@@ -5,7 +5,7 @@ contributions are welcome (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## Next
 
-* **Approve from the notification.** 1.1 notifies through ntfy and macOS
+* **Approve from the notification.** Pilothouse notifies through ntfy and macOS
   (D-095); approving right from the notification still needs Pilothouse's own
   push (an optional, self-hostable relay that only sees an opaque,
   end-to-end-encrypted wake-up).

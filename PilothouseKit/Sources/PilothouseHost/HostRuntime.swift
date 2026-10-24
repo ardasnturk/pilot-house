@@ -26,6 +26,10 @@ public struct MacHostService: HostService {
         await insights.usageLimits()
     }
 
+    public func listCommands(sessionId: String) async throws -> [CommandInfo] {
+        try await sessions.commandCatalog(sessionId)
+    }
+
     public func helloAck(for client: ClientContext) async -> HelloAck {
         HelloAck(
             macName: await status.macStatus().macName,

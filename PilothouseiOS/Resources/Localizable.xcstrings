@@ -1,6 +1,22 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "%@ does not report its commands to Pilothouse.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ meldet seine Befehle nicht an Pilothouse."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ komutlarını Pilothouse'a bildirmiyor."
+          }
+        }
+      }
+    },
     "%@ is not signed in on your Mac. Run it once in Terminal there.": {
       "localizations": {
         "de": {
@@ -237,6 +253,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ajan: %@"
+          }
+        }
+      }
+    },
+    "All": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tümü"
           }
         }
       }
@@ -497,6 +529,22 @@
         }
       }
     },
+    "Built-in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Integriert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yerleşik"
+          }
+        }
+      }
+    },
     "Bypass permissions": {
       "localizations": {
         "de": {
@@ -705,6 +753,22 @@
         }
       }
     },
+    "Claude reports its skills and commands when the session starts. Send a first message, then open this list again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude meldet seine Skills und Befehle beim Start der Sitzung. Sende eine erste Nachricht und öffne diese Liste dann erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude skill ve komutlarını oturum başlarken bildirir. İlk mesajı gönderin, sonra bu listeyi tekrar açın."
+          }
+        }
+      }
+    },
     "Claude runs on your Mac with Claude Code. You'll see every step here.": {
       "localizations": {
         "de": {
@@ -845,6 +909,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ayrıntıları gizler"
+          }
+        }
+      }
+    },
+    "Commands": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Befehle"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komutlar"
+          }
+        }
+      }
+    },
+    "Commands · %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Befehle · %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Komutlar · %lld"
           }
         }
       }
@@ -2737,6 +2833,22 @@
         }
       }
     },
+    "Personal": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Persönlich"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişisel"
+          }
+        }
+      }
+    },
     "Pick a session from the list or start a new chat.": {
       "localizations": {
         "de": {
@@ -2909,6 +3021,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tasarımdan gizli"
+          }
+        }
+      }
+    },
+    "Project": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Projekt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Proje"
           }
         }
       }
@@ -3153,6 +3281,22 @@
         }
       }
     },
+    "Search skills and commands": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skills und Befehle suchen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skill ve komut ara"
+          }
+        }
+      }
+    },
     "Send": {
       "localizations": {
         "de": {
@@ -3373,6 +3517,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alt ajanın ne yaptığını gösterir"
+          }
+        }
+      }
+    },
+    "Skills": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skills"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skill'ler"
+          }
+        }
+      }
+    },
+    "Skills and Commands": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skills und Befehle"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skill'ler ve Komutlar"
+          }
+        }
+      }
+    },
+    "Skills · %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skills · %lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skill'ler · %lld"
           }
         }
       }

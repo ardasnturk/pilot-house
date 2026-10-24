@@ -228,6 +228,21 @@ enum DemoContent {
         case delegate(agent: AgentKind, prompt: String, command: String, output: String, answer: String)
     }
 
+    // MARK: Commands
+
+    static let commandCatalog: [CommandInfo] = [
+        CommandInfo(name: "compact", kind: .command, source: .builtin, description: "Summarise the conversation to free up context"),
+        CommandInfo(name: "cost", kind: .command, source: .builtin, description: "Show the cost of this session"),
+        CommandInfo(name: "deploy-staging", kind: .command, source: .project, description: "Build and deploy this app to the staging server"),
+        CommandInfo(name: "init", kind: .command, source: .builtin, description: "Write a CLAUDE.md for this project"),
+        CommandInfo(name: "review", kind: .command, source: .builtin, description: "Review a pull request"),
+        CommandInfo(name: "security-review", kind: .command, source: .builtin, description: "Review the pending changes for security issues"),
+        CommandInfo(name: "changelog", kind: .skill, source: .personal, description: "Write a changelog entry from the commits since the last tag"),
+        CommandInfo(name: "swiftui-review", kind: .skill, source: .project, description: "Check SwiftUI views for layout, accessibility and performance issues"),
+        CommandInfo(name: "figma:figma-use", kind: .skill, source: .plugin, description: "Read designs and components from Figma", plugin: "figma"),
+        CommandInfo(name: "pdf", kind: .skill, source: .builtin, description: "Read, create and fill PDF files"),
+    ]
+
     // MARK: Insights
 
     static func weeklySummary(containing date: Date, calendar: Calendar = .current) -> WeeklySummary {

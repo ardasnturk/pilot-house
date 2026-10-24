@@ -1,0 +1,47 @@
+name: Bug report
+description: Something does not work as expected.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! **Security problems:** please use a private advisory instead (Security → Report a vulnerability).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start a session in …
+        2. Send …
+        3. See …
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options: [Claude Code, Codex, Gemini, Not agent related]
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Pilothouse (Mac / iPhone), macOS, iOS, and the agent CLI (`claude --version`).
+      placeholder: Pilothouse 1.0.0 / 1.0.0, macOS 26.1, iOS 26.1, Claude Code 2.1.310
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Connection
+      options: [Same Wi-Fi, Tailscale, Demo mode]
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Relevant lines from Console.app (subsystem `com.ardasenturk.Pilothouse`). Remove anything private.
+      render: text

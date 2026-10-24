@@ -121,6 +121,9 @@ public struct SessionRecord: Sendable, Hashable, Codable {
     /// The agent's own conversation ID when it differs from `summary.id`
     /// (a Codex thread ID), used to resume the conversation.
     public var agentSessionId: String?
+    /// Skills and plugin folders from the CLI's last `system/init` (the `/` menu).
+    public var skills: [String]?
+    public var plugins: [String: String]?
 
     public init(
         summary: SessionSummary, established: Bool = false, alwaysAllowed: [String] = [], hasUserMessages: Bool = false,
@@ -142,6 +145,8 @@ public struct SessionRecord: Sendable, Hashable, Codable {
         hasUserMessages = try container.decodeIfPresent(Bool.self, forKey: .hasUserMessages) ?? false
         requestedModel = try container.decodeIfPresent(String.self, forKey: .requestedModel)
         agentSessionId = try container.decodeIfPresent(String.self, forKey: .agentSessionId)
+        skills = try container.decodeIfPresent([String].self, forKey: .skills)
+        plugins = try container.decodeIfPresent([String: String].self, forKey: .plugins)
     }
 }
 

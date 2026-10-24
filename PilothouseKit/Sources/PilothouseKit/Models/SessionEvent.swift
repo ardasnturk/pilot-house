@@ -176,9 +176,13 @@ public enum SessionEvent: Sendable, Hashable, Codable {
         public var cwd: String?
         public var claudeVersion: String?
         public var slashCommands: [String]
+        /// Which of `slashCommands` are skills (Claude Code 2.1+).
+        public var skills: [String]?
+        /// Installed plugins by name → folder, to find their skills and commands.
+        public var plugins: [String: String]?
         public init(
             claudeSessionId: String, model: String? = nil, permissionMode: String? = nil, cwd: String? = nil,
-            claudeVersion: String? = nil, slashCommands: [String] = []
+            claudeVersion: String? = nil, slashCommands: [String] = [], skills: [String]? = nil, plugins: [String: String]? = nil
         ) {
             self.claudeSessionId = claudeSessionId
             self.model = model
@@ -186,6 +190,8 @@ public enum SessionEvent: Sendable, Hashable, Codable {
             self.cwd = cwd
             self.claudeVersion = claudeVersion
             self.slashCommands = slashCommands
+            self.skills = skills
+            self.plugins = plugins
         }
     }
 

@@ -196,6 +196,36 @@ final class PilothouseUITests: XCTestCase {
         app.buttons["Done"].tap()
     }
 
+    @MainActor
+    func testSlashOpensSearchableSkillsAndCommands() throws {
+        let app = XCUIApplication.pilothouse(demo: true)
+        app.launch()
+        try startSession(in: app, path: ["Developer", "weather-app"])
+        let composer = app.element("composerField")
+        composer.tap()
+        composer.typeText("/")
+
+        // Skills and commands are listed separately; the filter shows one kind.
+        XCTAssertTrue(app.element("command-changelog").waitForExistence(timeout: 10))
+        let filter = app.segmentedControls["commandFilter"]
+        filter.buttons.element(boundBy: 2).tap()
+        XCTAssertTrue(app.element("command-review").waitForExistence(timeout: 5))
+        XCTAssertFalse(app.element("command-changelog").exists, "Commands only")
+        filter.buttons.element(boundBy: 1).tap()
+        XCTAssertTrue(app.element("command-changelog").waitForExistence(timeout: 5))
+        XCTAssertFalse(app.element("command-review").exists, "Skills only")
+
+        app.searchFields.firstMatch.tap()
+        app.searchFields.firstMatch.typeText("figma")
+        let figma = app.element("command-figma:figma-use")
+        XCTAssertTrue(figma.waitForExistence(timeout: 5))
+        figma.tap()
+
+        let inserted = NSPredicate(format: "value BEGINSWITH '/figma:figma-use'")
+        expectation(for: inserted, evaluatedWith: composer)
+        waitForExpectations(timeout: 5)
+    }
+
     // MARK: Helpers
 
     @MainActor

@@ -154,7 +154,7 @@ final class MacConnection {
             if error.code == .deviceRevoked {
                 state = .failed(message: error.message, code: error.code)
             }
-        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits:
+        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits, .commandCatalog:
             break
         }
     }
@@ -250,6 +250,15 @@ final class MacConnection {
             throw MacClientError.unexpectedResponse(response.typeName)
         }
         return summary
+    }
+
+    /// The session's skills and commands with descriptions (capability `commandCatalog`).
+    func listCommands(sessionId: String) async throws -> [CommandInfo] {
+        let response = try await client.request(.listCommands(SessionRef(sessionId: sessionId)))
+        guard case .commandCatalog(let catalog) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return catalog.commands
     }
 
     func usageLimits() async throws -> [UsageLimits] {

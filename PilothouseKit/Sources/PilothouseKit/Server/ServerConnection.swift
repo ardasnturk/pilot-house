@@ -125,6 +125,8 @@ public actor ServerConnection {
             return .weeklySummary(try await service.weeklySummary(request))
         case .getUsageLimits:
             return .usageLimits(UsageLimitsPayload(agents: await service.usageLimits()))
+        case .listCommands(let ref):
+            return .commandCatalog(CommandCatalog(commands: try await service.listCommands(sessionId: ref.sessionId)))
         case .listSessions:
             return .sessionList(SessionList(sessions: await service.listSessions()))
         case .startSession(let request):

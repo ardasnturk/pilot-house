@@ -168,3 +168,45 @@ public struct UsageLimitsPayload: Sendable, Hashable, Codable {
     public var agents: [UsageLimits]
     public init(agents: [UsageLimits]) { self.agents = agents }
 }
+
+/// One entry of the `/` menu: a skill or a slash command (capability `commandCatalog`).
+public struct CommandInfo: Sendable, Hashable, Codable, Identifiable {
+    public enum Kind: String, Sendable, Hashable, Codable {
+        case skill
+        case command
+    }
+
+    public enum Source: String, Sendable, Hashable, Codable {
+        /// `~/.claude/skills` or `~/.claude/commands`.
+        case personal
+        /// `.claude/skills` or `.claude/commands` in the session's folder.
+        case project
+        /// From an installed plugin.
+        case plugin
+        /// Built into Claude Code.
+        case builtin
+    }
+
+    /// Without the leading `/`, e.g. `review` or `figma:figma-use`.
+    public var name: String
+    public var kind: Kind
+    public var source: Source
+    public var description: String?
+    /// Plugin name for `.plugin` entries.
+    public var plugin: String?
+
+    public var id: String { name }
+
+    public init(name: String, kind: Kind, source: Source, description: String? = nil, plugin: String? = nil) {
+        self.name = name
+        self.kind = kind
+        self.source = source
+        self.description = description
+        self.plugin = plugin
+    }
+}
+
+public struct CommandCatalog: Sendable, Hashable, Codable {
+    public var commands: [CommandInfo]
+    public init(commands: [CommandInfo]) { self.commands = commands }
+}

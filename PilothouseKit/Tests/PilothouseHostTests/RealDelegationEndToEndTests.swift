@@ -44,7 +44,7 @@ struct RealDelegationEndToEndTests {
 
         let connector = RealClaudeEndToEndTests.LoopbackConnector(endpoint: runtime.endpoint)
         let phone = IdentityKeyPair.generate()
-        let device = DeviceInfo(name: "E2E iPhone", platform: "iOS", appVersion: "1.1")
+        let device = DeviceInfo(name: "E2E iPhone", platform: "iOS", appVersion: "1.0")
         let payload = await runtime.makePairingPayload(macName: "E2E Mac", localAddresses: ["127.0.0.1"], tailscale: .notInstalled, port: 47823)
         let mac = try await MacClient.pair(payload: payload, identity: phone, device: device, connector: connector)
         let client = MacClient(mac: mac, identity: phone, device: device, connector: connector)

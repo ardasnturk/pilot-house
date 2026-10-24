@@ -10,7 +10,7 @@ cask "pilothouse" do
 
   url "https://github.com/ardasnturk/pilot-house/releases/download/v#{version}/Pilothouse-#{version}.dmg"
   name "Pilothouse"
-  desc "Control Claude Code sessions on your Mac from iPhone and iPad"
+  desc "Drive Claude Code, Codex and Gemini CLI on your Mac from iPhone and iPad"
   homepage "https://github.com/ardasnturk/pilot-house"
 
   livecheck do
@@ -33,8 +33,8 @@ cask "pilothouse" do
   ]
 
   caveats <<~EOS
-    Pilothouse needs the official Claude Code CLI, signed in with your own
-    account:
+    Pilothouse needs at least one agent CLI on this Mac, signed in with your
+    own account: Claude Code, Codex or Gemini CLI.
       https://docs.claude.com/en/docs/claude-code/setup
 
     The pairing keys live in your login keychain ("Pilothouse identity key");

@@ -172,7 +172,7 @@ public struct MacStatus: Sendable, Hashable, Codable {
     /// `bypassPermissions` may be offered to clients.
     public var bypassPermissionsAllowed: Bool
     public var defaultModel: String?
-    /// Every agent CLI the Mac looked for (1.1+); `nil` on older Macs.
+    /// Every agent CLI the Mac looked for; `nil` on Macs without capability `agents`.
     public var agents: [AgentStatus]?
 
     public init(

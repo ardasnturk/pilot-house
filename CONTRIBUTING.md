@@ -27,7 +27,7 @@ reading this first saves everyone a review round.
 ```sh
 git clone https://github.com/ardasnturk/pilot-house.git && cd pilot-house
 cd PilothouseKit && swift test          # works on macOS and Linux
-open ../Pilothouse.xcodeproj            # Xcode 16+, schemes PilothouseMac / PilothouseiOS
+open ../Pilothouse.xcodeproj            # Xcode 26+, schemes PilothouseMac / PilothouseiOS
 ```
 
 Code signing is not needed to build and test (`CODE_SIGNING_ALLOWED=NO`); to run

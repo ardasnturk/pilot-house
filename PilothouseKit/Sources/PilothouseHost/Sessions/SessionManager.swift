@@ -173,6 +173,16 @@ public actor SessionManager {
         }
     }
 
+    /// The `/` menu of a session: its skills and commands with descriptions (D-098).
+    public func commandCatalog(_ id: String) throws -> [CommandInfo] {
+        guard let session = sessions[id] else { throw Self.notFound }
+        let record = session.record
+        return CommandCatalogBuilder.build(
+            slashCommands: record.summary.slashCommands, skills: record.skills ?? [], plugins: record.plugins ?? [:],
+            cwd: record.summary.cwd, home: configuration.homeDirectory
+        )
+    }
+
     /// Port of the local permission MCP server (`nil` disables permission forwarding).
     public func setPermissionServerPort(_ port: Int?) {
         permissionPort = port
@@ -820,6 +830,8 @@ public actor SessionManager {
                         record.agentSessionId = info.claudeSessionId
                     }
                     if !info.slashCommands.isEmpty { record.summary.slashCommands = info.slashCommands }
+                    if let skills = info.skills { record.skills = skills }
+                    if let plugins = info.plugins { record.plugins = plugins }
                 case .assistantMessage(let message):
                     record.summary.lastMessagePreview = message.text
                     record.established = true

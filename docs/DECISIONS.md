@@ -488,7 +488,7 @@ share team `5JMD3VSD7N`; the helper's XPC code-signing requirement depends on
 that.
 
 ### D-081 — No push notifications in 1.0
-**Status:** superseded by D-095 (1.1)
+**Status:** superseded by D-095
 
 Background notifications need APNs, and APNs needs a server holding a push key.
 That contradicts "only your own devices, no telemetry". 1.0 relies on the Mac:
@@ -548,13 +548,13 @@ App Store Connect needs a privacy policy URL. `PRIVACY.md` (EN/TR/DE) states
 that Pilothouse collects nothing, and is linked from the metadata. It matches
 the privacy manifests (D-057) and the "Data Not Collected" privacy label.
 
-## 1.1 — Agents, folders, sub-agents
+## Release 1.0 — Agents, folders, sub-agents
 
 ### D-090 — Optional features as capabilities, protocol version stays 1
 **Status:** accepted
 
-1.1 adds messages and fields. Bumping `version` would lock 1.0 phones out of
-1.1 Macs and the other way round. Instead the Mac lists optional features in
+Features keep adding messages and fields. Bumping `version` would lock older
+phones out of newer Macs and the other way round. Instead the Mac lists optional features in
 `helloAck.capabilities` (`createDirectory`, `agents`, `threads`); new fields
 are optional and decoded with defaults; the phone only sends a new message or
 field when the Mac lists the capability. Error codes were already open-ended.
@@ -620,12 +620,12 @@ session's own state, title or preview. The phone folds them into a separate
 transcript per thread, shows running sub-agents above the composer and opens a
 thread in its own sheet from the tool card.
 
-## 1.1 — Notifications
+## Release 1.0 — Notifications
 
 ### D-095 — Notifications through ntfy and macOS, no own push server
 **Status:** accepted · supersedes D-081
 
-1.1 notifies the user when a turn started from a phone finishes, when Claude
+Pilothouse notifies the user when a turn started from a phone finishes, when Claude
 waits for a permission decision and when a session fails. Apple push (APNs)
 still needs a server holding a push key, so instead:
 
@@ -663,7 +663,7 @@ The privacy manifests are unchanged: the data goes to a destination the user
 picks and configures, not to the developer or a partner, and is off by default.
 PRIVACY.md lists exactly what is sent.
 
-## 1.1 — Weekly summary and usage limits
+## Release 1.0 — Weekly summary and usage limits
 
 ### D-096 — Weekly summary written on the Mac
 **Status:** accepted
@@ -705,3 +705,22 @@ whatever the CLIs report, stored in `usage-limits.json`:
   it on request (at most once a minute) through a short-lived
   `codex app-server`, and keeps `account/rateLimits/updated` from turns.
 * **Gemini CLI** reports nothing; shown as unavailable.
+
+### D-098 — The `/` menu: skills and commands with descriptions
+**Status:** accepted
+
+Claude Code's `system/init` lists every slash command (`slash_commands`),
+which of them are skills (`skills`) and the installed plugins with their
+folders. The Mac keeps those per session and answers `listCommands` with each
+entry's kind, source and description, read from the same files Claude Code
+loads: `<cwd>/.claude/{skills,commands}` (project), `~/.claude/...`
+(personal), then plugin folders (namespaced `plugin:name` entries); the rest
+is built in, with short descriptions for the common built-in commands. Only
+the `description` front-matter field (or the first line) is read and clipped
+to 280 characters; skill bodies never leave the Mac. Names starting with `_`
+are internal and hidden.
+
+On the phone, typing `/` into an empty composer opens a searchable sheet with
+skills and commands in separate sections (filter, source badge); choosing
+one inserts `/name `. Codex and Gemini report no catalogue, so their sessions
+say so.

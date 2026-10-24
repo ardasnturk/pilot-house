@@ -1,4 +1,8 @@
 {
+ "%@ does not report its commands to Pilothouse.": {
+  "de": "%@ meldet seine Befehle nicht an Pilothouse.",
+  "tr": "%@ komutlarını Pilothouse'a bildirmiyor."
+ },
  "%@ is not signed in on your Mac. Run it once in Terminal there.": {
   "de": "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal.",
   "tr": "%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın."
@@ -58,6 +62,10 @@
  "Agent: %@": {
   "de": "Agent: %@",
   "tr": "Ajan: %@"
+ },
+ "All": {
+  "de": "Alle",
+  "tr": "Tümü"
  },
  "Allow": {
   "de": "Erlauben",
@@ -123,6 +131,10 @@
   "de": "Durchsuche deinen Mac und starte eine Claude-Code-Sitzung dort, wo dein Projekt liegt.",
   "tr": "Mac'inize göz atın ve projenizin bulunduğu yerde bir Claude Code oturumu başlatın."
  },
+ "Built-in": {
+  "de": "Integriert",
+  "tr": "Yerleşik"
+ },
  "Bypass permissions": {
   "de": "Berechtigungen umgehen",
   "tr": "İzinleri atla"
@@ -175,6 +187,10 @@
   "de": "Claude meldet seine Limits mit jeder Antwort, sie sind also so aktuell wie die letzte Antwort. Codex-Limits werden beim Öffnen dieses Bildschirms von deinem Mac gelesen. Gemini meldet keine Limits.",
   "tr": "Claude limitlerini her turda bildirir; yani son cevap kadar günceldir. Codex limitleri bu ekranı açtığınızda Mac'inizden okunur. Gemini limit bildirmez."
  },
+ "Claude reports its skills and commands when the session starts. Send a first message, then open this list again.": {
+  "de": "Claude meldet seine Skills und Befehle beim Start der Sitzung. Sende eine erste Nachricht und öffne diese Liste dann erneut.",
+  "tr": "Claude skill ve komutlarını oturum başlarken bildirir. İlk mesajı gönderin, sonra bu listeyi tekrar açın."
+ },
  "Claude runs on your Mac with Claude Code. You'll see every step here.": {
   "de": "Claude läuft mit Claude Code auf deinem Mac. Hier siehst du jeden Schritt.",
   "tr": "Claude, Mac'inizde Claude Code ile çalışır. Her adımı burada görürsünüz."
@@ -210,6 +226,14 @@
  "Collapses the details": {
   "de": "Blendet die Details aus",
   "tr": "Ayrıntıları gizler"
+ },
+ "Commands": {
+  "de": "Befehle",
+  "tr": "Komutlar"
+ },
+ "Commands · %lld": {
+  "de": "Befehle · %lld",
+  "tr": "Komutlar · %lld"
  },
  "Completed": {
   "de": "Erledigt",
@@ -683,6 +707,10 @@
   "de": "Berechtigungen",
   "tr": "İzinler"
  },
+ "Personal": {
+  "de": "Persönlich",
+  "tr": "Kişisel"
+ },
  "Pick a session from the list or start a new chat.": {
   "de": "Wähle eine Sitzung aus der Liste oder starte einen neuen Chat.",
   "tr": "Listeden bir oturum seçin veya yeni bir sohbet başlatın."
@@ -726,6 +754,10 @@
  "Private by design": {
   "de": "Privat by Design",
   "tr": "Tasarımdan gizli"
+ },
+ "Project": {
+  "de": "Projekt",
+  "tr": "Proje"
  },
  "Read": {
   "de": "Lesen",
@@ -787,6 +819,10 @@
   "de": "Suchen",
   "tr": "Ara"
  },
+ "Search skills and commands": {
+  "de": "Skills und Befehle suchen",
+  "tr": "Skill ve komut ara"
+ },
  "Send": {
   "de": "Senden",
   "tr": "Gönder"
@@ -842,6 +878,18 @@
  "Shows what the sub-agent is doing": {
   "de": "Zeigt, was der Sub-Agent gerade tut",
   "tr": "Alt ajanın ne yaptığını gösterir"
+ },
+ "Skills": {
+  "de": "Skills",
+  "tr": "Skill'ler"
+ },
+ "Skills and Commands": {
+  "de": "Skills und Befehle",
+  "tr": "Skill'ler ve Komutlar"
+ },
+ "Skills · %lld": {
+  "de": "Skills · %lld",
+  "tr": "Skill'ler · %lld"
  },
  "Slash command suggestions": {
   "de": "Vorschläge für Slash-Befehle",

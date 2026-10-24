@@ -13,6 +13,7 @@ struct ChatView: View {
     @State private var errorMessage: String?
     @State private var confirmDelete = false
     @State private var subAgent: SubAgentSelection?
+    @State private var isPickingCommand = false
 
     private var chat: ChatState { connection.chat(for: sessionId) }
     private var session: SessionSummary? { connection.session(sessionId) }
@@ -44,6 +45,15 @@ struct ChatView: View {
         .toolbar { toolbar }
         .navigationBarTitleDisplayMode(.inline)
         .environment(\.openSubAgent, OpenSubAgentAction { subAgent = SubAgentSelection(call: $0) })
+        .onChange(of: draft) { old, new in
+            // A "/" typed into an empty field opens the full list of skills and commands.
+            if old.isEmpty, new == "/" { isPickingCommand = true }
+        }
+        .sheet(isPresented: $isPickingCommand) {
+            if let session {
+                CommandPickerView(connection: connection, session: session) { name in draft = "/\(name) " }
+            }
+        }
         .sheet(item: $subAgent) { selection in
             SubAgentTranscriptView(
                 connection: connection, sessionId: sessionId, call: selection.call, workingDirectory: session?.cwd

@@ -75,13 +75,22 @@ public struct StreamJSONNormalizer: Sendable {
             slashCommands = (value["slash_commands"]?.arrayValue ?? []).compactMap { entry in
                 entry.stringValue ?? entry["name"]?.stringValue
             }
+            let skills = value["skills"]?.arrayValue.map { $0.compactMap { $0.stringValue ?? $0["name"]?.stringValue } }
+            var plugins: [String: String] = [:]
+            for plugin in value["plugins"]?.arrayValue ?? [] {
+                if let name = plugin["name"]?.stringValue, let path = plugin["path"]?.stringValue, path.hasPrefix("/") {
+                    plugins[name] = path
+                }
+            }
             return [.sessionInfo(SessionEvent.SessionInfo(
                 claudeSessionId: sessionId,
                 model: model,
                 permissionMode: value["permissionMode"]?.stringValue,
                 cwd: value["cwd"]?.stringValue,
                 claudeVersion: value["claude_code_version"]?.stringValue,
-                slashCommands: slashCommands
+                slashCommands: slashCommands,
+                skills: skills,
+                plugins: plugins.isEmpty ? nil : plugins
             ))]
         case "api_retry":
             let attempt = value["attempt"]?.intValue ?? 0

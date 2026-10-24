@@ -22,8 +22,10 @@ public enum HostCapability {
     public static let threads = "threads"
     /// `getWeeklySummary` and `getUsageLimits`.
     public static let insights = "insights"
+    /// `listCommands`: skills and slash commands with descriptions.
+    public static let commandCatalog = "commandCatalog"
     /// Every capability this build of PilothouseKit implements.
-    public static let all = [createDirectory, agents, threads, insights]
+    public static let all = [createDirectory, agents, threads, insights, commandCatalog]
 }
 
 // MARK: - Shared payloads
@@ -150,7 +152,7 @@ public struct HelloAck: Sendable, Hashable, Codable {
     public var serverVersion: String
     /// Permission requests waiting for an answer when the client connected.
     public var pendingPermissions: [PermissionRequest]
-    /// Optional features (`HostCapability`); missing on Macs older than 1.1.
+    /// Optional features (`HostCapability`); `nil` from Macs that predate capabilities.
     public var capabilities: [String]?
     public init(
         protocolVersion: Int = PilothouseProtocol.version, macName: String, macId: String, serverVersion: String,
@@ -285,6 +287,7 @@ public enum ClientMessage: Sendable, Hashable {
     case macStatus
     case getWeeklySummary(GetWeeklySummary)
     case getUsageLimits
+    case listCommands(SessionRef)
 
     public var typeName: String {
         switch self {
@@ -304,6 +307,7 @@ public enum ClientMessage: Sendable, Hashable {
         case .macStatus: "macStatus"
         case .getWeeklySummary: "getWeeklySummary"
         case .getUsageLimits: "getUsageLimits"
+        case .listCommands: "listCommands"
         }
     }
 }
@@ -324,6 +328,7 @@ public enum ServerMessage: Sendable, Hashable {
     case macStatus(MacStatus)
     case weeklySummary(WeeklySummary)
     case usageLimits(UsageLimitsPayload)
+    case commandCatalog(CommandCatalog)
     case error(ErrorPayload)
 
     public var typeName: String {
@@ -342,6 +347,7 @@ public enum ServerMessage: Sendable, Hashable {
         case .macStatus: "macStatus"
         case .weeklySummary: "weeklySummary"
         case .usageLimits: "usageLimits"
+        case .commandCatalog: "commandCatalog"
         case .error: "error"
         }
     }

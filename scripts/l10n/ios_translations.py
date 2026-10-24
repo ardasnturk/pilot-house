@@ -1,6 +1,18 @@
 # Source of scripts/l10n/ios.json — edit here, then run `python3 scripts/l10n/ios_translations.py`.
 import json, os
 T = {
+"%@ does not report its commands to Pilothouse.": ("%@ komutlarını Pilothouse'a bildirmiyor.", "%@ meldet seine Befehle nicht an Pilothouse."),
+"All": ("Tümü", "Alle"),
+"Built-in": ("Yerleşik", "Integriert"),
+"Claude reports its skills and commands when the session starts. Send a first message, then open this list again.": ("Claude skill ve komutlarını oturum başlarken bildirir. İlk mesajı gönderin, sonra bu listeyi tekrar açın.", "Claude meldet seine Skills und Befehle beim Start der Sitzung. Sende eine erste Nachricht und öffne diese Liste dann erneut."),
+"Commands": ("Komutlar", "Befehle"),
+"Commands · %lld": ("Komutlar · %lld", "Befehle · %lld"),
+"Personal": ("Kişisel", "Persönlich"),
+"Project": ("Proje", "Projekt"),
+"Search skills and commands": ("Skill ve komut ara", "Skills und Befehle suchen"),
+"Skills": ("Skill'ler", "Skills"),
+"Skills and Commands": ("Skill'ler ve Komutlar", "Skills und Befehle"),
+"Skills · %lld": ("Skill'ler · %lld", "Skills · %lld"),
 "%@: %lld percent used": ("%@: %%%lld kullanıldı", "%@: %lld Prozent verbraucht"),
 "%lld days": ("%lld gün", "%lld Tage"),
 "%lld hours": ("%lld saat", "%lld Stunden"),

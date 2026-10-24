@@ -29,12 +29,15 @@ jobs:
 
   apple:
     name: Mac + iOS (xcodebuild)
-    runs-on: macos-15
+    runs-on: macos-26
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
-      - name: Xcode version
-        run: xcodebuild -version
+      - name: Select the newest Xcode
+        # Foundation Models and Liquid Glass need the Xcode 26 SDK.
+        run: |
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_26*.app | sort -V | tail -1)"
+          xcodebuild -version
       - name: Mac scheme — build app and run package tests
         run: |
           xcodebuild test \

@@ -40,6 +40,8 @@ public protocol HostService: Sendable {
     func createDirectory(_ request: CreateDirectory) async throws -> DirectoryListing
     func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary
     func usageLimits() async -> [UsageLimits]
+    /// Skills and slash commands of a session's agent, with descriptions.
+    func listCommands(sessionId: String) async throws -> [CommandInfo]
     func listSessions() async -> [SessionSummary]
     func startSession(_ request: StartSession, from client: ClientContext) async throws -> SessionSummary
     func resumeSession(id: String) async throws -> SessionSummary

@@ -2,29 +2,56 @@
 
 <h1 align="center">Pilothouse</h1>
 
-<p align="center">Mac'inizdeki <b>Claude Code</b> CLI'ını iPhone veya iPad'inizden yönetin.</p>
+<p align="center">Mac'inizdeki <b>Claude Code</b>, <b>Codex</b> ve <b>Gemini CLI</b>'ı iPhone veya iPad'inizden yönetin.</p>
 
-<p align="center"><a href="README.md">English</a> · <b>Türkçe</b></p>
+<p align="center">
+  <a href="https://github.com/ardasnturk/pilot-house/releases/latest"><img alt="Son sürüm" src="https://img.shields.io/github/v/release/ardasnturk/pilot-house?label=release"></a>
+  <a href="https://github.com/ardasnturk/pilot-house/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ardasnturk/pilot-house/actions/workflows/ci.yml/badge.svg"></a>
+  <img alt="Platformlar" src="https://img.shields.io/badge/platforms-macOS%2015%2B%20%7C%20iOS%2018%2B-blue">
+  <a href="LICENSE"><img alt="MIT Lisansı" src="https://img.shields.io/badge/license-MIT-green"></a>
+</p>
 
-> **Pilothouse, Claude Code ile çalışır.** Bağımsız, açık kaynaklı bir projedir;
-> **Anthropic ile bağlantılı değildir, Anthropic tarafından onaylanmamış veya
-> desteklenmemiştir.** Claude Code'u
-> [Anthropic'in koşullarına](https://www.anthropic.com/legal) uygun kullanmak
-> sizin sorumluluğunuzdadır.
+<p align="center"><a href="https://pilot.ardasnturk.com">Web sitesi</a> · <a href="README.md">English</a> · <b>Türkçe</b></p>
+
+> **Pilothouse; Claude Code, Codex ve Gemini CLI ile çalışır.** Bağımsız, açık
+> kaynaklı bir projedir; **Anthropic, OpenAI veya Google ile bağlantılı
+> değildir, onlar tarafından onaylanmamış veya desteklenmemiştir.** Bu araçları
+> kendi koşullarına uygun kullanmak sizin sorumluluğunuzdadır.
 
 Pilothouse iki uygulama ve ortak bir Swift paketinden oluşur:
 
-* **Mac için Pilothouse** — Mac'inizde resmi `claude` komut satırı aracını
-  başlatan ve denetleyen, Mac'i uyanık tutan ve her şeyi eşleştirilmiş
+* **Mac için Pilothouse** — Mac'inizde resmi ajan komut satırı araçlarını
+  (`claude`, `codex`, `gemini`) başlatan ve denetleyen, Mac'i uyanık tutan ve her şeyi eşleştirilmiş
   cihazlarınıza ileten küçük bir menü çubuğu uygulaması.
 * **iPhone ve iPad için Pilothouse** — herhangi bir proje klasöründe oturum
   başlatın; yanıtları, düşünmeyi, araç çağrılarını, farkları (diff) ve terminal
   çıktısını canlı izleyin, her işlemi onaylayın ya da reddedin.
 
-Pilothouse **Anthropic'e hiçbir zaman bağlanmaz** ve Claude kimlik bilgilerinize
-asla dokunmaz: tüm yapay zeka işini kendi hesabınızla giriş yaptığınız `claude`
-CLI'ı yapar. Sunucu, hesap ya da telemetri yoktur — yalnızca uçtan uca
-şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
+Pilothouse **Anthropic, OpenAI veya Google'a hiçbir zaman bağlanmaz** ve kimlik
+bilgilerinize asla dokunmaz: tüm yapay zeka işini kendi hesaplarınızla giriş
+yaptığınız CLI'lar yapar. Sunucu, hesap ya da telemetri yoktur — yalnızca uçtan
+uca şifrelenmiş şekilde konuşan kendi cihazlarınız vardır.
+
+## Özellikler
+
+* **Elinizdeki tüm ajanlar** — yeni sohbette Claude Code, Codex ya da Gemini
+  CLI'ı seçin; Pilothouse Mac'te nelerin kurulu olduğunu kendisi bulur.
+* **Alt ajanlar** — Claude bir işi Codex'e ya da Gemini'ye devredebilir
+  (`delegate_to_agent`); Claude'un kendi `Task` alt ajanları da gösterilir.
+  Her birini ayrı bir pencerede canlı izleyin, işlemlerini telefondan onaylayın.
+* **Her yerden onay** — farkıyla birlikte düzenlemeler, komutlar, oturum başına
+  *hep izin ver*; yanıtsız hiçbir şey 10 dakikadan fazla beklemez.
+* **Skill'ler ve komutlar** — `/` yazınca skill'lerinizin ve slash
+  komutlarınızın aranabilir listesi, açıklamaları ve kaynaklarıyla açılır.
+* **Haftalık özet ve limitler** — proje ve gün bazında ne üzerinde
+  çalıştığınız, Mac'te Apple Intelligence ile yazılır; Claude ve Codex
+  kullanım limitleri yenilenme zamanlarıyla.
+* **Klasörler** — telefondan ev klasörünüze göz atın, yeni proje klasörleri
+  oluşturun.
+* **Bildirimler** — Mac'te ve [ntfy](https://ntfy.sh) üzerinden telefonunuzda,
+  bir görev bittiğinde ya da onay beklediğinde.
+* **Tasarımı gereği gizli** — Noise IK uçtan uca şifreleme, sabitlenmiş
+  anahtarlar, sunucu yok; her yerden erişim için Tailscale.
 
 ## İçindekiler
 
@@ -47,6 +74,8 @@ CLI'ı yapar. Sunucu, hesap ya da telemetri yoktur — yalnızca uçtan uca
 | Mac | macOS 15 Sequoia veya üstü, Apple silicon ya da Intel |
 | iPhone / iPad | iOS / iPadOS 18 veya üstü |
 | Claude Code | Mac'te kurulu resmi CLI ([kurulum rehberi](https://docs.claude.com/en/docs/claude-code/setup)), **kendi Claude hesabınızla** giriş yapılmış — ya da kendi Anthropic API anahtarınız |
+| Codex, Gemini CLI | İsteğe bağlı. Mac'te kurulu ve giriş yapılmış (`codex login`, `gemini`) |
+| Haftalık özet | İsteğe bağlı. Yazılı kısım için Mac'te macOS 26 ve Apple Intelligence; sayılar her yerde çalışır |
 | Ağ | İki cihaz aynı ağda ya da ikisi de [Tailscale](https://tailscale.com) ağınızda |
 
 ## Kurulum
@@ -65,9 +94,11 @@ da giriş yapılmamışsa uygulama kısa bir kurulum rehberi gösterir
 (`curl -fsSL https://claude.ai/install.sh | bash`, ardından giriş yapmak için
 Terminal'de bir kez `claude`).
 
-**iPhone / iPad uygulaması** — App Store'dan (beta süresince TestFlight).
-Her şeyi önce **Demoyu Dene** ile deneyebilirsiniz: uygulamanın içinde
-simüle edilmiş bir Mac; Mac ya da hesap gerekmez.
+**iPhone / iPad uygulaması** — henüz App Store'da değil; herkese açık TestFlight
+bağlantısı [web sitesinde](https://pilot.ardasnturk.com) yayınlanacak. O zamana
+kadar Xcode ile kendi cihazınıza derleyin ([Kaynaktan derleme](#kaynaktan-derleme);
+ücretsiz bir Apple ID yeterli, uygulama 7 günde bir yeniden derlenmeli).
+Uygulamanın içindeki **Demoyu Dene**, simüle edilmiş bir Mac ile her şeyi gösterir.
 
 ## Telefonu eşleştirme
 
@@ -83,9 +114,10 @@ O cihazın bağlantıları anında kesilir.
 
 ## Kullanım
 
-* **Yeni Sohbet** → Mac'inizin ev klasöründeki klasörlere göz atın (favoriler,
-  son kullanılanlar; Git depoları işaretlidir) → **… içinde başlat**. Modeli ve
-  izin modunu seçin:
+* **Yeni Sohbet** → **Nerede:** Mac'inizin ev klasöründeki klasörlere göz atın
+  (favoriler, son kullanılanlar; Git depoları işaretlidir, **Yeni Klasör** yeni
+  bir tane oluşturur) → **Kim:** Claude Code, Codex ya da Gemini → **Nasıl:**
+  model ve izin modu → **… içinde başlat**. İzin modları:
   * *Her seferinde sor* (varsayılan) — onay gerektiren her işlem telefonunuza
     gelir,
   * *Düzenlemeleri kabul et* — dosya düzenlemeleri uygulanır, komutlar yine
@@ -102,8 +134,16 @@ O cihazın bağlantıları anında kesilir.
 * **Oturumlar**, Pilothouse'un Mac'te çalıştırdığı tüm oturumları listeler
   (30 gün saklanır). Birini açıp okuyabilir — çevrimdışı da — ya da tüm
   bağlamıyla sürdürebilirsiniz.
-* Mac'te menü çubuğu, çalışan oturumları ve bekleyen onayları gösterir; onları
-  orada da yanıtlayabilirsiniz.
+* Boş mesaj kutusuna **`/`** yazınca oturumun tüm skill ve slash komutları
+  açılır; aranabilir, skill'ler ve komutlar ayrı listelenir.
+* **Alt ajanlar** çalışırken renkli şeritli kartlar ve mesaj kutusunun üstünde
+  çipler olarak görünür; **Canlı İzle** dökümlerini açar.
+* Oturum listesinin üstündeki **Bu hafta** kartı çalıştığınız süreyi ve kullanım
+  limitlerinizi gösterir; dokununca haftalık özet ve **Limitler** sekmesi açılır.
+* Mac'te menü çubuğu çalışan oturumları, bekleyen onayları ve kullanım
+  limitlerini gösterir; onayları orada da yanıtlayabilirsiniz. **Ayarlar →
+  Ajanlar** bulunan CLI'ları ve Claude'un hangilerine iş devredebileceğini
+  listeler.
 
 ## Evden uzakta: Tailscale
 
@@ -183,7 +223,7 @@ bağlandığında oturum kaydından eksikleri tamamlar. İzin istekleri sizi bek
 (10 dakikaya kadar).
 
 **Bildirimler?**
-1.1'den beri Mac'te Ayarlar → Bildirimler altında (varsayılan olarak kapalı):
+Mac'te Ayarlar → Bildirimler altında (varsayılan olarak kapalı):
 telefondan başlattığınız bir görev bittiğinde, Claude onay beklediğinde ya da
 bir oturum hata verdiğinde yerel macOS bildirimleri ve [ntfy](https://ntfy.sh)
 üzerinden iPhone bildirimleri. Oluşturulan konuya ücretsiz ntfy uygulamasında
@@ -203,7 +243,7 @@ silin.
 
 ```sh
 git clone https://github.com/ardasnturk/pilot-house.git && cd pilot-house
-open Pilothouse.xcodeproj          # Xcode 16 veya üstü; şemalar PilothouseMac / PilothouseiOS
+open Pilothouse.xcodeproj          # Xcode 26 veya üstü; şemalar PilothouseMac / PilothouseiOS
 scripts/test.sh                    # bu makinenin çalıştırabildiği tüm testler
 ```
 
@@ -213,7 +253,11 @@ scripts/test.sh                    # bu makinenin çalıştırabildiği tüm tes
 * `PilothouseMac/`, `PilothouseHelper/`, `PilothouseiOS/` — uygulamalar.
 * `project.yml` — XcodeGen tanımı; değiştirdikten sonra `scripts/bootstrap.sh`
   çalıştırın.
-* Sürüm çıkarma: [docs/RELEASE.md](docs/RELEASE.md). Testler:
+iPhone uygulamasını kendi cihazınızda çalıştırmak için `PilothouseiOS` hedefi →
+*Signing & Capabilities* → takımınızı seçin ve Xcode'dan çalıştırın.
+
+* Sürüm çıkarma: [docs/RELEASE.md](docs/RELEASE.md). Değişiklikler:
+  [CHANGELOG.md](CHANGELOG.md). Testler:
   [docs/TESTING.md](docs/TESTING.md). Tasarım kararları:
   [docs/DECISIONS.md](docs/DECISIONS.md) (İngilizce).
 
@@ -222,13 +266,14 @@ Apple platformlarında üçüncü taraf bağımlılık yoktur.
 ## Katkıda bulunma
 
 Hata bildirimleri ve pull request'ler memnuniyetle karşılanır — lütfen önce
-[CONTRIBUTING.md](CONTRIBUTING.md) dosyasını okuyun. Çeviriler
-`scripts/l10n/` içindedir; yeni bir dil eklemek harika bir ilk katkıdır.
+[CONTRIBUTING.md](CONTRIBUTING.md) ve [davranış kurallarını](CODE_OF_CONDUCT.md)
+okuyun. Çeviriler `scripts/l10n/` içindedir; yeni bir dil eklemek harika bir
+ilk katkıdır. Güvenlik sorunları için: [SECURITY.md](SECURITY.md).
 
 ## Lisans
 
 [MIT](LICENSE) © 2026 Arda Şentürk.
 
-"Claude" ve "Claude Code", Anthropic, PBC'nin ticari markalarıdır ve burada
-yalnızca uyumluluğu belirtmek için kullanılmıştır. "Tailscale", Tailscale Inc.'in
-ticari markasıdır.
+"Claude" ve "Claude Code" Anthropic, PBC'nin; "Codex" OpenAI'ın; "Gemini" Google
+LLC'nin; "Tailscale" Tailscale Inc.'in ticari markalarıdır ve burada yalnızca
+uyumluluğu belirtmek için kullanılmıştır.

@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an idea for Pilothouse.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would it solve?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Ground rules
+      description: Pilothouse only drives CLIs on your own Mac (see CONTRIBUTING.md).
+      options:
+        - label: It needs no server, account or telemetry and does not handle Claude credentials.
+          required: true

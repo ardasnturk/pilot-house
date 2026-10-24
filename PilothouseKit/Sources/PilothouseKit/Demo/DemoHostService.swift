@@ -132,6 +132,10 @@ public actor DemoHostService: HostService {
         DemoContent.weeklySummary(containing: request.week ?? now)
     }
 
+    public func listCommands(sessionId: String) async throws -> [CommandInfo] {
+        DemoContent.commandCatalog
+    }
+
     public func usageLimits() async -> [UsageLimits] {
         DemoContent.usageLimits(now: now)
     }

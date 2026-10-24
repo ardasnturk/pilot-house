@@ -67,6 +67,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "macStatus": message = .macStatus
         case "getWeeklySummary": message = .getWeeklySummary(try payload(GetWeeklySummary.self))
         case "getUsageLimits": message = .getUsageLimits
+        case "listCommands": message = .listCommands(try payload(SessionRef.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -83,6 +84,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .createDirectory(let payload): try container.encode(payload, forKey: .payload)
         case .listSessions, .macStatus, .getUsageLimits: try container.encode(EmptyPayload(), forKey: .payload)
         case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
+        case .listCommands(let payload): try container.encode(payload, forKey: .payload)
         case .startSession(let payload): try container.encode(payload, forKey: .payload)
         case .resumeSession(let payload), .interrupt(let payload), .closeSession(let payload),
             .deleteSession(let payload), .unsubscribe(let payload):
@@ -140,6 +142,7 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case "macStatus": message = .macStatus(try payload(MacStatus.self))
         case "weeklySummary": message = .weeklySummary(try payload(WeeklySummary.self))
         case "usageLimits": message = .usageLimits(try payload(UsageLimitsPayload.self))
+        case "commandCatalog": message = .commandCatalog(try payload(CommandCatalog.self))
         case "error": message = .error(try payload(ErrorPayload.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
@@ -166,6 +169,7 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case .macStatus(let payload): try container.encode(payload, forKey: .payload)
         case .weeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .usageLimits(let payload): try container.encode(payload, forKey: .payload)
+        case .commandCatalog(let payload): try container.encode(payload, forKey: .payload)
         case .error(let payload): try container.encode(payload, forKey: .payload)
         }
     }

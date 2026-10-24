@@ -60,7 +60,7 @@ public struct CodexAdapter: AgentAdapter {
     // MARK: AgentAdapter
 
     public mutating func startupLines() -> [Data] {
-        let client: JSONValue = ["clientInfo": ["name": "pilothouse", "title": "Pilothouse", "version": "1.1"], "capabilities": nil]
+        let client: JSONValue = ["clientInfo": ["name": "pilothouse", "title": "Pilothouse", "version": "1.0"], "capabilities": nil]
         var lines = [request("initialize", client), JSONRPC.notification(method: "initialized")]
         if let threadId = options.threadId {
             lines.append(request("thread/resume", threadParameters(resuming: threadId)))
