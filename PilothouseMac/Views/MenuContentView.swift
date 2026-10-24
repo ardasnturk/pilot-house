@@ -1,7 +1,9 @@
 import PilothouseKit
 import SwiftUI
 
-/// Content of the menu bar window (prompt §4.2).
+/// Content of the menu bar window: a gradient header with the status, what
+/// needs attention, one main action, then sessions and limits (D-104).
+/// Addresses, devices, agents and Tailscale live in Settings.
 struct MenuContentView: View {
     @Environment(AppController.self) private var controller
     @Environment(\.openWindow) private var openWindow
@@ -11,33 +13,30 @@ struct MenuContentView: View {
     @State private var contentHeight: CGFloat = 0
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
             header
-            Divider()
             ScrollView {
-                VStack(alignment: .leading, spacing: 14) {
+                VStack(alignment: .leading, spacing: 10) {
                     if !controller.claude.installed || controller.claude.loggedIn == false {
                         claudeWarning
                     }
                     if !controller.pendingRequests.isEmpty {
                         approvals
                     }
-                    addresses
-                    pairButton
-                    keepAwake
-                    limitsSection
+                    updateBanner
+                    primaryAction
                     sessionsSection
-                    devicesSection
-                    integrations
+                    limitsSection
+                    keepAwake
                 }
-                .padding(14)
+                .padding(12)
                 .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { contentHeight = $0 }
             }
-            .frame(height: min(contentHeight, 520))
-            Divider()
+            .frame(height: min(contentHeight, 500))
             footer
         }
         .frame(width: 360)
+        .background(BrandBackground(intensity: 0.8))
         .alert(
             Text("Pilothouse"),
             isPresented: Binding(get: { controller.alert != nil }, set: { if !$0 { controller.alert = nil } })
@@ -51,37 +50,58 @@ struct MenuContentView: View {
     // MARK: Sections
 
     private var header: some View {
-        HStack(spacing: 10) {
-            Image("MenuBarIcon")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 22, height: 22)
-                .foregroundStyle(Color.accentColor)
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Pilothouse").font(.headline)
-                Text(statusLine)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 10) {
+                Image("MenuBarIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 26, height: 26)
+                    .foregroundStyle(.white)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Pilothouse").font(.title3.weight(.bold))
+                    Text(verbatim: controller.macName)
+                        .font(.caption)
+                        .opacity(0.85)
+                }
+                Spacer()
+                StatusPill(text: statusText, color: statusColor)
             }
-            Spacer()
-            Circle()
-                .fill(statusColor)
-                .frame(width: 9, height: 9)
-                .accessibilityLabel(Text(statusLine))
+            if controller.phase == .running {
+                HStack(spacing: 8) {
+                    stat(value: controller.connectedDeviceIds.count, symbol: "iphone", label: Text("connected"))
+                    stat(value: controller.activeSessions.count, symbol: "bolt.fill", label: Text("working"))
+                    stat(value: controller.openSessions.count, symbol: "bubble.left.and.bubble.right.fill", label: Text("open chats"))
+                }
+            } else if case .failed(let message) = controller.phase {
+                Text(message).font(.caption)
+            }
         }
+        .foregroundStyle(.white)
         .padding(14)
+        .background(Brand.gradient)
     }
 
-    private var statusLine: String {
+    private func stat(value: Int, symbol: String, label: Text) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Label {
+                Text(verbatim: "\(value)").font(.headline.monospacedDigit())
+            } icon: {
+                Image(systemName: symbol).font(.caption)
+            }
+            label.font(.caption2).opacity(0.85)
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 6)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.white.opacity(0.16), in: RoundedRectangle(cornerRadius: 9, style: .continuous))
+        .accessibilityElement(children: .combine)
+    }
+
+    private var statusText: Text {
         switch controller.phase {
-        case .starting:
-            return String(localized: "Starting…")
-        case .failed(let message):
-            return message
-        case .running:
-            let devices = controller.devices.count
-            let sessions = controller.activeSessions.count
-            return String(localized: "Running · \(devices) paired devices · \(sessions) active sessions")
+        case .starting: Text("Starting…")
+        case .running: Text("Ready")
+        case .failed: Text("Problem")
         }
     }
 
@@ -97,8 +117,8 @@ struct MenuContentView: View {
         Button {
             show(WindowID.claudeSetup)
         } label: {
-            HStack(alignment: .top, spacing: 8) {
-                Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.orange)
+            HStack(spacing: 10) {
+                IconBadge(symbol: "exclamationmark.triangle.fill", colors: [.orange, .red], size: 28)
                 VStack(alignment: .leading, spacing: 2) {
                     Group {
                         if controller.claude.installed {
@@ -113,9 +133,9 @@ struct MenuContentView: View {
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
+                Image(systemName: "chevron.right").foregroundStyle(.tertiary)
             }
-            .padding(10)
-            .background(.orange.opacity(0.12), in: RoundedRectangle(cornerRadius: 10))
+            .glassCard()
         }
         .buttonStyle(.plain)
     }
@@ -127,95 +147,173 @@ struct MenuContentView: View {
                 PermissionApprovalRow(request: request)
             }
         }
+        .glassCard()
     }
 
-    private var addresses: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            SectionTitle("Connection addresses")
-            if controller.reachableAddresses.isEmpty {
-                Text("No network connection.")
+    /// Shown while a new release is available or being installed.
+    @ViewBuilder private var updateBanner: some View {
+        let updater = controller.updater
+        switch updater.state {
+        case .available, .downloading, .installing, .failed:
+            if updater.availableRelease != nil {
+                HStack(spacing: 10) {
+                    IconBadge(symbol: "arrow.down.circle.fill", colors: [.green, Brand.teal], size: 28)
+                    UpdateStatusView(updater: updater)
+                        .font(.callout)
+                }
+                .glassCard()
+            }
+        default:
+            EmptyView()
+        }
+    }
+
+    /// Pairing when nothing is paired yet, otherwise a quieter "add device".
+    @ViewBuilder private var primaryAction: some View {
+        if controller.devices.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Connect your iPhone")
+                    .font(.headline)
+                Text("Install Pilothouse on your iPhone or iPad, then scan a pairing code from this Mac. Both need to be on the same Wi-Fi.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button {
+                    startPairing()
+                } label: {
+                    Label("Pair iPhone or iPad…", systemImage: "qrcode")
+                }
+                .buttonStyle(GradientButtonStyle())
+                .disabled(controller.phase != .running)
+                Button("How do I get the iPhone app?") { show(WindowID.iPhoneApp) }
+                    .buttonStyle(.link)
+                    .font(.caption)
+            }
+            .glassCard()
+        } else {
+            HStack(spacing: 8) {
+                Button {
+                    startPairing()
+                } label: {
+                    Label("Pair Another Device…", systemImage: "qrcode")
+                }
+                .buttonStyle(GradientButtonStyle())
+                .disabled(controller.phase != .running)
+                Button {
+                    show(WindowID.iPhoneApp)
+                } label: {
+                    Image(systemName: "iphone.and.arrow.forward")
+                        .frame(width: 34, height: 34)
+                        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 11, style: .continuous))
+                }
+                .buttonStyle(.plain)
+                .help(Text("Get the iPhone app"))
+                .accessibilityLabel(Text("Get the iPhone app"))
+            }
+        }
+    }
+
+    @ViewBuilder private var sessionsSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            SectionTitle("Chats")
+            if controller.openSessions.isEmpty {
+                Text("Start a chat from your iPhone or iPad. It runs here on your Mac.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            ForEach(controller.reachableAddresses, id: \.self) { address in
-                AddressRow(address: address, port: controller.port)
+            ForEach(controller.openSessions.prefix(6)) { session in
+                HStack(spacing: 10) {
+                    IconBadge(
+                        symbol: session.state.isBusy ? "bolt.fill" : "bubble.left.fill",
+                        colors: session.state.isBusy ? [Brand.teal, Brand.indigo] : [.gray.opacity(0.7), .gray],
+                        size: 24
+                    )
+                    VStack(alignment: .leading, spacing: 1) {
+                        Text(session.title).lineLimit(1)
+                        Text("\(session.cwd.abbreviatingHome) · \(session.state.localizedName)")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .lineLimit(1)
+                    }
+                    Spacer()
+                    Button {
+                        Task { await controller.close(session) }
+                    } label: {
+                        Image(systemName: "stop.circle")
+                    }
+                    .buttonStyle(.borderless)
+                    .help(Text("End this session"))
+                    .accessibilityLabel(Text("End session \(session.title)"))
+                }
             }
         }
-    }
-
-    @ViewBuilder private var pairButton: some View {
-        Button {
-            Task { await controller.createPairing() }
-            show(WindowID.pairing)
-        } label: {
-            Label("Pair New Device…", systemImage: "qrcode")
-                .frame(maxWidth: .infinity)
-        }
-        .controlSize(.large)
-        .buttonStyle(.borderedProminent)
-        .disabled(controller.phase != .running)
-        Button {
-            show(WindowID.iPhoneApp)
-        } label: {
-            Label("Get the iPhone App…", systemImage: "iphone.and.arrow.forward")
-                .frame(maxWidth: .infinity)
-        }
-        .controlSize(.regular)
+        .glassCard()
     }
 
     @ViewBuilder private var limitsSection: some View {
         let known = controller.usageLimits.filter { !$0.windows.isEmpty }
         if !known.isEmpty {
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 8) {
                 SectionTitle("Usage limits")
                 ForEach(known) { limits in
-                    HStack(spacing: 10) {
+                    VStack(alignment: .leading, spacing: 5) {
                         Text(verbatim: limits.agent.displayName)
-                            .font(.callout)
-                            .frame(width: 92, alignment: .leading)
+                            .font(.callout.weight(.medium))
                         ForEach(limits.windows.prefix(3)) { window in
-                            HStack(spacing: 4) {
+                            HStack(spacing: 8) {
                                 Text(verbatim: LimitFormat.windowName(window))
+                                    .font(.caption)
                                     .foregroundStyle(.secondary)
+                                    .frame(width: 70, alignment: .leading)
+                                    .lineLimit(1)
+                                UsageBar(fraction: window.usedPercent / 100)
                                 Text(verbatim: "\(Int(window.usedPercent.rounded()))%")
-                                    .foregroundStyle(window.usedPercent >= 90 ? .red : (window.usedPercent >= 70 ? .orange : .primary))
-                                    .monospacedDigit()
+                                    .font(.caption.monospacedDigit())
+                                    .frame(width: 36, alignment: .trailing)
                             }
-                            .font(.caption)
                             .help(LimitFormat.resetText(window))
                         }
-                        Spacer(minLength: 0)
                     }
                 }
             }
+            .glassCard()
         }
     }
 
     private var keepAwake: some View {
         @Bindable var settings = controller.settings
         return VStack(alignment: .leading, spacing: 6) {
-            SectionTitle("Keep awake")
-            Label {
-                if controller.sleepAssertion.isActive {
-                    Text("Preventing system sleep (the display may still turn off)")
-                } else {
-                    Text("Sleep prevention is off")
+            HStack(spacing: 10) {
+                IconBadge(
+                    symbol: controller.sleepAssertion.isActive ? "moon.zzz.fill" : "moon.zzz",
+                    colors: [Brand.indigo, Brand.violet],
+                    size: 24
+                )
+                VStack(alignment: .leading, spacing: 1) {
+                    if controller.sleepAssertion.isActive {
+                        Text("Mac stays awake")
+                    } else {
+                        Text("Sleep prevention is off")
+                    }
+                    Text("The display may still turn off.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-            } icon: {
-                Image(systemName: controller.sleepAssertion.isActive ? "moon.zzz.fill" : "moon.zzz")
-                    .foregroundStyle(controller.sleepAssertion.isActive ? Color.accentColor : .secondary)
-            }
-            .font(.callout)
-            Toggle(isOn: $settings.keepAwakeWithLidClosed) {
-                Text("Stay awake with the lid closed")
-            }
-            .toggleStyle(.switch)
-            .controlSize(.small)
-            .onChange(of: settings.keepAwakeWithLidClosed) { _, _ in
-                Task { await controller.applySettings() }
+                Spacer()
+                Toggle(isOn: $settings.keepAwakeWithLidClosed) {
+                    Text("Lid closed")
+                }
+                .toggleStyle(.switch)
+                .controlSize(.mini)
+                .help(Text("Stay awake with the lid closed"))
+                .onChange(of: settings.keepAwakeWithLidClosed) { _, _ in
+                    Task { await controller.applySettings() }
+                }
             }
             lidStatus
         }
+        .font(.callout)
+        .glassCard()
     }
 
     @ViewBuilder private var lidStatus: some View {
@@ -243,110 +341,36 @@ struct MenuContentView: View {
         }
     }
 
-    private var sessionsSection: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            SectionTitle("Active sessions")
-            if controller.openSessions.isEmpty {
-                Text("Start a session from your iPhone or iPad.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            ForEach(controller.openSessions.prefix(8)) { session in
-                HStack(spacing: 8) {
-                    Image(systemName: session.state.isBusy ? "bolt.circle.fill" : "circle")
-                        .foregroundStyle(session.state.isBusy ? Color.accentColor : .secondary)
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text(session.title).lineLimit(1)
-                        Text("\(session.cwd.abbreviatingHome) · \(session.state.localizedName)")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                    }
-                    Spacer()
-                    Button {
-                        Task { await controller.close(session) }
-                    } label: {
-                        Image(systemName: "stop.circle")
-                    }
-                    .buttonStyle(.borderless)
-                    .help(Text("End this session"))
-                    .accessibilityLabel(Text("End session \(session.title)"))
-                }
-            }
-        }
-    }
-
-    private var devicesSection: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            SectionTitle("Paired devices")
-            if controller.devices.isEmpty {
-                Text("No devices paired yet.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            ForEach(controller.devices) { device in
-                DeviceRow(device: device, isConnected: controller.connectedDeviceIds.contains(device.id)) {
-                    Task { await controller.revoke(device) }
-                }
-            }
-        }
-    }
-
-    private var integrations: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            SectionTitle("Integrations")
-            Button {
-                show(WindowID.claudeSetup)
-            } label: {
-                LabeledContent {
-                    Text(controller.claude.version ?? String(localized: "Not found"))
-                        .foregroundStyle(controller.claude.installed ? .secondary : Color.orange)
-                } label: {
-                    Label("Claude Code", systemImage: "terminal")
-                }
-            }
-            .buttonStyle(.plain)
-            Button {
-                show(WindowID.tailscale)
-            } label: {
-                LabeledContent {
-                    Text(tailscaleSummary)
-                        .foregroundStyle(controller.tailscale.running ? .secondary : Color.orange)
-                } label: {
-                    Label("Tailscale", systemImage: "network")
-                }
-            }
-            .buttonStyle(.plain)
-            .help(Text("Set up remote access with Tailscale"))
-        }
-        .font(.callout)
-    }
-
-    private var tailscaleSummary: String {
-        if controller.tailscale.running {
-            return controller.tailscale.ipv4 ?? String(localized: "Connected")
-        }
-        return controller.tailscale.installed ? String(localized: "Not connected") : String(localized: "Not installed")
-    }
-
     private var footer: some View {
-        HStack {
+        HStack(spacing: 14) {
             SettingsLink {
-                Text("Settings…")
+                Label("Settings…", systemImage: "gearshape")
             }
-            Button("About") {
+            Button {
                 NSApp.activate()
                 NSApp.orderFrontStandardAboutPanel(nil)
+            } label: {
+                Label("About", systemImage: "info.circle")
             }
             Spacer()
-            Button("Quit Pilothouse") {
+            Button {
                 NSApp.terminate(nil)
+            } label: {
+                Label("Quit Pilothouse", systemImage: "power")
             }
             .keyboardShortcut("q")
         }
+        .labelStyle(.titleAndIcon)
+        .font(.callout)
         .buttonStyle(.borderless)
         .padding(.horizontal, 14)
-        .padding(.vertical, 10)
+        .padding(.vertical, 9)
+        .background(.bar)
+    }
+
+    private func startPairing() {
+        Task { await controller.createPairing() }
+        show(WindowID.pairing)
     }
 
     private func show(_ id: String) {

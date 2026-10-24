@@ -28,6 +28,8 @@ final class AppController: MacStatusProviding {
     }
 
     let settings = AppSettings()
+    /// Finds and installs new releases from GitHub (D-105).
+    @ObservationIgnored private(set) lazy var updater = AppUpdater(settings: settings)
     let lidClosed = LidClosedController()
     let sleepAssertion = SleepAssertion()
 
@@ -98,6 +100,7 @@ final class AppController: MacStatusProviding {
         started = true
         sleepAssertion.acquire()
         macNameBox.set(macName)
+        updater.startAutomaticChecks()
 
         environment = await LoginShellEnvironment.capture()
         await refreshClaude()

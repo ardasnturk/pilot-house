@@ -26,6 +26,7 @@ final class AppSettings {
         static let notificationIncludesSummary = "notificationIncludesSummary"
         static let ntfyServer = "ntfyServer"
         static let ntfyTopic = "ntfyTopic"
+        static let automaticallyChecksForUpdates = "automaticallyChecksForUpdates"
     }
 
     @ObservationIgnored private let defaults: UserDefaults
@@ -115,6 +116,11 @@ final class AppSettings {
         didSet { defaults.set(ntfyTopic, forKey: Key.ntfyTopic) }
     }
 
+    /// Look for a newer release on GitHub at launch and once a day (default on).
+    var automaticallyChecksForUpdates: Bool {
+        didSet { defaults.set(automaticallyChecksForUpdates, forKey: Key.automaticallyChecksForUpdates) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         defaults.register(defaults: [
@@ -127,6 +133,7 @@ final class AppSettings {
             Key.weeklySummaryEnabled: true,
             Key.ntfyServer: NtfyConfiguration.defaultServer,
             Key.notificationKinds: AppSettings.notificationKindsInSettings.map(\.rawValue),
+            Key.automaticallyChecksForUpdates: true,
         ])
         keepAwakeWithLidClosed = defaults.bool(forKey: Key.keepAwakeWithLidClosed)
         pauseLidModeOnBattery = defaults.bool(forKey: Key.pauseLidModeOnBattery)
@@ -145,6 +152,7 @@ final class AppSettings {
         notificationKinds = Set((defaults.stringArray(forKey: Key.notificationKinds) ?? []).compactMap(HostAlert.Kind.init(rawValue:)))
         notificationIncludesSummary = defaults.bool(forKey: Key.notificationIncludesSummary)
         ntfyServer = defaults.string(forKey: Key.ntfyServer) ?? NtfyConfiguration.defaultServer
+        automaticallyChecksForUpdates = defaults.bool(forKey: Key.automaticallyChecksForUpdates)
         if let topic = defaults.string(forKey: Key.ntfyTopic), NtfyConfiguration.isValidTopic(topic) {
             ntfyTopic = topic
         } else {

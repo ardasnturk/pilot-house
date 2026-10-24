@@ -2,23 +2,225 @@ import PilothouseHost
 import PilothouseKit
 import SwiftUI
 
-/// The Settings window (⌘,).
+/// The Settings window (⌘,): a sidebar of panes like System Settings (D-104).
 struct SettingsView: View {
+    enum Pane: String, CaseIterable, Identifiable {
+        case general, devices, agents, notifications, remoteAccess, updates, security
+        var id: String { rawValue }
+    }
+
+    @State private var pane: Pane = .general
+
     var body: some View {
-        TabView {
-            GeneralSettings()
-                .tabItem { Label("General", systemImage: "gearshape") }
-            ClaudeSettings()
-                .tabItem { Label("Claude Code", systemImage: "terminal") }
-            AgentSettings()
-                .tabItem { Label("Agents", systemImage: "person.2") }
-            NotificationSettings()
-                .tabItem { Label("Notifications", systemImage: "bell.badge") }
-            PrivacySettings()
-                .tabItem { Label("Security", systemImage: "lock.shield") }
+        HStack(spacing: 0) {
+            List(Pane.allCases, selection: $pane) { pane in
+                Label {
+                    title(pane)
+                } icon: {
+                    IconBadge(symbol: symbol(pane), colors: colors(pane), size: 22)
+                }
+                .padding(.vertical, 3)
+                .tag(pane)
+            }
+            .listStyle(.sidebar)
+            .scrollContentBackground(.hidden)
+            .frame(width: 210)
+            .background(.thinMaterial)
+            Divider()
+            VStack(spacing: 0) {
+                PaneHeader(symbol: symbol(pane), colors: colors(pane), title: title(pane), subtitle: subtitle(pane))
+                detail
+                    .scrollContentBackground(.hidden)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(BrandBackground(intensity: 0.45))
         }
-        .frame(width: 520)
-        .padding(.vertical, 8)
+        .frame(width: 780, height: 560)
+    }
+
+    @ViewBuilder private var detail: some View {
+        switch pane {
+        case .general: GeneralSettings()
+        case .devices: DeviceSettings()
+        case .agents: AgentSettings()
+        case .notifications: NotificationSettings()
+        case .remoteAccess: RemoteAccessSettings()
+        case .updates: UpdateSettings()
+        case .security: PrivacySettings()
+        }
+    }
+
+    private func title(_ pane: Pane) -> Text {
+        switch pane {
+        case .general: Text("General")
+        case .devices: Text("iPhone & iPad")
+        case .agents: Text("Agents")
+        case .notifications: Text("Notifications")
+        case .remoteAccess: Text("Remote Access")
+        case .updates: Text("Updates")
+        case .security: Text("Security")
+        }
+    }
+
+    private func subtitle(_ pane: Pane) -> Text {
+        switch pane {
+        case .general: Text("Start at login, keep your Mac awake, session history.")
+        case .devices: Text("Paired devices and how they reach this Mac.")
+        case .agents: Text("Claude Code, Codex and Gemini on this Mac, defaults and sub-agents.")
+        case .notifications: Text("When and where Pilothouse tells you something happened.")
+        case .remoteAccess: Text("Optional: reach this Mac when you are away from its Wi-Fi.")
+        case .updates: Text("Install new versions of Pilothouse from GitHub.")
+        case .security: Text("Encryption, identity and risky modes.")
+        }
+    }
+
+    private func symbol(_ pane: Pane) -> String {
+        switch pane {
+        case .general: "gearshape.fill"
+        case .devices: "iphone"
+        case .agents: "sparkles"
+        case .notifications: "bell.badge.fill"
+        case .remoteAccess: "network"
+        case .updates: "arrow.down.circle.fill"
+        case .security: "lock.shield.fill"
+        }
+    }
+
+    private func colors(_ pane: Pane) -> [Color] {
+        switch pane {
+        case .general: [.gray, Color(white: 0.35)]
+        case .devices: [Brand.teal, Brand.indigo]
+        case .agents: [Brand.violet, Brand.pink]
+        case .notifications: [.red, .orange]
+        case .remoteAccess: [Brand.indigo, Brand.violet]
+        case .updates: [.green, Brand.teal]
+        case .security: [.blue, Brand.indigo]
+        }
+    }
+}
+
+/// Large icon, title and one-line explanation at the top of a pane.
+private struct PaneHeader: View {
+    let symbol: String
+    let colors: [Color]
+    let title: Text
+    let subtitle: Text
+
+    var body: some View {
+        HStack(spacing: 14) {
+            IconBadge(symbol: symbol, colors: colors, size: 44)
+            VStack(alignment: .leading, spacing: 3) {
+                title.font(.title2.weight(.bold))
+                subtitle
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer()
+        }
+        .padding(.horizontal, 24)
+        .padding(.top, 22)
+        .padding(.bottom, 6)
+    }
+}
+
+/// Paired devices, the pairing button and the addresses phones connect to.
+private struct DeviceSettings: View {
+    @Environment(AppController.self) private var controller
+    @Environment(\.openWindow) private var openWindow
+
+    var body: some View {
+        Form {
+            Section {
+                if controller.devices.isEmpty {
+                    Text("No devices paired yet.")
+                        .foregroundStyle(.secondary)
+                }
+                ForEach(controller.devices) { device in
+                    DeviceRow(device: device, isConnected: controller.connectedDeviceIds.contains(device.id)) {
+                        Task { await controller.revoke(device) }
+                    }
+                }
+                HStack {
+                    Button {
+                        Task { await controller.createPairing() }
+                        openWindow(id: WindowID.pairing)
+                        NSApp.activate()
+                    } label: {
+                        Label("Pair iPhone or iPad…", systemImage: "qrcode")
+                    }
+                    .disabled(controller.phase != .running)
+                    Button("Get the iPhone App…") {
+                        openWindow(id: WindowID.iPhoneApp)
+                        NSApp.activate()
+                    }
+                }
+            } header: {
+                Text("Paired devices")
+            } footer: {
+                Text("A revoked device is disconnected at once and has to pair again.")
+            }
+            Section {
+                if controller.reachableAddresses.isEmpty {
+                    Text("No network connection.")
+                        .foregroundStyle(.secondary)
+                }
+                ForEach(controller.reachableAddresses, id: \.self) { address in
+                    AddressRow(address: address, port: controller.port)
+                }
+            } header: {
+                Text("Addresses")
+            } footer: {
+                Text("Your iPhone finds this Mac on the same Wi-Fi by itself; you never need to type these. Tailscale addresses are only used if you turn on Tailscale in the iPhone app.")
+            }
+        }
+        .formStyle(.grouped)
+    }
+}
+
+/// Tailscale, explained as an optional extra.
+private struct RemoteAccessSettings: View {
+    @Environment(AppController.self) private var controller
+    @Environment(\.openWindow) private var openWindow
+
+    var body: some View {
+        Form {
+            Section {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("At home or in the office you need nothing else: your iPhone talks to this Mac directly over the Wi-Fi.")
+                    Text("To use Pilothouse away from that Wi-Fi, install Tailscale on this Mac and on your iPhone, sign in to the same account on both, then turn on “Use Tailscale when away” in the iPhone app's settings. Pilothouse still tries the local network first.")
+                        .foregroundStyle(.secondary)
+                }
+                .fixedSize(horizontal: false, vertical: true)
+            } header: {
+                Text("How it works")
+            }
+            Section {
+                LabeledContent {
+                    Text(tailscaleSummary)
+                        .foregroundStyle(controller.tailscale.running ? .green : .secondary)
+                } label: {
+                    Label("Tailscale", systemImage: "network")
+                }
+                if let name = controller.tailscale.magicDNSName {
+                    LabeledContent("MagicDNS name", value: name)
+                }
+                Button("Set Up Tailscale…") {
+                    openWindow(id: WindowID.tailscale)
+                    NSApp.activate()
+                }
+            } header: {
+                Text("On this Mac")
+            }
+        }
+        .formStyle(.grouped)
+    }
+
+    private var tailscaleSummary: String {
+        if controller.tailscale.running {
+            return controller.tailscale.ipv4 ?? String(localized: "Connected")
+        }
+        return controller.tailscale.installed ? String(localized: "Not connected") : String(localized: "Not installed")
     }
 }
 
@@ -68,28 +270,30 @@ private struct GeneralSettings: View {
     }
 }
 
-private struct ClaudeSettings: View {
+/// Claude Code's defaults and sign-in, at the top of the Agents pane.
+private struct ClaudeSections: View {
     @Environment(AppController.self) private var controller
     @State private var apiKey = ""
 
+    /// Models reported by Claude Code itself, or the aliases when it could not be asked.
+    private var models: [(id: String, name: String)] {
+        if let options = controller.agents.first(where: { $0.kind == .claude })?.modelOptions, !options.isEmpty {
+            var list = options.map { (id: $0.id, name: $0.displayName) }
+            let current = controller.settings.defaultModel
+            if !current.isEmpty, !list.contains(where: { $0.id == current }) { list.insert((current, current), at: 0) }
+            return list
+        }
+        return AppSettings.modelSuggestions.filter { !$0.isEmpty }.map { (id: $0, name: $0.capitalized) }
+    }
+
     var body: some View {
         @Bindable var settings = controller.settings
-        Form {
-            Section {
-                LabeledContent("Version", value: controller.claude.version ?? String(localized: "Not found"))
-                LabeledContent("Location", value: controller.claude.path?.abbreviatingHome ?? "—")
-                Button("Check Again") { Task { await controller.refreshClaude() } }
-            } header: {
-                Text("Claude Code CLI")
-            }
+        Group {
             Section {
                 Picker("Default model", selection: $settings.defaultModel) {
-                    ForEach(AppSettings.modelSuggestions, id: \.self) { model in
-                        if model.isEmpty {
-                            Text("Claude Code default").tag(model)
-                        } else {
-                            Text(model.capitalized).tag(model)
-                        }
+                    Text("Claude Code default").tag("")
+                    ForEach(models, id: \.id) { model in
+                        Text(verbatim: model.name).tag(model.id)
                     }
                 }
                 Picker("Default permission mode", selection: $settings.defaultPermissionMode) {
@@ -101,7 +305,9 @@ private struct ClaudeSettings: View {
                     }
                 }
             } header: {
-                Text("New sessions")
+                Text("Claude Code · new chats")
+            } footer: {
+                Text("Your iPhone can choose another model and effort for each chat.")
             }
             Section {
                 Toggle("Use an Anthropic API key instead of the CLI login", isOn: $settings.useAPIKey)
@@ -119,7 +325,6 @@ private struct ClaudeSettings: View {
                 Text("By default Claude Code uses the account you signed in with in Terminal. The API key is only passed to Claude Code as ANTHROPIC_API_KEY and never leaves this Mac.")
             }
         }
-        .formStyle(.grouped)
         .onChange(of: settings.defaultModel) { _, _ in Task { await controller.applySettings() } }
         .onChange(of: settings.defaultPermissionMode) { _, _ in Task { await controller.applySettings() } }
     }
@@ -131,6 +336,7 @@ private struct AgentSettings: View {
 
     var body: some View {
         Form {
+            ClaudeSections()
             Section {
                 ForEach(controller.agents) { agent in
                     AgentRow(agent: agent)
@@ -419,5 +625,89 @@ private struct NotificationSettings: View {
                 }
             }
         )
+    }
+}
+
+/// Version, update checks and installing (AppUpdater, D-105).
+private struct UpdateSettings: View {
+    @Environment(AppController.self) private var controller
+
+    var body: some View {
+        @Bindable var settings = controller.settings
+        let updater = controller.updater
+        Form {
+            Section {
+                LabeledContent("Installed version", value: updater.currentVersion)
+                UpdateStatusView(updater: updater)
+                Toggle("Check for updates automatically", isOn: $settings.automaticallyChecksForUpdates)
+            } footer: {
+                Text("Pilothouse looks for a new release on GitHub once a day. Updates are only installed when you click Install; they are checked for Apple's notarization and the same developer signature first.")
+            }
+            if case .available = updater.state, !updater.releaseNotes.isEmpty {
+                Section {
+                    ScrollView {
+                        Text(LocalizedStringKey(updater.releaseNotes))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .textSelection(.enabled)
+                    }
+                    .frame(maxHeight: 180)
+                } header: {
+                    Text("What's new")
+                }
+            }
+        }
+        .formStyle(.grouped)
+    }
+}
+
+/// The update state with its action: check, install, progress or error.
+struct UpdateStatusView: View {
+    let updater: AppUpdater
+
+    var body: some View {
+        HStack(spacing: 10) {
+            switch updater.state {
+            case .idle:
+                Text("Not checked yet").foregroundStyle(.secondary)
+                Spacer()
+                checkButton
+            case .checking:
+                ProgressView().controlSize(.small)
+                Text("Checking…").foregroundStyle(.secondary)
+                Spacer()
+            case .upToDate:
+                Label("Pilothouse is up to date", systemImage: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+                Spacer()
+                checkButton
+            case .available(let release):
+                Label {
+                    Text("Version \(release.version.description) is available")
+                } icon: {
+                    Image(systemName: "sparkles").foregroundStyle(Brand.violet)
+                }
+                Spacer()
+                Button("Install and Relaunch") { Task { await updater.installUpdate() } }
+                    .buttonStyle(.borderedProminent)
+            case .downloading(let progress):
+                ProgressView(value: progress) {
+                    Text("Downloading…")
+                }
+            case .installing:
+                ProgressView().controlSize(.small)
+                Text("Installing…").foregroundStyle(.secondary)
+                Spacer()
+            case .failed(let message):
+                Label(message, systemImage: "exclamationmark.triangle.fill")
+                    .foregroundStyle(.orange)
+                    .fixedSize(horizontal: false, vertical: true)
+                Spacer()
+                checkButton
+            }
+        }
+    }
+
+    private var checkButton: some View {
+        Button("Check Now") { Task { await updater.checkForUpdates(userInitiated: true) } }
     }
 }
