@@ -579,14 +579,18 @@ public actor SessionManager {
             }
         }
         let stderrLines = process.stderr.lines()
-        Task { [weak self] in
+        let errorReader = Task { [weak self] in
             for await line in stderrLines {
                 await self?.handleStderr(line, session: id, generation: generation)
             }
         }
         Task { [weak self] in
             let status = await process.waitForExit()
-            _ = try? await withTimeout(seconds: 3) { await reader.value }
+            // Both pipes first: the exit notice quotes the last stderr lines.
+            _ = try? await withTimeout(seconds: 3) {
+                await reader.value
+                await errorReader.value
+            }
             await self?.processExited(id, generation: generation, status: status)
         }
     }
