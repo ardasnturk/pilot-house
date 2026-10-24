@@ -12,6 +12,7 @@ struct ToolCardView: View {
     var isDetail = false
     @State private var isExpanded: Bool
     @State private var showsDetail = false
+    @Environment(\.openSubAgent) private var openSubAgent
 
     init(call: ToolCall, workingDirectory: String?, isDetail: Bool = false) {
         self.call = call
@@ -32,6 +33,9 @@ struct ToolCardView: View {
                 Button {
                     if call.name == "TodoWrite" {
                         withAnimation(.snappy) { isExpanded.toggle() }
+                    } else if summary.category == .agent, let openSubAgent {
+                        // A sub-agent opens its own transcript rather than a detail sheet.
+                        openSubAgent(call)
                     } else {
                         showsDetail = true
                     }

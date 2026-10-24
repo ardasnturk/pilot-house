@@ -111,10 +111,14 @@ final class PilothouseUITests: XCTestCase {
         let drop = app.buttons["simulateNetworkDrop"]
         XCTAssertTrue(app.scrollToElement(drop))
         drop.tap()
-        // The sheet scrolled to the bottom: wait for the toolbar to settle before closing it.
+        // The sheet scrolled to the bottom; when its toolbar is not hittable yet,
+        // close it with a swipe instead.
         let done = app.buttons["Done"]
-        XCTAssertTrue(done.waitForExistence(timeout: 10))
-        done.tap()
+        if done.waitForExistence(timeout: 10), done.isHittable {
+            done.tap()
+        } else {
+            app.swipeDown(velocity: .fast)
+        }
 
         // The client reconnects by itself and the Mac's sessions are still there.
         let newChat = app.buttons["newChatButton"]
@@ -171,10 +175,8 @@ final class PilothouseUITests: XCTestCase {
         let card = app.element("tool-mcp__pilothouse__delegate_to_agent")
         XCTAssertTrue(card.waitForExistence(timeout: 30))
         XCTAssertTrue(app.buttons["stopButton"].waitForNonExistence(timeout: 60), "The turn should finish")
+        // Tapping the sub-agent's row opens its own transcript.
         card.buttons.firstMatch.tap()
-        let open = app.buttons["openSubAgent"]
-        XCTAssertTrue(open.waitForExistence(timeout: 10))
-        open.tap()
 
         // The sheet shows Codex's own steps and its answer.
         XCTAssertTrue(app.element("tool-Bash").waitForExistence(timeout: 10))

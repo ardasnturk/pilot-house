@@ -72,7 +72,7 @@ import Testing
         let reset = try await harness.sessions.updateSettings(UpdateSessionSettings(sessionId: summary.id, model: "", effort: ""))
         #expect(reset.effort == nil)
         await #expect(throws: ErrorPayload.self) {
-            try await harness.sessions.updateSettings(UpdateSessionSettings(sessionId: summary.id, effort: "turbo"))
+            try await harness.sessions.updateSettings(UpdateSessionSettings(sessionId: summary.id, effort: "very high; rm -rf"))
         }
     }
 
