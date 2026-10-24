@@ -364,6 +364,9 @@ public actor DemoHostService: HostService {
     }
 }
 
+/// The "MockMacServer" of the test plan (prompt §8): an in-process Mac.
+public typealias MockMacServer = DemoHostService
+
 /// Accepts every key: the demo has no real security boundary.
 public struct DemoAuthorizer: PeerAuthorizer {
     public init() {}
@@ -405,5 +408,10 @@ public final class DemoConnector: TransportConnector {
         let serverEndpoint = self.endpoint
         Task { await serverEndpoint.accept(server) }
         return client
+    }
+
+    /// Drops every connection, as a network loss would (UI tests of reconnection).
+    public func simulateNetworkDrop() async {
+        await endpoint.disconnectAll()
     }
 }

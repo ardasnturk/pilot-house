@@ -112,17 +112,33 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
 
+  PilothouseUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: PilothouseUITests
+    dependencies:
+      - target: PilothouseiOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ardasenturk.Pilothouse.UITests
+        TEST_TARGET_NAME: PilothouseiOS
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
+
 schemes:
   PilothouseiOS:
     build:
       targets:
         PilothouseiOS: all
+        PilothouseUITests: [test]
     run:
       config: Debug
     test:
       config: Debug
       gatherCoverageData: true
       targets:
+        - PilothouseUITests
         - package: PilothouseKit/PilothouseKitTests
     archive:
       config: Release

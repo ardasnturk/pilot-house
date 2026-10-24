@@ -162,4 +162,9 @@ final class AppModel {
     func clearCache() {
         cache.clearAll()
     }
+
+    /// UI tests only: cut the demo connection to exercise reconnection.
+    func simulateNetworkDrop() async {
+        await demoConnector?.simulateNetworkDrop()
+    }
 }

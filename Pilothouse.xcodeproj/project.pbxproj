@@ -12,6 +12,7 @@
 		15D272A16219EB348E83DC97 /* MarkdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F55BEAFE751C9186F2BA8 /* MarkdownView.swift */; };
 		1B98E836283734F1241F22A3 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BDABCCC4F49F4C2579794 /* AppController.swift */; };
 		1BEAC456839BDA007BA4F449 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 30FE0C155BBAD41BFDB73B74 /* Localizable.xcstrings */; };
+		1E0219447D63A51F629DF19A /* PilothouseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36EA024A0964CDD781085F6 /* PilothouseUITests.swift */; };
 		23CC4363750AA44E7A38991E /* PairedMacStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE0F83282AD1387D5E527EA /* PairedMacStore.swift */; };
 		276206A341752128EBAAF78A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF91EDAD15F169830523451D /* AppDelegate.swift */; };
 		2ABDE65D63805277B9574EF1 /* TailscaleGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E749E2C472CDD67F94940341 /* TailscaleGuideView.swift */; };
@@ -32,10 +33,12 @@
 		684CDCCD2D9473112A38ECCD /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1F94B50AA0DBC5949D5E1 /* Formatting.swift */; };
 		6A9B9BCB8D2BE12244ABD8BE /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECA9F2871B8CB0FD415622B /* Haptics.swift */; };
 		6CDE349BA25B56AFD7D4B5E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93159B37CF474CD43E5FDA62 /* Assets.xcassets */; };
+		6D55839F1A76E0F27FEE4EDE /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5C34132BB825BE1A6D6746 /* ScreenshotTests.swift */; };
 		6DB369B0210A75B498C35526 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A027C85AAA6E7B80E0809 /* PairingView.swift */; };
 		76D33D683F9248DEF2D508BA /* ChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631070945A22E4A3011DADDE /* ChatState.swift */; };
 		810350712958DC3E2A64D4CD /* PilothouseHost in Frameworks */ = {isa = PBXBuildFile; productRef = 2AF240DD6C5AE3745DC6834D /* PilothouseHost */; };
 		82D01479F43122747A8F189E /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7370B418F47773E110E3E4 /* SessionListView.swift */; };
+		8572C169C3FD461DC2D16740 /* UITestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D37E5DCE53A80AEE27295 /* UITestSupport.swift */; };
 		89A8A70407E7F2D102BF1A4F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337DD811E53DF19C80FBBCF8 /* WelcomeView.swift */; };
 		8C9F912AB4D432AE8D39E9FC /* LidClosedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371C67D3326C21AFC37AF23 /* LidClosedController.swift */; };
 		9067C3B81584AA2ABEA76E3C /* PilothouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4531899DDF66EC0EA559DA /* PilothouseApp.swift */; };
@@ -62,6 +65,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		19E0E1B0C0703EFE49195500 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E956B9D378A9BAE61FA37846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A046A1C4E6323BE12E0157CD;
+			remoteInfo = PilothouseiOS;
+		};
 		E604C3DB6EB09AEC84E742D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E956B9D378A9BAE61FA37846 /* Project object */;
@@ -107,6 +117,7 @@
 		1BCAEA62924D29466C8E6EEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2807EA0484D779BC62AB4671 /* TranscriptItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptItemView.swift; sourceTree = "<group>"; };
 		2A0FFC63706831535D59C10E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2C5C34132BB825BE1A6D6746 /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
 		2C7F55BEAFE751C9186F2BA8 /* MarkdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownView.swift; sourceTree = "<group>"; };
 		2F68A90222485CB3205B3A32 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		30FE0C155BBAD41BFDB73B74 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -136,8 +147,10 @@
 		A5DFC0F8AEC409758AECBF45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMonitorView.swift; sourceTree = "<group>"; };
 		B122B36322A27E4867495C75 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
+		B36EA024A0964CDD781085F6 /* PilothouseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilothouseUITests.swift; sourceTree = "<group>"; };
 		B980E713BB2E181B1B2A7223 /* MacConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacConnection.swift; sourceTree = "<group>"; };
 		BA1A027C85AAA6E7B80E0809 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
+		BA9D37E5DCE53A80AEE27295 /* UITestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestSupport.swift; sourceTree = "<group>"; };
 		BEE0F83282AD1387D5E527EA /* PairedMacStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairedMacStore.swift; sourceTree = "<group>"; };
 		C9B7C33D8AA436C6087621C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D04C5619A47BB3FB101FA4D5 /* MainSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitView.swift; sourceTree = "<group>"; };
@@ -149,6 +162,7 @@
 		FA051DEB3B98577DB813A9B1 /* NewChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatView.swift; sourceTree = "<group>"; };
 		FAD807D3927C85F43E911CEB /* ComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposerView.swift; sourceTree = "<group>"; };
 		FECA9F2871B8CB0FD415622B /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		FF89C31BE5D6F5521E500E8C /* PilothouseUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PilothouseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF91EDAD15F169830523451D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +241,16 @@
 			path = PilothouseHelper;
 			sourceTree = "<group>";
 		};
+		4A584CDBE49E8F53FD563450 /* PilothouseUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B36EA024A0964CDD781085F6 /* PilothouseUITests.swift */,
+				2C5C34132BB825BE1A6D6746 /* ScreenshotTests.swift */,
+				BA9D37E5DCE53A80AEE27295 /* UITestSupport.swift */,
+			);
+			path = PilothouseUITests;
+			sourceTree = "<group>";
+		};
 		502FE5D3ED9C0A343F58748F /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +287,7 @@
 				346B080107E6EC89C6DDC60F /* PilothouseHelper */,
 				180408FFCD457F1564BB002B /* PilothouseiOS.app */,
 				034BC3FEA5B6B50B118199EA /* PilothouseMac.app */,
+				FF89C31BE5D6F5521E500E8C /* PilothouseUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +352,7 @@
 				49DA07882D74E7085A51F802 /* PilothouseHelper */,
 				141B9D91553AC9824A6652A1 /* PilothouseiOS */,
 				39410B7AC30D032D3B77CC5A /* PilothouseMac */,
+				4A584CDBE49E8F53FD563450 /* PilothouseUITests */,
 				69F9517C89CAF569FB625541 /* Shared */,
 				62ED6FC840739BDF9DE3590D /* Products */,
 			);
@@ -404,6 +430,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2B8E1A3C039E54F56734FF1E /* PilothouseUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFDD03DE4D3F27B8CBFEF7E5 /* Build configuration list for PBXNativeTarget "PilothouseUITests" */;
+			buildPhases = (
+				31A738FDFCADEFF8C6261E36 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A087E230B718772299D6B1A /* PBXTargetDependency */,
+			);
+			name = PilothouseUITests;
+			packageProductDependencies = (
+			);
+			productName = PilothouseUITests;
+			productReference = FF89C31BE5D6F5521E500E8C /* PilothouseUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		93AEA6DD3CA6465449E737ED /* PilothouseHelper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FE495887F92760B0CA8A0AA /* Build configuration list for PBXNativeTarget "PilothouseHelper" */;
@@ -474,6 +518,11 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					2B8E1A3C039E54F56734FF1E = {
+						DevelopmentTeam = 5JMD3VSD7N;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A046A1C4E6323BE12E0157CD;
+					};
 					93AEA6DD3CA6465449E737ED = {
 						DevelopmentTeam = 5JMD3VSD7N;
 					};
@@ -508,6 +557,7 @@
 				C9D53AC0BC98282FCCBE13A1 /* PilothouseMac */,
 				93AEA6DD3CA6465449E737ED /* PilothouseHelper */,
 				A046A1C4E6323BE12E0157CD /* PilothouseiOS */,
+				2B8E1A3C039E54F56734FF1E /* PilothouseUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -566,6 +616,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		31A738FDFCADEFF8C6261E36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E0219447D63A51F629DF19A /* PilothouseUITests.swift in Sources */,
+				6D55839F1A76E0F27FEE4EDE /* ScreenshotTests.swift in Sources */,
+				8572C169C3FD461DC2D16740 /* UITestSupport.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4B7ADE4D7D63C0F7124AA33A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -601,6 +661,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2A087E230B718772299D6B1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A046A1C4E6323BE12E0157CD /* PilothouseiOS */;
+			targetProxy = 19E0E1B0C0703EFE49195500 /* PBXContainerItemProxy */;
+		};
 		4A5E6007BC34288E97AC70F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 93AEA6DD3CA6465449E737ED /* PilothouseHelper */;
@@ -710,6 +775,23 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		91E01CD50A05D9B569624556 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.UITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PilothouseiOS;
 			};
 			name = Debug;
 		};
@@ -874,6 +956,23 @@
 			};
 			name = Release;
 		};
+		FD9490A5E4BF73F40E7A5C01 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.UITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PilothouseiOS;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -909,6 +1008,15 @@
 			buildConfigurations = (
 				02857627320D104075A0AABD /* Debug */,
 				3E33D00CBBA2AAAA854B3922 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FFDD03DE4D3F27B8CBFEF7E5 /* Build configuration list for PBXNativeTarget "PilothouseUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91E01CD50A05D9B569624556 /* Debug */,
+				FD9490A5E4BF73F40E7A5C01 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

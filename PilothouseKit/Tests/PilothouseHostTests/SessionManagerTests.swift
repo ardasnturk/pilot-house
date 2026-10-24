@@ -141,6 +141,45 @@ import Testing
         await harness.tearDown()
     }
 
+    @Test func messageRightAfterStopIsNotLost() async throws {
+        let harness = try await Harness()
+        let summary = try await harness.sessions.start(StartSession(cwd: "~/project"))
+        let stream = try await harness.sessions.subscribe(summary.id, fromSeq: 1)
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "SLOW"))
+        var iterator = stream.makeAsyncIterator()
+        while let event = await iterator.next(), !event.ephemeral {}
+        try await harness.sessions.interrupt(summary.id)
+        // No waiting: the next message must reach a fresh CLI.
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "Hello again"))
+        var greeted = false
+        while let event = await iterator.next() {
+            if case .assistantMessage(let message) = event.event, message.text == "Hello from FakeClaude" {
+                greeted = true
+                break
+            }
+        }
+        #expect(greeted)
+        #expect(harness.launchedArguments().count == 2)
+        await harness.tearDown()
+    }
+
+    @Test func resumeRightAfterCloseStartsAFreshProcess() async throws {
+        let harness = try await Harness()
+        let summary = try await harness.sessions.start(StartSession(cwd: "~/project"))
+        let stream = try await harness.sessions.subscribe(summary.id, fromSeq: 1)
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "Hello"))
+        _ = try await collect(stream) { $0.resultCount == 1 }
+        try await harness.sessions.close(summary.id)
+        _ = try await harness.sessions.resume(summary.id)
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "ECHOARGS"))
+        let events = try await collect(stream) { $0.resultCount == 1 }
+        let echoed = events.compactMap { event -> String? in
+            if case .assistantMessage(let message) = event.event { message.text } else { nil }
+        }
+        #expect(echoed.contains("session=\(summary.id) resume=yes model=default mode=default"))
+        await harness.tearDown()
+    }
+
     @Test func crashAndLoginProblemsBecomeNotices() async throws {
         let harness = try await Harness()
         let summary = try await harness.sessions.start(StartSession(cwd: "~/project", firstMessage: "CRASH please"))

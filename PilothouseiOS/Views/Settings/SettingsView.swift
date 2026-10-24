@@ -66,6 +66,14 @@ struct SettingsView: View {
                         set: { enabled in Task { await model.setDemoMode(enabled) } }
                     ))
                     .accessibilityIdentifier("demoModeToggle")
+                    if model.launch.isUITesting && model.preferences.demoMode {
+                        Button {
+                            Task { await model.simulateNetworkDrop() }
+                        } label: {
+                            Text(verbatim: "Simulate Network Drop")
+                        }
+                        .accessibilityIdentifier("simulateNetworkDrop")
+                    }
                 } footer: {
                     Text("Explore Pilothouse with a simulated Mac. Nothing is sent anywhere and no Mac is needed.")
                 }

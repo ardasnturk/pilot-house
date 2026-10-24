@@ -54,6 +54,9 @@ public actor SessionManager {
         var token: String?
         var interruptRequested = false
         var closing = false
+        /// The CLI was interrupted or closed: it must not receive new input,
+        /// the next message waits for it to exit and starts a fresh process.
+        var retiring = false
         var sawInterruptNotice = false
         var pendingPermissions = 0
         var stderrTail: [String] = []
@@ -228,6 +231,7 @@ public actor SessionManager {
         guard let session = sessions[id] else { throw Self.notFound }
         guard let process = session.process, session.record.summary.state.isBusy else { return }
         sessions[id]?.interruptRequested = true
+        sessions[id]?.retiring = true
         process.send(signal: SIGINT)
         await broker.cancelAll(sessionId: id)
         let generation = session.generation
@@ -241,7 +245,10 @@ public actor SessionManager {
     public func close(_ id: String) async throws {
         guard let session = sessions[id] else { throw Self.notFound }
         let process = session.process
-        if process != nil { sessions[id]?.closing = true }
+        if process != nil {
+            sessions[id]?.closing = true
+            sessions[id]?.retiring = true
+        }
         setState(.closed, for: id)
         append(.systemNotice(.init(kind: "closed", level: .info, text: "Session closed.")), to: id)
         await persistAndPublish(id)
@@ -377,7 +384,12 @@ public actor SessionManager {
 
     private func ensureProcess(_ id: String) async throws {
         guard let session = sessions[id] else { throw Self.notFound }
-        if session.process != nil { return }
+        if let process = session.process {
+            guard session.retiring else { return }
+            await retire(process, of: id, generation: session.generation)
+            guard sessions[id] != nil else { throw Self.notFound }
+            if sessions[id]?.process != nil { return }
+        }
         if let spawning = session.spawning {
             try await spawning.value
             return
@@ -414,6 +426,7 @@ public actor SessionManager {
         sessions[id]?.stderrTail = []
         sessions[id]?.interruptRequested = false
         sessions[id]?.closing = false
+        sessions[id]?.retiring = false
         sessions[id]?.sawInterruptNotice = false
         tokens[token] = id
         log.info("Started Claude Code (pid \(process.pid)) for session \(id), resume: \(options.resume)")
@@ -434,6 +447,22 @@ public actor SessionManager {
             let status = await process.waitForExit()
             _ = try? await withTimeout(seconds: 3) { await reader.value }
             await self?.processExited(id, generation: generation, status: status)
+        }
+    }
+
+    /// Waits for an interrupted or closed CLI to exit and for its exit to be
+    /// processed (its last lines included), killing it if it lingers.
+    private func retire(_ process: ChildProcess, of id: String, generation: Int) async {
+        if await process.waitForExit(timeout: 10) == nil {
+            await process.terminate(grace: 2)
+        }
+        for _ in 0..<100 where sessions[id]?.generation == generation && sessions[id]?.process != nil {
+            try? await Task.sleep(for: .milliseconds(50))
+        }
+        if sessions[id]?.generation == generation, sessions[id]?.process != nil {
+            sessions[id]?.process = nil
+            if let token = sessions[id]?.token { tokens.removeValue(forKey: token) }
+            sessions[id]?.token = nil
         }
     }
 

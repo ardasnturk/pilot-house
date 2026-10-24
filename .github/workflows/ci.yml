@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package-linux:
+    name: PilothouseKit on Linux
+    runs-on: ubuntu-latest
+    container: swift:6.1
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install curl (used by FakeClaude)
+        run: apt-get update -qq && apt-get install -y -qq curl python3 > /dev/null
+      - name: Check translations
+        run: python3 scripts/l10n/build_catalogs.py --check
+      - name: swift test
+        working-directory: PilothouseKit
+        run: swift test
+
+  apple:
+    name: Mac + iOS (xcodebuild)
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode version
+        run: xcodebuild -version
+      - name: Mac scheme — build app and run package tests
+        run: |
+          xcodebuild test \
+            -project Pilothouse.xcodeproj -scheme PilothouseMac \
+            -destination 'platform=macOS' \
+            -resultBundlePath build/mac.xcresult \
+            CODE_SIGNING_ALLOWED=NO
+      - name: iOS scheme — build app and run UI tests on a simulator
+        run: |
+          SIMULATOR=$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          devices = json.load(sys.stdin)["devices"]
+          for runtime in sorted(devices, reverse=True):
+              if "iOS" in runtime:
+                  for device in devices[runtime]:
+                      if device["name"].startswith("iPhone"):
+                          print(device["udid"]); sys.exit(0)
+          sys.exit(1)')
+          xcodebuild test \
+            -project Pilothouse.xcodeproj -scheme PilothouseiOS \
+            -destination "id=$SIMULATOR" \
+            -resultBundlePath build/ios.xcresult \
+            CODE_SIGNING_ALLOWED=NO
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcresults
+          path: build/*.xcresult
+          retention-days: 7

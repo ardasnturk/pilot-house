@@ -435,3 +435,39 @@ phones persist the new addresses, and new pairing QR codes include them.
 iOS does not allow third-party apps to install or configure another VPN. The
 phone shows a single explicit step (install Tailscale from the App Store, sign
 in with the same account) and states why it cannot be automated (§7.4).
+
+---
+
+## Phase 5 — Tests
+
+### D-070 — "MockMacServer" is the demo host service
+**Status:** accepted
+
+The UI tests' mock Mac (`MockMacServer`, a typealias of `DemoHostService`)
+runs in the app process behind the real Noise channel, so UI tests need no
+network, no Mac and no fixtures on disk, and they exercise the production
+client code. A test-only "Simulate Network Drop" control (visible only with
+`-UITesting` in demo mode) cuts the connection to test reconnection.
+
+### D-071 — Real-CLI end-to-end test is opt-in
+**Status:** accepted
+
+`RealClaudeEndToEndTests` needs a signed-in `claude` and makes a small model
+call, so it only runs when `PILOTHOUSE_E2E_CLAUDE` points to the CLI. It drives
+the full host stack in-process (the iOS client logic is the same `MacClient`);
+only the Network.framework socket is replaced by an in-memory transport.
+
+### D-072 — Interrupted or closed CLIs are "retiring"
+**Status:** accepted (bug found by D-071)
+
+After Stop or Close the CLI may still be exiting. Such a process never receives
+new input: the next message waits (≤ 10 s, then SIGKILL) until its exit — and its
+last lines — have been processed, then a fresh CLI is started with `--resume`.
+
+### D-073 — CI
+**Status:** accepted
+
+GitHub Actions: package tests in the official `swift:6.1` Linux image, and on
+`macos-15` both Xcode schemes with `CODE_SIGNING_ALLOWED=NO` (Mac app + helper
+build, package tests on macOS, iOS app build + UI tests on the newest iPhone
+simulator). Result bundles are kept for 7 days.
