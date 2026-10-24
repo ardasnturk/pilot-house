@@ -123,6 +123,35 @@ final class PilothouseUITests: XCTestCase {
         XCTAssertTrue(app.buttons["allowButton"].waitForExistence(timeout: 30) || app.element("tool-Glob").exists)
     }
 
+    @MainActor
+    func testCreatesAFolderAndStartsThere() throws {
+        let app = XCUIApplication.pilothouse(demo: true)
+        app.launch()
+        let newChat = app.buttons["newChatButton"]
+        XCTAssertTrue(newChat.waitForExistence(timeout: 20))
+        newChat.tap()
+        let developer = app.element("folder-Developer")
+        XCTAssertTrue(developer.waitForExistence(timeout: 10))
+        developer.tap()
+
+        let newFolder = app.buttons["newFolderButton"]
+        XCTAssertTrue(newFolder.waitForExistence(timeout: 10))
+        newFolder.tap()
+        let name = app.alerts.textFields.firstMatch
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        name.tap()
+        name.typeText("side-project")
+        app.alerts.buttons["Create"].tap()
+
+        // The new folder opens, so the session starts inside it.
+        let start = app.buttons["startSessionButton"]
+        let inNewFolder = NSPredicate(format: "label CONTAINS 'side-project'")
+        expectation(for: inNewFolder, evaluatedWith: start)
+        waitForExpectations(timeout: 10)
+        start.tap()
+        XCTAssertTrue(app.element("composerField").waitForExistence(timeout: 15))
+    }
+
     // MARK: Helpers
 
     @MainActor

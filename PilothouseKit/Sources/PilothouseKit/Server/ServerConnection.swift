@@ -119,6 +119,8 @@ public actor ServerConnection {
             return .macStatus(await service.macStatus())
         case .listDirectory(let request):
             return .directoryListing(try await service.listDirectory(request))
+        case .createDirectory(let request):
+            return .directoryListing(try await service.createDirectory(request))
         case .listSessions:
             return .sessionList(SessionList(sessions: await service.listSessions()))
         case .startSession(let request):

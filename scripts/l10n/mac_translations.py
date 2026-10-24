@@ -1,6 +1,7 @@
 # Source of scripts/l10n/mac.json — edit here, then run `python3 scripts/l10n/mac_translations.py`.
 import json, os
 T = {
+"%@ is not installed on this Mac. Install it, sign in once in Terminal, then try again.": ("%@ bu Mac'te kurulu değil. Kurun, Terminal'de bir kez giriş yapın ve tekrar deneyin.", "%@ ist auf diesem Mac nicht installiert. Installiere es, melde dich einmal im Terminal an und versuche es erneut."),
 "Allow": ("İzin Ver", "Erlauben"),
 "Deny": ("Reddet", "Ablehnen"),
 "Send": ("Gönder", "Senden"),

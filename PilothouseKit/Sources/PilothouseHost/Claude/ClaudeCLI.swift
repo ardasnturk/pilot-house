@@ -162,10 +162,13 @@ public struct ClaudeLaunchOptions: Sendable, Equatable {
     public var workingDirectory: String
     /// Local permission endpoint, if any.
     public var permissionServer: PermissionServerInfo?
+    public var agent: AgentKind
+    /// The agent's own conversation ID to resume (Codex thread), if known.
+    public var agentSessionId: String?
 
     public init(
         sessionId: String, resume: Bool, model: String?, permissionMode: PermissionMode, workingDirectory: String,
-        permissionServer: PermissionServerInfo?
+        permissionServer: PermissionServerInfo?, agent: AgentKind = .claude, agentSessionId: String? = nil
     ) {
         self.sessionId = sessionId
         self.resume = resume
@@ -173,6 +176,8 @@ public struct ClaudeLaunchOptions: Sendable, Equatable {
         self.permissionMode = permissionMode
         self.workingDirectory = workingDirectory
         self.permissionServer = permissionServer
+        self.agent = agent
+        self.agentSessionId = agentSessionId
     }
 }
 
@@ -269,9 +274,17 @@ public enum ClaudeCommand {
     }
 }
 
-/// Starts CLI processes. Production uses the real `claude`; tests use FakeClaude.
+/// Starts agent CLI processes. Production uses the real CLIs; tests use FakeClaude.
 public protocol ClaudeLauncher: Sendable {
     func launch(_ options: ClaudeLaunchOptions) async throws -> ChildProcess
+    /// The adapter that speaks the launched process's protocol.
+    func makeAdapter(for options: ClaudeLaunchOptions) -> any AgentAdapter
+}
+
+public typealias AgentLauncher = ClaudeLauncher
+
+extension ClaudeLauncher {
+    public func makeAdapter(for options: ClaudeLaunchOptions) -> any AgentAdapter { ClaudeAdapter() }
 }
 
 /// Launches the real CLI found by `ClaudeLocator`.

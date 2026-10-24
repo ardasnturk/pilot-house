@@ -49,7 +49,7 @@ public actor SessionManager {
         var process: ChildProcess?
         var generation = 0
         var spawning: Task<Void, Error>?
-        var normalizer = StreamJSONNormalizer()
+        var adapter: any AgentAdapter = ClaudeAdapter()
         var subscribers: [UUID: AsyncStream<SequencedEvent>.Continuation] = [:]
         var token: String?
         var interruptRequested = false
@@ -67,20 +67,35 @@ public actor SessionManager {
     private let broker: PermissionBroker
     private let hub: NotificationHub
     private let fileBrowser: FileBrowser
-    private let launcher: @Sendable () async throws -> any ClaudeLauncher
+    private let launcher: @Sendable (AgentKind) async throws -> any AgentLauncher
     private let log = PilothouseLog("SessionManager")
     private var sessions: [String: LiveSession] = [:]
     private var tokens: [String: String] = [:]
     private var permissionPort: Int?
     private var bootstrapped = false
 
-    /// - Parameter launcher: resolves the CLI launcher on demand; throws
-    ///   `ErrorPayload(.claudeNotInstalled)` when Claude Code is missing.
+    /// Claude Code only (tests and older call sites).
     public init(
         configuration: HostConfiguration,
         broker: PermissionBroker,
         hub: NotificationHub,
         launcher: @escaping @Sendable () async throws -> any ClaudeLauncher
+    ) {
+        self.init(configuration: configuration, broker: broker, hub: hub, agentLauncher: { kind in
+            guard kind == .claude else {
+                throw ErrorPayload(code: .agentNotInstalled, message: "\(kind.displayName) is not available on this Mac.")
+            }
+            return try await launcher()
+        })
+    }
+
+    /// - Parameter agentLauncher: resolves the launcher of an agent on demand;
+    ///   throws `ErrorPayload(.claudeNotInstalled / .agentNotInstalled)` when it is missing.
+    public init(
+        configuration: HostConfiguration,
+        broker: PermissionBroker,
+        hub: NotificationHub,
+        agentLauncher launcher: @escaping @Sendable (AgentKind) async throws -> any AgentLauncher
     ) {
         self.configuration = configuration
         self.broker = broker
@@ -149,7 +164,8 @@ public actor SessionManager {
     // MARK: Commands
 
     public func start(_ request: StartSession) async throws -> SessionSummary {
-        _ = try await launcher()
+        let agent = request.agent ?? .claude
+        _ = try await launcher(agent)
         let cwd = try fileBrowser.validateWorkingDirectory(request.cwd)
         let mode = request.permissionMode ?? configuration.defaultPermissionMode
         if mode == .bypassPermissions && !configuration.allowBypassPermissions {
@@ -170,7 +186,8 @@ public actor SessionManager {
             updatedAt: now,
             model: model,
             permissionMode: mode,
-            state: .starting
+            state: .starting,
+            agent: agent
         )
         let record = SessionRecord(summary: summary, requestedModel: model)
         sessions[id] = LiveSession(record: record, log: EventLog(url: logURL(id)))
@@ -180,7 +197,7 @@ public actor SessionManager {
             try await ensureProcess(id)
         } catch {
             setState(.idle, for: id)
-            append(.systemNotice(.init(kind: "launchFailed", level: .error, text: "Could not start Claude Code: \(error)")), to: id)
+            append(.systemNotice(.init(kind: "launchFailed", level: .error, text: "Could not start \(agent.displayName): \(error)")), to: id)
             await persistAndPublish(id)
             throw error
         }
@@ -204,15 +221,14 @@ public actor SessionManager {
         guard !text.isEmpty || !attachments.isEmpty else {
             throw ErrorPayload(code: .invalidRequest, message: "The message is empty.")
         }
-        let line = try ClaudeCommand.userMessageLine(text: text, attachments: attachments)
         try await ensureProcess(request.sessionId)
         do {
-            try await currentProcess(request.sessionId)?.write(line)
+            try await writeUserMessage(text: text, attachments: attachments, to: request.sessionId)
         } catch {
             // The CLI died between turns; start it again once.
             await dropProcess(request.sessionId)
             try await ensureProcess(request.sessionId)
-            try await currentProcess(request.sessionId)?.write(line)
+            try await writeUserMessage(text: text, attachments: attachments, to: request.sessionId)
         }
         append(.userMessage(.init(text: text, attachmentCount: attachments.count)), to: request.sessionId)
         update(request.sessionId) { record in
@@ -226,10 +242,16 @@ public actor SessionManager {
         await persistAndPublish(request.sessionId)
     }
 
-    /// Stops the running turn (SIGINT to the process group, D-002).
+    /// Stops the running turn: over the agent's protocol when it has a way to
+    /// (Codex), otherwise SIGINT to the process group (Claude Code, D-002).
     public func interrupt(_ id: String) async throws {
         guard let session = sessions[id] else { throw Self.notFound }
         guard let process = session.process, session.record.summary.state.isBusy else { return }
+        if let lines = sessions[id]?.adapter.interruptLines() {
+            for line in lines { try? await process.write(line) }
+            await broker.cancelAll(sessionId: id)
+            return
+        }
         sessions[id]?.interruptRequested = true
         sessions[id]?.retiring = true
         process.send(signal: SIGINT)
@@ -291,7 +313,7 @@ public actor SessionManager {
         let (stream, continuation) = AsyncStream.makeStream(of: SequencedEvent.self, bufferingPolicy: .unbounded)
         for event in backlog { continuation.yield(event) }
         let lastSeq = (try? session.log.lastSeq) ?? 0
-        for (blockId, text) in session.normalizer.streamingText where !text.isEmpty {
+        for (blockId, text) in session.adapter.streamingText where !text.isEmpty {
             continuation.yield(SequencedEvent(
                 seq: lastSeq, timestamp: Date(), ephemeral: true,
                 event: .assistantTextDelta(.init(blockId: blockId, text: text, replace: true))
@@ -323,6 +345,16 @@ public actor SessionManager {
     }
 
     // MARK: Permissions
+
+    /// Answers an approval that the agent asked for over its own protocol.
+    private func answer(_ request: AgentPermissionRequest, session id: String, generation: Int) async {
+        let result = await decidePermission(sessionId: id, tool: request.tool, input: request.input, toolUseId: request.toolUseId)
+        guard let session = sessions[id], session.generation == generation, let process = session.process else { return }
+        let allow = if case .allow = result { true } else { false }
+        if let reply = session.adapter.permissionReply(to: request, allow: allow) {
+            try? await process.write(reply)
+        }
+    }
 
     /// Called by the MCP endpoint for every permission prompt of a session's CLI.
     public func decidePermission(sessionId: String, tool: String, input: JSONValue, toolUseId: String?) async -> PermissionToolResult {
@@ -402,18 +434,22 @@ public actor SessionManager {
 
     private func spawn(_ id: String) async throws {
         guard let session = sessions[id] else { throw Self.notFound }
-        let launcher = try await launcher()
-        let token = Self.randomToken()
         let summary = session.record.summary
+        let launcher = try await launcher(summary.agentKind)
+        let token = Self.randomToken()
         let options = ClaudeLaunchOptions(
             sessionId: id,
             resume: session.record.established,
             model: session.record.requestedModel,
             permissionMode: summary.permissionMode,
             workingDirectory: summary.cwd,
-            permissionServer: permissionPort.map { PermissionServerInfo(port: $0, token: token) }
+            permissionServer: permissionPort.map { PermissionServerInfo(port: $0, token: token) },
+            agent: summary.agentKind,
+            agentSessionId: session.record.agentSessionId
         )
         let process = try await launcher.launch(options)
+        var adapter = launcher.makeAdapter(for: options)
+        let startup = adapter.startupLines()
         guard sessions[id] != nil else {
             Task { await process.terminate(grace: 1) }
             throw Self.notFound
@@ -422,14 +458,15 @@ public actor SessionManager {
         sessions[id]?.generation = generation
         sessions[id]?.process = process
         sessions[id]?.token = token
-        sessions[id]?.normalizer = StreamJSONNormalizer()
+        sessions[id]?.adapter = adapter
         sessions[id]?.stderrTail = []
         sessions[id]?.interruptRequested = false
         sessions[id]?.closing = false
         sessions[id]?.retiring = false
         sessions[id]?.sawInterruptNotice = false
         tokens[token] = id
-        log.info("Started Claude Code (pid \(process.pid)) for session \(id), resume: \(options.resume)")
+        log.info("Started \(summary.agentKind.displayName) (pid \(process.pid)) for session \(id), resume: \(options.resume)")
+        for line in startup { try? await process.write(line) }
 
         let stdoutLines = process.stdout.lines()
         let reader = Task { [weak self] in
@@ -476,9 +513,16 @@ public actor SessionManager {
 
     private func handleLine(_ line: String, session id: String, generation: Int) {
         guard sessions[id]?.generation == generation else { return }
-        guard let events = sessions[id]?.normalizer.consume(line: line) else { return }
+        guard let output = sessions[id]?.adapter.consume(line: line) else { return }
+        let events = output.events
         for event in events {
             append(event, to: id)
+        }
+        if !output.writes.isEmpty, let process = sessions[id]?.process {
+            Task { for write in output.writes { try? await process.write(write) } }
+        }
+        for request in output.permissionRequests {
+            Task { await self.answer(request, session: id, generation: generation) }
         }
         if events.contains(where: { if case .result = $0 { return true } else { return false } })
             || events.contains(where: { if case .assistantMessage = $0 { return true } else { return false } })
@@ -543,6 +587,13 @@ public actor SessionManager {
         await process.terminate(grace: 2)
     }
 
+    /// Sends a user message through the session's adapter.
+    private func writeUserMessage(text: String, attachments: [MessageAttachment], to id: String) async throws {
+        guard let process = currentProcess(id) else { throw Self.notFound }
+        guard let lines = try sessions[id]?.adapter.userMessageLines(text: text, attachments: attachments) else { return }
+        for line in lines { try await process.write(line) }
+    }
+
     // MARK: Events
 
     /// Persists (unless ephemeral) and broadcasts one event; updates the record.
@@ -564,6 +615,9 @@ public actor SessionManager {
                 switch event {
                 case .sessionInfo(let info):
                     if let model = info.model { record.summary.model = model }
+                    if record.summary.agentKind != .claude, !info.claudeSessionId.isEmpty {
+                        record.agentSessionId = info.claudeSessionId
+                    }
                     if !info.slashCommands.isEmpty { record.summary.slashCommands = info.slashCommands }
                 case .assistantMessage(let message):
                     record.summary.lastMessagePreview = message.text

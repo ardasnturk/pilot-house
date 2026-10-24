@@ -63,11 +63,13 @@ public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
     public var lastSeq: Int
     /// Slash commands reported by the CLI for this session (without the leading `/`).
     public var slashCommands: [String]
+    /// The agent CLI running this session; `nil` (older Macs) means Claude Code.
+    public var agent: AgentKind?
 
     public init(
         id: String, cwd: String, title: String, lastMessagePreview: String? = nil, createdAt: Date, updatedAt: Date,
         model: String? = nil, permissionMode: PermissionMode = .default, state: SessionState = .idle, lastSeq: Int = 0,
-        slashCommands: [String] = []
+        slashCommands: [String] = [], agent: AgentKind? = nil
     ) {
         self.id = id
         self.cwd = cwd
@@ -80,6 +82,7 @@ public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
         self.state = state
         self.lastSeq = lastSeq
         self.slashCommands = slashCommands
+        self.agent = agent
     }
 
     public init(from decoder: Decoder) throws {
@@ -95,7 +98,11 @@ public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
         state = try container.decodeIfPresent(SessionState.self, forKey: .state) ?? .idle
         lastSeq = try container.decodeIfPresent(Int.self, forKey: .lastSeq) ?? 0
         slashCommands = try container.decodeIfPresent([String].self, forKey: .slashCommands) ?? []
+        agent = try container.decodeIfPresent(AgentKind.self, forKey: .agent)
     }
+
+    /// The agent running this session (Claude Code when the Mac did not say).
+    public var agentKind: AgentKind { agent ?? .claude }
 
     /// Last path component of `cwd`, or `~` for the home folder.
     public var folderName: String {

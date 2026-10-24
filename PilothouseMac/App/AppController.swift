@@ -34,6 +34,8 @@ final class AppController: MacStatusProviding {
     private(set) var macName = Host.current().localizedName ?? "Mac"
     private(set) var claude = ClaudeCLIStatus(installed: false)
     private(set) var isCheckingClaude = false
+    /// Every agent CLI found on this Mac (Claude Code first).
+    private(set) var agents: [AgentStatus] = []
     private(set) var tailscale: TailscaleStatus = .notInstalled
     private(set) var localAddresses: [String] = []
     private(set) var port: Int?
@@ -98,9 +100,9 @@ final class AppController: MacStatusProviding {
                 serverVersion: AppInfo.version,
                 status: self,
                 macName: { nameBox.value },
-                launcher: { [weak self] in
+                agentLauncher: { [weak self] kind in
                     guard let self else { throw ErrorPayload(code: .internalError, message: "Pilothouse is shutting down.") }
-                    return try await self.makeLauncher()
+                    return try await self.makeLauncher(for: kind)
                 }
             )
             self.runtime = runtime
@@ -141,7 +143,42 @@ final class AppController: MacStatusProviding {
     func refreshClaude() async {
         isCheckingClaude = true
         claude = await ClaudeLocator.status(environment: environment)
+        agents = await AgentLocator.statuses(claude: claude, environment: environment, delegation: settings.delegationAgents)
         isCheckingClaude = false
+    }
+
+    /// Re-reads which agents may be delegated to and tells the phones.
+    func applyDelegationSettings() async {
+        agents = agents.map { status in
+            var status = status
+            status.delegationEnabled = status.kind != .claude && settings.delegationAgents.contains(status.kind)
+                && status.installed && status.loggedIn != false
+            return status
+        }
+        if let runtime { await runtime.hub.post(.macStatus(await macStatus())) }
+    }
+
+    private func makeLauncher(for kind: AgentKind) async throws -> any AgentLauncher {
+        if kind == .claude { return try await makeLauncher() }
+        var status = agents.first { $0.kind == kind }
+        if status?.path == nil {
+            await refreshClaude()
+            status = agents.first { $0.kind == kind }
+        }
+        guard let path = status?.path else {
+            throw ErrorPayload(
+                code: .agentNotInstalled,
+                message: String(localized: "\(kind.displayName) is not installed on this Mac. Install it, sign in once in Terminal, then try again.")
+            )
+        }
+        switch kind {
+        case .codex:
+            return CodexLauncher(executable: path, environment: environment)
+        case .gemini:
+            return GeminiLauncher(executable: path, environment: environment)
+        default:
+            throw ErrorPayload(code: .agentNotInstalled, message: "\(kind.displayName) is not supported by this version of Pilothouse.")
+        }
     }
 
     private func makeLauncher() async throws -> any ClaudeLauncher {
@@ -181,7 +218,8 @@ final class AppController: MacStatusProviding {
             port: port ?? settings.preferredPort,
             activeSessionCount: activeSessions.count,
             bypassPermissionsAllowed: settings.allowBypassPermissions,
-            defaultModel: settings.defaultModel.isEmpty ? nil : settings.defaultModel
+            defaultModel: settings.defaultModel.isEmpty ? nil : settings.defaultModel,
+            agents: agents
         )
     }
 

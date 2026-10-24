@@ -36,6 +36,8 @@ public protocol HostService: Sendable {
     func helloAck(for client: ClientContext) async -> HelloAck
     func macStatus() async -> MacStatus
     func listDirectory(_ request: ListDirectory) async throws -> DirectoryListing
+    /// Creates a folder and returns the listing of its parent.
+    func createDirectory(_ request: CreateDirectory) async throws -> DirectoryListing
     func listSessions() async -> [SessionSummary]
     func startSession(_ request: StartSession, from client: ClientContext) async throws -> SessionSummary
     func resumeSession(id: String) async throws -> SessionSummary

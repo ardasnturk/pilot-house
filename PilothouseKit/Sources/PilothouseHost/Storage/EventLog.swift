@@ -118,16 +118,20 @@ public struct SessionRecord: Sendable, Hashable, Codable {
     public var hasUserMessages: Bool
     /// The model the user asked for (`--model`); `summary.model` shows what the CLI reports.
     public var requestedModel: String?
+    /// The agent's own conversation ID when it differs from `summary.id`
+    /// (a Codex thread ID), used to resume the conversation.
+    public var agentSessionId: String?
 
     public init(
         summary: SessionSummary, established: Bool = false, alwaysAllowed: [String] = [], hasUserMessages: Bool = false,
-        requestedModel: String? = nil
+        requestedModel: String? = nil, agentSessionId: String? = nil
     ) {
         self.summary = summary
         self.established = established
         self.alwaysAllowed = alwaysAllowed
         self.hasUserMessages = hasUserMessages
         self.requestedModel = requestedModel
+        self.agentSessionId = agentSessionId
     }
 
     public init(from decoder: Decoder) throws {
@@ -137,6 +141,7 @@ public struct SessionRecord: Sendable, Hashable, Codable {
         alwaysAllowed = try container.decodeIfPresent([String].self, forKey: .alwaysAllowed) ?? []
         hasUserMessages = try container.decodeIfPresent(Bool.self, forKey: .hasUserMessages) ?? false
         requestedModel = try container.decodeIfPresent(String.self, forKey: .requestedModel)
+        agentSessionId = try container.decodeIfPresent(String.self, forKey: .agentSessionId)
     }
 }
 

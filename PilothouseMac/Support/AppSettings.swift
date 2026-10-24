@@ -16,6 +16,7 @@ final class AppSettings {
         static let useAPIKey = "useAPIKey"
         static let preferredPort = "preferredPort"
         static let didShowWelcome = "didShowWelcome"
+        static let delegationAgents = "delegationAgents"
     }
 
     @ObservationIgnored private let defaults: UserDefaults
@@ -62,6 +63,11 @@ final class AppSettings {
         didSet { defaults.set(didShowWelcome, forKey: Key.didShowWelcome) }
     }
 
+    /// Agents Claude may start as sub-agents (`delegate_to_agent`).
+    var delegationAgents: Set<AgentKind> {
+        didSet { defaults.set(delegationAgents.map(\.rawValue).sorted(), forKey: Key.delegationAgents) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         defaults.register(defaults: [
@@ -69,6 +75,7 @@ final class AppSettings {
             Key.retentionDays: 30,
             Key.preferredPort: PilothouseProtocol.defaultPort,
             Key.defaultPermissionMode: PermissionMode.default.rawValue,
+            Key.delegationAgents: [AgentKind.codex.rawValue, AgentKind.gemini.rawValue],
         ])
         keepAwakeWithLidClosed = defaults.bool(forKey: Key.keepAwakeWithLidClosed)
         pauseLidModeOnBattery = defaults.bool(forKey: Key.pauseLidModeOnBattery)
@@ -79,6 +86,7 @@ final class AppSettings {
         useAPIKey = defaults.bool(forKey: Key.useAPIKey)
         preferredPort = defaults.integer(forKey: Key.preferredPort)
         didShowWelcome = defaults.bool(forKey: Key.didShowWelcome)
+        delegationAgents = Set((defaults.stringArray(forKey: Key.delegationAgents) ?? []).map(AgentKind.init(rawValue:)))
     }
 
     /// Model aliases offered in pickers (free text is accepted too).

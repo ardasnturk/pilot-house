@@ -122,6 +122,55 @@ import Testing
         let other = browser.privacyError(for: URL(fileURLWithPath: "/Users/demo/x"), underlying: NSError(domain: NSCocoaErrorDomain, code: 4))
         #expect(other == nil)
     }
+
+    @Test func createsFolderAndReturnsParentListing() throws {
+        let home = try TemporaryHome()
+        defer { home.remove() }
+        try home.makeDirectory("Projects")
+        let browser = FileBrowser(sandbox: PathSandbox(homeDirectory: home.path))
+
+        let listing = try browser.createDirectory(CreateDirectory(parent: "~/Projects", name: "  new app "))
+        #expect(listing.path == home.path + "/Projects")
+        #expect(listing.entries.map(\.name) == ["new app"])
+        #expect(listing.entries[0].isDirectory)
+    }
+
+    @Test(arguments: ["", "  ", ".hidden", "..", "a/b", "../escape", "a:b", String(repeating: "x", count: 256)])
+    func rejectsInvalidFolderNames(_ name: String) throws {
+        let home = try TemporaryHome()
+        defer { home.remove() }
+        let browser = FileBrowser(sandbox: PathSandbox(homeDirectory: home.path))
+        do {
+            _ = try browser.createDirectory(CreateDirectory(parent: "~", name: name))
+            Issue.record("Expected invalidName for \(name)")
+        } catch let error as ErrorPayload {
+            #expect(error.code == .invalidName)
+        }
+        #expect(try FileManager.default.contentsOfDirectory(atPath: home.path).isEmpty)
+    }
+
+    @Test func refusesExistingNamesAndParentsOutsideHome() throws {
+        let home = try TemporaryHome()
+        defer { home.remove() }
+        try home.makeDirectory("taken")
+        try FileManager.default.createSymbolicLink(atPath: home.path + "/escape", withDestinationPath: "/tmp")
+        let browser = FileBrowser(sandbox: PathSandbox(homeDirectory: home.path))
+        do {
+            _ = try browser.createDirectory(CreateDirectory(parent: "~", name: "taken"))
+            Issue.record("Expected alreadyExists")
+        } catch let error as ErrorPayload {
+            #expect(error.code == .alreadyExists)
+        }
+        for parent in ["/tmp", "~/..", "~/escape"] {
+            do {
+                _ = try browser.createDirectory(CreateDirectory(parent: parent, name: "pwned"))
+                Issue.record("Expected pathOutsideHome for \(parent)")
+            } catch let error as ErrorPayload {
+                #expect(error.code == .pathOutsideHome)
+            }
+        }
+        #expect(!FileManager.default.fileExists(atPath: "/tmp/pwned"))
+    }
 }
 
 @Suite struct EventLogTests {

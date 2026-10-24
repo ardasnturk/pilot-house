@@ -14,6 +14,8 @@ final class MacConnection {
     private(set) var status: MacStatus?
     private(set) var sessions: [SessionSummary] = []
     private(set) var pendingPermissions: [PermissionRequest] = []
+    /// Optional features of the connected Mac (`HostCapability`).
+    private(set) var capabilities: Set<String> = []
     /// Set when the app returns to the foreground while sessions were busy.
     var resumedWhileAwayNotice: String?
 
@@ -126,6 +128,7 @@ final class MacConnection {
         switch message {
         case .helloAck(let ack):
             pendingPermissions = ack.pendingPermissions
+            capabilities = Set(ack.capabilities ?? [])
         case .event(let payload):
             let event = payload.sequencedEvent
             chat(for: payload.sessionId).apply(event)
@@ -234,6 +237,14 @@ final class MacConnection {
 
     func listDirectory(_ path: String?, showHidden: Bool) async throws -> DirectoryListing {
         let response = try await client.request(.listDirectory(ListDirectory(path: path, showHidden: showHidden)))
+        guard case .directoryListing(let listing) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return listing
+    }
+
+    func createDirectory(in parent: String, name: String) async throws -> DirectoryListing {
+        let response = try await client.request(.createDirectory(CreateDirectory(parent: parent, name: name)))
         guard case .directoryListing(let listing) = response else {
             throw MacClientError.unexpectedResponse(response.typeName)
         }

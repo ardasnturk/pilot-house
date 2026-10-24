@@ -33,6 +33,10 @@ public struct MacHostService: HostService {
         try fileBrowser.list(request)
     }
 
+    public func createDirectory(_ request: CreateDirectory) async throws -> DirectoryListing {
+        try fileBrowser.createDirectory(request)
+    }
+
     public func listSessions() async -> [SessionSummary] {
         await sessions.summaries()
     }
@@ -90,7 +94,7 @@ public final class HostRuntime: Sendable {
     public let fileBrowser: FileBrowser
     private let mcpServer: LoopbackHTTPServer
 
-    public init(
+    public convenience init(
         configuration: HostConfiguration,
         identity: IdentityKeyPair,
         serverVersion: String,
@@ -99,10 +103,31 @@ public final class HostRuntime: Sendable {
         permissionTimeout: Duration = .seconds(600),
         launcher: @escaping @Sendable () async throws -> any ClaudeLauncher
     ) throws {
+        try self.init(
+            configuration: configuration, identity: identity, serverVersion: serverVersion, status: status,
+            macName: macName, permissionTimeout: permissionTimeout,
+            agentLauncher: { kind in
+                guard kind == .claude else {
+                    throw ErrorPayload(code: .agentNotInstalled, message: "\(kind.displayName) is not available on this Mac.")
+                }
+                return try await launcher()
+            }
+        )
+    }
+
+    public init(
+        configuration: HostConfiguration,
+        identity: IdentityKeyPair,
+        serverVersion: String,
+        status: any MacStatusProviding,
+        macName: @escaping @Sendable () -> String,
+        permissionTimeout: Duration = .seconds(600),
+        agentLauncher: @escaping @Sendable (AgentKind) async throws -> any AgentLauncher
+    ) throws {
         self.identity = identity
         let hub = NotificationHub()
         let broker = PermissionBroker(hub: hub, timeout: permissionTimeout)
-        let sessions = SessionManager(configuration: configuration, broker: broker, hub: hub, launcher: launcher)
+        let sessions = SessionManager(configuration: configuration, broker: broker, hub: hub, agentLauncher: agentLauncher)
         let pairing = PairingManager()
         let devices = DeviceRegistry(
             url: configuration.dataDirectory.appendingPathComponent("devices.json"),

@@ -12,6 +12,18 @@ public enum PilothouseProtocol {
     public static let portSearchRange = 20
 }
 
+/// Optional features a Mac announces in `HelloAck.capabilities`, so a newer
+/// phone can hide what an older Mac cannot do without bumping `version`.
+public enum HostCapability {
+    public static let createDirectory = "createDirectory"
+    /// `StartSession.agent`, `SessionSummary.agent` and `MacStatus.agents`.
+    public static let agents = "agents"
+    /// Session events carry `thread` and sub-agent threads are streamed.
+    public static let threads = "threads"
+    /// Every capability this build of PilothouseKit implements.
+    public static let all = [createDirectory, agents, threads]
+}
+
 // MARK: - Shared payloads
 
 public struct EmptyPayload: Sendable, Hashable, Codable {
@@ -48,16 +60,33 @@ public struct ListDirectory: Sendable, Hashable, Codable {
     }
 }
 
+public struct CreateDirectory: Sendable, Hashable, Codable {
+    /// Folder to create the new folder in (same rules as `ListDirectory.path`).
+    public var parent: String
+    /// Name of the new folder: a single path component.
+    public var name: String
+    public init(parent: String, name: String) {
+        self.parent = parent
+        self.name = name
+    }
+}
+
 public struct StartSession: Sendable, Hashable, Codable {
     public var cwd: String
     public var model: String?
     public var permissionMode: PermissionMode?
     public var firstMessage: String?
-    public init(cwd: String, model: String? = nil, permissionMode: PermissionMode? = nil, firstMessage: String? = nil) {
+    /// Agent CLI to run; `nil` means Claude Code (capability `agents`).
+    public var agent: AgentKind?
+    public init(
+        cwd: String, model: String? = nil, permissionMode: PermissionMode? = nil, firstMessage: String? = nil,
+        agent: AgentKind? = nil
+    ) {
         self.cwd = cwd
         self.model = model
         self.permissionMode = permissionMode
         self.firstMessage = firstMessage
+        self.agent = agent
     }
 }
 
@@ -119,16 +148,21 @@ public struct HelloAck: Sendable, Hashable, Codable {
     public var serverVersion: String
     /// Permission requests waiting for an answer when the client connected.
     public var pendingPermissions: [PermissionRequest]
+    /// Optional features (`HostCapability`); missing on Macs older than 1.1.
+    public var capabilities: [String]?
     public init(
         protocolVersion: Int = PilothouseProtocol.version, macName: String, macId: String, serverVersion: String,
-        pendingPermissions: [PermissionRequest] = []
+        pendingPermissions: [PermissionRequest] = [], capabilities: [String]? = HostCapability.all
     ) {
         self.protocolVersion = protocolVersion
         self.macName = macName
         self.macId = macId
         self.serverVersion = serverVersion
         self.pendingPermissions = pendingPermissions
+        self.capabilities = capabilities
     }
+
+    public func supports(_ capability: String) -> Bool { capabilities?.contains(capability) ?? false }
 }
 
 public struct SessionList: Sendable, Hashable, Codable {
@@ -203,7 +237,10 @@ public struct ErrorCode: RawRepresentable, Sendable, Hashable, Codable, CustomSt
     /// macOS privacy (TCC) blocked access; `message` says which permission to grant.
     public static let privacyPermissionRequired = ErrorCode("privacyPermissionRequired")
     public static let notADirectory = ErrorCode("notADirectory")
+    public static let alreadyExists = ErrorCode("alreadyExists")
+    public static let invalidName = ErrorCode("invalidName")
     public static let claudeNotInstalled = ErrorCode("claudeNotInstalled")
+    public static let agentNotInstalled = ErrorCode("agentNotInstalled")
     public static let sessionClosed = ErrorCode("sessionClosed")
     public static let modeNotAllowed = ErrorCode("modeNotAllowed")
     public static let unauthorized = ErrorCode("unauthorized")
@@ -229,6 +266,7 @@ public struct ErrorPayload: Sendable, Hashable, Codable, Error {
 public enum ClientMessage: Sendable, Hashable {
     case hello(Hello)
     case listDirectory(ListDirectory)
+    case createDirectory(CreateDirectory)
     case listSessions
     case startSession(StartSession)
     case resumeSession(SessionRef)
@@ -245,6 +283,7 @@ public enum ClientMessage: Sendable, Hashable {
         switch self {
         case .hello: "hello"
         case .listDirectory: "listDirectory"
+        case .createDirectory: "createDirectory"
         case .listSessions: "listSessions"
         case .startSession: "startSession"
         case .resumeSession: "resumeSession"

@@ -897,6 +897,22 @@
         }
       }
     },
+    "Could not create the folder": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Ordner konnte nicht erstellt werden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klasör oluşturulamadı"
+          }
+        }
+      }
+    },
     "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.": {
       "localizations": {
         "de": {
@@ -925,6 +941,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Oturum başlatılamadı"
+          }
+        }
+      }
+    },
+    "Create": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erstellen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oluştur"
           }
         }
       }
@@ -1793,6 +1825,22 @@
         }
       }
     },
+    "Name": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad"
+          }
+        }
+      }
+    },
     "Needs approval": {
       "localizations": {
         "de": {
@@ -1821,6 +1869,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yeni Sohbet"
+          }
+        }
+      }
+    },
+    "New Folder": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neuer Ordner"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni Klasör"
           }
         }
       }
@@ -3069,6 +3133,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bağlam alanı açmak için konuşma sıkıştırıldı."
+          }
+        }
+      }
+    },
+    "The folder is created in %@ on your Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Ordner wird auf deinem Mac in %@ erstellt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klasör Mac'inizde %@ içinde oluşturulur."
           }
         }
       }

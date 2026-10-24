@@ -146,6 +146,7 @@ the documented result, `ok`, or `error`.
 | `hello` | `{ protocolVersion, appVersion, deviceName, platform }` — **must be first** | `helloAck` |
 | `macStatus` | `{}` | `macStatus` |
 | `listDirectory` | `{ path?: "~/Developer" \| "/Users/a/x", showHidden: false }` | `directoryListing` |
+| `createDirectory` | `{ parent, name }` — `name` is one visible path component; capability `createDirectory` | `directoryListing` of `parent` |
 | `listSessions` | `{}` | `sessionList` |
 | `startSession` | `{ cwd, model?, permissionMode?, firstMessage? }` | `sessionStarted` |
 | `resumeSession` | `{ sessionId }` | `sessionStarted` |
@@ -161,11 +162,15 @@ the documented result, `ok`, or `error`.
 (the last one only if the Mac user enabled it; otherwise `modeNotAllowed`).
 Attachments are images (`image/jpeg|png|gif|webp`, ≤ 5 MB each).
 
+Messages added after 1.0 are announced in `helloAck.capabilities` (missing on
+older Macs). A client only sends them when the Mac lists the capability, so
+`version` stays 1. Capabilities so far: `createDirectory` (1.1).
+
 ### 4.2 Host → client
 
 | `type` | `payload` |
 |---|---|
-| `helloAck` | `{ protocolVersion, macName, macId, serverVersion, pendingPermissions: [PermissionRequest] }` |
+| `helloAck` | `{ protocolVersion, macName, macId, serverVersion, pendingPermissions: [PermissionRequest], capabilities?: [String] }` |
 | `ok` | `{}` |
 | `macStatus` | `{ macName, sleepPrevented, lidClosedModeEnabled, claude: { installed, path?, version? }, tailscale: { installed, running, backendState?, ipv4?, ipv6?, magicDNSName?, tailnetName?, magicDNSEnabled }, addresses: [{ host, kind }], port, activeSessionCount, bypassPermissionsAllowed, defaultModel? }` |
 | `directoryListing` | `{ path, homePath, parentPath?, isGitRepository, truncated, entries: [{ name, path, isDirectory, isHidden, isSymbolicLink, isGitRepository, size?, modifiedAt? }] }` |
@@ -199,6 +204,7 @@ broadcast to every connected client after its `hello`.
 `protocolMismatch`, `invalidRequest`, `unknownMessage`, `notFound`,
 `pathOutsideHome`, `privacyPermissionRequired` (macOS privacy settings block a
 folder; `message` says which switch to turn on), `notADirectory`,
+`alreadyExists`, `invalidName`,
 `claudeNotInstalled`, `sessionClosed`, `modeNotAllowed`, `unauthorized`,
 `deviceRevoked`, `pairingTokenInvalid`, `clockSkew`, `timeout`, `internal`.
 Codes are open-ended strings; clients must handle unknown codes generically.

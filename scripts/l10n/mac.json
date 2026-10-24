@@ -1,4 +1,8 @@
 {
+ "%@ is not installed on this Mac. Install it, sign in once in Terminal, then try again.": {
+  "de": "%@ ist auf diesem Mac nicht installiert. Installiere es, melde dich einmal im Terminal an und versuche es erneut.",
+  "tr": "%@ bu Mac'te kurulu değil. Kurun, Terminal'de bir kez giriş yapın ve tekrar deneyin."
+ },
  "%@ is paired": {
   "de": "%@ ist gekoppelt",
   "tr": "%@ eşleştirildi"

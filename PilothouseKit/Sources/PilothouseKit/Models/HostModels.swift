@@ -172,11 +172,13 @@ public struct MacStatus: Sendable, Hashable, Codable {
     /// `bypassPermissions` may be offered to clients.
     public var bypassPermissionsAllowed: Bool
     public var defaultModel: String?
+    /// Every agent CLI the Mac looked for (1.1+); `nil` on older Macs.
+    public var agents: [AgentStatus]?
 
     public init(
         macName: String, sleepPrevented: Bool, lidClosedModeEnabled: Bool, claude: ClaudeCLIStatus,
         tailscale: TailscaleStatus, addresses: [HostAddress], port: Int, activeSessionCount: Int,
-        bypassPermissionsAllowed: Bool, defaultModel: String? = nil
+        bypassPermissionsAllowed: Bool, defaultModel: String? = nil, agents: [AgentStatus]? = nil
     ) {
         self.macName = macName
         self.sleepPrevented = sleepPrevented
@@ -188,6 +190,13 @@ public struct MacStatus: Sendable, Hashable, Codable {
         self.activeSessionCount = activeSessionCount
         self.bypassPermissionsAllowed = bypassPermissionsAllowed
         self.defaultModel = defaultModel
+        self.agents = agents
+    }
+
+    /// Agents a new session can use: the reported list, or Claude Code alone.
+    public var availableAgents: [AgentStatus] {
+        if let agents { return agents.filter(\.installed) }
+        return [AgentStatus(kind: .claude, installed: claude.installed, path: claude.path, version: claude.version, loggedIn: claude.loggedIn)]
     }
 }
 

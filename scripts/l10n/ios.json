@@ -223,6 +223,10 @@
   "de": "Code kopieren",
   "tr": "Kodu kopyala"
  },
+ "Could not create the folder": {
+  "de": "Der Ordner konnte nicht erstellt werden",
+  "tr": "Klasör oluşturulamadı"
+ },
  "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.": {
   "de": "Dein Mac ist nicht erreichbar. Stelle sicher, dass Pilothouse dort läuft und beide Geräte im selben Netzwerk (oder mit Tailscale verbunden) sind. Prüfe Einstellungen → Pilothouse → Lokales Netzwerk.",
   "tr": "Mac'inize ulaşılamadı. Pilothouse'un Mac'te çalıştığından ve iki cihazın aynı ağda (veya Tailscale'e bağlı) olduğundan emin olun. Ayarlar → Pilothouse → Yerel Ağ'ı kontrol edin."
@@ -230,6 +234,10 @@
  "Could not start the session": {
   "de": "Die Sitzung konnte nicht gestartet werden",
   "tr": "Oturum başlatılamadı"
+ },
+ "Create": {
+  "de": "Erstellen",
+  "tr": "Oluştur"
  },
  "Current folder: %@": {
   "de": "Aktueller Ordner: %@",
@@ -447,6 +455,10 @@
   "de": "Modell-ID",
   "tr": "Model kimliği"
  },
+ "Name": {
+  "de": "Name",
+  "tr": "Ad"
+ },
  "Needs approval": {
   "de": "Freigabe nötig",
   "tr": "Onay bekliyor"
@@ -454,6 +466,10 @@
  "New Chat": {
   "de": "Neuer Chat",
   "tr": "Yeni Sohbet"
+ },
+ "New Folder": {
+  "de": "Neuer Ordner",
+  "tr": "Yeni Klasör"
  },
  "New chats": {
   "de": "Neue Chats",
@@ -766,6 +782,10 @@
  "The conversation was compacted to free up context.": {
   "de": "Das Gespräch wurde komprimiert, um Kontext freizugeben.",
   "tr": "Bağlam alanı açmak için konuşma sıkıştırıldı."
+ },
+ "The folder is created in %@ on your Mac.": {
+  "de": "Der Ordner wird auf deinem Mac in %@ erstellt.",
+  "tr": "Klasör Mac'inizde %@ içinde oluşturulur."
  },
  "The transcript is removed from your Mac and this device. Files Claude changed are not affected.": {
   "de": "Der Verlauf wird von deinem Mac und diesem Gerät entfernt. Von Claude geänderte Dateien bleiben unberührt.",

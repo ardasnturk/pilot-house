@@ -19,6 +19,9 @@ struct NewChatView: View {
     @State private var isStarting = false
     @State private var startError: String?
     @State private var didApplyDefaults = false
+    @State private var isNamingFolder = false
+    @State private var newFolderName = ""
+    @State private var folderError: String?
 
     private static let customModelTag = "__custom__"
 
@@ -48,6 +51,22 @@ struct NewChatView: View {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text(startError ?? "")
+            }
+            .alert(Text("New Folder"), isPresented: $isNamingFolder) {
+                TextField("Name", text: $newFolderName)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .accessibilityIdentifier("newFolderName")
+                Button("Cancel", role: .cancel) {}
+                Button("Create") { Task { await createFolder() } }
+                    .disabled(newFolderName.trimmingCharacters(in: .whitespaces).isEmpty)
+            } message: {
+                Text("The folder is created in \(listing.map { $0.displayPath } ?? "~") on your Mac.")
+            }
+            .alert(Text("Could not create the folder"), isPresented: Binding(get: { folderError != nil }, set: { if !$0 { folderError = nil } })) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(folderError ?? "")
             }
         }
     }
@@ -137,7 +156,21 @@ struct NewChatView: View {
                 }
             }
         } header: {
-            Text("Folders")
+            HStack {
+                Text("Folders")
+                Spacer()
+                if canCreateFolders {
+                    Button {
+                        newFolderName = ""
+                        isNamingFolder = true
+                    } label: {
+                        Label("New Folder", systemImage: "folder.badge.plus")
+                            .labelStyle(.iconOnly)
+                    }
+                    .disabled(listing == nil)
+                    .accessibilityIdentifier("newFolderButton")
+                }
+            }
         }
     }
 
@@ -172,6 +205,10 @@ struct NewChatView: View {
         } header: {
             Text("Session")
         }
+    }
+
+    private var canCreateFolders: Bool {
+        model.connection?.capabilities.contains(HostCapability.createDirectory) == true
     }
 
     private var availableModes: [PermissionMode] {
@@ -255,6 +292,22 @@ struct NewChatView: View {
             loadError = (error as? ErrorPayload)?.message ?? error.localizedDescription
         }
         isLoading = false
+    }
+
+    /// Creates the folder on the Mac and opens it, so the session can start there.
+    private func createFolder() async {
+        guard let connection = model.connection, let listing else { return }
+        let name = newFolderName.trimmingCharacters(in: .whitespacesAndNewlines)
+        do {
+            let parent = try await connection.createDirectory(in: listing.path, name: name)
+            self.listing = parent
+            if let created = parent.entries.first(where: { $0.name == name && $0.isDirectory }) {
+                path = created.path
+            }
+            Haptics.success()
+        } catch {
+            folderError = (error as? ErrorPayload)?.message ?? error.localizedDescription
+        }
     }
 
     private func start() async {

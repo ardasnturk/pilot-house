@@ -17,6 +17,8 @@ public actor DemoHostService: HostService {
     private var pendingPermissions: [String: (request: PermissionRequest, continuation: CheckedContinuation<Bool, Never>)] = [:]
     private var runningTurns: [String: Task<Void, Never>] = [:]
     private var turnCounter = 0
+    /// Folders created in the demo, by parent path (the scripted tree is immutable).
+    private var createdFolders: [String: [String]] = [:]
     private let now: Date
 
     public init(pace: Double = 1, now: Date = Date()) {
@@ -65,14 +67,14 @@ public actor DemoHostService: HostService {
         guard path.hasPrefix(Self.homePath) else {
             throw ErrorPayload(code: .pathOutsideHome, message: "Only folders inside your home folder can be browsed.")
         }
-        guard let entries = DemoContent.tree[path] else {
+        guard let entries = children(of: path) else {
             throw ErrorPayload(code: .notFound, message: "Folder not found.")
         }
         let nodes = entries
             .filter { request.showHidden || !$0.hasPrefix(".") }
             .map { name -> FileNode in
                 let childPath = path == "/" ? "/\(name)" : "\(path)/\(name)"
-                let isDirectory = DemoContent.tree[childPath] != nil
+                let isDirectory = children(of: childPath) != nil
                 return FileNode(
                     name: name,
                     path: childPath,
@@ -97,13 +99,37 @@ public actor DemoHostService: HostService {
         )
     }
 
+    public func createDirectory(_ request: CreateDirectory) async throws -> DirectoryListing {
+        let parent = DemoContent.normalize(request.parent, home: Self.homePath)
+        let name = request.name.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !name.isEmpty, !name.hasPrefix("."), !name.contains("/"), !name.contains(":") else {
+            throw ErrorPayload(code: .invalidName, message: "Folder names cannot be empty, start with a dot or contain / or :.")
+        }
+        guard let siblings = children(of: parent) else {
+            throw ErrorPayload(code: .notFound, message: "Folder not found.")
+        }
+        guard !siblings.contains(name) else {
+            throw ErrorPayload(code: .alreadyExists, message: "A folder named \(name) already exists.")
+        }
+        createdFolders[parent, default: []].append(name)
+        createdFolders["\(parent)/\(name)"] = []
+        return try await listDirectory(ListDirectory(path: parent))
+    }
+
+    private func children(of path: String) -> [String]? {
+        let scripted = DemoContent.tree[path]
+        let created = createdFolders[path]
+        guard scripted != nil || created != nil else { return nil }
+        return (scripted ?? []) + (created ?? [])
+    }
+
     public func listSessions() async -> [SessionSummary] {
         sessions.values.sorted { $0.updatedAt > $1.updatedAt }
     }
 
     public func startSession(_ request: StartSession, from client: ClientContext) async throws -> SessionSummary {
         let cwd = DemoContent.normalize(request.cwd, home: Self.homePath)
-        guard DemoContent.tree[cwd] != nil else {
+        guard children(of: cwd) != nil else {
             throw ErrorPayload(code: .notFound, message: "Folder not found.")
         }
         let id = UUID().uuidString.lowercased()

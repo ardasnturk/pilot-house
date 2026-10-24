@@ -53,6 +53,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         switch type {
         case "hello": message = .hello(try payload(Hello.self))
         case "listDirectory": message = .listDirectory(try payload(ListDirectory.self))
+        case "createDirectory": message = .createDirectory(try payload(CreateDirectory.self))
         case "listSessions": message = .listSessions
         case "startSession": message = .startSession(try payload(StartSession.self))
         case "resumeSession": message = .resumeSession(try payload(SessionRef.self))
@@ -77,6 +78,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         switch message {
         case .hello(let payload): try container.encode(payload, forKey: .payload)
         case .listDirectory(let payload): try container.encode(payload, forKey: .payload)
+        case .createDirectory(let payload): try container.encode(payload, forKey: .payload)
         case .listSessions, .macStatus: try container.encode(EmptyPayload(), forKey: .payload)
         case .startSession(let payload): try container.encode(payload, forKey: .payload)
         case .resumeSession(let payload), .interrupt(let payload), .closeSession(let payload),

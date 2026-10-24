@@ -124,6 +124,46 @@ public struct FileBrowser: Sendable {
         )
     }
 
+    /// Creates `request.name` inside `request.parent` and returns the parent's listing.
+    ///
+    /// The name must be a single, visible path component, so the new folder is
+    /// always a direct child of a folder that already passed the sandbox check.
+    public func createDirectory(_ request: CreateDirectory) throws -> DirectoryListing {
+        let name = try Self.validatedFolderName(request.name)
+        let parent = try sandbox.resolve(request.parent)
+        var isDirectory: ObjCBool = false
+        guard FileManager.default.fileExists(atPath: parent.path, isDirectory: &isDirectory), isDirectory.boolValue else {
+            throw ErrorPayload(code: .notADirectory, message: "\(displayPath(parent)) is not a folder.")
+        }
+        let target = parent.appendingPathComponent(name, isDirectory: true)
+        guard !FileManager.default.fileExists(atPath: target.path) else {
+            throw ErrorPayload(code: .alreadyExists, message: "\(displayPath(target)) already exists.")
+        }
+        do {
+            try FileManager.default.createDirectory(at: target, withIntermediateDirectories: false)
+        } catch {
+            throw privacyError(for: parent, underlying: error) ?? ErrorPayload(
+                code: .internalError,
+                message: "Could not create \(displayPath(target)): \(error.localizedDescription)"
+            )
+        }
+        return try list(ListDirectory(path: parent.path))
+    }
+
+    /// Trims `name` and rejects anything that is not one visible path component.
+    static func validatedFolderName(_ name: String) throws -> String {
+        let trimmed = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let invalid = trimmed.isEmpty || trimmed.hasPrefix(".") || trimmed.contains("/") || trimmed.contains(":")
+            || trimmed.contains("\0") || trimmed.utf8.count > 255
+        guard !invalid else {
+            throw ErrorPayload(
+                code: .invalidName,
+                message: "Folder names cannot be empty, start with a dot or contain / or :."
+            )
+        }
+        return trimmed
+    }
+
     /// Validates a working directory for a new session.
     public func validateWorkingDirectory(_ path: String) throws -> URL {
         let url = try sandbox.resolve(path)
