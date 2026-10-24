@@ -370,10 +370,13 @@ public actor SessionManager {
         return sessions[request.sessionId]?.record.summary ?? session.record.summary
     }
 
-    /// `nil`/`""` → the agent's default; otherwise one of `AgentKind.effortLevels`.
+    /// `nil`/`""` → the agent's default; otherwise a level word for an agent
+    /// with an effort setting. Which levels a model takes comes from the CLI
+    /// (`ModelOption.effortLevels`), so only the shape is checked here.
     static func validEffort(_ effort: String?, for agent: AgentKind) throws -> String? {
         guard let effort, !effort.isEmpty else { return nil }
-        guard agent.effortLevels.contains(effort) else {
+        let isWord = effort.count <= 16 && effort.allSatisfy { $0.isLetter && $0.isLowercase }
+        guard !agent.effortLevels.isEmpty, isWord else {
             throw ErrorPayload(code: .invalidRequest, message: "\(agent.displayName) does not support the effort level “\(effort)”.")
         }
         return effort

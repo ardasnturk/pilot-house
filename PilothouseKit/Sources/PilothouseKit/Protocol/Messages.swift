@@ -26,8 +26,10 @@ public enum HostCapability {
     public static let commandCatalog = "commandCatalog"
     /// `StartSession.effort` and `updateSessionSettings` (model and effort per chat).
     public static let sessionSettings = "sessionSettings"
+    /// `AgentStatus.modelOptions`: models and effort levels reported by the CLIs.
+    public static let modelCatalog = "modelCatalog"
     /// Every capability this build of PilothouseKit implements.
-    public static let all = [createDirectory, agents, threads, insights, commandCatalog, sessionSettings]
+    public static let all = [createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog]
 }
 
 // MARK: - Shared payloads

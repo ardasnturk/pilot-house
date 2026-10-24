@@ -63,10 +63,9 @@ public enum AgentLocator {
     public static func statuses(
         claude: ClaudeCLIStatus, environment: [String: String], delegation: Set<AgentKind>, home: String = NSHomeDirectory()
     ) async -> [AgentStatus] {
-        var result = [AgentStatus(
-            kind: .claude, installed: claude.installed, path: claude.path, version: claude.version, loggedIn: claude.loggedIn,
-            models: ["opus", "sonnet", "haiku"], delegationEnabled: false
-        )]
+        async let claudeModels: [ModelOption]? = claude.path != nil && claude.loggedIn != false
+            ? ModelCatalogReader.claude(executable: claude.path!, environment: environment) : nil
+        var result: [AgentStatus] = []
         for kind in AgentKind.known where kind != .claude {
             guard let path = await locate(kind.executableName, environment: environment, home: home) else {
                 result.append(AgentStatus(kind: kind, installed: false))
@@ -78,12 +77,36 @@ public enum AgentLocator {
             case .gemini: geminiLoggedIn(environment: environment, home: home)
             default: nil
             }
+            let models = kind == .codex && loggedIn != false
+                ? await ModelCatalogReader.codex(executable: path, environment: environment) : nil
             result.append(AgentStatus(
                 kind: kind, installed: true, path: path, version: version, loggedIn: loggedIn,
-                delegationEnabled: delegation.contains(kind) && loggedIn != false
+                models: models?.map(\.id) ?? [],
+                delegationEnabled: delegation.contains(kind) && loggedIn != false,
+                modelOptions: models
             ))
         }
+        var claudeOptions = await claudeModels
+        if let effort = claudeDefaultEffort(home: home) {
+            claudeOptions = claudeOptions?.map { option in
+                var option = option
+                if option.effortLevels.contains(effort) { option.defaultEffort = effort }
+                return option
+            }
+        }
+        result.insert(AgentStatus(
+            kind: .claude, installed: claude.installed, path: claude.path, version: claude.version, loggedIn: claude.loggedIn,
+            models: claudeOptions?.map(\.id) ?? ["opus", "sonnet", "haiku"], delegationEnabled: false,
+            modelOptions: claudeOptions
+        ), at: 0)
         return result
+    }
+
+    /// `effortLevel` of `~/.claude/settings.json`: what Claude Code uses when no `--effort` is given.
+    static func claudeDefaultEffort(home: String) -> String? {
+        let url = URL(fileURLWithPath: home).appendingPathComponent(".claude/settings.json")
+        guard let data = try? Data(contentsOf: url), let value = try? JSONValue.parse(data) else { return nil }
+        return value["effortLevel"]?.stringValue
     }
 }
 
