@@ -11,6 +11,18 @@
   "de": "%1$@ · %2$@",
   "tr": "%1$@ · %2$@"
  },
+ "%lld d": {
+  "de": "%lld T",
+  "tr": "%lld g"
+ },
+ "%lld h": {
+  "de": "%lld Std.",
+  "tr": "%lld sa"
+ },
+ "5 h": {
+  "de": "5 Std.",
+  "tr": "5 sa"
+ },
  "API key": {
   "de": "API-Schlüssel",
   "tr": "API anahtarı"
@@ -50,6 +62,18 @@
  "Allow “Bypass permissions” mode": {
   "de": "Modus „Berechtigungen umgehen“ erlauben",
   "tr": "“İzinleri atla” moduna izin ver"
+ },
+ "Apple Intelligence is not available on your Mac right now.": {
+  "de": "Apple Intelligence ist auf deinem Mac gerade nicht verfügbar.",
+  "tr": "Apple Intelligence şu anda Mac'inizde kullanılamıyor."
+ },
+ "Apple Intelligence is ready.": {
+  "de": "Apple Intelligence ist bereit.",
+  "tr": "Apple Intelligence hazır."
+ },
+ "Apple Intelligence is still getting ready on your Mac. Try again later.": {
+  "de": "Apple Intelligence wird auf deinem Mac noch vorbereitet. Versuche es später erneut.",
+  "tr": "Apple Intelligence Mac'inizde hâlâ hazırlanıyor. Daha sonra tekrar deneyin."
  },
  "Approval needed": {
   "de": "Freigabe nötig",
@@ -403,6 +427,10 @@
   "de": "Auf einem öffentlichen Server kann jeder, der das Thema kennt, die Mitteilungen lesen – behandle es also wie ein Passwort. Eigene Server brauchen HTTPS; ein Zugriffstoken ist nur nötig, wenn dein Server eines verlangt.",
   "tr": "Herkese açık bir sunucuda konuyu bilen herkes bildirimleri okuyabilir; bu yüzden onu bir şifre gibi saklayın. Kendi sunucunuz HTTPS kullanmalıdır; erişim token'ı yalnızca sunucunuz istiyorsa gerekir."
  },
+ "On-device summaries need macOS 26 or later on your Mac.": {
+  "de": "Rückblicke auf dem Gerät brauchen macOS 26 oder neuer auf deinem Mac.",
+  "tr": "Cihaz içi özetler için Mac'inizde macOS 26 veya üstü gerekir."
+ },
  "Open Pilothouse at login": {
   "de": "Pilothouse bei der Anmeldung öffnen",
   "tr": "Oturum açınca Pilothouse'u başlat"
@@ -518,6 +546,10 @@
  "Reply to Claude (e.g. “I have signed in”)": {
   "de": "Claude antworten (z. B. „Ich habe mich angemeldet“)",
   "tr": "Claude'a yanıt ver (örn. “Giriş yaptım”)"
+ },
+ "Resets %@": {
+  "de": "Wird %@ zurückgesetzt",
+  "tr": "%@ yenilenir"
  },
  "Revoke": {
   "de": "Widerrufen",
@@ -715,6 +747,10 @@
   "de": "Derselbe Code erscheint nach dem Koppeln auf deinem Telefon.",
   "tr": "Eşleştirmeden sonra aynı kod telefonunuzda görünür."
  },
+ "This Mac does not support Apple Intelligence, so the summary shows numbers only.": {
+  "de": "Dieser Mac unterstützt Apple Intelligence nicht, daher zeigt der Rückblick nur Zahlen.",
+  "tr": "Bu Mac Apple Intelligence'ı desteklemiyor; özet yalnızca sayıları gösterir."
+ },
  "Tip: set up Tailscale to reach this Mac away from home.": {
   "de": "Tipp: Richte Tailscale ein, um diesen Mac unterwegs zu erreichen.",
   "tr": "İpucu: Bu Mac'e evden uzakta erişmek için Tailscale'i kurun."
@@ -727,6 +763,10 @@
   "de": "Der Datenverkehr zwischen deinen Geräten ist Ende-zu-Ende verschlüsselt. Pilothouse verbindet sich nie mit Anthropic und sammelt keine Telemetrie.",
   "tr": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Pilothouse asla Anthropic'e bağlanmaz ve telemetri toplamaz."
  },
+ "Turn on Apple Intelligence on your Mac (System Settings → Apple Intelligence & Siri) to get a written summary.": {
+  "de": "Schalte Apple Intelligence auf deinem Mac ein (Systemeinstellungen → Apple Intelligence & Siri), um einen geschriebenen Rückblick zu erhalten.",
+  "tr": "Yazılı özet için Mac'inizde Apple Intelligence'ı açın (Sistem Ayarları → Apple Intelligence ve Siri)."
+ },
  "Turn on MagicDNS (recommended)": {
   "de": "MagicDNS aktivieren (empfohlen)",
   "tr": "MagicDNS'i açın (önerilir)"
@@ -738,6 +778,10 @@
  "Unknown helper status.": {
   "de": "Unbekannter Status des Hilfsprogramms.",
   "tr": "Bilinmeyen yardımcı durumu."
+ },
+ "Usage limits": {
+  "de": "Nutzungslimits",
+  "tr": "Kullanım limitleri"
  },
  "Use an Anthropic API key instead of the CLI login": {
   "de": "Anthropic-API-Schlüssel statt CLI-Anmeldung verwenden",
@@ -763,6 +807,14 @@
   "de": "Wartet auf Freigabe",
   "tr": "Onay bekleniyor"
  },
+ "Week": {
+  "de": "Woche",
+  "tr": "Hafta"
+ },
+ "Weekly summary": {
+  "de": "Wochenrückblick",
+  "tr": "Haftalık özet"
+ },
  "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
   "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Sitzungen starten, in denen Claude ohne Nachfrage Dateien ändert und Befehle ausführt. Aktiviere dies nur, wenn du das Risiko verstehst.",
   "tr": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı oturumlar başlatabilir. Yalnızca riski anlıyorsanız etkinleştirin."
@@ -775,6 +827,14 @@
   "de": "Arbeitet",
   "tr": "Çalışıyor"
  },
+ "Write weekly summaries on this Mac": {
+  "de": "Wochenrückblicke auf diesem Mac schreiben",
+  "tr": "Haftalık özetleri bu Mac'te yaz"
+ },
+ "Written summaries are turned off in Pilothouse settings on your Mac.": {
+  "de": "Geschriebene Rückblicke sind in den Pilothouse-Einstellungen auf deinem Mac ausgeschaltet.",
+  "tr": "Yazılı özetler Mac'inizdeki Pilothouse ayarlarında kapalı."
+ },
  "You can also follow and approve this session on your iPhone or iPad.": {
   "de": "Du kannst diese Sitzung auch auf deinem iPhone oder iPad verfolgen und freigeben.",
   "tr": "Bu oturumu iPhone veya iPad'inizden de izleyip onaylayabilirsiniz."
@@ -782,6 +842,10 @@
  "You can now start Claude Code sessions on this Mac from your device.": {
   "de": "Du kannst jetzt von deinem Gerät aus Claude-Code-Sitzungen auf diesem Mac starten.",
   "tr": "Artık cihazınızdan bu Mac'te Claude Code oturumları başlatabilirsiniz."
+ },
+ "Your phone shows what you worked on each week. The numbers come from the session logs on this Mac; the written part is generated on this Mac by Apple Intelligence and never leaves it.": {
+  "de": "Dein Telefon zeigt, woran du jede Woche gearbeitet hast. Die Zahlen stammen aus den Sitzungsprotokollen auf diesem Mac; der Text wird auf diesem Mac von Apple Intelligence erstellt und verlässt ihn nie.",
+  "tr": "Telefonunuz her hafta ne üzerinde çalıştığınızı gösterir. Sayılar bu Mac'teki oturum kayıtlarından gelir; yazılı kısım bu Mac'te Apple Intelligence ile üretilir ve Mac'ten çıkmaz."
  },
  "iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.": {
   "de": "iPhone-Mitteilungen laufen über einen ntfy-Server, weil iOS Apps nur über Apples Push-Dienst weckt, der einen Pilothouse-Server bräuchte. Ein Tippen darauf öffnet die Sitzung in Pilothouse.",

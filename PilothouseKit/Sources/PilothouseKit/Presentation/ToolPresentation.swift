@@ -21,7 +21,8 @@ public enum DiffBuilder {
         diff.split(separator: "\n", omittingEmptySubsequences: false).enumerated().map { index, raw in
             let line = String(raw)
             let kind: DiffLine.Kind
-            if line.hasPrefix("@@") {
+            if line.hasPrefix("@@") || line.hasPrefix("+++ ") || line.hasPrefix("--- ") {
+                // File headers of a unified diff are not added or removed lines.
                 kind = .hunk
             } else if line.hasPrefix("+") {
                 kind = .added

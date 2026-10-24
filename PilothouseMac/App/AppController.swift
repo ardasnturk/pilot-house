@@ -37,6 +37,10 @@ final class AppController: MacStatusProviding {
     private(set) var isCheckingClaude = false
     /// Every agent CLI found on this Mac (Claude Code first).
     private(set) var agents: [AgentStatus] = []
+    /// Last known usage limits, for the menu.
+    private(set) var usageLimits: [UsageLimits] = []
+    /// Why written weekly summaries are unavailable, if they are.
+    private(set) var summaryUnavailableReason: String?
     private(set) var tailscale: TailscaleStatus = .notInstalled
     private(set) var localAddresses: [String] = []
     private(set) var port: Int?
@@ -116,6 +120,7 @@ final class AppController: MacStatusProviding {
             )
             self.runtime = runtime
             await runtime.start()
+            await configureInsights()
             let boundPort = try await listener.start(
                 configuration: WebSocketListener.Configuration(
                     preferredPort: settings.preferredPort,
@@ -155,6 +160,7 @@ final class AppController: MacStatusProviding {
         claude = await ClaudeLocator.status(environment: environment)
         agents = await AgentLocator.statuses(claude: claude, environment: environment, delegation: settings.delegationAgents)
         isCheckingClaude = false
+        await configureInsights()
         await runtime?.sessions.updateConfiguration(hostConfiguration())
     }
 
@@ -260,6 +266,12 @@ final class AppController: MacStatusProviding {
     }
 
     private func startObservers(_ runtime: HostRuntime) {
+        observerTasks.append(Task { [weak self] in
+            while !Task.isCancelled {
+                await self?.refreshUsageLimits()
+                try? await Task.sleep(for: .seconds(300))
+            }
+        })
         observerTasks.append(Task { [weak self] in
             for await list in await runtime.devices.changes() {
                 self?.devicesChanged(list)
@@ -406,9 +418,32 @@ final class AppController: MacStatusProviding {
 
     func applySettings() async {
         await runtime?.sessions.updateConfiguration(hostConfiguration())
+        await configureInsights()
         await applyNotificationSettings()
         await lidClosed.apply(enabled: settings.keepAwakeWithLidClosed, pauseOnBattery: settings.pauseLidModeOnBattery)
         if let runtime { await runtime.hub.post(.macStatus(await macStatus())) }
+    }
+
+    // MARK: Insights
+
+    /// Gives the summary service its narrator, the installed agents and the
+    /// Codex limit reader (no model call, D-097).
+    func configureInsights() async {
+        guard let runtime else { return }
+        let narrator: any WeeklyNarrator = settings.weeklySummaryEnabled ? AppleWeeklyNarrator() : DisabledNarrator()
+        summaryUnavailableReason = await narrator.unavailableReason()
+        var readers: [AgentKind: @Sendable () async -> UsageLimits?] = [:]
+        if let codex = agents.first(where: { $0.kind == .codex && $0.installed })?.path {
+            let environment = environment
+            readers[.codex] = { await CodexLimitReader.read(executable: codex, environment: environment) }
+        }
+        let installed = agents.filter(\.installed).map(\.kind)
+        await runtime.insights.configure(narrator: narrator, agents: installed.isEmpty ? [.claude] : installed, liveReaders: readers)
+    }
+
+    func refreshUsageLimits() async {
+        guard let runtime else { return }
+        usageLimits = await runtime.insights.usageLimits()
     }
 
     // MARK: Notifications
@@ -528,4 +563,15 @@ final class MacNameBox: Sendable {
     private let storage = Mutex("Mac")
     var value: String { storage.withLock { $0 } }
     func set(_ name: String) { storage.withLock { $0 = name } }
+}
+
+/// Used when written summaries are turned off in Settings.
+private struct DisabledNarrator: WeeklyNarrator {
+    func unavailableReason() async -> String? {
+        String(localized: "Written summaries are turned off in Pilothouse settings on your Mac.")
+    }
+
+    func narrate(_ summary: WeeklySummary, digests: [ProjectDigest]) async throws -> (WeeklyNarrative, [String: [String]]) {
+        throw AppleWeeklyNarrator.NarratorError.unavailable
+    }
 }

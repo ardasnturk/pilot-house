@@ -36,6 +36,7 @@ final class AppModel {
     var selectedSessionId: String?
     var isPresentingNewChat = false
     var isPresentingSettings = false
+    var isPresentingInsights = false
     var isPresentingPairing = false
     /// A `pilothouse://pair` link opened from outside (Camera app, paste).
     var incomingPairingLink: String?

@@ -1,6 +1,22 @@
 # Source of scripts/l10n/mac.json — edit here, then run `python3 scripts/l10n/mac_translations.py`.
 import json, os
 T = {
+"%lld d": ("%lld g", "%lld T"),
+"%lld h": ("%lld sa", "%lld Std."),
+"5 h": ("5 sa", "5 Std."),
+"Week": ("Hafta", "Woche"),
+"Resets %@": ("%@ yenilenir", "Wird %@ zurückgesetzt"),
+"Usage limits": ("Kullanım limitleri", "Nutzungslimits"),
+"Weekly summary": ("Haftalık özet", "Wochenrückblick"),
+"Write weekly summaries on this Mac": ("Haftalık özetleri bu Mac'te yaz", "Wochenrückblicke auf diesem Mac schreiben"),
+"Apple Intelligence is ready.": ("Apple Intelligence hazır.", "Apple Intelligence ist bereit."),
+"Your phone shows what you worked on each week. The numbers come from the session logs on this Mac; the written part is generated on this Mac by Apple Intelligence and never leaves it.": ("Telefonunuz her hafta ne üzerinde çalıştığınızı gösterir. Sayılar bu Mac'teki oturum kayıtlarından gelir; yazılı kısım bu Mac'te Apple Intelligence ile üretilir ve Mac'ten çıkmaz.", "Dein Telefon zeigt, woran du jede Woche gearbeitet hast. Die Zahlen stammen aus den Sitzungsprotokollen auf diesem Mac; der Text wird auf diesem Mac von Apple Intelligence erstellt und verlässt ihn nie."),
+"Written summaries are turned off in Pilothouse settings on your Mac.": ("Yazılı özetler Mac'inizdeki Pilothouse ayarlarında kapalı.", "Geschriebene Rückblicke sind in den Pilothouse-Einstellungen auf deinem Mac ausgeschaltet."),
+"On-device summaries need macOS 26 or later on your Mac.": ("Cihaz içi özetler için Mac'inizde macOS 26 veya üstü gerekir.", "Rückblicke auf dem Gerät brauchen macOS 26 oder neuer auf deinem Mac."),
+"This Mac does not support Apple Intelligence, so the summary shows numbers only.": ("Bu Mac Apple Intelligence'ı desteklemiyor; özet yalnızca sayıları gösterir.", "Dieser Mac unterstützt Apple Intelligence nicht, daher zeigt der Rückblick nur Zahlen."),
+"Turn on Apple Intelligence on your Mac (System Settings → Apple Intelligence & Siri) to get a written summary.": ("Yazılı özet için Mac'inizde Apple Intelligence'ı açın (Sistem Ayarları → Apple Intelligence ve Siri).", "Schalte Apple Intelligence auf deinem Mac ein (Systemeinstellungen → Apple Intelligence & Siri), um einen geschriebenen Rückblick zu erhalten."),
+"Apple Intelligence is still getting ready on your Mac. Try again later.": ("Apple Intelligence Mac'inizde hâlâ hazırlanıyor. Daha sonra tekrar deneyin.", "Apple Intelligence wird auf deinem Mac noch vorbereitet. Versuche es später erneut."),
+"Apple Intelligence is not available on your Mac right now.": ("Apple Intelligence şu anda Mac'inizde kullanılamıyor.", "Apple Intelligence ist auf deinem Mac gerade nicht verfügbar."),
 "Agent CLIs on this Mac": ("Bu Mac'teki ajan CLI'ları", "Agent-CLIs auf diesem Mac"),
 "Agents": ("Ajanlar", "Agenten"),
 "Claude Code gets a delegate_to_agent tool for these agents. Every delegation and every action of the sub-agent still needs your approval, and you can follow it live on your phone.": ("Claude Code bu ajanlar için bir delegate_to_agent aracı alır. Her devir ve alt ajanın her işlemi yine onayınızı gerektirir; telefonunuzdan canlı izleyebilirsiniz.", "Claude Code erhält für diese Agenten ein Werkzeug delegate_to_agent. Jede Übergabe und jede Aktion des Sub-Agents braucht weiterhin deine Zustimmung, und du kannst sie live auf deinem Telefon verfolgen."),

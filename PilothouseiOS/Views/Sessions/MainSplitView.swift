@@ -35,6 +35,11 @@ struct MainSplitView: View {
         .sheet(isPresented: $model.isPresentingSettings) {
             SettingsView()
         }
+        .sheet(isPresented: $model.isPresentingInsights) {
+            if let connection = model.connection {
+                InsightsView(connection: connection)
+            }
+        }
         .sheet(item: Binding(
             get: { visibleRequest },
             set: { request in

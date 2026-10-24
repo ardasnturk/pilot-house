@@ -20,8 +20,10 @@ public enum HostCapability {
     public static let agents = "agents"
     /// Session events carry `thread` and sub-agent threads are streamed.
     public static let threads = "threads"
+    /// `getWeeklySummary` and `getUsageLimits`.
+    public static let insights = "insights"
     /// Every capability this build of PilothouseKit implements.
-    public static let all = [createDirectory, agents, threads]
+    public static let all = [createDirectory, agents, threads, insights]
 }
 
 // MARK: - Shared payloads
@@ -281,6 +283,8 @@ public enum ClientMessage: Sendable, Hashable {
     case unsubscribe(SessionRef)
     case permissionResponse(PermissionResponse)
     case macStatus
+    case getWeeklySummary(GetWeeklySummary)
+    case getUsageLimits
 
     public var typeName: String {
         switch self {
@@ -298,6 +302,8 @@ public enum ClientMessage: Sendable, Hashable {
         case .unsubscribe: "unsubscribe"
         case .permissionResponse: "permissionResponse"
         case .macStatus: "macStatus"
+        case .getWeeklySummary: "getWeeklySummary"
+        case .getUsageLimits: "getUsageLimits"
         }
     }
 }
@@ -316,6 +322,8 @@ public enum ServerMessage: Sendable, Hashable {
     case permissionResolved(PermissionResolved)
     case sessionEnded(SessionEnded)
     case macStatus(MacStatus)
+    case weeklySummary(WeeklySummary)
+    case usageLimits(UsageLimitsPayload)
     case error(ErrorPayload)
 
     public var typeName: String {
@@ -332,6 +340,8 @@ public enum ServerMessage: Sendable, Hashable {
         case .permissionResolved: "permissionResolved"
         case .sessionEnded: "sessionEnded"
         case .macStatus: "macStatus"
+        case .weeklySummary: "weeklySummary"
+        case .usageLimits: "usageLimits"
         case .error: "error"
         }
     }

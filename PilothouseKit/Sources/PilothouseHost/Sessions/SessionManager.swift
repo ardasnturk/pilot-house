@@ -91,6 +91,7 @@ public actor SessionManager {
     }
 
     private var delegations: [String: Delegation] = [:]
+    private var usageSink: (@Sendable (UsageLimits) async -> Void)?
     /// `delegate_to_agent` tool uses seen in a session's output and not yet
     /// claimed by a delegation, so the sub-agent's thread is that tool use.
     private var unclaimedDelegateCalls: [String: [(toolUseId: String, input: JSONValue)]] = [:]
@@ -155,6 +156,21 @@ public actor SessionManager {
 
     public func updateConfiguration(_ configuration: HostConfiguration) {
         self.configuration = configuration
+    }
+
+    /// Receives the usage limits agents report while they run.
+    public func setUsageSink(_ sink: (@Sendable (UsageLimits) async -> Void)?) {
+        usageSink = sink
+    }
+
+    /// Persisted events of every session that was active in `interval`.
+    public func activity(in interval: DateInterval) -> [SessionActivity] {
+        sessions.values.compactMap { session in
+            let summary = session.record.summary
+            guard summary.updatedAt >= interval.start, summary.createdAt < interval.end else { return nil }
+            let events = ((try? session.log.events(from: 1)) ?? []).filter { interval.contains($0.timestamp) }
+            return events.isEmpty ? nil : SessionActivity(summary: summary, events: events)
+        }
     }
 
     /// Port of the local permission MCP server (`nil` disables permission forwarding).
@@ -539,6 +555,9 @@ public actor SessionManager {
     private func handleLine(_ line: String, session id: String, generation: Int) {
         guard sessions[id]?.generation == generation else { return }
         guard let output = sessions[id]?.adapter.consume(line: line) else { return }
+        if let limits = output.usageLimits, let sink = usageSink {
+            Task { await sink(limits) }
+        }
         let events = output.events
         for event in events {
             append(event, to: id, thread: output.thread)
@@ -702,6 +721,9 @@ public actor SessionManager {
             let output = delegations[thread]?.adapter.consume(line: line),
             let process = delegations[thread]?.process
         else { return }
+        if let limits = output.usageLimits, let sink = usageSink {
+            Task { await sink(limits) }
+        }
         for event in output.events {
             append(event, to: parentId, thread: thread)
             if case .assistantMessage(let message) = event {

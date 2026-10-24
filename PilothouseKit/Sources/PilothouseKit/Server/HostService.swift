@@ -38,6 +38,8 @@ public protocol HostService: Sendable {
     func listDirectory(_ request: ListDirectory) async throws -> DirectoryListing
     /// Creates a folder and returns the listing of its parent.
     func createDirectory(_ request: CreateDirectory) async throws -> DirectoryListing
+    func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary
+    func usageLimits() async -> [UsageLimits]
     func listSessions() async -> [SessionSummary]
     func startSession(_ request: StartSession, from client: ClientContext) async throws -> SessionSummary
     func resumeSession(id: String) async throws -> SessionSummary

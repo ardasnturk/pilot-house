@@ -12,10 +12,19 @@ public struct MacHostService: HostService {
     let broker: PermissionBroker
     let hub: NotificationHub
     let notifications: NotificationService
+    let insights: InsightsService
     let fileBrowser: FileBrowser
     let macId: String
     let serverVersion: String
     let status: any MacStatusProviding
+
+    public func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary {
+        await insights.weeklySummary(request)
+    }
+
+    public func usageLimits() async -> [UsageLimits] {
+        await insights.usageLimits()
+    }
 
     public func helloAck(for client: ClientContext) async -> HelloAck {
         HelloAck(
@@ -100,6 +109,8 @@ public final class HostRuntime: Sendable {
     public let fileBrowser: FileBrowser
     /// Native and ntfy notifications; configured by the app (D-095).
     public let notifications: NotificationService
+    /// Weekly summaries and usage limits (D-096, D-097); configured by the app.
+    public let insights: InsightsService
     private let mcpServer: LoopbackHTTPServer
 
     public convenience init(
@@ -146,8 +157,9 @@ public final class HostRuntime: Sendable {
         let notifications = NotificationService(hub: hub) { id, fromSeq in
             try await sessions.subscribe(id, fromSeq: fromSeq)
         }
+        let insights = InsightsService(sessions: sessions, dataDirectory: configuration.dataDirectory)
         let service = MacHostService(
-            sessions: sessions, broker: broker, hub: hub, notifications: notifications, fileBrowser: fileBrowser,
+            sessions: sessions, broker: broker, hub: hub, notifications: notifications, insights: insights, fileBrowser: fileBrowser,
             macId: identity.fingerprint, serverVersion: serverVersion, status: status
         )
         let mcpEndpoint = MCPPermissionEndpoint(
@@ -177,6 +189,7 @@ public final class HostRuntime: Sendable {
         self.devices = devices
         self.fileBrowser = fileBrowser
         self.notifications = notifications
+        self.insights = insights
         endpoint = ServerEndpoint(identity: identity, macName: macName, authorizer: devices, service: service)
     }
 
@@ -185,6 +198,8 @@ public final class HostRuntime: Sendable {
 
     /// Loads sessions and enables permission forwarding.
     public func start() async {
+        let limitStore = insights.limits
+        await sessions.setUsageSink { limits in await limitStore.update(limits) }
         await notifications.start()
         await sessions.setPermissionServerPort(mcpServer.port)
         await sessions.bootstrap()

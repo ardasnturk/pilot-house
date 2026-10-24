@@ -154,6 +154,28 @@ private struct AgentSettings: View {
             } footer: {
                 Text("Claude Code gets a delegate_to_agent tool for these agents. Every delegation and every action of the sub-agent still needs your approval, and you can follow it live on your phone.")
             }
+            Section {
+                Toggle("Write weekly summaries on this Mac", isOn: Binding(
+                    get: { controller.settings.weeklySummaryEnabled },
+                    set: { value in
+                        controller.settings.weeklySummaryEnabled = value
+                        Task { await controller.applySettings() }
+                    }
+                ))
+                if let reason = controller.summaryUnavailableReason {
+                    Label(reason, systemImage: "info.circle")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } else {
+                    Label("Apple Intelligence is ready.", systemImage: "apple.intelligence")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            } header: {
+                Text("Weekly summary")
+            } footer: {
+                Text("Your phone shows what you worked on each week. The numbers come from the session logs on this Mac; the written part is generated on this Mac by Apple Intelligence and never leaves it.")
+            }
         }
         .formStyle(.grouped)
     }

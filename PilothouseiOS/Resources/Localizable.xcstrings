@@ -33,6 +33,54 @@
         }
       }
     },
+    "%@: %lld percent used": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@: %lld Prozent verbraucht"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@: %%%lld kullanıldı"
+          }
+        }
+      }
+    },
+    "%lld days": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Tage"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld gün"
+          }
+        }
+      }
+    },
+    "%lld hours": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Stunden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld saat"
+          }
+        }
+      }
+    },
     "%lld image(s)": {
       "localizations": {
         "de": {
@@ -61,6 +109,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "(çıktı yok)"
+          }
+        }
+      }
+    },
+    "5 hours": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 Stunden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 saat"
           }
         }
       }
@@ -109,6 +173,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Etkin"
+          }
+        }
+      }
+    },
+    "Active time": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktive Zeit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktif süre"
           }
         }
       }
@@ -605,6 +685,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude yalnızca okur ve plan yapar; hiçbir şeyi değiştirmez."
+          }
+        }
+      }
+    },
+    "Claude reports its limits with every turn, so they are as fresh as the last answer. Codex limits are read from your Mac when you open this screen. Gemini does not report limits.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude meldet seine Limits mit jeder Antwort, sie sind also so aktuell wie die letzte Antwort. Codex-Limits werden beim Öffnen dieses Bildschirms von deinem Mac gelesen. Gemini meldet keine Limits."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude limitlerini her turda bildirir; yani son cevap kadar günceldir. Codex limitleri bu ekranı açtığınızda Mac'inizden okunur. Gemini limit bildirmez."
           }
         }
       }
@@ -1457,6 +1553,22 @@
         }
       }
     },
+    "Files changed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geänderte Dateien"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Değişen dosyalar"
+          }
+        }
+      }
+    },
     "Filter this folder": {
       "localizations": {
         "de": {
@@ -1665,6 +1777,22 @@
         }
       }
     },
+    "Insights": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Überblick"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özet"
+          }
+        }
+      }
+    },
     "Install Tailscale from the App Store and sign in with the same account.": {
       "localizations": {
         "de": {
@@ -1821,6 +1949,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Açık"
+          }
+        }
+      }
+    },
+    "Limits": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limits"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limitler"
+          }
+        }
+      }
+    },
+    "Limits appear after an agent has run on your Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limits erscheinen, nachdem ein Agent auf deinem Mac gelaufen ist."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limitler, bir ajan Mac'inizde çalıştıktan sonra görünür."
           }
         }
       }
@@ -1985,6 +2145,22 @@
         }
       }
     },
+    "Mostly %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meist %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çoğunlukla %@"
+          }
+        }
+      }
+    },
     "Name": {
       "localizations": {
         "de": {
@@ -2065,6 +2241,22 @@
         }
       }
     },
+    "Next week": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächste Woche"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki hafta"
+          }
+        }
+      }
+    },
     "No": {
       "localizations": {
         "de": {
@@ -2113,6 +2305,38 @@
         }
       }
     },
+    "No limits reported yet. Run a session to see them.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Limits gemeldet. Starte eine Sitzung, um sie zu sehen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz limit bildirilmedi. Görmek için bir oturum çalıştırın."
+          }
+        }
+      }
+    },
+    "No limits yet": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Limits"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz limit yok"
+          }
+        }
+      }
+    },
     "No matches.": {
       "localizations": {
         "de": {
@@ -2141,6 +2365,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Henüz oturum yok"
+          }
+        }
+      }
+    },
+    "No work this week": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Woche keine Arbeit"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hafta çalışma yok"
           }
         }
       }
@@ -2641,6 +2881,22 @@
         }
       }
     },
+    "Previous week": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorherige Woche"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önceki hafta"
+          }
+        }
+      }
+    },
     "Private by design": {
       "localizations": {
         "de": {
@@ -2801,6 +3057,22 @@
         }
       }
     },
+    "Resets %@ · %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird %@ zurückgesetzt · %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ yenilenir · %@"
+          }
+        }
+      }
+    },
     "Retry": {
       "localizations": {
         "de": {
@@ -2957,6 +3229,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Oturum sürdürüldü."
+          }
+        }
+      }
+    },
+    "Sessions": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sitzungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oturumlar"
+          }
+        }
+      }
+    },
+    "Sessions you run from this phone or the Mac show up here.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sitzungen, die du von diesem Telefon oder dem Mac startest, erscheinen hier."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu telefondan veya Mac'ten çalıştırdığınız oturumlar burada görünür."
           }
         }
       }
@@ -3233,6 +3537,22 @@
         }
       }
     },
+    "Summary": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückblick"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özet"
+          }
+        }
+      }
+    },
     "System": {
       "localizations": {
         "de": {
@@ -3425,6 +3745,22 @@
         }
       }
     },
+    "This CLI does not report usage limits.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese CLI meldet keine Nutzungslimits."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu CLI kullanım limiti bildirmiyor."
+          }
+        }
+      }
+    },
     "This Mac": {
       "localizations": {
         "de": {
@@ -3501,6 +3837,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bu alt ajan bir döküm bırakmadı."
+          }
+        }
+      }
+    },
+    "This week": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Woche"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hafta"
           }
         }
       }
@@ -3713,6 +4065,22 @@
         }
       }
     },
+    "Weekly": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wöchentlich"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık"
+          }
+        }
+      }
+    },
     "Where": {
       "localizations": {
         "de": {
@@ -3821,6 +4189,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Siz: %@"
+          }
+        }
+      }
+    },
+    "Your Mac is summarising the week…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Mac fasst die Woche zusammen …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'iniz haftayı özetliyor…"
           }
         }
       }

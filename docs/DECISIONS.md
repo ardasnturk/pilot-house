@@ -662,3 +662,46 @@ tracking can post `HostAlert.Kind.subagentFinished` through
 The privacy manifests are unchanged: the data goes to a destination the user
 picks and configures, not to the developer or a partner, and is off by default.
 PRIVACY.md lists exactly what is sent.
+
+## 1.1 — Weekly summary and usage limits
+
+### D-096 — Weekly summary written on the Mac
+**Status:** accepted
+
+All session logs (30 days) live on the Mac; the phone only caches what it
+opened. The Mac therefore builds the summary (`getWeeklySummary`) and the
+phone only shows it.
+
+* **Numbers** (`WeeklyStatsBuilder`, platform-neutral): per project folder the
+  active time (sum of gaps under 15 minutes between events of all its sessions
+  and sub-agents, so parallel sessions are not counted twice), sessions, turns
+  per agent, files changed and lines from `fileEdit` diffs, commands run,
+  output tokens; plus a per-day series for the chart.
+* **Words** (`AppleWeeklyNarrator`, Mac app): Apple's on-device model through
+  the Foundation Models framework, macOS 26+. Each project gets up to three
+  bullets from a compact digest (titles, first sentences of requests and
+  answers, edited files), then the week a headline and highlights, in the
+  Mac's language. Nothing leaves the Mac. Without Apple Intelligence the
+  summary carries the numbers and `narrativeUnavailableReason`; it can be
+  turned off in Settings → Agents.
+* **Cache:** `insights/<week-start>.json`; finished weeks are built once, the
+  current week at most hourly unless the phone pulls to refresh.
+
+`DiffBuilder` no longer counts `---`/`+++` file headers as removed/added
+lines (found while testing the line counts; it also inflated the "+N −M" on
+tool cards for diffs with headers).
+
+### D-097 — Usage limits as reported by the CLIs
+**Status:** accepted
+
+Pilothouse never calls the vendors' APIs (see "Not planned"), so limits are
+whatever the CLIs report, stored in `usage-limits.json`:
+
+* **Claude Code** sends `rate_limit_event` with every turn: account-wide
+  `five_hour` and `seven_day` utilisation and reset times (not per model).
+  Shown as "as of the last turn"; no extra model call is made to refresh it.
+* **Codex** answers `account/rateLimits/read` without a model call, with
+  windows per metered bucket (per model when it has several). The Mac reads
+  it on request (at most once a minute) through a short-lived
+  `codex app-server`, and keeps `account/rateLimits/updated` from turns.
+* **Gemini CLI** reports nothing; shown as unavailable.

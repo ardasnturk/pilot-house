@@ -157,6 +157,8 @@ the documented result, `ok`, or `error`.
 | `subscribe` | `{ sessionId, fromSeq }` | `ok`, then `event` pushes |
 | `unsubscribe` | `{ sessionId }` | `ok` |
 | `permissionResponse` | `{ requestId, allow, remember? }` | `ok` |
+| `getWeeklySummary` | `{ week?: date inside the week, refresh: false }` — capability `insights` | `weeklySummary` |
+| `getUsageLimits` | `{}` — capability `insights` | `usageLimits` |
 
 `permissionMode` ∈ `default` · `acceptEdits` · `plan` · `bypassPermissions`
 (the last one only if the Mac user enabled it; otherwise `modeNotAllowed`).
@@ -166,7 +168,8 @@ Messages added after 1.0 are announced in `helloAck.capabilities` (missing on
 older Macs). A client only sends them when the Mac lists the capability, so
 `version` stays 1. Capabilities so far (all 1.1): `createDirectory`,
 `agents` (`startSession.agent`, `Session.agent`, `macStatus.agents`) and
-`threads` (`event.thread`).
+`threads` (`event.thread`) and `insights` (`getWeeklySummary`,
+`getUsageLimits`).
 
 ### 4.2 Host → client
 
@@ -183,6 +186,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 | `event` | `{ sessionId, seq, ts, ephemeral?, thread?, payload: SessionEvent }` — `thread` is the tool-use ID of the sub-agent (`Task` or `delegate_to_agent`) the event belongs to |
 | `permissionRequest` | `{ requestId, sessionId, tool, input, cwd, createdAt, expiresAt, rememberKey }` |
 | `permissionResolved` | `{ requestId, sessionId, outcome: allowed \| allowedForSession \| denied \| timedOut \| cancelled }` |
+| `weeklySummary` | `{ weekStart, weekEnd, projects: [{ path, name, activeSeconds, sessionCount, turnCount, agents: { agent: turns }, filesChanged, linesAdded, linesRemoved, commandsRun, outputTokens, sessionTitles, highlights }], days: [{ day, activeSeconds }], narrative?: { headline, highlights }, narrativeUnavailableReason?, generatedAt }` |
+| `usageLimits` | `{ agents: [{ agent, windows: [{ key, durationMinutes?, usedPercent, resetsAt?, model?, isLimited }], observedAt?, source: live \| lastTurn \| unavailable, plan? }] }` |
 | `error` | `{ code, message }` |
 
 `Session`:

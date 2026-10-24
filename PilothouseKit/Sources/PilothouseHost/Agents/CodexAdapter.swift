@@ -282,6 +282,10 @@ public struct CodexAdapter: AgentAdapter {
                 return AgentOutput(events: [.systemNotice(.init(kind: "apiRetry", level: .warning, text: "Codex: \(text) Retrying…"))])
             }
             return AgentOutput(events: [Self.notice(for: text)])
+        case "account/rateLimits/updated":
+            var output = AgentOutput()
+            output.usageLimits = UsageLimitParser.codex(params, source: .lastTurn)
+            return output
         case "thread/compacted":
             return AgentOutput(events: [.systemNotice(.init(kind: "compacted", level: .info, text: "The conversation was compacted to free up context."))])
         default:

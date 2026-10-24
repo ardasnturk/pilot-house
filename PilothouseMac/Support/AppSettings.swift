@@ -18,6 +18,7 @@ final class AppSettings {
         static let preferredPort = "preferredPort"
         static let didShowWelcome = "didShowWelcome"
         static let delegationAgents = "delegationAgents"
+        static let weeklySummaryEnabled = "weeklySummaryEnabled"
         static let notificationsEnabled = "notificationsEnabled"
         static let notifyOnMac = "notifyOnMac"
         static let notifyViaNtfy = "notifyViaNtfy"
@@ -72,6 +73,11 @@ final class AppSettings {
     }
 
     /// Agents Claude may start as sub-agents (`delegate_to_agent`).
+    /// Write weekly summaries with the on-device model (D-096).
+    var weeklySummaryEnabled: Bool {
+        didSet { defaults.set(weeklySummaryEnabled, forKey: Key.weeklySummaryEnabled) }
+    }
+
     var delegationAgents: Set<AgentKind> {
         didSet { defaults.set(delegationAgents.map(\.rawValue).sorted(), forKey: Key.delegationAgents) }
     }
@@ -118,6 +124,7 @@ final class AppSettings {
             Key.defaultPermissionMode: PermissionMode.default.rawValue,
             Key.delegationAgents: [AgentKind.codex.rawValue, AgentKind.gemini.rawValue],
             Key.notifyOnMac: true,
+            Key.weeklySummaryEnabled: true,
             Key.ntfyServer: NtfyConfiguration.defaultServer,
             Key.notificationKinds: AppSettings.notificationKindsInSettings.map(\.rawValue),
         ])
@@ -131,6 +138,7 @@ final class AppSettings {
         preferredPort = defaults.integer(forKey: Key.preferredPort)
         didShowWelcome = defaults.bool(forKey: Key.didShowWelcome)
         delegationAgents = Set((defaults.stringArray(forKey: Key.delegationAgents) ?? []).map(AgentKind.init(rawValue:)))
+        weeklySummaryEnabled = defaults.bool(forKey: Key.weeklySummaryEnabled)
         notificationsEnabled = defaults.bool(forKey: Key.notificationsEnabled)
         notifyOnMac = defaults.bool(forKey: Key.notifyOnMac)
         notifyViaNtfy = defaults.bool(forKey: Key.notifyViaNtfy)

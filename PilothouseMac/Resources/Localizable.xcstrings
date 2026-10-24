@@ -49,6 +49,54 @@
         }
       }
     },
+    "%lld d": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld T"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld g"
+          }
+        }
+      }
+    },
+    "%lld h": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Std."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sa"
+          }
+        }
+      }
+    },
+    "5 h": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 Std."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 sa"
+          }
+        }
+      }
+    },
     "API key": {
       "localizations": {
         "de": {
@@ -205,6 +253,54 @@
           "stringUnit": {
             "state": "translated",
             "value": "“İzinleri atla” moduna izin ver"
+          }
+        }
+      }
+    },
+    "Apple Intelligence is not available on your Mac right now.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence ist auf deinem Mac gerade nicht verfügbar."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence şu anda Mac'inizde kullanılamıyor."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is ready.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence ist bereit."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence hazır."
+          }
+        }
+      }
+    },
+    "Apple Intelligence is still getting ready on your Mac. Try again later.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence wird auf deinem Mac noch vorbereitet. Versuche es später erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence Mac'inizde hâlâ hazırlanıyor. Daha sonra tekrar deneyin."
           }
         }
       }
@@ -1617,6 +1713,22 @@
         }
       }
     },
+    "On-device summaries need macOS 26 or later on your Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückblicke auf dem Gerät brauchen macOS 26 oder neuer auf deinem Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cihaz içi özetler için Mac'inizde macOS 26 veya üstü gerekir."
+          }
+        }
+      }
+    },
     "Open Pilothouse at login": {
       "localizations": {
         "de": {
@@ -2077,6 +2189,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude'a yanıt ver (örn. “Giriş yaptım”)"
+          }
+        }
+      }
+    },
+    "Resets %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird %@ zurückgesetzt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ yenilenir"
           }
         }
       }
@@ -2865,6 +2993,22 @@
         }
       }
     },
+    "This Mac does not support Apple Intelligence, so the summary shows numbers only.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Mac unterstützt Apple Intelligence nicht, daher zeigt der Rückblick nur Zahlen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac Apple Intelligence'ı desteklemiyor; özet yalnızca sayıları gösterir."
+          }
+        }
+      }
+    },
     "Tip: set up Tailscale to reach this Mac away from home.": {
       "localizations": {
         "de": {
@@ -2913,6 +3057,22 @@
         }
       }
     },
+    "Turn on Apple Intelligence on your Mac (System Settings → Apple Intelligence & Siri) to get a written summary.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schalte Apple Intelligence auf deinem Mac ein (Systemeinstellungen → Apple Intelligence & Siri), um einen geschriebenen Rückblick zu erhalten."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazılı özet için Mac'inizde Apple Intelligence'ı açın (Sistem Ayarları → Apple Intelligence ve Siri)."
+          }
+        }
+      }
+    },
     "Turn on MagicDNS (recommended)": {
       "localizations": {
         "de": {
@@ -2957,6 +3117,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bilinmeyen yardımcı durumu."
+          }
+        }
+      }
+    },
+    "Usage limits": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nutzungslimits"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kullanım limitleri"
           }
         }
       }
@@ -3057,6 +3233,38 @@
         }
       }
     },
+    "Week": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Woche"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hafta"
+          }
+        }
+      }
+    },
+    "Weekly summary": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenrückblick"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık özet"
+          }
+        }
+      }
+    },
     "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
       "localizations": {
         "de": {
@@ -3105,6 +3313,38 @@
         }
       }
     },
+    "Write weekly summaries on this Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochenrückblicke auf diesem Mac schreiben"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haftalık özetleri bu Mac'te yaz"
+          }
+        }
+      }
+    },
+    "Written summaries are turned off in Pilothouse settings on your Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geschriebene Rückblicke sind in den Pilothouse-Einstellungen auf deinem Mac ausgeschaltet."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazılı özetler Mac'inizdeki Pilothouse ayarlarında kapalı."
+          }
+        }
+      }
+    },
     "You can also follow and approve this session on your iPhone or iPad.": {
       "localizations": {
         "de": {
@@ -3133,6 +3373,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Artık cihazınızdan bu Mac'te Claude Code oturumları başlatabilirsiniz."
+          }
+        }
+      }
+    },
+    "Your phone shows what you worked on each week. The numbers come from the session logs on this Mac; the written part is generated on this Mac by Apple Intelligence and never leaves it.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Telefon zeigt, woran du jede Woche gearbeitet hast. Die Zahlen stammen aus den Sitzungsprotokollen auf diesem Mac; der Text wird auf diesem Mac von Apple Intelligence erstellt und verlässt ihn nie."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonunuz her hafta ne üzerinde çalıştığınızı gösterir. Sayılar bu Mac'teki oturum kayıtlarından gelir; yazılı kısım bu Mac'te Apple Intelligence ile üretilir ve Mac'ten çıkmaz."
           }
         }
       }

@@ -121,6 +121,10 @@ public actor ServerConnection {
             return .directoryListing(try await service.listDirectory(request))
         case .createDirectory(let request):
             return .directoryListing(try await service.createDirectory(request))
+        case .getWeeklySummary(let request):
+            return .weeklySummary(try await service.weeklySummary(request))
+        case .getUsageLimits:
+            return .usageLimits(UsageLimitsPayload(agents: await service.usageLimits()))
         case .listSessions:
             return .sessionList(SessionList(sessions: await service.listSessions()))
         case .startSession(let request):

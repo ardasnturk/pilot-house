@@ -65,6 +65,8 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "unsubscribe": message = .unsubscribe(try payload(SessionRef.self))
         case "permissionResponse": message = .permissionResponse(try payload(PermissionResponse.self))
         case "macStatus": message = .macStatus
+        case "getWeeklySummary": message = .getWeeklySummary(try payload(GetWeeklySummary.self))
+        case "getUsageLimits": message = .getUsageLimits
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -79,7 +81,8 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .hello(let payload): try container.encode(payload, forKey: .payload)
         case .listDirectory(let payload): try container.encode(payload, forKey: .payload)
         case .createDirectory(let payload): try container.encode(payload, forKey: .payload)
-        case .listSessions, .macStatus: try container.encode(EmptyPayload(), forKey: .payload)
+        case .listSessions, .macStatus, .getUsageLimits: try container.encode(EmptyPayload(), forKey: .payload)
+        case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .startSession(let payload): try container.encode(payload, forKey: .payload)
         case .resumeSession(let payload), .interrupt(let payload), .closeSession(let payload),
             .deleteSession(let payload), .unsubscribe(let payload):
@@ -135,6 +138,8 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case "permissionResolved": message = .permissionResolved(try payload(PermissionResolved.self))
         case "sessionEnded": message = .sessionEnded(try payload(SessionEnded.self))
         case "macStatus": message = .macStatus(try payload(MacStatus.self))
+        case "weeklySummary": message = .weeklySummary(try payload(WeeklySummary.self))
+        case "usageLimits": message = .usageLimits(try payload(UsageLimitsPayload.self))
         case "error": message = .error(try payload(ErrorPayload.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
@@ -159,6 +164,8 @@ public struct ServerEnvelope: Sendable, Hashable, Codable {
         case .permissionResolved(let payload): try container.encode(payload, forKey: .payload)
         case .sessionEnded(let payload): try container.encode(payload, forKey: .payload)
         case .macStatus(let payload): try container.encode(payload, forKey: .payload)
+        case .weeklySummary(let payload): try container.encode(payload, forKey: .payload)
+        case .usageLimits(let payload): try container.encode(payload, forKey: .payload)
         case .error(let payload): try container.encode(payload, forKey: .payload)
         }
     }

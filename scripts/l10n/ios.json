@@ -7,6 +7,18 @@
   "de": "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt.",
   "tr": "%@ Mac'inizde çalışır. Her adımı burada görürsünüz."
  },
+ "%@: %lld percent used": {
+  "de": "%@: %lld Prozent verbraucht",
+  "tr": "%@: %%%lld kullanıldı"
+ },
+ "%lld days": {
+  "de": "%lld Tage",
+  "tr": "%lld gün"
+ },
+ "%lld hours": {
+  "de": "%lld Stunden",
+  "tr": "%lld saat"
+ },
  "%lld image(s)": {
   "de": "%lld Bild(er)",
   "tr": "%lld görsel"
@@ -14,6 +26,10 @@
  "(no output)": {
   "de": "(keine Ausgabe)",
   "tr": "(çıktı yok)"
+ },
+ "5 hours": {
+  "de": "5 Stunden",
+  "tr": "5 saat"
  },
  "About": {
   "de": "Über",
@@ -26,6 +42,10 @@
  "Active": {
   "de": "Aktiv",
   "tr": "Etkin"
+ },
+ "Active time": {
+  "de": "Aktive Zeit",
+  "tr": "Aktif süre"
  },
  "Add to Favorites": {
   "de": "Zu Favoriten hinzufügen",
@@ -150,6 +170,10 @@
  "Claude only reads and plans; it does not change anything.": {
   "de": "Claude liest und plant nur; es wird nichts verändert.",
   "tr": "Claude yalnızca okur ve plan yapar; hiçbir şeyi değiştirmez."
+ },
+ "Claude reports its limits with every turn, so they are as fresh as the last answer. Codex limits are read from your Mac when you open this screen. Gemini does not report limits.": {
+  "de": "Claude meldet seine Limits mit jeder Antwort, sie sind also so aktuell wie die letzte Antwort. Codex-Limits werden beim Öffnen dieses Bildschirms von deinem Mac gelesen. Gemini meldet keine Limits.",
+  "tr": "Claude limitlerini her turda bildirir; yani son cevap kadar günceldir. Codex limitleri bu ekranı açtığınızda Mac'inizden okunur. Gemini limit bildirmez."
  },
  "Claude runs on your Mac with Claude Code. You'll see every step here.": {
   "de": "Claude läuft mit Claude Code auf deinem Mac. Hier siehst du jeden Schritt.",
@@ -363,6 +387,10 @@
   "de": "Dateiänderungen werden automatisch übernommen; Befehle brauchen weiterhin eine Freigabe.",
   "tr": "Dosya düzenlemeleri otomatik uygulanır; komutlar yine onay ister."
  },
+ "Files changed": {
+  "de": "Geänderte Dateien",
+  "tr": "Değişen dosyalar"
+ },
  "Filter this folder": {
   "de": "Diesen Ordner filtern",
   "tr": "Bu klasörde filtrele"
@@ -415,6 +443,10 @@
   "de": "In Arbeit",
   "tr": "Sürüyor"
  },
+ "Insights": {
+  "de": "Überblick",
+  "tr": "Özet"
+ },
  "Install Tailscale from the App Store and sign in with the same account.": {
   "de": "Installiere Tailscale aus dem App Store und melde dich mit demselben Konto an.",
   "tr": "App Store'dan Tailscale'i kurun ve aynı hesapla giriş yapın."
@@ -454,6 +486,14 @@
  "Light": {
   "de": "Hell",
   "tr": "Açık"
+ },
+ "Limits": {
+  "de": "Limits",
+  "tr": "Limitler"
+ },
+ "Limits appear after an agent has run on your Mac.": {
+  "de": "Limits erscheinen, nachdem ein Agent auf deinem Mac gelaufen ist.",
+  "tr": "Limitler, bir ajan Mac'inizde çalıştıktan sonra görünür."
  },
  "Loading…": {
   "de": "Wird geladen …",
@@ -495,6 +535,10 @@
   "de": "Modell: %@",
   "tr": "Model: %@"
  },
+ "Mostly %@": {
+  "de": "Meist %@",
+  "tr": "Çoğunlukla %@"
+ },
  "Name": {
   "de": "Name",
   "tr": "Ad"
@@ -515,6 +559,10 @@
   "de": "Neue Chats",
   "tr": "Yeni sohbetler"
  },
+ "Next week": {
+  "de": "Nächste Woche",
+  "tr": "Sonraki hafta"
+ },
  "No": {
   "de": "Nein",
   "tr": "Hayır"
@@ -527,6 +575,14 @@
   "de": "Keine Antwort",
   "tr": "Yanıt yok"
  },
+ "No limits reported yet. Run a session to see them.": {
+  "de": "Noch keine Limits gemeldet. Starte eine Sitzung, um sie zu sehen.",
+  "tr": "Henüz limit bildirilmedi. Görmek için bir oturum çalıştırın."
+ },
+ "No limits yet": {
+  "de": "Noch keine Limits",
+  "tr": "Henüz limit yok"
+ },
  "No matches.": {
   "de": "Keine Treffer.",
   "tr": "Eşleşme yok."
@@ -534,6 +590,10 @@
  "No sessions yet": {
   "de": "Noch keine Sitzungen",
   "tr": "Henüz oturum yok"
+ },
+ "No work this week": {
+  "de": "Diese Woche keine Arbeit",
+  "tr": "Bu hafta çalışma yok"
  },
  "Not installed": {
   "de": "Nicht installiert",
@@ -659,6 +719,10 @@
   "de": "Nur planen",
   "tr": "Yalnızca plan"
  },
+ "Previous week": {
+  "de": "Vorherige Woche",
+  "tr": "Önceki hafta"
+ },
  "Private by design": {
   "de": "Privat by Design",
   "tr": "Tasarımdan gizli"
@@ -699,6 +763,10 @@
   "de": "Diesen Mac entfernen?",
   "tr": "Bu Mac kaldırılsın mı?"
  },
+ "Resets %@ · %@": {
+  "de": "Wird %@ zurückgesetzt · %@",
+  "tr": "%@ yenilenir · %@"
+ },
  "Retry": {
   "de": "Erneut versuchen",
   "tr": "Yeniden Dene"
@@ -738,6 +806,14 @@
  "Session resumed.": {
   "de": "Sitzung fortgesetzt.",
   "tr": "Oturum sürdürüldü."
+ },
+ "Sessions": {
+  "de": "Sitzungen",
+  "tr": "Oturumlar"
+ },
+ "Sessions you run from this phone or the Mac show up here.": {
+  "de": "Sitzungen, die du von diesem Telefon oder dem Mac startest, erscheinen hier.",
+  "tr": "Bu telefondan veya Mac'ten çalıştırdığınız oturumlar burada görünür."
  },
  "Set Up Remote Access (Tailscale)": {
   "de": "Fernzugriff einrichten (Tailscale)",
@@ -807,6 +883,10 @@
   "de": "Sub-Agent",
   "tr": "Alt ajan"
  },
+ "Summary": {
+  "de": "Rückblick",
+  "tr": "Özet"
+ },
  "System": {
   "de": "System",
   "tr": "Sistem"
@@ -855,6 +935,10 @@
   "de": "Software von Drittanbietern",
   "tr": "Üçüncü taraf yazılımlar"
  },
+ "This CLI does not report usage limits.": {
+  "de": "Diese CLI meldet keine Nutzungslimits.",
+  "tr": "Bu CLI kullanım limiti bildirmiyor."
+ },
  "This Mac": {
   "de": "Dieser Mac",
   "tr": "Bu Mac"
@@ -874,6 +958,10 @@
  "This sub-agent left no transcript.": {
   "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
   "tr": "Bu alt ajan bir döküm bırakmadı."
+ },
+ "This week": {
+  "de": "Diese Woche",
+  "tr": "Bu hafta"
  },
  "Thought": {
   "de": "Nachgedacht",
@@ -927,6 +1015,10 @@
   "de": "Websuche",
   "tr": "Web araması"
  },
+ "Weekly": {
+  "de": "Wöchentlich",
+  "tr": "Haftalık"
+ },
  "Where": {
   "de": "Wo",
   "tr": "Nerede"
@@ -954,6 +1046,10 @@
  "You: %@": {
   "de": "Du: %@",
   "tr": "Siz: %@"
+ },
+ "Your Mac is summarising the week…": {
+  "de": "Dein Mac fasst die Woche zusammen …",
+  "tr": "Mac'iniz haftayı özetliyor…"
  },
  "Your traffic stays end-to-end encrypted by Pilothouse in addition to Tailscale's own encryption.": {
   "de": "Dein Datenverkehr bleibt zusätzlich zur Verschlüsselung von Tailscale durch Pilothouse Ende-zu-Ende verschlüsselt.",

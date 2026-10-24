@@ -30,6 +30,8 @@ public struct AgentOutput: Sendable {
     public var permissionRequests: [AgentPermissionRequest] = []
     /// Sub-agent thread the events belong to (Claude `Task` sub-agents).
     public var thread: String?
+    /// Usage limits the CLI reported with this line.
+    public var usageLimits: UsageLimits?
 
     public init(
         events: [SessionEvent] = [], writes: [Data] = [], permissionRequests: [AgentPermissionRequest] = [], thread: String? = nil
@@ -73,7 +75,11 @@ public struct ClaudeAdapter: AgentAdapter {
 
     public mutating func consume(line: String) -> AgentOutput {
         let (thread, events) = normalizer.consumeThreaded(line: line)
-        return AgentOutput(events: events, thread: thread)
+        var output = AgentOutput(events: events, thread: thread)
+        if line.contains("\"rate_limit_event\""), let value = JSONRPC.parse(line) {
+            output.usageLimits = UsageLimitParser.claude(value)
+        }
+        return output
     }
 
     public mutating func userMessageLines(text: String, attachments: [MessageAttachment]) throws -> [Data] {

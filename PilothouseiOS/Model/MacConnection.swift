@@ -154,7 +154,7 @@ final class MacConnection {
             if error.code == .deviceRevoked {
                 state = .failed(message: error.message, code: error.code)
             }
-        case .ok, .directoryListing, .sessionList:
+        case .ok, .directoryListing, .sessionList, .weeklySummary, .usageLimits:
             break
         }
     }
@@ -241,6 +241,23 @@ final class MacConnection {
             throw MacClientError.unexpectedResponse(response.typeName)
         }
         return listing
+    }
+
+    /// The Mac's summary of the week containing `week` (capability `insights`).
+    func weeklySummary(week: Date? = nil, refresh: Bool = false) async throws -> WeeklySummary {
+        let response = try await client.request(.getWeeklySummary(GetWeeklySummary(week: week, refresh: refresh)), timeout: 180)
+        guard case .weeklySummary(let summary) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return summary
+    }
+
+    func usageLimits() async throws -> [UsageLimits] {
+        let response = try await client.request(.getUsageLimits, timeout: 30)
+        guard case .usageLimits(let payload) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        return payload.agents
     }
 
     func createDirectory(in parent: String, name: String) async throws -> DirectoryListing {

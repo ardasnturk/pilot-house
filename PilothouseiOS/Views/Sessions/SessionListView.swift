@@ -87,6 +87,11 @@ struct SessionListView: View {
             Section {
                 ConnectionStatusRow(connection: connection)
             }
+            if connection.capabilities.contains(HostCapability.insights) {
+                Section {
+                    ThisWeekCard(connection: connection) { model.isPresentingInsights = true }
+                }
+            }
             if connection.sessions.isEmpty {
                 Section {
                     VStack(alignment: .leading, spacing: 8) {

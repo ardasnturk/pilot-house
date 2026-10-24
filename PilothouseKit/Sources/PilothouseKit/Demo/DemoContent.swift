@@ -228,6 +228,69 @@ enum DemoContent {
         case delegate(agent: AgentKind, prompt: String, command: String, output: String, answer: String)
     }
 
+    // MARK: Insights
+
+    static func weeklySummary(containing date: Date, calendar: Calendar = .current) -> WeeklySummary {
+        let week = calendar.dateInterval(of: .weekOfYear, for: date) ?? DateInterval(start: date, duration: 7 * 86_400)
+        let minutes = [95, 140, 60, 175, 120, 30, 0]
+        let days = minutes.enumerated().map { index, value in
+            DayActivity(
+                day: calendar.date(byAdding: .day, value: index, to: calendar.startOfDay(for: week.start)) ?? week.start,
+                activeSeconds: value * 60
+            )
+        }
+        let projects = [
+            ProjectActivity(
+                path: "/Users/demo/Developer/weather-app", name: "weather-app", activeSeconds: 6 * 3_600 + 20 * 60,
+                sessionCount: 5, turnCount: 23, agents: ["claude": 19, "codex": 4], filesChanged: 14,
+                linesAdded: 612, linesRemoved: 188, commandsRun: 41, outputTokens: 182_000,
+                sessionTitles: ["Fix the flaky login test", "Add hourly forecast", "Review the retry logic"],
+                highlights: [
+                    "Fixed the flaky login test by injecting a clock into RetryPolicy",
+                    "Built the hourly forecast screen with a new API client endpoint",
+                    "Codex reviewed the retry logic and found a timer race",
+                ]
+            ),
+            ProjectActivity(
+                path: "/Users/demo/Developer/portfolio-site", name: "portfolio-site", activeSeconds: 2 * 3_600 + 5 * 60,
+                sessionCount: 2, turnCount: 9, agents: ["claude": 9], filesChanged: 6,
+                linesAdded: 240, linesRemoved: 31, commandsRun: 7, outputTokens: 54_000,
+                sessionTitles: ["Add a dark mode toggle", "Speed up image loading"],
+                highlights: ["Added a dark mode toggle that follows the system setting", "Lazy-loaded gallery images"]
+            ),
+            ProjectActivity(
+                path: "/Users/demo/Documents/Notes", name: "Notes", activeSeconds: 45 * 60, sessionCount: 1, turnCount: 3,
+                agents: ["claude": 3], outputTokens: 9_000, sessionTitles: ["Summarise this week's notes"],
+                highlights: ["Summarised the week's meeting notes into five points"]
+            ),
+        ]
+        return WeeklySummary(
+            weekStart: week.start, weekEnd: week.end, projects: projects, days: days,
+            narrative: WeeklyNarrative(
+                headline: "A strong week on weather-app: the flaky test is gone and hourly forecasts shipped.",
+                highlights: [
+                    "Most time went into weather-app (6 h 20 min across 5 sessions)",
+                    "Codex was used as a second opinion for the retry logic",
+                    "portfolio-site got dark mode and faster images",
+                ]
+            ),
+            generatedAt: date
+        )
+    }
+
+    static func usageLimits(now: Date) -> [UsageLimits] {
+        [
+            UsageLimits(agent: .claude, windows: [
+                LimitWindow(key: "five_hour", durationMinutes: 300, usedPercent: 34, resetsAt: now.addingTimeInterval(2 * 3_600 + 10 * 60)),
+                LimitWindow(key: "seven_day", durationMinutes: 10_080, usedPercent: 61, resetsAt: now.addingTimeInterval(3 * 86_400)),
+            ], observedAt: now.addingTimeInterval(-12 * 60), source: .lastTurn, plan: "max"),
+            UsageLimits(agent: .codex, windows: [
+                LimitWindow(key: "primary", durationMinutes: 10_080, usedPercent: 22, resetsAt: now.addingTimeInterval(5 * 86_400)),
+            ], observedAt: now, source: .live, plan: "pro"),
+            UsageLimits(agent: .gemini, windows: [], observedAt: nil, source: .unavailable),
+        ]
+    }
+
     static func script(for prompt: String, cwd: String, turn: Int) -> [Step] {
         let retryPath = "\(cwd)/Sources/Networking/RetryPolicy.swift"
         if prompt.localizedCaseInsensitiveContains("codex") {

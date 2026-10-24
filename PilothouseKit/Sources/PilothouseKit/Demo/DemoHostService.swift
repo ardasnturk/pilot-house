@@ -128,6 +128,14 @@ public actor DemoHostService: HostService {
         return (scripted ?? []) + (created ?? [])
     }
 
+    public func weeklySummary(_ request: GetWeeklySummary) async throws -> WeeklySummary {
+        DemoContent.weeklySummary(containing: request.week ?? now)
+    }
+
+    public func usageLimits() async -> [UsageLimits] {
+        DemoContent.usageLimits(now: now)
+    }
+
     public func listSessions() async -> [SessionSummary] {
         sessions.values.sorted { $0.updatedAt > $1.updatedAt }
     }

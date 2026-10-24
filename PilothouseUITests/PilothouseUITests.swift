@@ -179,6 +179,23 @@ final class PilothouseUITests: XCTestCase {
         app.buttons["Done"].tap()
     }
 
+    @MainActor
+    func testWeeklySummaryAndLimits() throws {
+        let app = XCUIApplication.pilothouse(demo: true)
+        app.launch()
+        let card = app.element("thisWeekCard")
+        XCTAssertTrue(card.waitForExistence(timeout: 20))
+        card.tap()
+
+        XCTAssertTrue(app.element("weeklyNarrative").waitForExistence(timeout: 15))
+        XCTAssertTrue(app.element("project-weather-app").waitForExistence(timeout: 5))
+
+        app.segmentedControls["insightsTabs"].buttons.element(boundBy: 1).tap()
+        XCTAssertTrue(app.element("limits-claude").waitForExistence(timeout: 10))
+        XCTAssertTrue(app.element("limits-codex").exists)
+        app.buttons["Done"].tap()
+    }
+
     // MARK: Helpers
 
     @MainActor

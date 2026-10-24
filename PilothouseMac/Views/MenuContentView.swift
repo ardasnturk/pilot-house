@@ -25,6 +25,7 @@ struct MenuContentView: View {
                     addresses
                     pairButton
                     keepAwake
+                    limitsSection
                     sessionsSection
                     devicesSection
                     integrations
@@ -153,6 +154,34 @@ struct MenuContentView: View {
         .controlSize(.large)
         .buttonStyle(.borderedProminent)
         .disabled(controller.phase != .running)
+    }
+
+    @ViewBuilder private var limitsSection: some View {
+        let known = controller.usageLimits.filter { !$0.windows.isEmpty }
+        if !known.isEmpty {
+            VStack(alignment: .leading, spacing: 6) {
+                SectionTitle("Usage limits")
+                ForEach(known) { limits in
+                    HStack(spacing: 10) {
+                        Text(verbatim: limits.agent.displayName)
+                            .font(.callout)
+                            .frame(width: 92, alignment: .leading)
+                        ForEach(limits.windows.prefix(3)) { window in
+                            HStack(spacing: 4) {
+                                Text(verbatim: LimitFormat.windowName(window))
+                                    .foregroundStyle(.secondary)
+                                Text(verbatim: "\(Int(window.usedPercent.rounded()))%")
+                                    .foregroundStyle(window.usedPercent >= 90 ? .red : (window.usedPercent >= 70 ? .orange : .primary))
+                                    .monospacedDigit()
+                            }
+                            .font(.caption)
+                            .help(LimitFormat.resetText(window))
+                        }
+                        Spacer(minLength: 0)
+                    }
+                }
+            }
+        }
     }
 
     private var keepAwake: some View {
@@ -411,5 +440,24 @@ struct DeviceRow: View {
         } message: {
             Text("The device is disconnected immediately and has to pair again to reconnect.")
         }
+    }
+}
+
+/// Short labels for usage windows (menu and settings).
+enum LimitFormat {
+    static func windowName(_ window: LimitWindow) -> String {
+        let base: String = switch window.durationMinutes {
+        case 300?: String(localized: "5 h")
+        case 10_080?: String(localized: "Week")
+        case let minutes? where minutes % 1_440 == 0: String(localized: "\(minutes / 1_440) d")
+        case let minutes? where minutes % 60 == 0: String(localized: "\(minutes / 60) h")
+        default: window.key
+        }
+        return window.model.map { "\(base) · \($0)" } ?? base
+    }
+
+    static func resetText(_ window: LimitWindow) -> String {
+        guard let resetsAt = window.resetsAt else { return "" }
+        return String(localized: "Resets \(resetsAt.formatted(.relative(presentation: .named)))")
     }
 }
