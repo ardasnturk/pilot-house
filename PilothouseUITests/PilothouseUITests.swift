@@ -111,7 +111,10 @@ final class PilothouseUITests: XCTestCase {
         let drop = app.buttons["simulateNetworkDrop"]
         XCTAssertTrue(app.scrollToElement(drop))
         drop.tap()
-        app.buttons["Done"].tap()
+        // The sheet scrolled to the bottom: wait for the toolbar to settle before closing it.
+        let done = app.buttons["Done"]
+        XCTAssertTrue(done.waitForExistence(timeout: 10))
+        done.tap()
 
         // The client reconnects by itself and the Mac's sessions are still there.
         let newChat = app.buttons["newChatButton"]
