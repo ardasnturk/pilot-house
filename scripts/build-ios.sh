@@ -26,7 +26,7 @@ xcodebuild archive \
   -project Pilothouse.xcodeproj -scheme PilothouseiOS -configuration Release \
   -destination 'generic/platform=iOS' \
   -archivePath "$ARCHIVE" \
-  -allowProvisioningUpdates "${AUTH[@]}" \
+  -allowProvisioningUpdates ${AUTH[@]+"${AUTH[@]}"} \
   MARKETING_VERSION="$VERSION" CURRENT_PROJECT_VERSION="$BUILD_NUMBER"
 
 echo "▸ Uploading to App Store Connect (TestFlight)"
@@ -34,7 +34,7 @@ xcodebuild -exportArchive \
   -archivePath "$ARCHIVE" \
   -exportOptionsPlist scripts/export/ExportOptions-ios.plist \
   -exportPath build/ios/export \
-  -allowProvisioningUpdates "${AUTH[@]}"
+  -allowProvisioningUpdates ${AUTH[@]+"${AUTH[@]}"}
 
 echo "✔ Uploaded build $BUILD_NUMBER. It appears in TestFlight after processing."
 echo "  App Store submission is NOT automatic — review metadata/ios and submit manually."
