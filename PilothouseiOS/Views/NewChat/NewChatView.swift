@@ -32,6 +32,8 @@ struct NewChatView: View {
                 if let listing {
                     Section {
                         Breadcrumb(listing: listing) { path = $0 }
+                    } header: {
+                        Text("Where")
                     }
                 }
                 if search.isEmpty {
@@ -175,16 +177,19 @@ struct NewChatView: View {
         }
     }
 
-    private var optionsSection: some View {
-        Section {
-            if availableAgents.count > 1 {
-                Picker(selection: $agent) {
+    /// "Who" (agent cards) and "How" (permission chips, model, first message).
+    @ViewBuilder private var optionsSection: some View {
+        if availableAgents.count > 1 {
+            Section {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 96), spacing: 10)], spacing: 10) {
                     ForEach(availableAgents) { status in
-                        Text(verbatim: status.kind.displayName).tag(status.kind)
+                        AgentChoiceCard(status: status, isSelected: agent == status.kind) {
+                            agent = status.kind
+                        }
                     }
-                } label: {
-                    Label("Agent", systemImage: "person.crop.square")
                 }
+                .padding(.vertical, 4)
+                .accessibilityElement(children: .contain)
                 .accessibilityIdentifier("agentPicker")
                 .onChange(of: agent) { _, _ in
                     selectedModel = agent == .claude ? model.preferences.defaultModel : ""
@@ -194,7 +199,40 @@ struct NewChatView: View {
                         .font(.footnote)
                         .foregroundStyle(.orange)
                 }
+            } header: {
+                Text("Who")
             }
+        }
+        Section {
+            VStack(alignment: .leading, spacing: 8) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(availableModes, id: \.self) { mode in
+                            Button {
+                                permissionMode = mode
+                            } label: {
+                                Label {
+                                    Text(mode.localizedName)
+                                } icon: {
+                                    Image(systemName: mode.symbol)
+                                }
+                                .font(.subheadline.weight(.medium))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 7)
+                                .foregroundStyle(chipColor(mode))
+                                .background(chipColor(mode).opacity(permissionMode == mode ? 0.16 : 0.06), in: Capsule())
+                                .overlay(Capsule().strokeBorder(chipColor(mode).opacity(permissionMode == mode ? 0.6 : 0), lineWidth: 1))
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(permissionMode == mode ? .isSelected : [])
+                        }
+                    }
+                }
+                Text(permissionMode.localizedDescription)
+                    .font(.footnote)
+                    .foregroundStyle(permissionMode == .bypassPermissions ? .red : .secondary)
+            }
+            .padding(.vertical, 4)
             Picker(selection: $selectedModel) {
                 if agent == .claude {
                     Text("Mac default").tag("")
@@ -213,21 +251,16 @@ struct NewChatView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
             }
-            Picker(selection: $permissionMode) {
-                ForEach(availableModes, id: \.self) { mode in
-                    Text(mode.localizedName).tag(mode)
-                }
-            } label: {
-                Label("Permissions", systemImage: permissionMode.symbol)
-            }
-            Text(permissionMode.localizedDescription)
-                .font(.footnote)
-                .foregroundStyle(permissionMode == .bypassPermissions ? .red : .secondary)
             TextField("First message (optional)", text: $firstMessage, axis: .vertical)
                 .lineLimit(1...4)
         } header: {
-            Text("Session")
+            Text("How")
         }
+    }
+
+    private func chipColor(_ mode: PermissionMode) -> Color {
+        if permissionMode != mode { return .secondary }
+        return mode == .bypassPermissions ? .red : .accentColor
     }
 
     /// Installed agents the Mac reported (Claude Code alone on older Macs).
@@ -443,5 +476,40 @@ struct FolderRow: View {
         if entry.isGitRepository { return "arrow.triangle.branch" }
         if entry.isDirectory { return entry.isSymbolicLink ? "folder.badge.questionmark" : "folder.fill" }
         return "doc"
+    }
+}
+
+/// One selectable agent in "Who".
+struct AgentChoiceCard: View {
+    let status: AgentStatus
+    let isSelected: Bool
+    let select: () -> Void
+
+    var body: some View {
+        Button(action: select) {
+            VStack(spacing: 6) {
+                AgentAvatar(agent: status.kind, size: 30)
+                Text(verbatim: status.kind.displayName)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                if status.loggedIn == false {
+                    Text("Not signed in")
+                        .font(.caption2)
+                        .foregroundStyle(.orange)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 10)
+            .background(Design.insetBackground.opacity(isSelected ? 0 : 1), in: RoundedRectangle(cornerRadius: Design.controlRadius, style: .continuous))
+            .background(status.kind.tint.opacity(isSelected ? 0.14 : 0), in: RoundedRectangle(cornerRadius: Design.controlRadius, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: Design.controlRadius, style: .continuous)
+                    .strokeBorder(status.kind.tint, lineWidth: isSelected ? 1.5 : 0)
+            )
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(verbatim: status.kind.displayName))
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityIdentifier("agent-\(status.kind.rawValue)")
     }
 }

@@ -31,10 +31,6 @@
   "de": "Zu Favoriten hinzufügen",
   "tr": "Favorilere Ekle"
  },
- "Agent": {
-  "de": "Agent",
-  "tr": "Ajan"
- },
  "Agent default": {
   "de": "Agent-Standard",
   "tr": "Ajan varsayılanı"
@@ -407,6 +403,10 @@
   "de": "Haptisches Feedback",
   "tr": "Dokunsal geri bildirim"
  },
+ "How": {
+  "de": "Wie",
+  "tr": "Nasıl"
+ },
  "If iOS asks for Local Network access, allow it so Pilothouse can find your Mac.": {
   "de": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Pilothouse deinen Mac findet.",
   "tr": "iOS Yerel Ağ erişimi isterse izin verin; böylece Pilothouse Mac'inizi bulabilir."
@@ -475,6 +475,10 @@
   "de": "Macs",
   "tr": "Mac'ler"
  },
+ "Message %@…": {
+  "de": "Nachricht an %@ …",
+  "tr": "%@'e mesaj yaz…"
+ },
  "Message Claude…": {
   "de": "Nachricht an Claude …",
   "tr": "Claude'a mesaj yaz…"
@@ -486,6 +490,10 @@
  "Model ID": {
   "de": "Modell-ID",
   "tr": "Model kimliği"
+ },
+ "Model: %@": {
+  "de": "Modell: %@",
+  "tr": "Model: %@"
  },
  "Name": {
   "de": "Name",
@@ -530,6 +538,10 @@
  "Not installed": {
   "de": "Nicht installiert",
   "tr": "Kurulu değil"
+ },
+ "Not signed in": {
+  "de": "Nicht angemeldet",
+  "tr": "Oturum açılmamış"
  },
  "OK": {
   "de": "OK",
@@ -871,6 +883,10 @@
   "de": "Drei Schritte",
   "tr": "Üç adım"
  },
+ "Today": {
+  "de": "Heute",
+  "tr": "Bugün"
+ },
  "Transcripts stay on your Mac and are downloaded again when you open a session.": {
   "de": "Verläufe bleiben auf deinem Mac und werden beim Öffnen einer Sitzung erneut geladen.",
   "tr": "Dökümler Mac'inizde kalır ve bir oturumu açtığınızda yeniden indirilir."
@@ -895,6 +911,10 @@
   "de": "Warte auf den Sub-Agent …",
   "tr": "Alt ajan bekleniyor…"
  },
+ "Waiting for your approval": {
+  "de": "Wartet auf deine Freigabe",
+  "tr": "Onayınızı bekliyor"
+ },
  "Waiting for your approval…": {
   "de": "Wartet auf deine Freigabe …",
   "tr": "Onayınız bekleniyor…"
@@ -906,6 +926,14 @@
  "Web search": {
   "de": "Websuche",
   "tr": "Web araması"
+ },
+ "Where": {
+  "de": "Wo",
+  "tr": "Nerede"
+ },
+ "Who": {
+  "de": "Wer",
+  "tr": "Kim"
  },
  "Working": {
   "de": "Arbeitet",

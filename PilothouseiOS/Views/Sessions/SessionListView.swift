@@ -56,10 +56,33 @@ struct SessionListView: View {
         }
     }
 
+    /// Sessions grouped by what needs attention first.
+    private enum SessionGroup: CaseIterable {
+        case approval, running, today, earlier
+
+        var title: LocalizedStringKey {
+            switch self {
+            case .approval: LocalizedStringKey("Needs approval")
+            case .running: LocalizedStringKey("Working")
+            case .today: LocalizedStringKey("Today")
+            case .earlier: LocalizedStringKey("Earlier")
+            }
+        }
+    }
+
+    private func group(of session: SessionSummary, connection: MacConnection) -> SessionGroup {
+        if needsApproval(session, connection: connection) { return .approval }
+        if session.state.isBusy { return .running }
+        return Calendar.current.isDateInToday(session.updatedAt) ? .today : .earlier
+    }
+
+    private func needsApproval(_ session: SessionSummary, connection: MacConnection) -> Bool {
+        session.state == .awaitingPermission || connection.pendingPermissions.contains { $0.sessionId == session.id }
+    }
+
     private func list(_ connection: MacConnection) -> some View {
         @Bindable var model = model
-        let open = connection.sessions.filter { $0.state != .closed }
-        let closed = connection.sessions.filter { $0.state == .closed }
+        let grouped = Dictionary(grouping: connection.sessions) { group(of: $0, connection: connection) }
         return List(selection: $model.selectedSessionId) {
             Section {
                 ConnectionStatusRow(connection: connection)
@@ -74,22 +97,15 @@ struct SessionListView: View {
                     .padding(.vertical, 6)
                 }
             }
-            if !open.isEmpty {
-                Section {
-                    ForEach(open) { session in
-                        row(session, connection: connection)
+            ForEach(SessionGroup.allCases, id: \.self) { group in
+                if let sessions = grouped[group], !sessions.isEmpty {
+                    Section {
+                        ForEach(sessions) { session in
+                            row(session, connection: connection)
+                        }
+                    } header: {
+                        Text(group.title)
                     }
-                } header: {
-                    Text("Active")
-                }
-            }
-            if !closed.isEmpty {
-                Section {
-                    ForEach(closed) { session in
-                        row(session, connection: connection)
-                    }
-                } header: {
-                    Text("Earlier")
                 }
             }
         }
@@ -100,10 +116,7 @@ struct SessionListView: View {
     }
 
     private func row(_ session: SessionSummary, connection: MacConnection) -> some View {
-        SessionRow(
-            session: session,
-            needsApproval: connection.pendingPermissions.contains { $0.sessionId == session.id }
-        )
+        SessionRow(session: session, needsApproval: needsApproval(session, connection: connection))
         .tag(session.id)
         .accessibilityIdentifier("session-\(session.title)")
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
@@ -166,57 +179,61 @@ struct SessionListView: View {
     }
 }
 
-/// One session in the list.
+/// One session in the list: agent avatar, title, folder and latest reply.
 struct SessionRow: View {
     let session: SessionSummary
     let needsApproval: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack(spacing: 6) {
-                Image(systemName: "folder")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .accessibilityHidden(true)
-                Text(session.folderName)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                if session.agentKind != .claude {
-                    AgentBadge(agent: session.agentKind)
+        HStack(alignment: .top, spacing: 12) {
+            AgentAvatar(agent: session.agentKind, emphasis: emphasis)
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(alignment: .firstTextBaseline, spacing: 6) {
+                    Text(session.title)
+                        .font(.body.weight(.semibold))
+                        .lineLimit(1)
+                    Spacer(minLength: 4)
+                    if session.state.isBusy && !needsApproval {
+                        ProgressView()
+                            .controlSize(.mini)
+                            .accessibilityLabel(Text("Working"))
+                    }
+                    Text(session.updatedAt, format: .relative(presentation: .named))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
-                Spacer()
-                Text(session.updatedAt, format: .relative(presentation: .named))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-            HStack(spacing: 6) {
-                Text(session.title)
-                    .font(.body.weight(.medium))
-                    .lineLimit(1)
-                Spacer()
-                stateBadge
-            }
-            if let preview = session.lastMessagePreview {
-                Text(preview)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
+                HStack(spacing: 4) {
+                    Image(systemName: "folder")
+                        .imageScale(.small)
+                        .accessibilityHidden(true)
+                    Text(session.folderName)
+                    if session.agentKind != .claude {
+                        Text(verbatim: "·")
+                        Text(verbatim: session.agentKind.displayName)
+                    }
+                }
+                .font(.caption.weight(.medium))
+                .foregroundStyle(.secondary)
+                if needsApproval {
+                    Text("Waiting for your approval")
+                        .font(.subheadline)
+                        .foregroundStyle(.orange)
+                } else if let preview = session.lastMessagePreview {
+                    Text(preview)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                }
             }
         }
         .padding(.vertical, 4)
         .accessibilityElement(children: .combine)
     }
 
-    @ViewBuilder private var stateBadge: some View {
-        if needsApproval || session.state == .awaitingPermission {
-            Label("Needs approval", systemImage: "hand.raised.fill")
-                .labelStyle(.iconOnly)
-                .foregroundStyle(.orange)
-        } else if session.state.isBusy {
-            ProgressView()
-                .controlSize(.small)
-                .accessibilityLabel(Text("Working"))
-        }
+    private var emphasis: AgentAvatar.Emphasis {
+        if needsApproval { return .approval }
+        if session.state == .closed { return .done }
+        return .agent
     }
 }
 

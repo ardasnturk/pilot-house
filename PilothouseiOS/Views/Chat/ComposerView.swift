@@ -8,6 +8,9 @@ struct ComposerView: View {
     @Binding var attachments: [MessageAttachment]
     let slashCommands: [String]
     let isEnabled: Bool
+    /// Agent and model shown inside the field, e.g. "Codex · gpt-6.1-sol".
+    var modelLabel: String?
+    var placeholder: LocalizedStringKey = "Message Claude…"
     let onSend: () -> Void
 
     @State private var photoSelection: [PhotosPickerItem] = []
@@ -57,33 +60,44 @@ struct ComposerView: View {
                     .font(.caption)
                     .foregroundStyle(.red)
             }
-            HStack(alignment: .bottom, spacing: 10) {
+            HStack(alignment: .bottom, spacing: 8) {
                 PhotosPicker(selection: $photoSelection, maxSelectionCount: 4, matching: .images) {
-                    Image(systemName: "photo.badge.plus")
-                        .font(.title3)
+                    Image(systemName: "plus")
+                        .font(.body.weight(.semibold))
+                        .frame(width: 32, height: 32)
+                        .background(Design.insetBackground, in: Circle())
                 }
                 .disabled(!isEnabled)
                 .accessibilityLabel(Text("Attach images"))
 
-                TextField("Message Claude…", text: $text, axis: .vertical)
+                TextField(placeholder, text: $text, axis: .vertical)
                     .lineLimit(1...8)
                     .focused($isFocused)
                     .submitLabel(.return)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 9)
-                    .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .padding(.vertical, 6)
                     .accessibilityIdentifier("composerField")
 
+                if let modelLabel, text.isEmpty {
+                    Chip(text: Text(verbatim: modelLabel))
+                        .padding(.bottom, 6)
+                        .accessibilityLabel(Text("Model: \(modelLabel)"))
+                }
+
                 Button(action: onSend) {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.system(size: 32))
-                        .symbolRenderingMode(.hierarchical)
+                    Image(systemName: "arrow.up")
+                        .font(.body.weight(.bold))
+                        .foregroundStyle(.white)
+                        .frame(width: 32, height: 32)
+                        .background(canSend ? Color.accentColor : Color.secondary.opacity(0.4), in: Circle())
                 }
                 .disabled(!canSend)
                 .keyboardShortcut(.return, modifiers: .command)
                 .accessibilityLabel(Text("Send"))
                 .accessibilityIdentifier("sendButton")
             }
+            .padding(6)
+            .padding(.leading, 0)
+            .floatingSurface(in: RoundedRectangle(cornerRadius: 22, style: .continuous))
         }
         .onChange(of: photoSelection) { _, items in
             Task { await loadPhotos(items) }

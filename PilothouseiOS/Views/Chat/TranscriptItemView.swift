@@ -48,7 +48,12 @@ struct UserBubble: View {
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
-            .background(Color.accentColor, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .background(
+                Color.accentColor,
+                in: UnevenRoundedRectangle(
+                    topLeadingRadius: 20, bottomLeadingRadius: 20, bottomTrailingRadius: 6, topTrailingRadius: 20, style: .continuous
+                )
+            )
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(Text("You: \(text)"))

@@ -129,22 +129,6 @@
         }
       }
     },
-    "Agent": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Agent"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ajan"
-          }
-        }
-      }
-    },
     "Agent default": {
       "localizations": {
         "de": {
@@ -1633,6 +1617,22 @@
         }
       }
     },
+    "How": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nasıl"
+          }
+        }
+      }
+    },
     "If iOS asks for Local Network access, allow it so Pilothouse can find your Mac.": {
       "localizations": {
         "de": {
@@ -1905,6 +1905,22 @@
         }
       }
     },
+    "Message %@…": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachricht an %@ …"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@'e mesaj yaz…"
+          }
+        }
+      }
+    },
     "Message Claude…": {
       "localizations": {
         "de": {
@@ -1949,6 +1965,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Model kimliği"
+          }
+        }
+      }
+    },
+    "Model: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modell: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Model: %@"
           }
         }
       }
@@ -2125,6 +2157,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kurulu değil"
+          }
+        }
+      }
+    },
+    "Not signed in": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht angemeldet"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oturum açılmamış"
           }
         }
       }
@@ -3489,6 +3537,22 @@
         }
       }
     },
+    "Today": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün"
+          }
+        }
+      }
+    },
     "Transcripts stay on your Mac and are downloaded again when you open a session.": {
       "localizations": {
         "de": {
@@ -3585,6 +3649,22 @@
         }
       }
     },
+    "Waiting for your approval": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wartet auf deine Freigabe"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onayınızı bekliyor"
+          }
+        }
+      }
+    },
     "Waiting for your approval…": {
       "localizations": {
         "de": {
@@ -3629,6 +3709,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Web araması"
+          }
+        }
+      }
+    },
+    "Where": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wo"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nerede"
+          }
+        }
+      }
+    },
+    "Who": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wer"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kim"
           }
         }
       }

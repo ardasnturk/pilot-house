@@ -37,8 +37,21 @@ struct ToolCardView: View {
         }
         .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
         .overlay(RoundedRectangle(cornerRadius: 14).strokeBorder(borderColor, lineWidth: 1))
+        .overlay(alignment: .leading) {
+            if summary.category == .agent {
+                // Sub-agents get a rail in the agent's colour, so they read as their own lane.
+                UnevenRoundedRectangle(topLeadingRadius: 14, bottomLeadingRadius: 14)
+                    .fill(agentTint)
+                    .frame(width: 3)
+                    .accessibilityHidden(true)
+            }
+        }
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("tool-\(call.name)")
+    }
+
+    private var agentTint: Color {
+        call.name == ToolSummary.delegationToolName ? AgentKind(call.input["agent"]?.stringValue ?? "").tint : .accentColor
     }
 
     private var borderColor: Color {
@@ -48,9 +61,10 @@ struct ToolCardView: View {
 
     private var header: some View {
         HStack(spacing: 10) {
-            Image(systemName: summary.symbol)
+            Image(systemName: summary.category == .agent && call.name == ToolSummary.delegationToolName
+                ? AgentKind(call.input["agent"]?.stringValue ?? "").symbol : summary.symbol)
                 .font(.callout)
-                .foregroundStyle(Color.accentColor)
+                .foregroundStyle(summary.category == .agent ? agentTint : Color.accentColor)
                 .frame(width: 22)
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 1) {

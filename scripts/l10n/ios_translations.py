@@ -1,9 +1,16 @@
 # Source of scripts/l10n/ios.json — edit here, then run `python3 scripts/l10n/ios_translations.py`.
 import json, os
 T = {
+"How": ("Nasıl", "Wie"),
+"Where": ("Nerede", "Wo"),
+"Who": ("Kim", "Wer"),
+"Not signed in": ("Oturum açılmamış", "Nicht angemeldet"),
+"Message %@…": ("%@'e mesaj yaz…", "Nachricht an %@ …"),
+"Model: %@": ("Model: %@", "Modell: %@"),
+"Today": ("Bugün", "Heute"),
+"Waiting for your approval": ("Onayınızı bekliyor", "Wartet auf deine Freigabe"),
 "%@ is not signed in on your Mac. Run it once in Terminal there.": ("%@ Mac'inizde oturum açmamış. Orada Terminal'de bir kez çalıştırın.", "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal."),
 "%@ runs on your Mac. You'll see every step here.": ("%@ Mac'inizde çalışır. Her adımı burada görürsünüz.", "%@ läuft auf deinem Mac. Du siehst hier jeden Schritt."),
-"Agent": ("Ajan", "Agent"),
 "Agent default": ("Ajan varsayılanı", "Agent-Standard"),
 "Agent: %@": ("Ajan: %@", "Agent: %@"),
 "Ask %@ anything about this folder": ("Bu klasörle ilgili %@'e istediğini sor", "Frag %@ alles zu diesem Ordner"),

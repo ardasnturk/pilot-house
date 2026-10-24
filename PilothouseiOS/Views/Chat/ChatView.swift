@@ -127,6 +127,8 @@ struct ChatView: View {
                     attachments: $attachments,
                     slashCommands: session?.slashCommands ?? chat.info?.slashCommands ?? [],
                     isEnabled: connection.isConnected && !isSending,
+                    modelLabel: session?.model,
+                    placeholder: composerPlaceholder,
                     onSend: send
                 )
             }
@@ -136,7 +138,6 @@ struct ChatView: View {
         .padding(.bottom, 8)
         .frame(maxWidth: 820)
         .frame(maxWidth: .infinity)
-        .background(.bar)
     }
 
     @ViewBuilder private var banners: some View {
@@ -217,13 +218,17 @@ struct ChatView: View {
         }
     }
 
+    private var composerPlaceholder: LocalizedStringKey {
+        if let agent = session?.agentKind, agent != .claude {
+            return LocalizedStringKey("Message \(agent.displayName)…")
+        }
+        return LocalizedStringKey("Message Claude…")
+    }
+
     private var subtitle: String {
         guard let session else { return "" }
         let path = session.cwd.abbreviatingHome(homeGuess(session.cwd))
-        if let model = session.model {
-            return "\(path) · \(model)"
-        }
-        return path
+        return "\(path) · \(session.agentKind.displayName)"
     }
 
     /// `/Users/<name>` prefix of a macOS path, used to abbreviate it as `~`.
@@ -323,7 +328,7 @@ struct WorkingIndicator: View {
             .accessibilityIdentifier("stopButton")
         }
         .padding(10)
-        .background(Color(.secondarySystemBackground), in: RoundedRectangle(cornerRadius: 14))
+        .floatingSurface(in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .accessibilityElement(children: .contain)
     }
 }
