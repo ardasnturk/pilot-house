@@ -54,8 +54,13 @@ DMGBUILD="${DMGBUILD:-$(command -v dmgbuild || true)}"
 if [[ -n "$DMGBUILD" ]]; then
   # Designed window: background, icon positions (scripts/dmg/settings.py).
   "$DMGBUILD" -s scripts/dmg/settings.py -D app="$APP" "Pilothouse" "$DMG"
+elif [[ "${ALLOW_PLAIN_DMG:-0}" != "1" ]]; then
+  # A release DMG without its designed window is a mistake, not a fallback.
+  echo "dmgbuild not found. Install it (pipx install dmgbuild) or point DMGBUILD at it;" >&2
+  echo "ALLOW_PLAIN_DMG=1 builds a plain DMG for local testing." >&2
+  exit 1
 else
-  echo "  dmgbuild not found (pipx install dmgbuild) — building a plain DMG"
+  echo "  ALLOW_PLAIN_DMG=1 — building a plain DMG without the designed window"
   STAGING="$BUILD/dmg"
   mkdir -p "$STAGING"
   cp -R "$APP" "$STAGING/"
