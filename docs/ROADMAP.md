@@ -5,10 +5,10 @@ contributions are welcome (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## Next
 
-* **Push notifications** for permission requests and finished turns while the
-  app is in the background. Needs a push relay, which conflicts with "no
-  server, no telemetry" — the plan is an optional, self-hostable relay that
-  only ever sees an opaque, end-to-end-encrypted wake-up (D-081).
+* **Approve from the notification.** 1.1 notifies through ntfy and macOS
+  (D-095); approving right from the notification still needs Pilothouse's own
+  push (an optional, self-hostable relay that only sees an opaque,
+  end-to-end-encrypted wake-up).
 * **Live Activities / Dynamic Island** showing the running turn and pending
   approvals.
 * **`auto` and `dontAsk` permission modes** once their behaviour in headless

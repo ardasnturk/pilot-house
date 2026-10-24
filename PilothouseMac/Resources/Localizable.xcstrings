@@ -97,6 +97,22 @@
         }
       }
     },
+    "Access token": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriffstoken"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erişim token'ı"
+          }
+        }
+      }
+    },
     "Active sessions": {
       "localizations": {
         "de": {
@@ -189,6 +205,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "“İzinleri atla” moduna izin ver"
+          }
+        }
+      }
+    },
+    "Approval needed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freigabe nötig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onay gerektiğinde"
+          }
+        }
+      }
+    },
+    "Approval needed · %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freigabe nötig · %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Onay gerekiyor · %@"
           }
         }
       }
@@ -625,6 +673,22 @@
         }
       }
     },
+    "Copy Topic": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thema kopieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konuyu Kopyala"
+          }
+        }
+      }
+    },
     "Copy address": {
       "localizations": {
         "de": {
@@ -673,6 +737,22 @@
         }
       }
     },
+    "Create a new random topic. Phones subscribed to the old one stop receiving notifications.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erstellt ein neues zufälliges Thema. Telefone, die das alte abonniert haben, erhalten keine Mitteilungen mehr."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni bir rastgele konu oluşturur. Eski konuya abone olan telefonlara artık bildirim gelmez."
+          }
+        }
+      }
+    },
     "Default model": {
       "localizations": {
         "de": {
@@ -717,6 +797,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Reddet"
+          }
+        }
+      }
+    },
+    "Destinations": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ziele"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hedefler"
           }
         }
       }
@@ -785,6 +881,38 @@
         }
       }
     },
+    "Enter a valid server address (https://…).": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gib eine gültige Serveradresse ein (https://…)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçerli bir sunucu adresi girin (https://…)."
+          }
+        }
+      }
+    },
+    "Events": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ereignisse"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olaylar"
+          }
+        }
+      }
+    },
     "General": {
       "localizations": {
         "de": {
@@ -813,6 +941,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tailscale'i App Store'dan edinin ve aynı hesapla giriş yapın. iOS, uygulamaların bunu sizin yerinize yapmasına izin vermez."
+          }
+        }
+      }
+    },
+    "Get notified when a task you started from your phone finishes, when Claude waits for your approval, or when a session fails.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lass dich benachrichtigen, wenn eine vom Telefon gestartete Aufgabe fertig ist, Claude auf deine Freigabe wartet oder eine Sitzung fehlschlägt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefondan başlattığınız bir görev bittiğinde, Claude onayınızı beklediğinde ya da bir oturum hata verdiğinde bildirim alın."
           }
         }
       }
@@ -881,6 +1025,22 @@
         }
       }
     },
+    "Include a short summary": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurze Zusammenfassung hinzufügen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısa bir özet ekle"
+          }
+        }
+      }
+    },
     "Install Claude Code": {
       "localizations": {
         "de": {
@@ -941,6 +1101,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "iPhone veya iPad'inize Tailscale'i kurun"
+          }
+        }
+      }
+    },
+    "Install the free ntfy app, tap +, and enter the topic. For a self-hosted server, also turn on “Use another server” and enter its address.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installiere die kostenlose ntfy-App, tippe auf + und gib das Thema ein. Für einen eigenen Server aktiviere zusätzlich „Use another server“ und gib seine Adresse ein."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ücretsiz ntfy uygulamasını kurun, + simgesine dokunun ve konuyu girin. Kendi sunucunuzu kullanıyorsanız “Use another server” seçeneğini de açıp adresini girin."
           }
         }
       }
@@ -1105,6 +1281,54 @@
         }
       }
     },
+    "Mac: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac: %@"
+          }
+        }
+      }
+    },
+    "Mac: notifications are turned off in System Settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac: Mitteilungen sind in den Systemeinstellungen deaktiviert"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac: bildirimler Sistem Ayarları'nda kapalı"
+          }
+        }
+      }
+    },
+    "Mac: shown": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac: angezeigt"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac: gösterildi"
+          }
+        }
+      }
+    },
     "MagicDNS is off. Turn it on in the Tailscale admin console for a stable name (optional).": {
       "localizations": {
         "de": {
@@ -1165,6 +1389,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yeni Kod"
+          }
+        }
+      }
+    },
+    "New Topic": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neues Thema"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni Konu"
           }
         }
       }
@@ -1313,6 +1553,38 @@
         }
       }
     },
+    "Notifications": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimler"
+          }
+        }
+      }
+    },
+    "Notifications from Pilothouse arrive like this.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So kommen Mitteilungen von Pilothouse an."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse bildirimleri böyle görünür."
+          }
+        }
+      }
+    },
     "OK": {
       "localizations": {
         "de": {
@@ -1325,6 +1597,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tamam"
+          }
+        }
+      }
+    },
+    "On a public server anyone who knows the topic can read its notifications, so treat it like a password. Self-hosted servers need HTTPS; an access token is only needed if your server requires one.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf einem öffentlichen Server kann jeder, der das Thema kennt, die Mitteilungen lesen – behandle es also wie ein Passwort. Eigene Server brauchen HTTPS; ein Zugriffstoken ist nur nötig, wenn dein Server eines verlangt."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Herkese açık bir sunucuda konuyu bilen herkes bildirimleri okuyabilir; bu yüzden onu bir şifre gibi saklayın. Kendi sunucunuz HTTPS kullanmalıdır; erişim token'ı yalnızca sunucunuz istiyorsa gerekir."
           }
         }
       }
@@ -1389,6 +1677,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Claude Code kurulum kılavuzunu aç"
+          }
+        }
+      }
+    },
+    "Optional": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsteğe bağlı"
+          }
+        }
+      }
+    },
+    "Or scan the code with the Camera to open the topic in Safari.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oder scanne den Code mit der Kamera, um das Thema in Safari zu öffnen."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya da konuyu Safari'de açmak için kodu Kamera ile tarayın."
           }
         }
       }
@@ -1729,6 +2049,22 @@
         }
       }
     },
+    "Remove Token": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token entfernen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token'ı Kaldır"
+          }
+        }
+      }
+    },
     "Reply to Claude (e.g. “I have signed in”)": {
       "localizations": {
         "de": {
@@ -1873,6 +2209,102 @@
         }
       }
     },
+    "Send Test Notification": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Testmitteilung senden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Test Bildirimi Gönder"
+          }
+        }
+      }
+    },
+    "Send notifications": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen senden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirim gönder"
+          }
+        }
+      }
+    },
+    "Send to your iPhone with ntfy": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit ntfy an dein iPhone senden"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy ile iPhone'unuza gönder"
+          }
+        }
+      }
+    },
+    "Server": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunucu"
+          }
+        }
+      }
+    },
+    "Session failed": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sitzung fehlgeschlagen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oturum hata verdiğinde"
+          }
+        }
+      }
+    },
+    "Session failed · %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sitzung fehlgeschlagen · %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oturum hata verdi · %@"
+          }
+        }
+      }
+    },
     "Sessions": {
       "localizations": {
         "de": {
@@ -1949,6 +2381,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ayarlar…"
+          }
+        }
+      }
+    },
+    "Show on this Mac": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf diesem Mac anzeigen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Mac'te göster"
           }
         }
       }
@@ -2113,6 +2561,22 @@
         }
       }
     },
+    "Sub-agent finished · %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sub-Agent fertig · %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt ajan bitti · %@"
+          }
+        }
+      }
+    },
     "Sub-agents": {
       "localizations": {
         "de": {
@@ -2125,6 +2589,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alt ajanlar"
+          }
+        }
+      }
+    },
+    "Subscribe on your iPhone": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf dem iPhone abonnieren"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'unuzda abone olun"
           }
         }
       }
@@ -2241,6 +2721,54 @@
         }
       }
     },
+    "Task finished": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe fertig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görev bittiğinde"
+          }
+        }
+      }
+    },
+    "Task finished · %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufgabe fertig · %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görev bitti · %@"
+          }
+        }
+      }
+    },
+    "Test notification from %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Testmitteilung von %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ cihazından test bildirimi"
+          }
+        }
+      }
+    },
     "The API key could not be saved: %@": {
       "localizations": {
         "de": {
@@ -2253,6 +2781,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "API anahtarı kaydedilemedi: %@"
+          }
+        }
+      }
+    },
+    "The access token could not be saved: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Zugriffstoken konnte nicht gespeichert werden: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erişim token'ı kaydedilemedi: %@"
           }
         }
       }
@@ -2337,6 +2881,22 @@
         }
       }
     },
+    "Topic": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thema"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konu"
+          }
+        }
+      }
+    },
     "Traffic between your devices is end-to-end encrypted. Pilothouse never connects to Anthropic and collects no telemetry.": {
       "localizations": {
         "de": {
@@ -2365,6 +2925,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "MagicDNS'i açın (önerilir)"
+          }
+        }
+      }
+    },
+    "Turn on at least one destination.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktiviere mindestens ein Ziel."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En az bir hedefi açın."
           }
         }
       }
@@ -2497,6 +3073,22 @@
         }
       }
     },
+    "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Zusammenfassung sagt eine Mitteilung nur, was in welchem Ordner passiert ist, z. B. „Aufgabe fertig · my-app“. Mit ihr kommen die letzte Nachricht, das Werkzeug oder der Fehler hinzu."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özet kapalıyken bildirim yalnızca ne olduğunu ve hangi klasörde olduğunu söyler, örn. “Görev bitti · my-app”. Açıkken son mesaj, araç ya da hata da eklenir."
+          }
+        }
+      }
+    },
     "Working": {
       "localizations": {
         "de": {
@@ -2541,6 +3133,102 @@
           "stringUnit": {
             "state": "translated",
             "value": "Artık cihazınızdan bu Mac'te Claude Code oturumları başlatabilirsiniz."
+          }
+        }
+      }
+    },
+    "iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone-Mitteilungen laufen über einen ntfy-Server, weil iOS Apps nur über Apples Push-Dienst weckt, der einen Pilothouse-Server bräuchte. Ein Tippen darauf öffnet die Sitzung in Pilothouse."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone bildirimleri bir ntfy sunucusu üzerinden gider; çünkü iOS uygulamaları yalnızca Apple'ın push servisiyle uyandırır ve bu bir Pilothouse sunucusu gerektirirdi. Bildirime dokunmak oturumu Pilothouse'da açar."
+          }
+        }
+      }
+    },
+    "ntfy": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy"
+          }
+        }
+      }
+    },
+    "ntfy on the App Store": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy im App Store"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App Store'da ntfy"
+          }
+        }
+      }
+    },
+    "ntfy topic QR code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR-Code des ntfy-Themas"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy konusu QR kodu"
+          }
+        }
+      }
+    },
+    "ntfy: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy: %@"
+          }
+        }
+      }
+    },
+    "ntfy: delivered (HTTP %lld)": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy: zugestellt (HTTP %lld)"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ntfy: iletildi (HTTP %lld)"
           }
         }
       }

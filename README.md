@@ -176,8 +176,12 @@ catches up from the session log. Permission requests wait for you (up to
 10 minutes).
 
 **Notifications?**
-Not in 1.0 — they would need a push server (D-081). See the
-[roadmap](docs/ROADMAP.md).
+Since 1.1, under Settings → Notifications on the Mac (off by default): native
+macOS notifications and, through [ntfy](https://ntfy.sh), notifications on your
+iPhone when a task you started from the phone finishes, Claude waits for
+approval or a session fails. Subscribe to the generated topic in the free ntfy
+app; tapping a notification opens the session in Pilothouse. By default only
+"Task finished · <folder>" is sent (D-095).
 
 **Where are the logs?**
 `~/Library/Application Support/Pilothouse/sessions/<session-id>.jsonl`.

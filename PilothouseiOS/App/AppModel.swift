@@ -116,6 +116,18 @@ final class AppModel {
         connect()
     }
 
+    /// Opens the session of a `pilothouse://session/<id>` link (a tapped
+    /// notification, D-095), switching to the link's Mac if it is paired.
+    func open(_ link: SessionLink) async {
+        guard hasPairedMac else { return }
+        isPresentingNewChat = false
+        isPresentingSettings = false
+        if let macId = link.macId, macId != activeMac?.id, store.mac(id: macId) != nil {
+            await switchToMac(macId)
+        }
+        selectedSessionId = link.sessionId
+    }
+
     func scenePhaseChanged(_ phase: ScenePhase) {
         switch phase {
         case .active:

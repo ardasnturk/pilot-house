@@ -183,8 +183,12 @@ bağlandığında oturum kaydından eksikleri tamamlar. İzin istekleri sizi bek
 (10 dakikaya kadar).
 
 **Bildirimler?**
-1.0'da yok — bir push sunucusu gerektirirdi (D-081). Bkz.
-[yol haritası](docs/ROADMAP.md).
+1.1'den beri Mac'te Ayarlar → Bildirimler altında (varsayılan olarak kapalı):
+telefondan başlattığınız bir görev bittiğinde, Claude onay beklediğinde ya da
+bir oturum hata verdiğinde yerel macOS bildirimleri ve [ntfy](https://ntfy.sh)
+üzerinden iPhone bildirimleri. Oluşturulan konuya ücretsiz ntfy uygulamasında
+abone olun; bildirime dokununca oturum Pilothouse'da açılır. Varsayılan olarak
+yalnızca "Görev bitti · <klasör>" gönderilir (D-095).
 
 **Kayıtlar nerede?**
 `~/Library/Application Support/Pilothouse/sessions/<oturum-kimliği>.jsonl`.

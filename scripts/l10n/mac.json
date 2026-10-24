@@ -23,6 +23,10 @@
   "de": "Änderungen akzeptieren",
   "tr": "Düzenlemeleri kabul et"
  },
+ "Access token": {
+  "de": "Zugriffstoken",
+  "tr": "Erişim token'ı"
+ },
  "Active sessions": {
   "de": "Aktive Sitzungen",
   "tr": "Etkin oturumlar"
@@ -46,6 +50,14 @@
  "Allow “Bypass permissions” mode": {
   "de": "Modus „Berechtigungen umgehen“ erlauben",
   "tr": "“İzinleri atla” moduna izin ver"
+ },
+ "Approval needed": {
+  "de": "Freigabe nötig",
+  "tr": "Onay gerektiğinde"
+ },
+ "Approval needed · %@": {
+  "de": "Freigabe nötig · %@",
+  "tr": "Onay gerekiyor · %@"
  },
  "Ask every time": {
   "de": "Jedes Mal fragen",
@@ -155,6 +167,10 @@
   "de": "Link kopieren",
   "tr": "Bağlantıyı Kopyala"
  },
+ "Copy Topic": {
+  "de": "Thema kopieren",
+  "tr": "Konuyu Kopyala"
+ },
  "Copy address": {
   "de": "Adresse kopieren",
   "tr": "Adresi kopyala"
@@ -167,6 +183,10 @@
   "de": "Das Anmeldeobjekt konnte nicht geändert werden: %@",
   "tr": "Giriş öğesi değiştirilemedi: %@"
  },
+ "Create a new random topic. Phones subscribed to the old one stop receiving notifications.": {
+  "de": "Erstellt ein neues zufälliges Thema. Telefone, die das alte abonniert haben, erhalten keine Mitteilungen mehr.",
+  "tr": "Yeni bir rastgele konu oluşturur. Eski konuya abone olan telefonlara artık bildirim gelmez."
+ },
  "Default model": {
   "de": "Standardmodell",
   "tr": "Varsayılan model"
@@ -178,6 +198,10 @@
  "Deny": {
   "de": "Ablehnen",
   "tr": "Reddet"
+ },
+ "Destinations": {
+  "de": "Ziele",
+  "tr": "Hedefler"
  },
  "Done": {
   "de": "Fertig",
@@ -195,6 +219,14 @@
   "de": "Diese Sitzung beenden",
   "tr": "Bu oturumu sonlandır"
  },
+ "Enter a valid server address (https://…).": {
+  "de": "Gib eine gültige Serveradresse ein (https://…).",
+  "tr": "Geçerli bir sunucu adresi girin (https://…)."
+ },
+ "Events": {
+  "de": "Ereignisse",
+  "tr": "Olaylar"
+ },
  "General": {
   "de": "Allgemein",
   "tr": "Genel"
@@ -202,6 +234,10 @@
  "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.": {
   "de": "Lade Tailscale aus dem App Store und melde dich mit demselben Konto an. iOS erlaubt Apps nicht, das für dich zu erledigen.",
   "tr": "Tailscale'i App Store'dan edinin ve aynı hesapla giriş yapın. iOS, uygulamaların bunu sizin yerinize yapmasına izin vermez."
+ },
+ "Get notified when a task you started from your phone finishes, when Claude waits for your approval, or when a session fails.": {
+  "de": "Lass dich benachrichtigen, wenn eine vom Telefon gestartete Aufgabe fertig ist, Claude auf deine Freigabe wartet oder eine Sitzung fehlschlägt.",
+  "tr": "Telefondan başlattığınız bir görev bittiğinde, Claude onayınızı beklediğinde ya da bir oturum hata verdiğinde bildirim alın."
  },
  "Hide Manual Steps": {
   "de": "Manuelle Schritte ausblenden",
@@ -219,6 +255,10 @@
   "de": "Aktiviere in der Tailscale-Admin-Konsole unter DNS MagicDNS, damit dein Mac einen stabilen Namen erhält.",
   "tr": "Mac'inizin kalıcı bir adı olması için Tailscale yönetim konsolunda DNS altında MagicDNS'i etkinleştirin."
  },
+ "Include a short summary": {
+  "de": "Kurze Zusammenfassung hinzufügen",
+  "tr": "Kısa bir özet ekle"
+ },
  "Install Claude Code": {
   "de": "Claude Code installieren",
   "tr": "Claude Code'u kurun"
@@ -234,6 +274,10 @@
  "Install Tailscale on your iPhone or iPad": {
   "de": "Tailscale auf iPhone oder iPad installieren",
   "tr": "iPhone veya iPad'inize Tailscale'i kurun"
+ },
+ "Install the free ntfy app, tap +, and enter the topic. For a self-hosted server, also turn on “Use another server” and enter its address.": {
+  "de": "Installiere die kostenlose ntfy-App, tippe auf + und gib das Thema ein. Für einen eigenen Server aktiviere zusätzlich „Use another server“ und gib seine Adresse ein.",
+  "tr": "Ücretsiz ntfy uygulamasını kurun, + simgesine dokunun ve konuyu girin. Kendi sunucunuzu kullanıyorsanız “Use another server” seçeneğini de açıp adresini girin."
  },
  "Installed: %@": {
   "de": "Installiert: %@",
@@ -275,6 +319,18 @@
   "de": "Mac-ID",
   "tr": "Mac kimliği"
  },
+ "Mac: %@": {
+  "de": "Mac: %@",
+  "tr": "Mac: %@"
+ },
+ "Mac: notifications are turned off in System Settings": {
+  "de": "Mac: Mitteilungen sind in den Systemeinstellungen deaktiviert",
+  "tr": "Mac: bildirimler Sistem Ayarları'nda kapalı"
+ },
+ "Mac: shown": {
+  "de": "Mac: angezeigt",
+  "tr": "Mac: gösterildi"
+ },
  "MagicDNS is off. Turn it on in the Tailscale admin console for a stable name (optional).": {
   "de": "MagicDNS ist aus. Aktiviere es in der Tailscale-Admin-Konsole für einen stabilen Namen (optional).",
   "tr": "MagicDNS kapalı. Kalıcı bir ad için Tailscale yönetim konsolundan açın (isteğe bağlı)."
@@ -290,6 +346,10 @@
  "New Code": {
   "de": "Neuer Code",
   "tr": "Yeni Kod"
+ },
+ "New Topic": {
+  "de": "Neues Thema",
+  "tr": "Yeni Konu"
  },
  "New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Pilothouse never sees it.": {
   "de": "Neue Chats auf deinem iPhone oder iPad können jeden installierten Agenten verwenden. Jeder nutzt seine eigene Anmeldung aus dem Terminal; Pilothouse sieht sie nie.",
@@ -327,9 +387,21 @@
   "de": "Nicht angemeldet",
   "tr": "Giriş yapılmamış"
  },
+ "Notifications": {
+  "de": "Mitteilungen",
+  "tr": "Bildirimler"
+ },
+ "Notifications from Pilothouse arrive like this.": {
+  "de": "So kommen Mitteilungen von Pilothouse an.",
+  "tr": "Pilothouse bildirimleri böyle görünür."
+ },
  "OK": {
   "de": "OK",
   "tr": "Tamam"
+ },
+ "On a public server anyone who knows the topic can read its notifications, so treat it like a password. Self-hosted servers need HTTPS; an access token is only needed if your server requires one.": {
+  "de": "Auf einem öffentlichen Server kann jeder, der das Thema kennt, die Mitteilungen lesen – behandle es also wie ein Passwort. Eigene Server brauchen HTTPS; ein Zugriffstoken ist nur nötig, wenn dein Server eines verlangt.",
+  "tr": "Herkese açık bir sunucuda konuyu bilen herkes bildirimleri okuyabilir; bu yüzden onu bir şifre gibi saklayın. Kendi sunucunuz HTTPS kullanmalıdır; erişim token'ı yalnızca sunucunuz istiyorsa gerekir."
  },
  "Open Pilothouse at login": {
   "de": "Pilothouse bei der Anmeldung öffnen",
@@ -346,6 +418,14 @@
  "Open the Claude Code setup guide": {
   "de": "Claude-Code-Einrichtungsanleitung öffnen",
   "tr": "Claude Code kurulum kılavuzunu aç"
+ },
+ "Optional": {
+  "de": "Optional",
+  "tr": "İsteğe bağlı"
+ },
+ "Or scan the code with the Camera to open the topic in Safari.": {
+  "de": "Oder scanne den Code mit der Kamera, um das Thema in Safari zu öffnen.",
+  "tr": "Ya da konuyu Safari'de açmak için kodu Kamera ile tarayın."
  },
  "Pair New Device…": {
   "de": "Neues Gerät koppeln …",
@@ -431,6 +511,10 @@
   "de": "Fernzugriff mit Tailscale",
   "tr": "Tailscale ile uzaktan erişim"
  },
+ "Remove Token": {
+  "de": "Token entfernen",
+  "tr": "Token'ı Kaldır"
+ },
  "Reply to Claude (e.g. “I have signed in”)": {
   "de": "Claude antworten (z. B. „Ich habe mich angemeldet“)",
   "tr": "Claude'a yanıt ver (örn. “Giriş yaptım”)"
@@ -467,6 +551,30 @@
   "de": "Senden",
   "tr": "Gönder"
  },
+ "Send Test Notification": {
+  "de": "Testmitteilung senden",
+  "tr": "Test Bildirimi Gönder"
+ },
+ "Send notifications": {
+  "de": "Mitteilungen senden",
+  "tr": "Bildirim gönder"
+ },
+ "Send to your iPhone with ntfy": {
+  "de": "Mit ntfy an dein iPhone senden",
+  "tr": "ntfy ile iPhone'unuza gönder"
+ },
+ "Server": {
+  "de": "Server",
+  "tr": "Sunucu"
+ },
+ "Session failed": {
+  "de": "Sitzung fehlgeschlagen",
+  "tr": "Oturum hata verdiğinde"
+ },
+ "Session failed · %@": {
+  "de": "Sitzung fehlgeschlagen · %@",
+  "tr": "Oturum hata verdi · %@"
+ },
  "Sessions": {
   "de": "Sitzungen",
   "tr": "Oturumlar"
@@ -486,6 +594,10 @@
  "Settings…": {
   "de": "Einstellungen …",
   "tr": "Ayarlar…"
+ },
+ "Show on this Mac": {
+  "de": "Auf diesem Mac anzeigen",
+  "tr": "Bu Mac'te göster"
  },
  "Sign in once in Terminal": {
   "de": "Einmal im Terminal anmelden",
@@ -527,9 +639,17 @@
   "de": "Im Schlüsselbund gespeichert",
   "tr": "Anahtar Zinciri'nde saklanıyor"
  },
+ "Sub-agent finished · %@": {
+  "de": "Sub-Agent fertig · %@",
+  "tr": "Alt ajan bitti · %@"
+ },
  "Sub-agents": {
   "de": "Sub-Agenten",
   "tr": "Alt ajanlar"
+ },
+ "Subscribe on your iPhone": {
+  "de": "Auf dem iPhone abonnieren",
+  "tr": "iPhone'unuzda abone olun"
  },
  "Tailscale": {
   "de": "Tailscale",
@@ -559,9 +679,25 @@
   "de": "Wird nach einem Neustart von Pilothouse wirksam. Ist der Port belegt, wird der nächste freie verwendet.",
   "tr": "Pilothouse yeniden başlatıldıktan sonra geçerli olur. Port doluysa bir sonraki boş port kullanılır."
  },
+ "Task finished": {
+  "de": "Aufgabe fertig",
+  "tr": "Görev bittiğinde"
+ },
+ "Task finished · %@": {
+  "de": "Aufgabe fertig · %@",
+  "tr": "Görev bitti · %@"
+ },
+ "Test notification from %@": {
+  "de": "Testmitteilung von %@",
+  "tr": "%@ cihazından test bildirimi"
+ },
  "The API key could not be saved: %@": {
   "de": "Der API-Schlüssel konnte nicht gespeichert werden: %@",
   "tr": "API anahtarı kaydedilemedi: %@"
+ },
+ "The access token could not be saved: %@": {
+  "de": "Das Zugriffstoken konnte nicht gespeichert werden: %@",
+  "tr": "Erişim token'ı kaydedilemedi: %@"
  },
  "The device is disconnected immediately and has to pair again to reconnect.": {
   "de": "Das Gerät wird sofort getrennt und muss erneut gekoppelt werden, um sich zu verbinden.",
@@ -583,6 +719,10 @@
   "de": "Tipp: Richte Tailscale ein, um diesen Mac unterwegs zu erreichen.",
   "tr": "İpucu: Bu Mac'e evden uzakta erişmek için Tailscale'i kurun."
  },
+ "Topic": {
+  "de": "Thema",
+  "tr": "Konu"
+ },
  "Traffic between your devices is end-to-end encrypted. Pilothouse never connects to Anthropic and collects no telemetry.": {
   "de": "Der Datenverkehr zwischen deinen Geräten ist Ende-zu-Ende verschlüsselt. Pilothouse verbindet sich nie mit Anthropic und sammelt keine Telemetrie.",
   "tr": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Pilothouse asla Anthropic'e bağlanmaz ve telemetri toplamaz."
@@ -590,6 +730,10 @@
  "Turn on MagicDNS (recommended)": {
   "de": "MagicDNS aktivieren (empfohlen)",
   "tr": "MagicDNS'i açın (önerilir)"
+ },
+ "Turn on at least one destination.": {
+  "de": "Aktiviere mindestens ein Ziel.",
+  "tr": "En az bir hedefi açın."
  },
  "Unknown helper status.": {
   "de": "Unbekannter Status des Hilfsprogramms.",
@@ -623,6 +767,10 @@
   "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Sitzungen starten, in denen Claude ohne Nachfrage Dateien ändert und Befehle ausführt. Aktiviere dies nur, wenn du das Risiko verstehst.",
   "tr": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı oturumlar başlatabilir. Yalnızca riski anlıyorsanız etkinleştirin."
  },
+ "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": {
+  "de": "Ohne Zusammenfassung sagt eine Mitteilung nur, was in welchem Ordner passiert ist, z. B. „Aufgabe fertig · my-app“. Mit ihr kommen die letzte Nachricht, das Werkzeug oder der Fehler hinzu.",
+  "tr": "Özet kapalıyken bildirim yalnızca ne olduğunu ve hangi klasörde olduğunu söyler, örn. “Görev bitti · my-app”. Açıkken son mesaj, araç ya da hata da eklenir."
+ },
  "Working": {
   "de": "Arbeitet",
   "tr": "Çalışıyor"
@@ -634,5 +782,29 @@
  "You can now start Claude Code sessions on this Mac from your device.": {
   "de": "Du kannst jetzt von deinem Gerät aus Claude-Code-Sitzungen auf diesem Mac starten.",
   "tr": "Artık cihazınızdan bu Mac'te Claude Code oturumları başlatabilirsiniz."
+ },
+ "iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.": {
+  "de": "iPhone-Mitteilungen laufen über einen ntfy-Server, weil iOS Apps nur über Apples Push-Dienst weckt, der einen Pilothouse-Server bräuchte. Ein Tippen darauf öffnet die Sitzung in Pilothouse.",
+  "tr": "iPhone bildirimleri bir ntfy sunucusu üzerinden gider; çünkü iOS uygulamaları yalnızca Apple'ın push servisiyle uyandırır ve bu bir Pilothouse sunucusu gerektirirdi. Bildirime dokunmak oturumu Pilothouse'da açar."
+ },
+ "ntfy": {
+  "de": "ntfy",
+  "tr": "ntfy"
+ },
+ "ntfy on the App Store": {
+  "de": "ntfy im App Store",
+  "tr": "App Store'da ntfy"
+ },
+ "ntfy topic QR code": {
+  "de": "QR-Code des ntfy-Themas",
+  "tr": "ntfy konusu QR kodu"
+ },
+ "ntfy: %@": {
+  "de": "ntfy: %@",
+  "tr": "ntfy: %@"
+ },
+ "ntfy: delivered (HTTP %lld)": {
+  "de": "ntfy: zugestellt (HTTP %lld)",
+  "tr": "ntfy: iletildi (HTTP %lld)"
  }
 }
