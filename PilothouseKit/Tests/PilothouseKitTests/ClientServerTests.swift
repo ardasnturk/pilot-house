@@ -246,14 +246,15 @@ import Testing
             port: 47823, pairedAt: Date(), lastSuccessfulHost: "100.64.1.1", lastSuccessfulPort: 47824
         )
         let candidates = ConnectionPlanner.candidates(for: mac, bonjour: [.bonjour(name: "Mac", type: "_pilothouse._tcp", domain: "local.")])
+        // Local network first, even when Tailscale worked last time.
         #expect(candidates.map(\.endpoint) == [
-            .hostPort(host: "100.64.1.1", port: 47824),
             .bonjour(name: "Mac", type: "_pilothouse._tcp", domain: "local."),
             .hostPort(host: "192.168.1.5", port: 47823),
+            .hostPort(host: "100.64.1.1", port: 47824),
             .hostPort(host: "100.64.1.1", port: 47823),
             .hostPort(host: "mac.tail.ts.net", port: 47823),
         ])
-        #expect(candidates.map(\.route) == [.tailscale, .local, .local, .tailscale, .tailscale])
+        #expect(candidates.map(\.route) == [.local, .local, .tailscale, .tailscale, .tailscale])
     }
 
     @Test func preferenceFiltersRoutes() {

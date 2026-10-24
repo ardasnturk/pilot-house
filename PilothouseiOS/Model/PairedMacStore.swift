@@ -65,6 +65,7 @@ final class UserPreferences {
     private enum Key {
         static let activeMacId = "activeMacId"
         static let connectionPreference = "connectionPreference"
+        static let tailscaleOptIn = "tailscaleOptIn"
         static let defaultModel = "defaultModel"
         static let defaultEffort = "defaultEffort"
         static let defaultPermissionMode = "defaultPermissionMode"
@@ -78,7 +79,17 @@ final class UserPreferences {
     @ObservationIgnored private let defaults: UserDefaults
 
     var activeMacId: String? { didSet { defaults.set(activeMacId, forKey: Key.activeMacId) } }
-    var connectionPreference: ConnectionPreference { didSet { defaults.set(connectionPreference.rawValue, forKey: Key.connectionPreference) } }
+    var connectionPreference: ConnectionPreference {
+        didSet {
+            defaults.set(connectionPreference.rawValue, forKey: Key.connectionPreference)
+            defaults.set(connectionPreference != .localOnly, forKey: Key.tailscaleOptIn)
+        }
+    }
+    /// "Use Tailscale when away": the local network first, Tailscale only when the Mac is not there.
+    var usesTailscale: Bool {
+        get { connectionPreference != .localOnly }
+        set { connectionPreference = newValue ? .automatic : .localOnly }
+    }
     var defaultModel: String { didSet { defaults.set(defaultModel, forKey: Key.defaultModel) } }
     /// Effort for new chats (`""` = the agent's default); used when the agent supports it.
     var defaultEffort: String { didSet { defaults.set(defaultEffort, forKey: Key.defaultEffort) } }
@@ -93,7 +104,10 @@ final class UserPreferences {
         self.defaults = defaults
         defaults.register(defaults: [Key.hapticsEnabled: true])
         activeMacId = defaults.string(forKey: Key.activeMacId)
-        connectionPreference = ConnectionPreference(rawValue: defaults.string(forKey: Key.connectionPreference) ?? "") ?? .automatic
+        // Tailscale is opt-in (D-103). 1.0 defaulted to `automatic`; keep it only
+        // for someone who chose Tailscale explicitly.
+        let storedPreference = ConnectionPreference(rawValue: defaults.string(forKey: Key.connectionPreference) ?? "")
+        connectionPreference = defaults.bool(forKey: Key.tailscaleOptIn) || storedPreference == .tailscaleOnly ? .automatic : .localOnly
         defaultModel = defaults.string(forKey: Key.defaultModel) ?? ""
         defaultEffort = defaults.string(forKey: Key.defaultEffort) ?? ""
         defaultPermissionMode = PermissionMode(rawValue: defaults.string(forKey: Key.defaultPermissionMode) ?? "") ?? .default

@@ -39,13 +39,16 @@ public protocol TransportConnector: Sendable {
 
 /// Which routes the client may use (Settings → Connection).
 public enum ConnectionPreference: String, Sendable, Hashable, Codable, CaseIterable {
+    /// The local network first, Tailscale when the Mac is not reachable there.
     case automatic
+    /// The local network only (the default: Tailscale is opt-in, D-103).
     case localOnly
     case tailscaleOnly
 }
 
-/// Orders connection attempts as the prompt requires (§5.1):
-/// last successful address → Bonjour → local IPs → Tailscale IP → MagicDNS.
+/// Orders connection attempts, local network first (D-103):
+/// last successful LAN address → Bonjour → LAN IPs → then, if allowed, the
+/// last successful Tailscale address → Tailscale IP → MagicDNS.
 public enum ConnectionPlanner {
     public static let localTimeout: Double = 4
     public static let remoteTimeout: Double = 10
@@ -70,14 +73,17 @@ public enum ConnectionPlanner {
             result.append(ConnectionCandidate(endpoint: endpoint, route: route, timeout: timeout))
         }
 
-        if let host = mac.lastSuccessfulHost {
-            let port = mac.lastSuccessfulPort ?? mac.port
-            add(.hostPort(host: host, port: port), HostAddress.classify(host) == .local ? .local : .tailscale)
+        let lastRoute: ConnectionRoute? = mac.lastSuccessfulHost.map { HostAddress.classify($0) == .local ? .local : .tailscale }
+        func addLastSuccessful(if route: ConnectionRoute) {
+            guard let host = mac.lastSuccessfulHost, lastRoute == route else { return }
+            add(.hostPort(host: host, port: mac.lastSuccessfulPort ?? mac.port), route)
         }
+        addLastSuccessful(if: .local)
         for endpoint in bonjour { add(endpoint, .local) }
         for address in mac.addresses where address.kind == .local {
             add(.hostPort(host: address.host, port: mac.port), .local)
         }
+        addLastSuccessful(if: .tailscale)
         for address in mac.addresses where address.kind == .tailscale {
             add(.hostPort(host: address.host, port: mac.port), .tailscale)
         }
