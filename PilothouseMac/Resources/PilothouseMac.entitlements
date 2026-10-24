@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	Distributed with Developer ID outside the Mac App Store. The App Sandbox is
+	off on purpose: Pilothouse starts the user's `claude` CLI in arbitrary
+	folders of the home directory (prompt §4.1). Hardened Runtime stays on and
+	needs no exceptions.
+	-->
+</dict>
+</plist>

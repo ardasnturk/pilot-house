@@ -148,11 +148,14 @@ public struct ClaudeCLIStatus: Sendable, Hashable, Codable {
     public var installed: Bool
     public var path: String?
     public var version: String?
+    /// From `claude auth status`; `nil` when unknown (older CLI).
+    public var loggedIn: Bool?
 
-    public init(installed: Bool, path: String? = nil, version: String? = nil) {
+    public init(installed: Bool, path: String? = nil, version: String? = nil, loggedIn: Bool? = nil) {
         self.installed = installed
         self.path = path
         self.version = version
+        self.loggedIn = loggedIn
     }
 }
 

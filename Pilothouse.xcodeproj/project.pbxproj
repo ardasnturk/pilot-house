@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1365B4A4D77B2203074A6F6C /* PilothouseMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D639ABCAF7B84B7BC8E7C3 /* PilothouseMacApp.swift */; };
+		1B98E836283734F1241F22A3 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BDABCCC4F49F4C2579794 /* AppController.swift */; };
+		276206A341752128EBAAF78A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF91EDAD15F169830523451D /* AppDelegate.swift */; };
+		3095D7C7C1DA6AC1D6792130 /* LaunchAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AA6A50EDD04DF00664CA07 /* LaunchAtLogin.swift */; };
+		340372106A359118A8C8A128 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0FFC63706831535D59C10E /* SettingsView.swift */; };
+		4A0C194D15AE2D9FBEA7B441 /* SleepAssertion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E23C8C1CD4CE37C1A62BEF /* SleepAssertion.swift */; };
+		581BA80D844F7401D6CBBB55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DFC0F8AEC409758AECBF45 /* Assets.xcassets */; };
+		59080C3D85FDA53F9B810F42 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853324E3CA7BBA21BA763716 /* AppSettings.swift */; };
+		5B7F4C29BB2B51B8AC37DDD7 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D643F7419F60580D705C56C /* HelperProtocol.swift */; };
+		64C0998909935420E3D4B782 /* MenuContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B122B36322A27E4867495C75 /* MenuContentView.swift */; };
+		6DB369B0210A75B498C35526 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A027C85AAA6E7B80E0809 /* PairingView.swift */; };
+		810350712958DC3E2A64D4CD /* PilothouseHost in Frameworks */ = {isa = PBXBuildFile; productRef = 2AF240DD6C5AE3745DC6834D /* PilothouseHost */; };
+		8C9F912AB4D432AE8D39E9FC /* LidClosedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371C67D3326C21AFC37AF23 /* LidClosedController.swift */; };
+		99F914510A4CF2CCAD96A251 /* ClaudeSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */; };
+		AB76F723CC81D4E07EA126D5 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68F79BCEA115161556E53A /* QRCode.swift */; };
+		B725B54F25FF727911124CCC /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9948CEDD1C4D75D6D5E2164E /* Formatting.swift */; };
+		C69E5B6AFFBC6459FF6B6C7A /* PilothouseHelper in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 346B080107E6EC89C6DDC60F /* PilothouseHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D259B18F5280D5416D491DC0 /* HelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D643F7419F60580D705C56C /* HelperProtocol.swift */; };
+		F134C661C71F1E05B702E2B0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F68A90222485CB3205B3A32 /* main.swift */; };
+		F2BE694E8B449737EF0A56D4 /* com.ardasenturk.Pilothouse.Helper.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D35A07BA8AFB159492C1296 /* com.ardasenturk.Pilothouse.Helper.plist */; };
+		F7BA64E5EB1CE88946F59CD0 /* PilothouseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C65B6E4BDF4D82D09CA974C5 /* PilothouseKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E604C3DB6EB09AEC84E742D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E956B9D378A9BAE61FA37846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93AEA6DD3CA6465449E737ED;
+			remoteInfo = PilothouseHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0376EF5751669EF6840AE559 /* Embed Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				C69E5B6AFFBC6459FF6B6C7A /* PilothouseHelper in Embed Dependencies */,
+			);
+			name = "Embed Dependencies";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDE7088FDEDA3CAF4B61AE9A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchDaemons;
+			dstSubfolderSpec = 1;
+			files = (
+				F2BE694E8B449737EF0A56D4 /* com.ardasenturk.Pilothouse.Helper.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		034BC3FEA5B6B50B118199EA /* PilothouseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PilothouseMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0371C67D3326C21AFC37AF23 /* LidClosedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LidClosedController.swift; sourceTree = "<group>"; };
+		091C5F1C20A13A76470F728B /* PilothouseKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PilothouseKit; path = PilothouseKit; sourceTree = SOURCE_ROOT; };
+		2A0FFC63706831535D59C10E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2F68A90222485CB3205B3A32 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		346B080107E6EC89C6DDC60F /* PilothouseHelper */ = {isa = PBXFileReference; includeInIndex = 0; path = PilothouseHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D643F7419F60580D705C56C /* HelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperProtocol.swift; sourceTree = "<group>"; };
+		3F68F79BCEA115161556E53A /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		4C1BDABCCC4F49F4C2579794 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		50D639ABCAF7B84B7BC8E7C3 /* PilothouseMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilothouseMacApp.swift; sourceTree = "<group>"; };
+		853324E3CA7BBA21BA763716 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		8D35A07BA8AFB159492C1296 /* com.ardasenturk.Pilothouse.Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = com.ardasenturk.Pilothouse.Helper.plist; sourceTree = "<group>"; };
+		922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSetupView.swift; sourceTree = "<group>"; };
+		970AAF535EEB86A02BDCF3B6 /* PilothouseMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PilothouseMac.entitlements; sourceTree = "<group>"; };
+		9948CEDD1C4D75D6D5E2164E /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		A5DFC0F8AEC409758AECBF45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B122B36322A27E4867495C75 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
+		BA1A027C85AAA6E7B80E0809 /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
+		C9B7C33D8AA436C6087621C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D9AA6A50EDD04DF00664CA07 /* LaunchAtLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLogin.swift; sourceTree = "<group>"; };
+		F9E23C8C1CD4CE37C1A62BEF /* SleepAssertion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssertion.swift; sourceTree = "<group>"; };
+		FF91EDAD15F169830523451D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6C399A314994D488ECEBD3D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BA64E5EB1CE88946F59CD0 /* PilothouseKit in Frameworks */,
+				810350712958DC3E2A64D4CD /* PilothouseHost in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0285C1FB583D25E801BE8156 /* Power */ = {
+			isa = PBXGroup;
+			children = (
+				0371C67D3326C21AFC37AF23 /* LidClosedController.swift */,
+				F9E23C8C1CD4CE37C1A62BEF /* SleepAssertion.swift */,
+			);
+			path = Power;
+			sourceTree = "<group>";
+		};
+		39410B7AC30D032D3B77CC5A /* PilothouseMac */ = {
+			isa = PBXGroup;
+			children = (
+				70C9BBD207E0B7C90AEEAC9D /* App */,
+				0285C1FB583D25E801BE8156 /* Power */,
+				DAF5A64432FDDDEFBFCC142A /* Resources */,
+				502FE5D3ED9C0A343F58748F /* Support */,
+				F8068C9307BE0C758790F95D /* Views */,
+			);
+			path = PilothouseMac;
+			sourceTree = "<group>";
+		};
+		49DA07882D74E7085A51F802 /* PilothouseHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8D35A07BA8AFB159492C1296 /* com.ardasenturk.Pilothouse.Helper.plist */,
+				2F68A90222485CB3205B3A32 /* main.swift */,
+			);
+			path = PilothouseHelper;
+			sourceTree = "<group>";
+		};
+		502FE5D3ED9C0A343F58748F /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				853324E3CA7BBA21BA763716 /* AppSettings.swift */,
+				9948CEDD1C4D75D6D5E2164E /* Formatting.swift */,
+				D9AA6A50EDD04DF00664CA07 /* LaunchAtLogin.swift */,
+				3F68F79BCEA115161556E53A /* QRCode.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		5EC84A3CF0EB91919942C171 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				091C5F1C20A13A76470F728B /* PilothouseKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		62ED6FC840739BDF9DE3590D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				346B080107E6EC89C6DDC60F /* PilothouseHelper */,
+				034BC3FEA5B6B50B118199EA /* PilothouseMac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		69F9517C89CAF569FB625541 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				3D643F7419F60580D705C56C /* HelperProtocol.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		70C9BBD207E0B7C90AEEAC9D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4C1BDABCCC4F49F4C2579794 /* AppController.swift */,
+				FF91EDAD15F169830523451D /* AppDelegate.swift */,
+				50D639ABCAF7B84B7BC8E7C3 /* PilothouseMacApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A10DE8D525C372C05A4487A6 = {
+			isa = PBXGroup;
+			children = (
+				5EC84A3CF0EB91919942C171 /* Packages */,
+				49DA07882D74E7085A51F802 /* PilothouseHelper */,
+				39410B7AC30D032D3B77CC5A /* PilothouseMac */,
+				69F9517C89CAF569FB625541 /* Shared */,
+				62ED6FC840739BDF9DE3590D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DAF5A64432FDDDEFBFCC142A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFC0F8AEC409758AECBF45 /* Assets.xcassets */,
+				C9B7C33D8AA436C6087621C0 /* Info.plist */,
+				970AAF535EEB86A02BDCF3B6 /* PilothouseMac.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F8068C9307BE0C758790F95D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				922B22181B52FDDA4AD74AB8 /* ClaudeSetupView.swift */,
+				B122B36322A27E4867495C75 /* MenuContentView.swift */,
+				BA1A027C85AAA6E7B80E0809 /* PairingView.swift */,
+				2A0FFC63706831535D59C10E /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93AEA6DD3CA6465449E737ED /* PilothouseHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FE495887F92760B0CA8A0AA /* Build configuration list for PBXNativeTarget "PilothouseHelper" */;
+			buildPhases = (
+				4B7ADE4D7D63C0F7124AA33A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PilothouseHelper;
+			packageProductDependencies = (
+			);
+			productName = PilothouseHelper;
+			productReference = 346B080107E6EC89C6DDC60F /* PilothouseHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+		C9D53AC0BC98282FCCBE13A1 /* PilothouseMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C935D7D9B8FEF6A0FA8A5644 /* Build configuration list for PBXNativeTarget "PilothouseMac" */;
+			buildPhases = (
+				C82A9FBCFD61C59B5071D84D /* Sources */,
+				9F7BDA81A8E234F1E3793EB1 /* Resources */,
+				FDE7088FDEDA3CAF4B61AE9A /* CopyFiles */,
+				6C399A314994D488ECEBD3D5 /* Frameworks */,
+				0376EF5751669EF6840AE559 /* Embed Dependencies */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A5E6007BC34288E97AC70F4 /* PBXTargetDependency */,
+			);
+			name = PilothouseMac;
+			packageProductDependencies = (
+				C65B6E4BDF4D82D09CA974C5 /* PilothouseKit */,
+				2AF240DD6C5AE3745DC6834D /* PilothouseHost */,
+			);
+			productName = PilothouseMac;
+			productReference = 034BC3FEA5B6B50B118199EA /* PilothouseMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E956B9D378A9BAE61FA37846 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					93AEA6DD3CA6465449E737ED = {
+						DevelopmentTeam = 5JMD3VSD7N;
+					};
+					C9D53AC0BC98282FCCBE13A1 = {
+						DevelopmentTeam = 5JMD3VSD7N;
+					};
+				};
+			};
+			buildConfigurationList = 00120C4F4F51D93F1C0CFC1F /* Build configuration list for PBXProject "Pilothouse" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A10DE8D525C372C05A4487A6;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				496319C0F82DBFA5040590A8 /* XCLocalSwiftPackageReference "PilothouseKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 62ED6FC840739BDF9DE3590D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9D53AC0BC98282FCCBE13A1 /* PilothouseMac */,
+				93AEA6DD3CA6465449E737ED /* PilothouseHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9F7BDA81A8E234F1E3793EB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				581BA80D844F7401D6CBBB55 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B7ADE4D7D63C0F7124AA33A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7F4C29BB2B51B8AC37DDD7 /* HelperProtocol.swift in Sources */,
+				F134C661C71F1E05B702E2B0 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C82A9FBCFD61C59B5071D84D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B98E836283734F1241F22A3 /* AppController.swift in Sources */,
+				276206A341752128EBAAF78A /* AppDelegate.swift in Sources */,
+				59080C3D85FDA53F9B810F42 /* AppSettings.swift in Sources */,
+				99F914510A4CF2CCAD96A251 /* ClaudeSetupView.swift in Sources */,
+				B725B54F25FF727911124CCC /* Formatting.swift in Sources */,
+				D259B18F5280D5416D491DC0 /* HelperProtocol.swift in Sources */,
+				3095D7C7C1DA6AC1D6792130 /* LaunchAtLogin.swift in Sources */,
+				8C9F912AB4D432AE8D39E9FC /* LidClosedController.swift in Sources */,
+				64C0998909935420E3D4B782 /* MenuContentView.swift in Sources */,
+				6DB369B0210A75B498C35526 /* PairingView.swift in Sources */,
+				1365B4A4D77B2203074A6F6C /* PilothouseMacApp.swift in Sources */,
+				AB76F723CC81D4E07EA126D5 /* QRCode.swift in Sources */,
+				340372106A359118A8C8A128 /* SettingsView.swift in Sources */,
+				4A0C194D15AE2D9FBEA7B441 /* SleepAssertion.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A5E6007BC34288E97AC70F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93AEA6DD3CA6465449E737ED /* PilothouseHelper */;
+			targetProxy = E604C3DB6EB09AEC84E742D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		02857627320D104075A0AABD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PilothouseMac/Resources/PilothouseMac.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PilothouseMac/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.Mac;
+				PRODUCT_NAME = Pilothouse;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		09A1DA4D1CE769D81CD8ECC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PilothouseHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.Helper;
+				PRODUCT_NAME = PilothouseHelper;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		2C99B030687D7C48552C53D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				CREATE_INFOPLIST_SECTION_IN_BINARY = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PilothouseHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.Helper;
+				PRODUCT_NAME = PilothouseHelper;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3E33D00CBBA2AAAA854B3922 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PilothouseMac/Resources/PilothouseMac.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = PilothouseMac/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.Mac;
+				PRODUCT_NAME = Pilothouse;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BC72A7B7DCD4A60A0CFE7735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5JMD3VSD7N;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		D72AFCDD4786A65B04B9BC8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5JMD3VSD7N;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00120C4F4F51D93F1C0CFC1F /* Build configuration list for PBXProject "Pilothouse" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC72A7B7DCD4A60A0CFE7735 /* Debug */,
+				D72AFCDD4786A65B04B9BC8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3FE495887F92760B0CA8A0AA /* Build configuration list for PBXNativeTarget "PilothouseHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C99B030687D7C48552C53D0 /* Debug */,
+				09A1DA4D1CE769D81CD8ECC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C935D7D9B8FEF6A0FA8A5644 /* Build configuration list for PBXNativeTarget "PilothouseMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02857627320D104075A0AABD /* Debug */,
+				3E33D00CBBA2AAAA854B3922 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		496319C0F82DBFA5040590A8 /* XCLocalSwiftPackageReference "PilothouseKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = PilothouseKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2AF240DD6C5AE3745DC6834D /* PilothouseHost */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PilothouseHost;
+		};
+		C65B6E4BDF4D82D09CA974C5 /* PilothouseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PilothouseKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E956B9D378A9BAE61FA37846 /* Project object */;
+}
