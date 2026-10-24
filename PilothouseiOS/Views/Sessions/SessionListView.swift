@@ -87,7 +87,8 @@ struct SessionListView: View {
             Section {
                 ConnectionStatusRow(
                     connection: connection,
-                    offersTailscale: !model.preferences.usesTailscale && connection.mac.addresses.contains { $0.kind != .local }
+                    offersTailscale: !model.preferences.usesTailscale && connection.mac.addresses.contains { $0.kind != .local },
+                    tailscaleAddressUnknown: model.preferences.usesTailscale && !connection.mac.addresses.contains { $0.kind != .local }
                 ) {
                     model.preferences.usesTailscale = true
                     connection.setPreference(model.preferences.connectionPreference)
@@ -266,6 +267,8 @@ struct SessionRow: View {
 struct ConnectionStatusRow: View {
     let connection: MacConnection
     var offersTailscale = false
+    /// Tailscale is on, but the Mac has not told this phone its Tailscale address yet.
+    var tailscaleAddressUnknown = false
     var useTailscale: () -> Void = {}
 
     var body: some View {
@@ -341,7 +344,9 @@ struct ConnectionStatusRow: View {
         case .waitingToRetry(_, true):
             Text("Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.")
         case .waitingToRetry, .idle:
-            if offersTailscale {
+            if tailscaleAddressUnknown {
+                Text("Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.")
+            } else if offersTailscale {
                 Text("Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.")
             } else {
                 Text("Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.")

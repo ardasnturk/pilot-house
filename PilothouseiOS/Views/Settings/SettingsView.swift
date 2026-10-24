@@ -34,6 +34,12 @@ struct SettingsView: View {
                 Section {
                     Toggle("Use Tailscale when away", isOn: $preferences.usesTailscale)
                         .accessibilityIdentifier("tailscaleToggle")
+                    if preferences.usesTailscale, let mac = model.activeMac, !mac.isDemo,
+                       !mac.addresses.contains(where: { $0.kind != .local }) {
+                        Label("Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.", systemImage: "exclamationmark.triangle")
+                            .font(.footnote)
+                            .foregroundStyle(.orange)
+                    }
                     Button("How to Set Up Tailscale") { showTailscaleGuide = true }
                 } header: {
                     Text("Connection")

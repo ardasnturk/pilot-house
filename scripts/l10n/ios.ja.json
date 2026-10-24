@@ -197,6 +197,7 @@
   "Pilothouse": "Pilothouse",
   "Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": "Pilothouseは常にまずWi-Fi経由で接続します。そのWi-Fiから離れているときにMacにアクセスするためにTailscaleも使用している場合のみ、オンにしてください。",
   "Pilothouse could not access the Keychain: %@": "Pilothouseはキーチェーンにアクセスできませんでした：%@",
+  "Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": "PilothouseはまだMacのTailscaleアドレスを知りません。MacでTailscaleを実行したまま、一度同じWi-Fi経由で接続してください。",
   "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": "PilothouseはiPhoneの言語に従います。Pilothouseだけ別の言語を使用するには、設定 → アプリ → Pilothouse → 言語で選択してください。",
   "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.": "Pilothouseにはローカルネットワークの使用が許可されていないため、このWi-FiでMacに接続できません。設定でPilothouseのローカルネットワークをオンにしてから、もう一度お試しください。",
   "Pilothouse learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": "PilothouseはMacのTailscaleアドレスを自動的に取得し、ローカルネットワークが利用できないときに使用します。",

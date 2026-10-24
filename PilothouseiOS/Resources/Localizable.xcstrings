@@ -11485,6 +11485,64 @@
         }
       }
     },
+    "Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse aún no conoce la dirección de Tailscale de tu Mac. Conéctate una vez por la misma red wifi mientras Tailscale está activo en el Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse ne connaît pas encore l’adresse Tailscale de votre Mac. Connectez-vous une fois via le même Wi-Fi pendant que Tailscale est actif sur le Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse non conosce ancora l’indirizzo Tailscale del tuo Mac. Connettiti una volta tramite la stessa rete Wi-Fi mentre Tailscale è attivo sul Mac."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PilothouseはまだMacのTailscaleアドレスを知りません。MacでTailscaleを実行したまま、一度同じWi-Fi経由で接続してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse가 아직 Mac의 Tailscale 주소를 모릅니다. Mac에서 Tailscale이 실행 중일 때 같은 Wi-Fi로 한 번 연결하십시오."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Pilothouse ainda não sabe o endereço Tailscale do seu Mac. Conecte-se uma vez pela mesma rede Wi-Fi enquanto o Tailscale estiver ativo no Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse 尚不知道你的 Mac 的 Tailscale 地址。请在 Mac 上运行 Tailscale 时，通过同一无线局域网连接一次。"
+          }
+        }
+      }
+    },
     "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": {
       "localizations": {
         "de": {

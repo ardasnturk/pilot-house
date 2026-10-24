@@ -14,6 +14,8 @@ All notable changes to Pilothouse are recorded here. The format follows
   Tailscale worked. The app now speaks WebSocket over a plain TCP connection.
 - The pairing screen shows the technical reason per address when the Mac
   cannot be reached.
+- With "Use Tailscale when away" on, the app says when it does not know the
+  Mac's Tailscale address yet (connect once over the same Wi-Fi to learn it).
 - The DMG opens with its designed window again.
 
 ## [1.1.0] — 2026-10-24

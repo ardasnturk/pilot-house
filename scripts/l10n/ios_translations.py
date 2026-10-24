@@ -1,6 +1,7 @@
 # Source of scripts/l10n/ios.json — edit here, then run `python3 scripts/l10n/ios_translations.py`.
 import json, os
 T = {
+"Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": ("Pilothouse, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın.", "Pilothouse kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft."),
 "%@ does not report its commands to Pilothouse.": ("%@ komutlarını Pilothouse'a bildirmiyor.", "%@ meldet seine Befehle nicht an Pilothouse."),
 "All": ("Tümü", "Alle"),
 "Built-in": ("Yerleşik", "Integriert"),

@@ -791,6 +791,10 @@
   "de": "Pilothouse konnte nicht auf den Schlüsselbund zugreifen: %@",
   "tr": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
  },
+ "Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": {
+  "de": "Pilothouse kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft.",
+  "tr": "Pilothouse, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın."
+ },
  "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": {
   "de": "Pilothouse folgt der Sprache deines iPhone. Um nur für Pilothouse eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Pilothouse → Sprache.",
   "tr": "Pilothouse, iPhone'unuzun dilini kullanır. Yalnızca Pilothouse için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Pilothouse → Dil bölümünden seçin."
