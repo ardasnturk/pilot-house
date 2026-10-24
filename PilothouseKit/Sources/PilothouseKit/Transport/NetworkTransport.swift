@@ -38,7 +38,13 @@ public final class NWWebSocketTransport: PingableTransport, @unchecked Sendable 
     }
 
     /// Opens a client connection and waits until the WebSocket upgrade completed.
-    public static func connect(to endpoint: Endpoint, timeout: Double) async throws -> NWWebSocketTransport {
+    /// `localNetworkGrace` extends the wait while the Local Network alert may be
+    /// on screen (see `start(timeout:localNetworkGrace:)`).
+    public static func connect(
+        to endpoint: Endpoint,
+        timeout: Double,
+        localNetworkGrace: Double = 0
+    ) async throws -> NWWebSocketTransport {
         let nwEndpoint: NWEndpoint
         switch endpoint {
         case .hostPort(let host, let port):
@@ -56,25 +62,42 @@ public final class NWWebSocketTransport: PingableTransport, @unchecked Sendable 
             connection: connection,
             queue: DispatchQueue(label: "com.ardasenturk.Pilothouse.ws.client")
         )
-        try await transport.start(timeout: timeout)
+        try await transport.start(timeout: timeout, localNetworkGrace: localNetworkGrace)
         return transport
     }
 
-    /// Starts the connection and waits for `.ready`. `.waiting` counts as failure
-    /// so the caller can move on to the next address quickly.
-    func start(timeout: Double) async throws {
+    /// Starts the connection and waits for `.ready`.
+    ///
+    /// `.waiting` is not a failure: Network.framework keeps retrying, and while
+    /// iOS shows the Local Network alert the path is "denied" until the user
+    /// answers (TN3179). Only a refused connection fails at once. When the
+    /// deadline passes with the path denied for local-network reasons, the
+    /// wait is extended by `localNetworkGrace`, then fails with
+    /// `TransportError.localNetworkDenied` so the app can point to Settings.
+    func start(timeout: Double, localNetworkGrace: Double = 0) async throws {
         let once = ResumeOnce<Void>()
         let connection = self.connection
+        let queue = self.queue
+        let denied = Mutex(false)
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             once.install(continuation)
+            @Sendable func fail(_ error: TransportError) {
+                if once.resume(with: .failure(error)) {
+                    connection.cancel()
+                }
+            }
             connection.stateUpdateHandler = { state in
                 switch state {
                 case .ready:
                     once.resume(with: .success(()))
-                case .waiting(let error), .failed(let error):
-                    if once.resume(with: .failure(TransportError.connectionFailed(error.localizedDescription))) {
-                        connection.cancel()
+                case .waiting(let error):
+                    if case .localNetworkDenied? = connection.currentPath?.unsatisfiedReason {
+                        denied.withLock { $0 = true }
+                    } else if case .posix(.ECONNREFUSED) = error {
+                        fail(.connectionFailed(error.localizedDescription))
                     }
+                case .failed(let error):
+                    fail(.connectionFailed(error.localizedDescription))
                 case .cancelled:
                     once.resume(with: .failure(TransportError.closed))
                 default:
@@ -82,10 +105,12 @@ public final class NWWebSocketTransport: PingableTransport, @unchecked Sendable 
                 }
             }
             connection.start(queue: queue)
+            @Sendable func timedOut() -> TransportError {
+                denied.withLock { $0 } ? .localNetworkDenied : .connectionFailed("Timed out after \(Int(timeout)) s")
+            }
             queue.asyncAfter(deadline: .now() + timeout) {
-                if once.resume(with: .failure(TransportError.connectionFailed("Timed out after \(Int(timeout)) s"))) {
-                    connection.cancel()
-                }
+                guard denied.withLock({ $0 }), localNetworkGrace > 0 else { return fail(timedOut()) }
+                queue.asyncAfter(deadline: .now() + localNetworkGrace) { fail(timedOut()) }
             }
         }
     }
@@ -178,10 +203,16 @@ public final class NWWebSocketTransport: PingableTransport, @unchecked Sendable 
 
 /// Network.framework connector used by the iOS app.
 public struct NetworkTransportConnector: TransportConnector {
-    public init() {}
+    /// Extra seconds a LAN attempt waits while the Local Network alert may be
+    /// up. Pairing (usually the app's first LAN access) passes a generous value.
+    public var localNetworkGrace: Double
+
+    public init(localNetworkGrace: Double = 0) {
+        self.localNetworkGrace = localNetworkGrace
+    }
 
     public func connect(to endpoint: Endpoint, timeout: Double) async throws -> any MessageTransport {
-        try await NWWebSocketTransport.connect(to: endpoint, timeout: timeout)
+        try await NWWebSocketTransport.connect(to: endpoint, timeout: timeout, localNetworkGrace: localNetworkGrace)
     }
 }
 

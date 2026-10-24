@@ -16,7 +16,7 @@ struct PairingFlowView: View {
         case paste
         case pairing
         case success(PairedMac)
-        case failure(String)
+        case failure(String, showsSettings: Bool)
     }
 
     private var scannerAvailable: Bool {
@@ -38,6 +38,7 @@ struct PairingFlowView: View {
                 }
         }
         .task {
+            model.requestLocalNetworkAccess()
             if let initialLink {
                 pair(initialLink)
             } else if !scannerAvailable {
@@ -124,7 +125,7 @@ struct PairingFlowView: View {
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
             }
-        case .failure(let message):
+        case .failure(let message, let showsSettings):
             VStack(spacing: 16) {
                 Image(systemName: "exclamationmark.triangle.fill")
                     .font(.system(size: 48))
@@ -136,6 +137,13 @@ struct PairingFlowView: View {
                     .foregroundStyle(.secondary)
                 Button("Try Again") { step = scannerAvailable ? .scan : .paste }
                     .buttonStyle(.borderedProminent)
+                if showsSettings {
+                    Button("Open Settings") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                }
             }
         }
     }
@@ -149,7 +157,7 @@ struct PairingFlowView: View {
                 Haptics.success()
                 step = .success(mac)
             } catch {
-                step = .failure(Self.message(for: error))
+                step = .failure(Self.message(for: error), showsSettings: error as? MacClientError == .localNetworkDenied)
             }
         }
     }
@@ -160,6 +168,8 @@ struct PairingFlowView: View {
             return error.message
         case is PairingPayload.ParseError:
             return String(localized: "This is not a valid Pilothouse pairing code.")
+        case MacClientError.localNetworkDenied:
+            return String(localized: "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.")
         case MacClientError.unreachable:
             return String(localized: "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.")
         case let error as HandshakeError:

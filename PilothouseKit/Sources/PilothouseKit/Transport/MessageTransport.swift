@@ -6,6 +6,9 @@ public enum TransportError: Error, Sendable, Equatable, CustomStringConvertible 
     case connectionFailed(String)
     case unexpectedFrame
     case messageTooLarge
+    /// iOS/macOS refused a LAN connection: the Local Network privilege is off
+    /// (or its alert has not been answered yet).
+    case localNetworkDenied
 
     public var description: String {
         switch self {
@@ -13,6 +16,7 @@ public enum TransportError: Error, Sendable, Equatable, CustomStringConvertible 
         case .connectionFailed(let reason): "Connection failed: \(reason)"
         case .unexpectedFrame: "Received an unexpected frame."
         case .messageTooLarge: "Message too large."
+        case .localNetworkDenied: "Local network access is not allowed."
         }
     }
 }

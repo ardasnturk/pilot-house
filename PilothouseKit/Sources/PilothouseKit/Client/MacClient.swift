@@ -18,7 +18,8 @@ public enum MacConnectionState: Sendable, Equatable {
     case idle
     case connecting
     case connected(route: ConnectionRoute, endpoint: String)
-    case waitingToRetry(until: Date)
+    /// `localNetworkDenied`: a LAN attempt was refused by Local Network privacy.
+    case waitingToRetry(until: Date, localNetworkDenied: Bool = false)
     /// Needs user action (re-pair, update the app, fix the clock).
     case failed(message: String, code: ErrorCode?)
 
@@ -33,6 +34,8 @@ public enum MacClientError: Error, Sendable, Equatable, CustomStringConvertible 
     case timedOut
     case unexpectedResponse(String)
     case unreachable([String])
+    /// Only LAN addresses could have worked, and Local Network access is off.
+    case localNetworkDenied
 
     public var description: String {
         switch self {
@@ -41,6 +44,7 @@ public enum MacClientError: Error, Sendable, Equatable, CustomStringConvertible 
         case .unexpectedResponse(let type): "Unexpected response \"\(type)\" from the Mac."
         case .unreachable(let attempts):
             "Could not reach the Mac (tried \(attempts.joined(separator: ", ")))."
+        case .localNetworkDenied: "Local network access is not allowed."
         }
     }
 }
@@ -189,6 +193,7 @@ public actor MacClient {
             setState(.connecting)
             let candidates = ConnectionPlanner.candidates(for: mac, bonjour: await bonjourEndpoints(), preference: preference)
             var wasConnected = false
+            var localNetworkDenied = false
             var attempts: [String] = []
             for candidate in candidates {
                 if Task.isCancelled { return }
@@ -210,6 +215,7 @@ public actor MacClient {
                     loopTask = nil
                     return
                 } catch {
+                    if error as? TransportError == .localNetworkDenied { localNetworkDenied = true }
                     attempts.append(candidate.endpoint.description)
                     log.debug("Attempt via \(candidate.endpoint) failed: \(error)")
                 }
@@ -218,7 +224,7 @@ public actor MacClient {
             if wasConnected { continue }
             let delay = backoff.nextDelay()
             log.info("Mac unreachable via \(attempts); retrying in \(Int(delay))s")
-            setState(.waitingToRetry(until: Date().addingTimeInterval(delay)))
+            setState(.waitingToRetry(until: Date().addingTimeInterval(delay), localNetworkDenied: localNetworkDenied))
             await sleep(seconds: delay)
         }
     }
@@ -423,11 +429,13 @@ extension MacClient {
             pairedAt: now
         )
         var attempts: [String] = []
+        var localNetworkDenied = false
         for candidate in ConnectionPlanner.candidates(for: mac, bonjour: []) {
             let transport: any MessageTransport
             do {
                 transport = try await connector.connect(to: candidate.endpoint, timeout: candidate.timeout)
             } catch {
+                if error as? TransportError == .localNetworkDenied { localNetworkDenied = true }
                 attempts.append(candidate.endpoint.description)
                 continue
             }
@@ -460,6 +468,6 @@ extension MacClient {
             }
             return mac
         }
-        throw MacClientError.unreachable(attempts)
+        throw localNetworkDenied ? MacClientError.localNetworkDenied : MacClientError.unreachable(attempts)
     }
 }

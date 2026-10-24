@@ -151,12 +151,22 @@ final class AppModel {
             throw ErrorPayload(code: .internalError, message: identityError ?? "Keychain unavailable")
         }
         let payload = try PairingPayload(link: link)
+        // Pairing is usually the first LAN access, so iOS may show the Local
+        // Network alert during it: wait for the answer instead of failing.
         let mac = try await MacClient.pair(
-            payload: payload, identity: identity, device: DeviceDescription.current, connector: NetworkTransportConnector()
+            payload: payload, identity: identity, device: DeviceDescription.current,
+            connector: NetworkTransportConnector(localNetworkGrace: 30)
         )
         store.upsert(mac)
         await switchToMac(mac.id)
         return mac
+    }
+
+    /// Browsing for Macs makes iOS ask for Local Network access now, before
+    /// the first connection attempt depends on the answer.
+    func requestLocalNetworkAccess() {
+        guard !preferences.demoMode else { return }
+        bonjour.start()
     }
 
     func unpair(_ mac: PairedMac) async {

@@ -262,10 +262,20 @@ struct ConnectionStatusRow: View {
                 }
             }
             Spacer()
-            if case .waitingToRetry = connection.state {
-                Button("Retry") { connection.appBecameActive() }
+            if case .waitingToRetry(_, let localNetworkDenied) = connection.state {
+                if localNetworkDenied {
+                    Button("Settings") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
                     .buttonStyle(.bordered)
                     .controlSize(.small)
+                } else {
+                    Button("Retry") { connection.appBecameActive() }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
+                }
             }
         }
         .accessibilityElement(children: .combine)
@@ -286,8 +296,12 @@ struct ConnectionStatusRow: View {
             Text("Connected · \(Text(route.localizedName))")
         case .connecting:
             Text("Connecting…")
-        case .waitingToRetry:
-            Text("Offline · retrying")
+        case .waitingToRetry(_, let localNetworkDenied):
+            if localNetworkDenied {
+                Text("Offline · Local Network access is off")
+            } else {
+                Text("Offline · retrying")
+            }
         case .idle:
             Text("Offline")
         case .failed(let message, _):
