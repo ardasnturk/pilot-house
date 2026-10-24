@@ -5,8 +5,8 @@
 #
 # `version` and `sha256` are updated by scripts/prepare-release.sh.
 cask "pilothouse" do
-  version "1.1.0"
-  sha256 "3ee276b928109c4c5c48f2d23bb8bfbf5b2eda3c7554c1ca7d2e9717a8f2ce95"
+  version "1.1.1"
+  sha256 "658b45cb1e567c4ae3c05641a434dc2b65f1a626e7f67e9da4f46c839ea9e2bc"
 
   url "https://github.com/ardasnturk/pilot-house/releases/download/v#{version}/Pilothouse-#{version}.dmg"
   name "Pilothouse"
