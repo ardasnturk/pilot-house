@@ -120,11 +120,13 @@ değilse ya da giriş yapılmamışsa uygulama kısa bir kurulum rehberi göster
 (`curl -fsSL https://claude.ai/install.sh | bash`, ardından giriş yapmak için
 Terminal'de bir kez `claude`).
 
-**iPhone / iPad uygulaması** — henüz App Store'da değil; herkese açık TestFlight
-bağlantısı [web sitesinde](https://pilot.ardasnturk.com) yayınlanacak. O zamana
-kadar Xcode ile kendi cihazınıza derleyin ([Kaynaktan derleme](#kaynaktan-derleme);
-ücretsiz bir Apple ID yeterli, uygulama 7 günde bir yeniden derlenmeli).
+**iPhone / iPad uygulaması** — Apple'ın beta uygulamaları için ücretsiz
+uygulaması TestFlight'ta: kodu iPhone kameranızla okutun ya da
+<https://testflight.apple.com/join/6CE4VRRE> bağlantısını cihazda açın. Mac
+uygulaması aynı kodu **iPhone Uygulamasını Edinin** altında gösterir.
 Uygulamanın içindeki **Demoyu Dene**, simüle edilmiş bir Mac ile her şeyi gösterir.
+
+<img src="docs/testflight-qr.png" alt="TestFlight bağlantısının QR kodu" width="180">
 
 ## Telefonu eşleştirme
 
