@@ -4,6 +4,24 @@ import Testing
 @testable import PilothouseHost
 
 /// `delegate_to_agent`: Claude hands a task to another agent CLI (FakeCodex).
+/// Runs FakeCodex through `/bin/sh` instead of executing the freshly copied
+/// script: on Linux a parallel test's fork can still hold the copy's write
+/// descriptor, and exec then fails with ETXTBSY ("Text file busy").
+struct FakeCodexLauncher: AgentLauncher {
+    let script: String
+
+    func launch(_ options: ClaudeLaunchOptions) async throws -> ChildProcess {
+        try ChildProcess.spawn(
+            executable: "/bin/sh", arguments: [script, "app-server"],
+            environment: ["PATH": "/usr/bin:/bin"], workingDirectory: options.workingDirectory
+        )
+    }
+
+    func makeAdapter(for options: ClaudeLaunchOptions) -> any AgentAdapter {
+        CodexLauncher(executable: script, environment: [:]).makeAdapter(for: options)
+    }
+}
+
 @Suite(.serialized, .timeLimit(.minutes(1))) struct DelegationTests {
     final class Harness: Sendable {
         let home: TemporaryHome
@@ -31,7 +49,7 @@ import Testing
                 agentLauncher: { kind in
                     switch kind {
                     case .claude: FakeClaudeLauncher(executable: claude, argsLog: argsLog)
-                    case .codex: CodexLauncher(executable: codex.path, environment: ["PATH": "/usr/bin:/bin"])
+                    case .codex: FakeCodexLauncher(script: codex.path)
                     default: throw ErrorPayload(code: .agentNotInstalled, message: "not installed")
                     }
                 }

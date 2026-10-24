@@ -208,12 +208,13 @@ final class PilothouseUITests: XCTestCase {
         // Skills and commands are listed separately; the filter shows one kind.
         XCTAssertTrue(app.element("command-changelog").waitForExistence(timeout: 10))
         let filter = app.segmentedControls["commandFilter"]
+        // The list is lazy and the sheet starts at half height: check the first rows only.
         filter.buttons.element(boundBy: 2).tap()
-        XCTAssertTrue(app.element("command-review").waitForExistence(timeout: 5))
+        XCTAssertTrue(app.element("command-compact").waitForExistence(timeout: 5))
         XCTAssertFalse(app.element("command-changelog").exists, "Commands only")
         filter.buttons.element(boundBy: 1).tap()
         XCTAssertTrue(app.element("command-changelog").waitForExistence(timeout: 5))
-        XCTAssertFalse(app.element("command-review").exists, "Skills only")
+        XCTAssertFalse(app.element("command-compact").exists, "Skills only")
 
         app.searchFields.firstMatch.tap()
         app.searchFields.firstMatch.typeText("figma")
