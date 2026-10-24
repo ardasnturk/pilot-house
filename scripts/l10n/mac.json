@@ -1,0 +1,478 @@
+{
+ "%@ is paired": {
+  "de": "%@ ist gekoppelt",
+  "tr": "%@ eşleştirildi"
+ },
+ "%@ · %@": {
+  "de": "%1$@ · %2$@",
+  "tr": "%1$@ · %2$@"
+ },
+ "API key": {
+  "de": "API-Schlüssel",
+  "tr": "API anahtarı"
+ },
+ "About": {
+  "de": "Über",
+  "tr": "Hakkında"
+ },
+ "Accept edits": {
+  "de": "Änderungen akzeptieren",
+  "tr": "Düzenlemeleri kabul et"
+ },
+ "Active sessions": {
+  "de": "Aktive Sitzungen",
+  "tr": "Etkin oturumlar"
+ },
+ "Allow the Pilothouse helper in Login Items…": {
+  "de": "Pilothouse-Hilfsprogramm in den Anmeldeobjekten erlauben …",
+  "tr": "Pilothouse yardımcısına Giriş Öğeleri'nde izin verin…"
+ },
+ "Allow “Bypass permissions” mode": {
+  "de": "Modus „Berechtigungen umgehen“ erlauben",
+  "tr": "“İzinleri atla” moduna izin ver"
+ },
+ "Ask every time": {
+  "de": "Jedes Mal fragen",
+  "tr": "Her seferinde sor"
+ },
+ "Authentication": {
+  "de": "Authentifizierung",
+  "tr": "Kimlik doğrulama"
+ },
+ "By default Claude Code uses the account you signed in with in Terminal. The API key is only passed to Claude Code as ANTHROPIC_API_KEY and never leaves this Mac.": {
+  "de": "Standardmäßig verwendet Claude Code das Konto, mit dem du dich im Terminal angemeldet hast. Der API-Schlüssel wird nur als ANTHROPIC_API_KEY an Claude Code übergeben und verlässt diesen Mac nie.",
+  "tr": "Claude Code varsayılan olarak Terminal'de giriş yaptığınız hesabı kullanır. API anahtarı yalnızca ANTHROPIC_API_KEY olarak Claude Code'a iletilir ve bu Mac'ten asla çıkmaz."
+ },
+ "Bypass permissions": {
+  "de": "Berechtigungen umgehen",
+  "tr": "İzinleri atla"
+ },
+ "Check Again": {
+  "de": "Erneut prüfen",
+  "tr": "Tekrar Kontrol Et"
+ },
+ "Check again": {
+  "de": "Erneut prüfen",
+  "tr": "Tekrar kontrol et"
+ },
+ "Claude Code": {
+  "de": "Claude Code",
+  "tr": "Claude Code"
+ },
+ "Claude Code CLI": {
+  "de": "Claude Code CLI",
+  "tr": "Claude Code CLI"
+ },
+ "Claude Code default": {
+  "de": "Claude-Code-Standard",
+  "tr": "Claude Code varsayılanı"
+ },
+ "Claude Code is not installed": {
+  "de": "Claude Code ist nicht installiert",
+  "tr": "Claude Code kurulu değil"
+ },
+ "Claude Code is not installed on this Mac. Install it, run `claude` once in Terminal to sign in, then try again.": {
+  "de": "Claude Code ist auf diesem Mac nicht installiert. Installiere es, führe einmal `claude` im Terminal aus, um dich anzumelden, und versuche es erneut.",
+  "tr": "Claude Code bu Mac'te kurulu değil. Kurun, giriş yapmak için Terminal'de bir kez `claude` çalıştırın ve tekrar deneyin."
+ },
+ "Claude Code is not signed in": {
+  "de": "Claude Code ist nicht angemeldet",
+  "tr": "Claude Code'a giriş yapılmamış"
+ },
+ "Click for setup instructions.": {
+  "de": "Für die Einrichtungsanleitung klicken.",
+  "tr": "Kurulum talimatları için tıklayın."
+ },
+ "Closed": {
+  "de": "Geschlossen",
+  "tr": "Kapalı"
+ },
+ "Code expired — create a new one": {
+  "de": "Code abgelaufen – neuen erstellen",
+  "tr": "Kodun süresi doldu — yenisini oluşturun"
+ },
+ "Connected": {
+  "de": "Verbunden",
+  "tr": "Bağlı"
+ },
+ "Connected now": {
+  "de": "Gerade verbunden",
+  "tr": "Şu anda bağlı"
+ },
+ "Connection addresses": {
+  "de": "Verbindungsadressen",
+  "tr": "Bağlantı adresleri"
+ },
+ "Copy %@": {
+  "de": "%@ kopieren",
+  "tr": "%@ kopyala"
+ },
+ "Copy Link": {
+  "de": "Link kopieren",
+  "tr": "Bağlantıyı Kopyala"
+ },
+ "Copy address": {
+  "de": "Adresse kopieren",
+  "tr": "Adresi kopyala"
+ },
+ "Copy command": {
+  "de": "Befehl kopieren",
+  "tr": "Komutu kopyala"
+ },
+ "Could not change the login item: %@": {
+  "de": "Das Anmeldeobjekt konnte nicht geändert werden: %@",
+  "tr": "Giriş öğesi değiştirilemedi: %@"
+ },
+ "Default model": {
+  "de": "Standardmodell",
+  "tr": "Varsayılan model"
+ },
+ "Default permission mode": {
+  "de": "Standard-Berechtigungsmodus",
+  "tr": "Varsayılan izin modu"
+ },
+ "Done": {
+  "de": "Fertig",
+  "tr": "Bitti"
+ },
+ "End session %@": {
+  "de": "Sitzung %@ beenden",
+  "tr": "%@ oturumunu sonlandır"
+ },
+ "End this session": {
+  "de": "Diese Sitzung beenden",
+  "tr": "Bu oturumu sonlandır"
+ },
+ "General": {
+  "de": "Allgemein",
+  "tr": "Genel"
+ },
+ "Identity": {
+  "de": "Identität",
+  "tr": "Kimlik"
+ },
+ "Idle": {
+  "de": "Bereit",
+  "tr": "Boşta"
+ },
+ "Install Claude Code": {
+  "de": "Claude Code installieren",
+  "tr": "Claude Code'u kurun"
+ },
+ "Installed: %@": {
+  "de": "Installiert: %@",
+  "tr": "Kurulu: %@"
+ },
+ "Integrations": {
+  "de": "Integrationen",
+  "tr": "Entegrasyonlar"
+ },
+ "Keep awake": {
+  "de": "Wach halten",
+  "tr": "Uyanık tut"
+ },
+ "Keep session logs for %lld days": {
+  "de": "Sitzungsprotokolle %lld Tage aufbewahren",
+  "tr": "Oturum günlüklerini %lld gün sakla"
+ },
+ "Last seen %@ ago": {
+  "de": "Zuletzt gesehen vor %@",
+  "tr": "Son görülme: %@ önce"
+ },
+ "Lid-closed mode": {
+  "de": "Modus bei geschlossenem Deckel",
+  "tr": "Kapak kapalı modu"
+ },
+ "Lid-closed mode is on. Keep your Mac ventilated; it can get warm in a bag.": {
+  "de": "Der Modus bei geschlossenem Deckel ist aktiv. Sorge für Belüftung; in einer Tasche kann der Mac warm werden.",
+  "tr": "Kapak kapalı modu açık. Mac'inizin havalanmasını sağlayın; çantada ısınabilir."
+ },
+ "Local network": {
+  "de": "Lokales Netzwerk",
+  "tr": "Yerel ağ"
+ },
+ "Location": {
+  "de": "Ort",
+  "tr": "Konum"
+ },
+ "Mac ID": {
+  "de": "Mac-ID",
+  "tr": "Mac kimliği"
+ },
+ "MagicDNS name": {
+  "de": "MagicDNS-Name",
+  "tr": "MagicDNS adı"
+ },
+ "Never connected": {
+  "de": "Nie verbunden",
+  "tr": "Hiç bağlanmadı"
+ },
+ "New Code": {
+  "de": "Neuer Code",
+  "tr": "Yeni Kod"
+ },
+ "New sessions": {
+  "de": "Neue Sitzungen",
+  "tr": "Yeni oturumlar"
+ },
+ "No devices paired yet.": {
+  "de": "Noch keine Geräte gekoppelt.",
+  "tr": "Henüz eşleşmiş cihaz yok."
+ },
+ "No network connection.": {
+  "de": "Keine Netzwerkverbindung.",
+  "tr": "Ağ bağlantısı yok."
+ },
+ "Not connected": {
+  "de": "Nicht verbunden",
+  "tr": "Bağlı değil"
+ },
+ "Not found": {
+  "de": "Nicht gefunden",
+  "tr": "Bulunamadı"
+ },
+ "Not found on this Mac": {
+  "de": "Auf diesem Mac nicht gefunden",
+  "tr": "Bu Mac'te bulunamadı"
+ },
+ "Not installed": {
+  "de": "Nicht installiert",
+  "tr": "Kurulu değil"
+ },
+ "Not signed in": {
+  "de": "Nicht angemeldet",
+  "tr": "Giriş yapılmamış"
+ },
+ "OK": {
+  "de": "OK",
+  "tr": "Tamam"
+ },
+ "Open Pilothouse at login": {
+  "de": "Pilothouse bei der Anmeldung öffnen",
+  "tr": "Oturum açınca Pilothouse'u başlat"
+ },
+ "Open Terminal and run the official installer, or follow the setup guide.": {
+  "de": "Öffne das Terminal und führe das offizielle Installationsprogramm aus oder folge der Anleitung.",
+  "tr": "Terminal'i açıp resmi yükleyiciyi çalıştırın veya kurulum kılavuzunu izleyin."
+ },
+ "Open the Claude Code setup guide": {
+  "de": "Claude-Code-Einrichtungsanleitung öffnen",
+  "tr": "Claude Code kurulum kılavuzunu aç"
+ },
+ "Pair New Device…": {
+  "de": "Neues Gerät koppeln …",
+  "tr": "Yeni Cihaz Eşleştir…"
+ },
+ "Pair a Device": {
+  "de": "Gerät koppeln",
+  "tr": "Cihaz Eşleştir"
+ },
+ "Paired devices": {
+  "de": "Gekoppelte Geräte",
+  "tr": "Eşleşmiş cihazlar"
+ },
+ "Pairing QR code": {
+  "de": "Kopplungs-QR-Code",
+  "tr": "Eşleştirme QR kodu"
+ },
+ "Pause while on battery": {
+  "de": "Im Akkubetrieb pausieren",
+  "tr": "Pildeyken duraklat"
+ },
+ "Paused while on battery. It resumes on power.": {
+  "de": "Im Akkubetrieb pausiert. Wird am Netzteil fortgesetzt.",
+  "tr": "Pildeyken duraklatıldı. Güce bağlanınca devam eder."
+ },
+ "Pilothouse": {
+  "de": "Pilothouse",
+  "tr": "Pilothouse"
+ },
+ "Pilothouse could not start: %@": {
+  "de": "Pilothouse konnte nicht starten: %@",
+  "tr": "Pilothouse başlatılamadı: %@"
+ },
+ "Pilothouse is not running.": {
+  "de": "Pilothouse läuft nicht.",
+  "tr": "Pilothouse çalışmıyor."
+ },
+ "Pilothouse looks in your login shell's PATH, ~/.local/bin, /opt/homebrew/bin and /usr/local/bin.": {
+  "de": "Pilothouse sucht im PATH deiner Login-Shell sowie in ~/.local/bin, /opt/homebrew/bin und /usr/local/bin.",
+  "tr": "Pilothouse, oturum kabuğunuzun PATH'ine, ~/.local/bin, /opt/homebrew/bin ve /usr/local/bin klasörlerine bakar."
+ },
+ "Pilothouse needs attention": {
+  "de": "Pilothouse benötigt Aufmerksamkeit",
+  "tr": "Pilothouse ilgi bekliyor"
+ },
+ "Plan only": {
+  "de": "Nur planen",
+  "tr": "Yalnızca plan"
+ },
+ "Port": {
+  "de": "Port",
+  "tr": "Port"
+ },
+ "Preferred port": {
+  "de": "Bevorzugter Port",
+  "tr": "Tercih edilen port"
+ },
+ "Preventing system sleep (the display may still turn off)": {
+  "de": "Ruhezustand wird verhindert (der Bildschirm kann sich trotzdem ausschalten)",
+  "tr": "Sistem uykusu engelleniyor (ekran yine kapanabilir)"
+ },
+ "Quit Pilothouse": {
+  "de": "Pilothouse beenden",
+  "tr": "Pilothouse'tan Çık"
+ },
+ "Read the security model": {
+  "de": "Sicherheitsmodell lesen",
+  "tr": "Güvenlik modelini okuyun"
+ },
+ "Revoke": {
+  "de": "Widerrufen",
+  "tr": "İptal Et"
+ },
+ "Revoke %@?": {
+  "de": "%@ widerrufen?",
+  "tr": "%@ iptal edilsin mi?"
+ },
+ "Run `claude` and follow the prompts to sign in with your Claude account (or set up an API key). Pilothouse never sees your credentials.": {
+  "de": "Führe `claude` aus und folge den Anweisungen, um dich mit deinem Claude-Konto anzumelden (oder einen API-Schlüssel einzurichten). Pilothouse sieht deine Zugangsdaten nie.",
+  "tr": "`claude` komutunu çalıştırın ve Claude hesabınızla giriş yapmak (veya API anahtarı ayarlamak) için yönergeleri izleyin. Pilothouse kimlik bilgilerinizi asla görmez."
+ },
+ "Running · %lld paired devices · %lld active sessions": {
+  "de": "Läuft · %1$lld gekoppelte Geräte · %2$lld aktive Sitzungen",
+  "tr": "Çalışıyor · %1$lld eşleşmiş cihaz · %2$lld etkin oturum"
+ },
+ "Save to Keychain": {
+  "de": "Im Schlüsselbund sichern",
+  "tr": "Anahtar Zinciri'ne Kaydet"
+ },
+ "Scan with Pilothouse on your iPhone or iPad": {
+  "de": "Mit Pilothouse auf deinem iPhone oder iPad scannen",
+  "tr": "iPhone veya iPad'inizdeki Pilothouse ile tarayın"
+ },
+ "Security": {
+  "de": "Sicherheit",
+  "tr": "Güvenlik"
+ },
+ "Sessions": {
+  "de": "Sitzungen",
+  "tr": "Oturumlar"
+ },
+ "Settings…": {
+  "de": "Einstellungen …",
+  "tr": "Ayarlar…"
+ },
+ "Sign in once in Terminal": {
+  "de": "Einmal im Terminal anmelden",
+  "tr": "Terminal'de bir kez giriş yapın"
+ },
+ "Signed in": {
+  "de": "Angemeldet",
+  "tr": "Giriş yapıldı"
+ },
+ "Sleep prevention is off": {
+  "de": "Ruhezustandsverhinderung ist aus",
+  "tr": "Uyku engelleme kapalı"
+ },
+ "Start a session from your iPhone or iPad.": {
+  "de": "Starte eine Sitzung von deinem iPhone oder iPad.",
+  "tr": "iPhone veya iPad'inizden bir oturum başlatın."
+ },
+ "Starting": {
+  "de": "Startet",
+  "tr": "Başlatılıyor"
+ },
+ "Starting…": {
+  "de": "Startet …",
+  "tr": "Başlatılıyor…"
+ },
+ "Stay awake with the lid closed": {
+  "de": "Bei geschlossenem Deckel wach bleiben",
+  "tr": "Kapak kapalıyken de açık kal"
+ },
+ "Stored in Keychain": {
+  "de": "Im Schlüsselbund gespeichert",
+  "tr": "Anahtar Zinciri'nde saklanıyor"
+ },
+ "Tailscale": {
+  "de": "Tailscale",
+  "tr": "Tailscale"
+ },
+ "Tailscale IP": {
+  "de": "Tailscale-IP",
+  "tr": "Tailscale IP"
+ },
+ "Takes effect after restarting Pilothouse. The next free port is used if it is taken.": {
+  "de": "Wird nach einem Neustart von Pilothouse wirksam. Ist der Port belegt, wird der nächste freie verwendet.",
+  "tr": "Pilothouse yeniden başlatıldıktan sonra geçerli olur. Port doluysa bir sonraki boş port kullanılır."
+ },
+ "The API key could not be saved: %@": {
+  "de": "Der API-Schlüssel konnte nicht gespeichert werden: %@",
+  "tr": "API anahtarı kaydedilemedi: %@"
+ },
+ "The device is disconnected immediately and has to pair again to reconnect.": {
+  "de": "Das Gerät wird sofort getrennt und muss erneut gekoppelt werden, um sich zu verbinden.",
+  "tr": "Cihazın bağlantısı hemen kesilir; yeniden bağlanmak için tekrar eşleştirilmesi gerekir."
+ },
+ "The helper could not change the sleep setting.": {
+  "de": "Das Hilfsprogramm konnte die Ruhezustandseinstellung nicht ändern.",
+  "tr": "Yardımcı uyku ayarını değiştiremedi."
+ },
+ "The helper is not available.": {
+  "de": "Das Hilfsprogramm ist nicht verfügbar.",
+  "tr": "Yardımcı kullanılamıyor."
+ },
+ "The same code appears on your phone after pairing.": {
+  "de": "Derselbe Code erscheint nach dem Koppeln auf deinem Telefon.",
+  "tr": "Eşleştirmeden sonra aynı kod telefonunuzda görünür."
+ },
+ "Tip: set up Tailscale to reach this Mac away from home.": {
+  "de": "Tipp: Richte Tailscale ein, um diesen Mac unterwegs zu erreichen.",
+  "tr": "İpucu: Bu Mac'e evden uzakta erişmek için Tailscale'i kurun."
+ },
+ "Traffic between your devices is end-to-end encrypted. Pilothouse never connects to Anthropic and collects no telemetry.": {
+  "de": "Der Datenverkehr zwischen deinen Geräten ist Ende-zu-Ende verschlüsselt. Pilothouse verbindet sich nie mit Anthropic und sammelt keine Telemetrie.",
+  "tr": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Pilothouse asla Anthropic'e bağlanmaz ve telemetri toplamaz."
+ },
+ "Unknown helper status.": {
+  "de": "Unbekannter Status des Hilfsprogramms.",
+  "tr": "Bilinmeyen yardımcı durumu."
+ },
+ "Use an Anthropic API key instead of the CLI login": {
+  "de": "Anthropic-API-Schlüssel statt CLI-Anmeldung verwenden",
+  "tr": "CLI girişi yerine bir Anthropic API anahtarı kullan"
+ },
+ "Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Pilothouse quits.": {
+  "de": "Verwendet ein kleines privilegiertes Hilfsprogramm, das nur `pmset -a disablesleep` ausführt. Ein zugeklapptes MacBook, das wach bleibt, kann warm werden und den Akku leeren; die Einstellung wird beim Beenden von Pilothouse zurückgesetzt.",
+  "tr": "Yalnızca `pmset -a disablesleep` çalıştıran küçük, yetkili bir yardımcı kullanır. Kapağı kapalıyken uyanık kalan bir MacBook ısınabilir ve pilini tüketebilir; Pilothouse kapanınca ayar geri alınır."
+ },
+ "Valid for %lld:%@ · single use": {
+  "de": "Gültig für %lld:%@ · einmalig",
+  "tr": "%lld:%@ geçerli · tek kullanımlık"
+ },
+ "Verification code": {
+  "de": "Bestätigungscode",
+  "tr": "Doğrulama kodu"
+ },
+ "Version": {
+  "de": "Version",
+  "tr": "Sürüm"
+ },
+ "Waiting for approval": {
+  "de": "Wartet auf Freigabe",
+  "tr": "Onay bekleniyor"
+ },
+ "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
+  "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Sitzungen starten, in denen Claude ohne Nachfrage Dateien ändert und Befehle ausführt. Aktiviere dies nur, wenn du das Risiko verstehst.",
+  "tr": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı oturumlar başlatabilir. Yalnızca riski anlıyorsanız etkinleştirin."
+ },
+ "Working": {
+  "de": "Arbeitet",
+  "tr": "Çalışıyor"
+ },
+ "You can now start Claude Code sessions on this Mac from your device.": {
+  "de": "Du kannst jetzt von deinem Gerät aus Claude-Code-Sitzungen auf diesem Mac starten.",
+  "tr": "Artık cihazınızdan bu Mac'te Claude Code oturumları başlatabilirsiniz."
+ }
+}

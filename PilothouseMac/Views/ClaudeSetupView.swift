@@ -65,7 +65,7 @@ struct ClaudeSetupView: View {
 
     private func step<Content: View>(_ number: Int, title: LocalizedStringKey, detail: LocalizedStringKey, @ViewBuilder content: () -> Content) -> some View {
         HStack(alignment: .top, spacing: 12) {
-            Text("\(number)")
+            Text(verbatim: "\(number)")
                 .font(.headline)
                 .frame(width: 26, height: 26)
                 .background(Color.accentColor.opacity(0.15), in: Circle())

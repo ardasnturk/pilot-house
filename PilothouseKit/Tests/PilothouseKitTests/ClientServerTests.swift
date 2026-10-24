@@ -256,6 +256,18 @@ import Testing
         #expect(candidates.map(\.route) == [.tailscale, .local, .local, .tailscale, .tailscale])
     }
 
+    @Test func preferenceFiltersRoutes() {
+        let mac = PairedMac(
+            id: "m", name: "Mac", publicKey: Data(count: 32),
+            addresses: [HostAddress(host: "192.168.1.5", kind: .local), HostAddress(host: "100.64.1.1", kind: .tailscale)],
+            port: 1, pairedAt: Date()
+        )
+        let bonjour: [Endpoint] = [.bonjour(name: "Mac", type: "_pilothouse._tcp", domain: "local.")]
+        #expect(ConnectionPlanner.candidates(for: mac, bonjour: bonjour, preference: .localOnly).allSatisfy { $0.route == .local })
+        #expect(ConnectionPlanner.candidates(for: mac, bonjour: bonjour, preference: .tailscaleOnly).map(\.endpoint) == [.hostPort(host: "100.64.1.1", port: 1)])
+        #expect(ConnectionPlanner.candidates(for: mac, bonjour: bonjour).count == 3)
+    }
+
     @Test func backoffGrowsAndCaps() {
         var backoff = Backoff(base: 1, cap: 8)
         let delays = (0..<6).map { _ in backoff.nextDelay(random: 1) }

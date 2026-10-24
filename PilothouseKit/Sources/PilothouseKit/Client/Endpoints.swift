@@ -37,19 +37,34 @@ public protocol TransportConnector: Sendable {
     func connect(to endpoint: Endpoint, timeout: Double) async throws -> any MessageTransport
 }
 
+/// Which routes the client may use (Settings → Connection).
+public enum ConnectionPreference: String, Sendable, Hashable, Codable, CaseIterable {
+    case automatic
+    case localOnly
+    case tailscaleOnly
+}
+
 /// Orders connection attempts as the prompt requires (§5.1):
 /// last successful address → Bonjour → local IPs → Tailscale IP → MagicDNS.
 public enum ConnectionPlanner {
     public static let localTimeout: Double = 4
     public static let remoteTimeout: Double = 10
 
-    public static func candidates(for mac: PairedMac, bonjour: [Endpoint]) -> [ConnectionCandidate] {
+    public static func candidates(
+        for mac: PairedMac,
+        bonjour: [Endpoint],
+        preference: ConnectionPreference = .automatic
+    ) -> [ConnectionCandidate] {
         if mac.isDemo {
             return [ConnectionCandidate(endpoint: .demo, route: .demo, timeout: localTimeout)]
         }
         var result: [ConnectionCandidate] = []
         var seen = Set<Endpoint>()
         func add(_ endpoint: Endpoint, _ route: ConnectionRoute) {
+            switch (preference, route) {
+            case (.localOnly, .tailscale), (.tailscaleOnly, .local): return
+            default: break
+            }
             guard seen.insert(endpoint).inserted else { return }
             let timeout = route == .local ? localTimeout : remoteTimeout
             result.append(ConnectionCandidate(endpoint: endpoint, route: route, timeout: timeout))

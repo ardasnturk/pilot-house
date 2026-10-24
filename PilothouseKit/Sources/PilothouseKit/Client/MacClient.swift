@@ -70,6 +70,7 @@ public actor MacClient {
     private let connector: any TransportConnector
     private let bonjourEndpoints: @Sendable () async -> [Endpoint]
     private let onMacUpdated: @Sendable (PairedMac) async -> Void
+    private var preference: ConnectionPreference
     private let stateContinuation: AsyncStream<MacConnectionState>.Continuation
     private let pushContinuation: AsyncStream<ServerMessage>.Continuation
     private let log = PilothouseLog("MacClient")
@@ -86,10 +87,12 @@ public actor MacClient {
         identity: IdentityKeyPair,
         device: DeviceInfo,
         connector: any TransportConnector,
+        preference: ConnectionPreference = .automatic,
         bonjourEndpoints: @escaping @Sendable () async -> [Endpoint] = { [] },
         onMacUpdated: @escaping @Sendable (PairedMac) async -> Void = { _ in }
     ) {
         self.mac = mac
+        self.preference = preference
         self.identity = identity
         self.device = device
         self.connector = connector
@@ -131,6 +134,25 @@ public actor MacClient {
         }
     }
 
+    /// Changes the allowed routes and reconnects if needed.
+    public func setPreference(_ preference: ConnectionPreference) {
+        guard preference != self.preference else { return }
+        self.preference = preference
+        if case .connected(let route, _) = state,
+            (preference == .localOnly && route == .tailscale) || (preference == .tailscaleOnly && route == .local)
+        {
+            let channel = self.channel
+            Task { await channel?.close() }
+        }
+        wakeUp()
+    }
+
+    /// Replaces the stored addresses (e.g. after the Mac reported a new Tailscale IP).
+    public func updateAddresses(_ addresses: [HostAddress], port: Int) {
+        mac.addresses = addresses
+        mac.port = port
+    }
+
     // MARK: Requests
 
     /// Sends `message` and waits for the matching response. Server-side errors
@@ -165,7 +187,7 @@ public actor MacClient {
         var backoff = Backoff()
         while !Task.isCancelled {
             setState(.connecting)
-            let candidates = ConnectionPlanner.candidates(for: mac, bonjour: await bonjourEndpoints())
+            let candidates = ConnectionPlanner.candidates(for: mac, bonjour: await bonjourEndpoints(), preference: preference)
             var wasConnected = false
             var attempts: [String] = []
             for candidate in candidates {
