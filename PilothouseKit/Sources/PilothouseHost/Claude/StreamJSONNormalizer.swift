@@ -13,7 +13,8 @@ import PilothouseKit
 /// * `user` → `toolResult` (+ `fileEdit` from `tool_use_result.structuredPatch`)
 /// * `result` → `result`
 ///
-/// Messages of sub-agents (`parent_tool_use_id != null`) are skipped in v1.
+/// Messages of sub-agents (`parent_tool_use_id != null`) are skipped by
+/// `consume`; `consumeThreaded` returns them tagged with that tool-use ID.
 /// Unknown line types are ignored, so newer CLI versions degrade gracefully.
 public struct StreamJSONNormalizer: Sendable {
     /// Strings above this length (tool inputs/outputs, diffs) are truncated.
@@ -35,6 +36,19 @@ public struct StreamJSONNormalizer: Sendable {
         let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
         guard trimmed.hasPrefix("{"), let value = try? JSONValue.parse(trimmed) else { return [] }
         return consume(value)
+    }
+
+    /// Like `consume(line:)`, but also returns the messages of `Task`
+    /// sub-agents together with the tool-use ID that started them.
+    public mutating func consumeThreaded(line: String) -> (thread: String?, events: [SessionEvent]) {
+        let trimmed = line.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmed.hasPrefix("{"), let value = try? JSONValue.parse(trimmed) else { return (nil, []) }
+        guard let parent = value["parent_tool_use_id"]?.stringValue else { return (nil, consume(value)) }
+        switch value["type"]?.stringValue {
+        case "assistant": return (parent, assistant(value))
+        case "user": return (parent, user(value))
+        default: return (parent, [])
+        }
     }
 
     public mutating func consume(_ value: JSONValue) -> [SessionEvent] {

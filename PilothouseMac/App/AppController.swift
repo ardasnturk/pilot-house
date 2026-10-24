@@ -145,6 +145,7 @@ final class AppController: MacStatusProviding {
         claude = await ClaudeLocator.status(environment: environment)
         agents = await AgentLocator.statuses(claude: claude, environment: environment, delegation: settings.delegationAgents)
         isCheckingClaude = false
+        await runtime?.sessions.updateConfiguration(hostConfiguration())
     }
 
     /// Re-reads which agents may be delegated to and tells the phones.
@@ -155,7 +156,7 @@ final class AppController: MacStatusProviding {
                 && status.installed && status.loggedIn != false
             return status
         }
-        if let runtime { await runtime.hub.post(.macStatus(await macStatus())) }
+        await applySettings()
     }
 
     private func makeLauncher(for kind: AgentKind) async throws -> any AgentLauncher {
@@ -417,7 +418,8 @@ final class AppController: MacStatusProviding {
             retentionDays: settings.retentionDays,
             allowBypassPermissions: settings.allowBypassPermissions,
             defaultModel: settings.defaultModel.isEmpty ? nil : settings.defaultModel,
-            defaultPermissionMode: settings.defaultPermissionMode
+            defaultPermissionMode: settings.defaultPermissionMode,
+            delegationAgents: agents.filter(\.delegationEnabled).map(\.kind)
         )
     }
 }

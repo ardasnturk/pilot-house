@@ -197,8 +197,11 @@ public enum ClaudeCommand {
     public static let permissionServerName = "pilothouse"
     public static let permissionToolName = "approve_permission"
     public static var permissionToolFullName: String { "mcp__\(permissionServerName)__\(permissionToolName)" }
-    /// Per-request MCP timeout: longer than the 10-minute approval window.
-    public static let mcpTimeoutMilliseconds = 660_000
+    public static let delegationToolName = "delegate_to_agent"
+    public static var delegationToolFullName: String { "mcp__\(permissionServerName)__\(delegationToolName)" }
+    /// Per-request MCP timeout: longer than a delegated sub-agent task may run
+    /// (`SessionManager.delegationTimeout`), so Claude waits for its answer.
+    public static let mcpTimeoutMilliseconds = 3_660_000
 
     public static func arguments(for options: ClaudeLaunchOptions) -> [String] {
         var arguments = [

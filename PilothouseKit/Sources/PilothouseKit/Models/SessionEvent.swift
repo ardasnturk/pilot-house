@@ -292,12 +292,16 @@ public struct SequencedEvent: Sendable, Hashable, Codable {
     public var timestamp: Date
     public var ephemeral: Bool
     public var event: SessionEvent
+    /// The sub-agent this event belongs to: the tool-use ID of the `Task` or
+    /// `delegate_to_agent` call that started it. `nil` for the main conversation.
+    public var thread: String?
 
-    public init(seq: Int, timestamp: Date, ephemeral: Bool = false, event: SessionEvent) {
+    public init(seq: Int, timestamp: Date, ephemeral: Bool = false, event: SessionEvent, thread: String? = nil) {
         self.seq = seq
         self.timestamp = timestamp
         self.ephemeral = ephemeral
         self.event = event
+        self.thread = thread
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -305,6 +309,7 @@ public struct SequencedEvent: Sendable, Hashable, Codable {
         case timestamp = "ts"
         case ephemeral
         case event
+        case thread
     }
 
     public init(from decoder: Decoder) throws {
@@ -313,6 +318,7 @@ public struct SequencedEvent: Sendable, Hashable, Codable {
         timestamp = try container.decode(Date.self, forKey: .timestamp)
         ephemeral = try container.decodeIfPresent(Bool.self, forKey: .ephemeral) ?? false
         event = try container.decode(SessionEvent.self, forKey: .event)
+        thread = try container.decodeIfPresent(String.self, forKey: .thread)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -321,5 +327,6 @@ public struct SequencedEvent: Sendable, Hashable, Codable {
         try container.encode(timestamp, forKey: .timestamp)
         if ephemeral { try container.encode(true, forKey: .ephemeral) }
         try container.encode(event, forKey: .event)
+        try container.encodeIfPresent(thread, forKey: .thread)
     }
 }

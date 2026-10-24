@@ -16,6 +16,8 @@ public struct HostConfiguration: Sendable, Equatable {
     public var allowBypassPermissions: Bool
     public var defaultModel: String?
     public var defaultPermissionMode: PermissionMode
+    /// Agents Claude may hand tasks to with `delegate_to_agent`.
+    public var delegationAgents: [AgentKind]
 
     public init(
         homeDirectory: String = NSHomeDirectory(),
@@ -23,7 +25,8 @@ public struct HostConfiguration: Sendable, Equatable {
         retentionDays: Int = 30,
         allowBypassPermissions: Bool = false,
         defaultModel: String? = nil,
-        defaultPermissionMode: PermissionMode = .default
+        defaultPermissionMode: PermissionMode = .default,
+        delegationAgents: [AgentKind] = []
     ) {
         self.homeDirectory = homeDirectory
         self.dataDirectory = dataDirectory
@@ -31,6 +34,7 @@ public struct HostConfiguration: Sendable, Equatable {
         self.allowBypassPermissions = allowBypassPermissions
         self.defaultModel = defaultModel
         self.defaultPermissionMode = defaultPermissionMode
+        self.delegationAgents = delegationAgents
     }
 
     public var sessionsDirectory: URL { dataDirectory.appendingPathComponent("sessions", isDirectory: true) }
@@ -42,6 +46,8 @@ public actor SessionManager {
     public static let maximumAttachments = 10
     /// After SIGINT the CLI normally exits within a second; force it after this.
     public static let interruptGrace: Double = 8
+    /// A delegated sub-agent task is stopped after this long.
+    public static let delegationTimeout: Double = 60 * 60
 
     private struct LiveSession {
         var record: SessionRecord
@@ -73,6 +79,21 @@ public actor SessionManager {
     private var tokens: [String: String] = [:]
     private var permissionPort: Int?
     private var bootstrapped = false
+
+    /// A sub-agent CLI started by `delegate_to_agent`, by thread (tool-use ID).
+    private struct Delegation {
+        let parentId: String
+        let agent: AgentKind
+        let process: ChildProcess
+        var adapter: any AgentAdapter
+        var lastAnswer = ""
+        var finish: CheckedContinuation<DelegationResult, Never>?
+    }
+
+    private var delegations: [String: Delegation] = [:]
+    /// `delegate_to_agent` tool uses seen in a session's output and not yet
+    /// claimed by a delegation, so the sub-agent's thread is that tool use.
+    private var unclaimedDelegateCalls: [String: [(toolUseId: String, input: JSONValue)]] = [:]
 
     /// Claude Code only (tests and older call sites).
     public init(
@@ -247,6 +268,7 @@ public actor SessionManager {
     public func interrupt(_ id: String) async throws {
         guard let session = sessions[id] else { throw Self.notFound }
         guard let process = session.process, session.record.summary.state.isBusy else { return }
+        await stopDelegations(of: id, reason: "The user stopped the turn.")
         if let lines = sessions[id]?.adapter.interruptLines() {
             for line in lines { try? await process.write(line) }
             await broker.cancelAll(sessionId: id)
@@ -271,6 +293,7 @@ public actor SessionManager {
             sessions[id]?.closing = true
             sessions[id]?.retiring = true
         }
+        await stopDelegations(of: id, reason: "The session was closed.")
         setState(.closed, for: id)
         append(.systemNotice(.init(kind: "closed", level: .info, text: "Session closed.")), to: id)
         await persistAndPublish(id)
@@ -294,6 +317,8 @@ public actor SessionManager {
     }
 
     public func delete(_ id: String) async throws {
+        guard sessions[id] != nil else { throw Self.notFound }
+        await stopDelegations(of: id, reason: "The session was deleted.")
         guard let session = sessions.removeValue(forKey: id) else { throw Self.notFound }
         if let token = session.token { tokens.removeValue(forKey: token) }
         for continuation in session.subscribers.values { continuation.finish() }
@@ -516,7 +541,10 @@ public actor SessionManager {
         guard let output = sessions[id]?.adapter.consume(line: line) else { return }
         let events = output.events
         for event in events {
-            append(event, to: id)
+            append(event, to: id, thread: output.thread)
+            if output.thread == nil, case .toolUse(let use) = event, use.name == ClaudeCommand.delegationToolFullName {
+                unclaimedDelegateCalls[id, default: []].append((use.toolUseId, use.input))
+            }
         }
         if !output.writes.isEmpty, let process = sessions[id]?.process {
             Task { for write in output.writes { try? await process.write(write) } }
@@ -524,7 +552,7 @@ public actor SessionManager {
         for request in output.permissionRequests {
             Task { await self.answer(request, session: id, generation: generation) }
         }
-        if events.contains(where: { if case .result = $0 { return true } else { return false } })
+        if output.thread == nil, events.contains(where: { if case .result = $0 { return true } else { return false } })
             || events.contains(where: { if case .assistantMessage = $0 { return true } else { return false } })
         {
             Task { await self.persistAndPublish(id) }
@@ -587,6 +615,155 @@ public actor SessionManager {
         await process.terminate(grace: 2)
     }
 
+    // MARK: Delegation (`delegate_to_agent`)
+
+    /// Agents the session's Claude may delegate to.
+    public func delegationAgents(for sessionId: String) -> [AgentKind] {
+        guard let session = sessions[sessionId], session.record.summary.agentKind == .claude else { return [] }
+        return configuration.delegationAgents.filter { $0 != .claude }
+    }
+
+    /// Runs `arguments.prompt` with another agent CLI in the session's folder and
+    /// returns its final answer. Its events go to the session's log under the
+    /// thread of the `delegate_to_agent` tool use, so the phone can follow it.
+    public func delegate(sessionId: String, arguments: JSONValue) async -> DelegationResult {
+        guard let parent = sessions[sessionId], parent.record.summary.state != .closed else {
+            return DelegationResult(text: "The Pilothouse session is no longer active.", isError: true)
+        }
+        let agent = AgentKind(arguments["agent"]?.stringValue ?? "")
+        let prompt = arguments["prompt"]?.stringValue?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        guard delegationAgents(for: sessionId).contains(agent) else {
+            return DelegationResult(text: "\(agent.displayName) is not enabled for delegation on this Mac.", isError: true)
+        }
+        guard !prompt.isEmpty else { return DelegationResult(text: "The prompt is empty.", isError: true) }
+
+        let thread = claimDelegateCall(sessionId: sessionId, arguments: arguments) ?? "delegate-\(UUID().uuidString.lowercased())"
+        let summary = parent.record.summary
+        let options = ClaudeLaunchOptions(
+            sessionId: UUID().uuidString.lowercased(), resume: false,
+            model: arguments["model"]?.stringValue.flatMap { $0.isEmpty ? nil : $0 },
+            permissionMode: summary.permissionMode, workingDirectory: summary.cwd, permissionServer: nil, agent: agent
+        )
+        let process: ChildProcess
+        var adapter: any AgentAdapter
+        do {
+            let launcher = try await launcher(agent)
+            process = try await launcher.launch(options)
+            adapter = launcher.makeAdapter(for: options)
+        } catch {
+            let text = (error as? ErrorPayload)?.message ?? "\(error)"
+            append(.systemNotice(.init(kind: "launchFailed", level: .error, text: "Could not start \(agent.displayName): \(text)")), to: sessionId, thread: thread)
+            return DelegationResult(text: "Could not start \(agent.displayName): \(text)", isError: true)
+        }
+        log.info("Delegating to \(agent.displayName) (pid \(process.pid)) for session \(sessionId), thread \(thread)")
+        append(.userMessage(.init(text: prompt)), to: sessionId, thread: thread)
+        var lines = adapter.startupLines()
+        lines += (try? adapter.userMessageLines(text: prompt, attachments: [])) ?? []
+        delegations[thread] = Delegation(parentId: sessionId, agent: agent, process: process, adapter: adapter)
+        for line in lines { try? await process.write(line) }
+
+        let stdoutLines = process.stdout.lines()
+        Task { [weak self] in
+            for await line in stdoutLines {
+                await self?.handleDelegationLine(line, thread: thread)
+            }
+            await self?.finishDelegation(thread, with: nil)
+        }
+        let timeout = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(Self.delegationTimeout))
+            await self?.finishDelegation(thread, with: DelegationResult(
+                text: "\(agent.displayName) did not finish within \(Int(Self.delegationTimeout / 60)) minutes and was stopped.", isError: true
+            ))
+        }
+        let result = await withCheckedContinuation { continuation in
+            if delegations[thread] != nil {
+                delegations[thread]?.finish = continuation
+            } else {
+                continuation.resume(returning: DelegationResult(text: "\(agent.displayName) stopped.", isError: true))
+            }
+        }
+        timeout.cancel()
+        Task { await process.terminate(grace: 2) }
+        return result
+    }
+
+    /// The `delegate_to_agent` tool use whose input matches, if Claude's
+    /// stream-json reported it before the MCP call arrived.
+    private func claimDelegateCall(sessionId: String, arguments: JSONValue) -> String? {
+        guard var calls = unclaimedDelegateCalls[sessionId], !calls.isEmpty else { return nil }
+        let index = calls.firstIndex { $0.input["prompt"] == arguments["prompt"] } ?? 0
+        let call = calls.remove(at: index)
+        unclaimedDelegateCalls[sessionId] = calls
+        return call.toolUseId
+    }
+
+    private func handleDelegationLine(_ line: String, thread: String) {
+        guard let parentId = delegations[thread]?.parentId,
+            let output = delegations[thread]?.adapter.consume(line: line),
+            let process = delegations[thread]?.process
+        else { return }
+        for event in output.events {
+            append(event, to: parentId, thread: thread)
+            if case .assistantMessage(let message) = event {
+                delegations[thread]?.lastAnswer = message.text
+            }
+        }
+        if !output.writes.isEmpty {
+            Task { for write in output.writes { try? await process.write(write) } }
+        }
+        for request in output.permissionRequests {
+            Task { await self.answerDelegation(request, thread: thread) }
+        }
+        for event in output.events {
+            if case .result(let result) = event {
+                let answer = delegations[thread]?.lastAnswer ?? ""
+                let text = answer.isEmpty ? (result.text ?? "The agent finished without an answer.") : answer
+                finishDelegation(thread, with: DelegationResult(text: text, isError: result.isError))
+            }
+        }
+    }
+
+    private func answerDelegation(_ request: AgentPermissionRequest, thread: String) async {
+        guard let parentId = delegations[thread]?.parentId else { return }
+        var input = request.input
+        if var object = input.objectValue {
+            object["agent"] = .string(delegations[thread]?.agent.displayName ?? "")
+            input = .object(object)
+        }
+        let result = await decidePermission(sessionId: parentId, tool: request.tool, input: input, toolUseId: request.toolUseId)
+        guard let delegation = delegations[thread] else { return }
+        let allow = if case .allow = result { true } else { false }
+        if let reply = delegation.adapter.permissionReply(to: request, allow: allow) {
+            try? await delegation.process.write(reply)
+        }
+    }
+
+    /// Resumes the waiting `delegate` call once (`nil` = the process ended).
+    private func finishDelegation(_ thread: String, with result: DelegationResult?) {
+        guard let delegation = delegations.removeValue(forKey: thread) else { return }
+        let outcome = result ?? DelegationResult(
+            text: delegation.lastAnswer.isEmpty ? "\(delegation.agent.displayName) stopped before it finished." : delegation.lastAnswer,
+            isError: delegation.lastAnswer.isEmpty
+        )
+        if result == nil || outcome.isError {
+            append(.systemNotice(.init(
+                kind: outcome.isError ? "delegationFailed" : "delegationFinished", level: outcome.isError ? .warning : .info,
+                text: outcome.isError ? outcome.text : "\(delegation.agent.displayName) finished."
+            )), to: delegation.parentId, thread: thread)
+        }
+        delegation.finish?.resume(returning: outcome)
+        if result != nil {
+            Task { await delegation.process.terminate(grace: 2) }
+        }
+    }
+
+    private func stopDelegations(of parentId: String, reason: String) async {
+        for (thread, delegation) in delegations where delegation.parentId == parentId {
+            finishDelegation(thread, with: DelegationResult(text: reason, isError: true))
+        }
+        unclaimedDelegateCalls.removeValue(forKey: parentId)
+    }
+
     /// Sends a user message through the session's adapter.
     private func writeUserMessage(text: String, attachments: [MessageAttachment], to id: String) async throws {
         guard let process = currentProcess(id) else { throw Self.notFound }
@@ -597,14 +774,15 @@ public actor SessionManager {
     // MARK: Events
 
     /// Persists (unless ephemeral) and broadcasts one event; updates the record.
-    private func append(_ event: SessionEvent, to id: String) {
+    /// Events of a sub-agent `thread` never change the session's own state.
+    private func append(_ event: SessionEvent, to id: String, thread: String? = nil) {
         guard let session = sessions[id] else { return }
         let sequenced: SequencedEvent
         if event.isEphemeral {
-            sequenced = SequencedEvent(seq: (try? session.log.lastSeq) ?? 0, timestamp: Date(), ephemeral: true, event: event)
+            sequenced = SequencedEvent(seq: (try? session.log.lastSeq) ?? 0, timestamp: Date(), ephemeral: true, event: event, thread: thread)
         } else {
             do {
-                sequenced = try session.log.append(event)
+                sequenced = try session.log.append(event, thread: thread)
             } catch {
                 log.error("Could not write event log for \(id): \(error)")
                 return
@@ -612,6 +790,7 @@ public actor SessionManager {
             update(id) { record in
                 record.summary.lastSeq = sequenced.seq
                 record.summary.updatedAt = sequenced.timestamp
+                guard thread == nil else { return }
                 switch event {
                 case .sessionInfo(let info):
                     if let model = info.model { record.summary.model = model }

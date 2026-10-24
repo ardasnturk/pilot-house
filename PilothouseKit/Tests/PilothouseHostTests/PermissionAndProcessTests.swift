@@ -283,7 +283,7 @@ import Glibc
         #expect(server["type"]?.stringValue == "http")
         #expect(server["url"]?.stringValue == "http://127.0.0.1:6000/mcp")
         #expect(server["headers"]?["Authorization"]?.stringValue == "Bearer secret")
-        #expect(server["timeout"]?.intValue == 660_000)
+        #expect(server["timeout"]?.intValue == ClaudeCommand.mcpTimeoutMilliseconds)
     }
 
     @Test func apiKeyOnlyWhenExplicitlyEnabled() {

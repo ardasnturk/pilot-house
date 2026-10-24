@@ -28,11 +28,16 @@ public struct AgentOutput: Sendable {
     /// Lines to write to the agent's stdin (replies, queued requests).
     public var writes: [Data] = []
     public var permissionRequests: [AgentPermissionRequest] = []
+    /// Sub-agent thread the events belong to (Claude `Task` sub-agents).
+    public var thread: String?
 
-    public init(events: [SessionEvent] = [], writes: [Data] = [], permissionRequests: [AgentPermissionRequest] = []) {
+    public init(
+        events: [SessionEvent] = [], writes: [Data] = [], permissionRequests: [AgentPermissionRequest] = [], thread: String? = nil
+    ) {
         self.events = events
         self.writes = writes
         self.permissionRequests = permissionRequests
+        self.thread = thread
     }
 }
 
@@ -67,7 +72,8 @@ public struct ClaudeAdapter: AgentAdapter {
     public mutating func startupLines() -> [Data] { [] }
 
     public mutating func consume(line: String) -> AgentOutput {
-        AgentOutput(events: normalizer.consume(line: line))
+        let (thread, events) = normalizer.consumeThreaded(line: line)
+        return AgentOutput(events: events, thread: thread)
     }
 
     public mutating func userMessageLines(text: String, attachments: [MessageAttachment]) throws -> [Data] {

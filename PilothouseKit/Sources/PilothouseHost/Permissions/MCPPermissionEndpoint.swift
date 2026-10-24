@@ -14,9 +14,20 @@ public enum PermissionToolResult: Sendable, Equatable {
     }
 }
 
-/// A minimal MCP server (Streamable HTTP, JSON responses only) exposing one
-/// tool, `approve_permission`, for `--permission-prompt-tool`
-/// (docs/DECISIONS.md D-004).
+/// What `delegate_to_agent` answers Claude.
+public struct DelegationResult: Sendable, Equatable {
+    public var text: String
+    public var isError: Bool
+
+    public init(text: String, isError: Bool) {
+        self.text = text
+        self.isError = isError
+    }
+}
+
+/// A minimal MCP server (Streamable HTTP, JSON responses only) exposing
+/// `approve_permission` for `--permission-prompt-tool` (docs/DECISIONS.md
+/// D-004) and, when other agent CLIs are enabled, `delegate_to_agent`.
 ///
 /// Security (SECURITY.md): bearer token per CLI process, requests with an
 /// `Origin` header are refused (DNS rebinding), `Host` must be loopback.
@@ -27,16 +38,26 @@ public struct MCPPermissionEndpoint: Sendable {
     public var resolveToken: @Sendable (String) async -> String?
     /// Decides one permission request.
     public var decide: @Sendable (_ sessionId: String, _ toolName: String, _ input: JSONValue, _ toolUseId: String?) async -> PermissionToolResult
+    /// Agents a session may delegate to (empty hides `delegate_to_agent`).
+    public var delegationAgents: @Sendable (_ sessionId: String) async -> [AgentKind]
+    /// Runs one delegated task to completion.
+    public var delegate: @Sendable (_ sessionId: String, _ arguments: JSONValue) async -> DelegationResult
     public var serverVersion: String
 
     public init(
         serverVersion: String = "1.0",
         resolveToken: @escaping @Sendable (String) async -> String?,
-        decide: @escaping @Sendable (String, String, JSONValue, String?) async -> PermissionToolResult
+        decide: @escaping @Sendable (String, String, JSONValue, String?) async -> PermissionToolResult,
+        delegationAgents: @escaping @Sendable (String) async -> [AgentKind] = { _ in [] },
+        delegate: @escaping @Sendable (String, JSONValue) async -> DelegationResult = { _, _ in
+            DelegationResult(text: "Delegation is not available.", isError: true)
+        }
     ) {
         self.serverVersion = serverVersion
         self.resolveToken = resolveToken
         self.decide = decide
+        self.delegationAgents = delegationAgents
+        self.delegate = delegate
     }
 
     public func handle(_ request: HTTPRequest) async -> HTTPResponse {
@@ -100,7 +121,16 @@ public struct MCPPermissionEndpoint: Sendable {
         case "ping":
             return Self.result(id: id, [:])
         case "tools/list":
-            return Self.result(id: id, ["tools": [Self.toolDefinition]])
+            let agents = await delegationAgents(sessionId)
+            let tools = agents.isEmpty ? [Self.toolDefinition] : [Self.toolDefinition, Self.delegationToolDefinition(agents)]
+            return Self.result(id: id, ["tools": .array(tools)])
+        case "tools/call" where message["params"]?["name"]?.stringValue == ClaudeCommand.delegationToolName:
+            let arguments = message["params"]?["arguments"] ?? [:]
+            let outcome = await delegate(sessionId, arguments)
+            return Self.result(id: id, [
+                "content": [["type": "text", "text": .string(outcome.text)]],
+                "isError": .bool(outcome.isError),
+            ])
         case "tools/call":
             guard message["params"]?["name"]?.stringValue == ClaudeCommand.permissionToolName else {
                 return Self.error(id: id, code: -32602, message: "Unknown tool")
@@ -131,6 +161,28 @@ public struct MCPPermissionEndpoint: Sendable {
             "required": ["tool_name", "input"],
         ],
     ]
+
+    static func delegationToolDefinition(_ agents: [AgentKind]) -> JSONValue {
+        let names = agents.map(\.displayName).joined(separator: ", ")
+        return [
+            "name": .string(ClaudeCommand.delegationToolName),
+            "description": .string("""
+                Hands a self-contained task to another coding agent CLI on this Mac (\(names)) and returns its final \
+                answer. It works in the same folder, its actions need the user's approval on their phone, and the user \
+                can follow it live. Use it when the user asks for one of these agents or for a second opinion; give a \
+                complete prompt, the agent does not see this conversation.
+                """),
+            "inputSchema": [
+                "type": "object",
+                "properties": [
+                    "agent": ["type": "string", "enum": .array(agents.map { .string($0.rawValue) })],
+                    "prompt": ["type": "string", "description": "The complete task for the agent."],
+                    "model": ["type": "string", "description": "Optional model ID for the agent."],
+                ],
+                "required": ["agent", "prompt"],
+            ],
+        ]
+    }
 
     static func result(id: JSONValue, _ result: JSONValue) -> JSONValue {
         ["jsonrpc": "2.0", "id": id, "result": result]

@@ -144,7 +144,9 @@ public final class HostRuntime: Sendable {
             resolveToken: { token in await sessions.sessionId(forToken: token) },
             decide: { sessionId, tool, input, toolUseId in
                 await sessions.decidePermission(sessionId: sessionId, tool: tool, input: input, toolUseId: toolUseId)
-            }
+            },
+            delegationAgents: { sessionId in await sessions.delegationAgents(for: sessionId) },
+            delegate: { sessionId, arguments in await sessions.delegate(sessionId: sessionId, arguments: arguments) }
         )
         mcpServer = try LoopbackHTTPServer { request in await mcpEndpoint.handle(request) }
         self.hub = hub

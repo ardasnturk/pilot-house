@@ -41,10 +41,10 @@ public final class EventLog {
     }
 
     /// Appends a persisted event and returns it with its sequence number.
-    public func append(_ event: SessionEvent, at date: Date = Date()) throws -> SequencedEvent {
+    public func append(_ event: SessionEvent, thread: String? = nil, at date: Date = Date()) throws -> SequencedEvent {
         precondition(!event.isEphemeral, "Ephemeral events are not persisted")
         try loadIfNeeded()
-        let sequenced = SequencedEvent(seq: (events.last?.seq ?? 0) + 1, timestamp: date, event: event)
+        let sequenced = SequencedEvent(seq: (events.last?.seq ?? 0) + 1, timestamp: date, event: event, thread: thread)
         var line = try PilothouseJSON.encode(sequenced)
         line.append(0x0A)
         try fileHandle().write(contentsOf: line)

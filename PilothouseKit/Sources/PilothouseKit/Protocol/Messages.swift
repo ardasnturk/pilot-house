@@ -181,16 +181,19 @@ public struct EventPayload: Sendable, Hashable, Codable {
     public var ts: Date
     public var ephemeral: Bool?
     public var payload: SessionEvent
+    /// Sub-agent thread (capability `threads`); `nil` for the main conversation.
+    public var thread: String?
     public init(sessionId: String, event: SequencedEvent) {
         self.sessionId = sessionId
         seq = event.seq
         ts = event.timestamp
         ephemeral = event.ephemeral ? true : nil
         payload = event.event
+        thread = event.thread
     }
 
     public var sequencedEvent: SequencedEvent {
-        SequencedEvent(seq: seq, timestamp: ts, ephemeral: ephemeral ?? false, event: payload)
+        SequencedEvent(seq: seq, timestamp: ts, ephemeral: ephemeral ?? false, event: payload, thread: thread)
     }
 }
 
