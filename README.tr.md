@@ -94,11 +94,10 @@ da giriş yapılmamışsa uygulama kısa bir kurulum rehberi gösterir
 (`curl -fsSL https://claude.ai/install.sh | bash`, ardından giriş yapmak için
 Terminal'de bir kez `claude`).
 
-**iPhone / iPad uygulaması** — Apple'ın beta uygulamaları için ücretsiz
-uygulaması TestFlight üzerinden: iPhone veya iPad'inizde
-**[testflight.apple.com/join/6CE4VRRE](https://testflight.apple.com/join/6CE4VRRE)**
-bağlantısını açın (ya da [web sitesindeki](https://pilot.ardasnturk.com) QR
-kodu okutun), istenirse TestFlight'ı yükleyin ve Pilothouse'u **Yükle**'yin.
+**iPhone / iPad uygulaması** — henüz App Store'da değil; herkese açık TestFlight
+bağlantısı [web sitesinde](https://pilot.ardasnturk.com) yayınlanacak. O zamana
+kadar Xcode ile kendi cihazınıza derleyin ([Kaynaktan derleme](#kaynaktan-derleme);
+ücretsiz bir Apple ID yeterli, uygulama 7 günde bir yeniden derlenmeli).
 Uygulamanın içindeki **Demoyu Dene**, simüle edilmiş bir Mac ile her şeyi gösterir.
 
 ## Telefonu eşleştirme
