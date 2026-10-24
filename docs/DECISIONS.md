@@ -152,3 +152,83 @@ on Linux. XCUITest still requires XCTest.
 
 Code, comments and `docs/` are in English (open-source convention); the
 README exists in English and Turkish (`README.tr.md`) as required.
+
+---
+
+## Phase 1 — PilothouseKit
+
+### D-020 — Keychain flavour per platform
+**Status:** accepted
+
+iOS: data-protection keychain, `kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly`,
+not synchronisable. macOS: the login (file-based) keychain. The macOS
+data-protection keychain requires an App ID entitlement, i.e. a provisioning
+profile even for Developer ID builds; the login keychain needs none and still
+binds the item to the app's code signature.
+
+### D-021 — Noise IK instead of a home-grown handshake
+**Status:** accepted
+
+The prompt asks for "X25519 + HKDF + ChaChaPoly, MITM-proof thanks to the
+Mac key in the QR code, mutual authentication afterwards". Noise
+`IK_25519_ChaChaPoly_SHA256` is exactly that pattern, is formally analysed and
+has public test vectors. It is ~250 lines on top of CryptoKit, so no
+dependency is needed. Pairing and reconnecting use the same handshake; the
+mode and the one-time token travel encrypted in message 1.
+
+### D-022 — No TLS on the WebSocket
+**Status:** accepted
+
+TLS would need certificates for LAN IPs and Tailscale names that no public CA
+issues, i.e. self-signed certificates plus pinning — which is what the Noise
+layer already provides with less machinery. WebSocket is kept only for
+message framing and NAT/proxy friendliness.
+
+### D-023 — Ephemeral streaming deltas
+**Status:** accepted
+
+Text and thinking deltas are not persisted and carry no new sequence number;
+the complete block follows as `assistantMessage`. Persisting every token would
+make logs ~50× larger for no benefit. Late subscribers get one `replace`
+delta with the text streamed so far (PROTOCOL.md §5.1).
+
+### D-024 — Extra target `PilothouseHost` in the package
+**Status:** accepted
+
+The prompt's tree lists `Protocol/Crypto/Transport/Models` under
+`PilothouseKit`. Mac-only *logic* (process supervision, normaliser, event log,
+file sandbox, permission broker, MCP endpoint) goes into a second library in
+the same package so it is unit-testable without an app host and never ships in
+the iOS binary.
+
+### D-025 — Demo mode = real protocol over an in-memory transport
+**Status:** accepted
+
+`DemoHostService` implements the same `HostService` protocol as the Mac and is
+reached through `ServerEndpoint` + the real Noise channel over
+`InMemoryTransport`. Demo mode, App Review and the UI tests therefore exercise
+the production client stack end to end. Demo content is localised (EN/TR/DE)
+for App Store screenshots.
+
+### D-026 — Additional protocol messages beyond the prompt's list
+**Status:** accepted
+
+Added because the UI cannot work without them: `ok` (acknowledges commands),
+`deleteSession`, `unsubscribe`, `sessionUpdated`, `sessionDeleted`,
+`permissionResolved` (dismisses the card on other devices), the
+`userMessage`, `sessionInfo` and `permissionDecision` events, and an optional
+`re` field in the envelope for request/response correlation.
+
+### D-027 — Sequential request handling per connection
+**Status:** accepted
+
+The host processes one connection's requests in order (all host operations
+return quickly; long work such as a Claude turn runs in the background). This
+keeps "send message A, then B" ordered without extra sequencing.
+
+### D-028 — Linux CI toolchain
+**Status:** accepted
+
+The package is validated with Swift 6.1.3 on Linux (`swift test`) in
+addition to Xcode. Network.framework, Security and IOKit code is behind
+`#if canImport(...)` and is compiled only by Xcode.
