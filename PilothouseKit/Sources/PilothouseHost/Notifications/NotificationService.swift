@@ -221,21 +221,15 @@ public actor NotificationService {
     /// or what arrived before `timeout`. Sub-agent threads are left out: their
     /// errors and interruptions are not the turn's (they alert as `.subagentFinished`).
     static func collect(_ stream: AsyncStream<SequencedEvent>, through target: Int, timeout: Duration) async -> [SessionEvent] {
-        let collected = Mutex<[SessionEvent]>([])
-        await withTaskGroup(of: Void.self) { group in
-            group.addTask {
-                for await event in stream where !event.ephemeral {
-                    if event.thread == nil {
-                        collected.withLock { $0.append(event.event) }
-                    }
-                    if event.seq >= target { break }
-                }
+        let collected = EventCollector()
+        let seconds = Double(timeout.components.seconds) + Double(timeout.components.attoseconds) / 1e18
+        _ = try? await withTimeout(seconds: seconds) {
+            for await event in stream where !event.ephemeral {
+                if event.thread == nil { collected.append(event.event) }
+                if event.seq >= target { break }
             }
-            group.addTask { try? await Task.sleep(for: timeout) }
-            await group.next()
-            group.cancelAll()
         }
-        return collected.withLock { $0 }
+        return collected.events
     }
 
     static func folderName(of path: String) -> String {
@@ -281,4 +275,11 @@ public enum NotificationRules {
             detail: lastAssistantText ?? result?.text
         )
     }
+}
+
+/// Events gathered by `NotificationService.collect`, shared with its timeout task.
+private final class EventCollector: Sendable {
+    private let storage = Mutex<[SessionEvent]>([])
+    func append(_ event: SessionEvent) { storage.withLock { $0.append(event) } }
+    var events: [SessionEvent] { storage.withLock { $0 } }
 }
