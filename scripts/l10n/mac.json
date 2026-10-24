@@ -452,8 +452,8 @@
   "tr": "Elle Kur"
  },
  "Set Up with Claude": {
-  "de": "Mit Claude einrichten",
-  "tr": "Claude ile Kur"
+  "de": "Automatisch mit Claude einrichten",
+  "tr": "Claude ile otomatik kur"
  },
  "Set up remote access with Tailscale": {
   "de": "Fernzugriff mit Tailscale einrichten",

@@ -23,6 +23,9 @@ done
 echo "▸ Localisation catalogs"
 python3 scripts/l10n/build_catalogs.py --check
 
+echo "▸ App Store metadata"
+python3 scripts/check-metadata.py > /dev/null
+
 echo "▸ PilothouseKit (swift test)"
 if [[ $E2E -eq 1 ]]; then
   export PILOTHOUSE_E2E_CLAUDE="${PILOTHOUSE_E2E_CLAUDE:-$(command -v claude)}"

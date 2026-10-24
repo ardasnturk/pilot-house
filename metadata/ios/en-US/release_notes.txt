@@ -1,0 +1,6 @@
+The first release of Pilothouse.
+• Pair your iPhone or iPad with your Mac using a QR code
+• Start, follow, stop and resume Claude Code sessions in any project folder
+• Approve file edits and commands from your phone
+• Works on your local network and over Tailscale
+• Demo mode to try everything without a Mac

@@ -34,6 +34,21 @@ CI on macOS instead.
   message was lost. Fixed in `SessionManager` ("retiring" processes) and
   covered by two regression tests.
 
+## Results on macOS (GitHub Actions, 2026-10-24)
+
+Environment: `macos-15` runner, Xcode 16.4, iPhone 17 Pro simulator (iOS 26.2).
+
+* **PilothouseMac scheme** — Mac app, privileged helper and both package test
+  targets build without warnings; **128 package tests passed** on macOS
+  (59 + 69; the opt-in real-CLI test skipped).
+* **PilothouseiOS scheme** — iOS app builds without warnings; **7 UI tests
+  passed** (onboarding + demo, seeded tool cards and diff, new session with
+  approval and "always allow", denial, Stop, reconnection after a network drop,
+  screenshot capture) plus the package tests on the simulator.
+* The first macOS run found two problems that Linux could not: a `Mutex` copied
+  into a Network.framework callback (compile error) and a UI test that did not
+  scroll the lazy Settings form. Both fixed.
+
 ## Fixtures
 
 `Tests/PilothouseHostTests/Fixtures/stream-*.jsonl` are real Claude Code

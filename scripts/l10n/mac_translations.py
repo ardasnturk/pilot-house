@@ -17,7 +17,7 @@ T = {
 "Remote access with Tailscale": ("Tailscale ile uzaktan erişim", "Fernzugriff mit Tailscale"),
 "Reply to Claude (e.g. “I have signed in”)": ("Claude'a yanıt ver (örn. “Giriş yaptım”)", "Claude antworten (z. B. „Ich habe mich angemeldet“)"),
 "Set Up Manually": ("Elle Kur", "Manuell einrichten"),
-"Set Up with Claude": ("Claude ile Kur", "Mit Claude einrichten"),
+"Set Up with Claude": ("Claude ile otomatik kur", "Automatisch mit Claude einrichten"),
 "Set up remote access with Tailscale": ("Tailscale ile uzaktan erişimi kur", "Fernzugriff mit Tailscale einrichten"),
 "Tailscale is connected": ("Tailscale bağlı", "Tailscale ist verbunden"),
 "Tailscale is installed but not connected (%@).": ("Tailscale kurulu ama bağlı değil (%@).", "Tailscale ist installiert, aber nicht verbunden (%@)."),

@@ -2086,13 +2086,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne im Pilothouse-Menü → Tailscale → „Mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an."
+            "value": "Öffne im Pilothouse-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse menüsü → Tailscale → “Claude ile Kur”u açın. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
+            "value": "Pilothouse menüsünde Tailscale → “Claude ile otomatik kur”u seçin. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
           }
         }
       }

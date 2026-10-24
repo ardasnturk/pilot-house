@@ -471,3 +471,79 @@ GitHub Actions: package tests in the official `swift:6.1` Linux image, and on
 `macos-15` both Xcode schemes with `CODE_SIGNING_ALLOWED=NO` (Mac app + helper
 build, package tests on macOS, iOS app build + UI tests on the newest iPhone
 simulator). Result bundles are kept for 7 days.
+
+---
+
+## Phase 6 — Release
+
+### D-080 — Mac app outside the Mac App Store
+**Status:** accepted
+
+The Mac app starts the user's own `claude` binary with the login-shell
+environment, lets it work in any folder under the home folder and installs a
+privileged helper for lid-closed mode. None of that is possible in the App
+Sandbox, so the Mac app ships as a Developer ID–signed, notarized and stapled
+DMG on GitHub Releases and through a Homebrew cask. The helper and the app
+share team `5JMD3VSD7N`; the helper's XPC code-signing requirement depends on
+that.
+
+### D-081 — No push notifications in 1.0
+**Status:** accepted
+
+Background notifications need APNs, and APNs needs a server holding a push key.
+That contradicts "only your own devices, no telemetry". 1.0 relies on the Mac:
+permission requests wait (and are shown in the menu bar) until the phone
+reconnects, and are denied after 10 minutes. An optional self-hostable relay
+that only sees opaque wake-ups is on the roadmap.
+
+### D-082 — Third-party names in store metadata
+**Status:** accepted
+
+"Claude Code" appears only nominatively — in the subtitle and the description,
+to state compatibility and the requirement (App Review guidelines 2.3.7 and
+5.2.1). It is not part of the app name, the icon or the keyword field, and
+every description ends with the non-affiliation statement.
+
+### D-083 — Metadata as plain files, checked in CI
+**Status:** accepted
+
+`metadata/ios/<locale>/*.txt` uses the directory layout of fastlane `deliver`,
+so it can be uploaded with it, but nothing depends on fastlane (no third-party
+dependencies). `scripts/check-metadata.py` enforces the App Store Connect
+limits (name/subtitle 30, keywords 100 bytes, promotional text 170, …), the
+"where to get the Mac app" sentence and the disclaimer; CI runs it.
+
+### D-084 — Own Homebrew tap in this repository
+**Status:** accepted
+
+`Casks/pilothouse.rb` lives here, so the repository doubles as a tap
+(`brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house`).
+`homebrew/cask` requires a released, notable app; it can be submitted there
+later unchanged. Until the first DMG exists the cask uses `sha256 :no_check`;
+`scripts/prepare-release.sh` writes the real version and checksum.
+
+### D-085 — Release automation stops before anything irreversible
+**Status:** accepted
+
+The prompt allows automation up to, not including, irreversible steps.
+`build-ios.sh` archives and uploads to App Store Connect (a TestFlight build
+can simply be expired) and never submits for review. `prepare-release.sh`
+creates a *draft* GitHub release. Publishing the release and submitting the app
+for review are deliberate manual steps (docs/RELEASE.md).
+
+### D-086 — Screenshots from UI tests on the demo Mac
+**Status:** accepted
+
+`ScreenshotTests` drives the demo Mac, so screenshots are reproducible, show no
+private paths and need no real Mac. `scripts/screenshots.sh` sets a clean status
+bar (9:41, full battery), switches light/dark, and runs EN/TR/DE through the
+`SCREENSHOT_LANGUAGE` test-runner variable. The manual `Screenshots` workflow
+runs the same script on a GitHub macOS runner and keeps the PNGs as an artifact
+(the full set is too large to commit).
+
+### D-087 — Privacy policy in the repository
+**Status:** accepted
+
+App Store Connect needs a privacy policy URL. `PRIVACY.md` (EN/TR/DE) states
+that Pilothouse collects nothing, and is linked from the metadata. It matches
+the privacy manifests (D-057) and the "Data Not Collected" privacy label.

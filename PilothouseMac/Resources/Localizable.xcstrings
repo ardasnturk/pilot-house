@@ -1814,13 +1814,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mit Claude einrichten"
+            "value": "Automatisch mit Claude einrichten"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Claude ile Kur"
+            "value": "Claude ile otomatik kur"
           }
         }
       }

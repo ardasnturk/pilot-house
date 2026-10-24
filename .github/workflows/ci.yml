@@ -21,6 +21,8 @@ jobs:
         run: apt-get update -qq && apt-get install -y -qq curl python3 > /dev/null
       - name: Check translations
         run: python3 scripts/l10n/build_catalogs.py --check
+      - name: Check App Store metadata
+        run: python3 scripts/check-metadata.py
       - name: swift test
         working-directory: PilothouseKit
         run: swift test

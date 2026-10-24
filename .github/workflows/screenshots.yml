@@ -1,0 +1,37 @@
+name: Screenshots
+
+# Generates the App Store screenshots (iPhone 6.9" + iPad 13", light + dark,
+# EN/TR/DE) from the demo Mac and keeps them as a build artifact.
+on:
+  workflow_dispatch:
+    inputs:
+      languages:
+        description: Languages (space separated)
+        default: en tr de
+        required: true
+
+jobs:
+  screenshots:
+    runs-on: macos-15
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode version
+        run: xcodebuild -version
+      - name: Capture
+        env:
+          LANGUAGES: ${{ inputs.languages }}
+        run: scripts/screenshots.sh
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots
+          retention-days: 90
+      - name: Upload logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot-logs
+          path: build/screenshots/*.log
+          retention-days: 7
