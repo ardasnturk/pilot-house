@@ -10,6 +10,12 @@ struct ComposerView: View {
     let isEnabled: Bool
     /// Agent and model shown inside the field, e.g. "Codex · gpt-6.1-sol".
     var modelLabel: String?
+    /// Effort level shown after the model (`AgentKind.effortLevels`).
+    var effort: String?
+    /// Menu opened by tapping the model chip (model and effort pickers).
+    var settingsMenu: AnyView?
+    /// Opens the list of skills and commands (the `/` button).
+    var onSlash: (() -> Void)?
     var placeholder: LocalizedStringKey = "Message Claude…"
     let onSend: () -> Void
 
@@ -70,6 +76,20 @@ struct ComposerView: View {
                 .disabled(!isEnabled)
                 .accessibilityLabel(Text("Attach images"))
 
+                if let onSlash {
+                    Button(action: onSlash) {
+                        Image(systemName: "slash.circle")
+                            .font(.body.weight(.semibold))
+                            .frame(width: 32, height: 32)
+                            .background(Design.insetBackground, in: Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(Color.accentColor)
+                    .disabled(!isEnabled)
+                    .accessibilityLabel(Text("Skills and commands"))
+                    .accessibilityIdentifier("slashButton")
+                }
+
                 TextField(placeholder, text: $text, axis: .vertical)
                     .lineLimit(1...8)
                     .focused($isFocused)
@@ -78,9 +98,20 @@ struct ComposerView: View {
                     .accessibilityIdentifier("composerField")
 
                 if let modelLabel, text.isEmpty {
-                    Chip(text: Text(verbatim: modelLabel))
+                    if let settingsMenu {
+                        Menu {
+                            settingsMenu
+                        } label: {
+                            modelChip(modelLabel, symbol: "chevron.up.chevron.down")
+                        }
                         .padding(.bottom, 6)
                         .accessibilityLabel(Text("Model: \(modelLabel)"))
+                        .accessibilityValue(effort.map { Text(EffortLevel.localizedName($0)) } ?? Text(verbatim: ""))
+                        .accessibilityIdentifier("modelChip")
+                    } else {
+                        modelChip(modelLabel, symbol: nil)
+                            .padding(.bottom, 6)
+                    }
                 }
 
                 Button(action: onSend) {
@@ -102,6 +133,17 @@ struct ComposerView: View {
         .onChange(of: photoSelection) { _, items in
             Task { await loadPhotos(items) }
         }
+    }
+
+    private func modelChip(_ label: String, symbol: String?) -> some View {
+        Chip(text: chipText(label), symbol: symbol)
+            .accessibilityLabel(Text("Model: \(label)"))
+            .accessibilityValue(effort.map { Text(EffortLevel.localizedName($0)) } ?? Text(verbatim: ""))
+    }
+
+    private func chipText(_ label: String) -> Text {
+        guard let effort else { return Text(verbatim: label) }
+        return Text(verbatim: "\(label) · ") + Text(EffortLevel.localizedName(effort))
     }
 
     private func loadPhotos(_ items: [PhotosPickerItem]) async {

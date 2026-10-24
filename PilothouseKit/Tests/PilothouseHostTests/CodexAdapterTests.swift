@@ -23,6 +23,18 @@ import Testing
         #expect(params["cwd"]?.stringValue == "/Users/demo/Developer/demo")
     }
 
+    @Test func effortGoesWithEveryTurn() throws {
+        var options = Self.options
+        options.threadId = "thread-1"
+        options.effort = "high"
+        var adapter = CodexAdapter(options: options)
+        _ = adapter.startupLines()
+        _ = adapter.consume(line: #"{"id":2,"result":{"thread":{"id":"thread-1"},"model":"gpt-6"}}"#)
+        let turn = try #require(try requests(adapter.userMessageLines(text: "Hi", attachments: [])).first)
+        #expect(turn["method"]?.stringValue == "turn/start")
+        #expect(turn["params"]?["effort"]?.stringValue == "high")
+    }
+
     @Test func resumesAnExistingThread() throws {
         var options = Self.options
         options.threadId = "thread-1"

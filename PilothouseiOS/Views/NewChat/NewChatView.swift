@@ -13,6 +13,7 @@ struct NewChatView: View {
     @State private var search = ""
     @State private var showHidden = false
     @State private var selectedModel = ""
+    @State private var selectedEffort = ""
     @State private var customModel = ""
     @State private var permissionMode: PermissionMode = .default
     @State private var firstMessage = ""
@@ -193,6 +194,7 @@ struct NewChatView: View {
                 .accessibilityIdentifier("agentPicker")
                 .onChange(of: agent) { _, _ in
                     selectedModel = agent == .claude ? model.preferences.defaultModel : ""
+                    selectedEffort = defaultEffort(for: agent)
                 }
                 if let status = availableAgents.first(where: { $0.kind == agent }), status.loggedIn == false {
                     Label("\(agent.displayName) is not signed in on your Mac. Run it once in Terminal there.", systemImage: "exclamationmark.triangle")
@@ -251,6 +253,17 @@ struct NewChatView: View {
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
             }
+            if supportsEffort {
+                Picker(selection: $selectedEffort) {
+                    Text("Agent default").tag("")
+                    ForEach(agent.effortLevels, id: \.self) { level in
+                        Text(EffortLevel.localizedName(level)).tag(level)
+                    }
+                } label: {
+                    Label("Effort", systemImage: "gauge.with.dots.needle.67percent")
+                }
+                .accessibilityIdentifier("effortPicker")
+            }
             TextField("First message (optional)", text: $firstMessage, axis: .vertical)
                 .lineLimit(1...4)
         } header: {
@@ -261,6 +274,16 @@ struct NewChatView: View {
     private func chipColor(_ mode: PermissionMode) -> Color {
         if permissionMode != mode { return .secondary }
         return mode == .bypassPermissions ? .red : .accentColor
+    }
+
+    private var supportsEffort: Bool {
+        !agent.effortLevels.isEmpty && model.connection?.capabilities.contains(HostCapability.sessionSettings) == true
+    }
+
+    /// The default effort from Settings, if this agent accepts it.
+    private func defaultEffort(for agent: AgentKind) -> String {
+        let effort = model.preferences.defaultEffort
+        return agent.effortLevels.contains(effort) ? effort : ""
     }
 
     /// Installed agents the Mac reported (Claude Code alone on older Macs).
@@ -339,6 +362,7 @@ struct NewChatView: View {
         guard !didApplyDefaults else { return }
         didApplyDefaults = true
         selectedModel = model.preferences.defaultModel
+        selectedEffort = defaultEffort(for: agent)
         permissionMode = model.preferences.defaultPermissionMode
     }
 
@@ -389,7 +413,8 @@ struct NewChatView: View {
                 model: modelName.isEmpty ? nil : modelName,
                 permissionMode: permissionMode,
                 firstMessage: message.isEmpty ? nil : message,
-                agent: agent
+                agent: agent,
+                effort: supportsEffort && !selectedEffort.isEmpty ? selectedEffort : nil
             )
             model.preferences.noteRecent(listing.path)
             model.selectedSessionId = session.id

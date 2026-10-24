@@ -66,6 +66,7 @@ final class UserPreferences {
         static let activeMacId = "activeMacId"
         static let connectionPreference = "connectionPreference"
         static let defaultModel = "defaultModel"
+        static let defaultEffort = "defaultEffort"
         static let defaultPermissionMode = "defaultPermissionMode"
         static let appearance = "appearance"
         static let hapticsEnabled = "hapticsEnabled"
@@ -79,6 +80,8 @@ final class UserPreferences {
     var activeMacId: String? { didSet { defaults.set(activeMacId, forKey: Key.activeMacId) } }
     var connectionPreference: ConnectionPreference { didSet { defaults.set(connectionPreference.rawValue, forKey: Key.connectionPreference) } }
     var defaultModel: String { didSet { defaults.set(defaultModel, forKey: Key.defaultModel) } }
+    /// Effort for new chats (`""` = the agent's default); used when the agent supports it.
+    var defaultEffort: String { didSet { defaults.set(defaultEffort, forKey: Key.defaultEffort) } }
     var defaultPermissionMode: PermissionMode { didSet { defaults.set(defaultPermissionMode.rawValue, forKey: Key.defaultPermissionMode) } }
     var appearance: Appearance { didSet { defaults.set(appearance.rawValue, forKey: Key.appearance) } }
     var hapticsEnabled: Bool { didSet { defaults.set(hapticsEnabled, forKey: Key.hapticsEnabled) } }
@@ -92,6 +95,7 @@ final class UserPreferences {
         activeMacId = defaults.string(forKey: Key.activeMacId)
         connectionPreference = ConnectionPreference(rawValue: defaults.string(forKey: Key.connectionPreference) ?? "") ?? .automatic
         defaultModel = defaults.string(forKey: Key.defaultModel) ?? ""
+        defaultEffort = defaults.string(forKey: Key.defaultEffort) ?? ""
         defaultPermissionMode = PermissionMode(rawValue: defaults.string(forKey: Key.defaultPermissionMode) ?? "") ?? .default
         appearance = Appearance(rawValue: defaults.string(forKey: Key.appearance) ?? "") ?? .system
         hapticsEnabled = defaults.bool(forKey: Key.hapticsEnabled)

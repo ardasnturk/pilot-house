@@ -187,10 +187,6 @@
   "de": "Claude meldet seine Limits mit jeder Antwort, sie sind also so aktuell wie die letzte Antwort. Codex-Limits werden beim Öffnen dieses Bildschirms von deinem Mac gelesen. Gemini meldet keine Limits.",
   "tr": "Claude limitlerini her turda bildirir; yani son cevap kadar günceldir. Codex limitleri bu ekranı açtığınızda Mac'inizden okunur. Gemini limit bildirmez."
  },
- "Claude reports its skills and commands when the session starts. Send a first message, then open this list again.": {
-  "de": "Claude meldet seine Skills und Befehle beim Start der Sitzung. Sende eine erste Nachricht und öffne diese Liste dann erneut.",
-  "tr": "Claude skill ve komutlarını oturum başlarken bildirir. İlk mesajı gönderin, sonra bu listeyi tekrar açın."
- },
  "Claude runs on your Mac with Claude Code. You'll see every step here.": {
   "de": "Claude läuft mit Claude Code auf deinem Mac. Hier siehst du jeden Schritt.",
   "tr": "Claude, Mac'inizde Claude Code ile çalışır. Her adımı burada görürsünüz."
@@ -383,6 +379,10 @@
   "de": "Notebook bearbeiten",
   "tr": "Not defterini düzenle"
  },
+ "Effort": {
+  "de": "Aufwand",
+  "tr": "Efor"
+ },
  "End-to-end encrypted between your devices. No accounts, no cloud, no tracking.": {
   "de": "Ende-zu-Ende verschlüsselt zwischen deinen Geräten. Keine Konten, keine Cloud, kein Tracking.",
   "tr": "Cihazlarınız arasında uçtan uca şifreli. Hesap yok, bulut yok, takip yok."
@@ -390,6 +390,10 @@
  "Explore Pilothouse with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
   "de": "Erkunde Pilothouse mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt.",
   "tr": "Pilothouse'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
+ },
+ "Extra high": {
+  "de": "Sehr hoch",
+  "tr": "Çok yüksek"
  },
  "Failed": {
   "de": "Fehlgeschlagen",
@@ -454,6 +458,10 @@
  "Haptic feedback": {
   "de": "Haptisches Feedback",
   "tr": "Dokunsal geri bildirim"
+ },
+ "High": {
+  "de": "Hoch",
+  "tr": "Yüksek"
  },
  "How": {
   "de": "Wie",
@@ -531,6 +539,10 @@
   "de": "Nur lokales Netzwerk",
   "tr": "Yalnızca yerel ağ"
  },
+ "Low": {
+  "de": "Niedrig",
+  "tr": "Düşük"
+ },
  "Mac default": {
   "de": "Mac-Standard",
   "tr": "Mac varsayılanı"
@@ -538,6 +550,14 @@
  "Macs": {
   "de": "Macs",
   "tr": "Mac'ler"
+ },
+ "Max": {
+  "de": "Maximum",
+  "tr": "Maksimum"
+ },
+ "Medium": {
+  "de": "Mittel",
+  "tr": "Orta"
  },
  "Message %@…": {
   "de": "Nachricht an %@ …",
@@ -615,6 +635,10 @@
   "de": "Noch keine Sitzungen",
   "tr": "Henüz oturum yok"
  },
+ "No skills or commands were found for this folder on your Mac.": {
+  "de": "Auf deinem Mac wurden für diesen Ordner keine Skills oder Befehle gefunden.",
+  "tr": "Mac'inizde bu klasör için skill veya komut bulunamadı."
+ },
  "No work this week": {
   "de": "Diese Woche keine Arbeit",
   "tr": "Bu hafta çalışma yok"
@@ -634,6 +658,10 @@
  "Offline": {
   "de": "Offline",
   "tr": "Çevrimdışı"
+ },
+ "Offline · Local Network access is off": {
+  "de": "Offline · Zugriff aufs lokale Netzwerk ist aus",
+  "tr": "Çevrimdışı · Yerel Ağ erişimi kapalı"
  },
  "Offline · retrying": {
   "de": "Offline · neuer Versuch",
@@ -662,6 +690,10 @@
  "Open Pilothouse on your Mac, choose “Pair New Device…” and point the camera at the QR code.": {
   "de": "Öffne Pilothouse auf deinem Mac, wähle „Neues Gerät koppeln …“ und richte die Kamera auf den QR-Code.",
   "tr": "Mac'inizde Pilothouse'u açın, “Yeni Cihaz Eşleştir…”i seçin ve kamerayı QR koda tutun."
+ },
+ "Open Settings": {
+  "de": "Einstellungen öffnen",
+  "tr": "Ayarları Aç"
  },
  "Open the Pilothouse menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.": {
   "de": "Öffne im Pilothouse-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an.",
@@ -726,6 +758,10 @@
  "Pilothouse could not access the Keychain: %@": {
   "de": "Pilothouse konnte nicht auf den Schlüsselbund zugreifen: %@",
   "tr": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
+ },
+ "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.": {
+  "de": "Pilothouse darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen und versuche es erneut.",
+  "tr": "Pilothouse'un yerel ağı kullanma izni yok, bu yüzden bu Wi-Fi'de Mac'inize ulaşamıyor. Ayarlar'da Pilothouse için Yerel Ağ'ı açıp tekrar deneyin."
  },
  "Pilothouse learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": {
   "de": "Pilothouse lernt die Tailscale-Adresse deines Macs automatisch und nutzt sie, wenn das lokale Netzwerk nicht verfügbar ist.",
@@ -886,6 +922,10 @@
  "Skills and Commands": {
   "de": "Skills und Befehle",
   "tr": "Skill'ler ve Komutlar"
+ },
+ "Skills and commands": {
+  "de": "Skills und Befehle",
+  "tr": "Skill'ler ve komutlar"
  },
  "Skills · %lld": {
   "de": "Skills · %lld",
@@ -1090,6 +1130,10 @@
  "Yes": {
   "de": "Ja",
   "tr": "Evet"
+ },
+ "You can change these when the reply has finished.": {
+  "de": "Du kannst das ändern, sobald die Antwort fertig ist.",
+  "tr": "Bunları yanıt bittiğinde değiştirebilirsiniz."
  },
  "You: %@": {
   "de": "Du: %@",

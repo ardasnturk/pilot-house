@@ -113,7 +113,8 @@ public struct CodexLauncher: AgentLauncher {
             workingDirectory: options.workingDirectory,
             model: options.model,
             permissionMode: options.permissionMode,
-            threadId: options.resume ? options.agentSessionId : nil
+            threadId: options.resume ? options.agentSessionId : nil,
+            effort: options.effort
         ))
     }
 }

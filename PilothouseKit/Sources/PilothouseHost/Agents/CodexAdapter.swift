@@ -23,16 +23,19 @@ public struct CodexAdapter: AgentAdapter {
         public var threadId: String?
         /// Extra instructions (used for delegated sub-agent runs).
         public var developerInstructions: String?
+        /// Reasoning effort sent with every `turn/start`; `nil` = the model's default.
+        public var effort: String?
 
         public init(
             workingDirectory: String, model: String?, permissionMode: PermissionMode, threadId: String?,
-            developerInstructions: String? = nil
+            developerInstructions: String? = nil, effort: String? = nil
         ) {
             self.workingDirectory = workingDirectory
             self.model = model
             self.permissionMode = permissionMode
             self.threadId = threadId
             self.developerInstructions = developerInstructions
+            self.effort = effort
         }
     }
 
@@ -97,7 +100,13 @@ public struct CodexAdapter: AgentAdapter {
             queuedInputs.append(.array(input))
             return []
         }
-        return [request("turn/start", ["threadId": .string(threadId), "input": .array(input)])]
+        return [request("turn/start", turnParameters(threadId: threadId, input: .array(input)))]
+    }
+
+    private func turnParameters(threadId: String, input: JSONValue) -> JSONValue {
+        var params: [String: JSONValue] = ["threadId": .string(threadId), "input": input]
+        if let effort = options.effort, !effort.isEmpty { params["effort"] = .string(effort) }
+        return .object(params)
     }
 
     public mutating func interruptLines() -> [Data]? {
@@ -187,7 +196,7 @@ public struct CodexAdapter: AgentAdapter {
                     claudeVersion: nil
                 )))
                 for input in queuedInputs {
-                    output.writes.append(request("turn/start", ["threadId": .string(threadId), "input": input]))
+                    output.writes.append(request("turn/start", turnParameters(threadId: threadId, input: input)))
                 }
                 queuedInputs.removeAll()
             }

@@ -83,3 +83,17 @@ extension Int {
 extension Color {
     static let brandTeal = Color("AccentColor")
 }
+
+/// Display names of `AgentKind.effortLevels` values.
+enum EffortLevel {
+    static func localizedName(_ raw: String) -> LocalizedStringKey {
+        switch raw {
+        case "low": LocalizedStringKey("Low")
+        case "medium": LocalizedStringKey("Medium")
+        case "high": LocalizedStringKey("High")
+        case "xhigh": LocalizedStringKey("Extra high")
+        case "max": LocalizedStringKey("Max")
+        default: LocalizedStringKey(stringLiteral: raw)
+        }
+    }
+}

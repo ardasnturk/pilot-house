@@ -50,6 +50,71 @@ public enum CommandCatalogBuilder {
         )
     }
 
+    /// What Claude Code would load, found on disk: project and personal skills
+    /// and commands, enabled plugins, and the built-in commands. Used so the
+    /// `/` menu works before the CLI's first `system/init` (a chat without
+    /// messages yet), and to pick up files added since.
+    public struct Discovery: Sendable, Equatable {
+        public var skills: [String] = []
+        public var commands: [String] = []
+        /// Plugin name → install folder.
+        public var plugins: [String: String] = [:]
+    }
+
+    public static func discover(cwd: String, home: String) -> Discovery {
+        var found = Discovery()
+        let fileManager = FileManager.default
+        func scan(_ base: URL, prefix: String) {
+            let skills = base.appendingPathComponent("skills")
+            for name in (try? fileManager.contentsOfDirectory(atPath: skills.path)) ?? []
+            where fileManager.fileExists(atPath: skills.appendingPathComponent("\(name)/SKILL.md").path) {
+                found.skills.append(prefix + name)
+            }
+            let commands = base.appendingPathComponent("commands")
+            for entry in (try? fileManager.contentsOfDirectory(atPath: commands.path)) ?? [] {
+                if entry.hasSuffix(".md") {
+                    found.commands.append(prefix + String(entry.dropLast(3)))
+                } else if prefix.isEmpty {
+                    // A sub-folder namespaces its commands: commands/git/push.md → /git:push.
+                    let folder = commands.appendingPathComponent(entry)
+                    for file in (try? fileManager.contentsOfDirectory(atPath: folder.path)) ?? [] where file.hasSuffix(".md") {
+                        found.commands.append("\(entry):\(file.dropLast(3))")
+                    }
+                }
+            }
+        }
+        let claudeHome = URL(fileURLWithPath: home).appendingPathComponent(".claude")
+        if cwd != home {
+            scan(URL(fileURLWithPath: cwd).appendingPathComponent(".claude"), prefix: "")
+        }
+        scan(claudeHome, prefix: "")
+        for (name, path) in enabledPlugins(claudeHome: claudeHome) {
+            found.plugins[name] = path
+            scan(URL(fileURLWithPath: path), prefix: "\(name):")
+        }
+        found.commands += builtinDescriptions.keys
+        return found
+    }
+
+    /// `enabledPlugins` of `~/.claude/settings.json` mapped to their install
+    /// folders from `plugins/installed_plugins.json` (format version 2).
+    static func enabledPlugins(claudeHome: URL) -> [String: String] {
+        func json(_ path: String) -> JSONValue? {
+            (try? Data(contentsOf: claudeHome.appendingPathComponent(path))).flatMap { try? JSONValue.parse($0) }
+        }
+        guard
+            let enabled = json("settings.json")?["enabledPlugins"]?.objectValue,
+            let installed = json("plugins/installed_plugins.json")?["plugins"]?.objectValue
+        else { return [:] }
+        var result: [String: String] = [:]
+        for (id, flag) in enabled where flag.boolValue == true {
+            guard let path = installed[id]?.arrayValue?.first?["installPath"]?.stringValue else { continue }
+            let name = id.split(separator: "@").first.map(String.init) ?? id
+            result[name] = path
+        }
+        return result
+    }
+
     private static func file(_ kind: CommandInfo.Kind, _ name: String, in base: URL) -> URL {
         switch kind {
         case .skill: base.appendingPathComponent("skills/\(name)/SKILL.md")

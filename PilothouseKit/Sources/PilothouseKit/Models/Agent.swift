@@ -32,6 +32,16 @@ public struct AgentKind: RawRepresentable, Sendable, Hashable, Codable, CustomSt
     /// Name of the executable looked up on the Mac.
     public var executableName: String { rawValue }
 
+    /// Effort (reasoning) levels the agent's CLI accepts, lowest first; empty
+    /// when it has no such setting. Claude Code: `--effort`; Codex: `turn/start.effort`.
+    public var effortLevels: [String] {
+        switch self {
+        case .claude: ["low", "medium", "high", "xhigh", "max"]
+        case .codex: ["low", "medium", "high", "xhigh"]
+        default: []
+        }
+    }
+
     public var displayName: String {
         switch self {
         case .claude: "Claude Code"

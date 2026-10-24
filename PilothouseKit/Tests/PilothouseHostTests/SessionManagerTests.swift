@@ -48,6 +48,34 @@ import Testing
         }
     }
 
+    @Test func modelAndEffortChangeRestartsTheCLIWithNewFlags() async throws {
+        let harness = try await Harness()
+        defer { Task { await harness.tearDown() } }
+        let summary = try await harness.sessions.start(StartSession(cwd: "~/project", model: "sonnet", effort: "high"))
+        #expect(summary.effort == "high")
+        var stream = try await harness.sessions.subscribe(summary.id, fromSeq: 1)
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "Hi"))
+        _ = try await collect(stream) { $0.resultCount == 1 }
+
+        let updated = try await harness.sessions.updateSettings(UpdateSessionSettings(sessionId: summary.id, model: "opus", effort: "max"))
+        #expect(updated.model == "opus")
+        #expect(updated.effort == "max")
+        stream = try await harness.sessions.subscribe(summary.id, fromSeq: updated.lastSeq + 1)
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "Again"))
+        _ = try await collect(stream) { $0.resultCount == 1 }
+        #expect(harness.launchedArguments() == [
+            "session=\(summary.id) resume=no model=sonnet mode=default effort=high",
+            "session=\(summary.id) resume=yes model=opus mode=default effort=max",
+        ])
+
+        // Back to the defaults: no flags at all.
+        let reset = try await harness.sessions.updateSettings(UpdateSessionSettings(sessionId: summary.id, model: "", effort: ""))
+        #expect(reset.effort == nil)
+        await #expect(throws: ErrorPayload.self) {
+            try await harness.sessions.updateSettings(UpdateSessionSettings(sessionId: summary.id, effort: "turbo"))
+        }
+    }
+
     @Test func startStreamsAndPersistsATurn() async throws {
         let harness = try await Harness()
         let summary = try await harness.sessions.start(StartSession(cwd: "~/project", model: "sonnet"))

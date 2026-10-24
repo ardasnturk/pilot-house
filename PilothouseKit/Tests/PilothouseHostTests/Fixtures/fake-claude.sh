@@ -18,6 +18,7 @@ resume="no"
 model="default"
 mode="default"
 mcp=""
+effort=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --session-id) session="$2"; shift ;;
@@ -25,12 +26,17 @@ while [ $# -gt 0 ]; do
     --model) model="$2"; shift ;;
     --permission-mode) mode="$2"; shift ;;
     --mcp-config) mcp="$2"; shift ;;
+    --effort) effort="$2"; shift ;;
   esac
   shift
 done
 
 if [ -n "$FAKE_CLAUDE_ARGS_LOG" ]; then
-  printf 'session=%s resume=%s model=%s mode=%s\n' "$session" "$resume" "$model" "$mode" >> "$FAKE_CLAUDE_ARGS_LOG"
+  if [ -n "$effort" ]; then
+    printf 'session=%s resume=%s model=%s mode=%s effort=%s\n' "$session" "$resume" "$model" "$mode" "$effort" >> "$FAKE_CLAUDE_ARGS_LOG"
+  else
+    printf 'session=%s resume=%s model=%s mode=%s\n' "$session" "$resume" "$model" "$mode" >> "$FAKE_CLAUDE_ARGS_LOG"
+  fi
 fi
 
 turn=0

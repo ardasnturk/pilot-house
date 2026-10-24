@@ -31,6 +31,36 @@ import Testing
         #expect(byName["review"]?.description == "Review a pull request")
     }
 
+    @Test func discoversSkillsBeforeTheCLIReportsThem() throws {
+        let home = try TemporaryHome()
+        defer { home.remove() }
+        try home.write("app/.claude/skills/release/SKILL.md", "---\ndescription: Ship it\n---")
+        try home.write(".claude/skills/pdf/SKILL.md", "---\ndescription: Read PDFs\n---")
+        try home.write(".claude/skills/not-a-skill/README.md")
+        try home.write(".claude/commands/deploy.md", "Deploy")
+        try home.write(".claude/commands/git/push.md", "Push")
+        try home.write("cache/figma/skills/figma-use/SKILL.md", "---\ndescription: Read Figma designs\n---")
+        try home.write("cache/figma/commands/sync.md", "Sync")
+        try home.write(".claude/settings.json", #"{"enabledPlugins":{"figma@official":true,"off@official":false}}"#)
+        try home.write(
+            ".claude/plugins/installed_plugins.json",
+            #"{"version":2,"plugins":{"figma@official":[{"installPath":"\#(home.path)/cache/figma"}],"off@official":[{"installPath":"/x"}]}}"#
+        )
+        let found = CommandCatalogBuilder.discover(cwd: home.path + "/app", home: home.path)
+        #expect(Set(found.skills) == ["release", "pdf", "figma:figma-use"])
+        #expect(Set(found.commands).isSuperset(of: ["deploy", "git:push", "figma:sync", "compact"]))
+        #expect(found.plugins == ["figma": home.path + "/cache/figma"])
+
+        let catalog = CommandCatalogBuilder.build(
+            slashCommands: found.commands, skills: found.skills, plugins: found.plugins, cwd: home.path + "/app", home: home.path
+        )
+        let byName = Dictionary(uniqueKeysWithValues: catalog.map { ($0.name, $0) })
+        #expect(byName["release"]?.source == .project)
+        #expect(byName["pdf"]?.description == "Read PDFs")
+        #expect(byName["figma:figma-use"]?.kind == .skill)
+        #expect(byName["figma:figma-use"]?.plugin == "figma")
+    }
+
     @Test func initLineCarriesSkillsAndPlugins() {
         var normalizer = StreamJSONNormalizer()
         let events = normalizer.consume(line: #"{"type":"system","subtype":"init","session_id":"s","slash_commands":["review","pdf"],"skills":["pdf"],"plugins":[{"name":"figma","path":"/p/figma"},{"name":"telemetry","path":"builtin"}]}"#)

@@ -67,6 +67,10 @@ public struct MacHostService: HostService {
         try await sessions.resume(id)
     }
 
+    public func updateSessionSettings(_ request: UpdateSessionSettings) async throws -> SessionSummary {
+        try await sessions.updateSettings(request)
+    }
+
     public func sendMessage(_ request: SendMessage, from client: ClientContext) async throws {
         await notifications.noteTurnFromPhone(request.sessionId)
         try await sessions.send(request)

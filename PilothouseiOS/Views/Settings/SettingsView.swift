@@ -40,6 +40,12 @@ struct SettingsView: View {
                             Text(name.capitalized).tag(name)
                         }
                     }
+                    Picker("Effort", selection: $preferences.defaultEffort) {
+                        Text("Agent default").tag("")
+                        ForEach(AgentKind.claude.effortLevels, id: \.self) { level in
+                            Text(EffortLevel.localizedName(level)).tag(level)
+                        }
+                    }
                     Picker("Permissions", selection: $preferences.defaultPermissionMode) {
                         ForEach(PermissionMode.standardModes, id: \.self) { mode in
                             Text(mode.localizedName).tag(mode)

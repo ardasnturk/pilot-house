@@ -45,6 +45,8 @@ public protocol HostService: Sendable {
     func listSessions() async -> [SessionSummary]
     func startSession(_ request: StartSession, from client: ClientContext) async throws -> SessionSummary
     func resumeSession(id: String) async throws -> SessionSummary
+    /// Changes a chat's model and/or effort; returns the updated summary.
+    func updateSessionSettings(_ request: UpdateSessionSettings) async throws -> SessionSummary
     func sendMessage(_ request: SendMessage, from client: ClientContext) async throws
     func interrupt(sessionId: String) async throws
     func closeSession(id: String) async throws

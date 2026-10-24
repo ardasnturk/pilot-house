@@ -133,6 +133,8 @@ public actor ServerConnection {
             return .sessionStarted(SessionPayload(session: try await service.startSession(request, from: client)))
         case .resumeSession(let ref):
             return .sessionStarted(SessionPayload(session: try await service.resumeSession(id: ref.sessionId)))
+        case .updateSessionSettings(let request):
+            return .sessionUpdated(SessionPayload(session: try await service.updateSessionSettings(request)))
         case .sendMessage(let request):
             try await service.sendMessage(request, from: client)
             return .ok

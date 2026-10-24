@@ -155,7 +155,7 @@ public actor DemoHostService: HostService {
         let summary = SessionSummary(
             id: id, cwd: cwd, title: title, createdAt: date, updatedAt: date,
             model: request.model ?? "sonnet", permissionMode: request.permissionMode ?? .default, state: .idle,
-            slashCommands: DemoContent.slashCommands, agent: request.agent
+            slashCommands: DemoContent.slashCommands, agent: request.agent, effort: request.effort
         )
         sessions[id] = summary
         events[id] = []
@@ -168,6 +168,18 @@ public actor DemoHostService: HostService {
             try await sendMessage(SendMessage(sessionId: id, text: first), from: client)
         }
         return sessions[id] ?? summary
+    }
+
+    public func updateSessionSettings(_ request: UpdateSessionSettings) async throws -> SessionSummary {
+        guard var session = sessions[request.sessionId] else {
+            throw ErrorPayload(code: .notFound, message: "Session not found.")
+        }
+        if let model = request.model { session.model = model.isEmpty ? nil : model }
+        if let effort = request.effort { session.effort = effort.isEmpty ? nil : effort }
+        session.updatedAt = Date()
+        sessions[request.sessionId] = session
+        broadcast(.sessionUpdated(session))
+        return session
     }
 
     public func resumeSession(id: String) async throws -> SessionSummary {

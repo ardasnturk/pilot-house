@@ -278,11 +278,13 @@ final class MacConnection {
     }
 
     func startSession(
-        cwd: String, model: String?, permissionMode: PermissionMode, firstMessage: String?, agent: AgentKind? = nil
+        cwd: String, model: String?, permissionMode: PermissionMode, firstMessage: String?, agent: AgentKind? = nil,
+        effort: String? = nil
     ) async throws -> SessionSummary {
         let response = try await client.request(.startSession(StartSession(
             cwd: cwd, model: model, permissionMode: permissionMode, firstMessage: firstMessage,
-            agent: agent == .claude ? nil : agent
+            agent: agent == .claude ? nil : agent,
+            effort: capabilities.contains(HostCapability.sessionSettings) ? effort : nil
         )), timeout: 60)
         guard case .sessionStarted(let payload) = response else {
             throw MacClientError.unexpectedResponse(response.typeName)
@@ -290,6 +292,17 @@ final class MacConnection {
         upsert(payload.session)
         await open(payload.session.id)
         return payload.session
+    }
+
+    /// Changes a chat's model or effort (`""` = the agent's default, `nil` = unchanged).
+    func updateSessionSettings(_ sessionId: String, model: String? = nil, effort: String? = nil) async throws {
+        let response = try await client.request(.updateSessionSettings(UpdateSessionSettings(
+            sessionId: sessionId, model: model, effort: effort
+        )))
+        guard case .sessionUpdated(let payload) = response else {
+            throw MacClientError.unexpectedResponse(response.typeName)
+        }
+        upsert(payload.session)
     }
 
     func send(_ text: String, attachments: [MessageAttachment], to sessionId: String) async throws {

@@ -227,6 +227,35 @@ final class PilothouseUITests: XCTestCase {
         waitForExpectations(timeout: 5)
     }
 
+    @MainActor
+    func testSlashButtonAndPerChatEffort() throws {
+        let app = XCUIApplication.pilothouse(demo: true)
+        app.launch()
+        try startSession(in: app, path: ["Developer", "weather-app"])
+
+        // The / button opens the same list without typing.
+        let slash = app.buttons["slashButton"]
+        XCTAssertTrue(slash.waitForExistence(timeout: 10))
+        slash.tap()
+        XCTAssertTrue(app.element("command-changelog").waitForExistence(timeout: 10))
+        app.buttons["Cancel"].firstMatch.tap()
+
+        // Model chip → Effort → High.
+        let chip = app.buttons["modelChip"]
+        XCTAssertTrue(chip.waitForExistence(timeout: 5))
+        chip.tap()
+        let effort = app.buttons["Effort"].firstMatch
+        XCTAssertTrue(effort.waitForExistence(timeout: 5))
+        effort.tap()
+        let high = app.buttons["High"].firstMatch
+        XCTAssertTrue(high.waitForExistence(timeout: 5))
+        high.tap()
+        let applied = NSPredicate(format: "value == 'High'")
+        expectation(for: applied, evaluatedWith: chip)
+        waitForExpectations(timeout: 5)
+        XCTAssertTrue(chip.label.contains("High") || (chip.value as? String) == "High", chip.debugDescription)
+    }
+
     // MARK: Helpers
 
     @MainActor

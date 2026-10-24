@@ -275,6 +275,11 @@ import Glibc
         let resumed = ClaudeCommand.arguments(for: options)
         #expect(resumed.contains("--resume") && !resumed.contains("--session-id"))
         #expect(!resumed.contains("--model") && !resumed.contains("--mcp-config"))
+        #expect(!resumed.contains("--effort"))
+
+        options.effort = "xhigh"
+        let withEffort = ClaudeCommand.arguments(for: options)
+        #expect(withEffort.firstIndex(of: "--effort").map { withEffort[$0 + 1] } == "xhigh")
     }
 
     @Test func mcpConfigurationShape() throws {

@@ -753,22 +753,6 @@
         }
       }
     },
-    "Claude reports its skills and commands when the session starts. Send a first message, then open this list again.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude meldet seine Skills und Befehle beim Start der Sitzung. Sende eine erste Nachricht und öffne diese Liste dann erneut."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude skill ve komutlarını oturum başlarken bildirir. İlk mesajı gönderin, sonra bu listeyi tekrar açın."
-          }
-        }
-      }
-    },
     "Claude runs on your Mac with Claude Code. You'll see every step here.": {
       "localizations": {
         "de": {
@@ -1537,6 +1521,22 @@
         }
       }
     },
+    "Effort": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufwand"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Efor"
+          }
+        }
+      }
+    },
     "End-to-end encrypted between your devices. No accounts, no cloud, no tracking.": {
       "localizations": {
         "de": {
@@ -1565,6 +1565,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
+          }
+        }
+      }
+    },
+    "Extra high": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sehr hoch"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çok yüksek"
           }
         }
       }
@@ -1821,6 +1837,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dokunsal geri bildirim"
+          }
+        }
+      }
+    },
+    "High": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoch"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüksek"
           }
         }
       }
@@ -2129,6 +2161,22 @@
         }
       }
     },
+    "Low": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niedrig"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düşük"
+          }
+        }
+      }
+    },
     "Mac default": {
       "localizations": {
         "de": {
@@ -2157,6 +2205,38 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac'ler"
+          }
+        }
+      }
+    },
+    "Max": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximum"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maksimum"
+          }
+        }
+      }
+    },
+    "Medium": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mittel"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta"
           }
         }
       }
@@ -2465,6 +2545,22 @@
         }
       }
     },
+    "No skills or commands were found for this folder on your Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf deinem Mac wurden für diesen Ordner keine Skills oder Befehle gefunden."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac'inizde bu klasör için skill veya komut bulunamadı."
+          }
+        }
+      }
+    },
     "No work this week": {
       "localizations": {
         "de": {
@@ -2541,6 +2637,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Çevrimdışı"
+          }
+        }
+      }
+    },
+    "Offline · Local Network access is off": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offline · Zugriff aufs lokale Netzwerk ist aus"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çevrimdışı · Yerel Ağ erişimi kapalı"
           }
         }
       }
@@ -2653,6 +2765,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mac'inizde Pilothouse'u açın, “Yeni Cihaz Eşleştir…”i seçin ve kamerayı QR koda tutun."
+          }
+        }
+      }
+    },
+    "Open Settings": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen öffnen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarları Aç"
           }
         }
       }
@@ -2909,6 +3037,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
+          }
+        }
+      }
+    },
+    "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen und versuche es erneut."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse'un yerel ağı kullanma izni yok, bu yüzden bu Wi-Fi'de Mac'inize ulaşamıyor. Ayarlar'da Pilothouse için Yerel Ağ'ı açıp tekrar deneyin."
           }
         }
       }
@@ -3549,6 +3693,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Skill'ler ve Komutlar"
+          }
+        }
+      }
+    },
+    "Skills and commands": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skills und Befehle"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skill'ler ve komutlar"
           }
         }
       }
@@ -4365,6 +4525,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Evet"
+          }
+        }
+      }
+    },
+    "You can change these when the reply has finished.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du kannst das ändern, sobald die Antwort fertig ist."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bunları yanıt bittiğinde değiştirebilirsiniz."
           }
         }
       }

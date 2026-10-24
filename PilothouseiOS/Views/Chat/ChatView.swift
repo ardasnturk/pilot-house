@@ -51,7 +51,11 @@ struct ChatView: View {
         }
         .sheet(isPresented: $isPickingCommand) {
             if let session {
-                CommandPickerView(connection: connection, session: session) { name in draft = "/\(name) " }
+                CommandPickerView(connection: connection, session: session) { name in
+                    // Replace a lone "/" (typed to open the list), keep anything else after the command.
+                    let rest = draft == "/" ? "" : draft
+                    draft = "/\(name) " + rest
+                }
             }
         }
         .sheet(item: $subAgent) { selection in
@@ -137,7 +141,10 @@ struct ChatView: View {
                     attachments: $attachments,
                     slashCommands: session?.slashCommands ?? chat.info?.slashCommands ?? [],
                     isEnabled: connection.isConnected && !isSending,
-                    modelLabel: session?.model,
+                    modelLabel: session.map { $0.model ?? String(localized: "Agent default") },
+                    effort: session?.effort,
+                    settingsMenu: settingsMenu,
+                    onSlash: session?.agentKind == .claude ? { isPickingCommand = true } : nil,
                     placeholder: composerPlaceholder,
                     onSend: send
                 )
@@ -188,7 +195,11 @@ struct ChatView: View {
                 if let session {
                     Section {
                         Label(session.cwd, systemImage: "folder")
-                        Label(session.model ?? String(localized: "Default model"), systemImage: "cpu")
+                        if let settingsMenu {
+                            settingsMenu
+                        } else {
+                            Label(session.model ?? String(localized: "Default model"), systemImage: "cpu")
+                        }
                         Label {
                             Text(session.permissionMode.localizedName)
                         } icon: {
@@ -226,6 +237,12 @@ struct ChatView: View {
             }
             .accessibilityIdentifier("sessionMenu")
         }
+    }
+
+    /// Model and effort pickers, when the Mac can change them (capability `sessionSettings`).
+    private var settingsMenu: AnyView? {
+        guard let session, connection.capabilities.contains(HostCapability.sessionSettings) else { return nil }
+        return AnyView(SessionSettingsMenuContent(connection: connection, session: session) { errorMessage = $0 })
     }
 
     private var composerPlaceholder: LocalizedStringKey {

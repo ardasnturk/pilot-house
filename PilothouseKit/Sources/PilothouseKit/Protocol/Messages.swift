@@ -24,8 +24,10 @@ public enum HostCapability {
     public static let insights = "insights"
     /// `listCommands`: skills and slash commands with descriptions.
     public static let commandCatalog = "commandCatalog"
+    /// `StartSession.effort` and `updateSessionSettings` (model and effort per chat).
+    public static let sessionSettings = "sessionSettings"
     /// Every capability this build of PilothouseKit implements.
-    public static let all = [createDirectory, agents, threads, insights, commandCatalog]
+    public static let all = [createDirectory, agents, threads, insights, commandCatalog, sessionSettings]
 }
 
 // MARK: - Shared payloads
@@ -82,15 +84,33 @@ public struct StartSession: Sendable, Hashable, Codable {
     public var firstMessage: String?
     /// Agent CLI to run; `nil` means Claude Code (capability `agents`).
     public var agent: AgentKind?
+    /// One of `AgentKind.effortLevels`; `nil` = the agent's default (capability `sessionSettings`).
+    public var effort: String?
     public init(
         cwd: String, model: String? = nil, permissionMode: PermissionMode? = nil, firstMessage: String? = nil,
-        agent: AgentKind? = nil
+        agent: AgentKind? = nil, effort: String? = nil
     ) {
         self.cwd = cwd
         self.model = model
         self.permissionMode = permissionMode
         self.firstMessage = firstMessage
         self.agent = agent
+        self.effort = effort
+    }
+}
+
+/// Changes a chat's model and effort (capability `sessionSettings`). They take
+/// effect from the next message; the Mac restarts the agent CLI in between.
+public struct UpdateSessionSettings: Sendable, Hashable, Codable {
+    public var sessionId: String
+    /// New model; `""` = the agent's default, `nil` = unchanged.
+    public var model: String?
+    /// New effort level; `""` = the agent's default, `nil` = unchanged.
+    public var effort: String?
+    public init(sessionId: String, model: String? = nil, effort: String? = nil) {
+        self.sessionId = sessionId
+        self.model = model
+        self.effort = effort
     }
 }
 
@@ -288,6 +308,7 @@ public enum ClientMessage: Sendable, Hashable {
     case getWeeklySummary(GetWeeklySummary)
     case getUsageLimits
     case listCommands(SessionRef)
+    case updateSessionSettings(UpdateSessionSettings)
 
     public var typeName: String {
         switch self {
@@ -308,6 +329,7 @@ public enum ClientMessage: Sendable, Hashable {
         case .getWeeklySummary: "getWeeklySummary"
         case .getUsageLimits: "getUsageLimits"
         case .listCommands: "listCommands"
+        case .updateSessionSettings: "updateSessionSettings"
         }
     }
 }

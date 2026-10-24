@@ -31,7 +31,7 @@ struct CommandPickerView: View {
                     Label(error, systemImage: "exclamationmark.triangle")
                         .foregroundStyle(.orange)
                 } else if commands.isEmpty {
-                    Text("Claude reports its skills and commands when the session starts. Send a first message, then open this list again.")
+                    Text("No skills or commands were found for this folder on your Mac.")
                         .foregroundStyle(.secondary)
                 }
                 if filter != .commands, !skills.isEmpty {

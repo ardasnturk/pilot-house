@@ -39,6 +39,7 @@
 		6D55839F1A76E0F27FEE4EDE /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5C34132BB825BE1A6D6746 /* ScreenshotTests.swift */; };
 		6DB369B0210A75B498C35526 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A027C85AAA6E7B80E0809 /* PairingView.swift */; };
 		76D33D683F9248DEF2D508BA /* ChatState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631070945A22E4A3011DADDE /* ChatState.swift */; };
+		78B9BFA9A6C40EB78898B5BD /* SessionSettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF25C96FBE7FEE3938BED9 /* SessionSettingsMenu.swift */; };
 		810350712958DC3E2A64D4CD /* PilothouseHost in Frameworks */ = {isa = PBXBuildFile; productRef = 2AF240DD6C5AE3745DC6834D /* PilothouseHost */; };
 		82D01479F43122747A8F189E /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7370B418F47773E110E3E4 /* SessionListView.swift */; };
 		8572C169C3FD461DC2D16740 /* UITestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D37E5DCE53A80AEE27295 /* UITestSupport.swift */; };
@@ -156,6 +157,7 @@
 		970AAF535EEB86A02BDCF3B6 /* PilothouseMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PilothouseMac.entitlements; sourceTree = "<group>"; };
 		9948CEDD1C4D75D6D5E2164E /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		9998F3E50BDEB67149978F5F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A5DF25C96FBE7FEE3938BED9 /* SessionSettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSettingsMenu.swift; sourceTree = "<group>"; };
 		A5DFC0F8AEC409758AECBF45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0093DAD3A8C8CF3FCEC543E /* SessionMonitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMonitorView.swift; sourceTree = "<group>"; };
 		B122B36322A27E4867495C75 /* MenuContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContentView.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				FAD807D3927C85F43E911CEB /* ComposerView.swift */,
 				2C7F55BEAFE751C9186F2BA8 /* MarkdownView.swift */,
 				19B3F59F8916C5D862672595 /* PermissionRequestSheet.swift */,
+				A5DF25C96FBE7FEE3938BED9 /* SessionSettingsMenu.swift */,
 				B61469588C1781F84ADEA99F /* SubAgentViews.swift */,
 				8B574403D516DA1199C7656E /* ToolCardView.swift */,
 				2807EA0484D779BC62AB4671 /* TranscriptItemView.swift */,
@@ -655,6 +658,7 @@
 				FC8CB668F572AF2150466688 /* PermissionRequestSheet.swift in Sources */,
 				9067C3B81584AA2ABEA76E3C /* PilothouseApp.swift in Sources */,
 				82D01479F43122747A8F189E /* SessionListView.swift in Sources */,
+				78B9BFA9A6C40EB78898B5BD /* SessionSettingsMenu.swift in Sources */,
 				676041C92A679960F7F86B66 /* SettingsView.swift in Sources */,
 				A1EAA7B037D264B1AF5DBBCF /* SubAgentViews.swift in Sources */,
 				2ABDE65D63805277B9574EF1 /* TailscaleGuideView.swift in Sources */,

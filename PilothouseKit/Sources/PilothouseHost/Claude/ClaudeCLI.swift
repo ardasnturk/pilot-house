@@ -165,10 +165,13 @@ public struct ClaudeLaunchOptions: Sendable, Equatable {
     public var agent: AgentKind
     /// The agent's own conversation ID to resume (Codex thread), if known.
     public var agentSessionId: String?
+    /// Effort level (`AgentKind.effortLevels`), or `nil` for the agent's default.
+    public var effort: String?
 
     public init(
         sessionId: String, resume: Bool, model: String?, permissionMode: PermissionMode, workingDirectory: String,
-        permissionServer: PermissionServerInfo?, agent: AgentKind = .claude, agentSessionId: String? = nil
+        permissionServer: PermissionServerInfo?, agent: AgentKind = .claude, agentSessionId: String? = nil,
+        effort: String? = nil
     ) {
         self.sessionId = sessionId
         self.resume = resume
@@ -178,6 +181,7 @@ public struct ClaudeLaunchOptions: Sendable, Equatable {
         self.permissionServer = permissionServer
         self.agent = agent
         self.agentSessionId = agentSessionId
+        self.effort = effort
     }
 }
 
@@ -214,6 +218,9 @@ public enum ClaudeCommand {
         arguments += options.resume ? ["--resume", options.sessionId] : ["--session-id", options.sessionId]
         if let model = options.model, !model.isEmpty {
             arguments += ["--model", model]
+        }
+        if let effort = options.effort, !effort.isEmpty {
+            arguments += ["--effort", effort]
         }
         arguments += ["--permission-mode", options.permissionMode.rawValue]
         if let server = options.permissionServer {

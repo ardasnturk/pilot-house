@@ -68,6 +68,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case "getWeeklySummary": message = .getWeeklySummary(try payload(GetWeeklySummary.self))
         case "getUsageLimits": message = .getUsageLimits
         case "listCommands": message = .listCommands(try payload(SessionRef.self))
+        case "updateSessionSettings": message = .updateSessionSettings(try payload(UpdateSessionSettings.self))
         default: throw ProtocolError.unknownMessageType(type)
         }
     }
@@ -85,6 +86,7 @@ public struct ClientEnvelope: Sendable, Hashable, Codable {
         case .listSessions, .macStatus, .getUsageLimits: try container.encode(EmptyPayload(), forKey: .payload)
         case .getWeeklySummary(let payload): try container.encode(payload, forKey: .payload)
         case .listCommands(let payload): try container.encode(payload, forKey: .payload)
+        case .updateSessionSettings(let payload): try container.encode(payload, forKey: .payload)
         case .startSession(let payload): try container.encode(payload, forKey: .payload)
         case .resumeSession(let payload), .interrupt(let payload), .closeSession(let payload),
             .deleteSession(let payload), .unsubscribe(let payload):

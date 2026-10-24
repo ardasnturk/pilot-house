@@ -65,11 +65,13 @@ public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
     public var slashCommands: [String]
     /// The agent CLI running this session; `nil` (older Macs) means Claude Code.
     public var agent: AgentKind?
+    /// Effort level chosen for this session (`AgentKind.effortLevels`); `nil` = the agent's default.
+    public var effort: String?
 
     public init(
         id: String, cwd: String, title: String, lastMessagePreview: String? = nil, createdAt: Date, updatedAt: Date,
         model: String? = nil, permissionMode: PermissionMode = .default, state: SessionState = .idle, lastSeq: Int = 0,
-        slashCommands: [String] = [], agent: AgentKind? = nil
+        slashCommands: [String] = [], agent: AgentKind? = nil, effort: String? = nil
     ) {
         self.id = id
         self.cwd = cwd
@@ -83,6 +85,7 @@ public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
         self.lastSeq = lastSeq
         self.slashCommands = slashCommands
         self.agent = agent
+        self.effort = effort
     }
 
     public init(from decoder: Decoder) throws {
@@ -99,6 +102,7 @@ public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
         lastSeq = try container.decodeIfPresent(Int.self, forKey: .lastSeq) ?? 0
         slashCommands = try container.decodeIfPresent([String].self, forKey: .slashCommands) ?? []
         agent = try container.decodeIfPresent(AgentKind.self, forKey: .agent)
+        effort = try container.decodeIfPresent(String.self, forKey: .effort)
     }
 
     /// The agent running this session (Claude Code when the Mac did not say).

@@ -177,8 +177,13 @@ public actor SessionManager {
     public func commandCatalog(_ id: String) throws -> [CommandInfo] {
         guard let session = sessions[id] else { throw Self.notFound }
         let record = session.record
+        guard record.summary.agentKind == .claude else { return [] }
+        // What the CLI reported, plus what is on disk (a new chat has no report yet).
+        let found = CommandCatalogBuilder.discover(cwd: record.summary.cwd, home: configuration.homeDirectory)
         return CommandCatalogBuilder.build(
-            slashCommands: record.summary.slashCommands, skills: record.skills ?? [], plugins: record.plugins ?? [:],
+            slashCommands: record.summary.slashCommands + found.commands,
+            skills: (record.skills ?? []) + found.skills,
+            plugins: found.plugins.merging(record.plugins ?? [:]) { _, reported in reported },
             cwd: record.summary.cwd, home: configuration.homeDirectory
         )
     }
@@ -224,6 +229,7 @@ public actor SessionManager {
         let id = UUID().uuidString.lowercased()
         let now = Date()
         let model = request.model.flatMap { $0.isEmpty ? nil : $0 } ?? configuration.defaultModel
+        let effort = try Self.validEffort(request.effort, for: agent)
         let isHome = cwd.path == fileBrowser.sandbox.home.path
         let summary = SessionSummary(
             id: id,
@@ -234,7 +240,8 @@ public actor SessionManager {
             model: model,
             permissionMode: mode,
             state: .starting,
-            agent: agent
+            agent: agent,
+            effort: effort
         )
         let record = SessionRecord(summary: summary, requestedModel: model)
         sessions[id] = LiveSession(record: record, log: EventLog(url: logURL(id)))
@@ -328,6 +335,48 @@ public actor SessionManager {
         if let process {
             Task { await process.terminate(grace: 5) }
         }
+    }
+
+    /// Changes the model and/or effort of a chat. The running CLI is stopped
+    /// while the chat is idle, so the next message starts it again with
+    /// `--resume` and the new flags (same for Codex: a resumed thread).
+    public func updateSettings(_ request: UpdateSessionSettings) async throws -> SessionSummary {
+        guard let session = sessions[request.sessionId] else { throw Self.notFound }
+        guard !session.record.summary.state.isBusy else {
+            throw ErrorPayload(code: .invalidRequest, message: "Wait until the current reply has finished, then change the model or effort.")
+        }
+        let agent = session.record.summary.agentKind
+        let effort = try request.effort.map { try Self.validEffort($0, for: agent) }
+        var changed = false
+        update(request.sessionId) { record in
+            if let model = request.model {
+                let model = model.trimmingCharacters(in: .whitespaces)
+                let requested: String? = model.isEmpty ? nil : model
+                if record.requestedModel != requested {
+                    record.requestedModel = requested
+                    // Shown until the CLI reports the resolved name on its next start.
+                    record.summary.model = requested
+                    changed = true
+                }
+            }
+            if let effort, record.summary.effort != effort {
+                record.summary.effort = effort
+                changed = true
+            }
+        }
+        guard changed else { return sessions[request.sessionId]?.record.summary ?? session.record.summary }
+        await dropProcess(request.sessionId)
+        await persistAndPublish(request.sessionId)
+        return sessions[request.sessionId]?.record.summary ?? session.record.summary
+    }
+
+    /// `nil`/`""` → the agent's default; otherwise one of `AgentKind.effortLevels`.
+    static func validEffort(_ effort: String?, for agent: AgentKind) throws -> String? {
+        guard let effort, !effort.isEmpty else { return nil }
+        guard agent.effortLevels.contains(effort) else {
+            throw ErrorPayload(code: .invalidRequest, message: "\(agent.displayName) does not support the effort level “\(effort)”.")
+        }
+        return effort
     }
 
     /// Re-opens a closed session; starts the CLI with `--resume`.
@@ -496,7 +545,8 @@ public actor SessionManager {
             workingDirectory: summary.cwd,
             permissionServer: permissionPort.map { PermissionServerInfo(port: $0, token: token) },
             agent: summary.agentKind,
-            agentSessionId: session.record.agentSessionId
+            agentSessionId: session.record.agentSessionId,
+            effort: summary.effort
         )
         let process = try await launcher.launch(options)
         var adapter = launcher.makeAdapter(for: options)
