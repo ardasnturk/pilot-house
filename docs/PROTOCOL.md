@@ -148,7 +148,7 @@ the documented result, `ok`, or `error`.
 | `listDirectory` | `{ path?: "~/Developer" \| "/Users/a/x", showHidden: false }` | `directoryListing` |
 | `createDirectory` | `{ parent, name }` — `name` is one visible path component; capability `createDirectory` | `directoryListing` of `parent` |
 | `listSessions` | `{}` | `sessionList` |
-| `startSession` | `{ cwd, model?, permissionMode?, firstMessage?, agent? }` — `agent` ∈ `claude` (default) · `codex` · `gemini`; capability `agents` | `sessionStarted` |
+| `startSession` | `{ cwd, model?, permissionMode?, firstMessage?, agent?, effort? }` — `agent` ∈ `claude` (default) · `codex` · `gemini`; capability `agents`. `effort`: Claude `low` · `medium` · `high` · `xhigh` · `max`, Codex `low` · `medium` · `high` · `xhigh`; capability `sessionSettings` | `sessionStarted` |
 | `resumeSession` | `{ sessionId }` | `sessionStarted` |
 | `sendMessage` | `{ sessionId, text, attachments?: [{ mediaType, data (base64), filename? }] }` | `ok` |
 | `interrupt` | `{ sessionId }` | `ok` |
@@ -160,6 +160,7 @@ the documented result, `ok`, or `error`.
 | `getWeeklySummary` | `{ week?: date inside the week, refresh: false }` — capability `insights` | `weeklySummary` |
 | `getUsageLimits` | `{}` — capability `insights` | `usageLimits` |
 | `listCommands` | `{ sessionId }` — capability `commandCatalog` | `commandCatalog` |
+| `updateSessionSettings` | `{ sessionId, model?, effort? }` — `""` = the agent's default, missing = unchanged; refused (`invalidRequest`) while a turn runs; capability `sessionSettings` | `sessionUpdated` |
 
 `permissionMode` ∈ `default` · `acceptEdits` · `plan` · `bypassPermissions`
 (the last one only if the Mac user enabled it; otherwise `modeNotAllowed`).
@@ -170,7 +171,8 @@ older Macs). A client only sends them when the Mac lists the capability, so
 `version` stays 1. Capabilities so far: `createDirectory`,
 `agents` (`startSession.agent`, `Session.agent`, `macStatus.agents`) and
 `threads` (`event.thread`), `insights` (`getWeeklySummary`,
-`getUsageLimits`) and `commandCatalog` (`listCommands`).
+`getUsageLimits`), `commandCatalog` (`listCommands`) and `sessionSettings`
+(`startSession.effort`, `updateSessionSettings`, `Session.effort`).
 
 ### 4.2 Host → client
 
@@ -198,7 +200,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 { "id": "1b6e…", "cwd": "/Users/a/Developer/app", "title": "Fix the flaky test",
   "lastMessagePreview": "…", "createdAt": "…", "updatedAt": "…", "model": "sonnet",
   "permissionMode": "default", "state": "starting|running|awaitingPermission|idle|closed",
-  "lastSeq": 42, "slashCommands": ["review", "compact"], "agent": "codex" }
+  "lastSeq": 42, "slashCommands": ["review", "compact"], "agent": "codex", "effort": "high" }
 ```
 
 The session `id` is also the Claude Code session ID (`--session-id` /

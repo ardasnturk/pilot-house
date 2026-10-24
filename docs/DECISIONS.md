@@ -724,3 +724,51 @@ On the phone, typing `/` into an empty composer opens a searchable sheet with
 skills and commands in separate sections (filter, source badge); choosing
 one inserts `/name `. Codex and Gemini report no catalogue, so their sessions
 say so.
+
+### D-099 — LAN connections wait for the Local Network decision
+**Status:** accepted
+
+iOS's Local Network privacy blocks outgoing TCP to LAN addresses until the
+user allows it; Tailscale traffic goes through a VPN interface and is not
+affected (TN3179). While the alert is on screen the system may deny the
+connection at once, and Network.framework reports `.waiting` with
+`unsatisfiedReason == .localNetworkDenied`. 1.0 treated every `.waiting` as a
+failure, so a phone on the same Wi-Fi gave up before the user could answer
+and only connected over Tailscale.
+
+Now `.waiting` keeps the attempt alive until its timeout (Network.framework
+retries by itself; only `ECONNREFUSED` fails at once). Pairing, usually the
+app's first LAN access, waits up to 30 s more while the path is denied, and
+the pairing screen starts Bonjour browsing so the alert appears before the QR
+code is scanned. If an attempt ends while access is still denied the client
+reports `localNetworkDenied`: pairing says so with an "Open Settings" button,
+and the connection banner shows "Local Network access is off" with a Settings
+button instead of Retry. The Mac needs no change: accepting incoming TCP is
+not subject to Local Network privacy.
+
+### D-100 — Model and effort per chat
+**Status:** accepted
+
+`claude` takes `--effort low|medium|high|xhigh|max`; `codex app-server`
+takes `effort` with each `turn/start`. New chats get the effort chosen on the
+phone (default in Settings → New chats); `Session.effort` carries it.
+
+`updateSessionSettings` changes a chat's model and/or effort between turns.
+Rather than relying on undocumented in-process switches, the Mac stops the
+idle CLI; the next message starts it again with `--resume` (Codex:
+`thread/resume`) and the new flags, so the conversation continues with the new
+settings. While a turn runs the request is refused. On the phone the model
+chip in the composer and the session menu offer Model and Effort pickers.
+
+### D-101 — The `/` menu works before the first message
+**Status:** accepted
+
+Claude Code reports its commands only in `system/init`, which a new chat has
+not seen yet, so the 1.0 menu was empty until the first reply. `listCommands`
+now merges that report with what is on disk: skills
+(`skills/<name>/SKILL.md`) and commands (`commands/*.md`, sub-folders as
+`folder:name`) of the project and of `~/.claude`, plugins enabled in
+`~/.claude/settings.json` (install folders from
+`plugins/installed_plugins.json`, entries namespaced `plugin:name`), and the
+built-in commands. The composer also gets a visible `/` button for the list.
+
