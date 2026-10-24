@@ -488,7 +488,7 @@ share team `5JMD3VSD7N`; the helper's XPC code-signing requirement depends on
 that.
 
 ### D-081 — No push notifications in 1.0
-**Status:** accepted
+**Status:** superseded by D-095 (1.1)
 
 Background notifications need APNs, and APNs needs a server holding a push key.
 That contradicts "only your own devices, no telemetry". 1.0 relies on the Mac:
@@ -547,3 +547,46 @@ runs the same script on a GitHub macOS runner and keeps the PNGs as an artifact
 App Store Connect needs a privacy policy URL. `PRIVACY.md` (EN/TR/DE) states
 that Pilothouse collects nothing, and is linked from the metadata. It matches
 the privacy manifests (D-057) and the "Data Not Collected" privacy label.
+
+## 1.1 — Notifications
+
+### D-095 — Notifications through ntfy and macOS, no own push server
+**Status:** accepted · supersedes D-081
+
+1.1 notifies the user when a turn started from a phone finishes, when Claude
+waits for a permission decision and when a session fails. Apple push (APNs)
+still needs a server holding a push key, so instead:
+
+* **Mac:** native notifications (`UNUserNotificationCenter`). No
+  terminal-notifier.
+* **iPhone:** the Mac publishes to an [ntfy](https://ntfy.sh) topic with a plain
+  HTTPS POST (JSON body); the user subscribes in the free ntfy iOS app, which
+  handles Apple push. Default server `https://ntfy.sh`, any self-hosted server
+  works (HTTPS only, because of App Transport Security). The topic is 32 random
+  characters generated on first launch and acts as the password on a public
+  server; an optional access token is kept in the Keychain and sent as
+  `Authorization: Bearer`.
+* **Minimal by default:** the message is "Task finished · <folder>" (or
+  "Approval needed" / "Session failed"). The last message, the tool name or the
+  error text are only added after opting into "Include a short summary".
+* **Tap action:** ntfy's `click` is `pilothouse://session/<id>?mac=<macId>`
+  (`SessionLink`); the iOS app switches to that Mac and opens the session.
+* **Off by default.** Nothing leaves the Mac until the user turns notifications
+  and the ntfy destination on in Settings → Notifications.
+* **Subscribing:** the ntfy iOS app has no URL scheme (`ntfy://` links are
+  Android-only; checked in ntfy-ios' Info.plist), so the settings QR code
+  carries the topic's web address (`https://ntfy.sh/<topic>`, opens in Safari)
+  next to "Copy Topic", step-by-step text and the App Store link.
+
+`NotificationService` (PilothouseHost) only listens to the `NotificationHub`:
+when a session leaves a busy state it waits 1.5 s (so trailing "interrupted" or
+"process exited" notices land), replays the turn's events and decides with
+`NotificationRules`. Interrupted turns stay silent; Mac-started turns (the
+Tailscale assistant) only notify on failure. Turns count as "from a phone" when
+they arrive through `MacHostService.startSession`/`sendMessage`. Sub-agent
+tracking can post `HostAlert.Kind.subagentFinished` through
+`NotificationService.post(_:)`; the kind is not offered in Settings until then.
+
+The privacy manifests are unchanged: the data goes to a destination the user
+picks and configures, not to the developer or a partner, and is off by default.
+PRIVACY.md lists exactly what is sent.

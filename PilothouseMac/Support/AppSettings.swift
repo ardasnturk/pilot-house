@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import PilothouseHost
 import PilothouseKit
 
 /// User preferences of the Mac app, persisted in `UserDefaults`.
@@ -16,6 +17,13 @@ final class AppSettings {
         static let useAPIKey = "useAPIKey"
         static let preferredPort = "preferredPort"
         static let didShowWelcome = "didShowWelcome"
+        static let notificationsEnabled = "notificationsEnabled"
+        static let notifyOnMac = "notifyOnMac"
+        static let notifyViaNtfy = "notifyViaNtfy"
+        static let notificationKinds = "notificationKinds"
+        static let notificationIncludesSummary = "notificationIncludesSummary"
+        static let ntfyServer = "ntfyServer"
+        static let ntfyTopic = "ntfyTopic"
     }
 
     @ObservationIgnored private let defaults: UserDefaults
@@ -62,6 +70,39 @@ final class AppSettings {
         didSet { defaults.set(didShowWelcome, forKey: Key.didShowWelcome) }
     }
 
+    /// Master switch for notifications (D-095); off by default.
+    var notificationsEnabled: Bool {
+        didSet { defaults.set(notificationsEnabled, forKey: Key.notificationsEnabled) }
+    }
+
+    /// Native notifications on this Mac.
+    var notifyOnMac: Bool {
+        didSet { defaults.set(notifyOnMac, forKey: Key.notifyOnMac) }
+    }
+
+    /// Publish to the ntfy topic (sends data to the ntfy server).
+    var notifyViaNtfy: Bool {
+        didSet { defaults.set(notifyViaNtfy, forKey: Key.notifyViaNtfy) }
+    }
+
+    var notificationKinds: Set<HostAlert.Kind> {
+        didSet { defaults.set(notificationKinds.map(\.rawValue).sorted(), forKey: Key.notificationKinds) }
+    }
+
+    /// Adds the last message, tool or error to notifications (off = "Task finished · folder" only).
+    var notificationIncludesSummary: Bool {
+        didSet { defaults.set(notificationIncludesSummary, forKey: Key.notificationIncludesSummary) }
+    }
+
+    var ntfyServer: String {
+        didSet { defaults.set(ntfyServer, forKey: Key.ntfyServer) }
+    }
+
+    /// Random topic generated on first launch; acts as a password on public servers.
+    var ntfyTopic: String {
+        didSet { defaults.set(ntfyTopic, forKey: Key.ntfyTopic) }
+    }
+
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         defaults.register(defaults: [
@@ -69,6 +110,9 @@ final class AppSettings {
             Key.retentionDays: 30,
             Key.preferredPort: PilothouseProtocol.defaultPort,
             Key.defaultPermissionMode: PermissionMode.default.rawValue,
+            Key.notifyOnMac: true,
+            Key.ntfyServer: NtfyConfiguration.defaultServer,
+            Key.notificationKinds: AppSettings.notificationKindsInSettings.map(\.rawValue),
         ])
         keepAwakeWithLidClosed = defaults.bool(forKey: Key.keepAwakeWithLidClosed)
         pauseLidModeOnBattery = defaults.bool(forKey: Key.pauseLidModeOnBattery)
@@ -79,7 +123,23 @@ final class AppSettings {
         useAPIKey = defaults.bool(forKey: Key.useAPIKey)
         preferredPort = defaults.integer(forKey: Key.preferredPort)
         didShowWelcome = defaults.bool(forKey: Key.didShowWelcome)
+        notificationsEnabled = defaults.bool(forKey: Key.notificationsEnabled)
+        notifyOnMac = defaults.bool(forKey: Key.notifyOnMac)
+        notifyViaNtfy = defaults.bool(forKey: Key.notifyViaNtfy)
+        notificationKinds = Set((defaults.stringArray(forKey: Key.notificationKinds) ?? []).compactMap(HostAlert.Kind.init(rawValue:)))
+        notificationIncludesSummary = defaults.bool(forKey: Key.notificationIncludesSummary)
+        ntfyServer = defaults.string(forKey: Key.ntfyServer) ?? NtfyConfiguration.defaultServer
+        if let topic = defaults.string(forKey: Key.ntfyTopic), NtfyConfiguration.isValidTopic(topic) {
+            ntfyTopic = topic
+        } else {
+            ntfyTopic = NtfyConfiguration.randomTopic()
+            defaults.set(ntfyTopic, forKey: Key.ntfyTopic)
+        }
     }
+
+    /// Events offered in Settings. `.subagentFinished` joins once sub-agent
+    /// tracking posts it.
+    static let notificationKindsInSettings: [HostAlert.Kind] = [.turnFinished, .permissionRequested, .sessionFailed]
 
     /// Model aliases offered in pickers (free text is accepted too).
     static let modelSuggestions = ["", "fable", "opus", "sonnet", "haiku"]

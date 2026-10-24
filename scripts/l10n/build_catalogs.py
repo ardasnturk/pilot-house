@@ -38,7 +38,7 @@ FORMATTING_PATTERN = r'case \.\w+:\s*' + STRING
 # Interpolated expressions that are integers (→ %lld) or doubles (→ %lf).
 INTEGER_EXPRESSIONS = {
     "remaining / 60", "remaining", "number", "devices", "sessions", "settings.retentionDays",
-    "lines.count", "attachments", "item.number ?? index + 1", "DiffBuilder.stats(of: diff).added",
+    "lines.count", "attachments", "item.number ?? index + 1", "DiffBuilder.stats(of: diff).added", "status",
     "DiffBuilder.stats(of: diff).removed", "count",
 }
 DOUBLE_EXPRESSIONS = set()

@@ -13,7 +13,9 @@ struct PilothouseApp: App {
                 .environment(model)
                 .preferredColorScheme(colorScheme)
                 .onOpenURL { url in
-                    if url.scheme == PairingPayload.scheme {
+                    if let link = SessionLink(url: url) {
+                        Task { await model.open(link) }
+                    } else if url.scheme == PairingPayload.scheme {
                         model.incomingPairingLink = url.absoluteString
                         model.isPresentingPairing = true
                     }

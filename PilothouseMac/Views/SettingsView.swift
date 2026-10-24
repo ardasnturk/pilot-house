@@ -1,3 +1,4 @@
+import PilothouseHost
 import PilothouseKit
 import SwiftUI
 
@@ -9,6 +10,8 @@ struct SettingsView: View {
                 .tabItem { Label("General", systemImage: "gearshape") }
             ClaudeSettings()
                 .tabItem { Label("Claude Code", systemImage: "terminal") }
+            NotificationSettings()
+                .tabItem { Label("Notifications", systemImage: "bell.badge") }
             PrivacySettings()
                 .tabItem { Label("Security", systemImage: "lock.shield") }
         }
@@ -148,5 +151,168 @@ private struct PrivacySettings: View {
         }
         .formStyle(.grouped)
         .onChange(of: settings.allowBypassPermissions) { _, _ in Task { await controller.applySettings() } }
+    }
+}
+
+/// Native and ntfy notifications (docs/DECISIONS.md D-095).
+private struct NotificationSettings: View {
+    @Environment(AppController.self) private var controller
+    @State private var token = ""
+
+    var body: some View {
+        @Bindable var settings = controller.settings
+        Form {
+            Section {
+                Toggle("Send notifications", isOn: $settings.notificationsEnabled)
+            } footer: {
+                Text("Get notified when a task you started from your phone finishes, when Claude waits for your approval, or when a session fails.")
+            }
+            Section {
+                Toggle("Task finished", isOn: kind(.turnFinished))
+                Toggle("Approval needed", isOn: kind(.permissionRequested))
+                Toggle("Session failed", isOn: kind(.sessionFailed))
+                Toggle("Include a short summary", isOn: $settings.notificationIncludesSummary)
+            } header: {
+                Text("Events")
+            } footer: {
+                Text("Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.")
+            }
+            .disabled(!settings.notificationsEnabled)
+            Section {
+                Toggle("Show on this Mac", isOn: $settings.notifyOnMac)
+                Toggle("Send to your iPhone with ntfy", isOn: $settings.notifyViaNtfy)
+            } header: {
+                Text("Destinations")
+            } footer: {
+                Text("iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.")
+            }
+            .disabled(!settings.notificationsEnabled)
+            if settings.notifyViaNtfy {
+                ntfySection(settings)
+                subscribeSection(settings)
+            }
+            Section {
+                HStack {
+                    Button("Send Test Notification") {
+                        Task { await controller.sendTestNotification() }
+                    }
+                    .disabled(controller.notificationTest == .sending || (!settings.notifyOnMac && !settings.notifyViaNtfy))
+                    Spacer()
+                    testStatus
+                }
+            }
+        }
+        .formStyle(.grouped)
+        .onChange(of: settings.notificationsEnabled) { _, _ in Task { await controller.applyNotificationSettings() } }
+        .onChange(of: settings.notifyOnMac) { _, _ in Task { await controller.applyNotificationSettings() } }
+        .onChange(of: settings.notifyViaNtfy) { _, _ in Task { await controller.applyNotificationSettings() } }
+        .onChange(of: settings.notificationKinds) { _, _ in Task { await controller.applyNotificationSettings() } }
+        .onChange(of: settings.notificationIncludesSummary) { _, _ in Task { await controller.applyNotificationSettings() } }
+        .onChange(of: settings.ntfyServer) { _, _ in Task { await controller.applyNotificationSettings() } }
+    }
+
+    private func ntfySection(_ settings: AppSettings) -> some View {
+        @Bindable var settings = settings
+        return Section {
+            TextField("Server", text: $settings.ntfyServer, prompt: Text(verbatim: NtfyConfiguration.defaultServer))
+            LabeledContent("Topic") {
+                HStack {
+                    Text(verbatim: settings.ntfyTopic)
+                        .font(.body.monospaced())
+                        .textSelection(.enabled)
+                    Button {
+                        controller.regenerateNtfyTopic()
+                    } label: {
+                        Label("New Topic", systemImage: "arrow.clockwise")
+                    }
+                    .labelStyle(.iconOnly)
+                    .help(Text("Create a new random topic. Phones subscribed to the old one stop receiving notifications."))
+                }
+            }
+            SecureField("Access token", text: $token, prompt: controller.hasNtfyToken ? Text("Stored in Keychain") : Text("Optional"))
+            HStack {
+                Button("Save to Keychain") {
+                    controller.saveNtfyToken(token)
+                    token = ""
+                }
+                .disabled(token.isEmpty)
+                if controller.hasNtfyToken {
+                    Button("Remove Token") { controller.saveNtfyToken("") }
+                }
+            }
+        } header: {
+            Text("ntfy")
+        } footer: {
+            if controller.ntfyConfiguration == nil {
+                Text("Enter a valid server address (https://…).")
+                    .foregroundStyle(.red)
+            } else {
+                Text("On a public server anyone who knows the topic can read its notifications, so treat it like a password. Self-hosted servers need HTTPS; an access token is only needed if your server requires one.")
+            }
+        }
+    }
+
+    private func subscribeSection(_ settings: AppSettings) -> some View {
+        Section {
+            HStack(alignment: .top, spacing: 16) {
+                Group {
+                    if let url = controller.ntfyConfiguration?.topicURL, let image = QRCode.image(for: url.absoluteString, scale: 6) {
+                        Image(nsImage: image)
+                            .interpolation(.none)
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Image(systemName: "qrcode").font(.system(size: 80))
+                    }
+                }
+                .frame(width: 120, height: 120)
+                .padding(8)
+                .background(.white, in: RoundedRectangle(cornerRadius: 10))
+                .accessibilityLabel(Text("ntfy topic QR code"))
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Install the free ntfy app, tap +, and enter the topic. For a self-hosted server, also turn on “Use another server” and enter its address.")
+                    Text("Or scan the code with the Camera to open the topic in Safari.")
+                        .foregroundStyle(.secondary)
+                    HStack {
+                        Link("ntfy on the App Store", destination: NtfyConfiguration.iOSAppURL)
+                        Button("Copy Topic") {
+                            NSPasteboard.general.clearContents()
+                            NSPasteboard.general.setString(settings.ntfyTopic, forType: .string)
+                        }
+                    }
+                }
+                .font(.callout)
+            }
+        } header: {
+            Text("Subscribe on your iPhone")
+        }
+    }
+
+    @ViewBuilder private var testStatus: some View {
+        switch controller.notificationTest {
+        case .sending:
+            ProgressView().controlSize(.small)
+        case .sent(let message):
+            Label(message, systemImage: "checkmark.circle.fill")
+                .foregroundStyle(.green)
+        case .failed(let message):
+            Label(message, systemImage: "exclamationmark.triangle.fill")
+                .foregroundStyle(.red)
+        case nil:
+            EmptyView()
+        }
+    }
+
+    private func kind(_ kind: HostAlert.Kind) -> Binding<Bool> {
+        Binding(
+            get: { controller.settings.notificationKinds.contains(kind) },
+            set: { isOn in
+                if isOn {
+                    controller.settings.notificationKinds.insert(kind)
+                } else {
+                    controller.settings.notificationKinds.remove(kind)
+                }
+            }
+        )
     }
 }

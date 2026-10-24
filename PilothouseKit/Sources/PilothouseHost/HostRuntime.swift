@@ -11,6 +11,7 @@ public struct MacHostService: HostService {
     let sessions: SessionManager
     let broker: PermissionBroker
     let hub: NotificationHub
+    let notifications: NotificationService
     let fileBrowser: FileBrowser
     let macId: String
     let serverVersion: String
@@ -38,7 +39,11 @@ public struct MacHostService: HostService {
     }
 
     public func startSession(_ request: StartSession, from client: ClientContext) async throws -> SessionSummary {
-        try await sessions.start(request)
+        let summary = try await sessions.start(request)
+        if request.firstMessage?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false {
+            await notifications.noteTurnFromPhone(summary.id)
+        }
+        return summary
     }
 
     public func resumeSession(id: String) async throws -> SessionSummary {
@@ -46,6 +51,7 @@ public struct MacHostService: HostService {
     }
 
     public func sendMessage(_ request: SendMessage, from client: ClientContext) async throws {
+        await notifications.noteTurnFromPhone(request.sessionId)
         try await sessions.send(request)
     }
 
@@ -88,6 +94,8 @@ public final class HostRuntime: Sendable {
     public let devices: DeviceRegistry
     public let endpoint: ServerEndpoint
     public let fileBrowser: FileBrowser
+    /// Native and ntfy notifications; configured by the app (D-095).
+    public let notifications: NotificationService
     private let mcpServer: LoopbackHTTPServer
 
     public init(
@@ -110,8 +118,11 @@ public final class HostRuntime: Sendable {
             hub: hub
         )
         let fileBrowser = FileBrowser(sandbox: PathSandbox(homeDirectory: configuration.homeDirectory))
+        let notifications = NotificationService(hub: hub) { id, fromSeq in
+            try await sessions.subscribe(id, fromSeq: fromSeq)
+        }
         let service = MacHostService(
-            sessions: sessions, broker: broker, hub: hub, fileBrowser: fileBrowser,
+            sessions: sessions, broker: broker, hub: hub, notifications: notifications, fileBrowser: fileBrowser,
             macId: identity.fingerprint, serverVersion: serverVersion, status: status
         )
         let mcpEndpoint = MCPPermissionEndpoint(
@@ -128,6 +139,7 @@ public final class HostRuntime: Sendable {
         self.pairing = pairing
         self.devices = devices
         self.fileBrowser = fileBrowser
+        self.notifications = notifications
         endpoint = ServerEndpoint(identity: identity, macName: macName, authorizer: devices, service: service)
     }
 
@@ -136,6 +148,7 @@ public final class HostRuntime: Sendable {
 
     /// Loads sessions and enables permission forwarding.
     public func start() async {
+        await notifications.start()
         await sessions.setPermissionServerPort(mcpServer.port)
         await sessions.bootstrap()
     }
@@ -144,6 +157,7 @@ public final class HostRuntime: Sendable {
     public func shutdown() async {
         await endpoint.disconnectAll(reason: ErrorPayload(code: .internalError, message: "Pilothouse on the Mac is quitting."))
         await sessions.shutdown()
+        await notifications.stop()
         mcpServer.stop()
     }
 

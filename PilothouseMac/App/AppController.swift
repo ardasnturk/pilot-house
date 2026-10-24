@@ -5,6 +5,7 @@ import Observation
 import PilothouseHost
 import PilothouseKit
 import Synchronization
+import UserNotifications
 
 /// The Mac app's single source of truth: owns the host runtime, the WebSocket
 /// listener, the sleep assertion and everything the menu shows.
@@ -48,7 +49,14 @@ final class AppController: MacStatusProviding {
     private(set) var newlyPairedDevice: PairedDevice?
     private(set) var macFingerprint = ""
     private(set) var launchAtLogin = LaunchAtLogin.isEnabled
+    private(set) var notificationTest: NotificationTestStatus?
     var alert: String?
+
+    enum NotificationTestStatus: Equatable {
+        case sending
+        case sent(String)
+        case failed(String)
+    }
 
     @ObservationIgnored private var runtime: HostRuntime?
     @ObservationIgnored private let listener = WebSocketListener()
@@ -60,6 +68,7 @@ final class AppController: MacStatusProviding {
     @ObservationIgnored private var started = false
 
     static let apiKeyAccount = "anthropic-api-key"
+    static let ntfyTokenAccount = "ntfy-token"
 
     var pendingPermissionCount: Int { pendingRequests.count }
 
@@ -117,6 +126,7 @@ final class AppController: MacStatusProviding {
             port = boundPort
             phase = .running
             startObservers(runtime)
+            await applyNotificationSettings()
             await refreshSessions()
         } catch {
             phase = .failed(String(localized: "Pilothouse could not start: \(error.localizedDescription)"))
@@ -357,8 +367,97 @@ final class AppController: MacStatusProviding {
 
     func applySettings() async {
         await runtime?.sessions.updateConfiguration(hostConfiguration())
+        await applyNotificationSettings()
         await lidClosed.apply(enabled: settings.keepAwakeWithLidClosed, pauseOnBattery: settings.pauseLidModeOnBattery)
         if let runtime { await runtime.hub.post(.macStatus(await macStatus())) }
+    }
+
+    // MARK: Notifications
+
+    var ntfyConfiguration: NtfyConfiguration? {
+        NtfyConfiguration(server: settings.ntfyServer, topic: settings.ntfyTopic, token: secrets.read(account: Self.ntfyTokenAccount))
+    }
+
+    var hasNtfyToken: Bool {
+        secrets.read(account: Self.ntfyTokenAccount)?.isEmpty == false
+    }
+
+    /// Stores the ntfy access token in the Keychain; an empty token removes it.
+    func saveNtfyToken(_ token: String) {
+        let trimmed = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        do {
+            try secrets.write(trimmed.isEmpty ? nil : trimmed, account: Self.ntfyTokenAccount)
+        } catch {
+            alert = String(localized: "The access token could not be saved: \(error.localizedDescription)")
+        }
+        Task { await applyNotificationSettings() }
+    }
+
+    func regenerateNtfyTopic() {
+        settings.ntfyTopic = NtfyConfiguration.randomTopic()
+        Task { await applyNotificationSettings() }
+    }
+
+    /// Hands the current preferences and destinations to the host (D-095).
+    func applyNotificationSettings() async {
+        guard let runtime else { return }
+        var sinks: [any AlertSink] = []
+        if settings.notificationsEnabled, settings.notifyOnMac, await MacNotificationSink.requestAuthorization() {
+            sinks.append(MacNotificationSink())
+        }
+        if settings.notifyViaNtfy, let configuration = ntfyConfiguration {
+            sinks.append(NtfyPublisher(configuration: configuration, macId: macFingerprint, format: AlertText.ntfyContent))
+        }
+        await runtime.notifications.configure(
+            NotificationPreferences(
+                enabled: settings.notificationsEnabled,
+                kinds: settings.notificationKinds,
+                includeDetail: settings.notificationIncludesSummary
+            ),
+            sinks: sinks
+        )
+    }
+
+    /// Sends a sample notification to every enabled destination.
+    func sendTestNotification() async {
+        notificationTest = .sending
+        let headline = String(localized: "Test notification from \(macName)")
+        let detail = String(localized: "Notifications from Pilothouse arrive like this.")
+        var results: [String] = []
+        if settings.notifyOnMac {
+            if await MacNotificationSink.requestAuthorization() {
+                let content = UNMutableNotificationContent()
+                content.title = headline
+                content.body = detail
+                content.sound = .default
+                do {
+                    try await MacNotificationSink().deliver(content)
+                    results.append(String(localized: "Mac: shown"))
+                } catch {
+                    results.append(String(localized: "Mac: \(error.localizedDescription)"))
+                }
+            } else {
+                results.append(String(localized: "Mac: notifications are turned off in System Settings"))
+            }
+        }
+        if settings.notifyViaNtfy {
+            guard let configuration = ntfyConfiguration else {
+                notificationTest = .failed(String(localized: "Enter a valid server address (https://…)."))
+                return
+            }
+            do {
+                let status = try await NtfyPublisher(configuration: configuration).publish(
+                    NtfyMessage(topic: configuration.topic, title: "Pilothouse", message: "\(headline)\n\(detail)", tags: ["bell"])
+                )
+                results.append(String(localized: "ntfy: delivered (HTTP \(status))"))
+            } catch {
+                notificationTest = .failed(String(localized: "ntfy: \(String(describing: error))"))
+                return
+            }
+        }
+        notificationTest = results.isEmpty
+            ? .failed(String(localized: "Turn on at least one destination."))
+            : .sent(results.joined(separator: " · "))
     }
 
     func setLaunchAtLogin(_ enabled: Bool) {
