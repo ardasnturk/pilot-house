@@ -27,4 +27,9 @@ text_size = 13
 icon_locations = {
     appname: (180, 200),
     "Applications": (480, 200),
+    # Hidden files, placed outside the window so they stay out of sight even
+    # when Finder shows hidden files.
+    ".background.tiff": (180, 900),
+    ".DS_Store": (330, 900),
+    ".fseventsd": (480, 900),
 }
