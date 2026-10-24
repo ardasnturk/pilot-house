@@ -8,6 +8,22 @@ enum AppLinks {
     static let website = URL(string: "https://pilot.ardasnturk.com")!
 }
 
+/// Whether the public TestFlight link takes new testers yet. Until Apple's
+/// beta review is through, its page says it "isn't accepting any new
+/// testers"; the QR code is only shown once it does.
+enum TestFlightAvailability {
+    static func isOpen() async -> Bool {
+        var request = URLRequest(url: AppLinks.testFlight, timeoutInterval: 10)
+        request.setValue("en", forHTTPHeaderField: "Accept-Language")
+        guard
+            let (data, response) = try? await URLSession.shared.data(for: request),
+            (response as? HTTPURLResponse)?.statusCode == 200
+        else { return false }
+        let page = String(decoding: data, as: UTF8.self)
+        return !page.contains("accepting any new testers") && !page.contains("This beta is full")
+    }
+}
+
 /// "Get Pilothouse for iPhone": the TestFlight QR code, shown on first launch
 /// and from the menu, so the phone app can be installed without searching.
 struct GetIPhoneAppView: View {
@@ -15,8 +31,52 @@ struct GetIPhoneAppView: View {
     @Environment(\.openWindow) private var openWindow
     @Environment(\.dismissWindow) private var dismissWindow
     @State private var copied = false
+    /// `nil` while checking the TestFlight link.
+    @State private var isOpen: Bool?
 
     var body: some View {
+        Group {
+            switch isOpen {
+            case nil:
+                ProgressView()
+                    .frame(width: 440, height: 300)
+            case false?:
+                comingSoon
+            case true?:
+                available
+            }
+        }
+        .task { isOpen = await TestFlightAvailability.isOpen() }
+    }
+
+    private var comingSoon: some View {
+        VStack(spacing: 14) {
+            Image(systemName: "hourglass")
+                .font(.system(size: 40))
+                .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
+            Text("The iPhone app is almost here")
+                .font(.title2.weight(.semibold))
+            Text("Pilothouse for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.")
+                .multilineTextAlignment(.center)
+                .foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+            HStack {
+                Link(destination: AppLinks.website) {
+                    Text("Open the Website")
+                }
+                Spacer()
+                Button("Check Again") {
+                    isOpen = nil
+                    Task { isOpen = await TestFlightAvailability.isOpen() }
+                }
+            }
+        }
+        .padding(28)
+        .frame(width: 440)
+    }
+
+    private var available: some View {
         VStack(spacing: 18) {
             VStack(spacing: 6) {
                 Text("Get Pilothouse for iPhone and iPad")

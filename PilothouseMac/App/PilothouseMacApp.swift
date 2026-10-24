@@ -65,8 +65,9 @@ struct MenuBarLabel: View {
     var body: some View {
         icon
             .task {
-                // First launch: show how to get the phone app before anything else.
-                guard !controller.settings.didShowWelcome else { return }
+                // First launch: show how to get the phone app before anything else
+                // (once the TestFlight link takes testers; until then, on a later launch).
+                guard !controller.settings.didShowWelcome, await TestFlightAvailability.isOpen() else { return }
                 controller.settings.didShowWelcome = true
                 openWindow(id: WindowID.iPhoneApp)
                 NSApp.activate()

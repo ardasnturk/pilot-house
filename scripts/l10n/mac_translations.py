@@ -1,6 +1,9 @@
 # Source of scripts/l10n/mac.json — edit here, then run `python3 scripts/l10n/mac_translations.py`.
 import json, os
 T = {
+"Open the Website": ("Web Sitesini Aç", "Website öffnen"),
+"Pilothouse for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.": ("iPhone ve iPad için Pilothouse, Apple'ın beta incelemesini bekliyor. TestFlight test kullanıcısı kabul etmeye başlar başlamaz kurulum QR kodu burada ve web sitesinde görünecek.", "Pilothouse für iPhone und iPad wartet auf Apples Beta-Prüfung. Sobald TestFlight Tester annimmt, erscheint der QR-Code zur Installation hier und auf der Website."),
+"The iPhone app is almost here": ("iPhone uygulaması neredeyse hazır", "Die iPhone-App ist fast da"),
 "Get Pilothouse for iPhone and iPad": ("iPhone ve iPad için Pilothouse'u edinin", "Pilothouse für iPhone und iPad"),
 "Scan the code with your iPhone's camera to install the app with TestFlight, Apple's free app for beta apps.": ("Uygulamayı Apple'ın beta uygulamaları için ücretsiz uygulaması TestFlight ile kurmak için kodu iPhone kameranızla okutun.", "Scanne den Code mit der Kamera deines iPhones, um die App mit TestFlight zu installieren, Apples kostenloser App für Beta-Apps."),
 "QR code for the TestFlight link": ("TestFlight bağlantısının QR kodu", "QR-Code für den TestFlight-Link"),

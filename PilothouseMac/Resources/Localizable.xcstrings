@@ -1905,6 +1905,22 @@
         }
       }
     },
+    "Open the Website": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website öffnen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Web Sitesini Aç"
+          }
+        }
+      }
+    },
     "Optional": {
       "localizations": {
         "de": {
@@ -2093,6 +2109,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pilothouse, Tailscale'i otomatik algılar. Terminal'den de kontrol edebilirsiniz."
+          }
+        }
+      }
+    },
+    "Pilothouse for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilothouse für iPhone und iPad wartet auf Apples Beta-Prüfung. Sobald TestFlight Tester annimmt, erscheint der QR-Code zur Installation hier und auf der Website."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone ve iPad için Pilothouse, Apple'ın beta incelemesini bekliyor. TestFlight test kullanıcısı kabul etmeye başlar başlamaz kurulum QR kodu burada ve web sitesinde görünecek."
           }
         }
       }
@@ -3133,6 +3165,22 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yardımcı kullanılamıyor."
+          }
+        }
+      }
+    },
+    "The iPhone app is almost here": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die iPhone-App ist fast da"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone uygulaması neredeyse hazır"
           }
         }
       }

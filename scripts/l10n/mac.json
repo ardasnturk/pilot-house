@@ -475,6 +475,10 @@
   "de": "Claude-Code-Einrichtungsanleitung öffnen",
   "tr": "Claude Code kurulum kılavuzunu aç"
  },
+ "Open the Website": {
+  "de": "Website öffnen",
+  "tr": "Web Sitesini Aç"
+ },
  "Optional": {
   "de": "Optional",
   "tr": "İsteğe bağlı"
@@ -522,6 +526,10 @@
  "Pilothouse detects Tailscale automatically. You can also check it in Terminal.": {
   "de": "Pilothouse erkennt Tailscale automatisch. Du kannst es auch im Terminal prüfen.",
   "tr": "Pilothouse, Tailscale'i otomatik algılar. Terminal'den de kontrol edebilirsiniz."
+ },
+ "Pilothouse for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.": {
+  "de": "Pilothouse für iPhone und iPad wartet auf Apples Beta-Prüfung. Sobald TestFlight Tester annimmt, erscheint der QR-Code zur Installation hier und auf der Website.",
+  "tr": "iPhone ve iPad için Pilothouse, Apple'ın beta incelemesini bekliyor. TestFlight test kullanıcısı kabul etmeye başlar başlamaz kurulum QR kodu burada ve web sitesinde görünecek."
  },
  "Pilothouse is not running.": {
   "de": "Pilothouse läuft nicht.",
@@ -782,6 +790,10 @@
  "The helper is not available.": {
   "de": "Das Hilfsprogramm ist nicht verfügbar.",
   "tr": "Yardımcı kullanılamıyor."
+ },
+ "The iPhone app is almost here": {
+  "de": "Die iPhone-App ist fast da",
+  "tr": "iPhone uygulaması neredeyse hazır"
  },
  "The same code appears on your phone after pairing.": {
   "de": "Derselbe Code erscheint nach dem Koppeln auf deinem Telefon.",
