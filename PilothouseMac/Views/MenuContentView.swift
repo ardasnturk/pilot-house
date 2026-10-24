@@ -5,6 +5,10 @@ import SwiftUI
 struct MenuContentView: View {
     @Environment(AppController.self) private var controller
     @Environment(\.openWindow) private var openWindow
+    /// Measured height of the scrollable sections. The menu bar window sizes
+    /// itself to the ideal size, and a bare ScrollView has none, so without an
+    /// explicit height the sections collapse to nothing.
+    @State private var contentHeight: CGFloat = 0
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -26,8 +30,9 @@ struct MenuContentView: View {
                     integrations
                 }
                 .padding(14)
+                .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { contentHeight = $0 }
             }
-            .frame(maxHeight: 520)
+            .frame(height: min(contentHeight, 520))
             Divider()
             footer
         }
