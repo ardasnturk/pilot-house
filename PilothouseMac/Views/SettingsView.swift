@@ -446,7 +446,7 @@ private struct PrivacySettings: View {
                         .foregroundStyle(.red)
                 }
             } footer: {
-                Text("When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.")
+                Text("When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.")
                     .foregroundStyle(.red)
             }
             Section {

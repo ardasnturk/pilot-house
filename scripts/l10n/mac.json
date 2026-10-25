@@ -1051,9 +1051,9 @@
   "de": "Neuigkeiten",
   "tr": "Yenilikler"
  },
- "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
-  "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Sitzungen starten, in denen Claude ohne Nachfrage Dateien ändert und Befehle ausführt. Aktiviere dies nur, wenn du das Risiko verstehst.",
-  "tr": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı oturumlar başlatabilir. Yalnızca riski anlıyorsanız etkinleştirin."
+ "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
+  "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Chats starten oder laufende umstellen, in denen Claude ohne Nachfrage Dateien bearbeitet und Befehle ausführt. Aktiviere das nur, wenn du das Risiko verstehst.",
+  "tr": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı sohbetler başlatabilir veya süren sohbetleri bu moda geçirebilir. Yalnızca riski anlıyorsanız etkinleştirin."
  },
  "When and where Pilothouse tells you something happened.": {
   "de": "Wann und wo dir Pilothouse mitteilt, dass etwas passiert ist.",

@@ -262,7 +262,7 @@
   "Week": "週",
   "Weekly summary": "週間の概要",
   "What's new": "新機能",
-  "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "許可すると、ペアリング済みのデバイスから、Claudeが確認なしでファイルを編集しコマンドを実行するセッションを開始できます。リスクを理解している場合のみ有効にしてください。",
+  "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "許可すると、ペアリング済みのデバイスから、Claudeが確認なしでファイルを編集しコマンドを実行するチャットを開始したり、進行中のチャットをこのモードに切り替えたりできます。リスクを理解している場合のみ有効にしてください。",
   "When and where Pilothouse tells you something happened.": "Pilothouseが出来事を知らせるタイミングと場所。",
   "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": "概要を含めない場合、通知には何が起きたかとどのフォルダかのみが表示されます（例：「タスクが完了しました · my-app」）。含める場合は、最後のメッセージ、ツール、またはエラーが追加されます。",
   "Working": "作業中",

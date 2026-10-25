@@ -15255,60 +15255,60 @@
         }
       }
     },
-    "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
+    "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn erlaubt, kann ein gekoppeltes Gerät Sitzungen starten, in denen Claude ohne Nachfrage Dateien ändert und Befehle ausführt. Aktiviere dies nur, wenn du das Risiko verstehst."
+            "value": "Wenn erlaubt, kann ein gekoppeltes Gerät Chats starten oder laufende umstellen, in denen Claude ohne Nachfrage Dateien bearbeitet und Befehle ausführt. Aktiviere das nur, wenn du das Risiko verstehst."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si se permite, un dispositivo vinculado puede iniciar sesiones en las que Claude edita archivos y ejecuta comandos sin preguntar. Actívalo solo si entiendes el riesgo."
+            "value": "Si se permite, un dispositivo vinculado puede iniciar chats, o cambiar los que están en curso, en los que Claude edita archivos y ejecuta comandos sin preguntar. Actívalo solo si entiendes el riesgo."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si cette option est autorisée, un appareil jumelé peut lancer des sessions dans lesquelles Claude modifie des fichiers et exécute des commandes sans demander. N’activez cette option que si vous en comprenez le risque."
+            "value": "Si cette option est autorisée, un appareil jumelé peut lancer des discussions, ou basculer celles en cours, dans lesquelles Claude modifie des fichiers et exécute des commandes sans demander. N’activez cette option que si vous en comprenez le risque."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se consentito, un dispositivo abbinato può avviare sessioni in cui Claude modifica file ed esegue comandi senza chiedere. Attivalo solo se ne comprendi il rischio."
+            "value": "Se consentito, un dispositivo abbinato può avviare chat, o modificare quelle in corso, in cui Claude modifica file ed esegue comandi senza chiedere. Attivalo solo se ne comprendi il rischio."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "許可すると、ペアリング済みのデバイスから、Claudeが確認なしでファイルを編集しコマンドを実行するセッションを開始できます。リスクを理解している場合のみ有効にしてください。"
+            "value": "許可すると、ペアリング済みのデバイスから、Claudeが確認なしでファイルを編集しコマンドを実行するチャットを開始したり、進行中のチャットをこのモードに切り替えたりできます。リスクを理解している場合のみ有効にしてください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "허용하면 페어링된 기기에서 Claude가 묻지 않고 파일을 편집하고 명령을 실행하는 세션을 시작할 수 있습니다. 위험을 이해하는 경우에만 활성화하십시오."
+            "value": "허용하면 페어링된 기기에서 Claude가 묻지 않고 파일을 편집하고 명령을 실행하는 채팅을 시작하거나 진행 중인 채팅을 이 모드로 전환할 수 있습니다. 위험을 이해하는 경우에만 활성화하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quando permitido, um dispositivo emparelhado pode iniciar sessões nas quais o Claude edita arquivos e executa comandos sem perguntar. Ative apenas se você entende o risco."
+            "value": "Quando permitido, um dispositivo emparelhado pode iniciar conversas, ou alterar as que estão em andamento, nas quais o Claude edita arquivos e executa comandos sem perguntar. Ative apenas se você entende o risco."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı oturumlar başlatabilir. Yalnızca riski anlıyorsanız etkinleştirin."
+            "value": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı sohbetler başlatabilir veya süren sohbetleri bu moda geçirebilir. Yalnızca riski anlıyorsanız etkinleştirin."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "允许后，已配对的设备可以启动 Claude 不经询问即编辑文件和运行命令的会话。请仅在了解风险的情况下启用。"
+            "value": "允许后，已配对的设备可以启动 Claude 不经询问即编辑文件和运行命令的聊天，或将进行中的聊天切换到此模式。请仅在了解风险的情况下启用。"
           }
         }
       }

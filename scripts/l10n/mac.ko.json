@@ -262,7 +262,7 @@
   "Week": "주",
   "Weekly summary": "주간 요약",
   "What's new": "새로운 기능",
-  "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "허용하면 페어링된 기기에서 Claude가 묻지 않고 파일을 편집하고 명령을 실행하는 세션을 시작할 수 있습니다. 위험을 이해하는 경우에만 활성화하십시오.",
+  "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "허용하면 페어링된 기기에서 Claude가 묻지 않고 파일을 편집하고 명령을 실행하는 채팅을 시작하거나 진행 중인 채팅을 이 모드로 전환할 수 있습니다. 위험을 이해하는 경우에만 활성화하십시오.",
   "When and where Pilothouse tells you something happened.": "Pilothouse가 언제 어디서 이벤트를 알려줄지 설정합니다.",
   "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": "요약이 없으면 알림에는 발생한 일과 폴더만 표시됩니다(예: ‘작업 완료 · my-app’). 요약을 포함하면 마지막 메시지, 도구 또는 오류가 추가됩니다.",
   "Working": "작업 중",

@@ -6,6 +6,8 @@ All notable changes to Pilothouse are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.1.2] — 2026-10-25
+
 ### Added
 - "Allow everything in this chat" on the permission sheet, and a Permissions
   picker in the chat's menu: a chat's permission mode can now change at any

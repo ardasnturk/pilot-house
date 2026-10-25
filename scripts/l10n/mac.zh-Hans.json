@@ -262,7 +262,7 @@
   "Week": "周",
   "Weekly summary": "每周摘要",
   "What's new": "新功能",
-  "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "允许后，已配对的设备可以启动 Claude 不经询问即编辑文件和运行命令的会话。请仅在了解风险的情况下启用。",
+  "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "允许后，已配对的设备可以启动 Claude 不经询问即编辑文件和运行命令的聊天，或将进行中的聊天切换到此模式。请仅在了解风险的情况下启用。",
   "When and where Pilothouse tells you something happened.": "Pilothouse 在何时何地通知你发生的事件。",
   "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": "不含摘要时，通知只会说明发生了什么以及在哪个文件夹，例如“任务已完成 · my-app”。包含摘要时，会附上最后一条消息、工具或错误。",
   "Working": "工作中",

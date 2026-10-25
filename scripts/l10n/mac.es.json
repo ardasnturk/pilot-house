@@ -262,7 +262,7 @@
   "Week": "Semana",
   "Weekly summary": "Resumen semanal",
   "What's new": "Novedades",
-  "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "Si se permite, un dispositivo vinculado puede iniciar sesiones en las que Claude edita archivos y ejecuta comandos sin preguntar. Actívalo solo si entiendes el riesgo.",
+  "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "Si se permite, un dispositivo vinculado puede iniciar chats, o cambiar los que están en curso, en los que Claude edita archivos y ejecuta comandos sin preguntar. Actívalo solo si entiendes el riesgo.",
   "When and where Pilothouse tells you something happened.": "Cuándo y dónde te avisa Pilothouse de que ha pasado algo.",
   "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": "Sin resumen, una notificación solo indica qué ha pasado y en qué carpeta, p. ej., “Tarea terminada · my-app”. Con él, se añade el último mensaje, la herramienta o el error.",
   "Working": "Trabajando",

@@ -262,7 +262,7 @@
   "Week": "Semana",
   "Weekly summary": "Resumo semanal",
   "What's new": "Novidades",
-  "When allowed, a paired device can start sessions in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "Quando permitido, um dispositivo emparelhado pode iniciar sessões nas quais o Claude edita arquivos e executa comandos sem perguntar. Ative apenas se você entende o risco.",
+  "When allowed, a paired device can start chats, or switch running ones, in which Claude edits files and runs commands without asking. Only enable this if you understand the risk.": "Quando permitido, um dispositivo emparelhado pode iniciar conversas, ou alterar as que estão em andamento, nas quais o Claude edita arquivos e executa comandos sem perguntar. Ative apenas se você entende o risco.",
   "When and where Pilothouse tells you something happened.": "Quando e onde o Pilothouse avisa que algo aconteceu.",
   "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": "Sem um resumo, a notificação informa apenas o que aconteceu e em qual pasta, por exemplo, “Tarefa concluída · my-app”. Com ele, a última mensagem, a ferramenta ou o erro são adicionados.",
   "Working": "Trabalhando",
