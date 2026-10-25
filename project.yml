@@ -1,6 +1,6 @@
-# XcodeGen specification — the source of truth for Pilothouse.xcodeproj.
+# XcodeGen specification — the source of truth for RemoteCode.xcodeproj.
 # Regenerate with `scripts/bootstrap.sh` (or `xcodegen generate`).
-name: Pilothouse
+name: RemoteCode
 options:
   bundleIdPrefix: com.ardasenturk
   developmentLanguage: en
@@ -27,27 +27,27 @@ settings:
     ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS: YES
 
 packages:
-  PilothouseKit:
-    path: PilothouseKit
+  RemoteCodeKit:
+    path: RemoteCodeKit
 
 targets:
-  PilothouseMac:
+  RemoteCodeMac:
     type: application
     platform: macOS
     sources:
-      - path: PilothouseMac
+      - path: RemoteCodeMac
       - path: Shared
-      - path: PilothouseHelper/com.ardasenturk.Pilothouse.Helper.plist
+      - path: RemoteCodeHelper/com.ardasenturk.Pilothouse.Helper.plist
         buildPhase:
           copyFiles:
             destination: wrapper
             subpath: Contents/Library/LaunchDaemons
     dependencies:
-      - package: PilothouseKit
-        product: PilothouseKit
-      - package: PilothouseKit
-        product: PilothouseHost
-      - target: PilothouseHelper
+      - package: RemoteCodeKit
+        product: RemoteCodeKit
+      - package: RemoteCodeKit
+        product: RemoteCodeHost
+      - target: RemoteCodeHelper
         embed: true
         codeSign: true
         copy:
@@ -56,8 +56,8 @@ targets:
       base:
         PRODUCT_NAME: "Remote Code"
         PRODUCT_BUNDLE_IDENTIFIER: com.ardasenturk.Pilothouse.Mac
-        INFOPLIST_FILE: PilothouseMac/Resources/Info.plist
-        CODE_SIGN_ENTITLEMENTS: PilothouseMac/Resources/PilothouseMac.entitlements
+        INFOPLIST_FILE: RemoteCodeMac/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: RemoteCodeMac/Resources/RemoteCodeMac.entitlements
         ENABLE_HARDENED_RUNTIME: YES
         ENABLE_APP_SANDBOX: NO
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -69,19 +69,19 @@ targets:
           CODE_SIGN_STYLE: Manual
           OTHER_CODE_SIGN_FLAGS: --timestamp
 
-  PilothouseHelper:
+  RemoteCodeHelper:
     type: tool
     platform: macOS
     sources:
-      - path: PilothouseHelper
+      - path: RemoteCodeHelper
         excludes:
           - "*.plist"
       - path: Shared
     settings:
       base:
-        PRODUCT_NAME: PilothouseHelper
+        PRODUCT_NAME: PilothouseHelper  # launchd starts the helper by this path; keep it (D-111)
         PRODUCT_BUNDLE_IDENTIFIER: com.ardasenturk.Pilothouse.Helper
-        INFOPLIST_FILE: PilothouseHelper/Info.plist
+        INFOPLIST_FILE: RemoteCodeHelper/Info.plist
         CREATE_INFOPLIST_SECTION_IN_BINARY: YES
         ENABLE_HARDENED_RUNTIME: YES
         SKIP_INSTALL: YES
@@ -91,19 +91,19 @@ targets:
           CODE_SIGN_STYLE: Manual
           OTHER_CODE_SIGN_FLAGS: --timestamp
 
-  PilothouseiOS:
+  RemoteCodeiOS:
     type: application
     platform: iOS
     sources:
-      - path: PilothouseiOS
+      - path: RemoteCodeiOS
     dependencies:
-      - package: PilothouseKit
-        product: PilothouseKit
+      - package: RemoteCodeKit
+        product: RemoteCodeKit
     settings:
       base:
-        PRODUCT_NAME: Pilothouse
+        PRODUCT_NAME: RemoteCode
         PRODUCT_BUNDLE_IDENTIFIER: com.ardasenturk.Pilothouse
-        INFOPLIST_FILE: PilothouseiOS/Resources/Info.plist
+        INFOPLIST_FILE: RemoteCodeiOS/Resources/Info.plist
         TARGETED_DEVICE_FAMILY: "1,2"
         SUPPORTS_MACCATALYST: NO
         SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
@@ -112,48 +112,48 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS: YES
 
-  PilothouseUITests:
+  RemoteCodeUITests:
     type: bundle.ui-testing
     platform: iOS
     sources:
-      - path: PilothouseUITests
+      - path: RemoteCodeUITests
     dependencies:
-      - target: PilothouseiOS
+      - target: RemoteCodeiOS
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.ardasenturk.Pilothouse.UITests
-        TEST_TARGET_NAME: PilothouseiOS
+        TEST_TARGET_NAME: RemoteCodeiOS
         GENERATE_INFOPLIST_FILE: YES
         TARGETED_DEVICE_FAMILY: "1,2"
 
 schemes:
-  PilothouseiOS:
+  RemoteCodeiOS:
     build:
       targets:
-        PilothouseiOS: all
-        PilothouseUITests: [test]
+        RemoteCodeiOS: all
+        RemoteCodeUITests: [test]
     run:
       config: Debug
     test:
       config: Debug
       gatherCoverageData: true
       targets:
-        - PilothouseUITests
-        - package: PilothouseKit/PilothouseKitTests
+        - RemoteCodeUITests
+        - package: RemoteCodeKit/RemoteCodeKitTests
     archive:
       config: Release
 
-  PilothouseMac:
+  RemoteCodeMac:
     build:
       targets:
-        PilothouseMac: all
+        RemoteCodeMac: all
     run:
       config: Debug
     test:
       config: Debug
       gatherCoverageData: true
       targets:
-        - package: PilothouseKit/PilothouseKitTests
-        - package: PilothouseKit/PilothouseHostTests
+        - package: RemoteCodeKit/RemoteCodeKitTests
+        - package: RemoteCodeKit/RemoteCodeHostTests
     archive:
       config: Release

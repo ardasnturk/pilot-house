@@ -1,4 +1,4 @@
-HOW TO REVIEW PILOTHOUSE
+HOW TO REVIEW REMOTE CODE
 
 Remote Code is a remote control for the Claude Code command-line tool running on the user's own Mac. A real setup needs a Mac with the free Remote Code Mac app (distributed outside the Mac App Store as a notarized app: https://github.com/ardasnturk/remote-code/releases) and a signed-in Claude Code CLI. To make review possible without any of that, the app contains a complete DEMO MODE that simulates a paired Mac inside the app. It needs no account, no network and no Mac.
 

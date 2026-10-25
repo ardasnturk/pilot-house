@@ -2,7 +2,7 @@
 
 <h1 align="center">Remote Code</h1>
 
-<p align="center">Drive <b>Claude Code</b>, <b>Codex</b> and <b>Gemini CLI</b> on your Mac from your iPhone or iPad.<br><sub>Formerly Pilothouse.</sub></p>
+<p align="center">Drive <b>Claude Code</b>, <b>Codex</b> and <b>Gemini CLI</b> on your Mac from your iPhone or iPad.</p>
 
 <p align="center">
   <a href="https://github.com/ardasnturk/remote-code/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ardasnturk/remote-code?label=release"></a>
@@ -297,16 +297,16 @@ key" items in Keychain Access for a clean slate.
 
 ```sh
 git clone https://github.com/ardasnturk/remote-code.git && cd pilot-house
-open Pilothouse.xcodeproj          # Xcode 26 or later; schemes PilothouseMac / PilothouseiOS
+open RemoteCode.xcodeproj          # Xcode 26 or later; schemes RemoteCodeMac / RemoteCodeiOS
 scripts/test.sh                    # all tests that this machine can run
 ```
 
-* `PilothouseKit/` — protocol, crypto, client, demo Mac (`PilothouseKit`) and
-  the Mac host core (`PilothouseHost`); builds and tests on Linux too
+* `RemoteCodeKit/` — protocol, crypto, client, demo Mac (`RemoteCodeKit`) and
+  the Mac host core (`RemoteCodeHost`); builds and tests on Linux too
   (`swift test`).
-* `PilothouseMac/`, `PilothouseHelper/`, `PilothouseiOS/` — the apps.
+* `RemoteCodeMac/`, `RemoteCodeHelper/`, `RemoteCodeiOS/` — the apps.
 * `project.yml` — XcodeGen spec; run `scripts/bootstrap.sh` after changing it.
-To run the iPhone app on your own device, open the `PilothouseiOS` target →
+To run the iPhone app on your own device, open the `RemoteCodeiOS` target →
 *Signing & Capabilities* → choose your team, and run it from Xcode.
 
 * Releases: [docs/RELEASE.md](docs/RELEASE.md). Changes:

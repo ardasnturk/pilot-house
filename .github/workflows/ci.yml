@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   package-linux:
-    name: PilothouseKit on Linux
+    name: RemoteCodeKit on Linux
     runs-on: ubuntu-latest
     container: swift:6.1
     steps:
@@ -24,7 +24,7 @@ jobs:
       - name: Check App Store metadata
         run: python3 scripts/check-metadata.py
       - name: swift test
-        working-directory: PilothouseKit
+        working-directory: RemoteCodeKit
         run: swift test
 
   apple:
@@ -41,7 +41,7 @@ jobs:
       - name: Mac scheme — build app and run package tests
         run: |
           xcodebuild test \
-            -project Pilothouse.xcodeproj -scheme PilothouseMac \
+            -project RemoteCode.xcodeproj -scheme RemoteCodeMac \
             -destination 'platform=macOS' \
             -resultBundlePath build/mac.xcresult \
             CODE_SIGNING_ALLOWED=NO
@@ -57,7 +57,7 @@ jobs:
                           print(device["udid"]); sys.exit(0)
           sys.exit(1)')
           xcodebuild test \
-            -project Pilothouse.xcodeproj -scheme PilothouseiOS \
+            -project RemoteCode.xcodeproj -scheme RemoteCodeiOS \
             -destination "id=$SIMULATOR" \
             -resultBundlePath build/ios.xcresult \
             CODE_SIGNING_ALLOWED=NO

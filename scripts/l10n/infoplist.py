@@ -80,6 +80,6 @@ def write(entries, path, app):
 
 
 if __name__ == "__main__":
-    write(IOS, os.path.join(ROOT, "PilothouseiOS/Resources/InfoPlist.xcstrings"), "ios")
-    write(MAC, os.path.join(ROOT, "PilothouseMac/Resources/InfoPlist.xcstrings"), "mac")
+    write(IOS, os.path.join(ROOT, "RemoteCodeiOS/Resources/InfoPlist.xcstrings"), "ios")
+    write(MAC, os.path.join(ROOT, "RemoteCodeMac/Resources/InfoPlist.xcstrings"), "mac")
     print("InfoPlist catalogs written.")

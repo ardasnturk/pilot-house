@@ -7,8 +7,7 @@
 # What it does:
 #   1. checks dist/RemoteCode-<version>.dmg and its .sha256 exist and match
 #   2. writes the new version + sha256 into Casks/remote-code.rb
-#   3. creates (or updates) a DRAFT release v<version> with the DMG, the
-#      bridge DMG for 1.1.x updaters (dist/Pilothouse-<version>.dmg) and the
+#   3. creates (or updates) a DRAFT release v<version> with the DMG and the
 #      notes from docs/release-notes/<version>.md — if the GitHub CLI is
 #      available and signed in; otherwise it prints the commands to run
 #
@@ -20,7 +19,6 @@ cd "$(dirname "$0")/.."
 VERSION="${1:-$(grep -m1 'MARKETING_VERSION' project.yml | sed -E 's/.*"([^"]+)".*/\1/')}"
 TAG="v$VERSION"
 DMG="dist/RemoteCode-$VERSION.dmg"
-LEGACY_DMG="dist/Pilothouse-$VERSION.dmg"
 NOTES="docs/release-notes/$VERSION.md"
 CASK="Casks/remote-code.rb"
 
@@ -38,11 +36,6 @@ if command -v xcrun >/dev/null && ! xcrun stapler validate "$DMG" >/dev/null 2>&
 fi
 
 ASSETS=("$DMG" "$DMG.sha256")
-if [[ -f "$LEGACY_DMG" ]]; then
-  ASSETS+=("$LEGACY_DMG" "$LEGACY_DMG.sha256")
-else
-  echo "Warning: $LEGACY_DMG is missing — 1.1.x copies will not find this update" >&2
-fi
 
 echo "▸ Updating $CASK → $VERSION ($SHA)"
 python3 - "$CASK" "$VERSION" "$SHA" <<'PY'

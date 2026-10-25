@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regenerates Pilothouse.xcodeproj from project.yml (XcodeGen) and the
+# Regenerates RemoteCode.xcodeproj from project.yml (XcodeGen) and the
 # generated assets. Run after editing project.yml, icons or translations.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -16,4 +16,4 @@ if python3 -c "import PIL" 2>/dev/null; then
   python3 scripts/generate-icons.py
 fi
 xcodegen generate --spec project.yml
-echo "Open Pilothouse.xcodeproj"
+echo "Open RemoteCode.xcodeproj"

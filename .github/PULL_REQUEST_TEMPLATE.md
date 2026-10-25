@@ -4,7 +4,7 @@
 
 ## How it was tested
 
-- [ ] `scripts/test.sh` (or `cd PilothouseKit && swift test` on Linux)
+- [ ] `scripts/test.sh` (or `cd RemoteCodeKit && swift test` on Linux)
 - [ ] Tried on a device or simulator (describe below)
 
 ## Checklist

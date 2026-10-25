@@ -49,7 +49,7 @@ DOUBLE_EXPRESSIONS = set()
 # Keys that are not literals in Text(...) but are looked up at runtime.
 EXTRA_KEYS = {
     "ios": [
-        # ToolSummary titles (PilothouseKit) shown via LocalizedStringKey.
+        # ToolSummary titles (RemoteCodeKit) shown via LocalizedStringKey.
         "Read", "Edit", "Write", "Edit notebook", "Run", "Search", "Find files", "Fetch", "Web search", "Tasks", "Sub-agent",
         # Notices produced by the Mac (shown via LocalizedStringKey).
         "Interrupted.", "Interrupted by user.", "Session closed.", "Session continued.", "Session resumed.",
@@ -60,7 +60,7 @@ EXTRA_KEYS = {
         "Every action in this chat is now allowed without asking.", "The permission mode of this chat was changed.",
     ],
     "mac": [
-        # TailscaleSetup.manualSteps (PilothouseHost) shown via LocalizedStringKey.
+        # TailscaleSetup.manualSteps (RemoteCodeHost) shown via LocalizedStringKey.
         "Install Tailscale",
         "Download Tailscale for macOS from tailscale.com, or install it with Homebrew.",
         "Open Tailscale and sign in",
@@ -218,11 +218,11 @@ def build(app, app_dir, check):
 
 if __name__ == "__main__":
     if "--list" in sys.argv:
-        for app, folder in (("ios", "PilothouseiOS"), ("mac", "PilothouseMac")):
+        for app, folder in (("ios", "RemoteCodeiOS"), ("mac", "RemoteCodeMac")):
             keys = sorted(extract(os.path.join(ROOT, folder)) | set(EXTRA_KEYS[app]))
             print(json.dumps({app: keys}, ensure_ascii=False, indent=1))
         sys.exit(0)
     check = "--check" in sys.argv
-    ok = build("ios", os.path.join(ROOT, "PilothouseiOS"), check)
-    ok = build("mac", os.path.join(ROOT, "PilothouseMac"), check) and ok
+    ok = build("ios", os.path.join(ROOT, "RemoteCodeiOS"), check)
+    ok = build("mac", os.path.join(ROOT, "RemoteCodeMac"), check) and ok
     sys.exit(0 if ok or not check else 1)

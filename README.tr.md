@@ -2,7 +2,7 @@
 
 <h1 align="center">Remote Code</h1>
 
-<p align="center">Mac'inizdeki <b>Claude Code</b>, <b>Codex</b> ve <b>Gemini CLI</b>'ı iPhone veya iPad'inizden yönetin.<br><sub>Eski adıyla Pilothouse.</sub></p>
+<p align="center">Mac'inizdeki <b>Claude Code</b>, <b>Codex</b> ve <b>Gemini CLI</b>'ı iPhone veya iPad'inizden yönetin.</p>
 
 <p align="center">
   <a href="https://github.com/ardasnturk/remote-code/releases/latest"><img alt="Son sürüm" src="https://img.shields.io/github/v/release/ardasnturk/remote-code?label=release"></a>
@@ -310,17 +310,17 @@ silin.
 
 ```sh
 git clone https://github.com/ardasnturk/remote-code.git && cd pilot-house
-open Pilothouse.xcodeproj          # Xcode 26 veya üstü; şemalar PilothouseMac / PilothouseiOS
+open RemoteCode.xcodeproj          # Xcode 26 veya üstü; şemalar RemoteCodeMac / RemoteCodeiOS
 scripts/test.sh                    # bu makinenin çalıştırabildiği tüm testler
 ```
 
-* `PilothouseKit/` — protokol, kriptografi, istemci, demo Mac (`PilothouseKit`)
-  ve Mac sunucu çekirdeği (`PilothouseHost`); Linux'ta da derlenir ve test
+* `RemoteCodeKit/` — protokol, kriptografi, istemci, demo Mac (`RemoteCodeKit`)
+  ve Mac sunucu çekirdeği (`RemoteCodeHost`); Linux'ta da derlenir ve test
   edilir (`swift test`).
-* `PilothouseMac/`, `PilothouseHelper/`, `PilothouseiOS/` — uygulamalar.
+* `RemoteCodeMac/`, `RemoteCodeHelper/`, `RemoteCodeiOS/` — uygulamalar.
 * `project.yml` — XcodeGen tanımı; değiştirdikten sonra `scripts/bootstrap.sh`
   çalıştırın.
-iPhone uygulamasını kendi cihazınızda çalıştırmak için `PilothouseiOS` hedefi →
+iPhone uygulamasını kendi cihazınızda çalıştırmak için `RemoteCodeiOS` hedefi →
 *Signing & Capabilities* → takımınızı seçin ve Xcode'dan çalıştırın.
 
 * Sürüm çıkarma: [docs/RELEASE.md](docs/RELEASE.md). Değişiklikler:

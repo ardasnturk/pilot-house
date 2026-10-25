@@ -1,12 +1,12 @@
 import Foundation
 
-/// XPC interface of the privileged helper (`PilothouseHelper`).
+/// XPC interface of the privileged helper (`RemoteCodeHelper`).
 ///
 /// The helper exists only to toggle `pmset -a disablesleep` for the optional
 /// "stay awake with the lid closed" mode, which needs root. It exposes nothing
 /// else and accepts connections only from the Remote Code Mac app signed by the
 /// same team (see `HelperConstants.clientRequirement`).
-@objc public protocol PilothouseHelperProtocol {
+@objc public protocol RemoteCodeHelperProtocol {
     /// Runs `pmset -a disablesleep 1` (`true`) or `0` (`false`).
     func setSleepDisabled(_ disabled: Bool, withReply reply: @escaping (Bool, String?) -> Void)
     /// Reads the current `SleepDisabled` value from `pmset -g`.

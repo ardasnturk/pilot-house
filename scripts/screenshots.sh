@@ -38,7 +38,7 @@ SIMULATORS+=("$(find_simulator "${IPAD:-}" 'iPad Pro 13-inch.*')") || { echo "No
 
 echo "▸ Building for testing"
 xcodebuild build-for-testing \
-  -project Pilothouse.xcodeproj -scheme PilothouseiOS \
+  -project RemoteCode.xcodeproj -scheme RemoteCodeiOS \
   -destination 'generic/platform=iOS Simulator' \
   -derivedDataPath "$WORK/DerivedData" \
   CODE_SIGNING_ALLOWED=NO > "$WORK/build.log" 2>&1 || { tail -50 "$WORK/build.log"; exit 1; }
@@ -58,10 +58,10 @@ for entry in "${SIMULATORS[@]}"; do
       result="$WORK/$name.xcresult"
       echo "▸ $device · $appearance · $language"
       TEST_RUNNER_SCREENSHOT_LANGUAGE="$language" xcodebuild test-without-building \
-        -project Pilothouse.xcodeproj -scheme PilothouseiOS \
+        -project RemoteCode.xcodeproj -scheme RemoteCodeiOS \
         -destination "id=$udid" \
         -derivedDataPath "$WORK/DerivedData" \
-        -only-testing:PilothouseUITests/ScreenshotTests \
+        -only-testing:RemoteCodeUITests/ScreenshotTests \
         -resultBundlePath "$result" > "$WORK/$name.log" 2>&1 || echo "  (test reported a failure, see $WORK/$name.log)"
       target="$OUT/$language/$slug-$appearance"
       mkdir -p "$target"

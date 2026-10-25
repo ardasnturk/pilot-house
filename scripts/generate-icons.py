@@ -191,8 +191,8 @@ def catalog(path):
 
 
 if __name__ == "__main__":
-    mac = catalog(os.path.join(ROOT, "PilothouseMac/Resources/Assets.xcassets"))
-    ios = catalog(os.path.join(ROOT, "PilothouseiOS/Resources/Assets.xcassets"))
+    mac = catalog(os.path.join(ROOT, "RemoteCodeMac/Resources/Assets.xcassets"))
+    ios = catalog(os.path.join(ROOT, "RemoteCodeiOS/Resources/Assets.xcassets"))
     mac_assets(mac)
     ios_assets(ios)
     for base in (mac, ios):

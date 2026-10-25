@@ -26,8 +26,8 @@ reading this first saves everyone a review round.
 
 ```sh
 git clone https://github.com/ardasnturk/remote-code.git && cd pilot-house
-cd PilothouseKit && swift test          # works on macOS and Linux
-open ../Pilothouse.xcodeproj            # Xcode 26+, schemes PilothouseMac / PilothouseiOS
+cd RemoteCodeKit && swift test          # works on macOS and Linux
+open ../RemoteCode.xcodeproj            # Xcode 26+, schemes RemoteCodeMac / RemoteCodeiOS
 ```
 
 Code signing is not needed to build and test (`CODE_SIGNING_ALLOWED=NO`); to run
@@ -36,10 +36,10 @@ everything the current machine supports.
 
 | Directory | What |
 |---|---|
-| `PilothouseKit/Sources/PilothouseKit` | Protocol, Noise IK crypto, transports, client, demo Mac, presentation helpers |
-| `PilothouseKit/Sources/PilothouseHost` | Mac host core: `claude` processes, stream-json normaliser, permission MCP server, event log, file sandbox |
-| `PilothouseMac`, `PilothouseHelper`, `Shared` | Menu bar app, privileged lid-closed helper |
-| `PilothouseiOS`, `PilothouseUITests` | iPhone/iPad app and its UI tests |
+| `RemoteCodeKit/Sources/RemoteCodeKit` | Protocol, Noise IK crypto, transports, client, demo Mac, presentation helpers |
+| `RemoteCodeKit/Sources/RemoteCodeHost` | Mac host core: `claude` processes, stream-json normaliser, permission MCP server, event log, file sandbox |
+| `RemoteCodeMac`, `RemoteCodeHelper`, `Shared` | Menu bar app, privileged lid-closed helper |
+| `RemoteCodeiOS`, `RemoteCodeUITests` | iPhone/iPad app and its UI tests |
 | `scripts/` | Build, release, screenshots, localisation |
 | `docs/` | Decisions, protocol, security, testing, release process |
 
@@ -49,7 +49,7 @@ everything the current machine supports.
   async/await.
 * **No force unwraps, no `try!`, no warnings.** CI builds with the default
   warning set and every warning counts as a bug.
-* Keep platform-specific code out of `PilothouseKit` unless it is behind
+* Keep platform-specific code out of `RemoteCodeKit` unless it is behind
   `#if canImport(...)`; the core must keep building on Linux.
 * Match the surrounding style: small types, doc comments on public API, no
   commented-out code.
@@ -59,19 +59,19 @@ everything the current machine supports.
   `python3 scripts/l10n/build_catalogs.py`. CI fails on missing translations
   (`--check`).
 * After editing `project.yml`, run `scripts/bootstrap.sh` and commit the
-  regenerated `Pilothouse.xcodeproj` (D-036).
+  regenerated `RemoteCode.xcodeproj` (D-036).
 
 ## Tests
 
-* Unit and integration tests use Swift Testing (`PilothouseKit/Tests`); host
-  tests use **FakeClaude** (`Tests/PilothouseHostTests/Fixtures/fake-claude.sh`)
+* Unit and integration tests use Swift Testing (`RemoteCodeKit/Tests`); host
+  tests use **FakeClaude** (`Tests/RemoteCodeHostTests/Fixtures/fake-claude.sh`)
   instead of the real CLI.
 * If you change how stream-json is interpreted, add a real, anonymised capture
   to `Fixtures/` and a test for it.
-* UI tests (`PilothouseUITests`) run against the in-app demo Mac; new screens
+* UI tests (`RemoteCodeUITests`) run against the in-app demo Mac; new screens
   need accessibility identifiers and, ideally, a UI test.
 * The real-CLI end-to-end test is opt-in:
-  `PILOTHOUSE_E2E_CLAUDE=$(command -v claude) swift test --filter RealClaudeEndToEndTests`.
+  `REMOTECODE_E2E_CLAUDE=$(command -v claude) swift test --filter RealClaudeEndToEndTests`.
 
 See [docs/TESTING.md](docs/TESTING.md).
 

@@ -1,4 +1,4 @@
-# Homebrew cask for the Remote Code Mac app (formerly Pilothouse).
+# Homebrew cask for the Remote Code Mac app.
 #
 #   brew tap ardasnturk/remote-code https://github.com/ardasnturk/remote-code
 #   brew install --cask remote-code

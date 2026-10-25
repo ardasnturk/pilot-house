@@ -13,7 +13,7 @@ cd "$(dirname "$0")/.."
 
 VERSION="${VERSION:-$(grep -m1 'MARKETING_VERSION' project.yml | sed -E 's/.*"([^"]+)".*/\1/')}"
 BUILD_NUMBER="${BUILD_NUMBER:-$(date +%Y%m%d%H%M)}"
-ARCHIVE="build/ios/Pilothouse.xcarchive"
+ARCHIVE="build/ios/RemoteCode.xcarchive"
 AUTH=()
 if [[ -n "${ASC_KEY_PATH:-}" ]]; then
   AUTH=(-authenticationKeyPath "$ASC_KEY_PATH" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
@@ -23,7 +23,7 @@ rm -rf build/ios && mkdir -p build/ios
 
 echo "▸ Archiving Remote Code $VERSION ($BUILD_NUMBER)"
 xcodebuild archive \
-  -project Pilothouse.xcodeproj -scheme PilothouseiOS -configuration Release \
+  -project RemoteCode.xcodeproj -scheme RemoteCodeiOS -configuration Release \
   -destination 'generic/platform=iOS' \
   -archivePath "$ARCHIVE" \
   -allowProvisioningUpdates ${AUTH[@]+"${AUTH[@]}"} \

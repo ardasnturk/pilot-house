@@ -2,7 +2,7 @@
 
 This document specifies how the Remote Code iOS app (the *client*) talks to the
 Remote Code Mac app (the *host*). The reference implementation is
-`PilothouseKit/Sources/PilothouseKit/Protocol` and `…/Crypto`.
+`RemoteCodeKit/Sources/RemoteCodeKit/Protocol` and `…/Crypto`.
 
 ## 1. Layers
 

@@ -10,9 +10,7 @@
 #         --apple-id <apple-id> --team-id 5JMD3VSD7N --password <app-specific-password>
 #     (or set NOTARY_PROFILE to another stored profile)
 #
-# Output: dist/RemoteCode-<version>.dmg (+ .sha256), and the bridge image
-# dist/Pilothouse-<version>.dmg for copies from before the rename (1.1.x): their
-# updater looks for that name and for Pilothouse.app inside it.
+# Output: dist/RemoteCode-<version>.dmg (+ .sha256)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -24,13 +22,12 @@ ARCHIVE="$BUILD/RemoteCode.xcarchive"
 EXPORT="$BUILD/export"
 APP="$EXPORT/Remote Code.app"
 DMG="$DIST/RemoteCode-$VERSION.dmg"
-LEGACY_DMG="$DIST/Pilothouse-$VERSION.dmg"
 
 rm -rf "$BUILD" && mkdir -p "$BUILD" "$DIST"
 
 echo "▸ Archiving Remote Code $VERSION"
 xcodebuild archive \
-  -project Pilothouse.xcodeproj -scheme PilothouseMac -configuration Release \
+  -project RemoteCode.xcodeproj -scheme RemoteCodeMac -configuration Release \
   -destination 'generic/platform=macOS' \
   -archivePath "$ARCHIVE" \
   MARKETING_VERSION="$VERSION"
@@ -79,20 +76,5 @@ spctl --assess --type open --context context:primary-signature --verbose "$DMG"
 
 shasum -a 256 "$DMG" | tee "$DMG.sha256"
 
-echo "▸ Building the bridge DMG for 1.1.x updaters"
-# Same signed app, only the bundle folder is named Pilothouse.app; the next
-# update from the new updater installs it as "Remote Code.app".
-rm -f "$LEGACY_DMG"
-LEGACY="$BUILD/legacy-dmg"
-mkdir -p "$LEGACY"
-ditto "$APP" "$LEGACY/Pilothouse.app"
-ln -s /Applications "$LEGACY/Applications"
-hdiutil create -volname "Remote Code" -srcfolder "$LEGACY" -fs HFS+ -format UDZO -ov "$LEGACY_DMG"
-codesign --sign "Developer ID Application" --timestamp "$LEGACY_DMG"
-xcrun notarytool submit "$LEGACY_DMG" --keychain-profile "$NOTARY_PROFILE" --wait
-xcrun stapler staple "$LEGACY_DMG"
-(cd "$DIST" && shasum -a 256 "$(basename "$LEGACY_DMG")") > "$LEGACY_DMG.sha256"
-
 echo "✔ $DMG"
-echo "✔ $LEGACY_DMG"
 echo "Next: scripts/prepare-release.sh $VERSION"

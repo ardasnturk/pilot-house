@@ -4,13 +4,13 @@ Remote Code is tested at four levels. Everything runs from the command line.
 
 | Level | What | Where | Command |
 |---|---|---|---|
-| Unit | Protocol coding, Noise IK (cacophony vector), secure channel replay/reorder/tamper detection, pairing payload, handshake (MITM, clock skew, version mismatch, rejected token), path sandbox escapes, file browser, event log (torn lines, permissions), stream-json normaliser on **real captured CLI output**, MCP endpoint + HTTP parser, permission broker (timeout, cancel), process supervision (process groups, SIGTERM→SIGKILL), Markdown/diff presentation, Tailscale status parsing | `PilothouseKit/Tests` | `cd PilothouseKit && swift test` |
-| Integration | `SessionManager` with **FakeClaude** (`Tests/PilothouseHostTests/Fixtures/fake-claude.sh`): start, stream, interrupt + resume, close + resume, crash and login notices, permission allow / remember / deny / timeout through the real loopback MCP server, retention, crash recovery | same | same |
+| Unit | Protocol coding, Noise IK (cacophony vector), secure channel replay/reorder/tamper detection, pairing payload, handshake (MITM, clock skew, version mismatch, rejected token), path sandbox escapes, file browser, event log (torn lines, permissions), stream-json normaliser on **real captured CLI output**, MCP endpoint + HTTP parser, permission broker (timeout, cancel), process supervision (process groups, SIGTERM→SIGKILL), Markdown/diff presentation, Tailscale status parsing | `RemoteCodeKit/Tests` | `cd RemoteCodeKit && swift test` |
+| Integration | `SessionManager` with **FakeClaude** (`Tests/RemoteCodeHostTests/Fixtures/fake-claude.sh`): start, stream, interrupt + resume, close + resume, crash and login notices, permission allow / remember / deny / timeout through the real loopback MCP server, retention, crash recovery | same | same |
 | Full stack | `MacClient` → Noise channel → `ServerEndpoint` → `MacHostService` → `SessionManager` → FakeClaude → MCP → client approval; pairing and instant revocation | `FullStackTests` | same |
-| End-to-end, real CLI | Pairing → session → **real `claude`** writes `hello.txt` after the permission prompt is approved on the client → close → `--resume` → follow-up remembers the file | `RealClaudeEndToEndTests` (opt-in) | `PILOTHOUSE_E2E_CLAUDE=$(command -v claude) swift test --filter RealClaudeEndToEndTests` |
+| End-to-end, real CLI | Pairing → session → **real `claude`** writes `hello.txt` after the permission prompt is approved on the client → close → `--resume` → follow-up remembers the file | `RealClaudeEndToEndTests` (opt-in) | `REMOTECODE_E2E_CLAUDE=$(command -v claude) swift test --filter RealClaudeEndToEndTests` |
 | Notifications | Event → alert mapping (`NotificationRules`: phone vs. Mac turns, interrupts, crashes, error results), `NotificationService` against the hub and against FakeClaude, `NtfyPublisher` JSON/token/click link through a stub `URLProtocol`, `SessionLink` parsing | `NotificationTests` | `swift test --filter Notification` |
-| Notifications, real ntfy | Publishes to a fresh random topic on ntfy.sh, expects HTTP 200 and reads the message back | `LiveNtfyTests` (opt-in) | `PILOTHOUSE_NTFY_LIVE=1 swift test --filter LiveNtfyTests` |
-| UI (iOS) | Onboarding/pairing errors, demo Mac, seeded tool cards + diff, new session in a picked folder, message + permission approval / always-allow, denial, Stop, reconnection after a network drop | `PilothouseUITests` (XCUITest, demo Mac = `MockMacServer`) | `xcodebuild test -scheme PilothouseiOS -destination 'platform=iOS Simulator,name=iPhone 16'` |
+| Notifications, real ntfy | Publishes to a fresh random topic on ntfy.sh, expects HTTP 200 and reads the message back | `LiveNtfyTests` (opt-in) | `REMOTECODE_NTFY_LIVE=1 swift test --filter LiveNtfyTests` |
+| UI (iOS) | Onboarding/pairing errors, demo Mac, seeded tool cards + diff, new session in a picked folder, message + permission approval / always-allow, denial, Stop, reconnection after a network drop | `RemoteCodeUITests` (XCUITest, demo Mac = `MockMacServer`) | `xcodebuild test -scheme RemoteCodeiOS -destination 'platform=iOS Simulator,name=iPhone 16'` |
 | Screenshots | iPhone + iPad, light + dark, EN/TR/DE | `ScreenshotTests` | `scripts/screenshots.sh` |
 
 `scripts/test.sh` runs the translation check, the package tests and — on a Mac —
@@ -40,10 +40,10 @@ CI on macOS instead.
 
 Environment: `macos-15` runner, Xcode 16.4, iPhone 17 Pro simulator (iOS 26.2).
 
-* **PilothouseMac scheme** — Mac app, privileged helper and both package test
+* **RemoteCodeMac scheme** — Mac app, privileged helper and both package test
   targets build without warnings; **128 package tests passed** on macOS
   (59 + 69; the opt-in real-CLI test skipped).
-* **PilothouseiOS scheme** — iOS app builds without warnings; **7 UI tests
+* **RemoteCodeiOS scheme** — iOS app builds without warnings; **7 UI tests
   passed** (onboarding + demo, seeded tool cards and diff, new session with
   approval and "always allow", denial, Stop, reconnection after a network drop,
   screenshot capture) plus the package tests on the simulator.
@@ -56,7 +56,7 @@ Environment: `macos-15` runner, Xcode 16.4, iPhone 17 Pro simulator (iOS 26.2).
 
 ## Fixtures
 
-`Tests/PilothouseHostTests/Fixtures/stream-*.jsonl` are real Claude Code
+`Tests/RemoteCodeHostTests/Fixtures/stream-*.jsonl` are real Claude Code
 2.1.310 outputs (Write + Bash with an MCP permission prompt; an interrupted
 turn; Read + Edit with extended thinking), anonymised: paths, session IDs,
 account data and signatures were replaced.

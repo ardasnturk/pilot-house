@@ -20,7 +20,7 @@ release and submitting the iOS app for App Review are always done by hand
 ## 1. Prepare the version
 
 1. Set `MARKETING_VERSION` in `project.yml` and run `scripts/bootstrap.sh`
-   (regenerates translations, icons and `Pilothouse.xcodeproj`).
+   (regenerates translations, icons and `RemoteCode.xcodeproj`).
 2. Write `docs/release-notes/<version>.md` and update
    `metadata/ios/*/release_notes.txt`.
 3. Run the tests on a Mac:
@@ -37,13 +37,11 @@ release and submitting the iOS app for App Review are always done by hand
 scripts/build-mac.sh
 ```
 
-archives the `PilothouseMac` scheme (Release, Developer ID, hardened runtime,
+archives the `RemoteCodeMac` scheme (Release, Developer ID, hardened runtime,
 secure timestamp), exports it, verifies the signatures of the app and the
 embedded helper, notarizes and staples the app, builds
 `dist/RemoteCode-<version>.dmg`, signs, notarizes and staples the DMG and writes
-its SHA-256. It also builds the bridge image `dist/Pilothouse-<version>.dmg`
-(the same app in a folder named `Pilothouse.app`) that copies up to 1.1.2
-need to find the update (D-110).
+its SHA-256.
 
 Check by hand on a second Mac (or a fresh user account): download the DMG,
 open it — Gatekeeper must not complain — and run through pairing once.
@@ -54,7 +52,7 @@ open it — Gatekeeper must not complain — and run through pairing once.
 scripts/prepare-release.sh <version>
 ```
 
-uploads both DMGs to a **draft** release `v<version>` with the notes from
+uploads the DMG to a **draft** release `v<version>` with the notes from
 `docs/release-notes/<version>.md` and writes version + SHA-256 into
 `Casks/remote-code.rb`.
 
