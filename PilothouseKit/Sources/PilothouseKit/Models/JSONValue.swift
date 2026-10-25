@@ -153,6 +153,6 @@ extension String {
         guard count > maxLength else { return self }
         let kept = prefix(maxLength)
         let removed = count - maxLength
-        return "\(kept)\n… [\(removed) more characters truncated by Pilothouse]"
+        return "\(kept)\n… [\(removed) more characters truncated by Remote Code]"
     }
 }

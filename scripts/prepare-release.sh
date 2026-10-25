@@ -5,9 +5,10 @@
 #   scripts/prepare-release.sh 1.0.0
 #
 # What it does:
-#   1. checks dist/Pilothouse-<version>.dmg and its .sha256 exist and match
-#   2. writes the new version + sha256 into Casks/pilothouse.rb
-#   3. creates (or updates) a DRAFT release v<version> with the DMG and the
+#   1. checks dist/RemoteCode-<version>.dmg and its .sha256 exist and match
+#   2. writes the new version + sha256 into Casks/remote-code.rb
+#   3. creates (or updates) a DRAFT release v<version> with the DMG, the
+#      bridge DMG for 1.1.x updaters (dist/Pilothouse-<version>.dmg) and the
 #      notes from docs/release-notes/<version>.md — if the GitHub CLI is
 #      available and signed in; otherwise it prints the commands to run
 #
@@ -18,9 +19,10 @@ cd "$(dirname "$0")/.."
 
 VERSION="${1:-$(grep -m1 'MARKETING_VERSION' project.yml | sed -E 's/.*"([^"]+)".*/\1/')}"
 TAG="v$VERSION"
-DMG="dist/Pilothouse-$VERSION.dmg"
+DMG="dist/RemoteCode-$VERSION.dmg"
+LEGACY_DMG="dist/Pilothouse-$VERSION.dmg"
 NOTES="docs/release-notes/$VERSION.md"
-CASK="Casks/pilothouse.rb"
+CASK="Casks/remote-code.rb"
 
 [[ -f "$DMG" ]] || { echo "Missing $DMG — run scripts/build-mac.sh first" >&2; exit 1; }
 [[ -f "$NOTES" ]] || { echo "Missing $NOTES — write the release notes first" >&2; exit 1; }
@@ -33,6 +35,13 @@ fi
 if command -v xcrun >/dev/null && ! xcrun stapler validate "$DMG" >/dev/null 2>&1; then
   echo "$DMG has no stapled notarization ticket — run scripts/build-mac.sh" >&2
   exit 1
+fi
+
+ASSETS=("$DMG" "$DMG.sha256")
+if [[ -f "$LEGACY_DMG" ]]; then
+  ASSETS+=("$LEGACY_DMG" "$LEGACY_DMG.sha256")
+else
+  echo "Warning: $LEGACY_DMG is missing — 1.1.x copies will not find this update" >&2
 fi
 
 echo "▸ Updating $CASK → $VERSION ($SHA)"
@@ -48,17 +57,17 @@ PY
 if command -v gh >/dev/null && gh auth status >/dev/null 2>&1; then
   if gh release view "$TAG" >/dev/null 2>&1; then
     echo "▸ Updating the existing release $TAG (stays as it is: draft or published)"
-    gh release upload "$TAG" "$DMG" "$DMG.sha256" --clobber
+    gh release upload "$TAG" "${ASSETS[@]}" --clobber
     gh release edit "$TAG" --notes-file "$NOTES"
   else
     echo "▸ Creating the draft release $TAG"
-    gh release create "$TAG" "$DMG" "$DMG.sha256" \
-      --draft --title "Pilothouse $VERSION" --notes-file "$NOTES"
+    gh release create "$TAG" "${ASSETS[@]}" \
+      --draft --title "Remote Code $VERSION" --notes-file "$NOTES"
   fi
   echo "✔ Draft ready. Review it on GitHub, publish it, then:"
 else
   echo "GitHub CLI not available or not signed in. Create the draft with:"
-  echo "  gh release create $TAG $DMG $DMG.sha256 --draft --title 'Pilothouse $VERSION' --notes-file $NOTES"
+  echo "  gh release create $TAG ${ASSETS[*]} --draft --title 'Remote Code $VERSION' --notes-file $NOTES"
   echo "Then, after publishing:"
 fi
 echo "  git commit -m 'Homebrew cask $VERSION' $CASK && git push"

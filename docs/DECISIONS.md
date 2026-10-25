@@ -517,7 +517,7 @@ limits (name/subtitle 30, keywords 100 bytes, promotional text 170, …), the
 **Status:** accepted
 
 `Casks/pilothouse.rb` lives here, so the repository doubles as a tap
-(`brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house`).
+(`brew tap ardasnturk/remote-code https://github.com/ardasnturk/remote-code`).
 `homebrew/cask` requires a released, notable app; it can be submitted there
 later unchanged. Until the first DMG exists the cask uses `sha256 :no_check`;
 `scripts/prepare-release.sh` writes the real version and checksum.
@@ -905,3 +905,25 @@ sheet.
   the Mac's settings the Mac refuses the change (`modeNotAllowed`) and the
   sheet explains where to turn it on.
 * The chat shows a notice when its mode changes.
+
+### D-110 — Renamed to Remote Code
+**Status:** accepted
+
+"Pilothouse" did not say what the app does. The apps, the repository
+(`ardasnturk/remote-code`), the Homebrew cask and the icon (a `>_` prompt with
+a signal instead of the helm) now say Remote Code. What other copies depend on
+keeps the old name, so nothing has to be paired or set up again: the bundle
+identifiers (`com.ardasenturk.Pilothouse.*`, which also tie the iOS app to its
+App Store record and the helper to the app), the pairing link scheme
+`pilothouse://`, the Bonjour type `_pilothouse._tcp`, the handshake prologue,
+the keychain label, the data folder `~/Library/Application Support/Pilothouse`,
+the MCP server name and the code's module and target names.
+
+The Mac app is now `Remote Code.app` and its release image
+`RemoteCode-<version>.dmg`. Copies up to 1.1.2 look for
+`Pilothouse-<version>.dmg` with `Pilothouse.app` inside, so each release also
+carries that bridge image; its app is the same signed build in a folder named
+`Pilothouse.app`. The updater now installs the new bundle under its own name
+next to the old one's place, so the next update after the bridge ends as
+`Remote Code.app`. `cask_renames.json` moves Homebrew users from `pilothouse`
+to `remote-code`.

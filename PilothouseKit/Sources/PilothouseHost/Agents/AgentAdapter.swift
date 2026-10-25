@@ -6,7 +6,7 @@ import PilothouseKit
 public struct AgentPermissionRequest: Sendable, Hashable {
     /// JSON-RPC id to answer.
     public var rpcId: JSONValue
-    /// Tool name in Pilothouse's vocabulary (`Bash`, `Edit`, …) for the phone.
+    /// Tool name in Remote Code's vocabulary (`Bash`, `Edit`, …) for the phone.
     public var tool: String
     public var input: JSONValue
     public var toolUseId: String?
@@ -65,7 +65,7 @@ public protocol AgentAdapter: Sendable {
     var streamingText: [String: String] { get }
 }
 
-/// Claude Code `stream-json`: the original Pilothouse protocol.
+/// Claude Code `stream-json`: the original Remote Code protocol.
 public struct ClaudeAdapter: AgentAdapter {
     private var normalizer = StreamJSONNormalizer()
 

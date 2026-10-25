@@ -1,18 +1,18 @@
 # Privacy Policy
 
-*Effective 24 October 2026 · applies to the Pilothouse iOS/iPadOS app and the
-Pilothouse Mac app.*
+*Effective 24 October 2026 · applies to the Remote Code iOS/iPadOS app and the
+Remote Code Mac app.*
 
 **English** · [Türkçe](#gizlilik-politikası) · [Deutsch](#datenschutzerklärung)
 
-Pilothouse does not collect, store or share any personal data on servers. There
+Remote Code does not collect, store or share any personal data on servers. There
 are no accounts, no analytics, no advertising, no crash reporting and no
 third-party SDKs.
 
 * **Your devices only.** The iPhone/iPad app talks only to the Mac(s) you pair
   it with, over your local network or your own Tailscale network. All traffic is
   end-to-end encrypted. Neither the developer nor anyone else receives it.
-* **No connection to Anthropic.** Pilothouse never contacts Anthropic or any
+* **No connection to Anthropic.** Remote Code never contacts Anthropic or any
   other service, except the notification server you set up yourself (below). The Claude Code command-line tool on your Mac — which you
   install and sign in to yourself — processes your requests under Anthropic's
   own terms and privacy policy.
@@ -34,19 +34,19 @@ third-party SDKs.
   anyone who knows your topic can read them on a public server. Notifications
   shown on the Mac itself stay on the Mac.
 
-Questions: open an issue at <https://github.com/ardasnturk/pilot-house/issues>.
+Questions: open an issue at <https://github.com/ardasnturk/remote-code/issues>.
 
 ---
 
 ## Gizlilik Politikası
 
-Pilothouse hiçbir kişisel veriyi sunuculara toplamaz, saklamaz veya paylaşmaz.
+Remote Code hiçbir kişisel veriyi sunuculara toplamaz, saklamaz veya paylaşmaz.
 Hesap, analitik, reklam, çökme raporu ya da üçüncü taraf SDK yoktur.
 
 * **Yalnızca kendi cihazlarınız.** iPhone/iPad uygulaması yalnızca eşleştirdiğiniz
   Mac(ler) ile, yerel ağınız ya da kendi Tailscale ağınız üzerinden konuşur. Tüm
   trafik uçtan uca şifrelidir; geliştirici dahil hiç kimse bu trafiği almaz.
-* **Anthropic'e bağlantı yok.** Pilothouse, kendi kurduğunuz bildirim sunucusu
+* **Anthropic'e bağlantı yok.** Remote Code, kendi kurduğunuz bildirim sunucusu
   (aşağıda) dışında Anthropic'e veya başka bir servise asla bağlanmaz. İsteklerinizi, kendinizin kurup giriş yaptığı Mac'inizdeki
   Claude Code komut satırı aracı, Anthropic'in kendi koşulları ve gizlilik
   politikası altında işler.
@@ -70,13 +70,13 @@ Hesap, analitik, reklam, çökme raporu ya da üçüncü taraf SDK yoktur.
   herkese açık bir sunucuda konunuzu bilen herkes mesajları okuyabilir. Mac'in
   kendisinde gösterilen bildirimler Mac'te kalır.
 
-Sorular için: <https://github.com/ardasnturk/pilot-house/issues>
+Sorular için: <https://github.com/ardasnturk/remote-code/issues>
 
 ---
 
 ## Datenschutzerklärung
 
-Pilothouse erhebt, speichert oder teilt keine personenbezogenen Daten auf
+Remote Code erhebt, speichert oder teilt keine personenbezogenen Daten auf
 Servern. Es gibt keine Konten, keine Analyse, keine Werbung, keine
 Absturzberichte und keine SDKs von Drittanbietern.
 
@@ -84,7 +84,7 @@ Absturzberichte und keine SDKs von Drittanbietern.
   gekoppelten Macs – über dein lokales Netzwerk oder dein eigenes
   Tailscale-Netz. Der gesamte Verkehr ist Ende-zu-Ende-verschlüsselt; weder der
   Entwickler noch sonst jemand erhält ihn.
-* **Keine Verbindung zu Anthropic.** Pilothouse kontaktiert niemals Anthropic
+* **Keine Verbindung zu Anthropic.** Remote Code kontaktiert niemals Anthropic
   oder andere Dienste – außer dem Mitteilungsserver, den du selbst einrichtest
   (unten). Deine Anfragen verarbeitet das Kommandozeilenwerkzeug
   Claude Code auf deinem Mac, das du selbst installierst und anmeldest – nach den
@@ -110,4 +110,4 @@ Absturzberichte und keine SDKs von Drittanbietern.
   auf einem öffentlichen Server kann jeder, der dein Thema kennt, sie lesen.
   Auf dem Mac selbst angezeigte Mitteilungen bleiben auf dem Mac.
 
-Fragen: <https://github.com/ardasnturk/pilot-house/issues>
+Fragen: <https://github.com/ardasnturk/remote-code/issues>

@@ -1,33 +1,33 @@
-<p align="center"><img src="docs/icon.png" width="128" height="128" alt="Pilothouse icon"></p>
+<p align="center"><img src="docs/icon.png" width="128" height="128" alt="Remote Code icon"></p>
 
-<h1 align="center">Pilothouse</h1>
+<h1 align="center">Remote Code</h1>
 
-<p align="center">Drive <b>Claude Code</b>, <b>Codex</b> and <b>Gemini CLI</b> on your Mac from your iPhone or iPad.</p>
+<p align="center">Drive <b>Claude Code</b>, <b>Codex</b> and <b>Gemini CLI</b> on your Mac from your iPhone or iPad.<br><sub>Formerly Pilothouse.</sub></p>
 
 <p align="center">
-  <a href="https://github.com/ardasnturk/pilot-house/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ardasnturk/pilot-house?label=release"></a>
-  <a href="https://github.com/ardasnturk/pilot-house/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ardasnturk/pilot-house/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/ardasnturk/remote-code/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ardasnturk/remote-code?label=release"></a>
+  <a href="https://github.com/ardasnturk/remote-code/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ardasnturk/remote-code/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Platforms" src="https://img.shields.io/badge/platforms-macOS%2015%2B%20%7C%20iOS%2018%2B-blue">
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-green"></a>
 </p>
 
 <p align="center"><a href="https://pilot.ardasnturk.com">Website</a> · <b>English</b> · <a href="README.tr.md">Türkçe</a></p>
 
-> **Pilothouse works with Claude Code, Codex and Gemini CLI.** It is an
+> **Remote Code works with Claude Code, Codex and Gemini CLI.** It is an
 > independent open-source project and is **not affiliated with, endorsed by or
 > sponsored by Anthropic, OpenAI or Google**. You are responsible for using
 > those tools in line with their terms.
 
-Pilothouse is two apps and a shared Swift package:
+Remote Code is two apps and a shared Swift package:
 
-* **Pilothouse for Mac** — a small menu bar app that starts and supervises the
+* **Remote Code for Mac** — a small menu bar app that starts and supervises the
   official agent command-line tools on your Mac (`claude`, `codex`, `gemini`),
   keeps the Mac awake and forwards everything to your paired devices.
-* **Pilothouse for iPhone & iPad** — start sessions in any project folder,
+* **Remote Code for iPhone & iPad** — start sessions in any project folder,
   follow responses, thinking, tool calls, diffs and terminal output live, and
   approve or deny every action.
 
-Pilothouse **never talks to Anthropic, OpenAI or Google** and never touches your
+Remote Code **never talks to Anthropic, OpenAI or Google** and never touches your
 credentials: your own CLIs do all the AI work, signed in with your own
 accounts. There is no server, no account and no telemetry — only your devices,
 end-to-end encrypted.
@@ -35,7 +35,7 @@ end-to-end encrypted.
 ## Features
 
 * **Every agent you have** — pick Claude Code, Codex or Gemini CLI for a new
-  chat; Pilothouse finds what is installed on the Mac.
+  chat; Remote Code finds what is installed on the Mac.
 * **Sub-agents** — Claude can hand a task to Codex or Gemini
   (`delegate_to_agent`); Claude's own `Task` sub-agents are shown too. Follow
   each one live in its own window and approve its actions on your phone.
@@ -59,7 +59,7 @@ end-to-end encrypted.
 * [Requirements](#requirements)
 * [Install](#install)
 * [Pair your phone](#pair-your-phone)
-* [Using Pilothouse](#using-pilothouse)
+* [Using Remote Code](#using-remote-code)
 * [Updates](#updates)
 * [Away from home: Tailscale (optional)](#away-from-home-tailscale-optional)
 * [Troubleshooting](#troubleshooting)
@@ -74,15 +74,15 @@ end-to-end encrypted.
 
 You need a Mac, an iPhone or iPad, and both on **the same Wi-Fi**.
 
-1. **Install Pilothouse on the Mac** — download the DMG from
-   [Releases](https://github.com/ardasnturk/pilot-house/releases/latest), drag
-   Pilothouse into Applications and open it. A **helm icon** appears in the menu
+1. **Install Remote Code on the Mac** — download the DMG from
+   [Releases](https://github.com/ardasnturk/remote-code/releases/latest), drag
+   Remote Code into Applications and open it. A **`>_` icon** appears in the menu
    bar at the top of the screen; everything on the Mac starts there.
 2. **Have an agent ready** — Claude Code (or Codex, Gemini CLI) installed and
-   signed in once in Terminal. If it is missing, the helm menu shows an orange
+   signed in once in Terminal. If it is missing, the `>_` menu shows an orange
    card with the exact commands.
-3. **Install Pilothouse on the iPhone** — see [Install](#install).
-4. **Pair** — on the Mac, click the helm icon → **Pair iPhone or iPad…**; on the
+3. **Install Remote Code on the iPhone** — see [Install](#install).
+4. **Pair** — on the Mac, click the `>_` icon → **Pair iPhone or iPad…**; on the
    phone, tap **Scan the Pairing Code** and point the camera at the QR code.
    Allow **Local Network** when iOS asks. Both screens show the same code.
 5. **Start a chat** — on the phone, tap **New Chat**, pick a project folder on
@@ -90,7 +90,7 @@ You need a Mac, an iPhone or iPad, and both on **the same Wi-Fi**.
    step and approve changes on the phone.
 
 That's all. Tailscale is not needed at home; turn it on only if you want to use
-Pilothouse away from your Wi-Fi ([below](#away-from-home-tailscale-optional)).
+Remote Code away from your Wi-Fi ([below](#away-from-home-tailscale-optional)).
 
 ## Requirements
 
@@ -105,16 +105,16 @@ Pilothouse away from your Wi-Fi ([below](#away-from-home-tailscale-optional)).
 
 ## Install
 
-**Mac app** — download the notarized `Pilothouse-<version>.dmg` from
-[GitHub Releases](https://github.com/ardasnturk/pilot-house/releases), or use
+**Mac app** — download the notarized `RemoteCode-<version>.dmg` from
+[GitHub Releases](https://github.com/ardasnturk/remote-code/releases), or use
 Homebrew:
 
 ```sh
-brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house
-brew install --cask pilothouse
+brew tap ardasnturk/remote-code https://github.com/ardasnturk/remote-code
+brew install --cask remote-code
 ```
 
-Open Pilothouse; its helm icon appears in the menu bar. If Claude Code is
+Open Remote Code; its `>_` icon appears in the menu bar. If Claude Code is
 missing or not signed in, the app shows a short setup guide
 (`curl -fsSL https://claude.ai/install.sh | bash`, then `claude` once in
 Terminal to sign in).
@@ -129,7 +129,7 @@ shows everything with a simulated Mac.
 
 ## Pair your phone
 
-1. On the Mac: helm icon → **Pair iPhone or iPad…**. A QR code appears; it is
+1. On the Mac: `>_` icon → **Pair iPhone or iPad…**. A QR code appears; it is
    valid for 5 minutes and can be used once.
 2. On the phone: **Scan the Pairing Code** → point the camera at it. Allow
    *Local Network* when iOS asks — without it the phone cannot reach the Mac on
@@ -140,7 +140,7 @@ shows everything with a simulated Mac.
 Lost a device? Mac **Settings → iPhone & iPad** → **Revoke**. Its connections
 are dropped immediately.
 
-## Using Pilothouse
+## Using Remote Code
 
 * **New Chat** → **Where:** browse the folders in your Mac's home folder
   (favorites, recent folders, Git repositories are marked, **New Folder**
@@ -164,7 +164,7 @@ are dropped immediately.
 * **Permission requests** appear as a sheet with what the agent wants to do.
   *Allow*, *Deny*, or *Always allow … in this session*. Requests that nobody
   answers are **denied after 10 minutes**.
-* **Sessions** lists every chat Pilothouse ran on the Mac (kept for 30 days).
+* **Sessions** lists every chat Remote Code ran on the Mac (kept for 30 days).
   Open one to read it — offline too — or continue it with full context.
 * **Sub-agents** appear with a coloured rail and as chips above the message
   field while they run; **Follow Live** opens their transcript.
@@ -172,22 +172,22 @@ are dropped immediately.
   limits; tap it for the weekly summary and the **Limits** tab.
 * **Language** — the apps follow the device language: English, Türkçe,
   Deutsch, Español, Français, Italiano, Português (Brasil), 日本語, 한국어 and
-  简体中文. Choose another one per app in iOS Settings → Apps → Pilothouse.
-* On the Mac, the helm menu shows running chats, pending approvals and usage
+  简体中文. Choose another one per app in iOS Settings → Apps → Remote Code.
+* On the Mac, the `>_` menu shows running chats, pending approvals and usage
   limits; you can answer approvals there as well. **Settings** has panes for
   devices, agents, notifications, remote access, updates and security.
 
 ## Updates
 
 The Mac app checks GitHub for a new release once a day (Settings → Updates).
-When one is available, the helm menu shows it; **Install and Relaunch**
+When one is available, the `>_` menu shows it; **Install and Relaunch**
 downloads it, checks its checksum, Apple notarization and developer signature,
 replaces the app and opens the new version. Homebrew users can also run
-`brew upgrade --cask pilothouse`. The iPhone app updates through TestFlight.
+`brew upgrade --cask remote-code`. The iPhone app updates through TestFlight.
 
 ## Away from home: Tailscale (optional)
 
-Pilothouse always connects over your local network first; the phone finds the
+Remote Code always connects over your local network first; the phone finds the
 Mac by itself (Bonjour, `_pilothouse._tcp`, port 47823 or the next free one).
 To use it **away from that Wi-Fi** — on mobile data, at a café — add
 [Tailscale](https://tailscale.com), a free private network between your own
@@ -198,19 +198,19 @@ devices:
    the manual steps.
 2. **iPhone:** install the Tailscale app from the App Store and sign in with
    the same account.
-3. **Pilothouse on the iPhone:** Settings → turn on **Use Tailscale when
+3. **Remote Code on the iPhone:** Settings → turn on **Use Tailscale when
    away**.
 
-With it on, Pilothouse still tries the local network first and uses Tailscale
+With it on, Remote Code still tries the local network first and uses Tailscale
 only when the Mac is not reachable there. Off (the default), it never uses
 Tailscale.
 
 ## Troubleshooting
 
-**The phone says "Offline" at home.** Check, in this order: Pilothouse is
-running on the Mac (helm icon in the menu bar); both devices are on the same
+**The phone says "Offline" at home.** Check, in this order: Remote Code is
+running on the Mac (`>_` icon in the menu bar); both devices are on the same
 Wi-Fi (not a guest network — those often block devices from seeing each
-other); iOS Settings → Privacy & Security → **Local Network** → Pilothouse is
+other); iOS Settings → Privacy & Security → **Local Network** → Remote Code is
 on. The phone shows a button for the last one when it is off.
 
 **Claude Code / Codex is "not signed in".** Open Terminal on the Mac, run
@@ -222,11 +222,11 @@ iPad…** again.
 
 ## Keeping the Mac awake
 
-While Pilothouse runs it holds a *prevent idle system sleep* assertion: the
+While Remote Code runs it holds a *prevent idle system sleep* assertion: the
 display may turn off, the Mac stays reachable. Optional **Stay awake with the
 lid closed** (Mac settings → General) uses a tiny privileged helper whose only
 ability is `pmset -a disablesleep 0/1`. It is switched off automatically on
-battery (configurable) and reverted when Pilothouse quits. A closed MacBook that
+battery (configurable) and reverted when Remote Code quits. A closed MacBook that
 stays awake can get warm — use it on a desk, not in a bag.
 
 ## Security model
@@ -240,9 +240,9 @@ stays awake can get warm — use it on a desk, not in a bag.
 * **Files:** the phone can only browse and start sessions inside your home
   folder; paths are normalised and symlinks resolved before the check.
 * **Approvals:** Claude Code's own permission system stays in charge;
-  Pilothouse forwards its prompts through a localhost-only MCP endpoint
+  Remote Code forwards its prompts through a localhost-only MCP endpoint
   protected by a per-session token.
-* **Credentials:** Pilothouse never reads, stores or transmits your Claude
+* **Credentials:** Remote Code never reads, stores or transmits your Claude
   login. The optional API key (Mac settings → Claude Code) is kept in the
   Keychain and only passed to `claude` as `ANTHROPIC_API_KEY`.
 * **Data:** session logs on the Mac (mode 0600, deleted after 30 days), a cache
@@ -255,13 +255,13 @@ vulnerability*.
 
 ## FAQ
 
-**Does Pilothouse need a Claude subscription?**
+**Does Remote Code need a Claude subscription?**
 It needs whatever your Claude Code CLI needs — a Claude account with Claude
-Code access or an Anthropic API key. Pilothouse itself is free.
+Code access or an Anthropic API key. Remote Code itself is free.
 
 **Does my code leave my Mac?**
 Only the way it already does with Claude Code: the CLI talks to Anthropic as
-usual. Pilothouse adds an encrypted link to *your* phone and nothing else.
+usual. Remote Code adds an encrypted link to *your* phone and nothing else.
 
 **Why is the Mac app not on the Mac App Store?**
 It must run your own `claude` binary with your shell environment and work in
@@ -282,21 +282,21 @@ In the Mac app's Settings → Notifications (off by default): native
 macOS notifications and, through [ntfy](https://ntfy.sh), notifications on your
 iPhone when a task you started from the phone finishes, Claude waits for
 approval or a session fails. Subscribe to the generated topic in the free ntfy
-app; tapping a notification opens the session in Pilothouse. By default only
+app; tapping a notification opens the session in Remote Code. By default only
 "Task finished · <folder>" is sent (D-095).
 
 **Where are the logs?**
 `~/Library/Application Support/Pilothouse/sessions/<session-id>.jsonl`.
 
 **How do I uninstall?**
-Quit Pilothouse and delete it (or `brew uninstall --zap --cask pilothouse`).
-Remove `~/Library/Application Support/Pilothouse` and the "Pilothouse identity
+Quit Remote Code and delete it (or `brew uninstall --zap --cask remote-code`).
+Remove `~/Library/Application Support/Pilothouse` and the "Remote Code identity
 key" items in Keychain Access for a clean slate.
 
 ## Building from source
 
 ```sh
-git clone https://github.com/ardasnturk/pilot-house.git && cd pilot-house
+git clone https://github.com/ardasnturk/remote-code.git && cd pilot-house
 open Pilothouse.xcodeproj          # Xcode 26 or later; schemes PilothouseMac / PilothouseiOS
 scripts/test.sh                    # all tests that this machine can run
 ```

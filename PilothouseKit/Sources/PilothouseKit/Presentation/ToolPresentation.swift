@@ -140,7 +140,7 @@ public struct ToolSummary: Sendable, Hashable {
         }
     }
 
-    /// Full MCP name of Pilothouse's `delegate_to_agent` tool.
+    /// Full MCP name of Remote Code's `delegate_to_agent` tool.
     public static let delegationToolName = "mcp__pilothouse__delegate_to_agent"
 
     /// Tools whose work streams into a sub-agent thread of the same ID.

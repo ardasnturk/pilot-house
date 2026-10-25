@@ -4,7 +4,7 @@ import os
 /// Privileged launchd daemon registered with `SMAppService.daemon`.
 ///
 /// Security properties (docs/SECURITY.md):
-/// * accepts XPC connections only from the Pilothouse app signed by team 5JMD3VSD7N;
+/// * accepts XPC connections only from the Remote Code app signed by team 5JMD3VSD7N;
 /// * runs exactly one fixed command, `/usr/bin/pmset -a disablesleep <0|1>`,
 ///   with no user-controlled arguments;
 /// * reverts `disablesleep` to 0 when the app's connection goes away (quit or

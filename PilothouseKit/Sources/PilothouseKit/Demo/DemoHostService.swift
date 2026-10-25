@@ -1,6 +1,6 @@
 import Foundation
 
-/// An in-process, scripted stand-in for a Mac running Pilothouse.
+/// An in-process, scripted stand-in for a Mac running Remote Code.
 ///
 /// Powers the iOS demo mode (App Review, screenshots) and the UI tests. It
 /// speaks the real protocol through the real Noise channel over an in-memory

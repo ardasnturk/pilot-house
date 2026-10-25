@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draws the Pilothouse icon (a ship's helm) and writes every asset-catalog image.
+"""Draws the Remote Code icon (a terminal prompt with a signal) and writes every asset-catalog image.
 
 Run from the repository root:  python3 scripts/generate-icons.py
 Requires Pillow. Output is deterministic, so the PNGs are committed.
@@ -12,10 +12,11 @@ from PIL import Image, ImageDraw, ImageFilter
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SS = 4  # supersampling factor
 
-TEAL_TOP = (15, 92, 108)
-TEAL_BOTTOM = (5, 38, 48)
-WHEEL = (236, 248, 246)
-GLOW = (84, 222, 210)
+TOP = (34, 40, 74)
+BOTTOM = (10, 12, 26)
+GLYPH = (240, 244, 255)
+GLOW = (96, 140, 255)
+SIGNAL = (122, 232, 196)
 
 
 def gradient(size, top, bottom):
@@ -28,45 +29,49 @@ def gradient(size, top, bottom):
     return image
 
 
-def draw_helm(draw, cx, cy, radius, color, width_scale=1.0, hub_color=None):
-    """Ship's wheel: rim, hub and eight spokes with handles."""
-    rim = radius * 0.62
-    rim_width = radius * 0.11 * width_scale
-    spoke_width = radius * 0.075 * width_scale
-    handle_radius = radius * 0.105 * width_scale
-    for i in range(8):
-        angle = math.pi / 8 + i * math.pi / 4
-        x1 = cx + math.cos(angle) * radius * 0.16
-        y1 = cy + math.sin(angle) * radius * 0.16
-        x2 = cx + math.cos(angle) * radius * 0.86
-        y2 = cy + math.sin(angle) * radius * 0.86
-        draw.line([(x1, y1), (x2, y2)], fill=color, width=int(spoke_width))
-        hx = cx + math.cos(angle) * radius * 0.9
-        hy = cy + math.sin(angle) * radius * 0.9
-        draw.ellipse([hx - handle_radius, hy - handle_radius, hx + handle_radius, hy + handle_radius], fill=color)
-    draw.ellipse([cx - rim, cy - rim, cx + rim, cy + rim], outline=color, width=int(rim_width))
-    hub = radius * 0.2
-    draw.ellipse([cx - hub, cy - hub, cx + hub, cy + hub], fill=hub_color or color)
+def draw_prompt(draw, cx, cy, radius, color, signal=None, width_scale=1.0, arcs=True):
+    """Terminal prompt `>_` with two signal arcs at the top right."""
+    stroke = radius * 0.19 * width_scale
+    # Chevron ">".
+    left, mid, top = cx - radius * 0.78, cx - radius * 0.12, cy - radius * 0.36
+    points = [(left, top), (mid, cy + radius * 0.06), (left, cy + radius * 0.48)]
+    draw.line(points, fill=color, width=int(stroke), joint="curve")
+    for x, y in (points[0], points[2]):
+        draw.ellipse([x - stroke / 2, y - stroke / 2, x + stroke / 2, y + stroke / 2], fill=color)
+    # Cursor "_".
+    y = cy + radius * 0.48
+    x1, x2 = cx + radius * 0.06, cx + radius * 0.72
+    draw.rounded_rectangle([x1, y - stroke / 2, x2, y + stroke / 2], stroke / 2, fill=color)
+    if not arcs:
+        return
+    # Signal: a dot and two arcs radiating from it, "reachable from afar".
+    sx, sy = cx + radius * 0.30, cy - radius * 0.30
+    arc_color = signal or color
+    dot = stroke * 0.62
+    draw.ellipse([sx - dot, sy - dot, sx + dot, sy + dot], fill=arc_color)
+    arc_width = int(stroke * 0.72)
+    for r in (radius * 0.36, radius * 0.66):
+        draw.arc([sx - r, sy - r, sx + r, sy + r], start=-80, end=-10, fill=arc_color, width=arc_width)
 
 
 def master(size, dark=False, tinted=False):
     big = size * SS
     if tinted:
         image = Image.new("RGB", (big, big), (0, 0, 0))
-        wheel, glow = (255, 255, 255), (190, 190, 190)
+        glyph, glow, signal = (255, 255, 255), (150, 150, 150), (200, 200, 200)
     elif dark:
-        image = Image.new("RGB", (big, big), (10, 14, 18))
-        wheel, glow = (98, 214, 205), GLOW
+        image = Image.new("RGB", (big, big), (8, 9, 16))
+        glyph, glow, signal = (196, 210, 255), GLOW, SIGNAL
     else:
-        image = gradient(big, TEAL_TOP, TEAL_BOTTOM)
-        wheel, glow = WHEEL, GLOW
-    # Soft light behind the hub ("a lit wheelhouse window").
+        image = gradient(big, TOP, BOTTOM)
+        glyph, glow, signal = GLYPH, GLOW, SIGNAL
+    # Soft screen glow behind the prompt.
     halo = Image.new("L", (big, big), 0)
-    ImageDraw.Draw(halo).ellipse([big * 0.3, big * 0.3, big * 0.7, big * 0.7], fill=110 if not tinted else 60)
-    halo = halo.filter(ImageFilter.GaussianBlur(big * 0.08))
+    ImageDraw.Draw(halo).ellipse([big * 0.2, big * 0.25, big * 0.8, big * 0.85], fill=90 if not tinted else 50)
+    halo = halo.filter(ImageFilter.GaussianBlur(big * 0.1))
     image = Image.composite(Image.new("RGB", (big, big), glow), image, halo)
     draw = ImageDraw.Draw(image)
-    draw_helm(draw, big / 2, big / 2, big * 0.40, wheel, hub_color=glow)
+    draw_prompt(draw, big / 2, big / 2, big * 0.40, glyph, signal=signal)
     return image.resize((size, size), Image.LANCZOS)
 
 
@@ -93,7 +98,8 @@ def template_glyph(points, badge=False):
     big = points * SS * 2
     image = Image.new("RGBA", (big, big), (0, 0, 0, 0))
     draw = ImageDraw.Draw(image)
-    draw_helm(draw, big / 2, big / 2, big * 0.47, (0, 0, 0, 255), width_scale=1.25)
+    # The badge takes the place of the signal arcs.
+    draw_prompt(draw, big / 2, big / 2, big * 0.5, (0, 0, 0, 255), width_scale=1.15, arcs=not badge)
     if badge:
         r = big * 0.17
         draw.ellipse([big - 2 * r, 0, big, 2 * r], fill=(0, 0, 0, 255))
@@ -125,7 +131,7 @@ def ios_assets(base):
     brand = os.path.join(base, "BrandMark.imageset")
     os.makedirs(brand, exist_ok=True)
     mark = Image.new("RGBA", (360, 360), (0, 0, 0, 0))
-    draw_helm(ImageDraw.Draw(mark), 180, 180, 170, (0, 0, 0, 255), width_scale=1.1)
+    draw_prompt(ImageDraw.Draw(mark), 180, 180, 170, (0, 0, 0, 255))
     mark.save(os.path.join(brand, "BrandMark.png"))
     write_contents(brand, {
         "images": [{"filename": "BrandMark.png", "idiom": "universal", "scale": "3x"}],

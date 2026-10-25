@@ -23,7 +23,7 @@ public enum SessionEvent: Sendable, Hashable, Codable {
     case fileEdit(FileEdit)
     /// A turn finished.
     case result(TurnResult)
-    /// Informational, warning or error line from Pilothouse or the CLI.
+    /// Informational, warning or error line from Remote Code or the CLI.
     case systemNotice(SystemNotice)
     /// Session metadata reported by the CLI at start-up (`system/init`).
     case sessionInfo(SessionInfo)

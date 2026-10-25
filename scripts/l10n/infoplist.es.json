@@ -1,15 +1,15 @@
 {
   "ios": {
-    "CFBundleDisplayName": "Pilothouse",
-    "NSCameraUsageDescription": "Pilothouse usa la cámara para escanear el código de vinculación que aparece en tu Mac y, si quieres, para hacer fotos y enviarlas a tu agente.",
-    "NSLocalNetworkUsageDescription": "Pilothouse se conecta a tu Mac en la red local para controlar tus sesiones de Claude Code."
+    "CFBundleDisplayName": "Remote Code",
+    "NSCameraUsageDescription": "Remote Code usa la cámara para escanear el código de vinculación que aparece en tu Mac y, si quieres, para hacer fotos y enviarlas a tu agente.",
+    "NSLocalNetworkUsageDescription": "Remote Code se conecta a tu Mac en la red local para controlar tus sesiones de Claude Code."
   },
   "mac": {
-    "CFBundleDisplayName": "Pilothouse",
+    "CFBundleDisplayName": "Remote Code",
     "NSDesktopFolderUsageDescription": "Las sesiones de Claude Code que inicies desde tu teléfono pueden leer y editar archivos de tu Escritorio.",
     "NSDocumentsFolderUsageDescription": "Las sesiones de Claude Code que inicies desde tu teléfono pueden leer y editar archivos de tu carpeta Documentos.",
     "NSDownloadsFolderUsageDescription": "Las sesiones de Claude Code que inicies desde tu teléfono pueden leer y editar archivos de tu carpeta Descargas.",
-    "NSLocalNetworkUsageDescription": "Pilothouse permite que tu iPhone o iPad vinculado se conecte a este Mac a través de tu red local.",
+    "NSLocalNetworkUsageDescription": "Remote Code permite que tu iPhone o iPad vinculado se conecte a este Mac a través de tu red local.",
     "NSNetworkVolumesUsageDescription": "Las sesiones de Claude Code que inicies desde tu teléfono pueden acceder a archivos de volúmenes de red."
   }
 }

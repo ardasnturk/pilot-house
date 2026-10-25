@@ -44,7 +44,7 @@ struct TailscaleAssistantView: View {
                 .foregroundStyle(Color.accentColor)
             VStack(alignment: .leading, spacing: 2) {
                 Text("Remote access with Tailscale").font(.title2.weight(.semibold))
-                Text("Reach this Mac from anywhere over your private Tailscale network. Pilothouse keeps its own end-to-end encryption on top.")
+                Text("Reach this Mac from anywhere over your private Tailscale network. Remote Code keeps its own end-to-end encryption on top.")
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }

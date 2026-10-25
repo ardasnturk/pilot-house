@@ -31,7 +31,7 @@ enum AppInfo {
         return "\(short) (\(build))"
     }
 
-    static let repositoryURL = URL(string: "https://github.com/ardasnturk/pilot-house")
+    static let repositoryURL = URL(string: "https://github.com/ardasnturk/remote-code")
     static let claudeCodeSetupURL = URL(string: "https://docs.claude.com/en/docs/claude-code/setup")
     static let tailscaleDownloadURL = URL(string: "https://tailscale.com/download/mac")
 }

@@ -104,7 +104,7 @@ public enum TailscaleSetup {
         ManualStep(
             id: 4,
             title: "Check the connection",
-            detail: "Pilothouse detects Tailscale automatically. You can also check it in Terminal.",
+            detail: "Remote Code detects Tailscale automatically. You can also check it in Terminal.",
             command: "tailscale status && tailscale ip -4",
             link: nil
         ),

@@ -1,9 +1,9 @@
-# dmgbuild settings for the Pilothouse DMG (used by scripts/build-mac.sh).
+# dmgbuild settings for the Remote Code DMG (used by scripts/build-mac.sh).
 #
-#   dmgbuild -s scripts/dmg/settings.py -D app=path/to/Pilothouse.app "Pilothouse" out.dmg
+#   dmgbuild -s scripts/dmg/settings.py -D app="path/to/Remote Code.app" "Remote Code" out.dmg
 import os.path
 
-application = defines.get("app", "build/mac/export/Pilothouse.app")  # noqa: F821 (provided by dmgbuild)
+application = defines.get("app", "build/mac/export/Remote Code.app")  # noqa: F821 (provided by dmgbuild)
 appname = os.path.basename(application)
 here = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else "scripts/dmg"
 

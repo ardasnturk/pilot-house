@@ -1,15 +1,15 @@
 {
   "ios": {
-    "CFBundleDisplayName": "Pilothouse",
-    "NSCameraUsageDescription": "PilothouseはMacに表示されたペアリングコードをスキャンするため、また必要に応じてエージェントに送信する写真を撮影するためにカメラを使用します。",
-    "NSLocalNetworkUsageDescription": "PilothouseはClaude Codeのセッションを操作するため、ローカルネットワーク上のMacに接続します。"
+    "CFBundleDisplayName": "Remote Code",
+    "NSCameraUsageDescription": "Remote CodeはMacに表示されたペアリングコードをスキャンするため、また必要に応じてエージェントに送信する写真を撮影するためにカメラを使用します。",
+    "NSLocalNetworkUsageDescription": "Remote CodeはClaude Codeのセッションを操作するため、ローカルネットワーク上のMacに接続します。"
   },
   "mac": {
-    "CFBundleDisplayName": "Pilothouse",
+    "CFBundleDisplayName": "Remote Code",
     "NSDesktopFolderUsageDescription": "iPhoneから開始したClaude Codeのセッションが、デスクトップ上のファイルを読み取ったり編集したりする場合があります。",
     "NSDocumentsFolderUsageDescription": "iPhoneから開始したClaude Codeのセッションが、「書類」フォルダ内のファイルを読み取ったり編集したりする場合があります。",
     "NSDownloadsFolderUsageDescription": "iPhoneから開始したClaude Codeのセッションが、「ダウンロード」フォルダ内のファイルを読み取ったり編集したりする場合があります。",
-    "NSLocalNetworkUsageDescription": "Pilothouseは、ペアリングしたiPhoneまたはiPadがローカルネットワーク経由でこのMacに接続できるようにします。",
+    "NSLocalNetworkUsageDescription": "Remote Codeは、ペアリングしたiPhoneまたはiPadがローカルネットワーク経由でこのMacに接続できるようにします。",
     "NSNetworkVolumesUsageDescription": "iPhoneから開始したClaude Codeのセッションが、ネットワークボリューム上のファイルにアクセスする場合があります。"
   }
 }

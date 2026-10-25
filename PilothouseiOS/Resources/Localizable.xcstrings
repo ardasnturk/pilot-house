@@ -1,60 +1,60 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "%@ does not report its commands to Pilothouse.": {
+    "%@ does not report its commands to Remote Code.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ meldet seine Befehle nicht an Pilothouse."
+            "value": "%@ meldet seine Befehle nicht an Remote Code."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ no informa de sus comandos a Pilothouse."
+            "value": "%@ no informa de sus comandos a Remote Code."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ ne communique pas ses commandes à Pilothouse."
+            "value": "%@ ne communique pas ses commandes à Remote Code."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ non comunica i suoi comandi a Pilothouse."
+            "value": "%@ non comunica i suoi comandi a Remote Code."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@はコマンドをPilothouseに通知しません。"
+            "value": "%@はコマンドをRemote Codeに通知しません。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@은(는) Pilothouse에 명령을 보고하지 않습니다."
+            "value": "%@은(는) Remote Code에 명령을 보고하지 않습니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ não informa seus comandos ao Pilothouse."
+            "value": "%@ não informa seus comandos ao Remote Code."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ komutlarını Pilothouse'a bildirmiyor."
+            "value": "%@ komutlarını Remote Code'a bildirmiyor."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ 不会向 Pilothouse 报告其命令。"
+            "value": "%@ 不会向 Remote Code 报告其命令。"
           }
         }
       }
@@ -1509,60 +1509,60 @@
         }
       }
     },
-    "At home, Pilothouse talks to your Mac over Wi-Fi. To reach it from anywhere, both devices join your private Tailscale network.": {
+    "At home, Remote Code talks to your Mac over Wi-Fi. To reach it from anywhere, both devices join your private Tailscale network.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zu Hause spricht Pilothouse über WLAN mit deinem Mac. Um ihn überall zu erreichen, treten beide Geräte deinem privaten Tailscale-Netzwerk bei."
+            "value": "Zu Hause spricht Remote Code über WLAN mit deinem Mac. Um ihn überall zu erreichen, treten beide Geräte deinem privaten Tailscale-Netzwerk bei."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En casa, Pilothouse se comunica con tu Mac por Wi-Fi. Para acceder desde cualquier lugar, ambos dispositivos se unen a tu red privada de Tailscale."
+            "value": "En casa, Remote Code se comunica con tu Mac por Wi-Fi. Para acceder desde cualquier lugar, ambos dispositivos se unen a tu red privada de Tailscale."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "À la maison, Pilothouse communique avec votre Mac via le Wi-Fi. Pour y accéder de partout, les deux appareils rejoignent votre réseau Tailscale privé."
+            "value": "À la maison, Remote Code communique avec votre Mac via le Wi-Fi. Pour y accéder de partout, les deux appareils rejoignent votre réseau Tailscale privé."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "A casa, Pilothouse comunica con il tuo Mac tramite Wi-Fi. Per raggiungerlo ovunque, entrambi i dispositivi si uniscono alla tua rete Tailscale privata."
+            "value": "A casa, Remote Code comunica con il tuo Mac tramite Wi-Fi. Per raggiungerlo ovunque, entrambi i dispositivi si uniscono alla tua rete Tailscale privata."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "自宅では、PilothouseはWi-Fi経由でMacと通信します。どこからでもアクセスするには、両方のデバイスをプライベートなTailscaleネットワークに参加させます。"
+            "value": "自宅では、Remote CodeはWi-Fi経由でMacと通信します。どこからでもアクセスするには、両方のデバイスをプライベートなTailscaleネットワークに参加させます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "집에서는 Pilothouse가 Wi-Fi를 통해 Mac과 통신합니다. 어디서나 연결하려면 두 기기 모두 개인 Tailscale 네트워크에 참여해야 합니다."
+            "value": "집에서는 Remote Code가 Wi-Fi를 통해 Mac과 통신합니다. 어디서나 연결하려면 두 기기 모두 개인 Tailscale 네트워크에 참여해야 합니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Em casa, o Pilothouse fala com o seu Mac pela rede Wi-Fi. Para acessá-lo de qualquer lugar, os dois dispositivos entram na sua rede privada do Tailscale."
+            "value": "Em casa, o Remote Code fala com o seu Mac pela rede Wi-Fi. Para acessá-lo de qualquer lugar, os dois dispositivos entram na sua rede privada do Tailscale."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Evde Pilothouse, Mac'inizle Wi-Fi üzerinden konuşur. Her yerden erişmek için iki cihaz da özel Tailscale ağınıza katılır."
+            "value": "Evde Remote Code, Mac'inizle Wi-Fi üzerinden konuşur. Her yerden erişmek için iki cihaz da özel Tailscale ağınıza katılır."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在家时，Pilothouse 通过无线局域网与你的 Mac 通信。若要随时随地连接，两台设备都需加入你的私有 Tailscale 网络。"
+            "value": "在家时，Remote Code 通过无线局域网与你的 Mac 通信。若要随时随地连接，两台设备都需加入你的私有 Tailscale 网络。"
           }
         }
       }
@@ -4061,60 +4061,60 @@
         }
       }
     },
-    "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.": {
+    "Could not reach your Mac. Make sure Remote Code is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Remote Code → Local Network.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dein Mac ist nicht erreichbar. Stelle sicher, dass Pilothouse dort läuft und beide Geräte im selben Netzwerk (oder mit Tailscale verbunden) sind. Prüfe Einstellungen → Pilothouse → Lokales Netzwerk."
+            "value": "Dein Mac ist nicht erreichbar. Stelle sicher, dass Remote Code dort läuft und beide Geräte im selben Netzwerk (oder mit Tailscale verbunden) sind. Prüfe Einstellungen → Remote Code → Lokales Netzwerk."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No se ha podido conectar con tu Mac. Asegúrate de que Pilothouse se está ejecutando en él y de que ambos dispositivos están en la misma red (o conectados a Tailscale). Revisa Ajustes → Pilothouse → Red local."
+            "value": "No se ha podido conectar con tu Mac. Asegúrate de que Remote Code se está ejecutando en él y de que ambos dispositivos están en la misma red (o conectados a Tailscale). Revisa Ajustes → Remote Code → Red local."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Impossible de joindre votre Mac. Vérifiez que Pilothouse y est ouvert et que les deux appareils sont sur le même réseau (ou connectés à Tailscale). Consultez Réglages → Pilothouse → Réseau local."
+            "value": "Impossible de joindre votre Mac. Vérifiez que Remote Code y est ouvert et que les deux appareils sont sur le même réseau (ou connectés à Tailscale). Consultez Réglages → Remote Code → Réseau local."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Impossibile raggiungere il tuo Mac. Assicurati che Pilothouse sia in esecuzione e che entrambi i dispositivi siano sulla stessa rete (o connessi a Tailscale). Controlla Impostazioni → Pilothouse → Rete locale."
+            "value": "Impossibile raggiungere il tuo Mac. Assicurati che Remote Code sia in esecuzione e che entrambi i dispositivi siano sulla stessa rete (o connessi a Tailscale). Controlla Impostazioni → Remote Code → Rete locale."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Macに接続できませんでした。MacでPilothouseが実行中で、両方のデバイスが同じネットワーク上にある（またはTailscaleに接続している）ことを確認してください。設定 → Pilothouse → ローカルネットワークを確認してください。"
+            "value": "Macに接続できませんでした。MacでRemote Codeが実行中で、両方のデバイスが同じネットワーク上にある（またはTailscaleに接続している）ことを確認してください。設定 → Remote Code → ローカルネットワークを確認してください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac에 연결할 수 없습니다. Mac에서 Pilothouse가 실행 중이고 두 기기가 같은 네트워크에 있는지(또는 Tailscale에 연결되어 있는지) 확인하십시오. 설정 → Pilothouse → 로컬 네트워크를 확인하십시오."
+            "value": "Mac에 연결할 수 없습니다. Mac에서 Remote Code가 실행 중이고 두 기기가 같은 네트워크에 있는지(또는 Tailscale에 연결되어 있는지) 확인하십시오. 설정 → Remote Code → 로컬 네트워크를 확인하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Não foi possível acessar o seu Mac. Verifique se o Pilothouse está em execução nele e se os dois dispositivos estão na mesma rede (ou conectados ao Tailscale). Verifique Ajustes → Pilothouse → Rede Local."
+            "value": "Não foi possível acessar o seu Mac. Verifique se o Remote Code está em execução nele e se os dois dispositivos estão na mesma rede (ou conectados ao Tailscale). Verifique Ajustes → Remote Code → Rede Local."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac'inize ulaşılamadı. Pilothouse'un Mac'te çalıştığından ve iki cihazın aynı ağda (veya Tailscale'e bağlı) olduğundan emin olun. Ayarlar → Pilothouse → Yerel Ağ'ı kontrol edin."
+            "value": "Mac'inize ulaşılamadı. Remote Code'un Mac'te çalıştığından ve iki cihazın aynı ağda (veya Tailscale'e bağlı) olduğundan emin olun. Ayarlar → Remote Code → Yerel Ağ'ı kontrol edin."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "无法连接你的 Mac。请确保 Mac 上正在运行 Pilothouse，且两台设备位于同一网络（或已连接 Tailscale）。请检查“设置”→ Pilothouse →“本地网络”。"
+            "value": "无法连接你的 Mac。请确保 Mac 上正在运行 Remote Code，且两台设备位于同一网络（或已连接 Tailscale）。请检查“设置”→ Remote Code →“本地网络”。"
           }
         }
       }
@@ -5047,60 +5047,60 @@
         }
       }
     },
-    "Download it from the website and open it. A helm icon appears in the menu bar at the top of the screen.": {
+    "Download it from the website and open it. A >_ icon appears in the menu bar at the top of the screen.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein Steuerrad-Symbol."
+            "value": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein >_-Symbol."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Descárgalo desde la web y ábrelo. Aparecerá un icono de timón en la barra de menús, en la parte superior de la pantalla."
+            "value": "Descárgalo desde la web y ábrelo. Aparecerá un icono >_ en la barra de menús, en la parte superior de la pantalla."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Téléchargez-le depuis le site web et ouvrez-le. Une icône de barre (gouvernail) apparaît dans la barre des menus en haut de l’écran."
+            "value": "Téléchargez-le depuis le site web et ouvrez-le. Une icône >_ apparaît dans la barre des menus en haut de l’écran."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scaricalo dal sito web e aprilo. Nella barra dei menu in alto sullo schermo appare un’icona a forma di timone."
+            "value": "Scaricalo dal sito web e aprilo. Nella barra dei menu in alto sullo schermo appare un’icona >_."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Webサイトからダウンロードして開きます。画面上部のメニューバーに舵輪のアイコンが表示されます。"
+            "value": "Webサイトからダウンロードして開きます。画面上部のメニューバーに「>_」アイコンが表示されます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "웹 사이트에서 다운로드하여 여십시오. 화면 상단의 메뉴 막대에 조타륜 아이콘이 나타납니다."
+            "value": "웹 사이트에서 다운로드하여 여십시오. 화면 상단의 메뉴 막대에 >_ 아이콘이 나타납니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Baixe-o no site e abra-o. Um ícone de leme aparece na barra de menus, na parte superior da tela."
+            "value": "Baixe-o no site e abra-o. Um ícone >_ aparece na barra de menus, na parte superior da tela."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir dümen simgesi belirir."
+            "value": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir >_ simgesi belirir."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "从网站下载并打开。屏幕顶部的菜单栏中会出现舵轮图标。"
+            "value": "从网站下载并打开。屏幕顶部的菜单栏中会出现 >_ 图标。"
           }
         }
       }
@@ -5511,60 +5511,60 @@
         }
       }
     },
-    "Explore Pilothouse with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
+    "Explore Remote Code with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erkunde Pilothouse mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt."
+            "value": "Erkunde Remote Code mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explora Pilothouse con un Mac simulado. No se envía nada a ningún sitio y no necesitas un Mac."
+            "value": "Explora Remote Code con un Mac simulado. No se envía nada a ningún sitio y no necesitas un Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Découvrez Pilothouse avec un Mac simulé. Rien n’est envoyé nulle part et aucun Mac n’est nécessaire."
+            "value": "Découvrez Remote Code avec un Mac simulé. Rien n’est envoyé nulle part et aucun Mac n’est nécessaire."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Esplora Pilothouse con un Mac simulato. Non viene inviato nulla e non serve un Mac."
+            "value": "Esplora Remote Code con un Mac simulato. Non viene inviato nulla e non serve un Mac."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "シミュレートしたMacでPilothouseを試せます。何も送信されず、Macも必要ありません。"
+            "value": "シミュレートしたMacでRemote Codeを試せます。何も送信されず、Macも必要ありません。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시뮬레이션된 Mac으로 Pilothouse를 살펴보십시오. 어떤 데이터도 전송되지 않으며 Mac이 필요하지 않습니다."
+            "value": "시뮬레이션된 Mac으로 Remote Code를 살펴보십시오. 어떤 데이터도 전송되지 않으며 Mac이 필요하지 않습니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore o Pilothouse com um Mac simulado. Nada é enviado para lugar nenhum e nenhum Mac é necessário."
+            "value": "Explore o Remote Code com um Mac simulado. Nada é enviado para lugar nenhum e nenhum Mac é necessário."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
+            "value": "Remote Code'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "通过模拟的 Mac 探索 Pilothouse。不会发送任何内容，也不需要 Mac。"
+            "value": "通过模拟的 Mac 探索 Remote Code。不会发送任何内容，也不需要 Mac。"
           }
         }
       }
@@ -6323,60 +6323,60 @@
         }
       }
     },
-    "Get Pilothouse for Mac": {
+    "Get Remote Code for Mac": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse für den Mac laden"
+            "value": "Remote Code für den Mac laden"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obtener Pilothouse para Mac"
+            "value": "Obtener Remote Code para Mac"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obtenir Pilothouse pour Mac"
+            "value": "Obtenir Remote Code pour Mac"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scarica Pilothouse per Mac"
+            "value": "Scarica Remote Code per Mac"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac用Pilothouseを入手"
+            "value": "Mac用Remote Codeを入手"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac용 Pilothouse 받기"
+            "value": "Mac용 Remote Code 받기"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Obter o Pilothouse para Mac"
+            "value": "Obter o Remote Code para Mac"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac için Pilothouse'u edinin"
+            "value": "Mac için Remote Code'u edinin"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "获取 Mac 版 Pilothouse"
+            "value": "获取 Mac 版 Remote Code"
           }
         }
       }
@@ -6845,60 +6845,60 @@
         }
       }
     },
-    "If iOS asks for Local Network access, allow it so Pilothouse can find your Mac.": {
+    "If iOS asks for Local Network access, allow it so Remote Code can find your Mac.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Pilothouse deinen Mac findet."
+            "value": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Remote Code deinen Mac findet."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si iOS pide acceso a la red local, permítelo para que Pilothouse pueda encontrar tu Mac."
+            "value": "Si iOS pide acceso a la red local, permítelo para que Remote Code pueda encontrar tu Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Si iOS demande l’accès au réseau local, autorisez-le pour que Pilothouse puisse trouver votre Mac."
+            "value": "Si iOS demande l’accès au réseau local, autorisez-le pour que Remote Code puisse trouver votre Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se iOS chiede l’accesso alla rete locale, consentilo affinché Pilothouse possa trovare il tuo Mac."
+            "value": "Se iOS chiede l’accesso alla rete locale, consentilo affinché Remote Code possa trovare il tuo Mac."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOSでローカルネットワークへのアクセスを求められたら、PilothouseがMacを見つけられるように許可してください。"
+            "value": "iOSでローカルネットワークへのアクセスを求められたら、Remote CodeがMacを見つけられるように許可してください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS에서 로컬 네트워크 접근을 요청하면 Pilothouse가 Mac을 찾을 수 있도록 허용하십시오."
+            "value": "iOS에서 로컬 네트워크 접근을 요청하면 Remote Code가 Mac을 찾을 수 있도록 허용하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Se o iOS pedir acesso à Rede Local, permita para que o Pilothouse possa encontrar o seu Mac."
+            "value": "Se o iOS pedir acesso à Rede Local, permita para que o Remote Code possa encontrar o seu Mac."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS Yerel Ağ erişimi isterse izin verin; böylece Pilothouse Mac'inizi bulabilir."
+            "value": "iOS Yerel Ağ erişimi isterse izin verin; böylece Remote Code Mac'inizi bulabilir."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "如果 iOS 请求本地网络访问权限，请允许，以便 Pilothouse 找到你的 Mac。"
+            "value": "如果 iOS 请求本地网络访问权限，请允许，以便 Remote Code 找到你的 Mac。"
           }
         }
       }
@@ -7019,60 +7019,60 @@
         }
       }
     },
-    "Install Pilothouse on your Mac": {
+    "Install Remote Code on your Mac": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse auf deinem Mac installieren"
+            "value": "Remote Code auf deinem Mac installieren"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Instala Pilothouse en tu Mac"
+            "value": "Instala Remote Code en tu Mac"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Installez Pilothouse sur votre Mac"
+            "value": "Installez Remote Code sur votre Mac"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Installa Pilothouse sul tuo Mac"
+            "value": "Installa Remote Code sul tuo Mac"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "MacにPilothouseをインストール"
+            "value": "MacにRemote Codeをインストール"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac에 Pilothouse 설치하기"
+            "value": "Mac에 Remote Code 설치하기"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Instale o Pilothouse no seu Mac"
+            "value": "Instale o Remote Code no seu Mac"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse'u Mac'inize kurun"
+            "value": "Remote Code'u Mac'inize kurun"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在 Mac 上安装 Pilothouse"
+            "value": "在 Mac 上安装 Remote Code"
           }
         }
       }
@@ -8063,118 +8063,118 @@
         }
       }
     },
-    "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.": {
+    "Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind."
+            "value": "Achte darauf, dass Remote Code auf deinem Mac läuft und beide Geräte im selben WLAN sind."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Asegúrate de que Pilothouse se está ejecutando en tu Mac y de que ambos dispositivos están en la misma Wi-Fi."
+            "value": "Asegúrate de que Remote Code se está ejecutando en tu Mac y de que ambos dispositivos están en la misma Wi-Fi."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vérifiez que Pilothouse est ouvert sur votre Mac et que les deux appareils sont sur le même Wi-Fi."
+            "value": "Vérifiez que Remote Code est ouvert sur votre Mac et que les deux appareils sont sur le même Wi-Fi."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Assicurati che Pilothouse sia in esecuzione sul tuo Mac e che entrambi i dispositivi siano sulla stessa rete Wi-Fi."
+            "value": "Assicurati che Remote Code sia in esecuzione sul tuo Mac e che entrambi i dispositivi siano sulla stessa rete Wi-Fi."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "MacでPilothouseが実行中で、両方のデバイスが同じWi-Fiに接続していることを確認してください。"
+            "value": "MacでRemote Codeが実行中で、両方のデバイスが同じWi-Fiに接続していることを確認してください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac에서 Pilothouse가 실행 중이고 두 기기가 같은 Wi-Fi에 연결되어 있는지 확인하십시오."
+            "value": "Mac에서 Remote Code가 실행 중이고 두 기기가 같은 Wi-Fi에 연결되어 있는지 확인하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Verifique se o Pilothouse está em execução no seu Mac e se os dois dispositivos estão na mesma rede Wi-Fi."
+            "value": "Verifique se o Remote Code está em execução no seu Mac e se os dois dispositivos estão na mesma rede Wi-Fi."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun."
+            "value": "Remote Code'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "请确保 Mac 上正在运行 Pilothouse，且两台设备连接到同一无线局域网。"
+            "value": "请确保 Mac 上正在运行 Remote Code，且两台设备连接到同一无线局域网。"
           }
         }
       }
     },
-    "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
+    "Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale."
+            "value": "Achte darauf, dass Remote Code auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Asegúrate de que Pilothouse se está ejecutando en tu Mac y de que ambos dispositivos están en la misma Wi-Fi. ¿Lejos de esa Wi-Fi? Usa Tailscale."
+            "value": "Asegúrate de que Remote Code se está ejecutando en tu Mac y de que ambos dispositivos están en la misma Wi-Fi. ¿Lejos de esa Wi-Fi? Usa Tailscale."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vérifiez que Pilothouse est ouvert sur votre Mac et que les deux appareils sont sur le même Wi-Fi. Loin de ce Wi-Fi ? Utilisez Tailscale."
+            "value": "Vérifiez que Remote Code est ouvert sur votre Mac et que les deux appareils sont sur le même Wi-Fi. Loin de ce Wi-Fi ? Utilisez Tailscale."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Assicurati che Pilothouse sia in esecuzione sul tuo Mac e che entrambi i dispositivi siano sulla stessa rete Wi-Fi. Lontano da quella rete? Usa Tailscale."
+            "value": "Assicurati che Remote Code sia in esecuzione sul tuo Mac e che entrambi i dispositivi siano sulla stessa rete Wi-Fi. Lontano da quella rete? Usa Tailscale."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "MacでPilothouseが実行中で、両方のデバイスが同じWi-Fiに接続していることを確認してください。そのWi-Fiから離れている場合は、Tailscaleを使用してください。"
+            "value": "MacでRemote Codeが実行中で、両方のデバイスが同じWi-Fiに接続していることを確認してください。そのWi-Fiから離れている場合は、Tailscaleを使用してください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac에서 Pilothouse가 실행 중이고 두 기기가 같은 Wi-Fi에 연결되어 있는지 확인하십시오. 해당 Wi-Fi 밖에 있다면 Tailscale을 사용하십시오."
+            "value": "Mac에서 Remote Code가 실행 중이고 두 기기가 같은 Wi-Fi에 연결되어 있는지 확인하십시오. 해당 Wi-Fi 밖에 있다면 Tailscale을 사용하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Verifique se o Pilothouse está em execução no seu Mac e se os dois dispositivos estão na mesma rede Wi-Fi. Longe dessa rede Wi-Fi? Use o Tailscale."
+            "value": "Verifique se o Remote Code está em execução no seu Mac e se os dois dispositivos estão na mesma rede Wi-Fi. Longe dessa rede Wi-Fi? Use o Tailscale."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
+            "value": "Remote Code'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "请确保 Mac 上正在运行 Pilothouse，且两台设备连接到同一无线局域网。不在该无线局域网范围内？请使用 Tailscale。"
+            "value": "请确保 Mac 上正在运行 Remote Code，且两台设备连接到同一无线局域网。不在该无线局域网范围内？请使用 Tailscale。"
           }
         }
       }
@@ -10035,60 +10035,60 @@
         }
       }
     },
-    "On the Mac, click the helm icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
+    "On the Mac, click the >_ icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Klicke auf dem Mac auf das Steuerrad-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code."
+            "value": "Klicke auf dem Mac auf das >_-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "En el Mac, haz clic en el icono del timón, elige “Vincular iPhone o iPad…”, toca el botón de abajo y escanea el código."
+            "value": "En el Mac, haz clic en el icono >_, elige “Vincular iPhone o iPad…”, toca el botón de abajo y escanea el código."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sur le Mac, cliquez sur l’icône du gouvernail, choisissez “Jumeler un iPhone ou iPad…”, puis touchez le bouton ci-dessous et scannez le code."
+            "value": "Sur le Mac, cliquez sur l’icône >_, choisissez “Jumeler un iPhone ou iPad…”, puis touchez le bouton ci-dessous et scannez le code."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sul Mac, fai clic sull’icona del timone, scegli “Abbina iPhone o iPad…”, poi tocca il pulsante qui sotto e scansiona il codice."
+            "value": "Sul Mac, fai clic sull’icona >_, scegli “Abbina iPhone o iPad…”, poi tocca il pulsante qui sotto e scansiona il codice."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Macで舵輪のアイコンをクリックして「iPhoneまたはiPadをペアリング…」を選択し、下のボタンをタップしてコードをスキャンします。"
+            "value": "Macで「>_」アイコンをクリックして「iPhoneまたはiPadをペアリング…」を選択し、下のボタンをタップしてコードをスキャンします。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac에서 조타륜 아이콘을 클릭하고 ‘iPhone 또는 iPad 페어링…’을 선택한 다음, 아래 버튼을 탭하고 코드를 스캔하십시오."
+            "value": "Mac에서 >_ 아이콘을 클릭하고 ‘iPhone 또는 iPad 페어링…’을 선택한 다음, 아래 버튼을 탭하고 코드를 스캔하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "No Mac, clique no ícone de leme, escolha “Emparelhar iPhone ou iPad…”, depois toque no botão abaixo e escaneie o código."
+            "value": "No Mac, clique no ícone >_, escolha “Emparelhar iPhone ou iPad…”, depois toque no botão abaixo e escaneie o código."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac'te dümen simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
+            "value": "Mac'te >_ simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在 Mac 上点按舵轮图标，选择“配对 iPhone 或 iPad…”，然后轻点下方按钮并扫描代码。"
+            "value": "在 Mac 上点按 >_ 图标，选择“配对 iPhone 或 iPad…”，然后轻点下方按钮并扫描代码。"
           }
         }
       }
@@ -10325,60 +10325,60 @@
         }
       }
     },
-    "Open Pilothouse on your Mac, choose “Pair New Device…” and point the camera at the QR code.": {
+    "Open Remote Code on your Mac, choose “Pair New Device…” and point the camera at the QR code.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne Pilothouse auf deinem Mac, wähle „Neues Gerät koppeln …“ und richte die Kamera auf den QR-Code."
+            "value": "Öffne Remote Code auf deinem Mac, wähle „Neues Gerät koppeln …“ und richte die Kamera auf den QR-Code."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abre Pilothouse en tu Mac, elige “Vincular nuevo dispositivo…” y apunta la cámara al código QR."
+            "value": "Abre Remote Code en tu Mac, elige “Vincular nuevo dispositivo…” y apunta la cámara al código QR."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrez Pilothouse sur votre Mac, choisissez “Jumeler un nouvel appareil…” et pointez l’appareil photo vers le code QR."
+            "value": "Ouvrez Remote Code sur votre Mac, choisissez “Jumeler un nouvel appareil…” et pointez l’appareil photo vers le code QR."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apri Pilothouse sul tuo Mac, scegli “Abbina nuovo dispositivo…” e inquadra il codice QR con la fotocamera."
+            "value": "Apri Remote Code sul tuo Mac, scegli “Abbina nuovo dispositivo…” e inquadra il codice QR con la fotocamera."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "MacでPilothouseを開いて「新しいデバイスをペアリング…」を選択し、カメラをQRコードに向けます。"
+            "value": "MacでRemote Codeを開いて「新しいデバイスをペアリング…」を選択し、カメラをQRコードに向けます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac에서 Pilothouse를 열고 ‘새로운 기기 페어링…’을 선택한 다음 카메라를 QR 코드에 대십시오."
+            "value": "Mac에서 Remote Code를 열고 ‘새로운 기기 페어링…’을 선택한 다음 카메라를 QR 코드에 대십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abra o Pilothouse no seu Mac, escolha “Emparelhar Novo Dispositivo…” e aponte a câmera para o código QR."
+            "value": "Abra o Remote Code no seu Mac, escolha “Emparelhar Novo Dispositivo…” e aponte a câmera para o código QR."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mac'inizde Pilothouse'u açın, “Yeni Cihaz Eşleştir…”i seçin ve kamerayı QR koda tutun."
+            "value": "Mac'inizde Remote Code'u açın, “Yeni Cihaz Eşleştir…”i seçin ve kamerayı QR koda tutun."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "在 Mac 上打开 Pilothouse，选择“配对新设备…”，然后将相机对准二维码。"
+            "value": "在 Mac 上打开 Remote Code，选择“配对新设备…”，然后将相机对准二维码。"
           }
         }
       }
@@ -10441,60 +10441,60 @@
         }
       }
     },
-    "Open the Pilothouse menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.": {
+    "Open the Remote Code menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffne im Pilothouse-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an."
+            "value": "Öffne im Remote-Code-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abre el menú de Pilothouse → Tailscale → “Configurar con Claude”. Claude instala y comprueba Tailscale por ti; tú solo inicias sesión."
+            "value": "Abre el menú de Remote Code → Tailscale → “Configurar con Claude”. Claude instala y comprueba Tailscale por ti; tú solo inicias sesión."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrez le menu Pilothouse → Tailscale → “Configurer avec Claude”. Claude installe et vérifie Tailscale pour vous ; vous n’avez qu’à vous connecter."
+            "value": "Ouvrez le menu Remote Code → Tailscale → “Configurer avec Claude”. Claude installe et vérifie Tailscale pour vous ; vous n’avez qu’à vous connecter."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apri il menu di Pilothouse → Tailscale → “Configura con Claude”. Claude installa e verifica Tailscale per te; tu devi solo accedere."
+            "value": "Apri il menu di Remote Code → Tailscale → “Configura con Claude”. Claude installa e verifica Tailscale per te; tu devi solo accedere."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouseメニュー → Tailscale → 「Claudeで設定」を開きます。ClaudeがTailscaleのインストールと確認を行うので、あなたはサインインするだけです。"
+            "value": "Remote Codeメニュー → Tailscale → 「Claudeで設定」を開きます。ClaudeがTailscaleのインストールと確認を行うので、あなたはサインインするだけです。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse 메뉴 → Tailscale → ‘Claude로 설정’을 여십시오. Claude가 Tailscale을 설치하고 확인하며, 사용자는 로그인만 하면 됩니다."
+            "value": "Remote Code 메뉴 → Tailscale → ‘Claude로 설정’을 여십시오. Claude가 Tailscale을 설치하고 확인하며, 사용자는 로그인만 하면 됩니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abra o menu do Pilothouse → Tailscale → “Configurar com o Claude”. O Claude instala e verifica o Tailscale para você; você só inicia a sessão."
+            "value": "Abra o menu do Remote Code → Tailscale → “Configurar com o Claude”. O Claude instala e verifica o Tailscale para você; você só inicia a sessão."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse menüsünde Tailscale → “Claude ile otomatik kur”u seçin. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
+            "value": "Remote Code menüsünde Tailscale → “Claude ile otomatik kur”u seçin. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "打开 Pilothouse 菜单 → Tailscale →“使用 Claude 设置”。Claude 会为你安装并检查 Tailscale；你只需登录。"
+            "value": "打开 Remote Code 菜单 → Tailscale →“使用 Claude 设置”。Claude 会为你安装并检查 Tailscale；你只需登录。"
           }
         }
       }
@@ -11427,644 +11427,6 @@
         }
       }
     },
-    "Pilothouse": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse"
-          }
-        }
-      }
-    },
-    "Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse verbindet sich immer zuerst über dein WLAN. Aktiviere das nur, wenn du auch Tailscale nutzt, um deinen Mac außerhalb dieses WLANs zu erreichen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse siempre se conecta primero por tu Wi-Fi. Activa esto solo si también usas Tailscale, para acceder a tu Mac cuando estés lejos de esa Wi-Fi."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse se connecte toujours d’abord via votre Wi-Fi. N’activez cette option que si vous utilisez aussi Tailscale, pour joindre votre Mac lorsque vous êtes loin de ce Wi-Fi."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse si connette sempre prima tramite la tua rete Wi-Fi. Attiva questa opzione solo se usi anche Tailscale, per raggiungere il tuo Mac quando sei lontano da quella rete."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouseは常にまずWi-Fi経由で接続します。そのWi-Fiから離れているときにMacにアクセスするためにTailscaleも使用している場合のみ、オンにしてください。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse는 항상 Wi-Fi를 통해 먼저 연결합니다. Tailscale도 사용하여 해당 Wi-Fi 밖에서 Mac에 연결하려는 경우에만 이 옵션을 켜십시오."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse sempre se conecta primeiro pela sua rede Wi-Fi. Ative esta opção apenas se você também usa o Tailscale, para acessar o seu Mac quando estiver longe dessa rede Wi-Fi."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse her zaman önce Wi-Fi'niz üzerinden bağlanır. Bunu yalnızca Tailscale da kullanıyorsanız, o Wi-Fi'den uzaktayken Mac'inize ulaşmak için açın."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 始终优先通过无线局域网连接。仅当你也使用 Tailscale、需要在离开该无线局域网时连接 Mac 时，才打开此选项。"
-          }
-        }
-      }
-    },
-    "Pilothouse could not access the Keychain: %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse konnte nicht auf den Schlüsselbund zugreifen: %@"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse no ha podido acceder al llavero: %@"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse n’a pas pu accéder au trousseau : %@"
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse non è riuscito ad accedere al portachiavi: %@"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouseはキーチェーンにアクセスできませんでした：%@"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse가 키체인에 접근할 수 없습니다: %@"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse não conseguiu acessar as Chaves: %@"
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 无法访问钥匙串：%@"
-          }
-        }
-      }
-    },
-    "Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse aún no conoce la dirección de Tailscale de tu Mac. Conéctate una vez por la misma red wifi mientras Tailscale está activo en el Mac."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse ne connaît pas encore l’adresse Tailscale de votre Mac. Connectez-vous une fois via le même Wi-Fi pendant que Tailscale est actif sur le Mac."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse non conosce ancora l’indirizzo Tailscale del tuo Mac. Connettiti una volta tramite la stessa rete Wi-Fi mentre Tailscale è attivo sul Mac."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PilothouseはまだMacのTailscaleアドレスを知りません。MacでTailscaleを実行したまま、一度同じWi-Fi経由で接続してください。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse가 아직 Mac의 Tailscale 주소를 모릅니다. Mac에서 Tailscale이 실행 중일 때 같은 Wi-Fi로 한 번 연결하십시오."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse ainda não sabe o endereço Tailscale do seu Mac. Conecte-se uma vez pela mesma rede Wi-Fi enquanto o Tailscale estiver ativo no Mac."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 尚不知道你的 Mac 的 Tailscale 地址。请在 Mac 上运行 Tailscale 时，通过同一无线局域网连接一次。"
-          }
-        }
-      }
-    },
-    "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse folgt der Sprache deines iPhone. Um nur für Pilothouse eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Pilothouse → Sprache."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse sigue el idioma de tu iPhone. Para usar otro solo en Pilothouse, elígelo en Ajustes → Apps → Pilothouse → Idioma."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse suit la langue de votre iPhone. Pour en utiliser une autre uniquement dans Pilothouse, choisissez-la dans Réglages → Apps → Pilothouse → Langue."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse segue la lingua del tuo iPhone. Per usarne un’altra solo per Pilothouse, sceglila in Impostazioni → App → Pilothouse → Lingua."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PilothouseはiPhoneの言語に従います。Pilothouseだけ別の言語を使用するには、設定 → アプリ → Pilothouse → 言語で選択してください。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse는 iPhone의 언어를 따릅니다. Pilothouse에서만 다른 언어를 사용하려면 설정 → 앱 → Pilothouse → 언어에서 선택하십시오."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse segue o idioma do seu iPhone. Para usar outro idioma apenas no Pilothouse, escolha-o em Ajustes → Apps → Pilothouse → Idioma."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse, iPhone'unuzun dilini kullanır. Yalnızca Pilothouse için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Pilothouse → Dil bölümünden seçin."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 跟随 iPhone 的语言。若要仅为 Pilothouse 使用其他语言，请在“设置”→“App”→ Pilothouse →“语言”中选择。"
-          }
-        }
-      }
-    },
-    "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen und versuche es erneut."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse no tiene permiso para usar la red local, así que no puede acceder a tu Mac en esta Wi-Fi. Activa Red local para Pilothouse en Ajustes y vuelve a intentarlo."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse n’est pas autorisé à utiliser le réseau local et ne peut donc pas joindre votre Mac sur ce Wi-Fi. Activez Réseau local pour Pilothouse dans Réglages, puis réessayez."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse non è autorizzato a usare la rete locale, quindi non può raggiungere il tuo Mac su questa rete Wi-Fi. Attiva Rete locale per Pilothouse in Impostazioni, poi riprova."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouseにはローカルネットワークの使用が許可されていないため、このWi-FiでMacに接続できません。設定でPilothouseのローカルネットワークをオンにしてから、もう一度お試しください。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse에 로컬 네트워크 사용이 허용되지 않아 이 Wi-Fi에서 Mac에 연결할 수 없습니다. 설정에서 Pilothouse의 로컬 네트워크를 켠 다음 다시 시도하십시오."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse não tem permissão para usar a rede local, então não consegue acessar o seu Mac nesta rede Wi-Fi. Ative Rede Local para o Pilothouse em Ajustes e tente novamente."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse'un yerel ağı kullanma izni yok, bu yüzden bu Wi-Fi'de Mac'inize ulaşamıyor. Ayarlar'da Pilothouse için Yerel Ağ'ı açıp tekrar deneyin."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 未被允许使用本地网络，因此无法在此无线局域网中连接你的 Mac。请在“设置”中为 Pilothouse 打开“本地网络”，然后重试。"
-          }
-        }
-      }
-    },
-    "Pilothouse learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse lernt die Tailscale-Adresse deines Macs automatisch und nutzt sie, wenn das lokale Netzwerk nicht verfügbar ist."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse obtiene automáticamente la dirección de Tailscale de tu Mac y la usa cuando la red local no está disponible."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse apprend automatiquement l’adresse Tailscale de votre Mac et l’utilise lorsque le réseau local n’est pas disponible."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse rileva automaticamente l’indirizzo Tailscale del tuo Mac e lo usa quando la rete locale non è disponibile."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PilothouseはMacのTailscaleアドレスを自動的に取得し、ローカルネットワークが利用できないときに使用します。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse는 Mac의 Tailscale 주소를 자동으로 파악하고 로컬 네트워크를 사용할 수 없을 때마다 이 주소를 사용합니다."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse obtém o endereço do Tailscale do seu Mac automaticamente e o usa sempre que a rede local não estiver disponível."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse, Mac'inizin Tailscale adresini otomatik öğrenir ve yerel ağ kullanılamadığında bu adresi kullanır."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 会自动获取你 Mac 的 Tailscale 地址，并在本地网络不可用时使用它。"
-          }
-        }
-      }
-    },
-    "Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse darf das lokale Netzwerk nicht verwenden. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse no puede usar la red local. Activa Red local para Pilothouse en Ajustes."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse ne peut pas utiliser le réseau local. Activez Réseau local pour Pilothouse dans Réglages."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse non può usare la rete locale. Attiva Rete locale per Pilothouse in Impostazioni."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouseはローカルネットワークを使用できません。設定でPilothouseのローカルネットワークをオンにしてください。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse가 로컬 네트워크를 사용할 수 없습니다. 설정에서 Pilothouse의 로컬 네트워크를 켜십시오."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse não pode usar a rede local. Ative Rede Local para o Pilothouse em Ajustes."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse'un yerel ağı kullanma izni yok. Ayarlar'da Pilothouse için Yerel Ağ'ı açın."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 无法使用本地网络。请在“设置”中为 Pilothouse 打开“本地网络”。"
-          }
-        }
-      }
-    },
-    "Pilothouse uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse verwendet keine Bibliotheken von Drittanbietern. Die Verschlüsselung stammt aus Apple CryptoKit und folgt der gemeinfreien Spezifikation des Noise Protocol Framework."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse no usa bibliotecas de terceros. El cifrado lo proporciona Apple CryptoKit y sigue la especificación de dominio público del Noise Protocol Framework."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse n’utilise aucune bibliothèque tierce. Le chiffrement est fourni par Apple CryptoKit et suit la spécification du Noise Protocol Framework, qui relève du domaine public."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse non usa librerie di terze parti. La crittografia è fornita da Apple CryptoKit e segue la specifica di pubblico dominio del Noise Protocol Framework."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouseはサードパーティ製ライブラリを使用していません。暗号化はApple CryptoKitによって提供され、パブリックドメインのNoise Protocol Framework仕様に準拠しています。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse는 타사 라이브러리를 사용하지 않습니다. 암호화는 Apple CryptoKit으로 제공되며 퍼블릭 도메인인 Noise Protocol Framework 사양을 따릅니다."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse não usa bibliotecas de terceiros. A criptografia é fornecida pelo Apple CryptoKit e segue a especificação Noise Protocol Framework, de domínio público."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse üçüncü taraf kütüphane kullanmaz. Şifreleme Apple CryptoKit ile sağlanır ve kamu malı Noise Protocol Framework belirtimini izler."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 不使用任何第三方库。加密由 Apple CryptoKit 提供，并遵循公有领域的 Noise Protocol Framework 规范。"
-          }
-        }
-      }
-    },
-    "Pilothouse was restarted while Claude was working; the last turn may be incomplete.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse wurde neu gestartet, während Claude arbeitete; die letzte Runde ist eventuell unvollständig."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse se reinició mientras Claude trabajaba; puede que el último turno esté incompleto."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse a redémarré pendant que Claude travaillait ; le dernier tour est peut-être incomplet."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse è stato riavviato mentre Claude lavorava; l’ultimo turno potrebbe essere incompleto."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claudeの作業中にPilothouseが再起動されました。最後のターンが不完全な可能性があります。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude가 작업하는 동안 Pilothouse가 재시작되었습니다. 마지막 턴이 완료되지 않았을 수 있습니다."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse foi reiniciado enquanto o Claude trabalhava; o último turno pode estar incompleto."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude çalışırken Pilothouse yeniden başlatıldı; son tur eksik olabilir."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Claude 工作期间 Pilothouse 已重新启动；最后一轮可能不完整。"
-          }
-        }
-      }
-    },
-    "Pilothouse works with Claude Code. It is an independent open-source project and is not affiliated with Anthropic. Pilothouse collects no data.": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse funktioniert mit Claude Code. Es ist ein unabhängiges Open-Source-Projekt und steht in keiner Verbindung zu Anthropic. Pilothouse sammelt keine Daten."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse funciona con Claude Code. Es un proyecto independiente de código abierto y no está afiliado a Anthropic. Pilothouse no recopila datos."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse fonctionne avec Claude Code. C’est un projet open source indépendant, sans lien avec Anthropic. Pilothouse ne collecte aucune donnée."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse funziona con Claude Code. È un progetto open source indipendente e non è affiliato ad Anthropic. Pilothouse non raccoglie dati."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "PilothouseはClaude Codeと連携して動作します。独立したオープンソースプロジェクトであり、Anthropicとは提携していません。Pilothouseはデータを収集しません。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse는 Claude Code와 함께 작동합니다. 독립적인 오픈 소스 프로젝트이며 Anthropic과 제휴 관계가 없습니다. Pilothouse는 데이터를 수집하지 않습니다."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O Pilothouse funciona com o Claude Code. É um projeto independente de código aberto e não é afiliado à Anthropic. O Pilothouse não coleta dados."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse, Claude Code ile çalışır. Bağımsız, açık kaynaklı bir projedir ve Anthropic ile bağlantılı değildir. Pilothouse hiçbir veri toplamaz."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pilothouse 与 Claude Code 配合使用。它是一个独立的开源项目，与 Anthropic 无关联。Pilothouse 不收集任何数据。"
-          }
-        }
-      }
-    },
     "Plan only": {
       "localizations": {
         "de": {
@@ -12525,6 +11887,644 @@
           "stringUnit": {
             "state": "translated",
             "value": "远程访问"
+          }
+        }
+      }
+    },
+    "Remote Code": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code"
+          }
+        }
+      }
+    },
+    "Remote Code always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code verbindet sich immer zuerst über dein WLAN. Aktiviere das nur, wenn du auch Tailscale nutzt, um deinen Mac außerhalb dieses WLANs zu erreichen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code siempre se conecta primero por tu Wi-Fi. Activa esto solo si también usas Tailscale, para acceder a tu Mac cuando estés lejos de esa Wi-Fi."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code se connecte toujours d’abord via votre Wi-Fi. N’activez cette option que si vous utilisez aussi Tailscale, pour joindre votre Mac lorsque vous êtes loin de ce Wi-Fi."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code si connette sempre prima tramite la tua rete Wi-Fi. Attiva questa opzione solo se usi anche Tailscale, per raggiungere il tuo Mac quando sei lontano da quella rete."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Codeは常にまずWi-Fi経由で接続します。そのWi-Fiから離れているときにMacにアクセスするためにTailscaleも使用している場合のみ、オンにしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code는 항상 Wi-Fi를 통해 먼저 연결합니다. Tailscale도 사용하여 해당 Wi-Fi 밖에서 Mac에 연결하려는 경우에만 이 옵션을 켜십시오."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code sempre se conecta primeiro pela sua rede Wi-Fi. Ative esta opção apenas se você também usa o Tailscale, para acessar o seu Mac quando estiver longe dessa rede Wi-Fi."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code her zaman önce Wi-Fi'niz üzerinden bağlanır. Bunu yalnızca Tailscale da kullanıyorsanız, o Wi-Fi'den uzaktayken Mac'inize ulaşmak için açın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 始终优先通过无线局域网连接。仅当你也使用 Tailscale、需要在离开该无线局域网时连接 Mac 时，才打开此选项。"
+          }
+        }
+      }
+    },
+    "Remote Code could not access the Keychain: %@": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code konnte nicht auf den Schlüsselbund zugreifen: %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code no ha podido acceder al llavero: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code n’a pas pu accéder au trousseau : %@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code non è riuscito ad accedere al portachiavi: %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Codeはキーチェーンにアクセスできませんでした：%@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code가 키체인에 접근할 수 없습니다: %@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code não conseguiu acessar as Chaves: %@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code Anahtar Zinciri'ne erişemedi: %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 无法访问钥匙串：%@"
+          }
+        }
+      }
+    },
+    "Remote Code doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code aún no conoce la dirección de Tailscale de tu Mac. Conéctate una vez por la misma red wifi mientras Tailscale está activo en el Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code ne connaît pas encore l’adresse Tailscale de votre Mac. Connectez-vous une fois via le même Wi-Fi pendant que Tailscale est actif sur le Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code non conosce ancora l’indirizzo Tailscale del tuo Mac. Connettiti una volta tramite la stessa rete Wi-Fi mentre Tailscale è attivo sul Mac."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote CodeはまだMacのTailscaleアドレスを知りません。MacでTailscaleを実行したまま、一度同じWi-Fi経由で接続してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code가 아직 Mac의 Tailscale 주소를 모릅니다. Mac에서 Tailscale이 실행 중일 때 같은 Wi-Fi로 한 번 연결하십시오."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code ainda não sabe o endereço Tailscale do seu Mac. Conecte-se uma vez pela mesma rede Wi-Fi enquanto o Tailscale estiver ativo no Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 尚不知道你的 Mac 的 Tailscale 地址。请在 Mac 上运行 Tailscale 时，通过同一无线局域网连接一次。"
+          }
+        }
+      }
+    },
+    "Remote Code follows your iPhone's language. To use another one just for Remote Code, choose it in Settings → Apps → Remote Code → Language.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code folgt der Sprache deines iPhone. Um nur für Remote Code eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Remote Code → Sprache."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code sigue el idioma de tu iPhone. Para usar otro solo en Remote Code, elígelo en Ajustes → Apps → Remote Code → Idioma."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code suit la langue de votre iPhone. Pour en utiliser une autre uniquement dans Remote Code, choisissez-la dans Réglages → Apps → Remote Code → Langue."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code segue la lingua del tuo iPhone. Per usarne un’altra solo per Remote Code, sceglila in Impostazioni → App → Remote Code → Lingua."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote CodeはiPhoneの言語に従います。Remote Codeだけ別の言語を使用するには、設定 → アプリ → Remote Code → 言語で選択してください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code는 iPhone의 언어를 따릅니다. Remote Code에서만 다른 언어를 사용하려면 설정 → 앱 → Remote Code → 언어에서 선택하십시오."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code segue o idioma do seu iPhone. Para usar outro idioma apenas no Remote Code, escolha-o em Ajustes → Apps → Remote Code → Idioma."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code, iPhone'unuzun dilini kullanır. Yalnızca Remote Code için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Remote Code → Dil bölümünden seçin."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 跟随 iPhone 的语言。若要仅为 Remote Code 使用其他语言，请在“设置”→“App”→ Remote Code →“语言”中选择。"
+          }
+        }
+      }
+    },
+    "Remote Code is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Remote Code in Settings, then try again.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Remote Code in den Einstellungen und versuche es erneut."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code no tiene permiso para usar la red local, así que no puede acceder a tu Mac en esta Wi-Fi. Activa Red local para Remote Code en Ajustes y vuelve a intentarlo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code n’est pas autorisé à utiliser le réseau local et ne peut donc pas joindre votre Mac sur ce Wi-Fi. Activez Réseau local pour Remote Code dans Réglages, puis réessayez."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code non è autorizzato a usare la rete locale, quindi non può raggiungere il tuo Mac su questa rete Wi-Fi. Attiva Rete locale per Remote Code in Impostazioni, poi riprova."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Codeにはローカルネットワークの使用が許可されていないため、このWi-FiでMacに接続できません。設定でRemote Codeのローカルネットワークをオンにしてから、もう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code에 로컬 네트워크 사용이 허용되지 않아 이 Wi-Fi에서 Mac에 연결할 수 없습니다. 설정에서 Remote Code의 로컬 네트워크를 켠 다음 다시 시도하십시오."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code não tem permissão para usar a rede local, então não consegue acessar o seu Mac nesta rede Wi-Fi. Ative Rede Local para o Remote Code em Ajustes e tente novamente."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code'un yerel ağı kullanma izni yok, bu yüzden bu Wi-Fi'de Mac'inize ulaşamıyor. Ayarlar'da Remote Code için Yerel Ağ'ı açıp tekrar deneyin."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 未被允许使用本地网络，因此无法在此无线局域网中连接你的 Mac。请在“设置”中为 Remote Code 打开“本地网络”，然后重试。"
+          }
+        }
+      }
+    },
+    "Remote Code learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code lernt die Tailscale-Adresse deines Macs automatisch und nutzt sie, wenn das lokale Netzwerk nicht verfügbar ist."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code obtiene automáticamente la dirección de Tailscale de tu Mac y la usa cuando la red local no está disponible."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code apprend automatiquement l’adresse Tailscale de votre Mac et l’utilise lorsque le réseau local n’est pas disponible."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code rileva automaticamente l’indirizzo Tailscale del tuo Mac e lo usa quando la rete locale non è disponibile."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote CodeはMacのTailscaleアドレスを自動的に取得し、ローカルネットワークが利用できないときに使用します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code는 Mac의 Tailscale 주소를 자동으로 파악하고 로컬 네트워크를 사용할 수 없을 때마다 이 주소를 사용합니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code obtém o endereço do Tailscale do seu Mac automaticamente e o usa sempre que a rede local não estiver disponível."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code, Mac'inizin Tailscale adresini otomatik öğrenir ve yerel ağ kullanılamadığında bu adresi kullanır."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 会自动获取你 Mac 的 Tailscale 地址，并在本地网络不可用时使用它。"
+          }
+        }
+      }
+    },
+    "Remote Code may not use the local network. Turn on Local Network for Remote Code in Settings.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code darf das lokale Netzwerk nicht verwenden. Aktiviere „Lokales Netzwerk“ für Remote Code in den Einstellungen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code no puede usar la red local. Activa Red local para Remote Code en Ajustes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code ne peut pas utiliser le réseau local. Activez Réseau local pour Remote Code dans Réglages."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code non può usare la rete locale. Attiva Rete locale per Remote Code in Impostazioni."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Codeはローカルネットワークを使用できません。設定でRemote Codeのローカルネットワークをオンにしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code가 로컬 네트워크를 사용할 수 없습니다. 설정에서 Remote Code의 로컬 네트워크를 켜십시오."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code não pode usar a rede local. Ative Rede Local para o Remote Code em Ajustes."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code'un yerel ağı kullanma izni yok. Ayarlar'da Remote Code için Yerel Ağ'ı açın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 无法使用本地网络。请在“设置”中为 Remote Code 打开“本地网络”。"
+          }
+        }
+      }
+    },
+    "Remote Code uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code verwendet keine Bibliotheken von Drittanbietern. Die Verschlüsselung stammt aus Apple CryptoKit und folgt der gemeinfreien Spezifikation des Noise Protocol Framework."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code no usa bibliotecas de terceros. El cifrado lo proporciona Apple CryptoKit y sigue la especificación de dominio público del Noise Protocol Framework."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code n’utilise aucune bibliothèque tierce. Le chiffrement est fourni par Apple CryptoKit et suit la spécification du Noise Protocol Framework, qui relève du domaine public."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code non usa librerie di terze parti. La crittografia è fornita da Apple CryptoKit e segue la specifica di pubblico dominio del Noise Protocol Framework."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Codeはサードパーティ製ライブラリを使用していません。暗号化はApple CryptoKitによって提供され、パブリックドメインのNoise Protocol Framework仕様に準拠しています。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code는 타사 라이브러리를 사용하지 않습니다. 암호화는 Apple CryptoKit으로 제공되며 퍼블릭 도메인인 Noise Protocol Framework 사양을 따릅니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code não usa bibliotecas de terceiros. A criptografia é fornecida pelo Apple CryptoKit e segue a especificação Noise Protocol Framework, de domínio público."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code üçüncü taraf kütüphane kullanmaz. Şifreleme Apple CryptoKit ile sağlanır ve kamu malı Noise Protocol Framework belirtimini izler."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 不使用任何第三方库。加密由 Apple CryptoKit 提供，并遵循公有领域的 Noise Protocol Framework 规范。"
+          }
+        }
+      }
+    },
+    "Remote Code was restarted while Claude was working; the last turn may be incomplete.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code wurde neu gestartet, während Claude arbeitete; die letzte Runde ist eventuell unvollständig."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code se reinició mientras Claude trabajaba; puede que el último turno esté incompleto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code a redémarré pendant que Claude travaillait ; le dernier tour est peut-être incomplet."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code è stato riavviato mentre Claude lavorava; l’ultimo turno potrebbe essere incompleto."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claudeの作業中にRemote Codeが再起動されました。最後のターンが不完全な可能性があります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude가 작업하는 동안 Remote Code가 재시작되었습니다. 마지막 턴이 완료되지 않았을 수 있습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code foi reiniciado enquanto o Claude trabalhava; o último turno pode estar incompleto."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude çalışırken Remote Code yeniden başlatıldı; son tur eksik olabilir."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude 工作期间 Remote Code 已重新启动；最后一轮可能不完整。"
+          }
+        }
+      }
+    },
+    "Remote Code works with Claude Code. It is an independent open-source project and is not affiliated with Anthropic. Remote Code collects no data.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code funktioniert mit Claude Code. Es ist ein unabhängiges Open-Source-Projekt und steht in keiner Verbindung zu Anthropic. Remote Code sammelt keine Daten."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code funciona con Claude Code. Es un proyecto independiente de código abierto y no está afiliado a Anthropic. Remote Code no recopila datos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code fonctionne avec Claude Code. C’est un projet open source indépendant, sans lien avec Anthropic. Remote Code ne collecte aucune donnée."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code funziona con Claude Code. È un progetto open source indipendente e non è affiliato ad Anthropic. Remote Code non raccoglie dati."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote CodeはClaude Codeと連携して動作します。独立したオープンソースプロジェクトであり、Anthropicとは提携していません。Remote Codeはデータを収集しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code는 Claude Code와 함께 작동합니다. 독립적인 오픈 소스 프로젝트이며 Anthropic과 제휴 관계가 없습니다. Remote Code는 데이터를 수집하지 않습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O Remote Code funciona com o Claude Code. É um projeto independente de código aberto e não é afiliado à Anthropic. O Remote Code não coleta dados."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code, Claude Code ile çalışır. Bağımsız, açık kaynaklı bir projedir ve Anthropic ile bağlantılı değildir. Remote Code hiçbir veri toplamaz."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remote Code 与 Claude Code 配合使用。它是一个独立的开源项目，与 Anthropic 无关联。Remote Code 不收集任何数据。"
           }
         }
       }
@@ -14501,60 +14501,60 @@
         }
       }
     },
-    "Start Using Pilothouse": {
+    "Start Using Remote Code": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse verwenden"
+            "value": "Remote Code verwenden"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Empezar a usar Pilothouse"
+            "value": "Empezar a usar Remote Code"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Commencer à utiliser Pilothouse"
+            "value": "Commencer à utiliser Remote Code"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Inizia a usare Pilothouse"
+            "value": "Inizia a usare Remote Code"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouseを使い始める"
+            "value": "Remote Codeを使い始める"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse 사용 시작하기"
+            "value": "Remote Code 사용 시작하기"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Começar a Usar o Pilothouse"
+            "value": "Começar a Usar o Remote Code"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse'u Kullanmaya Başla"
+            "value": "Remote Code'u Kullanmaya Başla"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "开始使用 Pilothouse"
+            "value": "开始使用 Remote Code"
           }
         }
       }
@@ -15951,60 +15951,60 @@
         }
       }
     },
-    "This device forgets the Mac and its cached transcripts. To block this device on the Mac too, revoke it in the Pilothouse menu on the Mac.": {
+    "This device forgets the Mac and its cached transcripts. To block this device on the Mac too, revoke it in the Remote Code menu on the Mac.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dieses Gerät vergisst den Mac und seine zwischengespeicherten Verläufe. Um das Gerät auch auf dem Mac zu sperren, widerrufe es im Pilothouse-Menü auf dem Mac."
+            "value": "Dieses Gerät vergisst den Mac und seine zwischengespeicherten Verläufe. Um das Gerät auch auf dem Mac zu sperren, widerrufe es im Remote-Code-Menü auf dem Mac."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Este dispositivo olvida el Mac y sus historiales en caché. Para bloquear también este dispositivo en el Mac, revócalo en el menú de Pilothouse del Mac."
+            "value": "Este dispositivo olvida el Mac y sus historiales en caché. Para bloquear también este dispositivo en el Mac, revócalo en el menú de Remote Code del Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cet appareil oublie le Mac et ses historiques en cache. Pour bloquer aussi cet appareil sur le Mac, révoquez-le dans le menu Pilothouse du Mac."
+            "value": "Cet appareil oublie le Mac et ses historiques en cache. Pour bloquer aussi cet appareil sur le Mac, révoquez-le dans le menu Remote Code du Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Questo dispositivo dimentica il Mac e le sue cronologie in cache. Per bloccare questo dispositivo anche sul Mac, revocalo dal menu di Pilothouse sul Mac."
+            "value": "Questo dispositivo dimentica il Mac e le sue cronologie in cache. Per bloccare questo dispositivo anche sul Mac, revocalo dal menu di Remote Code sul Mac."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "このデバイスはMacとキャッシュされたトランスクリプトの情報を消去します。Mac側でもこのデバイスをブロックするには、MacのPilothouseメニューで取り消してください。"
+            "value": "このデバイスはMacとキャッシュされたトランスクリプトの情報を消去します。Mac側でもこのデバイスをブロックするには、MacのRemote Codeメニューで取り消してください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "이 기기에서 Mac과 캐시된 기록을 삭제합니다. Mac에서도 이 기기를 차단하려면 Mac의 Pilothouse 메뉴에서 철회하십시오."
+            "value": "이 기기에서 Mac과 캐시된 기록을 삭제합니다. Mac에서도 이 기기를 차단하려면 Mac의 Remote Code 메뉴에서 철회하십시오."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Este dispositivo esquece o Mac e as transcrições em cache dele. Para bloquear este dispositivo também no Mac, revogue-o no menu do Pilothouse no Mac."
+            "value": "Este dispositivo esquece o Mac e as transcrições em cache dele. Para bloquear este dispositivo também no Mac, revogue-o no menu do Remote Code no Mac."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu cihaz Mac'i ve önbellekteki dökümlerini unutur. Bu cihazı Mac'te de engellemek için Mac'teki Pilothouse menüsünden iptal edin."
+            "value": "Bu cihaz Mac'i ve önbellekteki dökümlerini unutur. Bu cihazı Mac'te de engellemek için Mac'teki Remote Code menüsünden iptal edin."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "此设备将忘记该 Mac 及其缓存的记录。若要在 Mac 上也阻止此设备，请在 Mac 的 Pilothouse 菜单中撤销它。"
+            "value": "此设备将忘记该 Mac 及其缓存的记录。若要在 Mac 上也阻止此设备，请在 Mac 的 Remote Code 菜单中撤销它。"
           }
         }
       }
@@ -16067,60 +16067,60 @@
         }
       }
     },
-    "This is not a valid Pilothouse pairing code.": {
+    "This is not a valid Remote Code pairing code.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das ist kein gültiger Pilothouse-Kopplungscode."
+            "value": "Das ist kein gültiger Remote-Code-Kopplungscode."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No es un código de vinculación de Pilothouse válido."
+            "value": "No es un código de vinculación de Remote Code válido."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ce n’est pas un code de jumelage Pilothouse valide."
+            "value": "Ce n’est pas un code de jumelage Remote Code valide."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Non è un codice di abbinamento Pilothouse valido."
+            "value": "Non è un codice di abbinamento Remote Code valido."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "有効なPilothouseのペアリングコードではありません。"
+            "value": "有効なRemote Codeのペアリングコードではありません。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "유효한 Pilothouse 페어링 코드가 아닙니다."
+            "value": "유효한 Remote Code 페어링 코드가 아닙니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Este não é um código de emparelhamento válido do Pilothouse."
+            "value": "Este não é um código de emparelhamento válido do Remote Code."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bu geçerli bir Pilothouse eşleştirme kodu değil."
+            "value": "Bu geçerli bir Remote Code eşleştirme kodu değil."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "这不是有效的 Pilothouse 配对代码。"
+            "value": "这不是有效的 Remote Code 配对代码。"
           }
         }
       }
@@ -16357,60 +16357,60 @@
         }
       }
     },
-    "To allow everything in a chat without asking, turn on “Bypass permissions” in Pilothouse settings on your Mac.": {
+    "To allow everything in a chat without asking, turn on “Bypass permissions” in Remote Code settings on your Mac.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um in einem Chat alles ohne Nachfrage zu erlauben, aktiviere „Berechtigungen umgehen“ in den Pilothouse-Einstellungen auf deinem Mac."
+            "value": "Um in einem Chat alles ohne Nachfrage zu erlauben, aktiviere „Berechtigungen umgehen“ in den Remote-Code-Einstellungen auf deinem Mac."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para permitir todo en un chat sin preguntar, activa “Omitir permisos” en los ajustes de Pilothouse en tu Mac."
+            "value": "Para permitir todo en un chat sin preguntar, activa “Omitir permisos” en los ajustes de Remote Code en tu Mac."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pour tout autoriser dans une discussion sans confirmation, activez « Ignorer les autorisations » dans les réglages de Pilothouse sur votre Mac."
+            "value": "Pour tout autoriser dans une discussion sans confirmation, activez « Ignorer les autorisations » dans les réglages de Remote Code sur votre Mac."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Per consentire tutto in una chat senza chiedere, attiva “Ignora permessi” nelle impostazioni di Pilothouse sul Mac."
+            "value": "Per consentire tutto in una chat senza chiedere, attiva “Ignora permessi” nelle impostazioni di Remote Code sul Mac."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "チャットで確認なしにすべてを許可するには、MacのPilothouse設定で「権限をバイパス」をオンにしてください。"
+            "value": "チャットで確認なしにすべてを許可するには、MacのRemote Code設定で「権限をバイパス」をオンにしてください。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "채팅에서 묻지 않고 모두 허용하려면 Mac의 Pilothouse 설정에서 ‘권한 우회’를 켜세요."
+            "value": "채팅에서 묻지 않고 모두 허용하려면 Mac의 Remote Code 설정에서 ‘권한 우회’를 켜세요."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para permitir tudo em uma conversa sem perguntar, ative “Ignorar permissões” nos ajustes do Pilothouse no seu Mac."
+            "value": "Para permitir tudo em uma conversa sem perguntar, ative “Ignorar permissões” nos ajustes do Remote Code no seu Mac."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bir sohbette sormadan her şeye izin vermek için Mac'teki Pilothouse ayarlarında “İzinleri atla”yı açın."
+            "value": "Bir sohbette sormadan her şeye izin vermek için Mac'teki Remote Code ayarlarında “İzinleri atla”yı açın."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "要在聊天中无需询问即允许所有操作，请在 Mac 上的 Pilothouse 设置中打开“绕过权限”。"
+            "value": "要在聊天中无需询问即允许所有操作，请在 Mac 上的 Remote Code 设置中打开“绕过权限”。"
           }
         }
       }
@@ -17691,118 +17691,118 @@
         }
       }
     },
-    "Your coding agents run on your Mac. Pilothouse lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
+    "Your coding agents run on your Mac. Remote Code lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deine Coding-Agenten laufen auf deinem Mac. Mit Pilothouse sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen."
+            "value": "Deine Coding-Agenten laufen auf deinem Mac. Mit Remote Code sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tus agentes de programación se ejecutan en tu Mac. Pilothouse te permite hablar con ellos, seguir cada paso y aprobar cambios desde tu iPhone o iPad."
+            "value": "Tus agentes de programación se ejecutan en tu Mac. Remote Code te permite hablar con ellos, seguir cada paso y aprobar cambios desde tu iPhone o iPad."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vos agents de programmation s’exécutent sur votre Mac. Pilothouse vous permet de leur parler, de suivre chaque étape et d’approuver les modifications depuis votre iPhone ou iPad."
+            "value": "Vos agents de programmation s’exécutent sur votre Mac. Remote Code vous permet de leur parler, de suivre chaque étape et d’approuver les modifications depuis votre iPhone ou iPad."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "I tuoi agenti di programmazione vengono eseguiti sul tuo Mac. Pilothouse ti permette di parlare con loro, seguire ogni passaggio e approvare le modifiche dal tuo iPhone o iPad."
+            "value": "I tuoi agenti di programmazione vengono eseguiti sul tuo Mac. Remote Code ti permette di parlare con loro, seguire ogni passaggio e approvare le modifiche dal tuo iPhone o iPad."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "コーディングエージェントはMac上で動作します。Pilothouseを使えば、iPhoneやiPadからエージェントと会話し、各ステップを確認して、変更を承認できます。"
+            "value": "コーディングエージェントはMac上で動作します。Remote Codeを使えば、iPhoneやiPadからエージェントと会話し、各ステップを確認して、変更を承認できます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "코딩 에이전트는 Mac에서 실행됩니다. Pilothouse를 사용하면 iPhone 또는 iPad에서 에이전트와 대화하고, 모든 단계를 확인하며, 변경 사항을 승인할 수 있습니다."
+            "value": "코딩 에이전트는 Mac에서 실행됩니다. Remote Code를 사용하면 iPhone 또는 iPad에서 에이전트와 대화하고, 모든 단계를 확인하며, 변경 사항을 승인할 수 있습니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seus agentes de programação são executados no seu Mac. O Pilothouse permite conversar com eles, acompanhar cada etapa e aprovar alterações pelo seu iPhone ou iPad."
+            "value": "Seus agentes de programação são executados no seu Mac. O Remote Code permite conversar com eles, acompanhar cada etapa e aprovar alterações pelo seu iPhone ou iPad."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kodlama ajanlarınız Mac'inizde çalışır. Pilothouse, iPhone veya iPad'inizden onlarla konuşmanızı, her adımı izlemenizi ve değişiklikleri onaylamanızı sağlar."
+            "value": "Kodlama ajanlarınız Mac'inizde çalışır. Remote Code, iPhone veya iPad'inizden onlarla konuşmanızı, her adımı izlemenizi ve değişiklikleri onaylamanızı sağlar."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "你的编程代理在 Mac 上运行。借助 Pilothouse，你可以在 iPhone 或 iPad 上与它们对话、跟进每一步并批准更改。"
+            "value": "你的编程代理在 Mac 上运行。借助 Remote Code，你可以在 iPhone 或 iPad 上与它们对话、跟进每一步并批准更改。"
           }
         }
       }
     },
-    "Your traffic stays end-to-end encrypted by Pilothouse in addition to Tailscale's own encryption.": {
+    "Your traffic stays end-to-end encrypted by Remote Code in addition to Tailscale's own encryption.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dein Datenverkehr bleibt zusätzlich zur Verschlüsselung von Tailscale durch Pilothouse Ende-zu-Ende verschlüsselt."
+            "value": "Dein Datenverkehr bleibt zusätzlich zur Verschlüsselung von Tailscale durch Remote Code Ende-zu-Ende verschlüsselt."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pilothouse mantiene tu tráfico cifrado de extremo a extremo, además del propio cifrado de Tailscale."
+            "value": "Remote Code mantiene tu tráfico cifrado de extremo a extremo, además del propio cifrado de Tailscale."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Votre trafic reste chiffré de bout en bout par Pilothouse, en plus du chiffrement propre à Tailscale."
+            "value": "Votre trafic reste chiffré de bout en bout par Remote Code, en plus du chiffrement propre à Tailscale."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Il tuo traffico resta crittografato end-to-end da Pilothouse, oltre alla crittografia di Tailscale."
+            "value": "Il tuo traffico resta crittografato end-to-end da Remote Code, oltre alla crittografia di Tailscale."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "通信はTailscale自体の暗号化に加えて、Pilothouseによるエンドツーエンド暗号化で保護されます。"
+            "value": "通信はTailscale自体の暗号化に加えて、Remote Codeによるエンドツーエンド暗号化で保護されます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "트래픽은 Tailscale 자체 암호화에 더해 Pilothouse에 의해 종단 간 암호화된 상태로 유지됩니다."
+            "value": "트래픽은 Tailscale 자체 암호화에 더해 Remote Code에 의해 종단 간 암호화된 상태로 유지됩니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seu tráfego continua com criptografia de ponta a ponta do Pilothouse, além da própria criptografia do Tailscale."
+            "value": "Seu tráfego continua com criptografia de ponta a ponta do Remote Code, além da própria criptografia do Tailscale."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Trafiğiniz, Tailscale'in kendi şifrelemesine ek olarak Pilothouse tarafından uçtan uca şifreli kalır."
+            "value": "Trafiğiniz, Tailscale'in kendi şifrelemesine ek olarak Remote Code tarafından uçtan uca şifreli kalır."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "除了 Tailscale 自身的加密外，你的流量还由 Pilothouse 进行端到端加密。"
+            "value": "除了 Tailscale 自身的加密外，你的流量还由 Remote Code 进行端到端加密。"
           }
         }
       }

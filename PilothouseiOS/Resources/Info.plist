@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Pilothouse</string>
+	<string>Remote Code</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -38,9 +38,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Pilothouse uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.</string>
+	<string>Remote Code uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>Pilothouse connects to your Mac on the local network to control your Claude Code sessions.</string>
+	<string>Remote Code connects to your Mac on the local network to control your Claude Code sessions.</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_pilothouse._tcp</string>

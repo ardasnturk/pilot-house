@@ -1,7 +1,7 @@
 {
- "%@ does not report its commands to Pilothouse.": {
-  "de": "%@ meldet seine Befehle nicht an Pilothouse.",
-  "tr": "%@ komutlarını Pilothouse'a bildirmiyor."
+ "%@ does not report its commands to Remote Code.": {
+  "de": "%@ meldet seine Befehle nicht an Remote Code.",
+  "tr": "%@ komutlarını Remote Code'a bildirmiyor."
  },
  "%@ is not signed in on your Mac. Run it once in Terminal there.": {
   "de": "%@ ist auf deinem Mac nicht angemeldet. Starte es dort einmal im Terminal.",
@@ -103,9 +103,9 @@
   "de": "Jedes Mal fragen",
   "tr": "Her seferinde sor"
  },
- "At home, Pilothouse talks to your Mac over Wi-Fi. To reach it from anywhere, both devices join your private Tailscale network.": {
-  "de": "Zu Hause spricht Pilothouse über WLAN mit deinem Mac. Um ihn überall zu erreichen, treten beide Geräte deinem privaten Tailscale-Netzwerk bei.",
-  "tr": "Evde Pilothouse, Mac'inizle Wi-Fi üzerinden konuşur. Her yerden erişmek için iki cihaz da özel Tailscale ağınıza katılır."
+ "At home, Remote Code talks to your Mac over Wi-Fi. To reach it from anywhere, both devices join your private Tailscale network.": {
+  "de": "Zu Hause spricht Remote Code über WLAN mit deinem Mac. Um ihn überall zu erreichen, treten beide Geräte deinem privaten Tailscale-Netzwerk bei.",
+  "tr": "Evde Remote Code, Mac'inizle Wi-Fi üzerinden konuşur. Her yerden erişmek için iki cihaz da özel Tailscale ağınıza katılır."
  },
  "Attach photos or videos": {
   "de": "Fotos oder Videos anhängen",
@@ -279,9 +279,9 @@
   "de": "Der Ordner konnte nicht erstellt werden",
   "tr": "Klasör oluşturulamadı"
  },
- "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.": {
-  "de": "Dein Mac ist nicht erreichbar. Stelle sicher, dass Pilothouse dort läuft und beide Geräte im selben Netzwerk (oder mit Tailscale verbunden) sind. Prüfe Einstellungen → Pilothouse → Lokales Netzwerk.",
-  "tr": "Mac'inize ulaşılamadı. Pilothouse'un Mac'te çalıştığından ve iki cihazın aynı ağda (veya Tailscale'e bağlı) olduğundan emin olun. Ayarlar → Pilothouse → Yerel Ağ'ı kontrol edin."
+ "Could not reach your Mac. Make sure Remote Code is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Remote Code → Local Network.": {
+  "de": "Dein Mac ist nicht erreichbar. Stelle sicher, dass Remote Code dort läuft und beide Geräte im selben Netzwerk (oder mit Tailscale verbunden) sind. Prüfe Einstellungen → Remote Code → Lokales Netzwerk.",
+  "tr": "Mac'inize ulaşılamadı. Remote Code'un Mac'te çalıştığından ve iki cihazın aynı ağda (veya Tailscale'e bağlı) olduğundan emin olun. Ayarlar → Remote Code → Yerel Ağ'ı kontrol edin."
  },
  "Could not start the session": {
   "de": "Die Sitzung konnte nicht gestartet werden",
@@ -347,9 +347,9 @@
   "de": "Fertig in %@",
   "tr": "%@ içinde tamamlandı"
  },
- "Download it from the website and open it. A helm icon appears in the menu bar at the top of the screen.": {
-  "de": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein Steuerrad-Symbol.",
-  "tr": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir dümen simgesi belirir."
+ "Download it from the website and open it. A >_ icon appears in the menu bar at the top of the screen.": {
+  "de": "Lade sie von der Website herunter und öffne sie. Oben auf dem Bildschirm erscheint in der Menüleiste ein >_-Symbol.",
+  "tr": "Web sitesinden indirip açın. Ekranın üstündeki menü çubuğunda bir >_ simgesi belirir."
  },
  "Earlier": {
   "de": "Früher",
@@ -379,9 +379,9 @@
   "de": "In diesem Chat ist jetzt jede Aktion ohne Nachfrage erlaubt.",
   "tr": "Bu sohbette artık her işleme sormadan izin veriliyor."
  },
- "Explore Pilothouse with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
-  "de": "Erkunde Pilothouse mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt.",
-  "tr": "Pilothouse'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
+ "Explore Remote Code with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
+  "de": "Erkunde Remote Code mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt.",
+  "tr": "Remote Code'u simüle edilmiş bir Mac ile keşfedin. Hiçbir yere bir şey gönderilmez ve Mac gerekmez."
  },
  "Extra high": {
   "de": "Sehr hoch",
@@ -435,9 +435,9 @@
   "de": "Live mitverfolgen",
   "tr": "Canlı takip edin"
  },
- "Get Pilothouse for Mac": {
-  "de": "Pilothouse für den Mac laden",
-  "tr": "Mac için Pilothouse'u edinin"
+ "Get Remote Code for Mac": {
+  "de": "Remote Code für den Mac laden",
+  "tr": "Mac için Remote Code'u edinin"
  },
  "Get Tailscale on the App Store": {
   "de": "Tailscale im App Store laden",
@@ -471,9 +471,9 @@
   "de": "So richtest du Tailscale ein",
   "tr": "Tailscale Nasıl Kurulur"
  },
- "If iOS asks for Local Network access, allow it so Pilothouse can find your Mac.": {
-  "de": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Pilothouse deinen Mac findet.",
-  "tr": "iOS Yerel Ağ erişimi isterse izin verin; böylece Pilothouse Mac'inizi bulabilir."
+ "If iOS asks for Local Network access, allow it so Remote Code can find your Mac.": {
+  "de": "Wenn iOS nach Zugriff auf das lokale Netzwerk fragt, erlaube ihn, damit Remote Code deinen Mac findet.",
+  "tr": "iOS Yerel Ağ erişimi isterse izin verin; böylece Remote Code Mac'inizi bulabilir."
  },
  "In progress": {
   "de": "In Arbeit",
@@ -483,9 +483,9 @@
   "de": "Überblick",
   "tr": "Özet"
  },
- "Install Pilothouse on your Mac": {
-  "de": "Pilothouse auf deinem Mac installieren",
-  "tr": "Pilothouse'u Mac'inize kurun"
+ "Install Remote Code on your Mac": {
+  "de": "Remote Code auf deinem Mac installieren",
+  "tr": "Remote Code'u Mac'inize kurun"
  },
  "Install Tailscale from the App Store and sign in with the same account.": {
   "de": "Installiere Tailscale aus dem App Store und melde dich mit demselben Konto an.",
@@ -555,13 +555,13 @@
   "de": "Macs",
   "tr": "Mac'ler"
  },
- "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.": {
-  "de": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind.",
-  "tr": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun."
+ "Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi.": {
+  "de": "Achte darauf, dass Remote Code auf deinem Mac läuft und beide Geräte im selben WLAN sind.",
+  "tr": "Remote Code'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun."
  },
- "Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
-  "de": "Achte darauf, dass Pilothouse auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale.",
-  "tr": "Pilothouse'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
+ "Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.": {
+  "de": "Achte darauf, dass Remote Code auf deinem Mac läuft und beide Geräte im selben WLAN sind. Nicht in diesem WLAN? Nutze Tailscale.",
+  "tr": "Remote Code'un Mac'inizde çalıştığından ve iki cihazın aynı Wi-Fi'de olduğundan emin olun. O Wi-Fi'den uzakta mısınız? Tailscale kullanın."
  },
  "Max": {
   "de": "Maximum",
@@ -691,9 +691,9 @@
   "de": "Offline – der gespeicherte Verlauf wird angezeigt. Claude arbeitet auf deinem Mac weiter.",
   "tr": "Çevrimdışı — kayıtlı döküm gösteriliyor. Claude Mac'inizde çalışmaya devam ediyor."
  },
- "On the Mac, click the helm icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
-  "de": "Klicke auf dem Mac auf das Steuerrad-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code.",
-  "tr": "Mac'te dümen simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
+ "On the Mac, click the >_ icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.": {
+  "de": "Klicke auf dem Mac auf das >_-Symbol, wähle „iPhone oder iPad koppeln …“, tippe dann unten auf die Taste und scanne den Code.",
+  "tr": "Mac'te >_ simgesine tıklayın, “iPhone veya iPad Eşleştir…” öğesini seçin, ardından aşağıdaki düğmeye dokunup kodu tarayın."
  },
  "On this device": {
   "de": "Auf diesem Gerät",
@@ -711,17 +711,17 @@
   "de": "Es werden nur die ersten Einträge angezeigt.",
   "tr": "Yalnızca ilk girişler gösteriliyor."
  },
- "Open Pilothouse on your Mac, choose “Pair New Device…” and point the camera at the QR code.": {
-  "de": "Öffne Pilothouse auf deinem Mac, wähle „Neues Gerät koppeln …“ und richte die Kamera auf den QR-Code.",
-  "tr": "Mac'inizde Pilothouse'u açın, “Yeni Cihaz Eşleştir…”i seçin ve kamerayı QR koda tutun."
+ "Open Remote Code on your Mac, choose “Pair New Device…” and point the camera at the QR code.": {
+  "de": "Öffne Remote Code auf deinem Mac, wähle „Neues Gerät koppeln …“ und richte die Kamera auf den QR-Code.",
+  "tr": "Mac'inizde Remote Code'u açın, “Yeni Cihaz Eşleştir…”i seçin ve kamerayı QR koda tutun."
  },
  "Open Settings": {
   "de": "Einstellungen öffnen",
   "tr": "Ayarları Aç"
  },
- "Open the Pilothouse menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.": {
-  "de": "Öffne im Pilothouse-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an.",
-  "tr": "Pilothouse menüsünde Tailscale → “Claude ile otomatik kur”u seçin. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
+ "Open the Remote Code menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.": {
+  "de": "Öffne im Remote-Code-Menü → Tailscale → „Automatisch mit Claude einrichten“. Claude installiert und prüft Tailscale für dich; du meldest dich nur an.",
+  "tr": "Remote Code menüsünde Tailscale → “Claude ile otomatik kur”u seçin. Claude, Tailscale'i sizin için kurar ve kontrol eder; siz yalnızca giriş yaparsınız."
  },
  "Options": {
   "de": "Optionen",
@@ -787,50 +787,6 @@
   "de": "Beliebigen Ordner wählen",
   "tr": "İstediğiniz klasörü seçin"
  },
- "Pilothouse": {
-  "de": "Pilothouse",
-  "tr": "Pilothouse"
- },
- "Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": {
-  "de": "Pilothouse verbindet sich immer zuerst über dein WLAN. Aktiviere das nur, wenn du auch Tailscale nutzt, um deinen Mac außerhalb dieses WLANs zu erreichen.",
-  "tr": "Pilothouse her zaman önce Wi-Fi'niz üzerinden bağlanır. Bunu yalnızca Tailscale da kullanıyorsanız, o Wi-Fi'den uzaktayken Mac'inize ulaşmak için açın."
- },
- "Pilothouse could not access the Keychain: %@": {
-  "de": "Pilothouse konnte nicht auf den Schlüsselbund zugreifen: %@",
-  "tr": "Pilothouse Anahtar Zinciri'ne erişemedi: %@"
- },
- "Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": {
-  "de": "Pilothouse kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft.",
-  "tr": "Pilothouse, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın."
- },
- "Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.": {
-  "de": "Pilothouse folgt der Sprache deines iPhone. Um nur für Pilothouse eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Pilothouse → Sprache.",
-  "tr": "Pilothouse, iPhone'unuzun dilini kullanır. Yalnızca Pilothouse için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Pilothouse → Dil bölümünden seçin."
- },
- "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.": {
-  "de": "Pilothouse darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen und versuche es erneut.",
-  "tr": "Pilothouse'un yerel ağı kullanma izni yok, bu yüzden bu Wi-Fi'de Mac'inize ulaşamıyor. Ayarlar'da Pilothouse için Yerel Ağ'ı açıp tekrar deneyin."
- },
- "Pilothouse learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": {
-  "de": "Pilothouse lernt die Tailscale-Adresse deines Macs automatisch und nutzt sie, wenn das lokale Netzwerk nicht verfügbar ist.",
-  "tr": "Pilothouse, Mac'inizin Tailscale adresini otomatik öğrenir ve yerel ağ kullanılamadığında bu adresi kullanır."
- },
- "Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.": {
-  "de": "Pilothouse darf das lokale Netzwerk nicht verwenden. Aktiviere „Lokales Netzwerk“ für Pilothouse in den Einstellungen.",
-  "tr": "Pilothouse'un yerel ağı kullanma izni yok. Ayarlar'da Pilothouse için Yerel Ağ'ı açın."
- },
- "Pilothouse uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.": {
-  "de": "Pilothouse verwendet keine Bibliotheken von Drittanbietern. Die Verschlüsselung stammt aus Apple CryptoKit und folgt der gemeinfreien Spezifikation des Noise Protocol Framework.",
-  "tr": "Pilothouse üçüncü taraf kütüphane kullanmaz. Şifreleme Apple CryptoKit ile sağlanır ve kamu malı Noise Protocol Framework belirtimini izler."
- },
- "Pilothouse was restarted while Claude was working; the last turn may be incomplete.": {
-  "de": "Pilothouse wurde neu gestartet, während Claude arbeitete; die letzte Runde ist eventuell unvollständig.",
-  "tr": "Claude çalışırken Pilothouse yeniden başlatıldı; son tur eksik olabilir."
- },
- "Pilothouse works with Claude Code. It is an independent open-source project and is not affiliated with Anthropic. Pilothouse collects no data.": {
-  "de": "Pilothouse funktioniert mit Claude Code. Es ist ein unabhängiges Open-Source-Projekt und steht in keiner Verbindung zu Anthropic. Pilothouse sammelt keine Daten.",
-  "tr": "Pilothouse, Claude Code ile çalışır. Bağımsız, açık kaynaklı bir projedir ve Anthropic ile bağlantılı değildir. Pilothouse hiçbir veri toplamaz."
- },
  "Plan only": {
   "de": "Nur planen",
   "tr": "Yalnızca plan"
@@ -862,6 +818,50 @@
  "Remote Access": {
   "de": "Fernzugriff",
   "tr": "Uzaktan Erişim"
+ },
+ "Remote Code": {
+  "de": "Remote Code",
+  "tr": "Remote Code"
+ },
+ "Remote Code always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.": {
+  "de": "Remote Code verbindet sich immer zuerst über dein WLAN. Aktiviere das nur, wenn du auch Tailscale nutzt, um deinen Mac außerhalb dieses WLANs zu erreichen.",
+  "tr": "Remote Code her zaman önce Wi-Fi'niz üzerinden bağlanır. Bunu yalnızca Tailscale da kullanıyorsanız, o Wi-Fi'den uzaktayken Mac'inize ulaşmak için açın."
+ },
+ "Remote Code could not access the Keychain: %@": {
+  "de": "Remote Code konnte nicht auf den Schlüsselbund zugreifen: %@",
+  "tr": "Remote Code Anahtar Zinciri'ne erişemedi: %@"
+ },
+ "Remote Code doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.": {
+  "de": "Remote Code kennt die Tailscale-Adresse deines Macs noch nicht. Verbinde dich einmal über dasselbe WLAN, während Tailscale auf dem Mac läuft.",
+  "tr": "Remote Code, Mac'inizin Tailscale adresini henüz bilmiyor. Mac'te Tailscale çalışırken bir kez aynı Wi-Fi üzerinden bağlanın."
+ },
+ "Remote Code follows your iPhone's language. To use another one just for Remote Code, choose it in Settings → Apps → Remote Code → Language.": {
+  "de": "Remote Code folgt der Sprache deines iPhone. Um nur für Remote Code eine andere zu verwenden, wähle sie unter Einstellungen → Apps → Remote Code → Sprache.",
+  "tr": "Remote Code, iPhone'unuzun dilini kullanır. Yalnızca Remote Code için başka bir dil kullanmak isterseniz Ayarlar → Uygulamalar → Remote Code → Dil bölümünden seçin."
+ },
+ "Remote Code is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Remote Code in Settings, then try again.": {
+  "de": "Remote Code darf das lokale Netzwerk nicht verwenden und erreicht deinen Mac in diesem WLAN deshalb nicht. Aktiviere „Lokales Netzwerk“ für Remote Code in den Einstellungen und versuche es erneut.",
+  "tr": "Remote Code'un yerel ağı kullanma izni yok, bu yüzden bu Wi-Fi'de Mac'inize ulaşamıyor. Ayarlar'da Remote Code için Yerel Ağ'ı açıp tekrar deneyin."
+ },
+ "Remote Code learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.": {
+  "de": "Remote Code lernt die Tailscale-Adresse deines Macs automatisch und nutzt sie, wenn das lokale Netzwerk nicht verfügbar ist.",
+  "tr": "Remote Code, Mac'inizin Tailscale adresini otomatik öğrenir ve yerel ağ kullanılamadığında bu adresi kullanır."
+ },
+ "Remote Code may not use the local network. Turn on Local Network for Remote Code in Settings.": {
+  "de": "Remote Code darf das lokale Netzwerk nicht verwenden. Aktiviere „Lokales Netzwerk“ für Remote Code in den Einstellungen.",
+  "tr": "Remote Code'un yerel ağı kullanma izni yok. Ayarlar'da Remote Code için Yerel Ağ'ı açın."
+ },
+ "Remote Code uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.": {
+  "de": "Remote Code verwendet keine Bibliotheken von Drittanbietern. Die Verschlüsselung stammt aus Apple CryptoKit und folgt der gemeinfreien Spezifikation des Noise Protocol Framework.",
+  "tr": "Remote Code üçüncü taraf kütüphane kullanmaz. Şifreleme Apple CryptoKit ile sağlanır ve kamu malı Noise Protocol Framework belirtimini izler."
+ },
+ "Remote Code was restarted while Claude was working; the last turn may be incomplete.": {
+  "de": "Remote Code wurde neu gestartet, während Claude arbeitete; die letzte Runde ist eventuell unvollständig.",
+  "tr": "Claude çalışırken Remote Code yeniden başlatıldı; son tur eksik olabilir."
+ },
+ "Remote Code works with Claude Code. It is an independent open-source project and is not affiliated with Anthropic. Remote Code collects no data.": {
+  "de": "Remote Code funktioniert mit Claude Code. Es ist ein unabhängiges Open-Source-Projekt und steht in keiner Verbindung zu Anthropic. Remote Code sammelt keine Daten.",
+  "tr": "Remote Code, Claude Code ile çalışır. Bağımsız, açık kaynaklı bir projedir ve Anthropic ile bağlantılı değildir. Remote Code hiçbir veri toplamaz."
  },
  "Remove": {
   "de": "Entfernen",
@@ -999,9 +999,9 @@
   "de": "Quellcode auf GitHub",
   "tr": "GitHub'da Kaynak Kod"
  },
- "Start Using Pilothouse": {
-  "de": "Pilothouse verwenden",
-  "tr": "Pilothouse'u Kullanmaya Başla"
+ "Start Using Remote Code": {
+  "de": "Remote Code verwenden",
+  "tr": "Remote Code'u Kullanmaya Başla"
  },
  "Start in %@": {
   "de": "In %@ starten",
@@ -1099,17 +1099,17 @@
   "de": "Dieser Mac",
   "tr": "Bu Mac"
  },
- "This device forgets the Mac and its cached transcripts. To block this device on the Mac too, revoke it in the Pilothouse menu on the Mac.": {
-  "de": "Dieses Gerät vergisst den Mac und seine zwischengespeicherten Verläufe. Um das Gerät auch auf dem Mac zu sperren, widerrufe es im Pilothouse-Menü auf dem Mac.",
-  "tr": "Bu cihaz Mac'i ve önbellekteki dökümlerini unutur. Bu cihazı Mac'te de engellemek için Mac'teki Pilothouse menüsünden iptal edin."
+ "This device forgets the Mac and its cached transcripts. To block this device on the Mac too, revoke it in the Remote Code menu on the Mac.": {
+  "de": "Dieses Gerät vergisst den Mac und seine zwischengespeicherten Verläufe. Um das Gerät auch auf dem Mac zu sperren, widerrufe es im Remote-Code-Menü auf dem Mac.",
+  "tr": "Bu cihaz Mac'i ve önbellekteki dökümlerini unutur. Bu cihazı Mac'te de engellemek için Mac'teki Remote Code menüsünden iptal edin."
  },
  "This folder is empty.": {
   "de": "Dieser Ordner ist leer.",
   "tr": "Bu klasör boş."
  },
- "This is not a valid Pilothouse pairing code.": {
-  "de": "Das ist kein gültiger Pilothouse-Kopplungscode.",
-  "tr": "Bu geçerli bir Pilothouse eşleştirme kodu değil."
+ "This is not a valid Remote Code pairing code.": {
+  "de": "Das ist kein gültiger Remote-Code-Kopplungscode.",
+  "tr": "Bu geçerli bir Remote Code eşleştirme kodu değil."
  },
  "This sub-agent left no transcript.": {
   "de": "Dieser Sub-Agent hat keinen Verlauf hinterlassen.",
@@ -1127,9 +1127,9 @@
   "de": "Drei Schritte",
   "tr": "Üç adım"
  },
- "To allow everything in a chat without asking, turn on “Bypass permissions” in Pilothouse settings on your Mac.": {
-  "de": "Um in einem Chat alles ohne Nachfrage zu erlauben, aktiviere „Berechtigungen umgehen“ in den Pilothouse-Einstellungen auf deinem Mac.",
-  "tr": "Bir sohbette sormadan her şeye izin vermek için Mac'teki Pilothouse ayarlarında “İzinleri atla”yı açın."
+ "To allow everything in a chat without asking, turn on “Bypass permissions” in Remote Code settings on your Mac.": {
+  "de": "Um in einem Chat alles ohne Nachfrage zu erlauben, aktiviere „Berechtigungen umgehen“ in den Remote-Code-Einstellungen auf deinem Mac.",
+  "tr": "Bir sohbette sormadan her şeye izin vermek için Mac'teki Remote Code ayarlarında “İzinleri atla”yı açın."
  },
  "Today": {
   "de": "Heute",
@@ -1219,13 +1219,13 @@
   "de": "Dein Mac fasst die Woche zusammen …",
   "tr": "Mac'iniz haftayı özetliyor…"
  },
- "Your coding agents run on your Mac. Pilothouse lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
-  "de": "Deine Coding-Agenten laufen auf deinem Mac. Mit Pilothouse sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen.",
-  "tr": "Kodlama ajanlarınız Mac'inizde çalışır. Pilothouse, iPhone veya iPad'inizden onlarla konuşmanızı, her adımı izlemenizi ve değişiklikleri onaylamanızı sağlar."
+ "Your coding agents run on your Mac. Remote Code lets you talk to them, follow every step and approve changes from your iPhone or iPad.": {
+  "de": "Deine Coding-Agenten laufen auf deinem Mac. Mit Remote Code sprichst du von deinem iPhone oder iPad aus mit ihnen, verfolgst jeden Schritt und bestätigst Änderungen.",
+  "tr": "Kodlama ajanlarınız Mac'inizde çalışır. Remote Code, iPhone veya iPad'inizden onlarla konuşmanızı, her adımı izlemenizi ve değişiklikleri onaylamanızı sağlar."
  },
- "Your traffic stays end-to-end encrypted by Pilothouse in addition to Tailscale's own encryption.": {
-  "de": "Dein Datenverkehr bleibt zusätzlich zur Verschlüsselung von Tailscale durch Pilothouse Ende-zu-Ende verschlüsselt.",
-  "tr": "Trafiğiniz, Tailscale'in kendi şifrelemesine ek olarak Pilothouse tarafından uçtan uca şifreli kalır."
+ "Your traffic stays end-to-end encrypted by Remote Code in addition to Tailscale's own encryption.": {
+  "de": "Dein Datenverkehr bleibt zusätzlich zur Verschlüsselung von Tailscale durch Remote Code Ende-zu-Ende verschlüsselt.",
+  "tr": "Trafiğiniz, Tailscale'in kendi şifrelemesine ek olarak Remote Code tarafından uçtan uca şifreli kalır."
  },
  "[Video, %@: the %lld images attached are frames from it, evenly spaced from start to end.]": {
   "de": "[Video, %@: Die %lld angehängten Bilder sind Einzelbilder daraus, gleichmäßig vom Anfang bis zum Ende verteilt.]",

@@ -1,10 +1,10 @@
-Pilothouse bringt die Claude-Code-Sitzungen auf deinem Mac in deine Hosentasche. Starte eine Sitzung in einem beliebigen Projektordner, verfolge live, wie Claude nachdenkt, Dateien bearbeitet und Befehle ausführt, und bestätige oder verweigere jede Aktion auf deinem iPhone oder iPad.
+Remote Code bringt die Claude-Code-Sitzungen auf deinem Mac in deine Hosentasche. Starte eine Sitzung in einem beliebigen Projektordner, verfolge live, wie Claude nachdenkt, Dateien bearbeitet und Befehle ausführt, und bestätige oder verweigere jede Aktion auf deinem iPhone oder iPad.
 
 VORAUSSETZUNGEN – BITTE LESEN
-Pilothouse ist eine Fernbedienung, kein eigenständiger Assistent. Du brauchst:
-• einen Mac (macOS 15 oder neuer) mit der kostenlosen Pilothouse-Mac-App, erhältlich unter github.com/ardasnturk/pilot-house
+Remote Code ist eine Fernbedienung, kein eigenständiger Assistent. Du brauchst:
+• einen Mac (macOS 15 oder neuer) mit der kostenlosen Remote-Code-Mac-App, erhältlich unter github.com/ardasnturk/remote-code
 • das offizielle Kommandozeilenwerkzeug Claude Code auf diesem Mac, angemeldet mit deinem eigenen Claude-Konto (oder deinem eigenen API-Schlüssel)
-Pilothouse verbindet sich nie mit Anthropic und sieht deine Zugangsdaten nie: Die gesamte KI-Arbeit passiert in Claude Code auf deinem Mac. Mit dem eingebauten Demo-Modus kannst du die App vorab ausprobieren – ganz ohne Mac und Konto.
+Remote Code verbindet sich nie mit Anthropic und sieht deine Zugangsdaten nie: Die gesamte KI-Arbeit passiert in Claude Code auf deinem Mac. Mit dem eingebauten Demo-Modus kannst du die App vorab ausprobieren – ganz ohne Mac und Konto.
 
 WAS DU TUN KANNST
 • Ordner in deinem Mac-Benutzerordner durchsuchen und in jedem eine neue Sitzung starten
@@ -20,12 +20,12 @@ PRIVAT UND SICHER
 • Ende-zu-Ende-Verschlüsselung zwischen deinen Geräten (Noise IK, X25519, ChaCha20-Poly1305) mit gegenseitiger Authentifizierung bei jeder Verbindung
 • Verlorene Geräte mit einem Klick auf dem Mac sperren
 • Unbeantwortete Berechtigungsanfragen werden automatisch abgelehnt
-• Keine Analyse, kein Tracking, keine Werbung. Pilothouse ist Open Source unter der MIT-Lizenz
+• Keine Analyse, kein Tracking, keine Werbung. Remote Code ist Open Source unter der MIT-Lizenz
 
 ZU HAUSE UND UNTERWEGS
-Im WLAN zu Hause oder im Büro wird dein Mac automatisch gefunden. Unterwegs funktioniert Pilothouse über Tailscale; die Mac-App enthält einen Schritt-für-Schritt-Assistenten für die Einrichtung. Die Mac-App hält deinen Mac wach, solange Sitzungen laufen – auf Wunsch auch bei geschlossenem Deckel.
+Im WLAN zu Hause oder im Büro wird dein Mac automatisch gefunden. Unterwegs funktioniert Remote Code über Tailscale; die Mac-App enthält einen Schritt-für-Schritt-Assistenten für die Einrichtung. Die Mac-App hält deinen Mac wach, solange Sitzungen laufen – auf Wunsch auch bei geschlossenem Deckel.
 
 BARRIEREFREI UND LOKALISIERT
 Volle Unterstützung für Dynamic Type und VoiceOver, heller und dunkler Modus, Sprachen: Deutsch, Englisch und Türkisch.
 
-Pilothouse funktioniert mit Claude Code. Es ist ein unabhängiges Projekt und steht in keiner Verbindung zu Anthropic, wird von Anthropic weder unterstützt noch gesponsert. Du bist selbst dafür verantwortlich, Claude Code gemäß den Nutzungsbedingungen von Anthropic zu verwenden.
+Remote Code funktioniert mit Claude Code. Es ist ein unabhängiges Projekt und steht in keiner Verbindung zu Anthropic, wird von Anthropic weder unterstützt noch gesponsert. Du bist selbst dafür verantwortlich, Claude Code gemäß den Nutzungsbedingungen von Anthropic zu verwenden.

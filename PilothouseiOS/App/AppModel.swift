@@ -65,7 +65,7 @@ final class AppModel {
         do {
             identity = try identityStore.loadOrCreateIdentity()
         } catch {
-            identityError = String(localized: "Pilothouse could not access the Keychain: \(error.localizedDescription)")
+            identityError = String(localized: "Remote Code could not access the Keychain: \(error.localizedDescription)")
         }
     }
 

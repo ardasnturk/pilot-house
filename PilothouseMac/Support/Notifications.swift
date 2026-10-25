@@ -23,7 +23,7 @@ enum AlertText {
     /// ntfy: the app name as title, the headline (and detail) as message.
     @Sendable static func ntfyContent(for alert: HostAlert, includeDetail: Bool) -> AlertContent {
         let (headline, detail) = parts(of: alert, includeDetail: includeDetail)
-        return AlertContent(title: "Pilothouse", body: AlertContent.body(headline, detail: detail))
+        return AlertContent(title: "Remote Code", body: AlertContent.body(headline, detail: detail))
     }
 }
 
@@ -55,7 +55,7 @@ struct MacNotificationSink: AlertSink {
     }
 }
 
-/// Shows banners even while Pilothouse is the active app (e.g. Settings is open).
+/// Shows banners even while Remote Code is the active app (e.g. Settings is open).
 final class NotificationCenterDelegate: NSObject, UNUserNotificationCenterDelegate {
     func userNotificationCenter(
         _ center: UNUserNotificationCenter, willPresent notification: UNNotification

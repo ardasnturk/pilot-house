@@ -28,7 +28,7 @@ struct PairingView: View {
 
     private func invitation(_ pairing: AppController.PairingInvitation) -> some View {
         VStack(spacing: 16) {
-            Text("Scan with Pilothouse on your iPhone or iPad")
+            Text("Scan with Remote Code on your iPhone or iPad")
                 .font(.title3.weight(.semibold))
                 .multilineTextAlignment(.center)
             Group {
@@ -46,7 +46,7 @@ struct PairingView: View {
             .background(.white, in: RoundedRectangle(cornerRadius: 16))
             .accessibilityLabel(Text("Pairing QR code"))
 
-            Button("No Pilothouse on your iPhone yet? Get the app") {
+            Button("No Remote Code on your iPhone yet? Get the app") {
                 openWindow(id: WindowID.iPhoneApp)
             }
             .buttonStyle(.link)

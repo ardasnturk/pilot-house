@@ -122,7 +122,7 @@ public enum ClaudeLocator {
         return version.isEmpty ? nil : version
     }
 
-    /// `claude auth status` → `loggedIn`. Pilothouse only reads this flag; it
+    /// `claude auth status` → `loggedIn`. Remote Code only reads this flag; it
     /// never touches the CLI's credentials.
     public static func isLoggedIn(executable: String, environment: [String: String]) async -> Bool? {
         guard

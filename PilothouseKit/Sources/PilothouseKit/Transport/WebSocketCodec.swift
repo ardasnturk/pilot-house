@@ -5,7 +5,7 @@ import CryptoKit
 import Crypto
 #endif
 
-/// The client side of RFC 6455, enough for Pilothouse: the opening handshake
+/// The client side of RFC 6455, enough for Remote Code: the opening handshake
 /// and binary, ping, pong and close frames. Used instead of Network.framework's
 /// WebSocket protocol, whose client connections iOS aborts on the local
 /// network (ECONNABORTED right after the TCP handshake; D-108). Pure, so it is

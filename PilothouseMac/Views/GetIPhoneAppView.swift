@@ -24,7 +24,7 @@ enum TestFlightAvailability {
     }
 }
 
-/// "Get Pilothouse for iPhone": the TestFlight QR code, shown on first launch
+/// "Get Remote Code for iPhone": the TestFlight QR code, shown on first launch
 /// and from the menu, so the phone app can be installed without searching.
 struct GetIPhoneAppView: View {
     @Environment(AppController.self) private var controller
@@ -57,7 +57,7 @@ struct GetIPhoneAppView: View {
                 .accessibilityHidden(true)
             Text("The iPhone app is almost here")
                 .font(.title2.weight(.semibold))
-            Text("Pilothouse for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.")
+            Text("Remote Code for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.")
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -79,7 +79,7 @@ struct GetIPhoneAppView: View {
     private var available: some View {
         VStack(spacing: 18) {
             VStack(spacing: 6) {
-                Text("Get Pilothouse for iPhone and iPad")
+                Text("Get Remote Code for iPhone and iPad")
                     .font(.title2.weight(.semibold))
                 Text("Scan the code with your iPhone's camera to install the app with TestFlight, Apple's free app for beta apps.")
                     .multilineTextAlignment(.center)
@@ -97,7 +97,7 @@ struct GetIPhoneAppView: View {
             }
             VStack(alignment: .leading, spacing: 8) {
                 step(1, LocalizedStringKey("Scan the code, or open the link on your iPhone or iPad."))
-                step(2, LocalizedStringKey("Install TestFlight if asked, then tap Install for Pilothouse."))
+                step(2, LocalizedStringKey("Install TestFlight if asked, then tap Install for Remote Code."))
                 step(3, LocalizedStringKey("Come back here and choose Pair New Device…"))
             }
             .frame(maxWidth: .infinity, alignment: .leading)

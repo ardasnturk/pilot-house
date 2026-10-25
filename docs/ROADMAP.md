@@ -5,8 +5,8 @@ contributions are welcome (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ## Next
 
-* **Approve from the notification.** Pilothouse notifies through ntfy and macOS
-  (D-095); approving right from the notification still needs Pilothouse's own
+* **Approve from the notification.** Remote Code notifies through ntfy and macOS
+  (D-095); approving right from the notification still needs Remote Code's own
   push (an optional, self-hostable relay that only sees an opaque,
   end-to-end-encrypted wake-up).
 * **Live Activities / Dynamic Island** showing the running turn and pending
@@ -34,6 +34,6 @@ contributions are welcome (see [CONTRIBUTING.md](../CONTRIBUTING.md)).
 ## Not planned
 
 * Talking to Anthropic's API directly or handling Claude account credentials —
-  Pilothouse only drives the official CLI (the optional API key is passed to
-  the CLI and never used by Pilothouse itself).
+  Remote Code only drives the official CLI (the optional API key is passed to
+  the CLI and never used by Remote Code itself).
 * Accounts, cloud sync or analytics.

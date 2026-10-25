@@ -1,6 +1,6 @@
 import Foundation
 
-/// Claude Code permission modes exposed by Pilothouse (docs/DECISIONS.md D-006).
+/// Claude Code permission modes exposed by Remote Code (docs/DECISIONS.md D-006).
 public enum PermissionMode: String, Sendable, Hashable, Codable, CaseIterable {
     /// Ask before edits and commands (shown as "Manual" by the CLI).
     case `default`
@@ -47,7 +47,7 @@ public enum SessionState: String, Sendable, Hashable, Codable {
 
 /// What a client needs to list and open a session.
 public struct SessionSummary: Sendable, Hashable, Codable, Identifiable {
-    /// Pilothouse session ID. Equal to the Claude session ID (passed with
+    /// Remote Code session ID. Equal to the Claude session ID (passed with
     /// `--session-id`), so it is also what `--resume` takes.
     public var id: String
     /// Absolute working directory on the Mac.

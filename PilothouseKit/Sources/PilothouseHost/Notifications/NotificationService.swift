@@ -56,7 +56,7 @@ public struct AlertContent: Sendable, Hashable {
         case .sessionFailed: "Session failed · \(alert.folderName)"
         case .subagentFinished: "Sub-agent finished · \(alert.folderName)"
         }
-        return AlertContent(title: "Pilothouse", body: body(headline, detail: includeDetail ? alert.detail : nil))
+        return AlertContent(title: "Remote Code", body: body(headline, detail: includeDetail ? alert.detail : nil))
     }
 
     /// `headline`, plus a shortened `detail` on a second line.

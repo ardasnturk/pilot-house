@@ -1,6 +1,6 @@
 // swift-tools-version: 6.0
 //
-// PilothouseKit — shared code for the Pilothouse Mac and iOS apps.
+// PilothouseKit — shared code for the Remote Code Mac and iOS apps.
 //
 // * `PilothouseKit`  — wire protocol, models, crypto, transports, client and
 //                      server connection logic, demo server. Used by both apps.

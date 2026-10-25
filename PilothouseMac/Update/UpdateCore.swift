@@ -91,8 +91,8 @@ enum ReleaseParser {
 
     /// Parses the JSON of `GET /repos/{owner}/{repo}/releases/latest`.
     /// Drafts and pre-releases are rejected; the release must carry
-    /// `Pilothouse-<version>.dmg` and `Pilothouse-<version>.dmg.sha256`.
-    static func parse(_ data: Data, appName: String = "Pilothouse") throws -> Release {
+    /// `RemoteCode-<version>.dmg` and `RemoteCode-<version>.dmg.sha256`.
+    static func parse(_ data: Data, appName: String = "RemoteCode") throws -> Release {
         let payload: Payload
         do {
             payload = try JSONDecoder().decode(Payload.self, from: data)
@@ -139,7 +139,7 @@ enum ReleaseParser {
 
 enum ChecksumFile {
     /// Extracts the lowercase SHA-256 hex digest from a `shasum -a 256` line
-    /// (`<hex>  Pilothouse-1.0.1.dmg` or `<hex>  dist/Pilothouse-1.0.1.dmg`).
+    /// (`<hex>  RemoteCode-1.0.1.dmg` or `<hex>  dist/RemoteCode-1.0.1.dmg`).
     /// When `fileName` is given and several lines exist, the line naming that
     /// file (by last path component) wins.
     static func digest(from text: String, fileName: String? = nil) -> String? {

@@ -42,7 +42,7 @@ def main() -> int:
                 errors.append(f"{locale}/{field}: no spaces after commas (they count)")
             print(f"{locale:6} {field:22} {size:5}/{limit} {unit}")
         description = (ROOT / locale / "description.txt").read_text(encoding="utf-8")
-        if "github.com/ardasnturk/pilot-house" not in description:
+        if "github.com/ardasnturk/remote-code" not in description:
             errors.append(f"{locale}/description.txt: must say where to get the Mac app")
         if locale not in DISCLAIMER:
             errors.append(f"{locale}: add its non-affiliation phrase to DISCLAIMER in this script")

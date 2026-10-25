@@ -63,7 +63,7 @@ public struct CodexAdapter: AgentAdapter {
     // MARK: AgentAdapter
 
     public mutating func startupLines() -> [Data] {
-        let client: JSONValue = ["clientInfo": ["name": "pilothouse", "title": "Pilothouse", "version": "1.0"], "capabilities": nil]
+        let client: JSONValue = ["clientInfo": ["name": "pilothouse", "title": "Remote Code", "version": "1.0"], "capabilities": nil]
         var lines = [request("initialize", client), JSONRPC.notification(method: "initialized")]
         if let threadId = options.threadId {
             lines.append(request("thread/resume", threadParameters(resuming: threadId)))
@@ -130,7 +130,7 @@ public struct CodexAdapter: AgentAdapter {
         return JSONRPC.request(id: nextId, method: method, params: params)
     }
 
-    /// Maps Pilothouse permission modes onto Codex approval policy + sandbox.
+    /// Maps Remote Code permission modes onto Codex approval policy + sandbox.
     static func policy(for mode: PermissionMode) -> (approval: String, sandbox: String) {
         switch mode {
         case .acceptEdits: ("on-request", "workspace-write")
@@ -242,7 +242,7 @@ public struct CodexAdapter: AgentAdapter {
                 rpcId: id, tool: "Edit", input: .object(input), toolUseId: itemId, context: context
             )])
         default:
-            return AgentOutput(writes: [JSONRPC.error(id: id, code: -32601, message: "Pilothouse does not support \(method)")])
+            return AgentOutput(writes: [JSONRPC.error(id: id, code: -32601, message: "Remote Code does not support \(method)")])
         }
     }
 

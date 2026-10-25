@@ -30,8 +30,8 @@ body:
     id: versions
     attributes:
       label: Versions
-      description: Pilothouse (Mac / iPhone), macOS, iOS, and the agent CLI (`claude --version`).
-      placeholder: Pilothouse 1.0.0 / 1.0.0, macOS 26.1, iOS 26.1, Claude Code 2.1.310
+      description: Remote Code (Mac / iPhone), macOS, iOS, and the agent CLI (`claude --version`).
+      placeholder: Remote Code 1.0.0 / 1.0.0, macOS 26.1, iOS 26.1, Claude Code 2.1.310
     validations:
       required: true
   - type: dropdown

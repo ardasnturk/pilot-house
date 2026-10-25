@@ -116,7 +116,7 @@ public struct MCPPermissionEndpoint: Sendable {
                 "protocolVersion": .string(version),
                 "capabilities": ["tools": ["listChanged": false]],
                 "serverInfo": ["name": .string(ClaudeCommand.permissionServerName), "version": .string(serverVersion)],
-                "instructions": "Pilothouse forwards permission prompts to the paired iPhone or iPad.",
+                "instructions": "Remote Code forwards permission prompts to the paired iPhone or iPad.",
             ])
         case "ping":
             return Self.result(id: id, [:])
@@ -150,7 +150,7 @@ public struct MCPPermissionEndpoint: Sendable {
 
     static let toolDefinition: JSONValue = [
         "name": .string(ClaudeCommand.permissionToolName),
-        "description": "Asks the Pilothouse user on their phone whether Claude may use a tool.",
+        "description": "Asks the Remote Code user on their phone whether Claude may use a tool.",
         "inputSchema": [
             "type": "object",
             "properties": [

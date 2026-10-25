@@ -1,7 +1,7 @@
-# Pilothouse Wire Protocol — version 1
+# Remote Code Wire Protocol — version 1
 
-This document specifies how the Pilothouse iOS app (the *client*) talks to the
-Pilothouse Mac app (the *host*). The reference implementation is
+This document specifies how the Remote Code iOS app (the *client*) talks to the
+Remote Code Mac app (the *host*). The reference implementation is
 `PilothouseKit/Sources/PilothouseKit/Protocol` and `…/Crypto`.
 
 ## 1. Layers
@@ -78,7 +78,7 @@ IK:
   <- e, ee, se            frame 0x02 ‖ message 2
 ```
 
-* Prologue: ASCII `Pilothouse handshake v1`.
+* Prologue: ASCII `Remote Code handshake v1`.
 * **Message 1 payload** (encrypted; JSON):
 
   ```json

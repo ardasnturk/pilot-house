@@ -34,19 +34,19 @@ enum UpdateInstaller {
             case .mountFailed:
                 String(localized: "The update's disk image couldn't be opened.")
             case .appMissingInImage:
-                String(localized: "The update's disk image doesn't contain Pilothouse.")
+                String(localized: "The update's disk image doesn't contain Remote Code.")
             case .copyFailed:
                 String(localized: "The update couldn't be copied from its disk image.")
             case .signatureInvalid:
                 String(localized: "The update's code signature is invalid. Nothing was installed.")
             case .teamMismatch:
-                String(localized: "The update isn't signed by the same developer as this copy of Pilothouse. Nothing was installed.")
+                String(localized: "The update isn't signed by the same developer as this copy of Remote Code. Nothing was installed.")
             case .runningAppUnsigned:
-                String(localized: "This copy of Pilothouse isn't signed with a Developer ID, so it can't update itself.")
+                String(localized: "This copy of Remote Code isn't signed with a Developer ID, so it can't update itself.")
             case .gatekeeperRejected:
                 String(localized: "macOS Gatekeeper rejected the update. Nothing was installed.")
             case .cannotReplace:
-                String(localized: "Pilothouse can't replace itself in its current location. The download page has been opened in your browser.")
+                String(localized: "Remote Code can't replace itself in its current location. The download page has been opened in your browser.")
             case .launchFailed:
                 String(localized: "The installer couldn't be started. Nothing was changed.")
             }
@@ -109,7 +109,7 @@ enum UpdateInstaller {
     // MARK: Disk image
 
     /// Mounts the DMG, copies `<appName>.app` into `staging`, detaches. Returns the staged app.
-    static func extractApp(fromDMG dmg: URL, into staging: URL, appName: String = "Pilothouse") async throws -> URL {
+    static func extractApp(fromDMG dmg: URL, into staging: URL, appName: String = "Remote Code") async throws -> URL {
         let attach = try await run("/usr/bin/hdiutil", ["attach", "-nobrowse", "-readonly", "-noautoopen", "-plist", dmg.path])
         guard attach.status == 0 else { throw Failure.mountFailed(attach.errorText) }
         guard let mountPoint = mountPoint(fromAttachPlist: attach.output) else {
@@ -190,22 +190,24 @@ enum UpdateInstaller {
     }
 
     /// Script run detached after the app quits: wait for `pid`, move the old
-    /// bundle aside, copy the new one in, strip quarantine, relaunch. If the
-    /// copy fails the old bundle is put back.
+    /// bundle aside, copy the new one in (under `target`, the new bundle name,
+    /// so a renamed app replaces the old one), strip quarantine, relaunch. If
+    /// the copy fails the old bundle is put back.
     static let swapScript = """
-    pid="$1"; old="$2"; new="$3"; backup="$4"
+    pid="$1"; old="$2"; new="$3"; backup="$4"; target="${5:-$old}"
+    [ "$target" != "$old" ] && [ -e "$target" ] && target="$old"
     i=0
     while /bin/kill -0 "$pid" 2>/dev/null; do
       i=$((i+1)); [ "$i" -gt 600 ] && exit 1
       /bin/sleep 0.2
     done
     /bin/mv "$old" "$backup" || { /usr/bin/open "$old"; exit 1; }
-    if /usr/bin/ditto "$new" "$old"; then
-      /usr/bin/xattr -dr com.apple.quarantine "$old" 2>/dev/null
-      /usr/bin/open "$old"
+    if /usr/bin/ditto "$new" "$target"; then
+      /usr/bin/xattr -dr com.apple.quarantine "$target" 2>/dev/null
+      /usr/bin/open "$target"
       /bin/rm -rf "$new"
     else
-      /bin/rm -rf "$old"
+      /bin/rm -rf "$target"
       /bin/mv "$backup" "$old"
       /usr/bin/open "$old"
     fi
@@ -214,8 +216,9 @@ enum UpdateInstaller {
     /// Spawns the swap script in its own process group with stdio on
     /// /dev/null, so it survives this app's termination.
     static func launchSwap(pid: pid_t, oldBundle: URL, newBundle: URL, backup: URL) throws {
+        let target = oldBundle.deletingLastPathComponent().appendingPathComponent(newBundle.lastPathComponent)
         let arguments = ["/usr/bin/nohup", "/bin/sh", "-c", swapScript, "pilothouse-update",
-                         String(pid), oldBundle.path, newBundle.path, backup.path]
+                         String(pid), oldBundle.path, newBundle.path, backup.path, target.path]
         var attributes: posix_spawnattr_t?
         posix_spawnattr_init(&attributes)
         defer { posix_spawnattr_destroy(&attributes) }

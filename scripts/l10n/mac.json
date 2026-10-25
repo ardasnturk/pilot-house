@@ -59,9 +59,13 @@
   "de": "Erlauben",
   "tr": "İzin Ver"
  },
- "Allow the Pilothouse helper in Login Items…": {
-  "de": "Pilothouse-Hilfsprogramm in den Anmeldeobjekten erlauben …",
-  "tr": "Pilothouse yardımcısına Giriş Öğeleri'nde izin verin…"
+ "Allow in Login Items…": {
+  "de": "In Anmeldeobjekten erlauben …",
+  "tr": "Giriş Öğeleri'nde izin ver…"
+ },
+ "Allow the Remote Code helper in Login Items…": {
+  "de": "Remote-Code-Hilfsprogramm in den Anmeldeobjekten erlauben …",
+  "tr": "Remote Code yardımcısına Giriş Öğeleri'nde izin verin…"
  },
  "Allow “Bypass permissions” mode": {
   "de": "Modus „Berechtigungen umgehen“ erlauben",
@@ -307,9 +311,9 @@
   "de": "Allgemein",
   "tr": "Genel"
  },
- "Get Pilothouse for iPhone and iPad": {
-  "de": "Pilothouse für iPhone und iPad",
-  "tr": "iPhone ve iPad için Pilothouse'u edinin"
+ "Get Remote Code for iPhone and iPad": {
+  "de": "Remote Code für iPhone und iPad",
+  "tr": "iPhone ve iPad için Remote Code'u edinin"
  },
  "Get Tailscale from the App Store and sign in with the same account. iOS does not allow apps to do this for you.": {
   "de": "Lade Tailscale aus dem App Store und melde dich mit demselben Konto an. iOS erlaubt Apps nicht, das für dich zu erledigen.",
@@ -375,9 +379,9 @@
   "de": "Installiere zuerst Claude Code, damit Claude die Einrichtung übernimmt, oder folge den manuellen Schritten.",
   "tr": "Kurulumu Claude'a yaptırmak için önce Claude Code'u kurun veya manuel adımları izleyin."
  },
- "Install Pilothouse on your iPhone or iPad, then scan a pairing code from this Mac. Both need to be on the same Wi-Fi.": {
-  "de": "Installiere Pilothouse auf deinem iPhone oder iPad und scanne dann einen Kopplungscode von diesem Mac. Beide müssen im selben WLAN sein.",
-  "tr": "Pilothouse'u iPhone veya iPad'inize kurun, ardından bu Mac'ten bir eşleştirme kodu tarayın. İkisinin de aynı Wi-Fi'de olması gerekir."
+ "Install Remote Code on your iPhone or iPad, then scan a pairing code from this Mac. Both need to be on the same Wi-Fi.": {
+  "de": "Installiere Remote Code auf deinem iPhone oder iPad und scanne dann einen Kopplungscode von diesem Mac. Beide müssen im selben WLAN sein.",
+  "tr": "Remote Code'u iPhone veya iPad'inize kurun, ardından bu Mac'ten bir eşleştirme kodu tarayın. İkisinin de aynı Wi-Fi'de olması gerekir."
  },
  "Install Tailscale": {
   "de": "Tailscale installieren",
@@ -387,17 +391,17 @@
   "de": "Tailscale auf iPhone oder iPad installieren",
   "tr": "iPhone veya iPad'inize Tailscale'i kurun"
  },
- "Install TestFlight if asked, then tap Install for Pilothouse.": {
-  "de": "Installiere TestFlight, falls gefragt, und tippe dann bei Pilothouse auf Installieren.",
-  "tr": "İstenirse TestFlight'ı yükleyin, ardından Pilothouse için Yükle'ye dokunun."
+ "Install TestFlight if asked, then tap Install for Remote Code.": {
+  "de": "Installiere TestFlight, falls gefragt, und tippe dann bei Remote Code auf Installieren.",
+  "tr": "İstenirse TestFlight'ı yükleyin, ardından Remote Code için Yükle'ye dokunun."
  },
  "Install and Relaunch": {
   "de": "Installieren und neu starten",
   "tr": "Kur ve Yeniden Başlat"
  },
- "Install new versions of Pilothouse from GitHub.": {
-  "de": "Neue Versionen von Pilothouse von GitHub installieren.",
-  "tr": "Pilothouse'un yeni sürümlerini GitHub'dan kurun."
+ "Install new versions of Remote Code from GitHub.": {
+  "de": "Neue Versionen von Remote Code von GitHub installieren.",
+  "tr": "Remote Code'un yeni sürümlerini GitHub'dan kurun."
  },
  "Install the free ntfy app, tap +, and enter the topic. For a self-hosted server, also turn on “Use another server” and enter its address.": {
   "de": "Installiere die kostenlose ntfy-App, tippe auf + und gib das Thema ein. Für einen eigenen Server aktiviere zusätzlich „Use another server“ und gib seine Adresse ein.",
@@ -483,13 +487,13 @@
   "de": "Neues Thema",
   "tr": "Yeni Konu"
  },
- "New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Pilothouse never sees it.": {
-  "de": "Neue Chats auf deinem iPhone oder iPad können jeden installierten Agenten verwenden. Jeder nutzt seine eigene Anmeldung aus dem Terminal; Pilothouse sieht sie nie.",
-  "tr": "iPhone veya iPad'inizdeki yeni sohbetler kurulu herhangi bir ajanı kullanabilir. Her biri Terminal'deki kendi oturumunu kullanır; Pilothouse bunu hiç görmez."
+ "New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Remote Code never sees it.": {
+  "de": "Neue Chats auf deinem iPhone oder iPad können jeden installierten Agenten verwenden. Jeder nutzt seine eigene Anmeldung aus dem Terminal; Remote Code sieht sie nie.",
+  "tr": "iPhone veya iPad'inizdeki yeni sohbetler kurulu herhangi bir ajanı kullanabilir. Her biri Terminal'deki kendi oturumunu kullanır; Remote Code bunu hiç görmez."
  },
- "No Pilothouse on your iPhone yet? Get the app": {
-  "de": "Noch kein Pilothouse auf deinem iPhone? App laden",
-  "tr": "iPhone'unuzda henüz Pilothouse yok mu? Uygulamayı edinin"
+ "No Remote Code on your iPhone yet? Get the app": {
+  "de": "Noch kein Remote Code auf deinem iPhone? App laden",
+  "tr": "iPhone'unuzda henüz Remote Code yok mu? Uygulamayı edinin"
  },
  "No devices paired yet.": {
   "de": "Noch keine Geräte gekoppelt.",
@@ -527,9 +531,9 @@
   "de": "Mitteilungen",
   "tr": "Bildirimler"
  },
- "Notifications from Pilothouse arrive like this.": {
-  "de": "So kommen Mitteilungen von Pilothouse an.",
-  "tr": "Pilothouse bildirimleri böyle görünür."
+ "Notifications from Remote Code arrive like this.": {
+  "de": "So kommen Mitteilungen von Remote Code an.",
+  "tr": "Remote Code bildirimleri böyle görünür."
  },
  "OK": {
   "de": "OK",
@@ -547,9 +551,9 @@
   "de": "Rückblicke auf dem Gerät brauchen macOS 26 oder neuer auf deinem Mac.",
   "tr": "Cihaz içi özetler için Mac'inizde macOS 26 veya üstü gerekir."
  },
- "Open Pilothouse at login": {
-  "de": "Pilothouse bei der Anmeldung öffnen",
-  "tr": "Oturum açınca Pilothouse'u başlat"
+ "Open Remote Code at login": {
+  "de": "Remote Code bei der Anmeldung öffnen",
+  "tr": "Oturum açınca Remote Code'u başlat"
  },
  "Open Tailscale and sign in": {
   "de": "Tailscale öffnen und anmelden",
@@ -619,46 +623,6 @@
   "de": "Im Akkubetrieb pausiert. Wird am Netzteil fortgesetzt.",
   "tr": "Pildeyken duraklatıldı. Güce bağlanınca devam eder."
  },
- "Pilothouse": {
-  "de": "Pilothouse",
-  "tr": "Pilothouse"
- },
- "Pilothouse can't replace itself in its current location. The download page has been opened in your browser.": {
-  "de": "Pilothouse kann sich an seinem aktuellen Ort nicht selbst ersetzen. Die Download-Seite wurde in deinem Browser geöffnet.",
-  "tr": "Pilothouse bulunduğu konumda kendini değiştiremiyor. İndirme sayfası tarayıcınızda açıldı."
- },
- "Pilothouse could not start: %@": {
-  "de": "Pilothouse konnte nicht starten: %@",
-  "tr": "Pilothouse başlatılamadı: %@"
- },
- "Pilothouse detects Tailscale automatically. You can also check it in Terminal.": {
-  "de": "Pilothouse erkennt Tailscale automatisch. Du kannst es auch im Terminal prüfen.",
-  "tr": "Pilothouse, Tailscale'i otomatik algılar. Terminal'den de kontrol edebilirsiniz."
- },
- "Pilothouse for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.": {
-  "de": "Pilothouse für iPhone und iPad wartet auf Apples Beta-Prüfung. Sobald TestFlight Tester annimmt, erscheint der QR-Code zur Installation hier und auf der Website.",
-  "tr": "iPhone ve iPad için Pilothouse, Apple'ın beta incelemesini bekliyor. TestFlight test kullanıcısı kabul etmeye başlar başlamaz kurulum QR kodu burada ve web sitesinde görünecek."
- },
- "Pilothouse is not running.": {
-  "de": "Pilothouse läuft nicht.",
-  "tr": "Pilothouse çalışmıyor."
- },
- "Pilothouse is up to date": {
-  "de": "Pilothouse ist auf dem neuesten Stand",
-  "tr": "Pilothouse güncel"
- },
- "Pilothouse looks for a new release on GitHub once a day. Updates are only installed when you click Install; they are checked for Apple's notarization and the same developer signature first.": {
-  "de": "Pilothouse sucht einmal am Tag auf GitHub nach einer neuen Version. Updates werden nur installiert, wenn du auf „Installieren“ klickst; vorher werden Apples Notarisierung und dieselbe Entwicklersignatur geprüft.",
-  "tr": "Pilothouse günde bir kez GitHub'da yeni bir sürüm arar. Güncellemeler yalnızca Kur'a tıkladığınızda kurulur; önce Apple'ın notarizasyonu ve aynı geliştirici imzası kontrol edilir."
- },
- "Pilothouse looks in your login shell's PATH, ~/.local/bin, /opt/homebrew/bin and /usr/local/bin.": {
-  "de": "Pilothouse sucht im PATH deiner Login-Shell sowie in ~/.local/bin, /opt/homebrew/bin und /usr/local/bin.",
-  "tr": "Pilothouse, oturum kabuğunuzun PATH'ine, ~/.local/bin, /opt/homebrew/bin ve /usr/local/bin klasörlerine bakar."
- },
- "Pilothouse needs attention": {
-  "de": "Pilothouse benötigt Aufmerksamkeit",
-  "tr": "Pilothouse ilgi bekliyor"
- },
  "Plan only": {
   "de": "Nur planen",
   "tr": "Yalnızca plan"
@@ -679,13 +643,13 @@
   "de": "QR-Code für den TestFlight-Link",
   "tr": "TestFlight bağlantısının QR kodu"
  },
- "Quit Pilothouse": {
-  "de": "Pilothouse beenden",
-  "tr": "Pilothouse'tan Çık"
+ "Quit Remote Code": {
+  "de": "Remote Code beenden",
+  "tr": "Remote Code'dan Çık"
  },
- "Reach this Mac from anywhere over your private Tailscale network. Pilothouse keeps its own end-to-end encryption on top.": {
-  "de": "Erreiche diesen Mac überall über dein privates Tailscale-Netzwerk. Pilothouse behält zusätzlich seine eigene Ende-zu-Ende-Verschlüsselung.",
-  "tr": "Bu Mac'e özel Tailscale ağınız üzerinden her yerden ulaşın. Pilothouse bunun üzerine kendi uçtan uca şifrelemesini korur."
+ "Reach this Mac from anywhere over your private Tailscale network. Remote Code keeps its own end-to-end encryption on top.": {
+  "de": "Erreiche diesen Mac überall über dein privates Tailscale-Netzwerk. Remote Code behält zusätzlich seine eigene Ende-zu-Ende-Verschlüsselung.",
+  "tr": "Bu Mac'e özel Tailscale ağınız üzerinden her yerden ulaşın. Remote Code bunun üzerine kendi uçtan uca şifrelemesini korur."
  },
  "Read the security model": {
   "de": "Sicherheitsmodell lesen",
@@ -698,6 +662,46 @@
  "Remote Access": {
   "de": "Fernzugriff",
   "tr": "Uzaktan Erişim"
+ },
+ "Remote Code": {
+  "de": "Remote Code",
+  "tr": "Remote Code"
+ },
+ "Remote Code can't replace itself in its current location. The download page has been opened in your browser.": {
+  "de": "Remote Code kann sich an seinem aktuellen Ort nicht selbst ersetzen. Die Download-Seite wurde in deinem Browser geöffnet.",
+  "tr": "Remote Code bulunduğu konumda kendini değiştiremiyor. İndirme sayfası tarayıcınızda açıldı."
+ },
+ "Remote Code could not start: %@": {
+  "de": "Remote Code konnte nicht starten: %@",
+  "tr": "Remote Code başlatılamadı: %@"
+ },
+ "Remote Code detects Tailscale automatically. You can also check it in Terminal.": {
+  "de": "Remote Code erkennt Tailscale automatisch. Du kannst es auch im Terminal prüfen.",
+  "tr": "Remote Code, Tailscale'i otomatik algılar. Terminal'den de kontrol edebilirsiniz."
+ },
+ "Remote Code for iPhone and iPad is waiting for Apple's beta review. As soon as TestFlight accepts testers, the QR code to install it appears here and on the website.": {
+  "de": "Remote Code für iPhone und iPad wartet auf Apples Beta-Prüfung. Sobald TestFlight Tester annimmt, erscheint der QR-Code zur Installation hier und auf der Website.",
+  "tr": "iPhone ve iPad için Remote Code, Apple'ın beta incelemesini bekliyor. TestFlight test kullanıcısı kabul etmeye başlar başlamaz kurulum QR kodu burada ve web sitesinde görünecek."
+ },
+ "Remote Code is not running.": {
+  "de": "Remote Code läuft nicht.",
+  "tr": "Remote Code çalışmıyor."
+ },
+ "Remote Code is up to date": {
+  "de": "Remote Code ist auf dem neuesten Stand",
+  "tr": "Remote Code güncel"
+ },
+ "Remote Code looks for a new release on GitHub once a day. Updates are only installed when you click Install; they are checked for Apple's notarization and the same developer signature first.": {
+  "de": "Remote Code sucht einmal am Tag auf GitHub nach einer neuen Version. Updates werden nur installiert, wenn du auf „Installieren“ klickst; vorher werden Apples Notarisierung und dieselbe Entwicklersignatur geprüft.",
+  "tr": "Remote Code günde bir kez GitHub'da yeni bir sürüm arar. Güncellemeler yalnızca Kur'a tıkladığınızda kurulur; önce Apple'ın notarizasyonu ve aynı geliştirici imzası kontrol edilir."
+ },
+ "Remote Code looks in your login shell's PATH, ~/.local/bin, /opt/homebrew/bin and /usr/local/bin.": {
+  "de": "Remote Code sucht im PATH deiner Login-Shell sowie in ~/.local/bin, /opt/homebrew/bin und /usr/local/bin.",
+  "tr": "Remote Code, oturum kabuğunuzun PATH'ine, ~/.local/bin, /opt/homebrew/bin ve /usr/local/bin klasörlerine bakar."
+ },
+ "Remote Code needs attention": {
+  "de": "Remote Code benötigt Aufmerksamkeit",
+  "tr": "Remote Code ilgi bekliyor"
  },
  "Remote access with Tailscale": {
   "de": "Fernzugriff mit Tailscale",
@@ -723,9 +727,9 @@
   "de": "%@ widerrufen?",
   "tr": "%@ iptal edilsin mi?"
  },
- "Run `claude` and follow the prompts to sign in with your Claude account (or set up an API key). Pilothouse never sees your credentials.": {
-  "de": "Führe `claude` aus und folge den Anweisungen, um dich mit deinem Claude-Konto anzumelden (oder einen API-Schlüssel einzurichten). Pilothouse sieht deine Zugangsdaten nie.",
-  "tr": "`claude` komutunu çalıştırın ve Claude hesabınızla giriş yapmak (veya API anahtarı ayarlamak) için yönergeleri izleyin. Pilothouse kimlik bilgilerinizi asla görmez."
+ "Run `claude` and follow the prompts to sign in with your Claude account (or set up an API key). Remote Code never sees your credentials.": {
+  "de": "Führe `claude` aus und folge den Anweisungen, um dich mit deinem Claude-Konto anzumelden (oder einen API-Schlüssel einzurichten). Remote Code sieht deine Zugangsdaten nie.",
+  "tr": "`claude` komutunu çalıştırın ve Claude hesabınızla giriş yapmak (veya API anahtarı ayarlamak) için yönergeleri izleyin. Remote Code kimlik bilgilerinizi asla görmez."
  },
  "Save to Keychain": {
   "de": "Im Schlüsselbund sichern",
@@ -739,9 +743,9 @@
   "de": "Scanne den Code oder öffne den Link auf deinem iPhone oder iPad.",
   "tr": "Kodu okutun ya da bağlantıyı iPhone veya iPad'inizde açın."
  },
- "Scan with Pilothouse on your iPhone or iPad": {
-  "de": "Mit Pilothouse auf deinem iPhone oder iPad scannen",
-  "tr": "iPhone veya iPad'inizdeki Pilothouse ile tarayın"
+ "Scan with Remote Code on your iPhone or iPad": {
+  "de": "Mit Remote Code auf deinem iPhone oder iPad scannen",
+  "tr": "iPhone veya iPad'inizdeki Remote Code ile tarayın"
  },
  "Security": {
   "de": "Sicherheit",
@@ -879,9 +883,9 @@
   "de": "Tailscale ist auf diesem Mac nicht installiert.",
   "tr": "Bu Mac'te Tailscale kurulu değil."
  },
- "Takes effect after restarting Pilothouse. The next free port is used if it is taken.": {
-  "de": "Wird nach einem Neustart von Pilothouse wirksam. Ist der Port belegt, wird der nächste freie verwendet.",
-  "tr": "Pilothouse yeniden başlatıldıktan sonra geçerli olur. Port doluysa bir sonraki boş port kullanılır."
+ "Takes effect after restarting Remote Code. The next free port is used if it is taken.": {
+  "de": "Wird nach einem Neustart von Remote Code wirksam. Ist der Port belegt, wird der nächste freie verwendet.",
+  "tr": "Remote Code yeniden başlatıldıktan sonra geçerli olur. Port doluysa bir sonraki boş port kullanılır."
  },
  "Task finished": {
   "de": "Aufgabe fertig",
@@ -947,9 +951,9 @@
   "de": "Das Update konnte nicht geladen werden. Prüfe deine Internetverbindung und versuche es erneut.",
   "tr": "Güncelleme indirilemedi. İnternet bağlantınızı kontrol edip tekrar deneyin."
  },
- "The update isn't signed by the same developer as this copy of Pilothouse. Nothing was installed.": {
-  "de": "Das Update ist nicht vom selben Entwickler signiert wie diese Kopie von Pilothouse. Es wurde nichts installiert.",
-  "tr": "Güncelleme, Pilothouse'un bu kopyasıyla aynı geliştirici tarafından imzalanmamış. Hiçbir şey kurulmadı."
+ "The update isn't signed by the same developer as this copy of Remote Code. Nothing was installed.": {
+  "de": "Das Update ist nicht vom selben Entwickler signiert wie diese Kopie von Remote Code. Es wurde nichts installiert.",
+  "tr": "Güncelleme, Remote Code'un bu kopyasıyla aynı geliştirici tarafından imzalanmamış. Hiçbir şey kurulmadı."
  },
  "The update's checksum file couldn't be read.": {
   "de": "Die Prüfsummendatei des Updates konnte nicht gelesen werden.",
@@ -963,33 +967,33 @@
   "de": "Das Disk-Image des Updates konnte nicht geöffnet werden.",
   "tr": "Güncellemenin disk görüntüsü açılamadı."
  },
- "The update's disk image doesn't contain Pilothouse.": {
-  "de": "Das Disk-Image des Updates enthält Pilothouse nicht.",
-  "tr": "Güncellemenin disk görüntüsünde Pilothouse yok."
+ "The update's disk image doesn't contain Remote Code.": {
+  "de": "Das Disk-Image des Updates enthält Remote Code nicht.",
+  "tr": "Güncellemenin disk görüntüsünde Remote Code yok."
  },
  "This Mac does not support Apple Intelligence, so the summary shows numbers only.": {
   "de": "Dieser Mac unterstützt Apple Intelligence nicht, daher zeigt der Rückblick nur Zahlen.",
   "tr": "Bu Mac Apple Intelligence'ı desteklemiyor; özet yalnızca sayıları gösterir."
  },
- "This copy of Pilothouse isn't signed with a Developer ID, so it can't update itself.": {
-  "de": "Diese Kopie von Pilothouse ist nicht mit einer Developer ID signiert und kann sich daher nicht selbst aktualisieren.",
-  "tr": "Pilothouse'un bu kopyası bir Developer ID ile imzalanmamış, bu yüzden kendini güncelleyemez."
+ "This copy of Remote Code isn't signed with a Developer ID, so it can't update itself.": {
+  "de": "Diese Kopie von Remote Code ist nicht mit einer Developer ID signiert und kann sich daher nicht selbst aktualisieren.",
+  "tr": "Remote Code'un bu kopyası bir Developer ID ile imzalanmamış, bu yüzden kendini güncelleyemez."
  },
  "Tip: set up Tailscale to reach this Mac away from home.": {
   "de": "Tipp: Richte Tailscale ein, um diesen Mac unterwegs zu erreichen.",
   "tr": "İpucu: Bu Mac'e evden uzakta erişmek için Tailscale'i kurun."
  },
- "To use Pilothouse away from that Wi-Fi, install Tailscale on this Mac and on your iPhone, sign in to the same account on both, then turn on “Use Tailscale when away” in the iPhone app's settings. Pilothouse still tries the local network first.": {
-  "de": "Um Pilothouse außerhalb dieses WLANs zu nutzen, installiere Tailscale auf diesem Mac und auf deinem iPhone, melde dich auf beiden mit demselben Konto an und aktiviere dann „Unterwegs Tailscale verwenden“ in den Einstellungen der iPhone-App. Pilothouse versucht trotzdem zuerst das lokale Netzwerk.",
-  "tr": "Pilothouse'u o Wi-Fi'den uzakta kullanmak için bu Mac'e ve iPhone'unuza Tailscale'i kurun, ikisinde de aynı hesapla giriş yapın, ardından iPhone uygulamasının ayarlarında “Uzaktayken Tailscale kullan” seçeneğini açın. Pilothouse yine önce yerel ağı dener."
+ "To use Remote Code away from that Wi-Fi, install Tailscale on this Mac and on your iPhone, sign in to the same account on both, then turn on “Use Tailscale when away” in the iPhone app's settings. Remote Code still tries the local network first.": {
+  "de": "Um Remote Code außerhalb dieses WLANs zu nutzen, installiere Tailscale auf diesem Mac und auf deinem iPhone, melde dich auf beiden mit demselben Konto an und aktiviere dann „Unterwegs Tailscale verwenden“ in den Einstellungen der iPhone-App. Remote Code versucht trotzdem zuerst das lokale Netzwerk.",
+  "tr": "Remote Code'u o Wi-Fi'den uzakta kullanmak için bu Mac'e ve iPhone'unuza Tailscale'i kurun, ikisinde de aynı hesapla giriş yapın, ardından iPhone uygulamasının ayarlarında “Uzaktayken Tailscale kullan” seçeneğini açın. Remote Code yine önce yerel ağı dener."
  },
  "Topic": {
   "de": "Thema",
   "tr": "Konu"
  },
- "Traffic between your devices is end-to-end encrypted. Pilothouse never connects to Anthropic and collects no telemetry.": {
-  "de": "Der Datenverkehr zwischen deinen Geräten ist Ende-zu-Ende verschlüsselt. Pilothouse verbindet sich nie mit Anthropic und sammelt keine Telemetrie.",
-  "tr": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Pilothouse asla Anthropic'e bağlanmaz ve telemetri toplamaz."
+ "Traffic between your devices is end-to-end encrypted. Remote Code never connects to Anthropic and collects no telemetry.": {
+  "de": "Der Datenverkehr zwischen deinen Geräten ist Ende-zu-Ende verschlüsselt. Remote Code verbindet sich nie mit Anthropic und sammelt keine Telemetrie.",
+  "tr": "Cihazlarınız arasındaki trafik uçtan uca şifrelidir. Remote Code asla Anthropic'e bağlanmaz ve telemetri toplamaz."
  },
  "Turn on Apple Intelligence on your Mac (System Settings → Apple Intelligence & Siri) to get a written summary.": {
   "de": "Schalte Apple Intelligence auf deinem Mac ein (Systemeinstellungen → Apple Intelligence & Siri), um einen geschriebenen Rückblick zu erhalten.",
@@ -1019,9 +1023,9 @@
   "de": "Anthropic-API-Schlüssel statt CLI-Anmeldung verwenden",
   "tr": "CLI girişi yerine bir Anthropic API anahtarı kullan"
  },
- "Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Pilothouse quits.": {
-  "de": "Verwendet ein kleines privilegiertes Hilfsprogramm, das nur `pmset -a disablesleep` ausführt. Ein zugeklapptes MacBook, das wach bleibt, kann warm werden und den Akku leeren; die Einstellung wird beim Beenden von Pilothouse zurückgesetzt.",
-  "tr": "Yalnızca `pmset -a disablesleep` çalıştıran küçük, yetkili bir yardımcı kullanır. Kapağı kapalıyken uyanık kalan bir MacBook ısınabilir ve pilini tüketebilir; Pilothouse kapanınca ayar geri alınır."
+ "Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Remote Code quits.": {
+  "de": "Verwendet ein kleines privilegiertes Hilfsprogramm, das nur `pmset -a disablesleep` ausführt. Ein zugeklapptes MacBook, das wach bleibt, kann warm werden und den Akku leeren; die Einstellung wird beim Beenden von Remote Code zurückgesetzt.",
+  "tr": "Yalnızca `pmset -a disablesleep` çalıştıran küçük, yetkili bir yardımcı kullanır. Kapağı kapalıyken uyanık kalan bir MacBook ısınabilir ve pilini tüketebilir; Remote Code kapanınca ayar geri alınır."
  },
  "Valid for %lld:%@ · single use": {
   "de": "Gültig für %lld:%@ · einmalig",
@@ -1055,9 +1059,9 @@
   "de": "Wenn erlaubt, kann ein gekoppeltes Gerät Chats starten oder laufende umstellen, in denen Claude ohne Nachfrage Dateien bearbeitet und Befehle ausführt. Aktiviere das nur, wenn du das Risiko verstehst.",
   "tr": "İzin verilirse, eşleşmiş bir cihaz Claude'un sormadan dosya düzenleyip komut çalıştırdığı sohbetler başlatabilir veya süren sohbetleri bu moda geçirebilir. Yalnızca riski anlıyorsanız etkinleştirin."
  },
- "When and where Pilothouse tells you something happened.": {
-  "de": "Wann und wo dir Pilothouse mitteilt, dass etwas passiert ist.",
-  "tr": "Pilothouse'un bir şey olduğunda size ne zaman ve nerede haber vereceği."
+ "When and where Remote Code tells you something happened.": {
+  "de": "Wann und wo dir Remote Code mitteilt, dass etwas passiert ist.",
+  "tr": "Remote Code'un bir şey olduğunda size ne zaman ve nerede haber vereceği."
  },
  "Without a summary, a notification only says what happened and in which folder, e.g. “Task finished · my-app”. With it, the last message, the tool or the error is added.": {
   "de": "Ohne Zusammenfassung sagt eine Mitteilung nur, was in welchem Ordner passiert ist, z. B. „Aufgabe fertig · my-app“. Mit ihr kommen die letzte Nachricht, das Werkzeug oder der Fehler hinzu.",
@@ -1071,9 +1075,9 @@
   "de": "Wochenrückblicke auf diesem Mac schreiben",
   "tr": "Haftalık özetleri bu Mac'te yaz"
  },
- "Written summaries are turned off in Pilothouse settings on your Mac.": {
-  "de": "Geschriebene Rückblicke sind in den Pilothouse-Einstellungen auf deinem Mac ausgeschaltet.",
-  "tr": "Yazılı özetler Mac'inizdeki Pilothouse ayarlarında kapalı."
+ "Written summaries are turned off in Remote Code settings on your Mac.": {
+  "de": "Geschriebene Rückblicke sind in den Remote-Code-Einstellungen auf deinem Mac ausgeschaltet.",
+  "tr": "Yazılı özetler Mac'inizdeki Remote Code ayarlarında kapalı."
  },
  "You can also follow and approve this session on your iPhone or iPad.": {
   "de": "Du kannst diese Sitzung auch auf deinem iPhone oder iPad verfolgen und freigeben.",
@@ -1103,13 +1107,17 @@
   "de": "iPhone & iPad",
   "tr": "iPhone ve iPad"
  },
- "iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.": {
-  "de": "iPhone-Mitteilungen laufen über einen ntfy-Server, weil iOS Apps nur über Apples Push-Dienst weckt, der einen Pilothouse-Server bräuchte. Ein Tippen darauf öffnet die Sitzung in Pilothouse.",
-  "tr": "iPhone bildirimleri bir ntfy sunucusu üzerinden gider; çünkü iOS uygulamaları yalnızca Apple'ın push servisiyle uyandırır ve bu bir Pilothouse sunucusu gerektirirdi. Bildirime dokunmak oturumu Pilothouse'da açar."
+ "iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Remote Code server. Tapping one opens the session in Remote Code.": {
+  "de": "iPhone-Mitteilungen laufen über einen ntfy-Server, weil iOS Apps nur über Apples Push-Dienst weckt, der einen Remote-Code-Server bräuchte. Ein Tippen darauf öffnet die Sitzung in Remote Code.",
+  "tr": "iPhone bildirimleri bir ntfy sunucusu üzerinden gider; çünkü iOS uygulamaları yalnızca Apple'ın push servisiyle uyandırır ve bu bir Remote Code sunucusu gerektirirdi. Bildirime dokunmak oturumu Remote Code'da açar."
  },
  "macOS Gatekeeper rejected the update. Nothing was installed.": {
   "de": "macOS Gatekeeper hat das Update abgelehnt. Es wurde nichts installiert.",
   "tr": "macOS Gatekeeper güncellemeyi reddetti. Hiçbir şey kurulmadı."
+ },
+ "macOS is waiting for your approval in System Settings.": {
+  "de": "macOS wartet in den Systemeinstellungen auf deine Zustimmung.",
+  "tr": "macOS, Sistem Ayarları'nda onayınızı bekliyor."
  },
  "ntfy": {
   "de": "ntfy",

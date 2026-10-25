@@ -57,6 +57,8 @@ final class AppController: MacStatusProviding {
     private(set) var newlyPairedDevice: PairedDevice?
     private(set) var macFingerprint = ""
     private(set) var launchAtLogin = LaunchAtLogin.isEnabled
+    private(set) var launchAtLoginNeedsApproval = LaunchAtLogin.requiresApproval
+    private(set) var launchAtLoginError: String?
     private(set) var notificationTest: NotificationTestStatus?
     var alert: String?
 
@@ -117,7 +119,7 @@ final class AppController: MacStatusProviding {
                 status: self,
                 macName: { nameBox.value },
                 agentLauncher: { [weak self] kind in
-                    guard let self else { throw ErrorPayload(code: .internalError, message: "Pilothouse is shutting down.") }
+                    guard let self else { throw ErrorPayload(code: .internalError, message: "Remote Code is shutting down.") }
                     return try await self.makeLauncher(for: kind)
                 }
             )
@@ -139,7 +141,7 @@ final class AppController: MacStatusProviding {
             await applyNotificationSettings()
             await refreshSessions()
         } catch {
-            phase = .failed(String(localized: "Pilothouse could not start: \(error.localizedDescription)"))
+            phase = .failed(String(localized: "Remote Code could not start: \(error.localizedDescription)"))
         }
 
         await lidClosed.apply(enabled: settings.keepAwakeWithLidClosed, pauseOnBattery: settings.pauseLidModeOnBattery)
@@ -197,7 +199,7 @@ final class AppController: MacStatusProviding {
         case .gemini:
             return GeminiLauncher(executable: path, environment: environment)
         default:
-            throw ErrorPayload(code: .agentNotInstalled, message: "\(kind.displayName) is not supported by this version of Pilothouse.")
+            throw ErrorPayload(code: .agentNotInstalled, message: "\(kind.displayName) is not supported by this version of Remote Code.")
         }
     }
 
@@ -356,7 +358,7 @@ final class AppController: MacStatusProviding {
     /// Starts a Claude session on the Mac itself (used by the Tailscale assistant).
     func startLocalSession(cwd: String, prompt: String) async throws -> SessionSummary {
         guard let runtime else {
-            throw ErrorPayload(code: .internalError, message: String(localized: "Pilothouse is not running."))
+            throw ErrorPayload(code: .internalError, message: String(localized: "Remote Code is not running."))
         }
         return try await runtime.sessions.start(StartSession(cwd: cwd, permissionMode: .default, firstMessage: prompt))
     }
@@ -499,7 +501,7 @@ final class AppController: MacStatusProviding {
     func sendTestNotification() async {
         notificationTest = .sending
         let headline = String(localized: "Test notification from \(macName)")
-        let detail = String(localized: "Notifications from Pilothouse arrive like this.")
+        let detail = String(localized: "Notifications from Remote Code arrive like this.")
         var results: [String] = []
         if settings.notifyOnMac {
             if await MacNotificationSink.requestAuthorization() {
@@ -524,7 +526,7 @@ final class AppController: MacStatusProviding {
             }
             do {
                 let status = try await NtfyPublisher(configuration: configuration).publish(
-                    NtfyMessage(topic: configuration.topic, title: "Pilothouse", message: "\(headline)\n\(detail)", tags: ["bell"])
+                    NtfyMessage(topic: configuration.topic, title: "Remote Code", message: "\(headline)\n\(detail)", tags: ["bell"])
                 )
                 results.append(String(localized: "ntfy: delivered (HTTP \(status))"))
             } catch {
@@ -538,12 +540,21 @@ final class AppController: MacStatusProviding {
     }
 
     func setLaunchAtLogin(_ enabled: Bool) {
+        // Shown in Settings: the menu's alert is not visible from there.
+        launchAtLoginError = nil
         do {
             try LaunchAtLogin.setEnabled(enabled)
         } catch {
-            alert = String(localized: "Could not change the login item: \(error.localizedDescription)")
+            launchAtLoginError = String(localized: "Could not change the login item: \(error.localizedDescription)")
         }
+        refreshLaunchAtLogin()
+    }
+
+    /// Re-reads the login item, which can change in System Settings or be
+    /// unknown when the app is opened right at login.
+    func refreshLaunchAtLogin() {
         launchAtLogin = LaunchAtLogin.isEnabled
+        launchAtLoginNeedsApproval = LaunchAtLogin.requiresApproval
     }
 
     /// Debug builds started with `PILOTHOUSE_PREVIEW=1` run beside the installed
@@ -584,7 +595,7 @@ final class MacNameBox: Sendable {
 private struct DisabledNarrator: WeeklyNarrator {
     func unavailableReason(language: String?) async -> String? {
         let bundle = AppleWeeklyNarrator.bundle(for: language)
-        return String(localized: "Written summaries are turned off in Pilothouse settings on your Mac.", bundle: bundle)
+        return String(localized: "Written summaries are turned off in Remote Code settings on your Mac.", bundle: bundle)
     }
 
     func narrate(

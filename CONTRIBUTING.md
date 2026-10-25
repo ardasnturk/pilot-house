@@ -1,11 +1,11 @@
-# Contributing to Pilothouse
+# Contributing to Remote Code
 
-Thanks for helping! Pilothouse is a small project with a few firm rules;
+Thanks for helping! Remote Code is a small project with a few firm rules;
 reading this first saves everyone a review round.
 
 ## Ground rules
 
-* **Pilothouse never talks to Anthropic and never handles Claude credentials.**
+* **Remote Code never talks to Anthropic and never handles Claude credentials.**
   It only drives the official `claude` CLI on the user's Mac. Changes that call
   an API directly, read `~/.claude*`, or move credentials anywhere are not
   accepted.
@@ -25,7 +25,7 @@ reading this first saves everyone a review round.
 ## Getting started
 
 ```sh
-git clone https://github.com/ardasnturk/pilot-house.git && cd pilot-house
+git clone https://github.com/ardasnturk/remote-code.git && cd pilot-house
 cd PilothouseKit && swift test          # works on macOS and Linux
 open ../Pilothouse.xcodeproj            # Xcode 26+, schemes PilothouseMac / PilothouseiOS
 ```

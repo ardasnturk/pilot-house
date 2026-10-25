@@ -173,7 +173,7 @@ public struct FileBrowser: Sendable {
         }
         if (try? FileManager.default.contentsOfDirectory(atPath: url.path)) == nil, access(url.path, R_OK) != 0 {
             throw privacyError(for: url, underlying: nil)
-                ?? ErrorPayload(code: .internalError, message: "Pilothouse cannot read \(displayPath(url)).")
+                ?? ErrorPayload(code: .internalError, message: "Remote Code cannot read \(displayPath(url)).")
         }
         return url
     }
@@ -196,12 +196,12 @@ public struct FileBrowser: Sendable {
         default:
             return ErrorPayload(
                 code: .privacyPermissionRequired,
-                message: "macOS blocked access to \(displayPath(url)). On your Mac open System Settings → Privacy & Security → Full Disk Access and turn on Pilothouse."
+                message: "macOS blocked access to \(displayPath(url)). On your Mac open System Settings → Privacy & Security → Full Disk Access and turn on Remote Code."
             )
         }
         return ErrorPayload(
             code: .privacyPermissionRequired,
-            message: "macOS blocked access to \(displayPath(url)). On your Mac open System Settings → Privacy & Security → Files & Folders → Pilothouse and turn on \"\(folder)\"."
+            message: "macOS blocked access to \(displayPath(url)). On your Mac open System Settings → Privacy & Security → Files & Folders → Remote Code and turn on \"\(folder)\"."
         )
     }
 

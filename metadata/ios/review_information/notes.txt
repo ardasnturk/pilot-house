@@ -1,6 +1,6 @@
 HOW TO REVIEW PILOTHOUSE
 
-Pilothouse is a remote control for the Claude Code command-line tool running on the user's own Mac. A real setup needs a Mac with the free Pilothouse Mac app (distributed outside the Mac App Store as a notarized app: https://github.com/ardasnturk/pilot-house/releases) and a signed-in Claude Code CLI. To make review possible without any of that, the app contains a complete DEMO MODE that simulates a paired Mac inside the app. It needs no account, no network and no Mac.
+Remote Code is a remote control for the Claude Code command-line tool running on the user's own Mac. A real setup needs a Mac with the free Remote Code Mac app (distributed outside the Mac App Store as a notarized app: https://github.com/ardasnturk/remote-code/releases) and a signed-in Claude Code CLI. To make review possible without any of that, the app contains a complete DEMO MODE that simulates a paired Mac inside the app. It needs no account, no network and no Mac.
 
 Start the demo:
 1. Launch the app. On the welcome screen tap "Try the Demo".
@@ -20,6 +20,6 @@ Data and accounts:
 
 Encryption export compliance: the app only uses encryption to authenticate and protect the user's own data in transit between their own devices, using Apple CryptoKit; ITSAppUsesNonExemptEncryption is set to NO accordingly.
 
-Trademark: "Claude Code" is named only to describe compatibility. Pilothouse is an independent open-source project (MIT), not affiliated with Anthropic; the app uses its own name, icon and colors.
+Trademark: "Claude Code" is named only to describe compatibility. Remote Code is an independent open-source project (MIT), not affiliated with Anthropic; the app uses its own name, icon and colors.
 
-Source code: https://github.com/ardasnturk/pilot-house
+Source code: https://github.com/ardasnturk/remote-code

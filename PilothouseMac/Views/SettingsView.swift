@@ -67,9 +67,9 @@ struct SettingsView: View {
         case .general: Text("Start at login, keep your Mac awake, session history.")
         case .devices: Text("Paired devices and how they reach this Mac.")
         case .agents: Text("Claude Code, Codex and Gemini on this Mac, defaults and sub-agents.")
-        case .notifications: Text("When and where Pilothouse tells you something happened.")
+        case .notifications: Text("When and where Remote Code tells you something happened.")
         case .remoteAccess: Text("Optional: reach this Mac when you are away from its Wi-Fi.")
-        case .updates: Text("Install new versions of Pilothouse from GitHub.")
+        case .updates: Text("Install new versions of Remote Code from GitHub.")
         case .security: Text("Encryption, identity and risky modes.")
         }
     }
@@ -188,7 +188,7 @@ private struct RemoteAccessSettings: View {
             Section {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("At home or in the office you need nothing else: your iPhone talks to this Mac directly over the Wi-Fi.")
-                    Text("To use Pilothouse away from that Wi-Fi, install Tailscale on this Mac and on your iPhone, sign in to the same account on both, then turn on “Use Tailscale when away” in the iPhone app's settings. Pilothouse still tries the local network first.")
+                    Text("To use Remote Code away from that Wi-Fi, install Tailscale on this Mac and on your iPhone, sign in to the same account on both, then turn on “Use Tailscale when away” in the iPhone app's settings. Remote Code still tries the local network first.")
                         .foregroundStyle(.secondary)
                 }
                 .fixedSize(horizontal: false, vertical: true)
@@ -231,10 +231,22 @@ private struct GeneralSettings: View {
         @Bindable var settings = controller.settings
         Form {
             Section {
-                Toggle("Open Pilothouse at login", isOn: Binding(
+                Toggle("Open Remote Code at login", isOn: Binding(
                     get: { controller.launchAtLogin },
                     set: { controller.setLaunchAtLogin($0) }
                 ))
+                if controller.launchAtLoginNeedsApproval {
+                    LabeledContent {
+                        Button("Allow in Login Items…") { LaunchAtLogin.openLoginItemsSettings() }
+                    } label: {
+                        Text("macOS is waiting for your approval in System Settings.")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                if let error = controller.launchAtLoginError {
+                    Text(error)
+                        .foregroundStyle(.red)
+                }
             }
             Section {
                 Toggle("Stay awake with the lid closed", isOn: $settings.keepAwakeWithLidClosed)
@@ -243,7 +255,7 @@ private struct GeneralSettings: View {
             } header: {
                 Text("Lid-closed mode")
             } footer: {
-                Text("Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Pilothouse quits.")
+                Text("Uses a small privileged helper that only runs `pmset -a disablesleep`. A closed MacBook that stays awake can get warm and drain its battery; the setting is reverted when Remote Code quits.")
             }
             Section {
                 Stepper(value: $settings.retentionDays, in: 1...365) {
@@ -257,7 +269,7 @@ private struct GeneralSettings: View {
                     .multilineTextAlignment(.trailing)
                 } label: {
                     Text("Preferred port")
-                    Text("Takes effect after restarting Pilothouse. The next free port is used if it is taken.")
+                    Text("Takes effect after restarting Remote Code. The next free port is used if it is taken.")
                 }
             } header: {
                 Text("Sessions")
@@ -267,6 +279,10 @@ private struct GeneralSettings: View {
         .onChange(of: settings.keepAwakeWithLidClosed) { _, _ in Task { await controller.applySettings() } }
         .onChange(of: settings.pauseLidModeOnBattery) { _, _ in Task { await controller.applySettings() } }
         .onChange(of: settings.retentionDays) { _, _ in Task { await controller.applySettings() } }
+        .onAppear { controller.refreshLaunchAtLogin() }
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            controller.refreshLaunchAtLogin()
+        }
     }
 }
 
@@ -346,7 +362,7 @@ private struct AgentSettings: View {
             } header: {
                 Text("Agent CLIs on this Mac")
             } footer: {
-                Text("New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Pilothouse never sees it.")
+                Text("New chats on your iPhone or iPad can use any installed agent. Each one uses its own sign-in from Terminal; Remote Code never sees it.")
             }
             Section {
                 ForEach(controller.agents.filter { $0.kind != .claude && $0.installed }) { agent in
@@ -457,7 +473,7 @@ private struct PrivacySettings: View {
             } header: {
                 Text("Identity")
             } footer: {
-                Text("Traffic between your devices is end-to-end encrypted. Pilothouse never connects to Anthropic and collects no telemetry.")
+                Text("Traffic between your devices is end-to-end encrypted. Remote Code never connects to Anthropic and collects no telemetry.")
             }
         }
         .formStyle(.grouped)
@@ -495,7 +511,7 @@ private struct NotificationSettings: View {
             } header: {
                 Text("Destinations")
             } footer: {
-                Text("iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Pilothouse server. Tapping one opens the session in Pilothouse.")
+                Text("iPhone notifications go through an ntfy server, because iOS only wakes apps through Apple's push service, which would need a Remote Code server. Tapping one opens the session in Remote Code.")
             }
             .disabled(!settings.notificationsEnabled)
             if settings.notifyViaNtfy {
@@ -641,7 +657,7 @@ private struct UpdateSettings: View {
                 UpdateStatusView(updater: updater)
                 Toggle("Check for updates automatically", isOn: $settings.automaticallyChecksForUpdates)
             } footer: {
-                Text("Pilothouse looks for a new release on GitHub once a day. Updates are only installed when you click Install; they are checked for Apple's notarization and the same developer signature first.")
+                Text("Remote Code looks for a new release on GitHub once a day. Updates are only installed when you click Install; they are checked for Apple's notarization and the same developer signature first.")
             }
             if case .available = updater.state, !updater.releaseNotes.isEmpty {
                 Section {
@@ -676,7 +692,7 @@ struct UpdateStatusView: View {
                 Text("Checking…").foregroundStyle(.secondary)
                 Spacer()
             case .upToDate:
-                Label("Pilothouse is up to date", systemImage: "checkmark.circle.fill")
+                Label("Remote Code is up to date", systemImage: "checkmark.circle.fill")
                     .foregroundStyle(.green)
                 Spacer()
                 checkButton

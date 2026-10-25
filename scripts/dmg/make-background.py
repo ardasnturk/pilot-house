@@ -64,11 +64,11 @@ def draw(scale):
         box = [(cx - 92) * scale, 118 * scale, (cx + 92) * scale, 296 * scale]
         d.rounded_rectangle(box, radius=26 * scale, fill=(255, 255, 255, 52), outline=(255, 255, 255, 90), width=max(1, scale))
 
-    title = "Drag Pilothouse to Applications"
+    title = "Drag Remote Code to Applications"
     face = font(26 * scale, 700)
     tw = d.textlength(title, font=face)
     d.text(((w - tw) / 2, 40 * scale), title, font=face, fill=(255, 255, 255, 255))
-    sub = "Then open it from Applications: a helm icon appears in the menu bar."
+    sub = "Then open it from Applications: a >_ icon appears in the menu bar."
     small = font(13 * scale, 500)
     sw = d.textlength(sub, font=small)
     d.text(((w - sw) / 2, 78 * scale), sub, font=small, fill=(255, 255, 255, 225))
@@ -92,7 +92,7 @@ def draw(scale):
     d.polygon([tip, left, right], fill=GLOW + (255,))
 
     # The steps after installing, as pills.
-    steps = ["1  Drag to Applications", "2  Open Pilothouse", "3  Pair your iPhone"]
+    steps = ["1  Drag to Applications", "2  Open Remote Code", "3  Pair your iPhone"]
     pill = font(12 * scale, 600)
     widths = [d.textlength(text, font=pill) + 28 * scale for text in steps]
     gap = 10 * scale

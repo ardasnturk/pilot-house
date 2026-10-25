@@ -1,4 +1,4 @@
-Die erste Version von Pilothouse.
+Die erste Version von Remote Code.
 • iPhone oder iPad per QR-Code mit dem Mac koppeln
 • Claude-Code-Sitzungen in jedem Projektordner starten, verfolgen, stoppen und fortsetzen
 • Dateiänderungen und Befehle am iPhone bestätigen

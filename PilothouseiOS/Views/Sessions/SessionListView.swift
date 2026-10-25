@@ -342,14 +342,14 @@ struct ConnectionStatusRow: View {
     private var help: Text? {
         switch connection.state {
         case .waitingToRetry(_, true):
-            Text("Pilothouse may not use the local network. Turn on Local Network for Pilothouse in Settings.")
+            Text("Remote Code may not use the local network. Turn on Local Network for Remote Code in Settings.")
         case .waitingToRetry, .idle:
             if tailscaleAddressUnknown {
-                Text("Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.")
+                Text("Remote Code doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.")
             } else if offersTailscale {
-                Text("Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.")
+                Text("Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi. Away from that Wi-Fi? Use Tailscale.")
             } else {
-                Text("Make sure Pilothouse is running on your Mac and both devices are on the same Wi-Fi.")
+                Text("Make sure Remote Code is running on your Mac and both devices are on the same Wi-Fi.")
             }
         default:
             nil

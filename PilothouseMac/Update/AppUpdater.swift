@@ -4,13 +4,13 @@ import Observation
 
 /// Talks to the GitHub Releases API.
 enum UpdateChecker {
-    static let repository = "ardasnturk/pilot-house"
+    static let repository = "ardasnturk/remote-code"
     static let latestReleaseURL = URL(string: "https://api.github.com/repos/\(repository)/releases/latest")!
     static let releasesPageURL = URL(string: "https://github.com/\(repository)/releases/latest")!
 
     static var userAgent: String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "0"
-        return "Pilothouse-Mac/\(version) (+https://github.com/\(repository))"
+        return "RemoteCode-Mac/\(version) (+https://github.com/\(repository))"
     }
 
     enum Failure: Error {
@@ -51,7 +51,7 @@ enum UpdateChecker {
     }
 }
 
-/// Finds and installs newer Pilothouse releases from GitHub (no Sparkle).
+/// Finds and installs newer Remote Code releases from GitHub (no Sparkle).
 ///
 /// Wiring: create once (next to `AppSettings`), call `startAutomaticChecks()`
 /// once after launch, and show `state` / `releaseNotes` in the UI.

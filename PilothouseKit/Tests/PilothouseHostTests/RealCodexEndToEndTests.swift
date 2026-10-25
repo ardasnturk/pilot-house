@@ -60,7 +60,7 @@ struct RealCodexEndToEndTests {
         _ = try await client.request(.subscribe(Subscribe(sessionId: sessionId, fromSeq: 1)))
         _ = try await client.request(.sendMessage(SendMessage(
             sessionId: sessionId,
-            text: "Create a file named hello.txt in the current folder whose entire content is: Hello from Pilothouse. Then reply with one short sentence."
+            text: "Create a file named hello.txt in the current folder whose entire content is: Hello from Remote Code. Then reply with one short sentence."
         )), timeout: 60)
 
         var approvedTools: [String] = []
@@ -84,7 +84,7 @@ struct RealCodexEndToEndTests {
         }
 
         let contents = try String(contentsOf: project.appendingPathComponent("hello.txt"), encoding: .utf8)
-        #expect(contents.contains("Hello from Pilothouse"))
+        #expect(contents.contains("Hello from Remote Code"))
         #expect(!approvedTools.isEmpty, "Codex should have asked before writing in read-only mode")
         #expect(result?.isError == false)
         #expect(events.contains { if case .sessionInfo = $0 { true } else { false } })

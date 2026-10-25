@@ -1,5 +1,5 @@
 name: Feature request
-description: Suggest an idea for Pilothouse.
+description: Suggest an idea for Remote Code.
 labels: [enhancement]
 body:
   - type: textarea
@@ -16,7 +16,7 @@ body:
     id: principles
     attributes:
       label: Ground rules
-      description: Pilothouse only drives CLIs on your own Mac (see CONTRIBUTING.md).
+      description: Remote Code only drives CLIs on your own Mac (see CONTRIBUTING.md).
       options:
         - label: It needs no server, account or telemetry and does not handle Claude credentials.
           required: true

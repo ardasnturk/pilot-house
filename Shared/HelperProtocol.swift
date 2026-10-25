@@ -4,7 +4,7 @@ import Foundation
 ///
 /// The helper exists only to toggle `pmset -a disablesleep` for the optional
 /// "stay awake with the lid closed" mode, which needs root. It exposes nothing
-/// else and accepts connections only from the Pilothouse Mac app signed by the
+/// else and accepts connections only from the Remote Code Mac app signed by the
 /// same team (see `HelperConstants.clientRequirement`).
 @objc public protocol PilothouseHelperProtocol {
     /// Runs `pmset -a disablesleep 1` (`true`) or `0` (`false`).

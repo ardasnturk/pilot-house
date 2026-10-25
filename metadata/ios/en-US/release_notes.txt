@@ -1,4 +1,4 @@
-The first release of Pilothouse.
+The first release of Remote Code.
 • Pair your iPhone or iPad with your Mac using a QR code
 • Start, follow, stop and resume Claude Code sessions in any project folder
 • Approve file edits and commands from your phone

@@ -70,7 +70,7 @@ struct RealClaudeEndToEndTests {
         _ = try await client.request(.subscribe(Subscribe(sessionId: sessionId, fromSeq: 1)))
         _ = try await client.request(.sendMessage(SendMessage(
             sessionId: sessionId,
-            text: "Create a file named hello.txt in the current folder whose entire content is: Hello from Pilothouse. Use the Write tool, do not run any shell commands. Then reply with one short sentence."
+            text: "Create a file named hello.txt in the current folder whose entire content is: Hello from Remote Code. Use the Write tool, do not run any shell commands. Then reply with one short sentence."
         )), timeout: 60)
 
         var approvedTools: [String] = []
@@ -92,7 +92,7 @@ struct RealClaudeEndToEndTests {
 
         let file = project.appendingPathComponent("hello.txt")
         let contents = try String(contentsOf: file, encoding: .utf8)
-        #expect(contents.contains("Hello from Pilothouse"))
+        #expect(contents.contains("Hello from Remote Code"))
         #expect(approvedTools.contains("Write"))
         #expect(result?.isError == false)
         #expect(events.contains { if case .sessionInfo = $0 { true } else { false } })

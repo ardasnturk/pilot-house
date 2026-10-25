@@ -54,7 +54,7 @@ targets:
           destination: executables
     settings:
       base:
-        PRODUCT_NAME: Pilothouse
+        PRODUCT_NAME: "Remote Code"
         PRODUCT_BUNDLE_IDENTIFIER: com.ardasenturk.Pilothouse.Mac
         INFOPLIST_FILE: PilothouseMac/Resources/Info.plist
         CODE_SIGN_ENTITLEMENTS: PilothouseMac/Resources/PilothouseMac.entitlements

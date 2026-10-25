@@ -59,7 +59,7 @@ public enum ModelCatalogReader {
         ) else { return nil }
         defer { Task { await process.terminate(grace: 1) } }
         let lines = [
-            JSONRPC.request(id: 1, method: "initialize", params: ["clientInfo": ["name": "pilothouse", "title": "Pilothouse", "version": "1.1"], "capabilities": nil]),
+            JSONRPC.request(id: 1, method: "initialize", params: ["clientInfo": ["name": "pilothouse", "title": "Remote Code", "version": "1.1"], "capabilities": nil]),
             JSONRPC.notification(method: "initialized"),
             JSONRPC.request(id: 2, method: "model/list", params: ["includeHidden": false]),
         ]

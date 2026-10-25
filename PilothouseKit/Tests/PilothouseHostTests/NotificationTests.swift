@@ -249,7 +249,7 @@ final class StubURLProtocol: URLProtocol, @unchecked Sendable {
         #expect(request.headers["Authorization"] == "Bearer tk_secret")
         let json = try #require(try JSONSerialization.jsonObject(with: request.body) as? [String: Any])
         #expect(json["topic"] as? String == "abc123")
-        #expect(json["title"] as? String == "Pilothouse")
+        #expect(json["title"] as? String == "Remote Code")
         #expect(json["message"] as? String == "Task finished · app")
         #expect(json["click"] as? String == "pilothouse://session/1234-abcd?mac=MAC-1")
         #expect(json["priority"] as? Int == 3)

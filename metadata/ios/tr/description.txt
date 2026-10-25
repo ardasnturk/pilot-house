@@ -1,10 +1,10 @@
-Pilothouse, Mac'inizde çalışan Claude Code oturumlarını cebinize taşır. Herhangi bir proje klasöründe oturum başlatın, Claude'un düşünmesini, dosya düzenlemesini ve komut çalıştırmasını canlı izleyin; her işlemi iPhone ya da iPad'inizden onaylayın veya reddedin.
+Remote Code, Mac'inizde çalışan Claude Code oturumlarını cebinize taşır. Herhangi bir proje klasöründe oturum başlatın, Claude'un düşünmesini, dosya düzenlemesini ve komut çalıştırmasını canlı izleyin; her işlemi iPhone ya da iPad'inizden onaylayın veya reddedin.
 
 GEREKSİNİMLER — LÜTFEN OKUYUN
-Pilothouse tek başına çalışan bir asistan değil, bir uzaktan kumandadır. Şunlar gerekir:
-• Ücretsiz Pilothouse Mac uygulamasının çalıştığı bir Mac (macOS 15 veya üstü); github.com/ardasnturk/pilot-house adresinden indirilebilir
+Remote Code tek başına çalışan bir asistan değil, bir uzaktan kumandadır. Şunlar gerekir:
+• Ücretsiz Remote Code Mac uygulamasının çalıştığı bir Mac (macOS 15 veya üstü); github.com/ardasnturk/remote-code adresinden indirilebilir
 • Bu Mac'te kurulu ve kendi Claude hesabınızla (ya da kendi API anahtarınızla) giriş yapılmış resmi Claude Code komut satırı aracı
-Pilothouse Anthropic'e hiçbir zaman bağlanmaz ve kimlik bilgilerinizi asla görmez: tüm yapay zeka işi Mac'inizdeki Claude Code'da yapılır. Uygulamayı önce Mac ve hesap gerektirmeyen yerleşik demo moduyla keşfedebilirsiniz.
+Remote Code Anthropic'e hiçbir zaman bağlanmaz ve kimlik bilgilerinizi asla görmez: tüm yapay zeka işi Mac'inizdeki Claude Code'da yapılır. Uygulamayı önce Mac ve hesap gerektirmeyen yerleşik demo moduyla keşfedebilirsiniz.
 
 NELER YAPABİLİRSİNİZ
 • Mac'inizin ev klasöründeki klasörlere göz atın ve herhangi birinde yeni oturum başlatın
@@ -20,12 +20,12 @@ TASARIMDAN GÜVENLİ VE GİZLİ
 • Cihazlarınız arasında uçtan uca şifreleme (Noise IK, X25519, ChaCha20-Poly1305), her bağlantıda karşılıklı kimlik doğrulama
 • Kaybolan bir cihazın erişimini Mac'te tek tıkla iptal edin
 • Yanıtlanmayan izin istekleri otomatik olarak reddedilir
-• Analitik yok, takip yok, reklam yok. Pilothouse MIT lisanslı açık kaynaktır
+• Analitik yok, takip yok, reklam yok. Remote Code MIT lisanslı açık kaynaktır
 
 EVDE DE YOLDA DA
-Ev ya da ofis Wi-Fi'ında Mac'iniz otomatik bulunur. Dışarıdayken Pilothouse Tailscale üzerinden çalışır; Mac uygulaması kurulum için adım adım bir asistan içerir. Mac uygulaması oturumlar sürerken Mac'inizi uyanık tutar, isterseniz kapak kapalıyken de.
+Ev ya da ofis Wi-Fi'ında Mac'iniz otomatik bulunur. Dışarıdayken Remote Code Tailscale üzerinden çalışır; Mac uygulaması kurulum için adım adım bir asistan içerir. Mac uygulaması oturumlar sürerken Mac'inizi uyanık tutar, isterseniz kapak kapalıyken de.
 
 ERİŞİLEBİLİR VE YERELLEŞTİRİLMİŞ
 Tam Dynamic Type ve VoiceOver desteği, açık ve koyu mod; Türkçe, İngilizce ve Almanca dil seçenekleri.
 
-Pilothouse, Claude Code ile çalışır. Bağımsız bir projedir; Anthropic ile bağlantılı değildir, Anthropic tarafından onaylanmamış veya desteklenmemiştir. Claude Code'u Anthropic'in kullanım koşullarına uygun kullanmak sizin sorumluluğunuzdadır.
+Remote Code, Claude Code ile çalışır. Bağımsız bir projedir; Anthropic ile bağlantılı değildir, Anthropic tarafından onaylanmamış veya desteklenmemiştir. Claude Code'u Anthropic'in kullanım koşullarına uygun kullanmak sizin sorumluluğunuzdadır.

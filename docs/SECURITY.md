@@ -1,6 +1,6 @@
-# Pilothouse Security Model
+# Remote Code Security Model
 
-Pilothouse lets a phone drive a program (Claude Code) that can edit files and
+Remote Code lets a phone drive a program (Claude Code) that can edit files and
 run commands on a Mac. A compromised link is therefore equivalent to a remote
 shell. This document states what we protect, how, and what is out of scope.
 
@@ -11,14 +11,14 @@ To report a vulnerability, open a GitHub security advisory on the repository
 
 | Asset | Where it lives |
 |---|---|
-| The Mac user's files and shell | The Mac; reachable only through the Claude CLI that Pilothouse starts |
-| Claude / Anthropic credentials | Managed by the official `claude` CLI. **Pilothouse never reads, stores or transmits them.** |
+| The Mac user's files and shell | The Mac; reachable only through the Claude CLI that Remote Code starts |
+| Claude / Anthropic credentials | Managed by the official `claude` CLI. **Remote Code never reads, stores or transmits them.** |
 | Optional Anthropic API key | macOS Keychain, only if the user opts into API-key mode; passed to the child process as `ANTHROPIC_API_KEY` and nowhere else |
 | Mac identity private key | macOS login keychain (`Pilothouse identity key`), never leaves the Mac |
 | Phone identity private key | iOS Keychain, `AfterFirstUnlockThisDeviceOnly`, not synced, not in backups |
 | Session transcripts | `~/Library/Application Support/Pilothouse/sessions/*.jsonl` (mode 0600), pruned after 30 days; a cache on the phone (SwiftData, iOS data protection) |
 
-Pilothouse **never connects to Anthropic** and has **no telemetry**. The only
+Remote Code **never connects to Anthropic** and has **no telemetry**. The only
 network traffic it creates is between your own devices.
 
 ## 2. Threats and mitigations
@@ -42,7 +42,7 @@ network traffic it creates is between your own devices.
 * Handshake: `Noise_IK_25519_ChaChaPoly_SHA256` (X25519, HKDF-HMAC-SHA256,
   ChaCha20-Poly1305), CryptoKit primitives, validated against the cacophony
   test vectors.
-* Prologue `Pilothouse handshake v1` binds the protocol version.
+* Prologue `Remote Code handshake v1` binds the protocol version.
 * Transport keys: Noise `Split()`; nonce = counter; no re-keying (a connection
   would need 2⁶⁴ frames).
 * Identifiers shown in the UI: `base64url(SHA-256(publicKey)[0..16])`, and a
@@ -53,7 +53,7 @@ network traffic it creates is between your own devices.
 * A compromised Mac or phone (malware with the user's privileges).
 * Denial of service by someone on the same network (they can always drop packets).
 * Claude Code's own security properties and Anthropic's services.
-* Tailscale's security; Pilothouse treats the tailnet like any other network
+* Tailscale's security; Remote Code treats the tailnet like any other network
   and still encrypts end-to-end.
 
 ## 5. Local data hygiene

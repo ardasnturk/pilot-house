@@ -1,10 +1,25 @@
 # Changelog
 
-All notable changes to Pilothouse are recorded here. The format follows
+All notable changes to Remote Code (called Pilothouse up to 1.1.2) are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and versions follow
 [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+
+### Changed
+- Pilothouse is now **Remote Code**: new name, new icon (a `>_` prompt with a
+  signal) and a new repository, `ardasnturk/remote-code`. Pairings, settings,
+  session logs and the keychain identity carry over: the bundle identifiers,
+  the pairing protocol and the data folder keep their old names. The Mac app
+  is now `Remote Code.app`; copies from before the rename update to it through
+  a bridge image (`Pilothouse-<version>.dmg`), and the Homebrew cask is now
+  `remote-code`.
+
+### Fixed
+- "Open Remote Code at login" no longer looks switched off while it is on. The
+  switch is read again whenever Settings opens or the app comes to the front,
+  counts a login item that waits for approval as on and offers to open Login
+  Items for it, and errors now show in Settings instead of the menu.
 
 ## [1.1.2] — 2026-10-25
 
@@ -121,8 +136,8 @@ coding-agent CLIs on your Mac.
 - The Mac menu panel collapsed to its header on macOS 27.
 - Diff statistics counted `---`/`+++` file headers as changed lines.
 
-[Unreleased]: https://github.com/ardasnturk/pilot-house/compare/v1.1.1...HEAD
-[1.1.1]: https://github.com/ardasnturk/pilot-house/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/ardasnturk/pilot-house/compare/v1.0.1...v1.1.0
-[1.0.1]: https://github.com/ardasnturk/pilot-house/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/ardasnturk/pilot-house/releases/tag/v1.0.0
+[Unreleased]: https://github.com/ardasnturk/remote-code/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/ardasnturk/remote-code/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/ardasnturk/remote-code/compare/v1.0.1...v1.1.0
+[1.0.1]: https://github.com/ardasnturk/remote-code/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/ardasnturk/remote-code/releases/tag/v1.0.0

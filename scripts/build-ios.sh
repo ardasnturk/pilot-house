@@ -21,7 +21,7 @@ fi
 
 rm -rf build/ios && mkdir -p build/ios
 
-echo "▸ Archiving Pilothouse $VERSION ($BUILD_NUMBER)"
+echo "▸ Archiving Remote Code $VERSION ($BUILD_NUMBER)"
 xcodebuild archive \
   -project Pilothouse.xcodeproj -scheme PilothouseiOS -configuration Release \
   -destination 'generic/platform=iOS' \

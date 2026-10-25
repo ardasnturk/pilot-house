@@ -1,17 +1,17 @@
-# Homebrew cask for the Pilothouse Mac app.
+# Homebrew cask for the Remote Code Mac app (formerly Pilothouse).
 #
-#   brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house
-#   brew install --cask pilothouse
+#   brew tap ardasnturk/remote-code https://github.com/ardasnturk/remote-code
+#   brew install --cask remote-code
 #
 # `version` and `sha256` are updated by scripts/prepare-release.sh.
-cask "pilothouse" do
-  version "1.1.1"
-  sha256 "658b45cb1e567c4ae3c05641a434dc2b65f1a626e7f67e9da4f46c839ea9e2bc"
+cask "remote-code" do
+  version "1.1.2"
+  sha256 "50843da8412a70437290a089a9296e5055e08f80cf47eafe9feedb292f49d3e3"
 
-  url "https://github.com/ardasnturk/pilot-house/releases/download/v#{version}/Pilothouse-#{version}.dmg"
-  name "Pilothouse"
+  url "https://github.com/ardasnturk/remote-code/releases/download/v#{version}/RemoteCode-#{version}.dmg"
+  name "Remote Code"
   desc "Drive Claude Code, Codex and Gemini CLI on your Mac from iPhone and iPad"
-  homepage "https://github.com/ardasnturk/pilot-house"
+  homepage "https://github.com/ardasnturk/remote-code"
 
   livecheck do
     url :url
@@ -20,11 +20,12 @@ cask "pilothouse" do
 
   depends_on macos: ">= :sequoia"
 
-  app "Pilothouse.app"
+  app "Remote Code.app"
 
   uninstall quit:      "com.ardasenturk.Pilothouse.Mac",
             launchctl: "com.ardasenturk.Pilothouse.Helper"
 
+  # Data, keychain and identifiers keep the old name so pairings survive the rename.
   zap trash: [
     "~/Library/Application Support/Pilothouse",
     "~/Library/Caches/com.ardasenturk.Pilothouse.Mac",
@@ -33,7 +34,7 @@ cask "pilothouse" do
   ]
 
   caveats <<~EOS
-    Pilothouse needs at least one agent CLI on this Mac, signed in with your
+    Remote Code needs at least one agent CLI on this Mac, signed in with your
     own account: Claude Code, Codex or Gemini CLI.
       https://docs.claude.com/en/docs/claude-code/setup
 

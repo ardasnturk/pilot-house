@@ -1,6 +1,6 @@
 import Foundation
 
-/// A coding-agent CLI that Pilothouse can drive on the Mac.
+/// A coding-agent CLI that Remote Code can drive on the Mac.
 ///
 /// Open-ended like `ErrorCode`, so a newer Mac can offer agents an older
 /// phone does not know yet; the phone shows them by `displayName`.

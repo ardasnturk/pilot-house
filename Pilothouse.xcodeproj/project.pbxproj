@@ -788,7 +788,7 @@
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.Mac;
-				PRODUCT_NAME = Pilothouse;
+				PRODUCT_NAME = "Remote Code";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -850,7 +850,7 @@
 				);
 				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ardasenturk.Pilothouse.Mac;
-				PRODUCT_NAME = Pilothouse;
+				PRODUCT_NAME = "Remote Code";
 				SDKROOT = macosx;
 			};
 			name = Release;

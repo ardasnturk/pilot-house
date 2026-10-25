@@ -38,7 +38,7 @@ struct MenuContentView: View {
         .frame(width: 360)
         .background(BrandBackground(intensity: 0.8))
         .alert(
-            Text("Pilothouse"),
+            Text("Remote Code"),
             isPresented: Binding(get: { controller.alert != nil }, set: { if !$0 { controller.alert = nil } })
         ) {
             Button("OK", role: .cancel) {}
@@ -58,7 +58,7 @@ struct MenuContentView: View {
                     .frame(width: 26, height: 26)
                     .foregroundStyle(.white)
                 VStack(alignment: .leading, spacing: 1) {
-                    Text("Pilothouse").font(.title3.weight(.bold))
+                    Text("Remote Code").font(.title3.weight(.bold))
                     Text(verbatim: controller.macName)
                         .font(.caption)
                         .opacity(0.85)
@@ -174,7 +174,7 @@ struct MenuContentView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Connect your iPhone")
                     .font(.headline)
-                Text("Install Pilothouse on your iPhone or iPad, then scan a pairing code from this Mac. Both need to be on the same Wi-Fi.")
+                Text("Install Remote Code on your iPhone or iPad, then scan a pairing code from this Mac. Both need to be on the same Wi-Fi.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -329,7 +329,7 @@ struct MenuContentView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
         case .needsApproval:
-            Button("Allow the Pilothouse helper in Login Items…") {
+            Button("Allow the Remote Code helper in Login Items…") {
                 controller.lidClosed.openApprovalSettings()
             }
             .font(.caption)
@@ -356,7 +356,7 @@ struct MenuContentView: View {
             Button {
                 NSApp.terminate(nil)
             } label: {
-                Label("Quit Pilothouse", systemImage: "power")
+                Label("Quit Remote Code", systemImage: "power")
             }
             .keyboardShortcut("q")
         }

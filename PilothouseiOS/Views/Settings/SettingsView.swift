@@ -36,7 +36,7 @@ struct SettingsView: View {
                         .accessibilityIdentifier("tailscaleToggle")
                     if preferences.usesTailscale, let mac = model.activeMac, !mac.isDemo,
                        !mac.addresses.contains(where: { $0.kind != .local }) {
-                        Label("Pilothouse doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.", systemImage: "exclamationmark.triangle")
+                        Label("Remote Code doesn't know your Mac's Tailscale address yet. Connect once over the same Wi-Fi while Tailscale is running on the Mac.", systemImage: "exclamationmark.triangle")
                             .font(.footnote)
                             .foregroundStyle(.orange)
                     }
@@ -44,7 +44,7 @@ struct SettingsView: View {
                 } header: {
                     Text("Connection")
                 } footer: {
-                    Text("Pilothouse always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.")
+                    Text("Remote Code always connects over your Wi-Fi first. Turn this on only if you also use Tailscale, to reach your Mac when you are away from that Wi-Fi.")
                 }
                 .onChange(of: preferences.connectionPreference) { _, preference in
                     model.connection?.setPreference(preference)
@@ -86,7 +86,7 @@ struct SettingsView: View {
                     }
                     .foregroundStyle(.primary)
                 } footer: {
-                    Text("Pilothouse follows your iPhone's language. To use another one just for Pilothouse, choose it in Settings → Apps → Pilothouse → Language.")
+                    Text("Remote Code follows your iPhone's language. To use another one just for Remote Code, choose it in Settings → Apps → Remote Code → Language.")
                 }
 
                 Section {
@@ -115,7 +115,7 @@ struct SettingsView: View {
                         .accessibilityIdentifier("simulateNetworkDrop")
                     }
                 } footer: {
-                    Text("Explore Pilothouse with a simulated Mac. Nothing is sent anywhere and no Mac is needed.")
+                    Text("Explore Remote Code with a simulated Mac. Nothing is sent anywhere and no Mac is needed.")
                 }
 
                 aboutSection
@@ -139,7 +139,7 @@ struct SettingsView: View {
                     Task { await model.unpair(mac) }
                 }
             } message: { _ in
-                Text("This device forgets the Mac and its cached transcripts. To block this device on the Mac too, revoke it in the Pilothouse menu on the Mac.")
+                Text("This device forgets the Mac and its cached transcripts. To block this device on the Mac too, revoke it in the Remote Code menu on the Mac.")
             }
             .confirmationDialog(Text("Clear cached transcripts?"), isPresented: $confirmClearCache, titleVisibility: .visible) {
                 Button("Clear Cache", role: .destructive) { model.clearCache() }
@@ -216,7 +216,7 @@ struct SettingsView: View {
     private var aboutSection: some View {
         Section {
             LabeledContent("Version", value: Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0")
-            if let url = URL(string: "https://github.com/ardasnturk/pilot-house") {
+            if let url = URL(string: "https://github.com/ardasnturk/remote-code") {
                 Link(destination: url) {
                     Label("Source Code on GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
                 }
@@ -230,7 +230,7 @@ struct SettingsView: View {
         } header: {
             Text("About")
         } footer: {
-            Text("Pilothouse works with Claude Code. It is an independent open-source project and is not affiliated with Anthropic. Pilothouse collects no data.")
+            Text("Remote Code works with Claude Code. It is an independent open-source project and is not affiliated with Anthropic. Remote Code collects no data.")
         }
     }
 }
@@ -239,11 +239,11 @@ struct LicensesView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Pilothouse").font(.headline)
+                Text("Remote Code").font(.headline)
                 Text(verbatim: Self.mit)
                     .font(.footnote.monospaced())
                 Text("Third-party software").font(.headline)
-                Text("Pilothouse uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.")
+                Text("Remote Code uses no third-party libraries. Encryption is provided by Apple CryptoKit and follows the public-domain Noise Protocol Framework specification.")
                     .font(.footnote)
             }
             .padding()
@@ -254,7 +254,7 @@ struct LicensesView: View {
     static let mit = """
         MIT License
 
-        Copyright (c) 2026 Arda Şentürk and the Pilothouse contributors
+        Copyright (c) 2026 Arda Şentürk and the Remote Code contributors
 
         Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

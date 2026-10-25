@@ -52,7 +52,7 @@ struct PairingFlowView: View {
         switch step {
         case .scan:
             VStack(spacing: 20) {
-                Text("Open Pilothouse on your Mac, choose “Pair New Device…” and point the camera at the QR code.")
+                Text("Open Remote Code on your Mac, choose “Pair New Device…” and point the camera at the QR code.")
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.secondary)
                 QRScannerView { code in pair(code) }
@@ -97,7 +97,7 @@ struct PairingFlowView: View {
             VStack(spacing: 16) {
                 ProgressView().controlSize(.large)
                 Text("Connecting to your Mac…")
-                Text("If iOS asks for Local Network access, allow it so Pilothouse can find your Mac.")
+                Text("If iOS asks for Local Network access, allow it so Remote Code can find your Mac.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -122,7 +122,7 @@ struct PairingFlowView: View {
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
                 }
-                Button("Start Using Pilothouse") { dismiss() }
+                Button("Start Using Remote Code") { dismiss() }
                     .buttonStyle(.borderedProminent)
                     .controlSize(.large)
             }
@@ -169,11 +169,11 @@ struct PairingFlowView: View {
         case let error as ErrorPayload:
             return error.message
         case is PairingPayload.ParseError:
-            return String(localized: "This is not a valid Pilothouse pairing code.")
+            return String(localized: "This is not a valid Remote Code pairing code.")
         case MacClientError.localNetworkDenied:
-            return String(localized: "Pilothouse is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Pilothouse in Settings, then try again.")
+            return String(localized: "Remote Code is not allowed to use the local network, so it cannot reach your Mac on this Wi-Fi. Turn on Local Network for Remote Code in Settings, then try again.")
         case MacClientError.unreachable(let attempts):
-            let advice = String(localized: "Could not reach your Mac. Make sure Pilothouse is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Pilothouse → Local Network.")
+            let advice = String(localized: "Could not reach your Mac. Make sure Remote Code is running on it and both devices are on the same network (or connected to Tailscale). Check Settings → Remote Code → Local Network.")
             // The technical reason per address, for support and bug reports.
             return ([advice] + attempts).joined(separator: "\n\n")
         case let error as HandshakeError:

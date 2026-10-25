@@ -3,7 +3,7 @@ import PilothouseKit
 import Testing
 @testable import PilothouseHost
 
-/// Builds this week's stats from a *copy* of a real Pilothouse data folder and
+/// Builds this week's stats from a *copy* of a real Remote Code data folder and
 /// writes the model digest next to it, for checking the summary by hand.
 ///
 ///     PILOTHOUSE_REAL_DATA=/path/to/copy swift test --filter RealWeeklyStatsTests

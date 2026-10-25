@@ -1,4 +1,4 @@
-# Releasing Pilothouse
+# Releasing Remote Code
 
 Everything up to the irreversible steps is scripted. Publishing the GitHub
 release and submitting the iOS app for App Review are always done by hand
@@ -11,7 +11,7 @@ release and submitting the iOS app for App Review are always done by hand
 | Apple Developer Program membership of team `5JMD3VSD7N` | developer.apple.com |
 | Certificates: *Apple Development*, *Apple Distribution*, *Developer ID Application* | Xcode → Settings → Accounts → Manage Certificates |
 | App IDs `com.ardasenturk.Pilothouse` (iOS) and `com.ardasenturk.Pilothouse.Mac` | created automatically by Xcode (automatic signing) |
-| App record "Pilothouse" for `com.ardasenturk.Pilothouse`, primary language English (U.S.), localizations Turkish and German | App Store Connect → Apps → + |
+| App record "Remote Code" for `com.ardasenturk.Pilothouse`, primary language English (U.S.), localizations Turkish and German | App Store Connect → Apps → + |
 | Notarization credentials | `xcrun notarytool store-credentials pilothouse-notary --apple-id <apple-id> --team-id 5JMD3VSD7N --password <app-specific password>` |
 | Optional: App Store Connect API key for unattended uploads | App Store Connect → Users and Access → Integrations; then `ASC_KEY_PATH`, `ASC_KEY_ID`, `ASC_ISSUER_ID` |
 | GitHub CLI signed in (`gh auth login`) for the release draft | optional; the script prints the commands otherwise |
@@ -40,8 +40,10 @@ scripts/build-mac.sh
 archives the `PilothouseMac` scheme (Release, Developer ID, hardened runtime,
 secure timestamp), exports it, verifies the signatures of the app and the
 embedded helper, notarizes and staples the app, builds
-`dist/Pilothouse-<version>.dmg`, signs, notarizes and staples the DMG and writes
-its SHA-256.
+`dist/RemoteCode-<version>.dmg`, signs, notarizes and staples the DMG and writes
+its SHA-256. It also builds the bridge image `dist/Pilothouse-<version>.dmg`
+(the same app in a folder named `Pilothouse.app`) that copies up to 1.1.2
+need to find the update (D-110).
 
 Check by hand on a second Mac (or a fresh user account): download the DMG,
 open it — Gatekeeper must not complain — and run through pairing once.
@@ -52,15 +54,15 @@ open it — Gatekeeper must not complain — and run through pairing once.
 scripts/prepare-release.sh <version>
 ```
 
-uploads the DMG to a **draft** release `v<version>` with the notes from
+uploads both DMGs to a **draft** release `v<version>` with the notes from
 `docs/release-notes/<version>.md` and writes version + SHA-256 into
-`Casks/pilothouse.rb`.
+`Casks/remote-code.rb`.
 
 Then, deliberately:
 
 1. Review the draft on GitHub and press **Publish release**.
-2. Commit and push the cask: `git commit -m "Homebrew cask <version>" Casks/pilothouse.rb && git push`.
-3. Verify: `brew tap ardasnturk/pilothouse https://github.com/ardasnturk/pilot-house && brew install --cask pilothouse`.
+2. Commit and push the cask: `git commit -m "Homebrew cask <version>" Casks/remote-code.rb && git push`.
+3. Verify: `brew tap ardasnturk/remote-code https://github.com/ardasnturk/remote-code && brew install --cask remote-code`.
 
 ## 4. iOS app — screenshots, TestFlight
 

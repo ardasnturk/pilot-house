@@ -8,22 +8,22 @@ struct TailscaleGuideView: View {
         NavigationStack {
             List {
                 Section {
-                    Text("At home, Pilothouse talks to your Mac over Wi-Fi. To reach it from anywhere, both devices join your private Tailscale network.")
+                    Text("At home, Remote Code talks to your Mac over Wi-Fi. To reach it from anywhere, both devices join your private Tailscale network.")
                 }
                 Section {
-                    GuideStep(number: 1, title: "On your Mac", detail: "Open the Pilothouse menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.")
+                    GuideStep(number: 1, title: "On your Mac", detail: "Open the Remote Code menu → Tailscale → “Set Up with Claude”. Claude installs and checks Tailscale for you; you only sign in.")
                     GuideStep(number: 2, title: "On this device", detail: "Install Tailscale from the App Store and sign in with the same account.")
                     Link(destination: URL(string: "https://apps.apple.com/app/tailscale/id1470499037") ?? URL(fileURLWithPath: "/")) {
                         Label("Get Tailscale on the App Store", systemImage: "arrow.down.app")
                     }
-                    GuideStep(number: 3, title: "Done", detail: "Pilothouse learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.")
+                    GuideStep(number: 3, title: "Done", detail: "Remote Code learns your Mac's Tailscale address automatically and uses it whenever the local network is not available.")
                 } header: {
                     Text("Three steps")
                 } footer: {
                     Text("iOS does not let apps install or configure a VPN for you, so step 2 has to be done by hand.")
                 }
                 Section {
-                    Text("Your traffic stays end-to-end encrypted by Pilothouse in addition to Tailscale's own encryption.")
+                    Text("Your traffic stays end-to-end encrypted by Remote Code in addition to Tailscale's own encryption.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }

@@ -20,7 +20,7 @@ struct CommandPickerView: View {
         NavigationStack {
             List {
                 if session.agentKind != .claude {
-                    Label("\(session.agentKind.displayName) does not report its commands to Pilothouse.", systemImage: "info.circle")
+                    Label("\(session.agentKind.displayName) does not report its commands to Remote Code.", systemImage: "info.circle")
                         .foregroundStyle(.secondary)
                 } else if isLoading && commands.isEmpty {
                     HStack(spacing: 10) {

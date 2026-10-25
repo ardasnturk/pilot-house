@@ -2,7 +2,7 @@ import Foundation
 import IOKit.pwr_mgt
 import Synchronization
 
-/// Keeps the Mac from idle-sleeping while Pilothouse runs (prompt §4.3).
+/// Keeps the Mac from idle-sleeping while Remote Code runs (prompt §4.3).
 ///
 /// Uses `kIOPMAssertionTypePreventUserIdleSystemSleep`: the display may still
 /// turn off; only *system* sleep is prevented. The assertion is released in
@@ -19,7 +19,7 @@ final class SleepAssertion: Sendable {
         assertion.withLock { current in
             if current != nil { return true }
             var identifier = IOPMAssertionID(0)
-            let reason = "Pilothouse keeps this Mac awake so your Claude Code sessions stay reachable from your phone." as CFString
+            let reason = "Remote Code keeps this Mac awake so your Claude Code sessions stay reachable from your phone." as CFString
             let result = IOPMAssertionCreateWithName(
                 kIOPMAssertionTypePreventUserIdleSystemSleep as CFString,
                 IOPMAssertionLevel(kIOPMAssertionLevelOn),

@@ -151,7 +151,7 @@ struct PermissionRequestSheet: View {
                     .tint(.orange)
                     .accessibilityIdentifier("allowEverythingButton")
                 } else {
-                    Text("To allow everything in a chat without asking, turn on “Bypass permissions” in Pilothouse settings on your Mac.")
+                    Text("To allow everything in a chat without asking, turn on “Bypass permissions” in Remote Code settings on your Mac.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)

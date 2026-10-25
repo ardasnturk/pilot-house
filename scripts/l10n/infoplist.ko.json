@@ -1,15 +1,15 @@
 {
   "ios": {
-    "CFBundleDisplayName": "Pilothouse",
-    "NSCameraUsageDescription": "Pilothouse는 카메라를 사용하여 Mac에 표시된 페어링 코드를 스캔하고, 사용자가 원하는 경우 에이전트에게 보낼 사진을 찍습니다.",
-    "NSLocalNetworkUsageDescription": "Pilothouse는 로컬 네트워크에서 Mac에 연결하여 Claude Code 세션을 제어합니다."
+    "CFBundleDisplayName": "Remote Code",
+    "NSCameraUsageDescription": "Remote Code는 카메라를 사용하여 Mac에 표시된 페어링 코드를 스캔하고, 사용자가 원하는 경우 에이전트에게 보낼 사진을 찍습니다.",
+    "NSLocalNetworkUsageDescription": "Remote Code는 로컬 네트워크에서 Mac에 연결하여 Claude Code 세션을 제어합니다."
   },
   "mac": {
-    "CFBundleDisplayName": "Pilothouse",
+    "CFBundleDisplayName": "Remote Code",
     "NSDesktopFolderUsageDescription": "휴대폰에서 시작한 Claude Code 세션이 데스크탑의 파일을 읽고 편집할 수 있습니다.",
     "NSDocumentsFolderUsageDescription": "휴대폰에서 시작한 Claude Code 세션이 도큐멘트 폴더의 파일을 읽고 편집할 수 있습니다.",
     "NSDownloadsFolderUsageDescription": "휴대폰에서 시작한 Claude Code 세션이 다운로드 폴더의 파일을 읽고 편집할 수 있습니다.",
-    "NSLocalNetworkUsageDescription": "Pilothouse를 사용하면 페어링된 iPhone 또는 iPad가 로컬 네트워크를 통해 이 Mac에 연결할 수 있습니다.",
+    "NSLocalNetworkUsageDescription": "Remote Code를 사용하면 페어링된 iPhone 또는 iPad가 로컬 네트워크를 통해 이 Mac에 연결할 수 있습니다.",
     "NSNetworkVolumesUsageDescription": "휴대폰에서 시작한 Claude Code 세션이 네트워크 볼륨의 파일에 접근할 수 있습니다."
   }
 }

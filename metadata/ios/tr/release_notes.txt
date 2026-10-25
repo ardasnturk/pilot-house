@@ -1,4 +1,4 @@
-Pilothouse'un ilk sürümü.
+Remote Code'un ilk sürümü.
 • iPhone veya iPad'inizi QR kodla Mac'inize eşleştirin
 • Herhangi bir proje klasöründe Claude Code oturumlarını başlatın, izleyin, durdurun ve sürdürün
 • Dosya düzenlemelerini ve komutları telefonunuzdan onaylayın

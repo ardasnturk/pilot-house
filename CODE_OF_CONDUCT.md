@@ -1,6 +1,6 @@
 # Code of conduct
 
-Pilothouse follows the
+Remote Code follows the
 [Contributor Covenant, version 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/).
 Please read it before taking part in issues, discussions or pull requests.
 
@@ -16,7 +16,7 @@ In short:
 
 If someone violates this code of conduct, contact the maintainer
 ([@ardasnturk](https://github.com/ardasnturk)) privately, for example through a
-private [advisory](https://github.com/ardasnturk/pilot-house/security/advisories/new).
+private [advisory](https://github.com/ardasnturk/remote-code/security/advisories/new).
 Reports are handled confidentially. The maintainer may
 remove comments, issues or contributions, and block people who do not follow
 this code of conduct.

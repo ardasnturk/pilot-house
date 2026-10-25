@@ -1,7 +1,7 @@
 import PilothouseKit
 import SwiftUI
 
-/// First launch: what Pilothouse is, the three steps to get going, then
+/// First launch: what Remote Code is, the three steps to get going, then
 /// pairing or the demo (D-107: plain, numbered guidance).
 struct WelcomeView: View {
     @Environment(AppModel.self) private var model
@@ -20,9 +20,9 @@ struct WelcomeView: View {
                             .background(Brand.gradient, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                             .shadow(color: Brand.indigo.opacity(0.3), radius: 12, y: 6)
                             .accessibilityHidden(true)
-                        Text("Pilothouse")
+                        Text("Remote Code")
                             .font(.largeTitle.bold())
-                        Text("Your coding agents run on your Mac. Pilothouse lets you talk to them, follow every step and approve changes from your iPhone or iPad.")
+                        Text("Your coding agents run on your Mac. Remote Code lets you talk to them, follow every step and approve changes from your iPhone or iPad.")
                             .font(.title3)
                             .foregroundStyle(.secondary)
                     }
@@ -30,11 +30,11 @@ struct WelcomeView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Get started in three steps")
                             .font(.headline)
-                        StepRow(number: 1, title: "Install Pilothouse on your Mac", detail: "Download it from the website and open it. A helm icon appears in the menu bar at the top of the screen.")
+                        StepRow(number: 1, title: "Install Remote Code on your Mac", detail: "Download it from the website and open it. A >_ icon appears in the menu bar at the top of the screen.")
                         StepRow(number: 2, title: "Have an agent ready on the Mac", detail: "Claude Code, Codex or Gemini CLI, installed and signed in once in Terminal. The Mac app tells you if something is missing.")
-                        StepRow(number: 3, title: "Pair on the same Wi-Fi", detail: "On the Mac, click the helm icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.")
+                        StepRow(number: 3, title: "Pair on the same Wi-Fi", detail: "On the Mac, click the >_ icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.")
                         Link(destination: URL(string: "https://pilot.ardasnturk.com") ?? URL(fileURLWithPath: "/")) {
-                            Label("Get Pilothouse for Mac", systemImage: "arrow.up.right.square")
+                            Label("Get Remote Code for Mac", systemImage: "arrow.up.right.square")
                                 .font(.callout.weight(.medium))
                         }
                     }

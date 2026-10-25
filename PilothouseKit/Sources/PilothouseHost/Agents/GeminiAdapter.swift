@@ -199,7 +199,7 @@ public struct GeminiAdapter: AgentAdapter {
 
     private mutating func serverRequest(_ method: String, id: JSONValue, params: JSONValue) -> AgentOutput {
         guard method == "session/request_permission" else {
-            return AgentOutput(writes: [JSONRPC.error(id: id, code: -32601, message: "Pilothouse does not support \(method)")])
+            return AgentOutput(writes: [JSONRPC.error(id: id, code: -32601, message: "Remote Code does not support \(method)")])
         }
         let toolCall = params["toolCall"] ?? .null
         let toolCallId = toolCall["toolCallId"]?.stringValue
@@ -209,7 +209,7 @@ public struct GeminiAdapter: AgentAdapter {
         )])
     }
 
-    /// ACP tool kinds → Pilothouse tool names (so the phone shows the right card).
+    /// ACP tool kinds → Remote Code tool names (so the phone shows the right card).
     static func tool(from call: JSONValue, known: String? = nil) -> (name: String, input: JSONValue) {
         let raw = call["rawInput"]?.objectValue ?? [:]
         var input = raw

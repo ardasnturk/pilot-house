@@ -1,15 +1,15 @@
 {
   "ios": {
-    "CFBundleDisplayName": "Pilothouse",
-    "NSCameraUsageDescription": "Pilothouse 使用相机扫描你 Mac 上显示的配对代码，并在你选择时拍摄照片发送给你的代理。",
-    "NSLocalNetworkUsageDescription": "Pilothouse 通过本地网络连接你的 Mac，以控制你的 Claude Code 会话。"
+    "CFBundleDisplayName": "Remote Code",
+    "NSCameraUsageDescription": "Remote Code 使用相机扫描你 Mac 上显示的配对代码，并在你选择时拍摄照片发送给你的代理。",
+    "NSLocalNetworkUsageDescription": "Remote Code 通过本地网络连接你的 Mac，以控制你的 Claude Code 会话。"
   },
   "mac": {
-    "CFBundleDisplayName": "Pilothouse",
+    "CFBundleDisplayName": "Remote Code",
     "NSDesktopFolderUsageDescription": "你从手机启动的 Claude Code 会话可能会读取和编辑你“桌面”上的文件。",
     "NSDocumentsFolderUsageDescription": "你从手机启动的 Claude Code 会话可能会读取和编辑你“文稿”文件夹中的文件。",
     "NSDownloadsFolderUsageDescription": "你从手机启动的 Claude Code 会话可能会读取和编辑你“下载”文件夹中的文件。",
-    "NSLocalNetworkUsageDescription": "Pilothouse 让已配对的 iPhone 或 iPad 通过本地网络连接这台 Mac。",
+    "NSLocalNetworkUsageDescription": "Remote Code 让已配对的 iPhone 或 iPad 通过本地网络连接这台 Mac。",
     "NSNetworkVolumesUsageDescription": "你从手机启动的 Claude Code 会话可能会访问网络宗卷上的文件。"
   }
 }

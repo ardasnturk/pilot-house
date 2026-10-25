@@ -1,18 +1,18 @@
 # Security policy
 
-Pilothouse lets a phone drive a program that can edit files and run commands on
+Remote Code lets a phone drive a program that can edit files and run commands on
 a Mac, so security reports are taken seriously and handled first.
 
 ## Reporting a vulnerability
 
 **Please do not open a public issue.** Report it privately through
-[GitHub Security Advisories](https://github.com/ardasnturk/pilot-house/security/advisories/new)
+[GitHub Security Advisories](https://github.com/ardasnturk/remote-code/security/advisories/new)
 (Security → Report a vulnerability). Include:
 
 * what an attacker can do and under which conditions (same network, paired
   device, local user, …),
 * steps to reproduce or a proof of concept,
-* the Pilothouse versions (Mac and iPhone/iPad) and macOS/iOS versions.
+* the Remote Code versions (Mac and iPhone/iPad) and macOS/iOS versions.
 
 You will get an answer within 7 days. Fixes for confirmed issues are released
 as soon as possible, and you are credited in the release notes unless you

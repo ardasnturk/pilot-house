@@ -4,7 +4,7 @@
 <dict>
 	<!--
 	Distributed with Developer ID outside the Mac App Store. The App Sandbox is
-	off on purpose: Pilothouse starts the user's `claude` CLI in arbitrary
+	off on purpose: Remote Code starts the user's `claude` CLI in arbitrary
 	folders of the home directory (prompt §4.1). Hardened Runtime stays on and
 	needs no exceptions.
 	-->

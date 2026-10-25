@@ -3,8 +3,12 @@ import ServiceManagement
 
 /// "Open at login" via `SMAppService.mainApp` (prompt §4.1).
 enum LaunchAtLogin {
+    /// Registered, including when macOS still waits for the user's approval.
     static var isEnabled: Bool {
-        SMAppService.mainApp.status == .enabled
+        switch SMAppService.mainApp.status {
+        case .enabled, .requiresApproval: true
+        default: false
+        }
     }
 
     static var requiresApproval: Bool {
@@ -13,11 +17,19 @@ enum LaunchAtLogin {
 
     static func setEnabled(_ enabled: Bool) throws {
         if enabled {
-            guard SMAppService.mainApp.status != .enabled else { return }
+            // A stale record can report `.enabled` while the Mac no longer
+            // opens the app; registering again repairs it.
+            if SMAppService.mainApp.status == .enabled {
+                try? SMAppService.mainApp.unregister()
+            }
             try SMAppService.mainApp.register()
         } else {
-            guard SMAppService.mainApp.status == .enabled else { return }
+            guard isEnabled else { return }
             try SMAppService.mainApp.unregister()
         }
+    }
+
+    static func openLoginItemsSettings() {
+        SMAppService.openSystemSettingsLoginItems()
     }
 }

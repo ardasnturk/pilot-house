@@ -1,6 +1,6 @@
 # Testing
 
-Pilothouse is tested at four levels. Everything runs from the command line.
+Remote Code is tested at four levels. Everything runs from the command line.
 
 | Level | What | Where | Command |
 |---|---|---|---|
@@ -29,7 +29,7 @@ CI on macOS instead.
   stable over repeated runs (5×).
 * Real-CLI end-to-end test — **passed in 5.8 s** with `haiku`: the permission
   request for `Write` reached the client over MCP, was approved, `hello.txt`
-  contained "Hello from Pilothouse", and after close + resume Claude named the
+  contained "Hello from Remote Code", and after close + resume Claude named the
   file correctly.
 * The end-to-end test found a real bug before release: resuming right after
   closing (and sending right after Stop) wrote to the exiting CLI and the

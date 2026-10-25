@@ -2,7 +2,7 @@ import PilothouseKit
 import SwiftUI
 
 /// Explains how to install and sign in to Claude Code (prompt §4.4).
-/// Pilothouse never signs in on the user's behalf.
+/// Remote Code never signs in on the user's behalf.
 struct ClaudeSetupView: View {
     @Environment(AppController.self) private var controller
 
@@ -28,10 +28,10 @@ struct ClaudeSetupView: View {
                     }
                 }
             }
-            step(controller.claude.installed ? 1 : 2, title: "Sign in once in Terminal", detail: "Run `claude` and follow the prompts to sign in with your Claude account (or set up an API key). Pilothouse never sees your credentials.") {
+            step(controller.claude.installed ? 1 : 2, title: "Sign in once in Terminal", detail: "Run `claude` and follow the prompts to sign in with your Claude account (or set up an API key). Remote Code never sees your credentials.") {
                 CommandBox(command: "claude")
             }
-            step(controller.claude.installed ? 2 : 3, title: "Check again", detail: "Pilothouse looks in your login shell's PATH, ~/.local/bin, /opt/homebrew/bin and /usr/local/bin.") {
+            step(controller.claude.installed ? 2 : 3, title: "Check again", detail: "Remote Code looks in your login shell's PATH, ~/.local/bin, /opt/homebrew/bin and /usr/local/bin.") {
                 Button {
                     Task { await controller.refreshClaude() }
                 } label: {

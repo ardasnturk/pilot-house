@@ -149,7 +149,7 @@ public actor SessionManager {
                 sessions[record.summary.id] = LiveSession(record: record, log: log)
                 append(.systemNotice(.init(
                     kind: "hostRestarted", level: .warning,
-                    text: "Pilothouse was restarted while Claude was working; the last turn may be incomplete."
+                    text: "Remote Code was restarted while Claude was working; the last turn may be incomplete."
                 )), to: record.summary.id)
             } else {
                 sessions[record.summary.id] = LiveSession(record: record, log: log)
@@ -226,7 +226,7 @@ public actor SessionManager {
         if mode == .bypassPermissions && !configuration.allowBypassPermissions {
             throw ErrorPayload(
                 code: .modeNotAllowed,
-                message: "“Bypass permissions” is turned off. Enable it in Pilothouse settings on your Mac first."
+                message: "“Bypass permissions” is turned off. Enable it in Remote Code settings on your Mac first."
             )
         }
         let id = UUID().uuidString.lowercased()
@@ -343,7 +343,7 @@ public actor SessionManager {
     /// Changes the model, effort and/or permission mode of a chat. The running
     /// CLI is stopped while the chat is idle, so the next message starts it
     /// again with `--resume` and the new flags (same for Codex: a resumed
-    /// thread). The permission mode can also change during a reply: Pilothouse
+    /// thread). The permission mode can also change during a reply: Remote Code
     /// applies it to the CLI's prompts at once and restarts the CLI afterwards.
     public func updateSettings(_ request: UpdateSessionSettings) async throws -> SessionSummary {
         guard let session = sessions[request.sessionId] else { throw Self.notFound }
@@ -354,7 +354,7 @@ public actor SessionManager {
         if request.permissionMode == .bypassPermissions && !configuration.allowBypassPermissions {
             throw ErrorPayload(
                 code: .modeNotAllowed,
-                message: "“Bypass permissions” is turned off. Enable it in Pilothouse settings on your Mac first."
+                message: "“Bypass permissions” is turned off. Enable it in Remote Code settings on your Mac first."
             )
         }
         let newMode = request.permissionMode.flatMap { $0 == session.record.summary.permissionMode ? nil : $0 }
@@ -493,7 +493,7 @@ public actor SessionManager {
     /// Called by the MCP endpoint for every permission prompt of a session's CLI.
     public func decidePermission(sessionId: String, tool: String, input: JSONValue, toolUseId: String?) async -> PermissionToolResult {
         guard let session = sessions[sessionId], session.process != nil, session.record.summary.state != .closed else {
-            return .deny(message: "The Pilothouse session is no longer active.")
+            return .deny(message: "The Remote Code session is no longer active.")
         }
         let key = PermissionRequest.rememberKey(tool: tool, input: input)
         let bypasses = session.record.summary.permissionMode == .bypassPermissions && configuration.allowBypassPermissions
@@ -511,7 +511,7 @@ public actor SessionManager {
         let (request, decision) = await broker.request(sessionId: sessionId, tool: tool, input: input, cwd: session.record.summary.cwd)
 
         guard sessions[sessionId] != nil else {
-            return .deny(message: "The Pilothouse session was deleted.")
+            return .deny(message: "The Remote Code session was deleted.")
         }
         sessions[sessionId]?.pendingPermissions -= 1
         let outcome: SessionEvent.PermissionDecision.Outcome
@@ -527,10 +527,10 @@ public actor SessionManager {
             }
         case .deny:
             outcome = .denied
-            result = .deny(message: "The user denied this action in Pilothouse.")
+            result = .deny(message: "The user denied this action in Remote Code.")
         case .timedOut:
             outcome = .timedOut
-            result = .deny(message: "Nobody answered this permission request in Pilothouse within 10 minutes, so it was denied.")
+            result = .deny(message: "Nobody answered this permission request in Remote Code within 10 minutes, so it was denied.")
         case .cancelled:
             outcome = .cancelled
             result = .deny(message: "The permission request was cancelled.")
@@ -751,7 +751,7 @@ public actor SessionManager {
     /// thread of the `delegate_to_agent` tool use, so the phone can follow it.
     public func delegate(sessionId: String, arguments: JSONValue) async -> DelegationResult {
         guard let parent = sessions[sessionId], parent.record.summary.state != .closed else {
-            return DelegationResult(text: "The Pilothouse session is no longer active.", isError: true)
+            return DelegationResult(text: "The Remote Code session is no longer active.", isError: true)
         }
         let agent = AgentKind(arguments["agent"]?.stringValue ?? "")
         let prompt = arguments["prompt"]?.stringValue?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""

@@ -66,7 +66,7 @@ struct PilothouseMacApp: App {
     }
 }
 
-/// The status-bar icon: the helm glyph, with a dot while Claude waits for approval.
+/// The status-bar icon: the >_ glyph, with a dot while Claude waits for approval.
 struct MenuBarLabel: View {
     let controller: AppController
     @Environment(\.openWindow) private var openWindow
@@ -96,10 +96,10 @@ struct MenuBarLabel: View {
         switch controller.phase {
         case .failed:
             Image(systemName: "exclamationmark.triangle")
-                .accessibilityLabel(Text("Pilothouse needs attention"))
+                .accessibilityLabel(Text("Remote Code needs attention"))
         default:
             Image(controller.pendingPermissionCount > 0 ? "MenuBarIconBadge" : "MenuBarIcon")
-                .accessibilityLabel(Text("Pilothouse"))
+                .accessibilityLabel(Text("Remote Code"))
         }
     }
 }

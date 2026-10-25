@@ -6,25 +6,25 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 IOS = {
-    "CFBundleDisplayName": ("Pilothouse", "Pilothouse", "Pilothouse"),
+    "CFBundleDisplayName": ("Remote Code", "Remote Code", "Remote Code"),
     "NSCameraUsageDescription": (
-        "Pilothouse uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.",
-        "Pilothouse, kamerayı Mac'inizde gösterilen eşleştirme kodunu taramak ve isterseniz ajanınıza göndermek üzere fotoğraf çekmek için kullanır.",
-        "Pilothouse verwendet die Kamera, um den auf deinem Mac angezeigten Kopplungscode zu scannen und, wenn du möchtest, Fotos aufzunehmen, die du an deinen Agenten sendest.",
+        "Remote Code uses the camera to scan the pairing code shown on your Mac and, if you choose, to take photos to send to your agent.",
+        "Remote Code, kamerayı Mac'inizde gösterilen eşleştirme kodunu taramak ve isterseniz ajanınıza göndermek üzere fotoğraf çekmek için kullanır.",
+        "Remote Code verwendet die Kamera, um den auf deinem Mac angezeigten Kopplungscode zu scannen und, wenn du möchtest, Fotos aufzunehmen, die du an deinen Agenten sendest.",
     ),
     "NSLocalNetworkUsageDescription": (
-        "Pilothouse connects to your Mac on the local network to control your Claude Code sessions.",
-        "Pilothouse, Claude Code oturumlarınızı yönetmek için yerel ağdaki Mac'inize bağlanır.",
-        "Pilothouse verbindet sich im lokalen Netzwerk mit deinem Mac, um deine Claude-Code-Sitzungen zu steuern.",
+        "Remote Code connects to your Mac on the local network to control your Claude Code sessions.",
+        "Remote Code, Claude Code oturumlarınızı yönetmek için yerel ağdaki Mac'inize bağlanır.",
+        "Remote Code verbindet sich im lokalen Netzwerk mit deinem Mac, um deine Claude-Code-Sitzungen zu steuern.",
     ),
 }
 
 MAC = {
-    "CFBundleDisplayName": ("Pilothouse", "Pilothouse", "Pilothouse"),
+    "CFBundleDisplayName": ("Remote Code", "Remote Code", "Remote Code"),
     "NSLocalNetworkUsageDescription": (
-        "Pilothouse lets your paired iPhone or iPad connect to this Mac over your local network.",
-        "Pilothouse, eşleşmiş iPhone veya iPad'inizin yerel ağ üzerinden bu Mac'e bağlanmasını sağlar.",
-        "Pilothouse ermöglicht deinem gekoppelten iPhone oder iPad, sich über das lokale Netzwerk mit diesem Mac zu verbinden.",
+        "Remote Code lets your paired iPhone or iPad connect to this Mac over your local network.",
+        "Remote Code, eşleşmiş iPhone veya iPad'inizin yerel ağ üzerinden bu Mac'e bağlanmasını sağlar.",
+        "Remote Code ermöglicht deinem gekoppelten iPhone oder iPad, sich über das lokale Netzwerk mit diesem Mac zu verbinden.",
     ),
     "NSDesktopFolderUsageDescription": (
         "Claude Code sessions you start from your phone may read and edit files on your Desktop.",

@@ -215,7 +215,7 @@ public final class HostRuntime: Sendable {
 
     /// Stops every CLI and closes all connections.
     public func shutdown() async {
-        await endpoint.disconnectAll(reason: ErrorPayload(code: .internalError, message: "Pilothouse on the Mac is quitting."))
+        await endpoint.disconnectAll(reason: ErrorPayload(code: .internalError, message: "Remote Code on the Mac is quitting."))
         await sessions.shutdown()
         await notifications.stop()
         mcpServer.stop()
