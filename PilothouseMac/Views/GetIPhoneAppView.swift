@@ -5,7 +5,7 @@ import SwiftUI
 enum AppLinks {
     /// Public TestFlight link of the iPhone and iPad app.
     static let testFlight = URL(string: "https://testflight.apple.com/join/6CE4VRRE")!
-    static let website = URL(string: "https://pilot.ardasnturk.com")!
+    static let website = URL(string: "https://rcode.ardasnturk.com")!
 }
 
 /// Whether the public TestFlight link takes new testers yet. Until Apple's

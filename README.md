@@ -11,7 +11,7 @@
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-green"></a>
 </p>
 
-<p align="center"><a href="https://pilot.ardasnturk.com">Website</a> · <b>English</b> · <a href="README.tr.md">Türkçe</a></p>
+<p align="center"><a href="https://rcode.ardasnturk.com">Website</a> · <b>English</b> · <a href="README.tr.md">Türkçe</a></p>
 
 > **Remote Code works with Claude Code, Codex and Gemini CLI.** It is an
 > independent open-source project and is **not affiliated with, endorsed by or

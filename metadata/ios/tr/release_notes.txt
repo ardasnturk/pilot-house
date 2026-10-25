@@ -1,6 +1,3 @@
-Remote Code'un ilk sürümü.
-• iPhone veya iPad'inizi QR kodla Mac'inize eşleştirin
-• Herhangi bir proje klasöründe Claude Code oturumlarını başlatın, izleyin, durdurun ve sürdürün
-• Dosya düzenlemelerini ve komutları telefonunuzdan onaylayın
-• Yerel ağınızda ve Tailscale üzerinden çalışır
-• Mac olmadan her şeyi denemek için demo modu
+Pilothouse artık Remote Code: yeni ad, yeni simge. Eşleştirmeniz ve ayarlarınız olduğu gibi kalır.
+• Sohbette her şeye izin verin: izin ekranında yeni bir düğme, sohbet menüsünde İzinler seçicisi
+• Haftalık özet, uygulamanın gösterildiği dilde yazılır

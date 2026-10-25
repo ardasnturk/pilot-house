@@ -33,7 +33,7 @@ struct WelcomeView: View {
                         StepRow(number: 1, title: "Install Remote Code on your Mac", detail: "Download it from the website and open it. A >_ icon appears in the menu bar at the top of the screen.")
                         StepRow(number: 2, title: "Have an agent ready on the Mac", detail: "Claude Code, Codex or Gemini CLI, installed and signed in once in Terminal. The Mac app tells you if something is missing.")
                         StepRow(number: 3, title: "Pair on the same Wi-Fi", detail: "On the Mac, click the >_ icon, choose “Pair iPhone or iPad…”, then tap the button below and scan the code.")
-                        Link(destination: URL(string: "https://pilot.ardasnturk.com") ?? URL(fileURLWithPath: "/")) {
+                        Link(destination: URL(string: "https://rcode.ardasnturk.com") ?? URL(fileURLWithPath: "/")) {
                             Label("Get Remote Code for Mac", systemImage: "arrow.up.right.square")
                                 .font(.callout.weight(.medium))
                         }

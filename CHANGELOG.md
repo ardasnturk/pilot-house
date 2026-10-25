@@ -6,9 +6,12 @@ All notable changes to Remote Code (called Pilothouse up to 1.1.2) are recorded 
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-10-25
+
 ### Changed
 - Pilothouse is now **Remote Code**: new name, new icon (a `>_` prompt with a
-  signal) and a new repository, `ardasnturk/remote-code`. Pairings, settings,
+  signal), a new repository, `ardasnturk/remote-code`, and a new website,
+  rcode.ardasnturk.com. Pairings, settings,
   session logs and the keychain identity carry over: the bundle identifiers,
   the pairing protocol and the data folder keep their old names. The Mac app
   is now `Remote Code.app`; copies from before the rename update to it through
@@ -22,6 +25,8 @@ All notable changes to Remote Code (called Pilothouse up to 1.1.2) are recorded 
   Items for it, and errors now show in Settings instead of the menu.
 
 ## [1.1.2] — 2026-10-25
+
+The Mac app of 1.1.2 was never published; its changes ship in 1.2.0.
 
 ### Added
 - "Allow everything in this chat" on the permission sheet, and a Permissions
@@ -136,7 +141,8 @@ coding-agent CLIs on your Mac.
 - The Mac menu panel collapsed to its header on macOS 27.
 - Diff statistics counted `---`/`+++` file headers as changed lines.
 
-[Unreleased]: https://github.com/ardasnturk/remote-code/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/ardasnturk/remote-code/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/ardasnturk/remote-code/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/ardasnturk/remote-code/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/ardasnturk/remote-code/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/ardasnturk/remote-code/compare/v1.0.0...v1.0.1

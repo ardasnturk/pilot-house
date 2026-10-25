@@ -103,7 +103,7 @@ def draw(scale):
         d.text((x + 14 * scale, y + 7 * scale), text, font=pill, fill=(255, 255, 255, 240))
         x += width + gap
 
-    foot = "Needs Claude Code, Codex or Gemini CLI on this Mac  ·  pilot.ardasnturk.com"
+    foot = "Needs Claude Code, Codex or Gemini CLI on this Mac  ·  rcode.ardasnturk.com"
     tiny = font(11 * scale, 450)
     fw = d.textlength(foot, font=tiny)
     d.text(((w - fw) / 2, (HEIGHT - 26) * scale), foot, font=tiny, fill=(255, 255, 255, 180))

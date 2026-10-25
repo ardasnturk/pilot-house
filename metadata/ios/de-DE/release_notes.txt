@@ -1,6 +1,3 @@
-Die erste Version von Remote Code.
-• iPhone oder iPad per QR-Code mit dem Mac koppeln
-• Claude-Code-Sitzungen in jedem Projektordner starten, verfolgen, stoppen und fortsetzen
-• Dateiänderungen und Befehle am iPhone bestätigen
-• Funktioniert im lokalen Netzwerk und über Tailscale
-• Demo-Modus zum Ausprobieren ohne Mac
+Pilothouse heißt jetzt Remote Code: neuer Name, neues Symbol. Deine Kopplung und Einstellungen bleiben erhalten.
+• Alles in einem Chat erlauben: eine neue Taste im Berechtigungsdialog und eine Auswahl „Berechtigungen“ im Chat-Menü
+• Der Wochenrückblick wird in der Sprache der App geschrieben

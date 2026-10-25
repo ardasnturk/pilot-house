@@ -11,7 +11,7 @@
   <a href="LICENSE"><img alt="MIT Lisansı" src="https://img.shields.io/badge/license-MIT-green"></a>
 </p>
 
-<p align="center"><a href="https://pilot.ardasnturk.com">Web sitesi</a> · <a href="README.md">English</a> · <b>Türkçe</b></p>
+<p align="center"><a href="https://rcode.ardasnturk.com">Web sitesi</a> · <a href="README.md">English</a> · <b>Türkçe</b></p>
 
 > **Remote Code; Claude Code, Codex ve Gemini CLI ile çalışır.** Bağımsız, açık
 > kaynaklı bir projedir; **Anthropic, OpenAI veya Google ile bağlantılı
