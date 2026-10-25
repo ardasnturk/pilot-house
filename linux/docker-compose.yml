@@ -1,0 +1,43 @@
+# Pilothouse on a Raspberry Pi or any Linux machine. Usually started by
+# linux/install.sh; by hand:
+#
+#   cp linux/.env.example linux/.env    # then edit it
+#   docker compose -f linux/docker-compose.yml up -d --build
+#
+# Everything you can set is described in linux/.env.example.
+name: pilothouse
+
+services:
+  pilothouse:
+    build:
+      context: ..
+      dockerfile: linux/Dockerfile
+      args:
+        PUID: ${PUID:-1000}
+        PGID: ${PGID:-1000}
+        ALLOW_SUDO: ${ALLOW_SUDO:-true}
+        EXTRA_APT_PACKAGES: ${EXTRA_APT_PACKAGES:-}
+        INSTALL_CODEX: ${INSTALL_CODEX:-false}
+        INSTALL_GEMINI: ${INSTALL_GEMINI:-false}
+    image: pilothouse:local
+    container_name: pilothouse
+    # The host's network: the phone reaches Pilothouse (port 47823) and every
+    # dev server Claude starts (Expo 8081, Vite 5173, Next.js 3000, …) at the
+    # Pi's own address, and the Pi's host name is the name the phone shows.
+    network_mode: host
+    # Reaps the dev servers and tools Claude leaves behind.
+    init: true
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      # Claude's sign-in, settings and history, Pilothouse's keys and chats.
+      - ${PILOTHOUSE_HOME:-./data/home}:/home/pilot
+      # Your projects: the folder the phone browses and Claude works in.
+      - ${PROJECTS_DIR:-./data/projects}:/home/pilot/projects
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

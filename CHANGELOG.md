@@ -6,6 +6,12 @@ All notable changes to Pilothouse are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- Pilothouse for Linux: `pilothouse-server` runs the host on a Raspberry Pi or
+  any Linux machine, in Docker with Node.js, Expo and web tooling. The same
+  iPhone and iPad app pairs with it (`pilothouse-server pair` shows the QR code
+  in the terminal). `linux/install.sh` sets everything up; see `linux/README.md`.
+
 ## [1.1.2] — 2026-10-25
 
 ### Added

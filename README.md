@@ -92,11 +92,15 @@ You need a Mac, an iPhone or iPad, and both on **the same Wi-Fi**.
 That's all. Tailscale is not needed at home; turn it on only if you want to use
 Pilothouse away from your Wi-Fi ([below](#away-from-home-tailscale-optional)).
 
+**No Mac?** A Raspberry Pi or any Linux machine works too: `pilothouse-server`
+runs the same host in Docker, with Node.js, Expo and web tooling for Claude.
+See [linux/README.md](linux/README.md).
+
 ## Requirements
 
 | | |
 |---|---|
-| Mac | macOS 15 Sequoia or later, Apple silicon or Intel |
+| Mac | macOS 15 Sequoia or later, Apple silicon or Intel — or a 64-bit Linux machine such as a Raspberry Pi ([linux/](linux/README.md)) |
 | iPhone / iPad | iOS / iPadOS 18 or later |
 | Claude Code | The official CLI installed on the Mac ([setup guide](https://docs.claude.com/en/docs/claude-code/setup)) and signed in with **your own Claude account** — or your own Anthropic API key |
 | Codex, Gemini CLI | Optional. Installed and signed in on the Mac (`codex login`, `gemini`) |

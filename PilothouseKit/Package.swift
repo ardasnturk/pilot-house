@@ -6,6 +6,8 @@
 //                      server connection logic, demo server. Used by both apps.
 // * `PilothouseHost` — Mac-side core: Claude CLI supervision, stream-json
 //                      normaliser, event log, file browser, permission broker.
+// * `pilothouse-server` — the host without the Mac app, for Linux machines
+//                      such as a Raspberry Pi (docs/DECISIONS.md D-110, linux/).
 //
 // Both targets are platform-neutral so the core is testable with `swift test`
 // on macOS and Linux. On Apple platforms the package has no dependencies;
@@ -30,6 +32,7 @@ let package = Package(
     products: [
         .library(name: "PilothouseKit", targets: ["PilothouseKit"]),
         .library(name: "PilothouseHost", targets: ["PilothouseHost"]),
+        .executable(name: "pilothouse-server", targets: ["PilothouseServer"]),
     ],
     dependencies: packageDependencies,
     targets: [
@@ -40,6 +43,10 @@ let package = Package(
         .target(
             name: "PilothouseHost",
             dependencies: ["PilothouseKit"]
+        ),
+        .executableTarget(
+            name: "PilothouseServer",
+            dependencies: ["PilothouseHost", "PilothouseKit"]
         ),
         .testTarget(
             name: "PilothouseKitTests",

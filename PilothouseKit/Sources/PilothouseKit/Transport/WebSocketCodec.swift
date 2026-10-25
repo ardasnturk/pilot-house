@@ -5,11 +5,12 @@ import CryptoKit
 import Crypto
 #endif
 
-/// The client side of RFC 6455, enough for Pilothouse: the opening handshake
-/// and binary, ping, pong and close frames. Used instead of Network.framework's
-/// WebSocket protocol, whose client connections iOS aborts on the local
-/// network (ECONNABORTED right after the TCP handshake; D-108). Pure, so it is
-/// tested on every platform.
+/// RFC 6455, enough for Pilothouse: the opening handshake and binary, ping,
+/// pong and close frames. The client side is used instead of
+/// Network.framework's WebSocket protocol, whose client connections iOS aborts
+/// on the local network (ECONNABORTED right after the TCP handshake; D-108).
+/// The server side backs the Linux host (`POSIXWebSocketListener`, D-110).
+/// Pure, so it is tested on every platform.
 public enum WebSocketCodec {
     public enum Opcode: UInt8, Sendable {
         case continuation = 0x0
@@ -32,6 +33,7 @@ public enum WebSocketCodec {
         case reservedBits
         case unknownOpcode(UInt8)
         case maskedServerFrame
+        case unmaskedClientFrame
         case frameTooLarge
 
         public var description: String {
@@ -41,6 +43,7 @@ public enum WebSocketCodec {
             case .reservedBits: "WebSocket frame with reserved bits"
             case .unknownOpcode(let code): "WebSocket frame with unknown opcode \(code)"
             case .maskedServerFrame: "WebSocket server frame is masked"
+            case .unmaskedClientFrame: "WebSocket client frame is not masked"
             case .frameTooLarge: "WebSocket frame too large"
             }
         }
@@ -83,6 +86,35 @@ public enum WebSocketCodec {
         guard accept == expectedAccept(for: key) else { throw CodecError.badAccept }
     }
 
+    /// The server's `101 Switching Protocols` answer to a client's request head
+    /// (without the trailing blank line). Throws when it is not a WebSocket upgrade.
+    public static func handshakeResponse(forRequest head: String) throws -> Data {
+        let lines = head.components(separatedBy: "\r\n")
+        guard lines.first?.hasPrefix("GET ") == true else {
+            throw CodecError.handshakeRejected(lines.first ?? "")
+        }
+        var headers: [String: String] = [:]
+        for line in lines.dropFirst() {
+            guard let colon = line.firstIndex(of: ":") else { continue }
+            let name = line[line.startIndex..<colon].trimmingCharacters(in: .whitespaces).lowercased()
+            headers[name] = line[line.index(after: colon)...].trimmingCharacters(in: .whitespaces)
+        }
+        guard headers["upgrade"]?.lowercased() == "websocket", let key = headers["sec-websocket-key"], !key.isEmpty else {
+            throw CodecError.handshakeRejected("not a WebSocket upgrade")
+        }
+        let response = [
+            "HTTP/1.1 101 Switching Protocols",
+            "Upgrade: websocket",
+            "Connection: Upgrade",
+            "Sec-WebSocket-Accept: \(expectedAccept(for: key))",
+            "", "",
+        ].joined(separator: "\r\n")
+        return Data(response.utf8)
+    }
+
+    /// `400 Bad Request` for a connection that is not a WebSocket upgrade.
+    public static let badRequestResponse = Data("HTTP/1.1 400 Bad Request\r\nContent-Length: 0\r\nConnection: close\r\n\r\n".utf8)
+
     /// Index just past the `\r\n\r\n` ending an HTTP head, if complete.
     public static func endOfHead(in buffer: Data) -> Data.Index? {
         buffer.range(of: Data("\r\n\r\n".utf8))?.upperBound
@@ -90,19 +122,33 @@ public enum WebSocketCodec {
 
     /// One client frame: always final and masked, as RFC 6455 requires.
     public static func encode(_ opcode: Opcode, payload: Data, mask: [UInt8] = (0..<4).map { _ in UInt8.random(in: .min ... .max) }) -> Data {
+        frame(opcode, payload: payload, mask: mask)
+    }
+
+    /// One server frame: always final and never masked.
+    public static func encodeServerFrame(_ opcode: Opcode, payload: Data) -> Data {
+        frame(opcode, payload: payload, mask: nil)
+    }
+
+    private static func frame(_ opcode: Opcode, payload: Data, mask: [UInt8]?) -> Data {
         var frame = Data([0x80 | opcode.rawValue])
+        let maskBit: UInt8 = mask == nil ? 0 : 0x80
         let count = payload.count
         if count < 126 {
-            frame.append(0x80 | UInt8(count))
+            frame.append(maskBit | UInt8(count))
         } else if count <= 0xFFFF {
-            frame.append(0x80 | 126)
+            frame.append(maskBit | 126)
             frame.append(UInt8(count >> 8))
             frame.append(UInt8(count & 0xFF))
         } else {
-            frame.append(0x80 | 127)
+            frame.append(maskBit | 127)
             for shift in stride(from: 56, through: 0, by: -8) {
                 frame.append(UInt8((UInt64(count) >> UInt64(shift)) & 0xFF))
             }
+        }
+        guard let mask else {
+            frame.append(payload)
+            return frame
         }
         frame.append(contentsOf: mask)
         var masked = [UInt8](payload)
@@ -114,12 +160,26 @@ public enum WebSocketCodec {
     /// Takes one complete server frame off the front of `buffer`, or returns
     /// `nil` when more bytes are needed.
     public static func decode(_ buffer: inout Data, maximumSize: Int = maximumMessageSize) throws -> Frame? {
+        try decode(&buffer, maximumSize: maximumSize, fromClient: false)
+    }
+
+    /// Takes one complete client frame (masked, as RFC 6455 requires) off the
+    /// front of `buffer` and unmasks it, or returns `nil` when more bytes are needed.
+    public static func decodeClientFrame(_ buffer: inout Data, maximumSize: Int = maximumMessageSize) throws -> Frame? {
+        try decode(&buffer, maximumSize: maximumSize, fromClient: true)
+    }
+
+    private static func decode(_ buffer: inout Data, maximumSize: Int, fromClient: Bool) throws -> Frame? {
         let bytes = [UInt8](buffer.prefix(14))
         guard bytes.count >= 2 else { return nil }
         guard bytes[0] & 0x70 == 0 else { throw CodecError.reservedBits }
         guard let opcode = Opcode(rawValue: bytes[0] & 0x0F) else { throw CodecError.unknownOpcode(bytes[0] & 0x0F) }
         let isMasked = bytes[1] & 0x80 != 0
-        guard !isMasked else { throw CodecError.maskedServerFrame }
+        if fromClient {
+            guard isMasked else { throw CodecError.unmaskedClientFrame }
+        } else {
+            guard !isMasked else { throw CodecError.maskedServerFrame }
+        }
         var length = Int(bytes[1] & 0x7F)
         var headerLength = 2
         if length == 126 {
@@ -135,9 +195,17 @@ public enum WebSocketCodec {
             headerLength = 10
         }
         guard length <= maximumSize else { throw CodecError.frameTooLarge }
-        guard buffer.count >= headerLength + length else { return nil }
-        let start = buffer.startIndex + headerLength
-        let payload = Data(buffer[start..<(start + length)])
+        let maskLength = isMasked ? 4 : 0
+        guard buffer.count >= headerLength + maskLength + length else { return nil }
+        let maskStart = buffer.startIndex + headerLength
+        let mask = [UInt8](buffer[maskStart..<(maskStart + maskLength)])
+        let start = maskStart + maskLength
+        var payload = Data(buffer[start..<(start + length)])
+        if isMasked {
+            payload.withUnsafeMutableBytes { bytes in
+                for index in bytes.indices { bytes[index] ^= mask[index & 3] }
+            }
+        }
         buffer = Data(buffer[(start + length)...])
         return Frame(isFinal: bytes[0] & 0x80 != 0, opcode: opcode, payload: payload)
     }

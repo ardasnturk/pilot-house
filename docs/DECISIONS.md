@@ -905,3 +905,45 @@ sheet.
   the Mac's settings the Mac refuses the change (`modeNotAllowed`) and the
   sheet explains where to turn it on.
 * The chat shows a notice when its mode changes.
+
+### D-110 — A host for Linux: `pilothouse-server` in Docker
+**Status:** accepted
+
+People want to drive Claude Code from the phone without a Mac, for example on
+a Raspberry Pi at home. The host core (`PilothouseHost`) already built and
+passed its tests on Linux; only the Mac app was missing. `pilothouse-server`
+(executable target `PilothouseServer`) is that app without a UI. It reuses
+`HostRuntime` unchanged, so the phone sees an ordinary "Mac" and needs no new
+app version or protocol change:
+
+* **Listener:** `POSIXWebSocketListener` uses BSD sockets and the server side of
+  `WebSocketCodec` (the 101 answer, masked client frames, unmasked server
+  frames, ping/pong, close, fragments). Network.framework is not available on
+  Linux. It binds IPv6 dual-stack with an IPv4 fallback, uses the same port
+  search as the Mac (47823 and up) and the same TCP keep-alive. It serves the
+  current phone client (`TCPWebSocketTransport`, D-108) and older ones that
+  used Network.framework's WebSocket client.
+* **Keys:** `FileIdentityStore` stores the X25519 identity as base64url in a
+  `0600` file in a `0700` folder, because Linux has no Keychain.
+* **Settings** come from `PILOTHOUSE_*` environment variables (Compose
+  `.env`). Bypass permissions stays opt-in (D-006). The agents get the server's
+  own environment with the login shell's on top: unlike a launchd app, the
+  server's environment is what the user configured (`CLAUDE_CODE_OAUTH_TOKEN`).
+* **Control:** `pair`, `status`, `devices` and `revoke` reach the running
+  server through `LoopbackHTTPServer` on 127.0.0.1, with a random token in
+  `control.json` (0600). Pairing tokens stay in memory, as on the Mac. The QR
+  code is drawn in the terminal with `qrencode`.
+* **Mac-only parts** are skipped: sleep assertions (a Pi does not sleep, so it
+  reports `sleepPrevented`), written weekly summaries (Apple Intelligence; the
+  numbers still work), native notifications (ntfy works). Tailscale is found
+  through its CLI or, inside a container, through the `100.64/10` address of
+  the host's `tailscale0` interface. Bonjour is published by the host's Avahi
+  from a service file that `avahi-service` prints.
+* **Docker** (`linux/`): the image is built on the Pi itself (arm64) or on any
+  amd64 machine. It contains Node.js 22, git, Python and build tools for Node,
+  Expo and web projects, plus Claude Code from npm in a user-owned prefix, so
+  it can update itself. It uses host networking, so the phone reaches the dev
+  servers Claude starts at the Pi's address. It runs as a non-root user with
+  the Pi user's UID (Claude Code refuses bypass mode as root). The container's
+  `~/.claude/CLAUDE.md` tells Claude about this environment (bind to
+  `0.0.0.0`, background servers, Expo Go).

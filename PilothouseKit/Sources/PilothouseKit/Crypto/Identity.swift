@@ -96,6 +96,58 @@ public final class InMemoryIdentityStore: IdentityStore {
     }
 }
 
+/// File-backed identity store for hosts without a Keychain (the Linux server,
+/// D-110). The key is kept as base64url text in a file only its owner can
+/// read (`0600`, folder `0700`).
+public struct FileIdentityStore: IdentityStore {
+    public let url: URL
+
+    public init(url: URL) {
+        self.url = url
+    }
+
+    public enum FileStoreError: Error, Sendable, Equatable {
+        case invalidData
+        case writeFailed(String)
+    }
+
+    public func loadOrCreateIdentity() throws -> IdentityKeyPair {
+        if FileManager.default.fileExists(atPath: url.path) {
+            let text = try String(contentsOf: url, encoding: .utf8).trimmingCharacters(in: .whitespacesAndNewlines)
+            guard let raw = Base64URL.decode(text) else { throw FileStoreError.invalidData }
+            return try IdentityKeyPair(rawPrivateKey: raw)
+        }
+        let identity = IdentityKeyPair.generate()
+        try Self.writePrivately(Data(Base64URL.encode(identity.rawPrivateKey).utf8), to: url)
+        return identity
+    }
+
+    public func deleteIdentity() throws {
+        guard FileManager.default.fileExists(atPath: url.path) else { return }
+        try FileManager.default.removeItem(at: url)
+    }
+
+    /// Writes `data` atomically with permissions `0600`, creating the folder (`0700`).
+    public static func writePrivately(_ data: Data, to url: URL) throws {
+        let folder = url.deletingLastPathComponent()
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true, attributes: [.posixPermissions: 0o700])
+        let temporary = folder.appendingPathComponent(".\(url.lastPathComponent).\(UUID().uuidString)")
+        guard FileManager.default.createFile(atPath: temporary.path, contents: data, attributes: [.posixPermissions: 0o600]) else {
+            throw FileStoreError.writeFailed(url.path)
+        }
+        do {
+            if FileManager.default.fileExists(atPath: url.path) {
+                _ = try FileManager.default.replaceItemAt(url, withItemAt: temporary)
+            } else {
+                try FileManager.default.moveItem(at: temporary, to: url)
+            }
+        } catch {
+            try? FileManager.default.removeItem(at: temporary)
+            throw error
+        }
+    }
+}
+
 #if canImport(Security)
 import Security
 

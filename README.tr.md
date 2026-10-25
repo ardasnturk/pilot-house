@@ -93,11 +93,15 @@ Bir Mac, bir iPhone ya da iPad gerekir; ikisi de **aynı Wi-Fi ağında** olmal�
 Hepsi bu. Evde Tailscale gerekmez; yalnızca Pilothouse'u Wi-Fi ağınızın
 dışında kullanmak istiyorsanız açın ([aşağıda](#evden-uzakta-tailscale-isteğe-bağlı)).
 
+**Mac yok mu?** Raspberry Pi ya da herhangi bir Linux makinesi de olur:
+`pilothouse-server` aynı sunucuyu Docker içinde çalıştırır; Claude için Node.js,
+Expo ve web araçları hazırdır. Bkz. [linux/README.md](linux/README.md).
+
 ## Gereksinimler
 
 | | |
 |---|---|
-| Mac | macOS 15 Sequoia veya üstü, Apple silicon ya da Intel |
+| Mac | macOS 15 Sequoia veya üstü, Apple silicon ya da Intel — ya da Raspberry Pi gibi 64 bit bir Linux makinesi ([linux/](linux/README.md)) |
 | iPhone / iPad | iOS / iPadOS 18 veya üstü |
 | Claude Code | Mac'te kurulu resmi CLI ([kurulum rehberi](https://docs.claude.com/en/docs/claude-code/setup)), **kendi Claude hesabınızla** giriş yapılmış — ya da kendi Anthropic API anahtarınız |
 | Codex, Gemini CLI | İsteğe bağlı. Mac'te kurulu ve giriş yapılmış (`codex login`, `gemini`) |

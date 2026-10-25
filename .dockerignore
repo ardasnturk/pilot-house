@@ -1,0 +1,8 @@
+# Only the Swift package and linux/ go into the Linux image (linux/Dockerfile).
+*
+!PilothouseKit
+!linux
+PilothouseKit/.build
+PilothouseKit/.swiftpm
+linux/data
+linux/.env

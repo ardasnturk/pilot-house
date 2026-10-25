@@ -27,6 +27,23 @@ jobs:
         working-directory: PilothouseKit
         run: swift test
 
+  linux-image:
+    name: Linux host image (Docker)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build linux/Dockerfile
+        run: docker build -f linux/Dockerfile -t pilothouse:ci .
+      - name: Smoke test
+        run: |
+          docker run --rm --entrypoint pilothouse-server pilothouse:ci version
+          docker run --rm --entrypoint claude pilothouse:ci --version
+          docker run -d --name pilothouse --network host pilothouse:ci
+          for _ in $(seq 1 30); do docker exec pilothouse pilothouse-server health && break; sleep 2; done
+          docker exec pilothouse pilothouse-server status
+          docker exec pilothouse pilothouse-server pair --no-wait
+          docker logs pilothouse
+
   apple:
     name: Mac + iOS (xcodebuild)
     runs-on: macos-26
