@@ -157,10 +157,10 @@ the documented result, `ok`, or `error`.
 | `subscribe` | `{ sessionId, fromSeq }` | `ok`, then `event` pushes |
 | `unsubscribe` | `{ sessionId }` | `ok` |
 | `permissionResponse` | `{ requestId, allow, remember? }` | `ok` |
-| `getWeeklySummary` | `{ week?: date inside the week, refresh: false }` — capability `insights` | `weeklySummary` |
+| `getWeeklySummary` | `{ week?: date inside the week, refresh: false, language?: BCP 47 code the narrative is written in (default: the Mac's) }` — capability `insights` | `weeklySummary` |
 | `getUsageLimits` | `{}` — capability `insights` | `usageLimits` |
 | `listCommands` | `{ sessionId }` — capability `commandCatalog` | `commandCatalog` |
-| `updateSessionSettings` | `{ sessionId, model?, effort? }` — `""` = the agent's default, missing = unchanged; refused (`invalidRequest`) while a turn runs; capability `sessionSettings` | `sessionUpdated` |
+| `updateSessionSettings` | `{ sessionId, model?, effort?, permissionMode? }` — `""` = the agent's default, missing = unchanged; a model or effort change is refused (`invalidRequest`) while a turn runs, a permission mode change is not; `bypassPermissions` needs the Mac setting (`modeNotAllowed`) and allows the chat's open requests at once; capability `sessionSettings` (`permissionMode`: `sessionPermissionMode`) | `sessionUpdated` |
 
 `permissionMode` ∈ `default` · `acceptEdits` · `plan` · `bypassPermissions`
 (the last one only if the Mac user enabled it; otherwise `modeNotAllowed`).
@@ -172,8 +172,9 @@ older Macs). A client only sends them when the Mac lists the capability, so
 `agents` (`startSession.agent`, `Session.agent`, `macStatus.agents`) and
 `threads` (`event.thread`), `insights` (`getWeeklySummary`,
 `getUsageLimits`), `commandCatalog` (`listCommands`) and `sessionSettings`
-(`startSession.effort`, `updateSessionSettings`, `Session.effort`) and
-`modelCatalog` (`macStatus.agents[].modelOptions`).
+(`startSession.effort`, `updateSessionSettings`, `Session.effort`),
+`modelCatalog` (`macStatus.agents[].modelOptions`) and `sessionPermissionMode`
+(`updateSessionSettings.permissionMode`).
 
 ### 4.2 Host → client
 
@@ -190,7 +191,7 @@ older Macs). A client only sends them when the Mac lists the capability, so
 | `event` | `{ sessionId, seq, ts, ephemeral?, thread?, payload: SessionEvent }` — `thread` is the tool-use ID of the sub-agent (`Task` or `delegate_to_agent`) the event belongs to |
 | `permissionRequest` | `{ requestId, sessionId, tool, input, cwd, createdAt, expiresAt, rememberKey }` |
 | `permissionResolved` | `{ requestId, sessionId, outcome: allowed \| allowedForSession \| denied \| timedOut \| cancelled }` |
-| `weeklySummary` | `{ weekStart, weekEnd, projects: [{ path, name, activeSeconds, sessionCount, turnCount, agents: { agent: turns }, filesChanged, linesAdded, linesRemoved, commandsRun, outputTokens, sessionTitles, highlights }], days: [{ day, activeSeconds }], narrative?: { headline, highlights }, narrativeUnavailableReason?, generatedAt }` |
+| `weeklySummary` | `{ weekStart, weekEnd, projects: [{ path, name, activeSeconds, sessionCount, turnCount, agents: { agent: turns }, filesChanged, linesAdded, linesRemoved, commandsRun, outputTokens, sessionTitles, highlights }], days: [{ day, activeSeconds }], narrative?: { headline, highlights }, narrativeUnavailableReason?, language?, generatedAt }` |
 | `usageLimits` | `{ agents: [{ agent, windows: [{ key, durationMinutes?, usedPercent, resetsAt?, model?, isLimited }], observedAt?, source: live \| lastTurn \| unavailable, plan? }] }` |
 | `commandCatalog` | `{ commands: [{ name, kind: skill \| command, source: personal \| project \| plugin \| builtin, description?, plugin? }] }` |
 | `error` | `{ code, message }` |

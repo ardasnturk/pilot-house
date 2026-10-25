@@ -6,6 +6,19 @@ All notable changes to Pilothouse are recorded here. The format follows
 
 ## [Unreleased]
 
+### Added
+- "Allow everything in this chat" on the permission sheet, and a Permissions
+  picker in the chat's menu: a chat's permission mode can now change at any
+  time, even during a reply. "Bypass permissions" still has to be allowed in
+  the Mac's settings first.
+
+### Fixed
+- The weekly summary is written in the language the iPhone app is shown in.
+  It used the Mac's language, and the on-device model sometimes switched to
+  the language of the chats, so one summary could mix several languages.
+  The phone now sends its language with the request (needs the new Mac app
+  and the new iPhone app); a cached summary in another language is rebuilt.
+
 ## [1.1.1] — 2026-10-24
 
 ### Fixed

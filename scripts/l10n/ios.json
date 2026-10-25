@@ -71,6 +71,10 @@
   "de": "Erlauben",
   "tr": "İzin Ver"
  },
+ "Allow everything in this chat": {
+  "de": "In diesem Chat alles erlauben",
+  "tr": "Bu sohbette her şeye izin ver"
+ },
  "Always allow %@ in this session": {
   "de": "%@ in dieser Sitzung immer erlauben",
   "tr": "Bu oturumda %@ için hep izin ver"
@@ -370,6 +374,10 @@
  "End-to-end encrypted between your devices. No accounts, no cloud, no tracking.": {
   "de": "Ende-zu-Ende verschlüsselt zwischen deinen Geräten. Keine Konten, keine Cloud, kein Tracking.",
   "tr": "Cihazlarınız arasında uçtan uca şifreli. Hesap yok, bulut yok, takip yok."
+ },
+ "Every action in this chat is now allowed without asking.": {
+  "de": "In diesem Chat ist jetzt jede Aktion ohne Nachfrage erlaubt.",
+  "tr": "Bu sohbette artık her işleme sormadan izin veriliyor."
  },
  "Explore Pilothouse with a simulated Mac. Nothing is sent anywhere and no Mac is needed.": {
   "de": "Erkunde Pilothouse mit einem simulierten Mac. Es wird nichts gesendet und kein Mac benötigt.",
@@ -1063,6 +1071,10 @@
   "de": "Der Ordner wird auf deinem Mac in %@ erstellt.",
   "tr": "Klasör Mac'inizde %@ içinde oluşturulur."
  },
+ "The permission mode of this chat was changed.": {
+  "de": "Der Berechtigungsmodus dieses Chats wurde geändert.",
+  "tr": "Bu sohbetin izin modu değiştirildi."
+ },
  "The transcript is removed from your Mac and this device. Files Claude changed are not affected.": {
   "de": "Der Verlauf wird von deinem Mac und diesem Gerät entfernt. Von Claude geänderte Dateien bleiben unberührt.",
   "tr": "Döküm Mac'inizden ve bu cihazdan silinir. Claude'un değiştirdiği dosyalar etkilenmez."
@@ -1114,6 +1126,10 @@
  "Three steps": {
   "de": "Drei Schritte",
   "tr": "Üç adım"
+ },
+ "To allow everything in a chat without asking, turn on “Bypass permissions” in Pilothouse settings on your Mac.": {
+  "de": "Um in einem Chat alles ohne Nachfrage zu erlauben, aktiviere „Berechtigungen umgehen“ in den Pilothouse-Einstellungen auf deinem Mac.",
+  "tr": "Bir sohbette sormadan her şeye izin vermek için Mac'teki Pilothouse ayarlarında “İzinleri atla”yı açın."
  },
  "Today": {
   "de": "Heute",
@@ -1191,9 +1207,9 @@
   "de": "Ja",
   "tr": "Evet"
  },
- "You can change these when the reply has finished.": {
-  "de": "Du kannst das ändern, sobald die Antwort fertig ist.",
-  "tr": "Bunları yanıt bittiğinde değiştirebilirsiniz."
+ "You can change the model and effort when the reply has finished.": {
+  "de": "Du kannst Modell und Aufwand ändern, sobald die Antwort fertig ist.",
+  "tr": "Modeli ve efor düzeyini yanıt bittiğinde değiştirebilirsiniz."
  },
  "You: %@": {
   "de": "Du: %@",

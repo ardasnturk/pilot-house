@@ -434,7 +434,7 @@ final class AppController: MacStatusProviding {
     func configureInsights() async {
         guard let runtime else { return }
         let narrator: any WeeklyNarrator = settings.weeklySummaryEnabled ? AppleWeeklyNarrator() : DisabledNarrator()
-        summaryUnavailableReason = await narrator.unavailableReason()
+        summaryUnavailableReason = await narrator.unavailableReason(language: nil)
         var readers: [AgentKind: @Sendable () async -> UsageLimits?] = [:]
         if let codex = agents.first(where: { $0.kind == .codex && $0.installed })?.path {
             let environment = environment
@@ -582,11 +582,14 @@ final class MacNameBox: Sendable {
 
 /// Used when written summaries are turned off in Settings.
 private struct DisabledNarrator: WeeklyNarrator {
-    func unavailableReason() async -> String? {
-        String(localized: "Written summaries are turned off in Pilothouse settings on your Mac.")
+    func unavailableReason(language: String?) async -> String? {
+        let bundle = AppleWeeklyNarrator.bundle(for: language)
+        return String(localized: "Written summaries are turned off in Pilothouse settings on your Mac.", bundle: bundle)
     }
 
-    func narrate(_ summary: WeeklySummary, digests: [ProjectDigest]) async throws -> (WeeklyNarrative, [String: [String]]) {
+    func narrate(
+        _ summary: WeeklySummary, digests: [ProjectDigest], language: String?
+    ) async throws -> (WeeklyNarrative, [String: [String]]) {
         throw AppleWeeklyNarrator.NarratorError.unavailable
     }
 }

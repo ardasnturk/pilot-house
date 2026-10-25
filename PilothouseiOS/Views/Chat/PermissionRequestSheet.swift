@@ -2,7 +2,8 @@ import PilothouseKit
 import SwiftUI
 
 /// Bottom sheet for a permission request (prompt §6.2.4): what Claude wants to
-/// do, a preview, and Allow / Deny / Always allow in this session.
+/// do, a preview, and Allow / Deny / Always allow in this session / Allow
+/// everything in this chat.
 struct PermissionRequestSheet: View {
     let request: PermissionRequest
     let session: SessionSummary?
@@ -138,6 +139,24 @@ struct PermissionRequestSheet: View {
                     .multilineTextAlignment(.center)
             }
             .accessibilityIdentifier("alwaysAllowButton")
+            if connection.capabilities.contains(HostCapability.sessionPermissionMode), session != nil {
+                if connection.status?.bypassPermissionsAllowed == true {
+                    Button {
+                        allowEverything()
+                    } label: {
+                        Text("Allow everything in this chat")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                    }
+                    .tint(.orange)
+                    .accessibilityIdentifier("allowEverythingButton")
+                } else {
+                    Text("To allow everything in a chat without asking, turn on “Bypass permissions” in Pilothouse settings on your Mac.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+            }
         }
         .disabled(isWorking || !connection.isConnected)
         .padding()
@@ -152,6 +171,23 @@ struct PermissionRequestSheet: View {
             return String(localized: "“\(String(program))” commands")
         }
         return key
+    }
+
+    /// Switches the chat to "Bypass permissions"; the Mac then allows this and
+    /// every other open request of the chat, and asks no more.
+    private func allowEverything() {
+        guard let session else { return }
+        isWorking = true
+        Task {
+            do {
+                try await connection.updateSessionSettings(session.id, permissionMode: .bypassPermissions)
+                Haptics.success()
+                dismiss()
+            } catch {
+                errorMessage = (error as? ErrorPayload)?.message ?? error.localizedDescription
+            }
+            isWorking = false
+        }
     }
 
     private func answer(allow: Bool, remember: Bool) {

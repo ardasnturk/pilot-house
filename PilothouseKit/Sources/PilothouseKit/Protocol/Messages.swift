@@ -28,8 +28,12 @@ public enum HostCapability {
     public static let sessionSettings = "sessionSettings"
     /// `AgentStatus.modelOptions`: models and effort levels reported by the CLIs.
     public static let modelCatalog = "modelCatalog"
+    /// `UpdateSessionSettings.permissionMode`: a chat's permission mode can change.
+    public static let sessionPermissionMode = "sessionPermissionMode"
     /// Every capability this build of PilothouseKit implements.
-    public static let all = [createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog]
+    public static let all = [
+        createDirectory, agents, threads, insights, commandCatalog, sessionSettings, modelCatalog, sessionPermissionMode,
+    ]
 }
 
 // MARK: - Shared payloads
@@ -109,10 +113,15 @@ public struct UpdateSessionSettings: Sendable, Hashable, Codable {
     public var model: String?
     /// New effort level; `""` = the agent's default, `nil` = unchanged.
     public var effort: String?
-    public init(sessionId: String, model: String? = nil, effort: String? = nil) {
+    /// New permission mode, `nil` = unchanged (capability `sessionPermissionMode`).
+    /// Allowed while a reply runs; `bypassPermissions` allows the open and all
+    /// further requests of the chat at once.
+    public var permissionMode: PermissionMode?
+    public init(sessionId: String, model: String? = nil, effort: String? = nil, permissionMode: PermissionMode? = nil) {
         self.sessionId = sessionId
         self.model = model
         self.effort = effort
+        self.permissionMode = permissionMode
     }
 }
 

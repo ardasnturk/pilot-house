@@ -66,6 +66,9 @@ public actor SessionManager {
         var sawInterruptNotice = false
         var pendingPermissions = 0
         var stderrTail: [String] = []
+        /// The permission mode changed during a reply: the CLI restarts with
+        /// the new flag once the reply has finished.
+        var restartWhenIdle = false
     }
 
     private var configuration: HostConfiguration
@@ -337,14 +340,24 @@ public actor SessionManager {
         }
     }
 
-    /// Changes the model and/or effort of a chat. The running CLI is stopped
-    /// while the chat is idle, so the next message starts it again with
-    /// `--resume` and the new flags (same for Codex: a resumed thread).
+    /// Changes the model, effort and/or permission mode of a chat. The running
+    /// CLI is stopped while the chat is idle, so the next message starts it
+    /// again with `--resume` and the new flags (same for Codex: a resumed
+    /// thread). The permission mode can also change during a reply: Pilothouse
+    /// applies it to the CLI's prompts at once and restarts the CLI afterwards.
     public func updateSettings(_ request: UpdateSessionSettings) async throws -> SessionSummary {
         guard let session = sessions[request.sessionId] else { throw Self.notFound }
-        guard !session.record.summary.state.isBusy else {
+        let isBusy = session.record.summary.state.isBusy
+        guard !isBusy || (request.model == nil && request.effort == nil) else {
             throw ErrorPayload(code: .invalidRequest, message: "Wait until the current reply has finished, then change the model or effort.")
         }
+        if request.permissionMode == .bypassPermissions && !configuration.allowBypassPermissions {
+            throw ErrorPayload(
+                code: .modeNotAllowed,
+                message: "“Bypass permissions” is turned off. Enable it in Pilothouse settings on your Mac first."
+            )
+        }
+        let newMode = request.permissionMode.flatMap { $0 == session.record.summary.permissionMode ? nil : $0 }
         let agent = session.record.summary.agentKind
         let effort = try request.effort.map { try Self.validEffort($0, for: agent) }
         var changed = false
@@ -363,9 +376,27 @@ public actor SessionManager {
                 record.summary.effort = effort
                 changed = true
             }
+            if let newMode {
+                record.summary.permissionMode = newMode
+                changed = true
+            }
         }
         guard changed else { return sessions[request.sessionId]?.record.summary ?? session.record.summary }
-        await dropProcess(request.sessionId)
+        if let newMode {
+            let text = newMode == .bypassPermissions
+                ? "Every action in this chat is now allowed without asking."
+                : "The permission mode of this chat was changed."
+            append(.systemNotice(.init(kind: "permissionMode", level: newMode == .bypassPermissions ? .warning : .info, text: text)),
+                   to: request.sessionId)
+            if newMode == .bypassPermissions {
+                await broker.allowAll(sessionId: request.sessionId)
+            }
+        }
+        if isBusy {
+            sessions[request.sessionId]?.restartWhenIdle = true
+        } else {
+            await dropProcess(request.sessionId)
+        }
         await persistAndPublish(request.sessionId)
         return sessions[request.sessionId]?.record.summary ?? session.record.summary
     }
@@ -465,7 +496,8 @@ public actor SessionManager {
             return .deny(message: "The Pilothouse session is no longer active.")
         }
         let key = PermissionRequest.rememberKey(tool: tool, input: input)
-        if session.record.alwaysAllowed.contains(key) {
+        let bypasses = session.record.summary.permissionMode == .bypassPermissions && configuration.allowBypassPermissions
+        if bypasses || session.record.alwaysAllowed.contains(key) {
             append(.permissionDecision(.init(
                 requestId: "auto-\(UUID().uuidString.lowercased())", toolName: tool,
                 summary: PermissionRequest.summary(tool: tool, input: input), outcome: .allowedForSession
@@ -638,10 +670,15 @@ public actor SessionManager {
         for request in output.permissionRequests {
             Task { await self.answer(request, session: id, generation: generation) }
         }
-        if output.thread == nil, events.contains(where: { if case .result = $0 { return true } else { return false } })
-            || events.contains(where: { if case .assistantMessage = $0 { return true } else { return false } })
+        let finishedTurn = output.thread == nil && events.contains(where: { if case .result = $0 { return true } else { return false } })
+        if finishedTurn || output.thread == nil
+            && events.contains(where: { if case .assistantMessage = $0 { return true } else { return false } })
         {
             Task { await self.persistAndPublish(id) }
+        }
+        if finishedTurn, sessions[id]?.restartWhenIdle == true {
+            sessions[id]?.restartWhenIdle = false
+            Task { await self.dropProcess(id) }
         }
     }
 

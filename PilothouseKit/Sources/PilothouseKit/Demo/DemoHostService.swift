@@ -182,6 +182,12 @@ public actor DemoHostService: HostService {
         }
         if let model = request.model { session.model = model.isEmpty ? nil : model }
         if let effort = request.effort { session.effort = effort.isEmpty ? nil : effort }
+        if let mode = request.permissionMode {
+            guard mode != .bypassPermissions else {
+                throw ErrorPayload(code: .modeNotAllowed, message: "“Bypass permissions” is not available in the demo.")
+            }
+            session.permissionMode = mode
+        }
         session.updatedAt = Date()
         sessions[request.sessionId] = session
         broadcast(.sessionUpdated(session))

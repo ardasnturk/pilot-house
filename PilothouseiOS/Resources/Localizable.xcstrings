@@ -1045,6 +1045,64 @@
         }
       }
     },
+    "Allow everything in this chat": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In diesem Chat alles erlauben"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir todo en este chat"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout autoriser dans cette discussion"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consenti tutto in questa chat"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このチャットではすべて許可"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 채팅에서 모두 허용"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permitir tudo nesta conversa"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sohbette her şeye izin ver"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在此聊天中允许所有操作"
+          }
+        }
+      }
+    },
     "Always allow %@ in this session": {
       "localizations": {
         "de": {
@@ -5391,6 +5449,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "设备之间端到端加密。无需账户，无云端，无跟踪。"
+          }
+        }
+      }
+    },
+    "Every action in this chat is now allowed without asking.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In diesem Chat ist jetzt jede Aktion ohne Nachfrage erlaubt."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahora todas las acciones de este chat se permiten sin preguntar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toutes les actions de cette discussion sont désormais autorisées sans confirmation."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ora ogni azione in questa chat è consentita senza chiedere."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このチャットのすべての操作が確認なしで許可されるようになりました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이제 이 채팅의 모든 작업이 묻지 않고 허용됩니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agora todas as ações nesta conversa são permitidas sem perguntar."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sohbette artık her işleme sormadan izin veriliyor."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此聊天中的所有操作现在都无需询问即被允许。"
           }
         }
       }
@@ -15429,6 +15545,64 @@
         }
       }
     },
+    "The permission mode of this chat was changed.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Berechtigungsmodus dieses Chats wurde geändert."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se ha cambiado el modo de permisos de este chat."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le mode d'autorisation de cette discussion a été modifié."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La modalità dei permessi di questa chat è stata modificata."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このチャットの権限モードが変更されました。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 채팅의 권한 모드가 변경되었습니다."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O modo de permissões desta conversa foi alterado."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sohbetin izin modu değiştirildi."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此聊天的权限模式已更改。"
+          }
+        }
+      }
+    },
     "The transcript is removed from your Mac and this device. Files Claude changed are not affected.": {
       "localizations": {
         "de": {
@@ -16179,6 +16353,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "三个步骤"
+          }
+        }
+      }
+    },
+    "To allow everything in a chat without asking, turn on “Bypass permissions” in Pilothouse settings on your Mac.": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um in einem Chat alles ohne Nachfrage zu erlauben, aktiviere „Berechtigungen umgehen“ in den Pilothouse-Einstellungen auf deinem Mac."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para permitir todo en un chat sin preguntar, activa “Omitir permisos” en los ajustes de Pilothouse en tu Mac."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour tout autoriser dans une discussion sans confirmation, activez « Ignorer les autorisations » dans les réglages de Pilothouse sur votre Mac."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per consentire tutto in una chat senza chiedere, attiva “Ignora permessi” nelle impostazioni di Pilothouse sul Mac."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "チャットで確認なしにすべてを許可するには、MacのPilothouse設定で「権限をバイパス」をオンにしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "채팅에서 묻지 않고 모두 허용하려면 Mac의 Pilothouse 설정에서 ‘권한 우회’를 켜세요."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para permitir tudo em uma conversa sem perguntar, ative “Ignorar permissões” nos ajustes do Pilothouse no seu Mac."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir sohbette sormadan her şeye izin vermek için Mac'teki Pilothouse ayarlarında “İzinleri atla”yı açın."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要在聊天中无需询问即允许所有操作，请在 Mac 上的 Pilothouse 设置中打开“绕过权限”。"
           }
         }
       }
@@ -17285,60 +17517,60 @@
         }
       }
     },
-    "You can change these when the reply has finished.": {
+    "You can change the model and effort when the reply has finished.": {
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Du kannst das ändern, sobald die Antwort fertig ist."
+            "value": "Du kannst Modell und Aufwand ändern, sobald die Antwort fertig ist."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Puedes cambiar esto cuando termine la respuesta."
+            "value": "Puedes cambiar el modelo y el esfuerzo cuando termine la respuesta."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vous pourrez les modifier une fois la réponse terminée."
+            "value": "Vous pourrez modifier le modèle et l'effort une fois la réponse terminée."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Puoi modificarli quando la risposta è terminata."
+            "value": "Puoi modificare modello e impegno quando la risposta è terminata."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "返信が完了したら変更できます。"
+            "value": "返信が完了したら、モデルと労力を変更できます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "답변이 끝나면 변경할 수 있습니다."
+            "value": "답변이 끝나면 모델과 노력 수준을 변경할 수 있습니다."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Você pode alterar isso quando a resposta terminar."
+            "value": "Você pode alterar o modelo e o esforço quando a resposta terminar."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bunları yanıt bittiğinde değiştirebilirsiniz."
+            "value": "Modeli ve efor düzeyini yanıt bittiğinde değiştirebilirsiniz."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "回复完成后即可更改这些设置。"
+            "value": "回复完成后即可更改模型和投入程度。"
           }
         }
       }

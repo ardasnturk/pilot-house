@@ -1,8 +1,9 @@
 import PilothouseKit
 import SwiftUI
 
-/// Model and effort pickers for one chat, shown as submenus of a `Menu`.
-/// A change applies from the next message (the Mac restarts the agent CLI).
+/// Model, effort and permission pickers for one chat, shown as submenus of a
+/// `Menu`. Model and effort apply from the next message (the Mac restarts the
+/// agent CLI); the permission mode can change during a reply too.
 struct SessionSettingsMenuContent: View {
     let connection: MacConnection
     let session: SessionSummary
@@ -37,6 +38,14 @@ struct SessionSettingsMenuContent: View {
             return option.displayName
         }
         return session.model ?? String(localized: "Agent default")
+    }
+
+    private var permissionModes: [PermissionMode] {
+        var modes = PermissionMode.standardModes
+        if connection.status?.bypassPermissionsAllowed == true || session.permissionMode == .bypassPermissions {
+            modes.append(.bypassPermissions)
+        }
+        return modes
     }
 
     private var effortLevels: [String] {
@@ -106,8 +115,29 @@ struct SessionSettingsMenuContent: View {
             .disabled(!isEditable)
             .accessibilityIdentifier("effortMenu")
         }
+        if connection.capabilities.contains(HostCapability.sessionPermissionMode) {
+            Picker(selection: Binding {
+                session.permissionMode
+            } set: { value in
+                apply { connection in try await connection.updateSessionSettings(session.id, permissionMode: value) }
+            }) {
+                ForEach(permissionModes, id: \.self) { mode in
+                    Text(mode.localizedName).tag(mode)
+                }
+            } label: {
+                Label {
+                    Text("Permissions")
+                    Text(session.permissionMode.localizedName)
+                } icon: {
+                    Image(systemName: "checkmark.shield")
+                }
+            }
+            .pickerStyle(.menu)
+            .disabled(!connection.isConnected || session.state == .closed)
+            .accessibilityIdentifier("permissionModeMenu")
+        }
         if session.state.isBusy {
-            Text("You can change these when the reply has finished.")
+            Text("You can change the model and effort when the reply has finished.")
         }
     }
 

@@ -681,11 +681,14 @@ phone only shows it.
   the Foundation Models framework, macOS 26+. Each project gets up to three
   bullets from a compact digest (titles, first sentences of requests and
   answers, edited files), then the week a headline and highlights, in the
-  Mac's language. Nothing leaves the Mac. Without Apple Intelligence the
+  language the phone sends (`GetWeeklySummary.language`, the app's interface
+  language; the Mac's when missing), even where the chats are in another one.
+  The reason without a narrative follows it too. Nothing leaves the Mac. Without Apple Intelligence the
   summary carries the numbers and `narrativeUnavailableReason`; it can be
   turned off in Settings → Agents.
 * **Cache:** `insights/<week-start>.json`; finished weeks are built once, the
-  current week at most hourly unless the phone pulls to refresh.
+  current week at most hourly unless the phone pulls to refresh. A summary in
+  another language than the one asked for is rebuilt.
 
 `DiffBuilder` no longer counts `---`/`+++` file headers as removed/added
 lines (found while testing the line counts; it also inflated the "+N −M" on
@@ -883,3 +886,22 @@ connect. Connections also set `preferNoProxies`; the pairing error shows the
 connection states per address, so a failure like this one can be told apart
 from a network that keeps devices apart.
 
+### D-109 — Changing a chat's permission mode, "Allow everything in this chat"
+**Status:** accepted
+
+Approving every command of a long task one by one is tiring, and the
+permission mode could only be chosen when a chat started. Now it can change
+at any time (`updateSessionSettings.permissionMode`, capability
+`sessionPermissionMode`): from the chat's menu (Permissions) and, for
+`bypassPermissions`, with "Allow everything in this chat" on the permission
+sheet.
+
+* **During a reply** the CLI keeps running. Pilothouse answers the CLI's
+  prompts itself, so `bypassPermissions` takes effect at once: the chat's open
+  requests are allowed and later ones are allowed without asking (logged like
+  "always allow" decisions). After the reply the CLI is restarted with
+  `--resume` and the new flag, as for a model change.
+* **Still opt-in on the Mac** (D-006): without "Allow bypass permissions" in
+  the Mac's settings the Mac refuses the change (`modeNotAllowed`) and the
+  sheet explains where to turn it on.
+* The chat shows a notice when its mode changes.

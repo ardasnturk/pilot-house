@@ -76,6 +76,38 @@ import Testing
         }
     }
 
+    @Test func bypassingPermissionsAllowsOpenAndLaterRequests() async throws {
+        let harness = try await Harness(allowBypass: true)
+        defer { Task { await harness.tearDown() } }
+        let summary = try await harness.sessions.start(StartSession(cwd: "~/project", model: "sonnet"))
+        let stream = try await harness.sessions.subscribe(summary.id, fromSeq: 1)
+        try await harness.sessions.send(SendMessage(sessionId: summary.id, text: "Hi"))
+        _ = try await collect(stream) { $0.resultCount == 1 }
+
+        let open = Task {
+            await harness.sessions.decidePermission(sessionId: summary.id, tool: "Bash", input: ["command": "make"], toolUseId: nil)
+        }
+        while await harness.runtime.broker.pendingRequests.isEmpty {
+            try await Task.sleep(for: .milliseconds(20))
+        }
+        let updated = try await harness.sessions.updateSettings(
+            UpdateSessionSettings(sessionId: summary.id, permissionMode: .bypassPermissions)
+        )
+        #expect(updated.permissionMode == .bypassPermissions)
+        #expect(await open.value == .allow(updatedInput: ["command": "make"]))
+        let later = await harness.sessions.decidePermission(sessionId: summary.id, tool: "Write", input: ["file_path": "/x"], toolUseId: nil)
+        #expect(later == .allow(updatedInput: ["file_path": "/x"]))
+        #expect(await harness.runtime.broker.pendingRequests.isEmpty)
+
+        // Off on the Mac: refused.
+        let locked = try await Harness()
+        defer { Task { await locked.tearDown() } }
+        let other = try await locked.sessions.start(StartSession(cwd: "~/project"))
+        await #expect(throws: ErrorPayload.self) {
+            try await locked.sessions.updateSettings(UpdateSessionSettings(sessionId: other.id, permissionMode: .bypassPermissions))
+        }
+    }
+
     @Test func startStreamsAndPersistsATurn() async throws {
         let harness = try await Harness()
         let summary = try await harness.sessions.start(StartSession(cwd: "~/project", model: "sonnet"))

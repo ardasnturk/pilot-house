@@ -57,6 +57,7 @@ EXTRA_KEYS = {
         "Claude Code is not signed in on this Mac. Open Terminal, run `claude` and sign in, then try again.",
         "Pilothouse was restarted while Claude was working; the last turn may be incomplete.",
         "Claude Code could not find the earlier conversation. Your next message starts a fresh one in this session.",
+        "Every action in this chat is now allowed without asking.", "The permission mode of this chat was changed.",
     ],
     "mac": [
         # TailscaleSetup.manualSteps (PilothouseHost) shown via LocalizedStringKey.

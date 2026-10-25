@@ -142,9 +142,12 @@ public struct ProjectDigest: Sendable, Hashable {
 
 /// Writes the narrative of a weekly summary; implemented by the Mac app with
 /// Apple's on-device model so the package stays platform-neutral.
+/// `language` is a BCP 47 code (`GetWeeklySummary.language`); `nil` = the Mac's language.
 public protocol WeeklyNarrator: Sendable {
     /// `nil` when the narrator can run, otherwise why not (shown to the user).
-    func unavailableReason() async -> String?
+    func unavailableReason(language: String?) async -> String?
     /// Headline and highlights for the week, plus per-project bullet points by path.
-    func narrate(_ summary: WeeklySummary, digests: [ProjectDigest]) async throws -> (WeeklyNarrative, [String: [String]])
+    func narrate(
+        _ summary: WeeklySummary, digests: [ProjectDigest], language: String?
+    ) async throws -> (WeeklyNarrative, [String: [String]])
 }

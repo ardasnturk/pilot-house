@@ -16,7 +16,12 @@ public actor InsightsService {
     private var narrator: (any WeeklyNarrator)?
     private var liveReaders: [AgentKind: @Sendable () async -> UsageLimits?] = [:]
     private var agents: [AgentKind] = [.claude]
-    private var building: [Date: Task<WeeklySummary, Never>] = [:]
+    private var building: [BuildKey: Task<WeeklySummary, Never>] = [:]
+
+    private struct BuildKey: Hashable {
+        var week: Date
+        var language: String?
+    }
 
     public init(sessions: SessionManager, dataDirectory: URL, calendar: Calendar = .current) {
         self.sessions = sessions
@@ -40,16 +45,19 @@ public actor InsightsService {
 
     public func weeklySummary(_ request: GetWeeklySummary, now: Date = Date()) async -> WeeklySummary {
         let week = WeeklyStatsBuilder.week(containing: request.week ?? now, calendar: calendar)
-        if !request.refresh, let cached = cached(week), isFresh(cached, now: now) {
+        let language = request.language
+        // One cache file per week: a phone in another language rebuilds it.
+        if !request.refresh, let cached = cached(week), cached.language == language, isFresh(cached, now: now) {
             return cached
         }
-        if let running = building[week.start] {
+        let key = BuildKey(week: week.start, language: language)
+        if let running = building[key] {
             return await running.value
         }
-        let task = Task { await self.build(week, now: now) }
-        building[week.start] = task
+        let task = Task { await self.build(week, language: language, now: now) }
+        building[key] = task
         let summary = await task.value
-        building.removeValue(forKey: week.start)
+        building.removeValue(forKey: key)
         store(summary)
         return summary
     }
@@ -59,21 +67,22 @@ public actor InsightsService {
         return now.timeIntervalSince(summary.generatedAt) < Self.currentWeekMaxAge
     }
 
-    private func build(_ week: DateInterval, now: Date) async -> WeeklySummary {
+    private func build(_ week: DateInterval, language: String?, now: Date) async -> WeeklySummary {
         let activity = await sessions.activity(in: week)
         var summary = WeeklyStatsBuilder.build(week: week, activity: activity, calendar: calendar, now: now)
+        summary.language = language
         guard !summary.projects.isEmpty else { return summary }
         guard let narrator else {
             summary.narrativeUnavailableReason = "On-device summaries need Apple Intelligence on the Mac (macOS 26 or later)."
             return summary
         }
-        if let reason = await narrator.unavailableReason() {
+        if let reason = await narrator.unavailableReason(language: language) {
             summary.narrativeUnavailableReason = reason
             return summary
         }
         do {
             let digests = WeeklyStatsBuilder.digest(of: summary, activity: activity)
-            let (narrative, highlights) = try await narrator.narrate(summary, digests: digests)
+            let (narrative, highlights) = try await narrator.narrate(summary, digests: digests, language: language)
             summary.narrative = narrative
             for index in summary.projects.indices {
                 summary.projects[index].highlights = highlights[summary.projects[index].path] ?? []

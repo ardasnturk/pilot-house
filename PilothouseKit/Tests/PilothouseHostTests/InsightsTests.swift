@@ -142,10 +142,14 @@ import Testing
     final class FakeNarrator: WeeklyNarrator {
         let reason: String?
         let calls = Mutex(0)
+        let languages = Mutex<[String?]>([])
         init(reason: String?) { self.reason = reason }
-        func unavailableReason() async -> String? { reason }
-        func narrate(_ summary: WeeklySummary, digests: [ProjectDigest]) async throws -> (WeeklyNarrative, [String: [String]]) {
+        func unavailableReason(language: String?) async -> String? { reason }
+        func narrate(
+            _ summary: WeeklySummary, digests: [ProjectDigest], language: String?
+        ) async throws -> (WeeklyNarrative, [String: [String]]) {
             calls.withLock { $0 += 1 }
+            languages.withLock { $0.append(language) }
             return (WeeklyNarrative(headline: "Busy week", highlights: ["Did things"]), [digests[0].path: ["Wrote code"]])
         }
     }
@@ -168,6 +172,13 @@ import Testing
         #expect(narrator.calls.withLock { $0 } == 1, "The current week is cached for an hour")
         _ = await insights.weeklySummary(GetWeeklySummary(refresh: true))
         #expect(narrator.calls.withLock { $0 } == 2)
+
+        let turkish = await insights.weeklySummary(GetWeeklySummary(language: "tr"))
+        #expect(turkish.language == "tr")
+        #expect(narrator.calls.withLock { $0 } == 3, "A cached summary in another language is rewritten")
+        _ = await insights.weeklySummary(GetWeeklySummary(language: "tr"))
+        #expect(narrator.calls.withLock { $0 } == 3)
+        #expect(narrator.languages.withLock { $0 } == [nil, nil, "tr"])
 
         await insights.configure(narrator: FakeNarrator(reason: "Apple Intelligence is off."), agents: [.claude], liveReaders: [:])
         let fallback = await insights.weeklySummary(GetWeeklySummary(refresh: true))

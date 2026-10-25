@@ -91,6 +91,13 @@ public actor PermissionBroker {
         }
     }
 
+    /// Allows every open request of a session (it now bypasses permissions).
+    public func allowAll(sessionId: String) {
+        for (id, entry) in pending where entry.request.sessionId == sessionId {
+            resolve(id, with: .allow(remember: false))
+        }
+    }
+
     public var pendingRequests: [PermissionRequest] {
         pending.values.map(\.request).sorted { $0.createdAt < $1.createdAt }
     }

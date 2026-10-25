@@ -12,11 +12,15 @@ public struct WeeklySummary: Sendable, Hashable, Codable {
     public var narrative: WeeklyNarrative?
     /// Why there is no narrative (shown to the user), if so.
     public var narrativeUnavailableReason: String?
+    /// Language of the narrative and the reason (`GetWeeklySummary.language`);
+    /// `nil` = the Mac's language.
+    public var language: String?
     public var generatedAt: Date
 
     public init(
         weekStart: Date, weekEnd: Date, projects: [ProjectActivity], days: [DayActivity],
-        narrative: WeeklyNarrative? = nil, narrativeUnavailableReason: String? = nil, generatedAt: Date = Date()
+        narrative: WeeklyNarrative? = nil, narrativeUnavailableReason: String? = nil, language: String? = nil,
+        generatedAt: Date = Date()
     ) {
         self.weekStart = weekStart
         self.weekEnd = weekEnd
@@ -24,6 +28,7 @@ public struct WeeklySummary: Sendable, Hashable, Codable {
         self.days = days
         self.narrative = narrative
         self.narrativeUnavailableReason = narrativeUnavailableReason
+        self.language = language
         self.generatedAt = generatedAt
     }
 
@@ -157,10 +162,14 @@ public struct GetWeeklySummary: Sendable, Hashable, Codable {
     public var week: Date?
     /// Rebuild even if a cached summary exists.
     public var refresh: Bool
+    /// Language the phone shows its interface in (BCP 47, e.g. `tr-TR`); the
+    /// narrative is written in it. `nil` = the Mac's language.
+    public var language: String?
 
-    public init(week: Date? = nil, refresh: Bool = false) {
+    public init(week: Date? = nil, refresh: Bool = false, language: String? = nil) {
         self.week = week
         self.refresh = refresh
+        self.language = language
     }
 }
 

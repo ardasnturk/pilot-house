@@ -245,7 +245,10 @@ final class MacConnection {
 
     /// The Mac's summary of the week containing `week` (capability `insights`).
     func weeklySummary(week: Date? = nil, refresh: Bool = false) async throws -> WeeklySummary {
-        let response = try await client.request(.getWeeklySummary(GetWeeklySummary(week: week, refresh: refresh)), timeout: 180)
+        // The language the app is shown in, which can differ from the Mac's.
+        let language = Bundle.main.preferredLocalizations.first
+        let request = GetWeeklySummary(week: week, refresh: refresh, language: language)
+        let response = try await client.request(.getWeeklySummary(request), timeout: 180)
         guard case .weeklySummary(let summary) = response else {
             throw MacClientError.unexpectedResponse(response.typeName)
         }
@@ -294,10 +297,13 @@ final class MacConnection {
         return payload.session
     }
 
-    /// Changes a chat's model or effort (`""` = the agent's default, `nil` = unchanged).
-    func updateSessionSettings(_ sessionId: String, model: String? = nil, effort: String? = nil) async throws {
+    /// Changes a chat's model, effort (`""` = the agent's default) or
+    /// permission mode; `nil` = unchanged.
+    func updateSessionSettings(
+        _ sessionId: String, model: String? = nil, effort: String? = nil, permissionMode: PermissionMode? = nil
+    ) async throws {
         let response = try await client.request(.updateSessionSettings(UpdateSessionSettings(
-            sessionId: sessionId, model: model, effort: effort
+            sessionId: sessionId, model: model, effort: effort, permissionMode: permissionMode
         )))
         guard case .sessionUpdated(let payload) = response else {
             throw MacClientError.unexpectedResponse(response.typeName)
